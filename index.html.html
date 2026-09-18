@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Modal Verbs — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:760px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(22px,5vw,32px) clamp(18px,5vw,44px); background:var(--paper); border-bottom:1px solid var(--rule); }
+  .grammar-summary h2{ margin-bottom:4px; }
+  .grammar-summary .instructions{ margin-top:14px; }
+  .rule-list{ list-style:none; margin:18px 0 0; padding:0; display:grid; gap:10px; }
+  .rule-list li{ display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:baseline; background:var(--panel); border:1px solid var(--rule); border-radius:6px; padding:11px 14px; font-size:14px; }
+  .rule-term{ font-family:'Fraunces',serif; font-weight:600; font-size:14.5px; color:var(--ink); white-space:nowrap; }
+  .rule-def{ color:var(--ink-soft); }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .g-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-sentence{ font-size:15px; margin-bottom:12px; line-height:1.75; }
+  .blank{ display:inline-block; min-width:64px; text-align:center; border-bottom:2px solid var(--rule); color:var(--ink-soft); font-weight:600; padding:0 2px; }
+  .g-item.answered .blank{ border-bottom-color:var(--ink); color:var(--ink); }
+  .g-item.correct .blank{ border-bottom-color:var(--good); color:var(--good); }
+  .g-item.incorrect .blank{ border-bottom-color:var(--bad); color:var(--bad); }
+
+  .options{ display:flex; flex-wrap:wrap; gap:8px; }
+  .opt-btn{ font-family:'Public Sans',sans-serif; font-size:13.5px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:20px; padding:9px 16px; cursor:pointer; transition:border-color .15s, background .15s, color .15s, transform .08s; min-height:40px; }
+  .opt-btn:hover{ border-color:var(--ink-soft); }
+  .opt-btn:active{ transform:translateY(1px); }
+  .opt-btn.selected{ background:var(--black); color:var(--white); border-color:var(--black); }
+  .g-item.correct .opt-btn.selected{ background:var(--good); border-color:var(--good); color:var(--white); }
+  .g-item.incorrect .opt-btn.selected{ background:var(--bad); border-color:var(--bad); color:var(--white); }
+  .g-item.incorrect .opt-btn.correct-reveal{ border-color:var(--good); color:var(--good); background:var(--good-bg); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:760px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .opt-btn{ flex:1 1 auto; text-align:center; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Grammar Practice — Modal Verbs</h1>
+    <p class="sub">Tap the modal verb that correctly completes each sentence, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 115</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <h2>Grammar Summary</h2>
+    <p class="instructions">Modal Verbs — a quick reference before you start.</p>
+    <ul class="rule-list">
+      <li><span class="rule-term">must</span><span class="rule-def">strong obligation or certainty.</span></li>
+      <li><span class="rule-term">have to</span><span class="rule-def">external obligation.</span></li>
+      <li><span class="rule-term">ought to / should</span><span class="rule-def">advice.</span></li>
+      <li><span class="rule-term">may / might / could</span><span class="rule-def">possibility.</span></li>
+      <li><span class="rule-term">mustn't</span><span class="rule-def">prohibition.</span></li>
+      <li><span class="rule-term">don't have to / needn't</span><span class="rule-def">lack of necessity.</span></li>
+      <li><span class="rule-term">needn't have + past participle</span><span class="rule-def">an unnecessary action that was completed.</span></li>
+      <li><span class="rule-term">can't have + past participle</span><span class="rule-def">something was impossible in the past.</span></li>
+    </ul>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-g1">Group 1</a>
+    <a href="#section-g2">Group 2</a>
+    <a href="#section-g3">Group 3</a>
+    <a href="#section-g4">Group 4</a>
+    <a href="#section-g5">Group 5</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Group 1</h2><span class="block-count">Warm-up · 15 items</span></div>
+    <p class="instructions">Tap the modal verb that correctly completes each sentence.</p>
+    <div id="list-g1">
+      <div class="g-item" id="item-g1-0" data-answer="could">
+        <div class="g-sentence"><span class="g-num">1</span>It <span class="blank" id="blank-g1-0">_____</span> be a mistake, but I&#x27;m sure I saw Mark in town last night.</div>
+        <div class="options" id="opts-g1-0">
+          <button type="button" class="opt-btn" data-value="need">need</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="g-item" id="item-g1-1" data-answer="have to">
+        <div class="g-sentence"><span class="g-num">2</span>If you want to be really successful and rich, you <span class="blank" id="blank-g1-1">_____</span> work hard.</div>
+        <div class="options" id="opts-g1-1">
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can">can</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="g-item" id="item-g1-2" data-answer="May">
+        <div class="g-sentence"><span class="g-num">3</span> <span class="blank" id="blank-g1-2">_____</span> I call you later today? There&#x27;s a matter we need to discuss.</div>
+        <div class="options" id="opts-g1-2">
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+          <button type="button" class="opt-btn" data-value="May">May</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="g-item" id="item-g1-3" data-answer="Might">
+        <div class="g-sentence"><span class="g-num">4</span> <span class="blank" id="blank-g1-3">_____</span> that be our manager&#x27;s car? He has got exactly one just like it.</div>
+        <div class="options" id="opts-g1-3">
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+          <button type="button" class="opt-btn" data-value="Might">Might</button>
+          <button type="button" class="opt-btn" data-value="Has to">Has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="g-item" id="item-g1-4" data-answer="could">
+        <div class="g-sentence"><span class="g-num">5</span>I honestly believe that our team <span class="blank" id="blank-g1-4">_____</span> win the championship this year.</div>
+        <div class="options" id="opts-g1-4">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="needn&#x27;t">needn&#x27;t</button>
+          <button type="button" class="opt-btn" data-value="mustn&#x27;t">mustn&#x27;t</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="g-item" id="item-g1-5" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">6</span>You <span class="blank" id="blank-g1-5">_____</span> make more efforts if you want to get promoted. No pain, no gain.</div>
+        <div class="options" id="opts-g1-5">
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can">can</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="g-item" id="item-g1-6" data-answer="needn&#x27;t have">
+        <div class="g-sentence"><span class="g-num">7</span>You <span class="blank" id="blank-g1-6">_____</span> brought so much food. I&#x27;d already prepared plenty.</div>
+        <div class="options" id="opts-g1-6">
+          <button type="button" class="opt-btn" data-value="might not have">might not have</button>
+          <button type="button" class="opt-btn" data-value="can&#x27;t have">can&#x27;t have</button>
+          <button type="button" class="opt-btn" data-value="needn&#x27;t have">needn&#x27;t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="g-item" id="item-g1-7" data-answer="can&#x27;t">
+        <div class="g-sentence"><span class="g-num">8</span>You <span class="blank" id="blank-g1-7">_____</span> leave your stuff without attendance. It is against the rules.</div>
+        <div class="options" id="opts-g1-7">
+          <button type="button" class="opt-btn" data-value="can&#x27;t">can&#x27;t</button>
+          <button type="button" class="opt-btn" data-value="don&#x27;t have to">don&#x27;t have to</button>
+          <button type="button" class="opt-btn" data-value="needn&#x27;t">needn&#x27;t</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="g-item" id="item-g1-8" data-answer="mustn&#x27;t">
+        <div class="g-sentence"><span class="g-num">9</span>You really <span class="blank" id="blank-g1-8">_____</span> touch these wires without wearing rubber gloves.</div>
+        <div class="options" id="opts-g1-8">
+          <button type="button" class="opt-btn" data-value="mustn&#x27;t">mustn&#x27;t</button>
+          <button type="button" class="opt-btn" data-value="don&#x27;t have to">don&#x27;t have to</button>
+          <button type="button" class="opt-btn" data-value="needn&#x27;t">needn&#x27;t</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="g-item" id="item-g1-9" data-answer="might">
+        <div class="g-sentence"><span class="g-num">10</span>If they set out much earlier, they has <span class="blank" id="blank-g1-9">_____</span> reach the village before the sunset.</div>
+        <div class="options" id="opts-g1-9">
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="need to">need to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+      <div class="g-item" id="item-g1-10" data-answer="must">
+        <div class="g-sentence"><span class="g-num">11</span>You <span class="blank" id="blank-g1-10">_____</span> be exhausted after working for twelve hours.</div>
+        <div class="options" id="opts-g1-10">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="don&#x27;t have to">don&#x27;t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-10"></div>
+      </div>
+      <div class="g-item" id="item-g1-11" data-answer="can&#x27;t">
+        <div class="g-sentence"><span class="g-num">12</span>We <span class="blank" id="blank-g1-11">_____</span> park here because it&#x27;s reserved for emergency vehicles.</div>
+        <div class="options" id="opts-g1-11">
+          <button type="button" class="opt-btn" data-value="can&#x27;t">can&#x27;t</button>
+          <button type="button" class="opt-btn" data-value="needn&#x27;t">needn&#x27;t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-11"></div>
+      </div>
+      <div class="g-item" id="item-g1-12" data-answer="needn&#x27;t have">
+        <div class="g-sentence"><span class="g-num">13</span>You <span class="blank" id="blank-g1-12">_____</span> bought milk. We&#x27;ve already got two bottles.</div>
+        <div class="options" id="opts-g1-12">
+          <button type="button" class="opt-btn" data-value="needn&#x27;t have">needn&#x27;t have</button>
+          <button type="button" class="opt-btn" data-value="can&#x27;t have">can&#x27;t have</button>
+          <button type="button" class="opt-btn" data-value="might have">might have</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-12"></div>
+      </div>
+      <div class="g-item" id="item-g1-13" data-answer="must">
+        <div class="g-sentence"><span class="g-num">14</span>Students <span class="blank" id="blank-g1-13">_____</span> wear an ID card while they are at school.</div>
+        <div class="options" id="opts-g1-13">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="don&#x27;t have to">don&#x27;t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-13"></div>
+      </div>
+      <div class="g-item" id="item-g1-14" data-answer="might">
+        <div class="g-sentence"><span class="g-num">15</span>She <span class="blank" id="blank-g1-14">_____</span> arrive late because of the heavy traffic.</div>
+        <div class="options" id="opts-g1-14">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+          <button type="button" class="opt-btn" data-value="ought">ought</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Group 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Group 2</h2><span class="block-count">Questions 1–25 · 25 items</span></div>
+    <p class="instructions">Tap the modal verb that correctly completes each sentence.</p>
+    <div id="list-g2">
+      <div class="g-item" id="item-g2-0" data-answer="must">
+        <div class="g-sentence"><span class="g-num">1</span>It <span class="blank" id="blank-g2-0">_____</span> be John’s car; I recognize the number plate.</div>
+        <div class="options" id="opts-g2-0">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="g-item" id="item-g2-1" data-answer="have to">
+        <div class="g-sentence"><span class="g-num">2</span>You <span class="blank" id="blank-g2-1">_____</span> work harder if you want to pass the exam.</div>
+        <div class="options" id="opts-g2-1">
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="g-item" id="item-g2-2" data-answer="May">
+        <div class="g-sentence"><span class="g-num">3</span> <span class="blank" id="blank-g2-2">_____</span> I ask you a personal question?</div>
+        <div class="options" id="opts-g2-2">
+          <button type="button" class="opt-btn" data-value="May">May</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="g-item" id="item-g2-3" data-answer="might">
+        <div class="g-sentence"><span class="g-num">4</span>She <span class="blank" id="blank-g2-3">_____</span> be at home; I just saw her car outside.</div>
+        <div class="options" id="opts-g2-3">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="g-item" id="item-g2-4" data-answer="could">
+        <div class="g-sentence"><span class="g-num">5</span>We <span class="blank" id="blank-g2-4">_____</span> finish this project by Friday if we work efficiently.</div>
+        <div class="options" id="opts-g2-4">
+          <button type="button" class="opt-btn" data-value="can">can</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="g-item" id="item-g2-5" data-answer="should">
+        <div class="g-sentence"><span class="g-num">6</span>You <span class="blank" id="blank-g2-5">_____</span> make more effort if you want better results.</div>
+        <div class="options" id="opts-g2-5">
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="g-item" id="item-g2-6" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">7</span>You <span class="blank" id="blank-g2-6">_____</span> bought another laptop. We already have three.</div>
+        <div class="options" id="opts-g2-6">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="g-item" id="item-g2-7" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">8</span>You <span class="blank" id="blank-g2-7">_____</span> park here. It is prohibited.</div>
+        <div class="options" id="opts-g2-7">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="might not">might not</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+      <div class="g-item" id="item-g2-8" data-answer="must">
+        <div class="g-sentence"><span class="g-num">9</span>You <span class="blank" id="blank-g2-8">_____</span> wear protective equipment in this area.</div>
+        <div class="options" id="opts-g2-8">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="may not">may not</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-8"></div>
+      </div>
+      <div class="g-item" id="item-g2-9" data-answer="might">
+        <div class="g-sentence"><span class="g-num">10</span>If we leave now, we <span class="blank" id="blank-g2-9">_____</span> arrive before dark.</div>
+        <div class="options" id="opts-g2-9">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-9"></div>
+      </div>
+      <div class="g-item" id="item-g2-10" data-answer="must">
+        <div class="g-sentence"><span class="g-num">11</span>You <span class="blank" id="blank-g2-10">_____</span> be tired after working all day.</div>
+        <div class="options" id="opts-g2-10">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-10"></div>
+      </div>
+      <div class="g-item" id="item-g2-11" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">12</span>We <span class="blank" id="blank-g2-11">_____</span> enter this room because it is restricted.</div>
+        <div class="options" id="opts-g2-11">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-11"></div>
+      </div>
+      <div class="g-item" id="item-g2-12" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">13</span>You <span class="blank" id="blank-g2-12">_____</span> called me. I was already on my way.</div>
+        <div class="options" id="opts-g2-12">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="might not have">might not have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-12"></div>
+      </div>
+      <div class="g-item" id="item-g2-13" data-answer="must">
+        <div class="g-sentence"><span class="g-num">14</span>All employees <span class="blank" id="blank-g2-13">_____</span> wear their identification badges.</div>
+        <div class="options" id="opts-g2-13">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-13"></div>
+      </div>
+      <div class="g-item" id="item-g2-14" data-answer="might">
+        <div class="g-sentence"><span class="g-num">15</span>He <span class="blank" id="blank-g2-14">_____</span> arrive late because of the traffic.</div>
+        <div class="options" id="opts-g2-14">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-14"></div>
+      </div>
+      <div class="g-item" id="item-g2-15" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">16</span>You <span class="blank" id="blank-g2-15">_____</span> speak to your teacher more respectfully.</div>
+        <div class="options" id="opts-g2-15">
+          <button type="button" class="opt-btn" data-value="can">can</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-15"></div>
+      </div>
+      <div class="g-item" id="item-g2-16" data-answer="Could">
+        <div class="g-sentence"><span class="g-num">17</span> <span class="blank" id="blank-g2-16">_____</span> you help me with this exercise?</div>
+        <div class="options" id="opts-g2-16">
+          <button type="button" class="opt-btn" data-value="Could">Could</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-16"></div>
+      </div>
+      <div class="g-item" id="item-g2-17" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">18</span>She <span class="blank" id="blank-g2-17">_____</span> be serious. Nobody would believe that story.</div>
+        <div class="options" id="opts-g2-17">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-17"></div>
+      </div>
+      <div class="g-item" id="item-g2-18" data-answer="don’t have to">
+        <div class="g-sentence"><span class="g-num">19</span>We <span class="blank" id="blank-g2-18">_____</span> submit the form today; the deadline is next week.</div>
+        <div class="options" id="opts-g2-18">
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-18"></div>
+      </div>
+      <div class="g-item" id="item-g2-19" data-answer="should">
+        <div class="g-sentence"><span class="g-num">20</span>You <span class="blank" id="blank-g2-19">_____</span> apologize for what you said.</div>
+        <div class="options" id="opts-g2-19">
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-19"></div>
+      </div>
+      <div class="g-item" id="item-g2-20" data-answer="could">
+        <div class="g-sentence"><span class="g-num">21</span>They <span class="blank" id="blank-g2-20">_____</span> be waiting for us at the station.</div>
+        <div class="options" id="opts-g2-20">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-20"></div>
+      </div>
+      <div class="g-item" id="item-g2-21" data-answer="needn’t">
+        <div class="g-sentence"><span class="g-num">22</span>You <span class="blank" id="blank-g2-21">_____</span> worry about the cost; everything has already been paid for.</div>
+        <div class="options" id="opts-g2-21">
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="may not">may not</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-21"></div>
+      </div>
+      <div class="g-item" id="item-g2-22" data-answer="can’t have">
+        <div class="g-sentence"><span class="g-num">23</span>He <span class="blank" id="blank-g2-22">_____</span> forgotten the meeting; he reminded me about it yesterday.</div>
+        <div class="options" id="opts-g2-22">
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="must have">must have</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-22"></div>
+      </div>
+      <div class="g-item" id="item-g2-23" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">24</span>You <span class="blank" id="blank-g2-23">_____</span> check your answers before handing in the test.</div>
+        <div class="options" id="opts-g2-23">
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-23"></div>
+      </div>
+      <div class="g-item" id="item-g2-24" data-answer="may">
+        <div class="g-sentence"><span class="g-num">25</span>We <span class="blank" id="blank-g2-24">_____</span> need more time to complete the project.</div>
+        <div class="options" id="opts-g2-24">
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-24"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Group 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g3">
+    <div class="block-head"><h2>Group 3</h2><span class="block-count">Questions 26–50 · 25 items</span></div>
+    <p class="instructions">Tap the modal verb that correctly completes each sentence.</p>
+    <div id="list-g3">
+      <div class="g-item" id="item-g3-0" data-answer="must">
+        <div class="g-sentence"><span class="g-num">1</span>She <span class="blank" id="blank-g3-0">_____</span> be exhausted after such a long journey.</div>
+        <div class="options" id="opts-g3-0">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-0"></div>
+      </div>
+      <div class="g-item" id="item-g3-1" data-answer="have to">
+        <div class="g-sentence"><span class="g-num">2</span>You <span class="blank" id="blank-g3-1">_____</span> show your passport at the border.</div>
+        <div class="options" id="opts-g3-1">
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-1"></div>
+      </div>
+      <div class="g-item" id="item-g3-2" data-answer="May">
+        <div class="g-sentence"><span class="g-num">3</span> <span class="blank" id="blank-g3-2">_____</span> I leave the room for a few minutes?</div>
+        <div class="options" id="opts-g3-2">
+          <button type="button" class="opt-btn" data-value="May">May</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-2"></div>
+      </div>
+      <div class="g-item" id="item-g3-3" data-answer="must">
+        <div class="g-sentence"><span class="g-num">4</span>He <span class="blank" id="blank-g3-3">_____</span> know the answer; he has studied this topic for years.</div>
+        <div class="options" id="opts-g3-3">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-3"></div>
+      </div>
+      <div class="g-item" id="item-g3-4" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">5</span>We <span class="blank" id="blank-g3-4">_____</span> solve this problem if everyone cooperates.</div>
+        <div class="options" id="opts-g3-4">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-4"></div>
+      </div>
+      <div class="g-item" id="item-g3-5" data-answer="should">
+        <div class="g-sentence"><span class="g-num">6</span>You <span class="blank" id="blank-g3-5">_____</span> pay more attention during the lessons.</div>
+        <div class="options" id="opts-g3-5">
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-5"></div>
+      </div>
+      <div class="g-item" id="item-g3-6" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">7</span>You <span class="blank" id="blank-g3-6">_____</span> ordered so much food. There is enough for everyone.</div>
+        <div class="options" id="opts-g3-6">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-6"></div>
+      </div>
+      <div class="g-item" id="item-g3-7" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">8</span>Visitors <span class="blank" id="blank-g3-7">_____</span> enter this area without permission.</div>
+        <div class="options" id="opts-g3-7">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="may not">may not</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-7"></div>
+      </div>
+      <div class="g-item" id="item-g3-8" data-answer="must">
+        <div class="g-sentence"><span class="g-num">9</span>You <span class="blank" id="blank-g3-8">_____</span> wear a helmet when riding a motorcycle.</div>
+        <div class="options" id="opts-g3-8">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-8"></div>
+      </div>
+      <div class="g-item" id="item-g3-9" data-answer="might">
+        <div class="g-sentence"><span class="g-num">10</span>If they hurry, they <span class="blank" id="blank-g3-9">_____</span> catch the last train.</div>
+        <div class="options" id="opts-g3-9">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-9"></div>
+      </div>
+      <div class="g-item" id="item-g3-10" data-answer="must">
+        <div class="g-sentence"><span class="g-num">11</span>You <span class="blank" id="blank-g3-10">_____</span> be very disappointed after losing the match.</div>
+        <div class="options" id="opts-g3-10">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-10"></div>
+      </div>
+      <div class="g-item" id="item-g3-11" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">12</span>We <span class="blank" id="blank-g3-11">_____</span> use this entrance because it is for staff only.</div>
+        <div class="options" id="opts-g3-11">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-11"></div>
+      </div>
+      <div class="g-item" id="item-g3-12" data-answer="might have">
+        <div class="g-sentence"><span class="g-num">13</span>She <span class="blank" id="blank-g3-12">_____</span> left already; her coat is still here.</div>
+        <div class="options" id="opts-g3-12">
+          <button type="button" class="opt-btn" data-value="might have">might have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-12"></div>
+      </div>
+      <div class="g-item" id="item-g3-13" data-answer="must">
+        <div class="g-sentence"><span class="g-num">14</span>Students <span class="blank" id="blank-g3-13">_____</span> complete all assignments before the final exam.</div>
+        <div class="options" id="opts-g3-13">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-13"></div>
+      </div>
+      <div class="g-item" id="item-g3-14" data-answer="might">
+        <div class="g-sentence"><span class="g-num">15</span>He <span class="blank" id="blank-g3-14">_____</span> be late because his flight has been delayed.</div>
+        <div class="options" id="opts-g3-14">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-14"></div>
+      </div>
+      <div class="g-item" id="item-g3-15" data-answer="should">
+        <div class="g-sentence"><span class="g-num">16</span>You <span class="blank" id="blank-g3-15">_____</span> ask for help if you don&#x27;t understand the instructions.</div>
+        <div class="options" id="opts-g3-15">
+          <button type="button" class="opt-btn" data-value="can">can</button>
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-15"></div>
+      </div>
+      <div class="g-item" id="item-g3-16" data-answer="Could">
+        <div class="g-sentence"><span class="g-num">17</span> <span class="blank" id="blank-g3-16">_____</span> you close the window, please?</div>
+        <div class="options" id="opts-g3-16">
+          <button type="button" class="opt-btn" data-value="Could">Could</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-16"></div>
+      </div>
+      <div class="g-item" id="item-g3-17" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">18</span>They <span class="blank" id="blank-g3-17">_____</span> be at work today because it is a public holiday.</div>
+        <div class="options" id="opts-g3-17">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-17"></div>
+      </div>
+      <div class="g-item" id="item-g3-18" data-answer="don’t have to">
+        <div class="g-sentence"><span class="g-num">19</span>You <span class="blank" id="blank-g3-18">_____</span> bring your own laptop; computers are provided.</div>
+        <div class="options" id="opts-g3-18">
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-18"></div>
+      </div>
+      <div class="g-item" id="item-g3-19" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">20</span>She <span class="blank" id="blank-g3-19">_____</span> talk to her manager about the problem.</div>
+        <div class="options" id="opts-g3-19">
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-19"></div>
+      </div>
+      <div class="g-item" id="item-g3-20" data-answer="must have">
+        <div class="g-sentence"><span class="g-num">21</span>He <span class="blank" id="blank-g3-20">_____</span> taken the wrong train; he arrived at the wrong station.</div>
+        <div class="options" id="opts-g3-20">
+          <button type="button" class="opt-btn" data-value="must have">must have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-20"></div>
+      </div>
+      <div class="g-item" id="item-g3-21" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">22</span>You <span class="blank" id="blank-g3-21">_____</span> touch the equipment without permission.</div>
+        <div class="options" id="opts-g3-21">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-21"></div>
+      </div>
+      <div class="g-item" id="item-g3-22" data-answer="could">
+        <div class="g-sentence"><span class="g-num">23</span>We <span class="blank" id="blank-g3-22">_____</span> postpone the meeting if the manager is unavailable.</div>
+        <div class="options" id="opts-g3-22">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-22"></div>
+      </div>
+      <div class="g-item" id="item-g3-23" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">24</span>You <span class="blank" id="blank-g3-23">_____</span> worried so much. Everything went perfectly.</div>
+        <div class="options" id="opts-g3-23">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-23"></div>
+      </div>
+      <div class="g-item" id="item-g3-24" data-answer="might">
+        <div class="g-sentence"><span class="g-num">25</span>They <span class="blank" id="blank-g3-24">_____</span> need additional staff during the busy season.</div>
+        <div class="options" id="opts-g3-24">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-24"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check Group 3</button>
+      <button class="btn-ghost" data-reset="g3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g4">
+    <div class="block-head"><h2>Group 4</h2><span class="block-count">Questions 51–75 · 25 items</span></div>
+    <p class="instructions">Tap the modal verb that correctly completes each sentence.</p>
+    <div id="list-g4">
+      <div class="g-item" id="item-g4-0" data-answer="must">
+        <div class="g-sentence"><span class="g-num">1</span>It <span class="blank" id="blank-g4-0">_____</span> be difficult to find a taxi at this time of night.</div>
+        <div class="options" id="opts-g4-0">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-0"></div>
+      </div>
+      <div class="g-item" id="item-g4-1" data-answer="have to">
+        <div class="g-sentence"><span class="g-num">2</span>You <span class="blank" id="blank-g4-1">_____</span> submit your application before Friday.</div>
+        <div class="options" id="opts-g4-1">
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-1"></div>
+      </div>
+      <div class="g-item" id="item-g4-2" data-answer="Need">
+        <div class="g-sentence"><span class="g-num">3</span> <span class="blank" id="blank-g4-2">_____</span> I bring anything to the meeting?</div>
+        <div class="options" id="opts-g4-2">
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+          <button type="button" class="opt-btn" data-value="May">May</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-2"></div>
+      </div>
+      <div class="g-item" id="item-g4-3" data-answer="might">
+        <div class="g-sentence"><span class="g-num">4</span>She <span class="blank" id="blank-g4-3">_____</span> be the new teacher; I saw her in the staff room.</div>
+        <div class="options" id="opts-g4-3">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-3"></div>
+      </div>
+      <div class="g-item" id="item-g4-4" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">5</span>We <span class="blank" id="blank-g4-4">_____</span> consider all the possible consequences.</div>
+        <div class="options" id="opts-g4-4">
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-4"></div>
+      </div>
+      <div class="g-item" id="item-g4-5" data-answer="should">
+        <div class="g-sentence"><span class="g-num">6</span>You <span class="blank" id="blank-g4-5">_____</span> improve your pronunciation by practicing every day.</div>
+        <div class="options" id="opts-g4-5">
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-5"></div>
+      </div>
+      <div class="g-item" id="item-g4-6" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">7</span>You <span class="blank" id="blank-g4-6">_____</span> bought a ticket. The entrance was free.</div>
+        <div class="options" id="opts-g4-6">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-6"></div>
+      </div>
+      <div class="g-item" id="item-g4-7" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">8</span>You <span class="blank" id="blank-g4-7">_____</span> use your phone during the examination.</div>
+        <div class="options" id="opts-g4-7">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="might not">might not</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-7"></div>
+      </div>
+      <div class="g-item" id="item-g4-8" data-answer="must">
+        <div class="g-sentence"><span class="g-num">9</span>Employees <span class="blank" id="blank-g4-8">_____</span> follow the company&#x27;s safety regulations.</div>
+        <div class="options" id="opts-g4-8">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-8"></div>
+      </div>
+      <div class="g-item" id="item-g4-9" data-answer="could">
+        <div class="g-sentence"><span class="g-num">10</span>If we take a shortcut, we <span class="blank" id="blank-g4-9">_____</span> get there earlier.</div>
+        <div class="options" id="opts-g4-9">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-9"></div>
+      </div>
+      <div class="g-item" id="item-g4-10" data-answer="must">
+        <div class="g-sentence"><span class="g-num">11</span>You <span class="blank" id="blank-g4-10">_____</span> be hungry after skipping breakfast and lunch.</div>
+        <div class="options" id="opts-g4-10">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-10"></div>
+      </div>
+      <div class="g-item" id="item-g4-11" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">12</span>We <span class="blank" id="blank-g4-11">_____</span> enter the building after 10 p.m.</div>
+        <div class="options" id="opts-g4-11">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-11"></div>
+      </div>
+      <div class="g-item" id="item-g4-12" data-answer="might have">
+        <div class="g-sentence"><span class="g-num">13</span>He <span class="blank" id="blank-g4-12">_____</span> forgotten the appointment.</div>
+        <div class="options" id="opts-g4-12">
+          <button type="button" class="opt-btn" data-value="might have">might have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-12"></div>
+      </div>
+      <div class="g-item" id="item-g4-13" data-answer="must">
+        <div class="g-sentence"><span class="g-num">14</span>All passengers <span class="blank" id="blank-g4-13">_____</span> fasten their seat belts during take-off.</div>
+        <div class="options" id="opts-g4-13">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-13"></div>
+      </div>
+      <div class="g-item" id="item-g4-14" data-answer="has to">
+        <div class="g-sentence"><span class="g-num">15</span>She <span class="blank" id="blank-g4-14">_____</span> cancel the trip because she is feeling ill.</div>
+        <div class="options" id="opts-g4-14">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-14"></div>
+      </div>
+      <div class="g-item" id="item-g4-15" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">16</span>You <span class="blank" id="blank-g4-15">_____</span> read the instructions carefully before starting.</div>
+        <div class="options" id="opts-g4-15">
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-15"></div>
+      </div>
+      <div class="g-item" id="item-g4-16" data-answer="Could">
+        <div class="g-sentence"><span class="g-num">17</span> <span class="blank" id="blank-g4-16">_____</span> you repeat the question?</div>
+        <div class="options" id="opts-g4-16">
+          <button type="button" class="opt-btn" data-value="Could">Could</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-16"></div>
+      </div>
+      <div class="g-item" id="item-g4-17" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">18</span>He <span class="blank" id="blank-g4-17">_____</span> be at home; I just called him and he answered.</div>
+        <div class="options" id="opts-g4-17">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-17"></div>
+      </div>
+      <div class="g-item" id="item-g4-18" data-answer="don’t have to">
+        <div class="g-sentence"><span class="g-num">19</span>We <span class="blank" id="blank-g4-18">_____</span> pay for parking on Sundays.</div>
+        <div class="options" id="opts-g4-18">
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-18"></div>
+      </div>
+      <div class="g-item" id="item-g4-19" data-answer="should">
+        <div class="g-sentence"><span class="g-num">20</span>You <span class="blank" id="blank-g4-19">_____</span> tell your parents what happened.</div>
+        <div class="options" id="opts-g4-19">
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-19"></div>
+      </div>
+      <div class="g-item" id="item-g4-20" data-answer="must have">
+        <div class="g-sentence"><span class="g-num">21</span>They <span class="blank" id="blank-g4-20">_____</span> missed the bus because they arrived an hour late.</div>
+        <div class="options" id="opts-g4-20">
+          <button type="button" class="opt-btn" data-value="must have">must have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-20"></div>
+      </div>
+      <div class="g-item" id="item-g4-21" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">22</span>You <span class="blank" id="blank-g4-21">_____</span> share your password with anyone.</div>
+        <div class="options" id="opts-g4-21">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="may not">may not</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-21"></div>
+      </div>
+      <div class="g-item" id="item-g4-22" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">23</span>We <span class="blank" id="blank-g4-22">_____</span> ask another expert for advice.</div>
+        <div class="options" id="opts-g4-22">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-22"></div>
+      </div>
+      <div class="g-item" id="item-g4-23" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">24</span>You <span class="blank" id="blank-g4-23">_____</span> bought a new phone. Your old one works perfectly.</div>
+        <div class="options" id="opts-g4-23">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-23"></div>
+      </div>
+      <div class="g-item" id="item-g4-24" data-answer="might">
+        <div class="g-sentence"><span class="g-num">25</span>He <span class="blank" id="blank-g4-24">_____</span> need some help with the application.</div>
+        <div class="options" id="opts-g4-24">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-24"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check Group 4</button>
+      <button class="btn-ghost" data-reset="g4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g5">
+    <div class="block-head"><h2>Group 5</h2><span class="block-count">Questions 76–100 · 25 items</span></div>
+    <p class="instructions">Tap the modal verb that correctly completes each sentence.</p>
+    <div id="list-g5">
+      <div class="g-item" id="item-g5-0" data-answer="must">
+        <div class="g-sentence"><span class="g-num">1</span>She <span class="blank" id="blank-g5-0">_____</span> be very busy; she hasn&#x27;t answered any messages.</div>
+        <div class="options" id="opts-g5-0">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-0"></div>
+      </div>
+      <div class="g-item" id="item-g5-1" data-answer="have to">
+        <div class="g-sentence"><span class="g-num">2</span>You <span class="blank" id="blank-g5-1">_____</span> wear formal clothes for the interview.</div>
+        <div class="options" id="opts-g5-1">
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-1"></div>
+      </div>
+      <div class="g-item" id="item-g5-2" data-answer="May">
+        <div class="g-sentence"><span class="g-num">3</span> <span class="blank" id="blank-g5-2">_____</span> I use your computer for a moment?</div>
+        <div class="options" id="opts-g5-2">
+          <button type="button" class="opt-btn" data-value="May">May</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-2"></div>
+      </div>
+      <div class="g-item" id="item-g5-3" data-answer="might">
+        <div class="g-sentence"><span class="g-num">4</span>They <span class="blank" id="blank-g5-3">_____</span> be lost; they have been driving around for an hour.</div>
+        <div class="options" id="opts-g5-3">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-3"></div>
+      </div>
+      <div class="g-item" id="item-g5-4" data-answer="should">
+        <div class="g-sentence"><span class="g-num">5</span>We <span class="blank" id="blank-g5-4">_____</span> discuss this matter before making a decision.</div>
+        <div class="options" id="opts-g5-4">
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-4"></div>
+      </div>
+      <div class="g-item" id="item-g5-5" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">6</span>You <span class="blank" id="blank-g5-5">_____</span> exercise more regularly if you want to become healthier.</div>
+        <div class="options" id="opts-g5-5">
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-5"></div>
+      </div>
+      <div class="g-item" id="item-g5-6" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">7</span>You <span class="blank" id="blank-g5-6">_____</span> prepared so much food. Only five people came.</div>
+        <div class="options" id="opts-g5-6">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-6"></div>
+      </div>
+      <div class="g-item" id="item-g5-7" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">8</span>Visitors <span class="blank" id="blank-g5-7">_____</span> take photographs inside the museum.</div>
+        <div class="options" id="opts-g5-7">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="might not">might not</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-7"></div>
+      </div>
+      <div class="g-item" id="item-g5-8" data-answer="must">
+        <div class="g-sentence"><span class="g-num">9</span>You <span class="blank" id="blank-g5-8">_____</span> show your ticket before entering the concert hall.</div>
+        <div class="options" id="opts-g5-8">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-8"></div>
+      </div>
+      <div class="g-item" id="item-g5-9" data-answer="might">
+        <div class="g-sentence"><span class="g-num">10</span>If we leave immediately, we <span class="blank" id="blank-g5-9">_____</span> reach the airport on time.</div>
+        <div class="options" id="opts-g5-9">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-9"></div>
+      </div>
+      <div class="g-item" id="item-g5-10" data-answer="must">
+        <div class="g-sentence"><span class="g-num">11</span>You <span class="blank" id="blank-g5-10">_____</span> be exhausted after travelling for twenty hours.</div>
+        <div class="options" id="opts-g5-10">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-10"></div>
+      </div>
+      <div class="g-item" id="item-g5-11" data-answer="can’t">
+        <div class="g-sentence"><span class="g-num">12</span>We <span class="blank" id="blank-g5-11">_____</span> use the swimming pool today because it is closed.</div>
+        <div class="options" id="opts-g5-11">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-11"></div>
+      </div>
+      <div class="g-item" id="item-g5-12" data-answer="might have">
+        <div class="g-sentence"><span class="g-num">13</span>She <span class="blank" id="blank-g5-12">_____</span> gone home already; her phone is switched off.</div>
+        <div class="options" id="opts-g5-12">
+          <button type="button" class="opt-btn" data-value="might have">might have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-12"></div>
+      </div>
+      <div class="g-item" id="item-g5-13" data-answer="must">
+        <div class="g-sentence"><span class="g-num">14</span>Students <span class="blank" id="blank-g5-13">_____</span> bring their own dictionaries to the examination.</div>
+        <div class="options" id="opts-g5-13">
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-13"></div>
+      </div>
+      <div class="g-item" id="item-g5-14" data-answer="might">
+        <div class="g-sentence"><span class="g-num">15</span>He <span class="blank" id="blank-g5-14">_____</span> be late because there is heavy traffic.</div>
+        <div class="options" id="opts-g5-14">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="has to">has to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-14"></div>
+      </div>
+      <div class="g-item" id="item-g5-15" data-answer="should">
+        <div class="g-sentence"><span class="g-num">16</span>You <span class="blank" id="blank-g5-15">_____</span> contact customer service if you have any problems.</div>
+        <div class="options" id="opts-g5-15">
+          <button type="button" class="opt-btn" data-value="can">can</button>
+          <button type="button" class="opt-btn" data-value="should">should</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-15"></div>
+      </div>
+      <div class="g-item" id="item-g5-16" data-answer="Could">
+        <div class="g-sentence"><span class="g-num">17</span> <span class="blank" id="blank-g5-16">_____</span> you send me the document by email?</div>
+        <div class="options" id="opts-g5-16">
+          <button type="button" class="opt-btn" data-value="Could">Could</button>
+          <button type="button" class="opt-btn" data-value="Must">Must</button>
+          <button type="button" class="opt-btn" data-value="Need">Need</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-16"></div>
+      </div>
+      <div class="g-item" id="item-g5-17" data-answer="must">
+        <div class="g-sentence"><span class="g-num">18</span>They <span class="blank" id="blank-g5-17">_____</span> be serious about moving abroad; they have already sold their house.</div>
+        <div class="options" id="opts-g5-17">
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-17"></div>
+      </div>
+      <div class="g-item" id="item-g5-18" data-answer="don’t have to">
+        <div class="g-sentence"><span class="g-num">19</span>You <span class="blank" id="blank-g5-18">_____</span> pay now. You can pay next month.</div>
+        <div class="options" id="opts-g5-18">
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="can’t">can’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-18"></div>
+      </div>
+      <div class="g-item" id="item-g5-19" data-answer="ought to">
+        <div class="g-sentence"><span class="g-num">20</span>She <span class="blank" id="blank-g5-19">_____</span> speak to a doctor about her symptoms.</div>
+        <div class="options" id="opts-g5-19">
+          <button type="button" class="opt-btn" data-value="ought to">ought to</button>
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-19"></div>
+      </div>
+      <div class="g-item" id="item-g5-20" data-answer="must have">
+        <div class="g-sentence"><span class="g-num">21</span>He <span class="blank" id="blank-g5-20">_____</span> misunderstood the instructions because he did exactly the opposite.</div>
+        <div class="options" id="opts-g5-20">
+          <button type="button" class="opt-btn" data-value="must have">must have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-20"></div>
+      </div>
+      <div class="g-item" id="item-g5-21" data-answer="mustn’t">
+        <div class="g-sentence"><span class="g-num">22</span>You <span class="blank" id="blank-g5-21">_____</span> leave your bags unattended at the airport.</div>
+        <div class="options" id="opts-g5-21">
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="needn’t">needn’t</button>
+          <button type="button" class="opt-btn" data-value="may">may</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-21"></div>
+      </div>
+      <div class="g-item" id="item-g5-22" data-answer="could">
+        <div class="g-sentence"><span class="g-num">23</span>We <span class="blank" id="blank-g5-22">_____</span> cancel the event if the weather gets worse.</div>
+        <div class="options" id="opts-g5-22">
+          <button type="button" class="opt-btn" data-value="could">could</button>
+          <button type="button" class="opt-btn" data-value="mustn’t">mustn’t</button>
+          <button type="button" class="opt-btn" data-value="have to">have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-22"></div>
+      </div>
+      <div class="g-item" id="item-g5-23" data-answer="needn’t have">
+        <div class="g-sentence"><span class="g-num">24</span>You <span class="blank" id="blank-g5-23">_____</span> brought an umbrella. It hasn&#x27;t rained all day.</div>
+        <div class="options" id="opts-g5-23">
+          <button type="button" class="opt-btn" data-value="needn’t have">needn’t have</button>
+          <button type="button" class="opt-btn" data-value="can’t have">can’t have</button>
+          <button type="button" class="opt-btn" data-value="mustn’t have">mustn’t have</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-23"></div>
+      </div>
+      <div class="g-item" id="item-g5-24" data-answer="might">
+        <div class="g-sentence"><span class="g-num">25</span>They <span class="blank" id="blank-g5-24">_____</span> need more information before making a final decision.</div>
+        <div class="options" id="opts-g5-24">
+          <button type="button" class="opt-btn" data-value="might">might</button>
+          <button type="button" class="opt-btn" data-value="must">must</button>
+          <button type="button" class="opt-btn" data-value="don’t have to">don’t have to</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-24"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check Group 5</button>
+      <button class="btn-ghost" data-reset="g5">Clear section</button>
+    </div>
+  </section>  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 115</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Modal Verbs — for individual practice. Ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the buttons don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2","g3","g4","g5"];
+  var GROUP_COUNTS = {"g1":15,"g2":25,"g3":25,"g4":25,"g5":25};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    return s.toLowerCase().replace(/['’‘]/g,"'").replace(/\s+/g," ").trim();
+  }
+
+  // wire up option buttons
+  document.querySelectorAll('.g-item').forEach(function(item){
+    var qid = item.id.replace('item-','');
+    var blank = document.getElementById('blank-' + qid);
+    item.querySelectorAll('.opt-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        item.dataset.selected = btn.getAttribute('data-value');
+        item.classList.add('answered');
+        item.classList.remove('correct','incorrect');
+        item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+        var fb = document.getElementById('fb-' + qid);
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        if (blank) blank.textContent = btn.getAttribute('data-value');
+        updateScore();
+      });
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .g-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+      if (!selected) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      if (normalize(selected) === normalize(answer)) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        item.querySelectorAll('.opt-btn').forEach(function(b){
+          if (normalize(b.getAttribute('data-value')) === normalize(answer)) b.classList.add('correct-reveal');
+        });
+        if (fb) { fb.innerHTML = 'Not quite — correct answer: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .g-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var blank = document.getElementById('blank-' + qid);
+      item.classList.remove('correct','incorrect','answered');
+      delete item.dataset.selected;
+      item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected','correct-reveal'); });
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      if (blank) blank.textContent = '_____';
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.g-item').forEach(function(item){
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      if (selected) {
+        answered++;
+        if (normalize(selected) === normalize(answer)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
