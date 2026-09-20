@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Upper-Intermediate Vocabulary Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  /* ===== Overview ===== */
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .overview-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .overview-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:16px; text-decoration:none; display:block; border-top:4px solid var(--accent); transition:transform .1s, box-shadow .15s; }
+  .overview-card:hover{ transform:translateY(-2px); box-shadow:0 8px 18px -10px rgba(20,20,22,.25); }
+  .overview-card.oc-1{ --accent:var(--yellow-deep); }
+  .overview-card.oc-2{ --accent:var(--teal); }
+  .overview-card.oc-3{ --accent:var(--plum); }
+  .overview-card.oc-4{ --accent:var(--rose); }
+  .oc-num{ font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:700; color:var(--ink-soft); margin-bottom:6px; display:block; }
+  .oc-title{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:var(--ink); margin-bottom:6px; }
+  .oc-desc{ font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-bottom:10px; }
+  .oc-count{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--accent); }
+
+  @media (max-width:640px){
+    .overview-grid{ grid-template-columns:1fr; }
+  }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(19px,4vw,23px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  /* ---- MCQ pill items (prepositions / word choice) ---- */
+  .g-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-sentence{ font-size:15px; margin-bottom:12px; line-height:1.75; }
+  .blank{ display:inline-block; min-width:64px; text-align:center; border-bottom:2px solid var(--rule); color:var(--ink-soft); font-weight:600; padding:0 2px; }
+  .g-item.answered .blank{ border-bottom-color:var(--ink); color:var(--ink); }
+  .g-item.correct .blank{ border-bottom-color:var(--good); color:var(--good); }
+  .g-item.incorrect .blank{ border-bottom-color:var(--bad); color:var(--bad); }
+
+  .options{ display:flex; flex-wrap:wrap; gap:8px; }
+  .opt-btn{ font-family:'Public Sans',sans-serif; font-size:13.5px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:20px; padding:9px 16px; cursor:pointer; transition:border-color .15s, background .15s, color .15s, transform .08s; min-height:40px; }
+  .opt-btn:hover{ border-color:var(--ink-soft); }
+  .opt-btn:active{ transform:translateY(1px); }
+  .opt-btn.selected{ background:var(--black); color:var(--white); border-color:var(--black); }
+  .g-item.correct .opt-btn.selected{ background:var(--good); border-color:var(--good); color:var(--white); }
+  .g-item.incorrect .opt-btn.selected{ background:var(--bad); border-color:var(--bad); color:var(--white); }
+  .g-item.incorrect .opt-btn.correct-reveal{ border-color:var(--good); color:var(--good); background:var(--good-bg); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  /* ---- Word order dialogue ---- */
+  .dialogue{ display:flex; flex-direction:column; gap:14px; }
+  .dlg-row{ display:flex; gap:12px; font-size:14px; line-height:1.7; }
+  .dlg-speaker{ flex:0 0 auto; width:64px; font-weight:700; color:var(--ink-soft); font-size:12.5px; padding-top:2px; }
+  .dlg-line{ flex:1; color:var(--ink); }
+  .dlg-row-blank{ flex-direction:column; gap:6px; background:var(--paper); border:1px solid var(--rule); border-radius:10px; padding:14px; }
+  .dlg-row-blank .dlg-speaker{ width:auto; }
+  .wo-sentence{ font-size:14.5px; line-height:1.8; color:var(--ink); margin-bottom:10px; }
+  .wo-target{ display:inline-flex; flex-wrap:wrap; gap:6px; align-items:center; min-height:34px; border-bottom:2px solid var(--rule); padding:4px 6px; vertical-align:middle; }
+  .wo-item.answered .wo-target{ border-bottom-color:var(--ink); }
+  .wo-item.correct .wo-target{ border-bottom-color:var(--good); background:var(--good-bg); }
+  .wo-item.incorrect .wo-target{ border-bottom-color:var(--bad); background:var(--bad-bg); }
+  .wo-placeholder{ color:var(--ink-soft); font-size:12.5px; font-style:italic; }
+  .wo-target-chip{ font-size:13px; font-weight:600; background:var(--black); color:var(--white); border-radius:14px; padding:4px 10px; cursor:pointer; white-space:nowrap; }
+  .wo-item.correct .wo-target-chip{ background:var(--good); }
+  .wo-item.incorrect .wo-target-chip{ background:var(--bad); }
+  .wo-bank{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+  .wo-chip{ font-family:'Public Sans',sans-serif; font-size:13px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:20px; padding:7px 14px; cursor:pointer; transition:opacity .15s, border-color .15s; }
+  .wo-chip:hover{ border-color:var(--ink-soft); }
+  .wo-chip.used{ opacity:.3; pointer-events:none; }
+  .wo-controls{ margin-bottom:4px; }
+  .btn-ghost-sm{ font-family:'Public Sans',sans-serif; font-size:12px; font-weight:700; background:transparent; color:var(--ink-soft); border:1.5px solid var(--rule); border-radius:16px; padding:6px 12px; cursor:pointer; min-height:auto; }
+  .btn-ghost-sm:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  /* ---- Word-box passage ---- */
+  .word-box{ background:var(--paper); border:1.5px dashed var(--rule); border-radius:10px; padding:14px 16px; margin-bottom:20px; }
+  .wb-label{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); display:block; margin-bottom:10px; }
+  .wb-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .wb-chip{ font-family:'Public Sans',sans-serif; font-size:13px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:20px; padding:7px 14px; cursor:pointer; transition:border-color .15s, background .15s, opacity .15s; user-select:none; }
+  .wb-chip:hover{ border-color:var(--ink-soft); }
+  .wb-chip.used{ opacity:.35; text-decoration:line-through; cursor:default; }
+  .passage{ font-size:14.5px; line-height:2.3; color:var(--ink); }
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--white); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:3px 8px; min-width:120px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); }
+  .passage.checked .blank-input.correct-field{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .passage.checked .blank-input.incorrect-field{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:100px; }
+    .dlg-row{ flex-direction:column; gap:2px; }
+    .dlg-speaker{ width:auto; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Upper-Intermediate Vocabulary</h1>
+    <p class="sub">Four short exercises — prepositions, word choice, word order, and a gap-fill text — tap through and check your answers as you go.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 30</span>
+  </div>
+
+  <section class="grammar-summary" id="overview">
+    <span class="gs-kicker">Vocabulary Practice</span>
+    <h2 class="gs-title">What's inside</h2>
+    <p class="gs-intro">Four different exercise types, each grouped together so you can focus on one skill at a time.</p>
+    <div class="overview-grid">
+      <a class="overview-card oc-1" href="#section-prep">
+        <span class="oc-num">01</span>
+        <div class="oc-title">Prepositions</div>
+        <p class="oc-desc">Choose the correct preposition to complete each sentence.</p>
+        <span class="oc-count">15 items</span>
+      </a>
+      <a class="overview-card oc-2" href="#section-wc">
+        <span class="oc-num">02</span>
+        <div class="oc-title">Choose the Correct Word</div>
+        <p class="oc-desc">Pick the word or phrase that fits the sentence best.</p>
+        <span class="oc-count">5 items</span>
+      </a>
+      <a class="overview-card oc-3" href="#section-wo">
+        <span class="oc-num">03</span>
+        <div class="oc-title">Word Order</div>
+        <p class="oc-desc">Put scrambled words in the right order to complete a dialogue.</p>
+        <span class="oc-count">5 items</span>
+      </a>
+      <a class="overview-card oc-4" href="#section-moon">
+        <span class="oc-num">04</span>
+        <div class="oc-title">Fill in the Gaps</div>
+        <p class="oc-desc">Use the word box to complete a short text about the Moon.</p>
+        <span class="oc-count">5 items</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#overview">Overview</a>
+    <a href="#section-prep">1. Prepositions</a>
+    <a href="#section-wc">2. Word Choice</a>
+    <a href="#section-wo">3. Word Order</a>
+    <a href="#section-moon">4. Gap Fill</a>
+  </div>
+
+  <section class="block" id="section-prep">
+    <div class="block-head"><h2>1. Prepositions</h2><span class="block-count">15 items</span></div>
+    <p class="instructions">Choose the correct preposition to complete each sentence.</p>
+    <div id="list-prep">
+      <div class="g-item" id="item-prep-0" data-answer="for">
+        <div class="g-sentence"><span class="g-num">1</span>This group has been responsible <span class="blank" id="blank-prep-0">_____</span> the implementation of the project since it started.</div>
+        <div class="options" id="opts-prep-0">
+          <button type="button" class="opt-btn" data-value="with">with</button>
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="for">for</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-0"></div>
+      </div>
+      <div class="g-item" id="item-prep-1" data-answer="to">
+        <div class="g-sentence"><span class="g-num">2</span>In my mind, trying something in practice is more preferable <span class="blank" id="blank-prep-1">_____</span> making endless suppositions.</div>
+        <div class="options" id="opts-prep-1">
+          <button type="button" class="opt-btn" data-value="from">from</button>
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="about">about</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-1"></div>
+      </div>
+      <div class="g-item" id="item-prep-2" data-answer="as">
+        <div class="g-sentence"><span class="g-num">3</span>Conroy is very good at making a type of bread which is known locally <span class="blank" id="blank-prep-2">_____</span> a &#x27;fruit soda&#x27;.</div>
+        <div class="options" id="opts-prep-2">
+          <button type="button" class="opt-btn" data-value="by">by</button>
+          <button type="button" class="opt-btn" data-value="on">on</button>
+          <button type="button" class="opt-btn" data-value="as">as</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-2"></div>
+      </div>
+      <div class="g-item" id="item-prep-3" data-answer="on">
+        <div class="g-sentence"><span class="g-num">4</span>It is not good to remain financially dependent <span class="blank" id="blank-prep-3">_____</span> your parents even after university.</div>
+        <div class="options" id="opts-prep-3">
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="on">on</button>
+          <button type="button" class="opt-btn" data-value="with">with</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-3"></div>
+      </div>
+      <div class="g-item" id="item-prep-4" data-answer="of">
+        <div class="g-sentence"><span class="g-num">5</span>The geologists obviously weren&#x27;t aware <span class="blank" id="blank-prep-4">_____</span> the dangers, otherwise they would have never taken this path.</div>
+        <div class="options" id="opts-prep-4">
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="of">of</button>
+          <button type="button" class="opt-btn" data-value="about">about</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-4"></div>
+      </div>
+      <div class="g-item" id="item-prep-5" data-answer="for">
+        <div class="g-sentence"><span class="g-num">6</span>She is famous <span class="blank" id="blank-prep-5">_____</span> her beautiful paintings.</div>
+        <div class="options" id="opts-prep-5">
+          <button type="button" class="opt-btn" data-value="for">for</button>
+          <button type="button" class="opt-btn" data-value="with">with</button>
+          <button type="button" class="opt-btn" data-value="at">at</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-5"></div>
+      </div>
+      <div class="g-item" id="item-prep-6" data-answer="in">
+        <div class="g-sentence"><span class="g-num">7</span>We succeeded <span class="blank" id="blank-prep-6">_____</span> finishing the project before the deadline.</div>
+        <div class="options" id="opts-prep-6">
+          <button type="button" class="opt-btn" data-value="on">on</button>
+          <button type="button" class="opt-btn" data-value="in">in</button>
+          <button type="button" class="opt-btn" data-value="at">at</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-6"></div>
+      </div>
+      <div class="g-item" id="item-prep-7" data-answer="at">
+        <div class="g-sentence"><span class="g-num">8</span>Everyone was surprised <span class="blank" id="blank-prep-7">_____</span> the final result.</div>
+        <div class="options" id="opts-prep-7">
+          <button type="button" class="opt-btn" data-value="at">at</button>
+          <button type="button" class="opt-btn" data-value="with">with</button>
+          <button type="button" class="opt-btn" data-value="by">by</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-7"></div>
+      </div>
+      <div class="g-item" id="item-prep-8" data-answer="in">
+        <div class="g-sentence"><span class="g-num">9</span>My brother is interested <span class="blank" id="blank-prep-8">_____</span> learning Japanese.</div>
+        <div class="options" id="opts-prep-8">
+          <button type="button" class="opt-btn" data-value="on">on</button>
+          <button type="button" class="opt-btn" data-value="in">in</button>
+          <button type="button" class="opt-btn" data-value="for">for</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-8"></div>
+      </div>
+      <div class="g-item" id="item-prep-9" data-answer="for">
+        <div class="g-sentence"><span class="g-num">10</span>The manager apologized <span class="blank" id="blank-prep-9">_____</span> the misunderstanding.</div>
+        <div class="options" id="opts-prep-9">
+          <button type="button" class="opt-btn" data-value="of">of</button>
+          <button type="button" class="opt-btn" data-value="for">for</button>
+          <button type="button" class="opt-btn" data-value="to">to</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-9"></div>
+      </div>
+      <div class="g-item" id="item-prep-10" data-answer="of">
+        <div class="g-sentence"><span class="g-num">11</span>The climbers obviously weren&#x27;t aware <span class="blank" id="blank-prep-10">_____</span> the dangers, otherwise they would have never climbed this summit.</div>
+        <div class="options" id="opts-prep-10">
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="of">of</button>
+          <button type="button" class="opt-btn" data-value="about">about</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-10"></div>
+      </div>
+      <div class="g-item" id="item-prep-11" data-answer="on">
+        <div class="g-sentence"><span class="g-num">12</span>My elderly grandmother doesn&#x27;t like being dependent <span class="blank" id="blank-prep-11">_____</span> others for help with her housework.</div>
+        <div class="options" id="opts-prep-11">
+          <button type="button" class="opt-btn" data-value="in">in</button>
+          <button type="button" class="opt-btn" data-value="on">on</button>
+          <button type="button" class="opt-btn" data-value="with">with</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-11"></div>
+      </div>
+      <div class="g-item" id="item-prep-12" data-answer="as">
+        <div class="g-sentence"><span class="g-num">13</span>Conroy is very good at making a type of bread which is known locally <span class="blank" id="blank-prep-12">_____</span> a &#x27;fruit soda&#x27;.</div>
+        <div class="options" id="opts-prep-12">
+          <button type="button" class="opt-btn" data-value="by">by</button>
+          <button type="button" class="opt-btn" data-value="on">on</button>
+          <button type="button" class="opt-btn" data-value="as">as</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-12"></div>
+      </div>
+      <div class="g-item" id="item-prep-13" data-answer="to">
+        <div class="g-sentence"><span class="g-num">14</span>In my opinion, having a few good friends is preferable <span class="blank" id="blank-prep-13">_____</span> many useless relationships.</div>
+        <div class="options" id="opts-prep-13">
+          <button type="button" class="opt-btn" data-value="to">to</button>
+          <button type="button" class="opt-btn" data-value="as">as</button>
+          <button type="button" class="opt-btn" data-value="about">about</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-13"></div>
+      </div>
+      <div class="g-item" id="item-prep-14" data-answer="for">
+        <div class="g-sentence"><span class="g-num">15</span>Mr Smith has been responsible <span class="blank" id="blank-prep-14">_____</span> the design of this project since it launched.</div>
+        <div class="options" id="opts-prep-14">
+          <button type="button" class="opt-btn" data-value="with">with</button>
+          <button type="button" class="opt-btn" data-value="for">for</button>
+          <button type="button" class="opt-btn" data-value="of">of</button>
+        </div>
+        <div class="g-feedback" id="fb-prep-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="prep">Check this section</button>
+      <button class="btn-ghost" data-reset="prep">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-wc">
+    <div class="block-head"><h2>2. Choose the Correct Word</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Tap the word or phrase that best completes each sentence.</p>
+    <div id="list-wc">
+      <div class="g-item" id="item-wc-0" data-answer="commercial breaks">
+        <div class="g-sentence"><span class="g-num">1</span>I tend to look through the channels when the <span class="blank" id="blank-wc-0">_____</span> come on. It&#x27;s always the same old ads anyway.</div>
+        <div class="options" id="opts-wc-0">
+          <button type="button" class="opt-btn" data-value="current affairs">current affairs</button>
+          <button type="button" class="opt-btn" data-value="match highlights">match highlights</button>
+          <button type="button" class="opt-btn" data-value="commercial breaks">commercial breaks</button>
+        </div>
+        <div class="g-feedback" id="fb-wc-0"></div>
+      </div>
+      <div class="g-item" id="item-wc-1" data-answer="denying">
+        <div class="g-sentence"><span class="g-num">2</span>There&#x27;s no point in <span class="blank" id="blank-wc-1">_____</span> your crime. We have got enough eyewitnesses to prove it.</div>
+        <div class="options" id="opts-wc-1">
+          <button type="button" class="opt-btn" data-value="admitting">admitting</button>
+          <button type="button" class="opt-btn" data-value="denying">denying</button>
+          <button type="button" class="opt-btn" data-value="claiming">claiming</button>
+        </div>
+        <div class="g-feedback" id="fb-wc-1"></div>
+      </div>
+      <div class="g-item" id="item-wc-2" data-answer="unacceptable">
+        <div class="g-sentence"><span class="g-num">3</span>It&#x27;s totally <span class="blank" id="blank-wc-2">_____</span> that women are paid less than men for doing the same job. It is unfair.</div>
+        <div class="options" id="opts-wc-2">
+          <button type="button" class="opt-btn" data-value="unacceptable">unacceptable</button>
+          <button type="button" class="opt-btn" data-value="irrelevant">irrelevant</button>
+          <button type="button" class="opt-btn" data-value="inmanageable">inmanageable</button>
+        </div>
+        <div class="g-feedback" id="fb-wc-2"></div>
+      </div>
+      <div class="g-item" id="item-wc-3" data-answer="campaign">
+        <div class="g-sentence"><span class="g-num">4</span>The government&#x27;s new environmental <span class="blank" id="blank-wc-3">_____</span> aims to educate the public about threats to wildlife.</div>
+        <div class="options" id="opts-wc-3">
+          <button type="button" class="opt-btn" data-value="survey">survey</button>
+          <button type="button" class="opt-btn" data-value="campaign">campaign</button>
+          <button type="button" class="opt-btn" data-value="agreement">agreement</button>
+        </div>
+        <div class="g-feedback" id="fb-wc-3"></div>
+      </div>
+      <div class="g-item" id="item-wc-4" data-answer="analysis">
+        <div class="g-sentence"><span class="g-num">5</span>The court will publicize all the evidences after a detailed <span class="blank" id="blank-wc-4">_____</span> of this corruption charge.</div>
+        <div class="options" id="opts-wc-4">
+          <button type="button" class="opt-btn" data-value="plot">plot</button>
+          <button type="button" class="opt-btn" data-value="analysis">analysis</button>
+          <button type="button" class="opt-btn" data-value="tip">tip</button>
+        </div>
+        <div class="g-feedback" id="fb-wc-4"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="wc">Check this section</button>
+      <button class="btn-ghost" data-reset="wc">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-wo">
+    <div class="block-head"><h2>3. Word Order — Complete the Dialogue</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Read the dialogue between two colleagues planning a meeting. Tap the words in the right order to complete each gap.</p>
+    <div class="dialogue">
+      <div class="dlg-row">
+        <span class="dlg-speaker">Kostas</span>
+        <span class="dlg-line">So, Mr Yakamoto will be with us at around 11 o&#x27;clock. He&#x27;s coming straight from the airport.</span>
+      </div>
+      <div class="dlg-row dlg-row-blank">
+        <span class="dlg-speaker">Irina</span>
+        <div class="wo-item" id="item-wo-0" data-answer="like to say something if">
+          <div class="wo-sentence">That&#x27;s the plan, but I&#x27;d <span class="wo-target" id="target-wo-0" data-qid="wo-0"><span class="wo-placeholder">tap the words below, in order</span></span> I may.</div>
+          <div class="wo-bank" id="bank-wo-0" data-qid="wo-0">
+            <button type="button" class="wo-chip" data-word="say" data-idx="0">say</button>
+            <button type="button" class="wo-chip" data-word="like" data-idx="1">like</button>
+            <button type="button" class="wo-chip" data-word="something" data-idx="2">something</button>
+            <button type="button" class="wo-chip" data-word="if" data-idx="3">if</button>
+            <button type="button" class="wo-chip" data-word="to" data-idx="4">to</button>
+          </div>
+          <div class="wo-controls">
+            <button type="button" class="btn-ghost-sm" data-clear-order="wo-0">Clear order</button>
+          </div>
+          <div class="g-feedback" id="fb-wo-0"></div>
+        </div>
+      </div>
+      <div class="dlg-row">
+        <span class="dlg-speaker">Kostas</span>
+        <span class="dlg-line">Sure, go ahead.</span>
+      </div>
+      <div class="dlg-row">
+        <span class="dlg-speaker">Irina</span>
+        <span class="dlg-line">He&#x27;s bound to be tired after such a long flight so I think he&#x27;d appreciate it if he could go to his hotel for a rest first.</span>
+      </div>
+      <div class="dlg-row">
+        <span class="dlg-speaker">Kostas</span>
+        <span class="dlg-line">Good point. Yes, let&#x27;s make the meeting a little later. How about half past two? And that …</span>
+      </div>
+      <div class="dlg-row dlg-row-blank">
+        <span class="dlg-speaker">Irina</span>
+        <div class="wo-item" id="item-wo-1" data-answer="interrupt for just a second">
+          <div class="wo-sentence">If I could <span class="wo-target" id="target-wo-1" data-qid="wo-1"><span class="wo-placeholder">tap the words below, in order</span></span> Don&#x27;t forget that we have another meeting at 4. And it&#x27;s an important one too.</div>
+          <div class="wo-bank" id="bank-wo-1" data-qid="wo-1">
+            <button type="button" class="wo-chip" data-word="for" data-idx="0">for</button>
+            <button type="button" class="wo-chip" data-word="second" data-idx="1">second</button>
+            <button type="button" class="wo-chip" data-word="just" data-idx="2">just</button>
+            <button type="button" class="wo-chip" data-word="a" data-idx="3">a</button>
+            <button type="button" class="wo-chip" data-word="interrupt" data-idx="4">interrupt</button>
+          </div>
+          <div class="wo-controls">
+            <button type="button" class="btn-ghost-sm" data-clear-order="wo-1">Clear order</button>
+          </div>
+          <div class="g-feedback" id="fb-wo-1"></div>
+        </div>
+      </div>
+      <div class="dlg-row">
+        <span class="dlg-speaker">Kostas</span>
+        <span class="dlg-line">Well, I don&#x27;t think the meeting with Mr Yakamoto is likely to go past our scheduled finish time. I&#x27;m sure he&#x27;s got a lot to do. Anyway, I&#x27;ve drawn up an agenda for our meeting. Have you had a look at it?</span>
+      </div>
+      <div class="dlg-row dlg-row-blank">
+        <span class="dlg-speaker">Irina</span>
+        <div class="wo-item" id="item-wo-2" data-answer="like to comment on that">
+          <div class="wo-sentence">I&#x27;d <span class="wo-target" id="target-wo-2" data-qid="wo-2"><span class="wo-placeholder">tap the words below, in order</span></span> actually. There&#x27;s something I&#x27;d like to add to it. I think we should spend some time discussing plans for increased trade with Japan. It would certainly …</div>
+          <div class="wo-bank" id="bank-wo-2" data-qid="wo-2">
+            <button type="button" class="wo-chip" data-word="to" data-idx="0">to</button>
+            <button type="button" class="wo-chip" data-word="that" data-idx="1">that</button>
+            <button type="button" class="wo-chip" data-word="comment" data-idx="2">comment</button>
+            <button type="button" class="wo-chip" data-word="like" data-idx="3">like</button>
+            <button type="button" class="wo-chip" data-word="on" data-idx="4">on</button>
+          </div>
+          <div class="wo-controls">
+            <button type="button" class="btn-ghost-sm" data-clear-order="wo-2">Clear order</button>
+          </div>
+          <div class="g-feedback" id="fb-wo-2"></div>
+        </div>
+      </div>
+      <div class="dlg-row dlg-row-blank">
+        <span class="dlg-speaker">Kostas</span>
+        <div class="wo-item" id="item-wo-3" data-answer="excuse me for interrupting">
+          <div class="wo-sentence"> <span class="wo-target" id="target-wo-3" data-qid="wo-3"><span class="wo-placeholder">tap the words below, in order</span></span> but that&#x27;s already there under the second item on the agenda – business relations.</div>
+          <div class="wo-bank" id="bank-wo-3" data-qid="wo-3">
+            <button type="button" class="wo-chip" data-word="me" data-idx="0">me</button>
+            <button type="button" class="wo-chip" data-word="interrupting" data-idx="1">interrupting</button>
+            <button type="button" class="wo-chip" data-word="excuse" data-idx="2">excuse</button>
+            <button type="button" class="wo-chip" data-word="for" data-idx="3">for</button>
+          </div>
+          <div class="wo-controls">
+            <button type="button" class="btn-ghost-sm" data-clear-order="wo-3">Clear order</button>
+          </div>
+          <div class="g-feedback" id="fb-wo-3"></div>
+        </div>
+      </div>
+      <div class="dlg-row dlg-row-blank">
+        <span class="dlg-speaker">Irina</span>
+        <div class="wo-item" id="item-wo-4" data-answer="can i say something here">
+          <div class="wo-sentence">Oh, yes. Apologies, I missed that completely. But <span class="wo-target" id="target-wo-4" data-qid="wo-4"><span class="wo-placeholder">tap the words below, in order</span></span> ?</div>
+          <div class="wo-bank" id="bank-wo-4" data-qid="wo-4">
+            <button type="button" class="wo-chip" data-word="say" data-idx="0">say</button>
+            <button type="button" class="wo-chip" data-word="i" data-idx="1">i</button>
+            <button type="button" class="wo-chip" data-word="can" data-idx="2">can</button>
+            <button type="button" class="wo-chip" data-word="here" data-idx="3">here</button>
+            <button type="button" class="wo-chip" data-word="something" data-idx="4">something</button>
+          </div>
+          <div class="wo-controls">
+            <button type="button" class="btn-ghost-sm" data-clear-order="wo-4">Clear order</button>
+          </div>
+          <div class="g-feedback" id="fb-wo-4"></div>
+        </div>
+      </div>
+      <div class="dlg-row">
+        <span class="dlg-speaker">Kostas</span>
+        <span class="dlg-line">Yes, of course …</span>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check-wo="1">Check this section</button>
+      <button class="btn-ghost" data-reset-wo="1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-moon">
+    <div class="block-head"><h2>4. Fill in the Gaps — The Moon</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Read the text and use the words in the box to fill in the gaps. Tap a word to drop it into the field you last tapped, or type it yourself.</p>
+    <div class="word-box" id="box-moon">
+      <span class="wb-label">Word Box</span>
+      <div class="wb-chips">
+          <span class="wb-chip" data-word="extensively">extensively</span>
+          <span class="wb-chip" data-word="natural">natural</span>
+          <span class="wb-chip" data-word="approximately">approximately</span>
+          <span class="wb-chip" data-word="unexplored">unexplored</span>
+          <span class="wb-chip" data-word="appearance">appearance</span>
+      </div>
+    </div>
+    <p class="passage" id="passage-moon">The moon is Earth&#x27;s only <input type="text" class="blank-input word-input" id="in-moon-0" data-qid="moon-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> satellite. As well as this, it is the second brightest object in the sky after the sun and although it has the <input type="text" class="blank-input word-input" id="in-moon-1" data-qid="moon-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> of being bright white, its surface is actually dark. The moon is thought to have formed <input type="text" class="blank-input word-input" id="in-moon-2" data-qid="moon-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> 4.5 billion years ago, not long after Earth. There have been several theories about its origin, but the current most accepted explanation is that the moon formed from the debris left over after a giant impact between Earth and a Mars-sized body called Theia. The moon remained <input type="text" class="blank-input word-input" id="in-moon-3" data-qid="moon-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> until 1959, when it was visited by the Soviet spacecraft Luna 2, and it was last visited by humans in 1972. In the summer of 1994, the Moon was very <input type="text" class="blank-input word-input" id="in-moon-4" data-qid="moon-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> mapped by the little spacecraft Clementine, and again in 1999 by Lunar Prospector.</p>
+      <span class="hidden-answer" id="item-moon-0" data-answer="natural"></span>
+      <span class="hidden-answer" id="item-moon-1" data-answer="appearance"></span>
+      <span class="hidden-answer" id="item-moon-2" data-answer="approximately"></span>
+      <span class="hidden-answer" id="item-moon-3" data-answer="unexplored"></span>
+      <span class="hidden-answer" id="item-moon-4" data-answer="extensively"></span>
+    <div class="g-feedback" id="fb-moon" style="margin-top:12px;"></div>
+    <div class="controls">
+      <button class="btn-check" data-check-moon="1">Check this section</button>
+      <button class="btn-ghost" data-reset-moon="1">Clear section</button>
+    </div>
+  </section>  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 30</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Upper-Intermediate Vocabulary Practice — for individual practice. Ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the page doesn't respond, open it in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var TOTAL = 30;
+
+  function normalize(s){
+    return s.toLowerCase().replace(/['’‘]/g,"'").replace(/[^\w\s']/g,"").replace(/\s+/g," ").trim();
+  }
+
+  /* ================= MCQ pill sections (prepositions + word choice) ================= */
+  document.querySelectorAll('#list-prep .g-item, #list-wc .g-item').forEach(function(item){
+    var qid = item.id.replace('item-','');
+    item.querySelectorAll('.opt-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        item.dataset.selected = btn.getAttribute('data-value');
+        item.classList.add('answered');
+        item.classList.remove('correct','incorrect');
+        item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+        var fb = document.getElementById('fb-' + qid);
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        var blank = document.getElementById('blank-' + qid);
+        if (blank) blank.textContent = btn.getAttribute('data-value');
+        updateScore();
+      });
+    });
+  });
+
+  function checkMcqSection(gid){
+    document.querySelectorAll('#list-' + gid + ' .g-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+      if (!selected) { if (fb) { fb.textContent=''; fb.className='g-feedback'; } return; }
+      if (normalize(selected) === normalize(answer)) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        item.querySelectorAll('.opt-btn').forEach(function(b){
+          if (normalize(b.getAttribute('data-value')) === normalize(answer)) b.classList.add('correct-reveal');
+        });
+        if (fb) { fb.innerHTML = 'Not quite — correct answer: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+  }
+  function resetMcqSection(gid){
+    document.querySelectorAll('#list-' + gid + ' .g-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var blank = document.getElementById('blank-' + qid);
+      item.classList.remove('correct','incorrect','answered');
+      delete item.dataset.selected;
+      item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected','correct-reveal'); });
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent=''; fb.className='g-feedback'; }
+      if (blank) blank.textContent = '_____';
+    });
+  }
+
+  /* ================= Word order builder ================= */
+  document.querySelectorAll('.wo-item').forEach(function(item){
+    var qid = item.id.replace('item-','');
+    var target = document.getElementById('target-' + qid);
+    var bank = document.getElementById('bank-' + qid);
+
+    function renderTarget(){
+      var chips = target.querySelectorAll('.wo-target-chip');
+      if (chips.length === 0) {
+        target.innerHTML = '<span class="wo-placeholder">tap the words below, in order</span>';
+      }
+      item.classList.toggle('answered', chips.length > 0);
+      item.classList.remove('correct','incorrect');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent=''; fb.className='g-feedback'; }
+    }
+
+    bank.querySelectorAll('.wo-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        if (chip.classList.contains('used')) return;
+        var placeholder = target.querySelector('.wo-placeholder');
+        if (placeholder) placeholder.remove();
+        var tc = document.createElement('span');
+        tc.className = 'wo-target-chip';
+        tc.textContent = chip.getAttribute('data-word');
+        tc.setAttribute('data-idx', chip.getAttribute('data-idx'));
+        tc.addEventListener('click', function(){
+          tc.remove();
+          chip.classList.remove('used');
+          renderTarget();
+          updateScore();
+        });
+        target.appendChild(tc);
+        chip.classList.add('used');
+        renderTarget();
+        updateScore();
+      });
+    });
+
+    document.querySelector('[data-clear-order="' + qid + '"]').addEventListener('click', function(){
+      target.querySelectorAll('.wo-target-chip').forEach(function(c){ c.remove(); });
+      bank.querySelectorAll('.wo-chip').forEach(function(c){ c.classList.remove('used'); });
+      renderTarget();
+      updateScore();
+    });
+  });
+
+  function getWoValue(qid){
+    var target = document.getElementById('target-' + qid);
+    var words = [];
+    target.querySelectorAll('.wo-target-chip').forEach(function(c){ words.push(c.textContent); });
+    return words.join(' ');
+  }
+
+  function checkWoSection(){
+    document.querySelectorAll('.wo-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var value = getWoValue(qid);
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      if (!value) { if (fb) { fb.textContent=''; fb.className='g-feedback'; } return; }
+      if (normalize(value) === normalize(answer)) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        if (fb) { fb.innerHTML = 'Correct order: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+  }
+  function resetWoSection(){
+    document.querySelectorAll('.wo-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var target = document.getElementById('target-' + qid);
+      var bank = document.getElementById('bank-' + qid);
+      target.querySelectorAll('.wo-target-chip').forEach(function(c){ c.remove(); });
+      bank.querySelectorAll('.wo-chip').forEach(function(c){ c.classList.remove('used'); });
+      target.innerHTML = '<span class="wo-placeholder">tap the words below, in order</span>';
+      item.classList.remove('correct','incorrect','answered');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent=''; fb.className='g-feedback'; }
+    });
+  }
+
+  document.querySelector('[data-check-wo]').addEventListener('click', function(){ checkWoSection(); updateScore(); });
+  document.querySelector('[data-reset-wo]').addEventListener('click', function(){ resetWoSection(); updateScore(); });
+
+  /* ================= Word-box passage (moon) ================= */
+  var lastFocusedMoon = null;
+  document.querySelectorAll('#passage-moon .word-input').forEach(function(inp){
+    inp.addEventListener('focus', function(){ lastFocusedMoon = inp; });
+    inp.addEventListener('input', function(){
+      inp.classList.remove('correct-field','incorrect-field');
+      document.getElementById('passage-moon').classList.remove('checked');
+      var fb = document.getElementById('fb-moon');
+      if (fb) { fb.textContent=''; fb.className='g-feedback'; }
+      refreshMoonChips();
+      updateScore();
+    });
+  });
+  document.querySelectorAll('#box-moon .wb-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var target = lastFocusedMoon;
+      if (!target) {
+        var inputs = document.querySelectorAll('#passage-moon .word-input');
+        for (var i=0;i<inputs.length;i++){ if(!inputs[i].value.trim()){ target=inputs[i]; break; } }
+      }
+      if (target) {
+        target.value = chip.getAttribute('data-word');
+        target.dispatchEvent(new Event('input'));
+        target.focus();
+      }
+    });
+  });
+  function refreshMoonChips(){
+    var used = {};
+    document.querySelectorAll('#passage-moon .word-input').forEach(function(inp){
+      var v = normalize(inp.value);
+      if (v) used[v] = true;
+    });
+    document.querySelectorAll('#box-moon .wb-chip').forEach(function(chip){
+      var w = normalize(chip.getAttribute('data-word'));
+      chip.classList.toggle('used', !!used[w]);
+    });
+  }
+
+  function getMoonAnswers(){
+    var answers = [];
+    document.querySelectorAll('[id^="item-moon-"]').forEach(function(el){
+      answers.push(el.getAttribute('data-answer'));
+    });
+    return answers;
+  }
+
+  function checkMoonSection(){
+    var answers = getMoonAnswers();
+    var inputs = document.querySelectorAll('#passage-moon .word-input');
+    var allCorrect = true, anyFilled = false;
+    inputs.forEach(function(inp, i){
+      inp.classList.remove('correct-field','incorrect-field');
+      var v = inp.value.trim();
+      if (v) anyFilled = true;
+      if (!v) { allCorrect = false; return; }
+      if (normalize(v) === normalize(answers[i] || '')) {
+        inp.classList.add('correct-field');
+      } else {
+        inp.classList.add('incorrect-field');
+        allCorrect = false;
+      }
+    });
+    document.getElementById('passage-moon').classList.add('checked');
+    var fb = document.getElementById('fb-moon');
+    if (!anyFilled) { if (fb) { fb.textContent=''; fb.className='g-feedback'; } return; }
+    if (allCorrect) {
+      if (fb) { fb.innerHTML = 'All correct.'; fb.className = 'g-feedback correct'; }
+    } else {
+      if (fb) { fb.innerHTML = 'Some answers need another look — check the highlighted fields, or the model words: <strong>' + answers.join(', ') + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    }
+  }
+  function resetMoonSection(){
+    document.querySelectorAll('#passage-moon .word-input').forEach(function(inp){
+      inp.value = '';
+      inp.classList.remove('correct-field','incorrect-field');
+    });
+    document.getElementById('passage-moon').classList.remove('checked');
+    var fb = document.getElementById('fb-moon');
+    if (fb) { fb.textContent=''; fb.className='g-feedback'; }
+    refreshMoonChips();
+  }
+
+  document.querySelector('[data-check-moon]').addEventListener('click', function(){ checkMoonSection(); updateScore(); });
+  document.querySelector('[data-reset-moon]').addEventListener('click', function(){ resetMoonSection(); updateScore(); });
+
+  /* ================= Generic check/reset buttons for MCQ sections ================= */
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkMcqSection(btn.getAttribute('data-check')); updateScore(); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetMcqSection(btn.getAttribute('data-reset')); updateScore(); });
+  });
+
+  /* ================= Global score ================= */
+  function updateScore(){
+    var total = 0, answered = 0;
+
+    document.querySelectorAll('#list-prep .g-item, #list-wc .g-item').forEach(function(item){
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      if (selected) { answered++; if (normalize(selected) === normalize(answer)) total++; }
+    });
+
+    document.querySelectorAll('.wo-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var value = getWoValue(qid);
+      if (value) { answered++; if (normalize(value) === normalize(answer)) total++; }
+    });
+
+    var moonAnswers = getMoonAnswers();
+    document.querySelectorAll('#passage-moon .word-input').forEach(function(inp, i){
+      var v = inp.value.trim();
+      if (v) { answered++; if (normalize(v) === normalize(moonAnswers[i] || '')) total++; }
+    });
+
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    checkMcqSection('prep');
+    checkMcqSection('wc');
+    checkWoSection();
+    checkMoonSection();
+    updateScore();
+    document.getElementById('overview').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    resetMcqSection('prep');
+    resetMcqSection('wc');
+    resetWoSection();
+    resetMoonSection();
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>

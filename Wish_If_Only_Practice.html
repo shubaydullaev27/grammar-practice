@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Wish &amp; If Only — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:760px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(22px,5vw,32px) clamp(18px,5vw,44px); background:var(--paper); border-bottom:1px solid var(--rule); }
+  .grammar-summary h2{ margin-bottom:4px; }
+  .grammar-summary .instructions{ margin-top:14px; }
+  .rule-list{ list-style:none; margin:18px 0 0; padding:0; display:grid; gap:10px; }
+  .rule-list li{ display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:baseline; background:var(--panel); border:1px solid var(--rule); border-radius:6px; padding:11px 14px; font-size:14px; }
+  .rule-term{ font-family:'Fraunces',serif; font-weight:600; font-size:14.5px; color:var(--ink); white-space:nowrap; }
+  .rule-def{ color:var(--ink-soft); }
+  .rule-example{ grid-column:2; font-style:italic; color:var(--ink-soft); font-size:13px; margin-top:-2px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .q-prompt{ font-size:13.5px; color:var(--ink-soft); font-weight:600; margin-bottom:10px; }
+
+  .sentence-options{ display:flex; flex-direction:column; gap:8px; }
+  .sent-btn{ display:flex; align-items:flex-start; gap:10px; text-align:left; font-family:'Public Sans',sans-serif; font-size:14.5px; line-height:1.5; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:8px; padding:11px 14px; cursor:pointer; transition:border-color .15s, background .15s, color .15s, transform .08s; width:100%; }
+  .sent-btn:hover{ border-color:var(--ink-soft); }
+  .sent-btn:active{ transform:translateY(1px); }
+  .opt-letter{ flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:1.5px solid var(--rule); display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; margin-top:1px; }
+  .opt-text{ flex:1 1 auto; }
+  .sent-btn.selected{ background:var(--black); color:var(--white); border-color:var(--black); }
+  .sent-btn.selected .opt-letter{ border-color:rgba(255,255,255,.5); color:var(--white); }
+  .q-item.correct .sent-btn.selected{ background:var(--good); border-color:var(--good); color:var(--white); }
+  .q-item.correct .sent-btn.selected .opt-letter{ border-color:rgba(255,255,255,.6); color:var(--white); }
+  .q-item.incorrect .sent-btn.selected{ background:var(--bad); border-color:var(--bad); color:var(--white); }
+  .q-item.incorrect .sent-btn.selected .opt-letter{ border-color:rgba(255,255,255,.6); color:var(--white); }
+  .q-item.incorrect .sent-btn.correct-reveal{ border-color:var(--good); color:var(--good); background:var(--good-bg); }
+  .q-item.incorrect .sent-btn.correct-reveal .opt-letter{ border-color:var(--good); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:760px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Grammar Practice — Wish &amp; If Only</h1>
+    <p class="sub">Only one sentence in each set is grammatically correct. Tap the one you think is right, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <h2>Grammar Summary</h2>
+    <p class="instructions">Wish &amp; If only — we use both to talk about regrets, imaginary situations, or things we would like to be different.</p>
+    <ul class="rule-list">
+      <li><span class="rule-term">wish + Past Simple</span><span class="rule-def">regret about a present situation.</span><span class="rule-example">e.g. She wishes she had more free time.</span></li>
+      <li><span class="rule-term">wish + would + infinitive</span><span class="rule-def">complaint about someone else's behaviour, or a desire for change — not your own actions (use "could" instead).</span><span class="rule-example">e.g. I wish you would listen to me.</span></li>
+      <li><span class="rule-term">wish + had + past participle</span><span class="rule-def">regret about a past event.</span><span class="rule-example">e.g. I wish I had studied harder.</span></li>
+      <li><span class="rule-term">If only</span><span class="rule-def">same meaning as "I wish", but expresses a stronger emotion.</span><span class="rule-example">e.g. If only I were taller!</span></li>
+    </ul>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-g1">1</a>
+    <a href="#section-g2">2</a>
+    <a href="#section-g3">3</a>
+    <a href="#section-g4">4</a>
+    <a href="#section-g5">5</a>
+    <a href="#section-g6">6</a>
+    <a href="#section-g7">7</a>
+    <a href="#section-g8">8</a>
+    <a href="#section-g9">9</a>
+    <a href="#section-g10">10</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Group 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g1">
+      <div class="q-item" id="item-g1-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">1</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my neighbours would stop playing loud music every night.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my neighbours had stopped playing loud music every night.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my neighbours stop playing loud music every night.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="q-item" id="item-g1-1" data-answer="b">
+        <div class="q-prompt"><span class="g-num">2</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I didn&#x27;t forget to bring my passport yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I hadn&#x27;t forgotten to bring my passport yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I wouldn&#x27;t forget to bring my passport yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="q-item" id="item-g1-2" data-answer="c">
+        <div class="q-prompt"><span class="g-num">3</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Sarah wishes she would have more free time to spend with her family.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Sarah wishes she had had more free time to spend with her family now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Sarah wishes she had more free time to spend with her family.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="q-item" id="item-g1-3" data-answer="a">
+        <div class="q-prompt"><span class="g-num">4</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only we had booked the hotel earlier, we could have got a better room.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only we booked the hotel earlier, we could have got a better room.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only we would book the hotel earlier, we could have got a better room.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="q-item" id="item-g1-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">5</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish you would listen to me when I&#x27;m trying to explain something.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish you listened to me yesterday when I&#x27;m trying to explain something.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish you had listened to me when I&#x27;m trying to explain something.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="q-item" id="item-g1-5" data-answer="c">
+        <div class="q-prompt"><span class="g-num">6</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he didn&#x27;t accept that job offer last year.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he wouldn&#x27;t have accepted that job offer last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he hadn&#x27;t accepted that job offer last year.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="q-item" id="item-g1-6" data-answer="a">
+        <div class="q-prompt"><span class="g-num">7</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I spoke Spanish, I could communicate with the locals more easily.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I had spoken Spanish, I could communicate with the locals more easily.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I would speak Spanish, I could communicate with the locals more easily.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="q-item" id="item-g1-7" data-answer="b">
+        <div class="q-prompt"><span class="g-num">8</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">My parents wish I wouldn&#x27;t live so far away from them.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">My parents wish I didn&#x27;t live so far away from them.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">My parents wish I hadn&#x27;t lived so far away from them.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="q-item" id="item-g1-8" data-answer="a">
+        <div class="q-prompt"><span class="g-num">9</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I could afford to travel abroad more often.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I can afford to travel abroad more often.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I would afford to travel abroad more often.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="q-item" id="item-g1-9" data-answer="a">
+        <div class="q-prompt"><span class="g-num">10</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g1-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only she hadn&#x27;t ignored the doctor&#x27;s advice, she wouldn&#x27;t be in this situation now.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only she didn&#x27;t ignore the doctor&#x27;s advice, she wouldn&#x27;t be in this situation now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only she wouldn&#x27;t ignore the doctor&#x27;s advice, she wouldn&#x27;t be in this situation now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Group 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Group 2</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g2">
+      <div class="q-item" id="item-g2-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">11</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish our manager would give us more flexible working hours.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish our manager gave us more flexible working hours last month.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish our manager had given us more flexible working hours now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="q-item" id="item-g2-1" data-answer="b">
+        <div class="q-prompt"><span class="g-num">12</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she didn&#x27;t spend so much money on unnecessary things last weekend.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she hadn&#x27;t spent so much money on unnecessary things last weekend.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she wouldn&#x27;t spend so much money on unnecessary things last weekend.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="q-item" id="item-g2-2" data-answer="c">
+        <div class="q-prompt"><span class="g-num">13</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I would know how to solve this problem.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I had known how to solve this problem now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I knew how to solve this problem.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="q-item" id="item-g2-3" data-answer="a">
+        <div class="q-prompt"><span class="g-num">14</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish people wouldn&#x27;t leave their rubbish in the park.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish people didn&#x27;t leave their rubbish in the park yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish people hadn&#x27;t left their rubbish in the park every day.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="q-item" id="item-g2-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">15</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he hadn&#x27;t turned down the scholarship when he had the opportunity.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he didn&#x27;t turn down the scholarship when he had the opportunity.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he wouldn&#x27;t turn down the scholarship when he had the opportunity.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="q-item" id="item-g2-5" data-answer="a">
+        <div class="q-prompt"><span class="g-num">16</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only she were more confident, she would apply for the position.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only she had been more confident, she would apply for the position now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only she would be more confident, she would apply for the position.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="q-item" id="item-g2-6" data-answer="b">
+        <div class="q-prompt"><span class="g-num">17</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my brother stopped borrowing my clothes without asking.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my brother would stop borrowing my clothes without asking.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my brother had stopped borrowing my clothes without asking.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="q-item" id="item-g2-7" data-answer="a">
+        <div class="q-prompt"><span class="g-num">18</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">We wish we hadn&#x27;t missed the last train home last night.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">We wish we didn&#x27;t miss the last train home last night.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">We wish we wouldn&#x27;t miss the last train home last night.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+      <div class="q-item" id="item-g2-8" data-answer="b">
+        <div class="q-prompt"><span class="g-num">19</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only they would listen to our advice before making decisions.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only they had listened to our advice before making that decision.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only they listened to our advice before making that decision yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-8"></div>
+      </div>
+      <div class="q-item" id="item-g2-9" data-answer="a">
+        <div class="q-prompt"><span class="g-num">20</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g2-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I knew more about economics.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I had known more about economics now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I would know more about economics.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g2-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Group 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g3">
+    <div class="block-head"><h2>Group 3</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g3">
+      <div class="q-item" id="item-g3-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">21</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes her colleagues would stop complaining about every small problem.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes her colleagues stopped complaining about the problem yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes her colleagues had stopped complaining about every small problem now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-0"></div>
+      </div>
+      <div class="q-item" id="item-g3-1" data-answer="b">
+        <div class="q-prompt"><span class="g-num">22</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I didn&#x27;t spend so much money on that phone last month.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I hadn&#x27;t spent so much money on that phone last month.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I wouldn&#x27;t spend so much money on that phone last month.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-1"></div>
+      </div>
+      <div class="q-item" id="item-g3-2" data-answer="c">
+        <div class="q-prompt"><span class="g-num">23</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only we would live closer to the city centre, we wouldn&#x27;t have such a long commute.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only we had lived closer to the city centre, we wouldn&#x27;t have such a long commute now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only we lived closer to the city centre, we wouldn&#x27;t have such a long commute.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-2"></div>
+      </div>
+      <div class="q-item" id="item-g3-3" data-answer="a">
+        <div class="q-prompt"><span class="g-num">24</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he could speak English more fluently.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he can speak English more fluently.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he would speak English more fluently.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-3"></div>
+      </div>
+      <div class="q-item" id="item-g3-4" data-answer="b">
+        <div class="q-prompt"><span class="g-num">25</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish you would tell me about problems as soon as they happen.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish you had told me about the problem yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish you told me about the problem yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-4"></div>
+      </div>
+      <div class="q-item" id="item-g3-5" data-answer="c">
+        <div class="q-prompt"><span class="g-num">26</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only my computer wouldn&#x27;t be so slow, I could finish my work faster.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only my computer hadn&#x27;t been so slow, I could finish my work faster now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only my computer weren&#x27;t so slow, I could finish my work faster.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-5"></div>
+      </div>
+      <div class="q-item" id="item-g3-6" data-answer="a">
+        <div class="q-prompt"><span class="g-num">27</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">They wish their children would spend less time on their phones.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">They wish their children spent less time on their phones yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">They wish their children had spent less time on their phones now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-6"></div>
+      </div>
+      <div class="q-item" id="item-g3-7" data-answer="a">
+        <div class="q-prompt"><span class="g-num">28</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I had studied harder for my final exam.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I studied harder for my final exam last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I would study harder for my final exam last year.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-7"></div>
+      </div>
+      <div class="q-item" id="item-g3-8" data-answer="b">
+        <div class="q-prompt"><span class="g-num">29</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only he wouldn&#x27;t be so impatient with other people.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only he weren&#x27;t so impatient with other people.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only he hadn&#x27;t been so impatient with other people now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-8"></div>
+      </div>
+      <div class="q-item" id="item-g3-9" data-answer="b">
+        <div class="q-prompt"><span class="g-num">30</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g3-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">My sister wishes she would afford a larger apartment.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">My sister wishes she could afford a larger apartment.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">My sister wishes she can afford a larger apartment.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g3-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check Group 3</button>
+      <button class="btn-ghost" data-reset="g3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g4">
+    <div class="block-head"><h2>Group 4</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g4">
+      <div class="q-item" id="item-g4-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">31</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my students would pay more attention during the lessons.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my students paid more attention during yesterday&#x27;s lesson.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my students had paid more attention during the lessons now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-0"></div>
+      </div>
+      <div class="q-item" id="item-g4-1" data-answer="c">
+        <div class="q-prompt"><span class="g-num">32</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she didn&#x27;t tell him the secret.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she wouldn&#x27;t tell him the secret yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she hadn&#x27;t told him the secret.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-1"></div>
+      </div>
+      <div class="q-item" id="item-g4-2" data-answer="b">
+        <div class="q-prompt"><span class="g-num">33</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I knew about the meeting, I would have attended it.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I had known about the meeting, I would have attended it.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I would have known about the meeting, I would have attended it.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-2"></div>
+      </div>
+      <div class="q-item" id="item-g4-3" data-answer="a">
+        <div class="q-prompt"><span class="g-num">34</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I were more organised.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I would be more organised.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I had been more organised now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-3"></div>
+      </div>
+      <div class="q-item" id="item-g4-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">35</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">We wish our neighbours wouldn&#x27;t make so much noise at night.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">We wish our neighbours didn&#x27;t make so much noise last night.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">We wish our neighbours hadn&#x27;t made so much noise every night.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-4"></div>
+      </div>
+      <div class="q-item" id="item-g4-5" data-answer="c">
+        <div class="q-prompt"><span class="g-num">36</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he didn&#x27;t reject the offer when he had the opportunity.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he wouldn&#x27;t reject the offer last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he hadn&#x27;t rejected the offer when he had the opportunity.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-5"></div>
+      </div>
+      <div class="q-item" id="item-g4-6" data-answer="a">
+        <div class="q-prompt"><span class="g-num">37</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only they hadn&#x27;t cancelled the flight, we would be there by now.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only they didn&#x27;t cancel the flight yesterday, we would be there by now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only they wouldn&#x27;t have cancelled the flight, we would be there by now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-6"></div>
+      </div>
+      <div class="q-item" id="item-g4-7" data-answer="b">
+        <div class="q-prompt"><span class="g-num">38</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my phone would work properly.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my phone worked properly.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my phone had worked properly now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-7"></div>
+      </div>
+      <div class="q-item" id="item-g4-8" data-answer="a">
+        <div class="q-prompt"><span class="g-num">39</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes her husband would help her more around the house.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes her husband helped her more around the house yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes her husband had helped her more around the house now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-8"></div>
+      </div>
+      <div class="q-item" id="item-g4-9" data-answer="c">
+        <div class="q-prompt"><span class="g-num">40</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g4-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I didn&#x27;t forget my passport yesterday, I could have gone on the trip.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I wouldn&#x27;t have forgotten my passport, I could have gone on the trip.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I hadn&#x27;t forgotten my passport, I could have gone on the trip.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g4-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check Group 4</button>
+      <button class="btn-ghost" data-reset="g4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g5">
+    <div class="block-head"><h2>Group 5</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g5">
+      <div class="q-item" id="item-g5-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">41</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish people wouldn&#x27;t talk so loudly on public transport.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish people didn&#x27;t talk so loudly on public transport yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish people hadn&#x27;t talked so loudly on public transport these days.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-0"></div>
+      </div>
+      <div class="q-item" id="item-g5-1" data-answer="b">
+        <div class="q-prompt"><span class="g-num">42</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she didn&#x27;t accept the job offer last year.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she hadn&#x27;t accepted the job offer last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she wouldn&#x27;t accept the job offer last year.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-1"></div>
+      </div>
+      <div class="q-item" id="item-g5-2" data-answer="a">
+        <div class="q-prompt"><span class="g-num">43</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only we had enough money, we could buy a bigger house.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only we would have enough money, we could buy a bigger house.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only we had had enough money, we could buy a bigger house now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-2"></div>
+      </div>
+      <div class="q-item" id="item-g5-3" data-answer="c">
+        <div class="q-prompt"><span class="g-num">44</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I can remember people&#x27;s names more easily.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I would remember people&#x27;s names more easily.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I could remember people&#x27;s names more easily.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-3"></div>
+      </div>
+      <div class="q-item" id="item-g5-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">45</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he hadn&#x27;t argued with his boss.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he didn&#x27;t argue with his boss yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he wouldn&#x27;t argue with his boss yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-4"></div>
+      </div>
+      <div class="q-item" id="item-g5-5" data-answer="b">
+        <div class="q-prompt"><span class="g-num">46</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only you will stop making the same mistake.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only you would stop making the same mistake.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only you had stopped making the same mistake.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-5"></div>
+      </div>
+      <div class="q-item" id="item-g5-6" data-answer="a">
+        <div class="q-prompt"><span class="g-num">47</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">My parents wish I lived closer to them.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">My parents wish I would live closer to them.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">My parents wish I had lived closer to them now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-6"></div>
+      </div>
+      <div class="q-item" id="item-g5-7" data-answer="c">
+        <div class="q-prompt"><span class="g-num">48</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish we didn&#x27;t spend the whole weekend indoors last weekend.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish we wouldn&#x27;t spend the whole weekend indoors last weekend.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish we hadn&#x27;t spent the whole weekend indoors last weekend.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-7"></div>
+      </div>
+      <div class="q-item" id="item-g5-8" data-answer="a">
+        <div class="q-prompt"><span class="g-num">49</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only she hadn&#x27;t ignored the warning, she wouldn&#x27;t be in trouble now.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only she didn&#x27;t ignore the warning, she wouldn&#x27;t be in trouble now.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only she wouldn&#x27;t have ignored the warning, she wouldn&#x27;t be in trouble now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-8"></div>
+      </div>
+      <div class="q-item" id="item-g5-9" data-answer="b">
+        <div class="q-prompt"><span class="g-num">50</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g5-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my English would be good enough to work abroad.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my English were good enough to work abroad.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my English had been good enough to work abroad now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g5-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check Group 5</button>
+      <button class="btn-ghost" data-reset="g5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g6">
+    <div class="block-head"><h2>Group 6</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g6">
+      <div class="q-item" id="item-g6-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">51</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish you wouldn&#x27;t leave your clothes all over the floor.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish you didn&#x27;t leave your clothes all over the floor yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish you hadn&#x27;t left your clothes all over the floor these days.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-0"></div>
+      </div>
+      <div class="q-item" id="item-g6-1" data-answer="c">
+        <div class="q-prompt"><span class="g-num">52</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">They wish they wouldn&#x27;t invest so much money in that company last year.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">They wish they didn&#x27;t invest so much money in that company last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">They wish they hadn&#x27;t invested so much money in that company.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-1"></div>
+      </div>
+      <div class="q-item" id="item-g6-2" data-answer="b">
+        <div class="q-prompt"><span class="g-num">53</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I would have more experience, I would apply for the position.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I had more experience, I would apply for the position.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I had had more experience, I would apply for the position now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-2"></div>
+      </div>
+      <div class="q-item" id="item-g6-3" data-answer="a">
+        <div class="q-prompt"><span class="g-num">54</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she could understand what the lecturer is saying.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she can understand what the lecturer is saying.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she would understand what the lecturer is saying.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-3"></div>
+      </div>
+      <div class="q-item" id="item-g6-4" data-answer="c">
+        <div class="q-prompt"><span class="g-num">55</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I didn&#x27;t spend all my savings on that car last year.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I wouldn&#x27;t spend all my savings on that car last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I hadn&#x27;t spent all my savings on that car.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-4"></div>
+      </div>
+      <div class="q-item" id="item-g6-5" data-answer="a">
+        <div class="q-prompt"><span class="g-num">56</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only people would respect the rules instead of ignoring them.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only people will respect the rules instead of ignoring them.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only people had respected the rules instead of ignoring them now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-5"></div>
+      </div>
+      <div class="q-item" id="item-g6-6" data-answer="b">
+        <div class="q-prompt"><span class="g-num">57</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he would be more patient with his younger brother.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he were more patient with his younger brother.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he had been more patient with his younger brother now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-6"></div>
+      </div>
+      <div class="q-item" id="item-g6-7" data-answer="a">
+        <div class="q-prompt"><span class="g-num">58</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I hadn&#x27;t accepted the job without asking about the salary.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I didn&#x27;t accept the job without asking about the salary last month.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I wouldn&#x27;t accept the job without asking about the salary last month.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-7"></div>
+      </div>
+      <div class="q-item" id="item-g6-8" data-answer="c">
+        <div class="q-prompt"><span class="g-num">59</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only we didn&#x27;t take the wrong road yesterday, we would have arrived earlier.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only we wouldn&#x27;t have taken the wrong road, we would have arrived earlier.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only we hadn&#x27;t taken the wrong road, we would have arrived earlier.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-8"></div>
+      </div>
+      <div class="q-item" id="item-g6-9" data-answer="b">
+        <div class="q-prompt"><span class="g-num">60</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g6-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">My friend wishes she would have more confidence when speaking English.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">My friend wishes she had more confidence when speaking English.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">My friend wishes she had had more confidence when speaking English now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g6-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g6">Check Group 6</button>
+      <button class="btn-ghost" data-reset="g6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g7">
+    <div class="block-head"><h2>Group 7</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g7">
+      <div class="q-item" id="item-g7-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">61</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my brother wouldn&#x27;t use my computer without asking.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my brother didn&#x27;t use my computer yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my brother hadn&#x27;t used my computer every day.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-0"></div>
+      </div>
+      <div class="q-item" id="item-g7-1" data-answer="c">
+        <div class="q-prompt"><span class="g-num">62</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she didn&#x27;t leave her previous job.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she wouldn&#x27;t leave her previous job last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she hadn&#x27;t left her previous job.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-1"></div>
+      </div>
+      <div class="q-item" id="item-g7-2" data-answer="a">
+        <div class="q-prompt"><span class="g-num">63</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I were better at mathematics, I wouldn&#x27;t find this course so difficult.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I would be better at mathematics, I wouldn&#x27;t find this course so difficult.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I had been better at mathematics, I wouldn&#x27;t find this course so difficult now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-2"></div>
+      </div>
+      <div class="q-item" id="item-g7-3" data-answer="c">
+        <div class="q-prompt"><span class="g-num">64</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he can travel more often.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he would travel more often.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he could travel more often.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-3"></div>
+      </div>
+      <div class="q-item" id="item-g7-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">65</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish you had told me the truth from the beginning.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish you would tell me the truth yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish you told me the truth yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-4"></div>
+      </div>
+      <div class="q-item" id="item-g7-5" data-answer="a">
+        <div class="q-prompt"><span class="g-num">66</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only our government would invest more in public transport.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only our government will invest more in public transport.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only our government had invested more in public transport now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-5"></div>
+      </div>
+      <div class="q-item" id="item-g7-6" data-answer="b">
+        <div class="q-prompt"><span class="g-num">67</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">They wish they would live in a quieter neighbourhood.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">They wish they lived in a quieter neighbourhood.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">They wish they had lived in a quieter neighbourhood now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-6"></div>
+      </div>
+      <div class="q-item" id="item-g7-7" data-answer="a">
+        <div class="q-prompt"><span class="g-num">68</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I hadn&#x27;t said those things during the argument.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I didn&#x27;t say those things during the argument yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I wouldn&#x27;t say those things during the argument yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-7"></div>
+      </div>
+      <div class="q-item" id="item-g7-8" data-answer="c">
+        <div class="q-prompt"><span class="g-num">69</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only he listened to his parents yesterday, he wouldn&#x27;t have made that decision.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only he would have listened to his parents, he wouldn&#x27;t have made that decision.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only he had listened to his parents, he wouldn&#x27;t have made that decision.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-8"></div>
+      </div>
+      <div class="q-item" id="item-g7-9" data-answer="a">
+        <div class="q-prompt"><span class="g-num">70</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g7-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she could spend more time with her family.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she can spend more time with her family.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she would spend more time with her family.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g7-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g7">Check Group 7</button>
+      <button class="btn-ghost" data-reset="g7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g8">
+    <div class="block-head"><h2>Group 8</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g8">
+      <div class="q-item" id="item-g8-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">71</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my colleagues would stop sending emails late at night.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my colleagues stopped sending emails late last night.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my colleagues had stopped sending emails these days.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-0"></div>
+      </div>
+      <div class="q-item" id="item-g8-1" data-answer="c">
+        <div class="q-prompt"><span class="g-num">72</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he didn&#x27;t turn down the opportunity to study abroad.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he wouldn&#x27;t turn down the opportunity last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he hadn&#x27;t turned down the opportunity to study abroad.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-1"></div>
+      </div>
+      <div class="q-item" id="item-g8-2" data-answer="a">
+        <div class="q-prompt"><span class="g-num">73</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I knew how to solve this problem.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I would know how to solve this problem.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I had knew how to solve this problem.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-2"></div>
+      </div>
+      <div class="q-item" id="item-g8-3" data-answer="b">
+        <div class="q-prompt"><span class="g-num">74</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes her flat had been closer to her workplace now.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes her flat were closer to her workplace.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes her flat would be closer to her workplace.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-3"></div>
+      </div>
+      <div class="q-item" id="item-g8-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">75</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish you wouldn&#x27;t interrupt me while I&#x27;m speaking.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish you won&#x27;t interrupt me while I&#x27;m speaking.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish you wouldn&#x27;t interrupted me while I&#x27;m speaking.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-4"></div>
+      </div>
+      <div class="q-item" id="item-g8-5" data-answer="b">
+        <div class="q-prompt"><span class="g-num">76</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">They wish they would prepare better for the interview yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">They wish they had prepared better for the interview.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">They wish they have prepared better for the interview.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-5"></div>
+      </div>
+      <div class="q-item" id="item-g8-6" data-answer="a">
+        <div class="q-prompt"><span class="g-num">77</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only we hadn&#x27;t forgotten to charge the phone, we could have called for help.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only we didn&#x27;t forget to charge the phone, we could have called for help.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only we wouldn&#x27;t have forgotten to charge the phone, we could have called for help.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-6"></div>
+      </div>
+      <div class="q-item" id="item-g8-7" data-answer="c">
+        <div class="q-prompt"><span class="g-num">78</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I can understand people speaking with strong accents.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I would understand people speaking with strong accents.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I could understand people speaking with strong accents.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-7"></div>
+      </div>
+      <div class="q-item" id="item-g8-8" data-answer="a">
+        <div class="q-prompt"><span class="g-num">79</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">My teacher wishes students would take their homework more seriously.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">My teacher wishes students will take their homework more seriously.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">My teacher wishes students would took their homework more seriously.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-8"></div>
+      </div>
+      <div class="q-item" id="item-g8-9" data-answer="b">
+        <div class="q-prompt"><span class="g-num">80</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g8-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she didn&#x27;t miss the opportunity to meet the director.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she hadn&#x27;t missed the opportunity to meet the director.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she wouldn&#x27;t miss the opportunity yesterday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g8-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g8">Check Group 8</button>
+      <button class="btn-ghost" data-reset="g8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g9">
+    <div class="block-head"><h2>Group 9</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g9">
+      <div class="q-item" id="item-g9-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">81</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish people wouldn&#x27;t waste so much water.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish people didn&#x27;t waste so much water yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish people hadn&#x27;t wasted so much water these days.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-0"></div>
+      </div>
+      <div class="q-item" id="item-g9-1" data-answer="c">
+        <div class="q-prompt"><span class="g-num">82</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he didn&#x27;t lie to his parents last night.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he wouldn&#x27;t lie to his parents last night.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he hadn&#x27;t lied to his parents.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-1"></div>
+      </div>
+      <div class="q-item" id="item-g9-2" data-answer="b">
+        <div class="q-prompt"><span class="g-num">83</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I would have enough money, I would buy a new laptop.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I had enough money, I would buy a new laptop.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I had had enough money, I would buy a new laptop now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-2"></div>
+      </div>
+      <div class="q-item" id="item-g9-3" data-answer="a">
+        <div class="q-prompt"><span class="g-num">84</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she could drive.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she can drive.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she would drive.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-3"></div>
+      </div>
+      <div class="q-item" id="item-g9-4" data-answer="a">
+        <div class="q-prompt"><span class="g-num">85</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my parents wouldn&#x27;t worry about me so much.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my parents won&#x27;t worry about me so much.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my parents wouldn&#x27;t worried about me so much.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-4"></div>
+      </div>
+      <div class="q-item" id="item-g9-5" data-answer="c">
+        <div class="q-prompt"><span class="g-num">86</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">We wish we didn&#x27;t choose such an expensive hotel last summer.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">We wish we wouldn&#x27;t choose such an expensive hotel last summer.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">We wish we hadn&#x27;t chosen such an expensive hotel.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-5"></div>
+      </div>
+      <div class="q-item" id="item-g9-6" data-answer="a">
+        <div class="q-prompt"><span class="g-num">87</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only he weren&#x27;t so irresponsible, I wouldn&#x27;t have to check his work all the time.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only he would be more responsible, I wouldn&#x27;t have to check his work all the time.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only he had been more responsible, I wouldn&#x27;t have to check his work all the time now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-6"></div>
+      </div>
+      <div class="q-item" id="item-g9-7" data-answer="b">
+        <div class="q-prompt"><span class="g-num">88</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I would know more about economics.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I knew more about economics.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I had knew more about economics.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-7"></div>
+      </div>
+      <div class="q-item" id="item-g9-8" data-answer="a">
+        <div class="q-prompt"><span class="g-num">89</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">They wish their landlord would fix the heating system.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">They wish their landlord will fix the heating system.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">They wish their landlord would fixed the heating system.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-8"></div>
+      </div>
+      <div class="q-item" id="item-g9-9" data-answer="c">
+        <div class="q-prompt"><span class="g-num">90</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g9-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she didn&#x27;t forget to send the email.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she wouldn&#x27;t forget to send the email yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she hadn&#x27;t forgotten to send the email.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g9-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g9">Check Group 9</button>
+      <button class="btn-ghost" data-reset="g9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g10">
+    <div class="block-head"><h2>Group 10</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Only one sentence in each set is grammatically correct — tap it.</p>
+    <div id="list-g10">
+      <div class="q-item" id="item-g10-0" data-answer="a">
+        <div class="q-prompt"><span class="g-num">91</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my neighbours would keep the noise down at night.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my neighbours will keep the noise down at night.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my neighbours would kept the noise down at night.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-0"></div>
+      </div>
+      <div class="q-item" id="item-g10-1" data-answer="c">
+        <div class="q-prompt"><span class="g-num">92</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">He wishes he didn&#x27;t study harder when he was at university.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">He wishes he would study harder when he was at university.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">He wishes he had studied harder when he was at university.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-1"></div>
+      </div>
+      <div class="q-item" id="item-g10-2" data-answer="a">
+        <div class="q-prompt"><span class="g-num">93</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only I were more confident, I would apply for that job.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only I would be more confident, I would apply for that job.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only I had been more confident, I would apply for that job now.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-2"></div>
+      </div>
+      <div class="q-item" id="item-g10-3" data-answer="b">
+        <div class="q-prompt"><span class="g-num">94</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">She wishes she can speak French fluently.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">She wishes she could speak French fluently.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">She wishes she would speak French fluently.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-3"></div>
+      </div>
+      <div class="q-item" id="item-g10-4" data-answer="c">
+        <div class="q-prompt"><span class="g-num">95</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish you didn&#x27;t cancel our meeting yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish you wouldn&#x27;t cancel our meeting yesterday.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish you hadn&#x27;t cancelled our meeting at such short notice.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-4"></div>
+      </div>
+      <div class="q-item" id="item-g10-5" data-answer="a">
+        <div class="q-prompt"><span class="g-num">96</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only people would follow the rules instead of complaining about them.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only people will follow the rules instead of complaining about them.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only people would followed the rules instead of complaining about them.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-5"></div>
+      </div>
+      <div class="q-item" id="item-g10-6" data-answer="b">
+        <div class="q-prompt"><span class="g-num">97</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">My brother wishes he would live closer to his workplace.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">My brother wishes he lived closer to his workplace.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">My brother wishes he had live closer to his workplace.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-6"></div>
+      </div>
+      <div class="q-item" id="item-g10-7" data-answer="c">
+        <div class="q-prompt"><span class="g-num">98</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish I didn&#x27;t spend so much money during my holiday last year.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish I wouldn&#x27;t spend so much money during my holiday last year.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish I hadn&#x27;t spent so much money during my holiday.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-7"></div>
+      </div>
+      <div class="q-item" id="item-g10-8" data-answer="a">
+        <div class="q-prompt"><span class="g-num">99</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">If only they had checked the information before publishing the article, they wouldn&#x27;t have made that mistake.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">If only they checked the information yesterday, they wouldn&#x27;t have made that mistake.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">If only they would have checked the information before publishing the article, they wouldn&#x27;t have made that mistake.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-8"></div>
+      </div>
+      <div class="q-item" id="item-g10-9" data-answer="b">
+        <div class="q-prompt"><span class="g-num">100</span>Choose the correct sentence.</div>
+        <div class="sentence-options" id="opts-g10-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I wish my students will take their studies more seriously.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I wish my students would take their studies more seriously.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I wish my students would took their studies more seriously.</span></button>
+        </div>
+        <div class="g-feedback" id="fb-g10-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g10">Check Group 10</button>
+      <button class="btn-ghost" data-reset="g10">Clear section</button>
+    </div>
+  </section>  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Wish &amp; If Only — for individual practice. Ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the buttons don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2","g3","g4","g5","g6","g7","g8","g9","g10"];
+  var GROUP_COUNTS = {"g1":10,"g2":10,"g3":10,"g4":10,"g5":10,"g6":10,"g7":10,"g8":10,"g9":10,"g10":10};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  // wire up option buttons
+  document.querySelectorAll('.q-item').forEach(function(item){
+    var qid = item.id.replace('item-','');
+    item.querySelectorAll('.sent-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        item.dataset.selected = btn.getAttribute('data-value');
+        item.classList.remove('correct','incorrect');
+        item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+        var fb = document.getElementById('fb-' + qid);
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        updateScore();
+      });
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+      if (!selected) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      if (selected === answer) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        item.querySelectorAll('.sent-btn').forEach(function(b){
+          if (b.getAttribute('data-value') === answer) b.classList.add('correct-reveal');
+        });
+        var correctText = item.querySelector('.sent-btn[data-value="' + answer + '"] .opt-text');
+        var correctLabel = correctText ? correctText.textContent : answer;
+        if (fb) { fb.innerHTML = 'Not quite — correct answer: <strong>' + correctLabel + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      item.classList.remove('correct','incorrect');
+      delete item.dataset.selected;
+      item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('selected','correct-reveal'); });
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      if (selected) {
+        answered++;
+        if (selected === answer) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>

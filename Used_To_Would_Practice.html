@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Used to / Would — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:760px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .g-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-sentence{ font-size:15px; margin-bottom:12px; line-height:1.75; }
+  .blank{ display:inline-block; min-width:64px; text-align:center; border-bottom:2px solid var(--rule); color:var(--ink-soft); font-weight:600; padding:0 2px; }
+  .g-item.answered .blank{ border-bottom-color:var(--ink); color:var(--ink); }
+  .g-item.correct .blank{ border-bottom-color:var(--good); color:var(--good); }
+  .g-item.incorrect .blank{ border-bottom-color:var(--bad); color:var(--bad); }
+
+  .options{ display:flex; flex-wrap:wrap; gap:8px; }
+  .opt-btn{ font-family:'Public Sans',sans-serif; font-size:13.5px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:20px; padding:9px 16px; cursor:pointer; transition:border-color .15s, background .15s, color .15s, transform .08s; min-height:40px; }
+  .opt-btn:hover{ border-color:var(--ink-soft); }
+  .opt-btn:active{ transform:translateY(1px); }
+  .opt-btn.selected{ background:var(--black); color:var(--white); border-color:var(--black); }
+  .g-item.correct .opt-btn.selected{ background:var(--good); border-color:var(--good); color:var(--white); }
+  .g-item.incorrect .opt-btn.selected{ background:var(--bad); border-color:var(--bad); color:var(--white); }
+  .g-item.incorrect .opt-btn.correct-reveal{ border-color:var(--good); color:var(--good); background:var(--good-bg); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:760px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .opt-btn{ flex:1 1 auto; text-align:center; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Grammar Practice — Used to / Would</h1>
+    <p class="sub">Tap the option that correctly completes each sentence, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 75</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <h2>Grammar Summary</h2>
+    <p class="instructions">Used to / Would / Be used to / Get used to — a quick reference before you start.</p>
+    <ul class="rule-list">
+      <li><span class="rule-term">used to + infinitive</span><span class="rule-def">a past habit or state that no longer happens or is true.</span></li>
+      <li><span class="rule-term">would + infinitive</span><span class="rule-def">a repeated past action (not for past states — no "would be" for facts).</span></li>
+      <li><span class="rule-term">be used to + -ing</span><span class="rule-def">accustomed to something, familiar with it.</span></li>
+      <li><span class="rule-term">get used to + -ing</span><span class="rule-def">becoming accustomed to something, in the process of adjusting.</span></li>
+      <li><span class="rule-term">didn't use to</span><span class="rule-def">negative form of a past habit or state.</span></li>
+      <li><span class="rule-term">wasn't / weren't used to + -ing</span><span class="rule-def">not accustomed to something at that time.</span></li>
+    </ul>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-g1">Group 1</a>
+    <a href="#section-g2">Group 2</a>
+    <a href="#section-g3">Group 3</a>
+    <a href="#section-g4">Group 4</a>
+    <a href="#section-g5">Group 5</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Group 1</h2><span class="block-count">15 items</span></div>
+    <p class="instructions">Tap the option that correctly completes each sentence.</p>
+    <div id="list-g1">
+      <div class="g-item" id="item-g1-0" data-answer="didn&#x27;t use to">
+        <div class="g-sentence"><span class="g-num">1</span>Mike <span class="blank" id="blank-g1-0">_____</span> read any foreign literature, but later at the university he began reading a lot of books by foreign writers.</div>
+        <div class="options" id="opts-g1-0">
+          <button type="button" class="opt-btn" data-value="use to">use to</button>
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to">didn&#x27;t use to</button>
+          <button type="button" class="opt-btn" data-value="was used to">was used to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="g-item" id="item-g1-1" data-answer="did Sarah use to work">
+        <div class="g-sentence"><span class="g-num">2</span>Where <span class="blank" id="blank-g1-1">_____</span> before being employed by this company?</div>
+        <div class="options" id="opts-g1-1">
+          <button type="button" class="opt-btn" data-value="does Sarah get used to working">does Sarah get used to working</button>
+          <button type="button" class="opt-btn" data-value="did Sarah use to work">did Sarah use to work</button>
+          <button type="button" class="opt-btn" data-value="would Sarah work">would Sarah work</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="g-item" id="item-g1-2" data-answer="was used to driving">
+        <div class="g-sentence"><span class="g-num">3</span>My dad <span class="blank" id="blank-g1-2">_____</span> by himself, so he would usually get angry when mom was driving.</div>
+        <div class="options" id="opts-g1-2">
+          <button type="button" class="opt-btn" data-value="was used to driving">was used to driving</button>
+          <button type="button" class="opt-btn" data-value="gets used to driving">gets used to driving</button>
+          <button type="button" class="opt-btn" data-value="drives">drives</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="g-item" id="item-g1-3" data-answer="I&#x27;m getting used">
+        <div class="g-sentence"><span class="g-num">4</span>Living alone is a new experience for me, but <span class="blank" id="blank-g1-3">_____</span> to it.</div>
+        <div class="options" id="opts-g1-3">
+          <button type="button" class="opt-btn" data-value="I used">I used</button>
+          <button type="button" class="opt-btn" data-value="I&#x27;m getting used">I&#x27;m getting used</button>
+          <button type="button" class="opt-btn" data-value="I use">I use</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="g-item" id="item-g1-4" data-answer="used to spend">
+        <div class="g-sentence"><span class="g-num">5</span>The Griffiths <span class="blank" id="blank-g1-4">_____</span> the weekends at the seaside when the whole family got together.</div>
+        <div class="options" id="opts-g1-4">
+          <button type="button" class="opt-btn" data-value="would spending">would spending</button>
+          <button type="button" class="opt-btn" data-value="used to spend">used to spend</button>
+          <button type="button" class="opt-btn" data-value="are used to spending">are used to spending</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="g-item" id="item-g1-5" data-answer="used to be">
+        <div class="g-sentence"><span class="g-num">6</span>I&#x27;m afraid Grandma&#x27;s not as fit and healthy as she <span class="blank" id="blank-g1-5">_____</span> .</div>
+        <div class="options" id="opts-g1-5">
+          <button type="button" class="opt-btn" data-value="was used to">was used to</button>
+          <button type="button" class="opt-btn" data-value="used to be">used to be</button>
+          <button type="button" class="opt-btn" data-value="would be">would be</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="g-item" id="item-g1-6" data-answer="would read">
+        <div class="g-sentence"><span class="g-num">7</span>My parents <span class="blank" id="blank-g1-6">_____</span> fairy tales at bedtime in our childhood.</div>
+        <div class="options" id="opts-g1-6">
+          <button type="button" class="opt-btn" data-value="were used to read">were used to read</button>
+          <button type="button" class="opt-btn" data-value="would read">would read</button>
+          <button type="button" class="opt-btn" data-value="used to reading">used to reading</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="g-item" id="item-g1-7" data-answer="is usually busy">
+        <div class="g-sentence"><span class="g-num">8</span>They should choose another route as the motorway <span class="blank" id="blank-g1-7">_____</span> during the rush hour.</div>
+        <div class="options" id="opts-g1-7">
+          <button type="button" class="opt-btn" data-value="would be busy">would be busy</button>
+          <button type="button" class="opt-btn" data-value="used to be busy">used to be busy</button>
+          <button type="button" class="opt-btn" data-value="is usually busy">is usually busy</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="g-item" id="item-g1-8" data-answer="would work">
+        <div class="g-sentence"><span class="g-num">9</span>When I was twenty, I <span class="blank" id="blank-g1-8">_____</span> in a factory where I met a lot of nice people.</div>
+        <div class="options" id="opts-g1-8">
+          <button type="button" class="opt-btn" data-value="would work">would work</button>
+          <button type="button" class="opt-btn" data-value="used to working">used to working</button>
+          <button type="button" class="opt-btn" data-value="am getting used to working">am getting used to working</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="g-item" id="item-g1-9" data-answer="used to go">
+        <div class="g-sentence"><span class="g-num">10</span>Nick get <span class="blank" id="blank-g1-9">_____</span> swimming regularly these days.</div>
+        <div class="options" id="opts-g1-9">
+          <button type="button" class="opt-btn" data-value="used to going">used to going</button>
+          <button type="button" class="opt-btn" data-value="is used to going">is used to going</button>
+          <button type="button" class="opt-btn" data-value="used to go">used to go</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+      <div class="g-item" id="item-g1-10" data-answer="am used to">
+        <div class="g-sentence"><span class="g-num">11</span>I <span class="blank" id="blank-g1-10">_____</span> getting up early, so waking up at 6 a.m. isn&#x27;t difficult.</div>
+        <div class="options" id="opts-g1-10">
+          <button type="button" class="opt-btn" data-value="used to">used to</button>
+          <button type="button" class="opt-btn" data-value="am used to">am used to</button>
+          <button type="button" class="opt-btn" data-value="would">would</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-10"></div>
+      </div>
+      <div class="g-item" id="item-g1-11" data-answer="didn&#x27;t use to">
+        <div class="g-sentence"><span class="g-num">12</span>We <span class="blank" id="blank-g1-11">_____</span> have online lessons before the pandemic.</div>
+        <div class="options" id="opts-g1-11">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to">didn&#x27;t use to</button>
+          <button type="button" class="opt-btn" data-value="weren&#x27;t used to">weren&#x27;t used to</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t">wouldn&#x27;t</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-11"></div>
+      </div>
+      <div class="g-item" id="item-g1-12" data-answer="is getting used to">
+        <div class="g-sentence"><span class="g-num">13</span>Emma <span class="blank" id="blank-g1-12">_____</span> living on her own after moving abroad.</div>
+        <div class="options" id="opts-g1-12">
+          <button type="button" class="opt-btn" data-value="is getting used to">is getting used to</button>
+          <button type="button" class="opt-btn" data-value="used to">used to</button>
+          <button type="button" class="opt-btn" data-value="would">would</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-12"></div>
+      </div>
+      <div class="g-item" id="item-g1-13" data-answer="used to">
+        <div class="g-sentence"><span class="g-num">14</span>My grandfather <span class="blank" id="blank-g1-13">_____</span> tell us amazing stories every evening.</div>
+        <div class="options" id="opts-g1-13">
+          <button type="button" class="opt-btn" data-value="would">would</button>
+          <button type="button" class="opt-btn" data-value="is used to">is used to</button>
+          <button type="button" class="opt-btn" data-value="used to">used to</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-13"></div>
+      </div>
+      <div class="g-item" id="item-g1-14" data-answer="am used to">
+        <div class="g-sentence"><span class="g-num">15</span>At first I hated spicy food, but now I <span class="blank" id="blank-g1-14">_____</span> eating it</div>
+        <div class="options" id="opts-g1-14">
+          <button type="button" class="opt-btn" data-value="am used to">am used to</button>
+          <button type="button" class="opt-btn" data-value="used to">used to</button>
+          <button type="button" class="opt-btn" data-value="would">would</button>
+        </div>
+        <div class="g-feedback" id="fb-g1-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Group 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Group 2</h2><span class="block-count">15 items</span></div>
+    <p class="instructions">Tap the option that correctly completes each sentence.</p>
+    <div id="list-g2">
+      <div class="g-item" id="item-g2-0" data-answer="used to walk">
+        <div class="g-sentence"><span class="g-num">1</span>When I was at school, I <span class="blank" id="blank-g2-0">_____</span> home every afternoon instead of taking the bus.</div>
+        <div class="options" id="opts-g2-0">
+          <button type="button" class="opt-btn" data-value="used to walk">used to walk</button>
+          <button type="button" class="opt-btn" data-value="was used to walking">was used to walking</button>
+          <button type="button" class="opt-btn" data-value="would walking">would walking</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="g-item" id="item-g2-1" data-answer="is getting used to">
+        <div class="g-sentence"><span class="g-num">2</span>Sarah has only recently moved to London, so she <span class="blank" id="blank-g2-1">_____</span> dealing with such a busy public transport system.</div>
+        <div class="options" id="opts-g2-1">
+          <button type="button" class="opt-btn" data-value="is getting used to">is getting used to</button>
+          <button type="button" class="opt-btn" data-value="used to">used to</button>
+          <button type="button" class="opt-btn" data-value="would">would</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="g-item" id="item-g2-2" data-answer="didn&#x27;t use to enjoy">
+        <div class="g-sentence"><span class="g-num">3</span>My brother <span class="blank" id="blank-g2-2">_____</span> classical music, but his taste has changed considerably.</div>
+        <div class="options" id="opts-g2-2">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to enjoy">didn&#x27;t use to enjoy</button>
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to enjoying">wasn&#x27;t used to enjoying</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t enjoying">wouldn&#x27;t enjoying</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="g-item" id="item-g2-3" data-answer="was already used to living">
+        <div class="g-sentence"><span class="g-num">4</span>By the time I started university, I <span class="blank" id="blank-g2-3">_____</span> away from my family.</div>
+        <div class="options" id="opts-g2-3">
+          <button type="button" class="opt-btn" data-value="was already used to living">was already used to living</button>
+          <button type="button" class="opt-btn" data-value="used to live">used to live</button>
+          <button type="button" class="opt-btn" data-value="would living">would living</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="g-item" id="item-g2-4" data-answer="would tell">
+        <div class="g-sentence"><span class="g-num">5</span>When we were children, our grandmother <span class="blank" id="blank-g2-4">_____</span> us stories before we went to sleep.</div>
+        <div class="options" id="opts-g2-4">
+          <button type="button" class="opt-btn" data-value="would tell">would tell</button>
+          <button type="button" class="opt-btn" data-value="was used to telling">was used to telling</button>
+          <button type="button" class="opt-btn" data-value="would telling">would telling</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="g-item" id="item-g2-5" data-answer="getting used to working">
+        <div class="g-sentence"><span class="g-num">6</span>I found the first few weeks at my new job exhausting, but I&#x27;m gradually <span class="blank" id="blank-g2-5">_____</span> under pressure.</div>
+        <div class="options" id="opts-g2-5">
+          <button type="button" class="opt-btn" data-value="getting used to working">getting used to working</button>
+          <button type="button" class="opt-btn" data-value="used to work">used to work</button>
+          <button type="button" class="opt-btn" data-value="would work">would work</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="g-item" id="item-g2-6" data-answer="did you use to live">
+        <div class="g-sentence"><span class="g-num">7</span>Where <span class="blank" id="blank-g2-6">_____</span> before you moved to this neighbourhood?</div>
+        <div class="options" id="opts-g2-6">
+          <button type="button" class="opt-btn" data-value="did you use to live">did you use to live</button>
+          <button type="button" class="opt-btn" data-value="were you used to living">were you used to living</button>
+          <button type="button" class="opt-btn" data-value="would you live">would you live</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="g-item" id="item-g2-7" data-answer="used to own">
+        <div class="g-sentence"><span class="g-num">8</span>My father <span class="blank" id="blank-g2-7">_____</span> a small business before he changed careers.</div>
+        <div class="options" id="opts-g2-7">
+          <button type="button" class="opt-btn" data-value="used to own">used to own</button>
+          <button type="button" class="opt-btn" data-value="was used to owning">was used to owning</button>
+          <button type="button" class="opt-btn" data-value="would owning">would owning</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+      <div class="g-item" id="item-g2-8" data-answer="is used to sleeping">
+        <div class="g-sentence"><span class="g-num">9</span>She has worked night shifts for years, so she <span class="blank" id="blank-g2-8">_____</span> during the day.</div>
+        <div class="options" id="opts-g2-8">
+          <button type="button" class="opt-btn" data-value="is used to sleeping">is used to sleeping</button>
+          <button type="button" class="opt-btn" data-value="used to sleep">used to sleep</button>
+          <button type="button" class="opt-btn" data-value="would sleeping">would sleeping</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-8"></div>
+      </div>
+      <div class="g-item" id="item-g2-9" data-answer="would spend">
+        <div class="g-sentence"><span class="g-num">10</span>We <span class="blank" id="blank-g2-9">_____</span> every summer at our grandparents&#x27; house when we were younger.</div>
+        <div class="options" id="opts-g2-9">
+          <button type="button" class="opt-btn" data-value="would spend">would spend</button>
+          <button type="button" class="opt-btn" data-value="were used to spending">were used to spending</button>
+          <button type="button" class="opt-btn" data-value="would spending">would spending</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-9"></div>
+      </div>
+      <div class="g-item" id="item-g2-10" data-answer="got used to giving">
+        <div class="g-sentence"><span class="g-num">11</span>I wasn&#x27;t comfortable speaking in public at first, but eventually I <span class="blank" id="blank-g2-10">_____</span> presentations.</div>
+        <div class="options" id="opts-g2-10">
+          <button type="button" class="opt-btn" data-value="got used to giving">got used to giving</button>
+          <button type="button" class="opt-btn" data-value="used to give">used to give</button>
+          <button type="button" class="opt-btn" data-value="would giving">would giving</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-10"></div>
+      </div>
+      <div class="g-item" id="item-g2-11" data-answer="didn&#x27;t use to be">
+        <div class="g-sentence"><span class="g-num">12</span>He <span class="blank" id="blank-g2-11">_____</span> so impatient when he was younger.</div>
+        <div class="options" id="opts-g2-11">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to be">didn&#x27;t use to be</button>
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to being">wasn&#x27;t used to being</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t being">wouldn&#x27;t being</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-11"></div>
+      </div>
+      <div class="g-item" id="item-g2-12" data-answer="used to commuting">
+        <div class="g-sentence"><span class="g-num">13</span>These days, I&#x27;m <span class="blank" id="blank-g2-12">_____</span> for almost an hour each way.</div>
+        <div class="options" id="opts-g2-12">
+          <button type="button" class="opt-btn" data-value="used to commuting">used to commuting</button>
+          <button type="button" class="opt-btn" data-value="used to commute">used to commute</button>
+          <button type="button" class="opt-btn" data-value="would commuting">would commuting</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-12"></div>
+      </div>
+      <div class="g-item" id="item-g2-13" data-answer="would always prepare">
+        <div class="g-sentence"><span class="g-num">14</span>Whenever we visited them, they <span class="blank" id="blank-g2-13">_____</span> a huge meal for us.</div>
+        <div class="options" id="opts-g2-13">
+          <button type="button" class="opt-btn" data-value="would always prepare">would always prepare</button>
+          <button type="button" class="opt-btn" data-value="were always used to preparing">were always used to preparing</button>
+          <button type="button" class="opt-btn" data-value="would always preparing">would always preparing</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-13"></div>
+      </div>
+      <div class="g-item" id="item-g2-14" data-answer="used to sharing">
+        <div class="g-sentence"><span class="g-num">15</span>At first, living in a shared apartment was difficult, but now I&#x27;m completely <span class="blank" id="blank-g2-14">_____</span> my space with other people.</div>
+        <div class="options" id="opts-g2-14">
+          <button type="button" class="opt-btn" data-value="used to sharing">used to sharing</button>
+          <button type="button" class="opt-btn" data-value="used to share">used to share</button>
+          <button type="button" class="opt-btn" data-value="would sharing">would sharing</button>
+        </div>
+        <div class="g-feedback" id="fb-g2-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Group 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g3">
+    <div class="block-head"><h2>Group 3</h2><span class="block-count">15 items</span></div>
+    <p class="instructions">Tap the option that correctly completes each sentence.</p>
+    <div id="list-g3">
+      <div class="g-item" id="item-g3-0" data-answer="used to wake up">
+        <div class="g-sentence"><span class="g-num">1</span>When I lived in the countryside, I <span class="blank" id="blank-g3-0">_____</span> to the sound of birds every morning.</div>
+        <div class="options" id="opts-g3-0">
+          <button type="button" class="opt-btn" data-value="used to wake up">used to wake up</button>
+          <button type="button" class="opt-btn" data-value="was used to waking up">was used to waking up</button>
+          <button type="button" class="opt-btn" data-value="would waking up">would waking up</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-0"></div>
+      </div>
+      <div class="g-item" id="item-g3-1" data-answer="get used to driving">
+        <div class="g-sentence"><span class="g-num">2</span>It took me several months to <span class="blank" id="blank-g3-1">_____</span> on the left after moving abroad.</div>
+        <div class="options" id="opts-g3-1">
+          <button type="button" class="opt-btn" data-value="get used to driving">get used to driving</button>
+          <button type="button" class="opt-btn" data-value="used to drive">used to drive</button>
+          <button type="button" class="opt-btn" data-value="would driving">would driving</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-1"></div>
+      </div>
+      <div class="g-item" id="item-g3-2" data-answer="didn&#x27;t use to have">
+        <div class="g-sentence"><span class="g-num">3</span>My sister <span class="blank" id="blank-g3-2">_____</span> much confidence, but she has changed a lot since starting university.</div>
+        <div class="options" id="opts-g3-2">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to have">didn&#x27;t use to have</button>
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to having">wasn&#x27;t used to having</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t having">wouldn&#x27;t having</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-2"></div>
+      </div>
+      <div class="g-item" id="item-g3-3" data-answer="would give">
+        <div class="g-sentence"><span class="g-num">4</span>Our teachers <span class="blank" id="blank-g3-3">_____</span> us extra homework before every holiday.</div>
+        <div class="options" id="opts-g3-3">
+          <button type="button" class="opt-btn" data-value="would give">would give</button>
+          <button type="button" class="opt-btn" data-value="were used to giving">were used to giving</button>
+          <button type="button" class="opt-btn" data-value="would giving">would giving</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-3"></div>
+      </div>
+      <div class="g-item" id="item-g3-4" data-answer="not used to working">
+        <div class="g-sentence"><span class="g-num">5</span>I&#x27;m not sure how I&#x27;ll manage at first because I&#x27;m <span class="blank" id="blank-g3-4">_____</span> such long hours.</div>
+        <div class="options" id="opts-g3-4">
+          <button type="button" class="opt-btn" data-value="not used to working">not used to working</button>
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to work">didn&#x27;t use to work</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t working">wouldn&#x27;t working</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-4"></div>
+      </div>
+      <div class="g-item" id="item-g3-5" data-answer="did you use to do">
+        <div class="g-sentence"><span class="g-num">6</span>What <span class="blank" id="blank-g3-5">_____</span> during the summer holidays when you were a child?</div>
+        <div class="options" id="opts-g3-5">
+          <button type="button" class="opt-btn" data-value="did you use to do">did you use to do</button>
+          <button type="button" class="opt-btn" data-value="were you used to doing">were you used to doing</button>
+          <button type="button" class="opt-btn" data-value="would you doing">would you doing</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-5"></div>
+      </div>
+      <div class="g-item" id="item-g3-6" data-answer="used to be">
+        <div class="g-sentence"><span class="g-num">7</span>He <span class="blank" id="blank-g3-6">_____</span> extremely shy, but now he speaks confidently in front of large audiences.</div>
+        <div class="options" id="opts-g3-6">
+          <button type="button" class="opt-btn" data-value="used to be">used to be</button>
+          <button type="button" class="opt-btn" data-value="was used to being">was used to being</button>
+          <button type="button" class="opt-btn" data-value="would being">would being</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-6"></div>
+      </div>
+      <div class="g-item" id="item-g3-7" data-answer="is used to hearing">
+        <div class="g-sentence"><span class="g-num">8</span>After spending ten years in a noisy city, she <span class="blank" id="blank-g3-7">_____</span> traffic throughout the night.</div>
+        <div class="options" id="opts-g3-7">
+          <button type="button" class="opt-btn" data-value="is used to hearing">is used to hearing</button>
+          <button type="button" class="opt-btn" data-value="used to hear">used to hear</button>
+          <button type="button" class="opt-btn" data-value="would hearing">would hearing</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-7"></div>
+      </div>
+      <div class="g-item" id="item-g3-8" data-answer="would often go">
+        <div class="g-sentence"><span class="g-num">9</span>We <span class="blank" id="blank-g3-8">_____</span> fishing together when my grandfather was alive.</div>
+        <div class="options" id="opts-g3-8">
+          <button type="button" class="opt-btn" data-value="would often go">would often go</button>
+          <button type="button" class="opt-btn" data-value="were often used to going">were often used to going</button>
+          <button type="button" class="opt-btn" data-value="would often going">would often going</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-8"></div>
+      </div>
+      <div class="g-item" id="item-g3-9" data-answer="am getting used to speaking">
+        <div class="g-sentence"><span class="g-num">10</span>I <span class="blank" id="blank-g3-9">_____</span> English at work, although I still make mistakes sometimes.</div>
+        <div class="options" id="opts-g3-9">
+          <button type="button" class="opt-btn" data-value="am getting used to speaking">am getting used to speaking</button>
+          <button type="button" class="opt-btn" data-value="used to speak">used to speak</button>
+          <button type="button" class="opt-btn" data-value="would speaking">would speaking</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-9"></div>
+      </div>
+      <div class="g-item" id="item-g3-10" data-answer="used to teach">
+        <div class="g-sentence"><span class="g-num">11</span>My mother <span class="blank" id="blank-g3-10">_____</span> at a local school before she became a university lecturer.</div>
+        <div class="options" id="opts-g3-10">
+          <button type="button" class="opt-btn" data-value="used to teach">used to teach</button>
+          <button type="button" class="opt-btn" data-value="was used to teaching">was used to teaching</button>
+          <button type="button" class="opt-btn" data-value="would teaching">would teaching</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-10"></div>
+      </div>
+      <div class="g-item" id="item-g3-11" data-answer="got used to managing">
+        <div class="g-sentence"><span class="g-num">12</span>At first, he found working remotely strange, but he soon <span class="blank" id="blank-g3-11">_____</span> his own schedule.</div>
+        <div class="options" id="opts-g3-11">
+          <button type="button" class="opt-btn" data-value="got used to managing">got used to managing</button>
+          <button type="button" class="opt-btn" data-value="used to manage">used to manage</button>
+          <button type="button" class="opt-btn" data-value="would managing">would managing</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-11"></div>
+      </div>
+      <div class="g-item" id="item-g3-12" data-answer="would always complain">
+        <div class="g-sentence"><span class="g-num">13</span>The children <span class="blank" id="blank-g3-12">_____</span> whenever we made them eat vegetables.</div>
+        <div class="options" id="opts-g3-12">
+          <button type="button" class="opt-btn" data-value="would always complain">would always complain</button>
+          <button type="button" class="opt-btn" data-value="were always used to complaining">were always used to complaining</button>
+          <button type="button" class="opt-btn" data-value="would always complaining">would always complaining</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-12"></div>
+      </div>
+      <div class="g-item" id="item-g3-13" data-answer="didn&#x27;t use to like">
+        <div class="g-sentence"><span class="g-num">14</span>She <span class="blank" id="blank-g3-13">_____</span> travelling alone, but now she prefers it.</div>
+        <div class="options" id="opts-g3-13">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to like">didn&#x27;t use to like</button>
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to liking">wasn&#x27;t used to liking</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t liking">wouldn&#x27;t liking</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-13"></div>
+      </div>
+      <div class="g-item" id="item-g3-14" data-answer="became used to dealing">
+        <div class="g-sentence"><span class="g-num">15</span>After a few weeks in the new position, I <span class="blank" id="blank-g3-14">_____</span> with difficult customers.</div>
+        <div class="options" id="opts-g3-14">
+          <button type="button" class="opt-btn" data-value="became used to dealing">became used to dealing</button>
+          <button type="button" class="opt-btn" data-value="used to deal">used to deal</button>
+          <button type="button" class="opt-btn" data-value="would dealing">would dealing</button>
+        </div>
+        <div class="g-feedback" id="fb-g3-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check Group 3</button>
+      <button class="btn-ghost" data-reset="g3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g4">
+    <div class="block-head"><h2>Group 4</h2><span class="block-count">15 items</span></div>
+    <p class="instructions">Tap the option that correctly completes each sentence.</p>
+    <div id="list-g4">
+      <div class="g-item" id="item-g4-0" data-answer="would meet">
+        <div class="g-sentence"><span class="g-num">1</span>When we were teenagers, we <span class="blank" id="blank-g4-0">_____</span> at the same café every Friday evening.</div>
+        <div class="options" id="opts-g4-0">
+          <button type="button" class="opt-btn" data-value="would meet">would meet</button>
+          <button type="button" class="opt-btn" data-value="were used to meeting">were used to meeting</button>
+          <button type="button" class="opt-btn" data-value="would meeting">would meeting</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-0"></div>
+      </div>
+      <div class="g-item" id="item-g4-1" data-answer="used to believe">
+        <div class="g-sentence"><span class="g-num">2</span>I <span class="blank" id="blank-g4-1">_____</span> that success depended entirely on intelligence.</div>
+        <div class="options" id="opts-g4-1">
+          <button type="button" class="opt-btn" data-value="used to believe">used to believe</button>
+          <button type="button" class="opt-btn" data-value="was used to believing">was used to believing</button>
+          <button type="button" class="opt-btn" data-value="would believing">would believing</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-1"></div>
+      </div>
+      <div class="g-item" id="item-g4-2" data-answer="is used to dealing">
+        <div class="g-sentence"><span class="g-num">3</span>He&#x27;s been working in construction for years, so he <span class="blank" id="blank-g4-2">_____</span> with physically demanding tasks.</div>
+        <div class="options" id="opts-g4-2">
+          <button type="button" class="opt-btn" data-value="is used to dealing">is used to dealing</button>
+          <button type="button" class="opt-btn" data-value="used to deal">used to deal</button>
+          <button type="button" class="opt-btn" data-value="would dealing">would dealing</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-2"></div>
+      </div>
+      <div class="g-item" id="item-g4-3" data-answer="got used to adapting">
+        <div class="g-sentence"><span class="g-num">4</span>Moving to a completely different culture was challenging, but eventually she <span class="blank" id="blank-g4-3">_____</span> to the new way of life.</div>
+        <div class="options" id="opts-g4-3">
+          <button type="button" class="opt-btn" data-value="got used to adapting">got used to adapting</button>
+          <button type="button" class="opt-btn" data-value="used to adapt">used to adapt</button>
+          <button type="button" class="opt-btn" data-value="would adapting">would adapting</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-3"></div>
+      </div>
+      <div class="g-item" id="item-g4-4" data-answer="didn&#x27;t use to allow">
+        <div class="g-sentence"><span class="g-num">5</span>My parents <span class="blank" id="blank-g4-4">_____</span> me to stay out late when I was a teenager.</div>
+        <div class="options" id="opts-g4-4">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to allow">didn&#x27;t use to allow</button>
+          <button type="button" class="opt-btn" data-value="weren&#x27;t used to allowing">weren&#x27;t used to allowing</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t allowing">wouldn&#x27;t allowing</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-4"></div>
+      </div>
+      <div class="g-item" id="item-g4-5" data-answer="did your family use to spend">
+        <div class="g-sentence"><span class="g-num">6</span>Where <span class="blank" id="blank-g4-5">_____</span> its holidays?</div>
+        <div class="options" id="opts-g4-5">
+          <button type="button" class="opt-btn" data-value="did your family use to spend">did your family use to spend</button>
+          <button type="button" class="opt-btn" data-value="was your family used to spending">was your family used to spending</button>
+          <button type="button" class="opt-btn" data-value="would your family spending">would your family spending</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-5"></div>
+      </div>
+      <div class="g-item" id="item-g4-6" data-answer="wasn&#x27;t used to dealing">
+        <div class="g-sentence"><span class="g-num">7</span>Before I started this job, I <span class="blank" id="blank-g4-6">_____</span> with so many people every day.</div>
+        <div class="options" id="opts-g4-6">
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to dealing">wasn&#x27;t used to dealing</button>
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to deal">didn&#x27;t use to deal</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t dealing">wouldn&#x27;t dealing</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-6"></div>
+      </div>
+      <div class="g-item" id="item-g4-7" data-answer="would always forget">
+        <div class="g-sentence"><span class="g-num">8</span>He <span class="blank" id="blank-g4-7">_____</span> his keys when he was younger.</div>
+        <div class="options" id="opts-g4-7">
+          <button type="button" class="opt-btn" data-value="would always forget">would always forget</button>
+          <button type="button" class="opt-btn" data-value="was always used to forgetting">was always used to forgetting</button>
+          <button type="button" class="opt-btn" data-value="would always forgetting">would always forgetting</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-7"></div>
+      </div>
+      <div class="g-item" id="item-g4-8" data-answer="used to have">
+        <div class="g-sentence"><span class="g-num">9</span>I <span class="blank" id="blank-g4-8">_____</span> very little free time when I was preparing for my final exams.</div>
+        <div class="options" id="opts-g4-8">
+          <button type="button" class="opt-btn" data-value="used to have">used to have</button>
+          <button type="button" class="opt-btn" data-value="was used to having">was used to having</button>
+          <button type="button" class="opt-btn" data-value="would having">would having</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-8"></div>
+      </div>
+      <div class="g-item" id="item-g4-9" data-answer="get used to wearing">
+        <div class="g-sentence"><span class="g-num">10</span>It took her a while to <span class="blank" id="blank-g4-9">_____</span> a uniform every day.</div>
+        <div class="options" id="opts-g4-9">
+          <button type="button" class="opt-btn" data-value="get used to wearing">get used to wearing</button>
+          <button type="button" class="opt-btn" data-value="used to wear">used to wear</button>
+          <button type="button" class="opt-btn" data-value="would wearing">would wearing</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-9"></div>
+      </div>
+      <div class="g-item" id="item-g4-10" data-answer="used to communicating">
+        <div class="g-sentence"><span class="g-num">11</span>Nowadays, we&#x27;re <span class="blank" id="blank-g4-10">_____</span> with colleagues through online platforms.</div>
+        <div class="options" id="opts-g4-10">
+          <button type="button" class="opt-btn" data-value="used to communicating">used to communicating</button>
+          <button type="button" class="opt-btn" data-value="used to communicate">used to communicate</button>
+          <button type="button" class="opt-btn" data-value="would communicating">would communicating</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-10"></div>
+      </div>
+      <div class="g-item" id="item-g4-11" data-answer="would often take">
+        <div class="g-sentence"><span class="g-num">12</span>My grandfather <span class="blank" id="blank-g4-11">_____</span> us to the park on Sunday mornings.</div>
+        <div class="options" id="opts-g4-11">
+          <button type="button" class="opt-btn" data-value="would often take">would often take</button>
+          <button type="button" class="opt-btn" data-value="was often used to taking">was often used to taking</button>
+          <button type="button" class="opt-btn" data-value="would often taking">would often taking</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-11"></div>
+      </div>
+      <div class="g-item" id="item-g4-12" data-answer="didn&#x27;t use to understand">
+        <div class="g-sentence"><span class="g-num">13</span>She <span class="blank" id="blank-g4-12">_____</span> why people enjoyed living in big cities.</div>
+        <div class="options" id="opts-g4-12">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to understand">didn&#x27;t use to understand</button>
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to understanding">wasn&#x27;t used to understanding</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t understanding">wouldn&#x27;t understanding</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-12"></div>
+      </div>
+      <div class="g-item" id="item-g4-13" data-answer="got used to speaking">
+        <div class="g-sentence"><span class="g-num">14</span>After several months abroad, he <span class="blank" id="blank-g4-13">_____</span> English with strangers.</div>
+        <div class="options" id="opts-g4-13">
+          <button type="button" class="opt-btn" data-value="got used to speaking">got used to speaking</button>
+          <button type="button" class="opt-btn" data-value="used to speak">used to speak</button>
+          <button type="button" class="opt-btn" data-value="would speaking">would speaking</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-13"></div>
+      </div>
+      <div class="g-item" id="item-g4-14" data-answer="used to think">
+        <div class="g-sentence"><span class="g-num">15</span>I <span class="blank" id="blank-g4-14">_____</span> that studying late at night was more productive.</div>
+        <div class="options" id="opts-g4-14">
+          <button type="button" class="opt-btn" data-value="used to think">used to think</button>
+          <button type="button" class="opt-btn" data-value="was used to thinking">was used to thinking</button>
+          <button type="button" class="opt-btn" data-value="would thinking">would thinking</button>
+        </div>
+        <div class="g-feedback" id="fb-g4-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check Group 4</button>
+      <button class="btn-ghost" data-reset="g4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g5">
+    <div class="block-head"><h2>Group 5</h2><span class="block-count">15 items</span></div>
+    <p class="instructions">Tap the option that correctly completes each sentence.</p>
+    <div id="list-g5">
+      <div class="g-item" id="item-g5-0" data-answer="wasn&#x27;t used to speaking">
+        <div class="g-sentence"><span class="g-num">1</span>When I first started teaching, I <span class="blank" id="blank-g5-0">_____</span> in front of large groups.</div>
+        <div class="options" id="opts-g5-0">
+          <button type="button" class="opt-btn" data-value="wasn&#x27;t used to speaking">wasn&#x27;t used to speaking</button>
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to speak">didn&#x27;t use to speak</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t speaking">wouldn&#x27;t speaking</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-0"></div>
+      </div>
+      <div class="g-item" id="item-g5-1" data-answer="used to live">
+        <div class="g-sentence"><span class="g-num">2</span>My uncle <span class="blank" id="blank-g5-1">_____</span> in a small village before moving to the capital.</div>
+        <div class="options" id="opts-g5-1">
+          <button type="button" class="opt-btn" data-value="used to live">used to live</button>
+          <button type="button" class="opt-btn" data-value="was used to living">was used to living</button>
+          <button type="button" class="opt-btn" data-value="would living">would living</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-1"></div>
+      </div>
+      <div class="g-item" id="item-g5-2" data-answer="would regularly visit">
+        <div class="g-sentence"><span class="g-num">3</span>We <span class="blank" id="blank-g5-2">_____</span> our relatives during the summer.</div>
+        <div class="options" id="opts-g5-2">
+          <button type="button" class="opt-btn" data-value="would regularly visit">would regularly visit</button>
+          <button type="button" class="opt-btn" data-value="were regularly used to visiting">were regularly used to visiting</button>
+          <button type="button" class="opt-btn" data-value="would regularly visiting">would regularly visiting</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-2"></div>
+      </div>
+      <div class="g-item" id="item-g5-3" data-answer="is used to working">
+        <div class="g-sentence"><span class="g-num">4</span>She has been a doctor for fifteen years, so she <span class="blank" id="blank-g5-3">_____</span> under considerable pressure.</div>
+        <div class="options" id="opts-g5-3">
+          <button type="button" class="opt-btn" data-value="is used to working">is used to working</button>
+          <button type="button" class="opt-btn" data-value="used to work">used to work</button>
+          <button type="button" class="opt-btn" data-value="would working">would working</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-3"></div>
+      </div>
+      <div class="g-item" id="item-g5-4" data-answer="get used to studying">
+        <div class="g-sentence"><span class="g-num">5</span>It took me a long time to <span class="blank" id="blank-g5-4">_____</span> early in the morning.</div>
+        <div class="options" id="opts-g5-4">
+          <button type="button" class="opt-btn" data-value="get used to studying">get used to studying</button>
+          <button type="button" class="opt-btn" data-value="used to study">used to study</button>
+          <button type="button" class="opt-btn" data-value="would studying">would studying</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-4"></div>
+      </div>
+      <div class="g-item" id="item-g5-5" data-answer="didn&#x27;t use to take">
+        <div class="g-sentence"><span class="g-num">6</span>My classmates <span class="blank" id="blank-g5-5">_____</span> online exams before the university introduced them.</div>
+        <div class="options" id="opts-g5-5">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to take">didn&#x27;t use to take</button>
+          <button type="button" class="opt-btn" data-value="weren&#x27;t used to taking">weren&#x27;t used to taking</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t taking">wouldn&#x27;t taking</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-5"></div>
+      </div>
+      <div class="g-item" id="item-g5-6" data-answer="did people use to do">
+        <div class="g-sentence"><span class="g-num">7</span>What <span class="blank" id="blank-g5-6">_____</span> doing for entertainment before smartphones became common?</div>
+        <div class="options" id="opts-g5-6">
+          <button type="button" class="opt-btn" data-value="did people use to do">did people use to do</button>
+          <button type="button" class="opt-btn" data-value="were people used to doing">were people used to doing</button>
+          <button type="button" class="opt-btn" data-value="would people">would people</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-6"></div>
+      </div>
+      <div class="g-item" id="item-g5-7" data-answer="got used to following">
+        <div class="g-sentence"><span class="g-num">8</span>At first, the new employee found the strict schedule difficult, but she <span class="blank" id="blank-g5-7">_____</span> it.</div>
+        <div class="options" id="opts-g5-7">
+          <button type="button" class="opt-btn" data-value="got used to following">got used to following</button>
+          <button type="button" class="opt-btn" data-value="used to follow">used to follow</button>
+          <button type="button" class="opt-btn" data-value="would following">would following</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-7"></div>
+      </div>
+      <div class="g-item" id="item-g5-8" data-answer="would always read">
+        <div class="g-sentence"><span class="g-num">9</span>My father <span class="blank" id="blank-g5-8">_____</span> the newspaper over breakfast.</div>
+        <div class="options" id="opts-g5-8">
+          <button type="button" class="opt-btn" data-value="would always read">would always read</button>
+          <button type="button" class="opt-btn" data-value="was always used to reading">was always used to reading</button>
+          <button type="button" class="opt-btn" data-value="would always reading">would always reading</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-8"></div>
+      </div>
+      <div class="g-item" id="item-g5-9" data-answer="used to be">
+        <div class="g-sentence"><span class="g-num">10</span>I <span class="blank" id="blank-g5-9">_____</span> much more nervous about making mistakes in English.</div>
+        <div class="options" id="opts-g5-9">
+          <button type="button" class="opt-btn" data-value="used to be">used to be</button>
+          <button type="button" class="opt-btn" data-value="was used to being">was used to being</button>
+          <button type="button" class="opt-btn" data-value="would being">would being</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-9"></div>
+      </div>
+      <div class="g-item" id="item-g5-10" data-answer="getting used to living">
+        <div class="g-sentence"><span class="g-num">11</span>Since moving to the city centre, I&#x27;m <span class="blank" id="blank-g5-10">_____</span> with constant noise.</div>
+        <div class="options" id="opts-g5-10">
+          <button type="button" class="opt-btn" data-value="getting used to living">getting used to living</button>
+          <button type="button" class="opt-btn" data-value="used to live">used to live</button>
+          <button type="button" class="opt-btn" data-value="would living">would living</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-10"></div>
+      </div>
+      <div class="g-item" id="item-g5-11" data-answer="didn&#x27;t use to travel">
+        <div class="g-sentence"><span class="g-num">12</span>They <span class="blank" id="blank-g5-11">_____</span> abroad very often when they were younger.</div>
+        <div class="options" id="opts-g5-11">
+          <button type="button" class="opt-btn" data-value="didn&#x27;t use to travel">didn&#x27;t use to travel</button>
+          <button type="button" class="opt-btn" data-value="weren&#x27;t used to travelling">weren&#x27;t used to travelling</button>
+          <button type="button" class="opt-btn" data-value="wouldn&#x27;t travelling">wouldn&#x27;t travelling</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-11"></div>
+      </div>
+      <div class="g-item" id="item-g5-12" data-answer="would deal">
+        <div class="g-sentence"><span class="g-num">13</span>When I worked in customer service, I <span class="blank" id="blank-g5-12">_____</span> with complaints almost every day.</div>
+        <div class="options" id="opts-g5-12">
+          <button type="button" class="opt-btn" data-value="would deal">would deal</button>
+          <button type="button" class="opt-btn" data-value="was used to dealing">was used to dealing</button>
+          <button type="button" class="opt-btn" data-value="would dealing">would dealing</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-12"></div>
+      </div>
+      <div class="g-item" id="item-g5-13" data-answer="got used to using">
+        <div class="g-sentence"><span class="g-num">14</span>He wasn&#x27;t comfortable with the new software initially, but he eventually <span class="blank" id="blank-g5-13">_____</span> it.</div>
+        <div class="options" id="opts-g5-13">
+          <button type="button" class="opt-btn" data-value="got used to using">got used to using</button>
+          <button type="button" class="opt-btn" data-value="used to use">used to use</button>
+          <button type="button" class="opt-btn" data-value="would using">would using</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-13"></div>
+      </div>
+      <div class="g-item" id="item-g5-14" data-answer="used to handling">
+        <div class="g-sentence"><span class="g-num">15</span>Even though the workload is demanding, I&#x27;m now <span class="blank" id="blank-g5-14">_____</span> several projects at once.</div>
+        <div class="options" id="opts-g5-14">
+          <button type="button" class="opt-btn" data-value="used to handling">used to handling</button>
+          <button type="button" class="opt-btn" data-value="used to handle">used to handle</button>
+          <button type="button" class="opt-btn" data-value="would handling">would handling</button>
+        </div>
+        <div class="g-feedback" id="fb-g5-14"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check Group 5</button>
+      <button class="btn-ghost" data-reset="g5">Clear section</button>
+    </div>
+  </section>  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 75</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Used to / Would — for individual practice. Ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the buttons don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2","g3","g4","g5"];
+  var GROUP_COUNTS = {"g1":15,"g2":15,"g3":15,"g4":15,"g5":15};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    return s.toLowerCase().replace(/['’‘]/g,"'").replace(/\s+/g," ").trim();
+  }
+
+  // wire up option buttons
+  document.querySelectorAll('.g-item').forEach(function(item){
+    var qid = item.id.replace('item-','');
+    var blank = document.getElementById('blank-' + qid);
+    item.querySelectorAll('.opt-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        item.dataset.selected = btn.getAttribute('data-value');
+        item.classList.add('answered');
+        item.classList.remove('correct','incorrect');
+        item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+        var fb = document.getElementById('fb-' + qid);
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        if (blank) blank.textContent = btn.getAttribute('data-value');
+        updateScore();
+      });
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .g-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+      if (!selected) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      if (normalize(selected) === normalize(answer)) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        item.querySelectorAll('.opt-btn').forEach(function(b){
+          if (normalize(b.getAttribute('data-value')) === normalize(answer)) b.classList.add('correct-reveal');
+        });
+        if (fb) { fb.innerHTML = 'Not quite — correct answer: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .g-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var blank = document.getElementById('blank-' + qid);
+      item.classList.remove('correct','incorrect','answered');
+      delete item.dataset.selected;
+      item.querySelectorAll('.opt-btn').forEach(function(b){ b.classList.remove('selected','correct-reveal'); });
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      if (blank) blank.textContent = '_____';
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.g-item').forEach(function(item){
+      var answer = item.getAttribute('data-answer') || '';
+      var selected = item.dataset.selected;
+      if (selected) {
+        answered++;
+        if (normalize(selected) === normalize(answer)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>

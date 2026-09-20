@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>The Third Conditional — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  /* ===== Grammar summary — elevated visual design ===== */
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .formula-card{ background:var(--black); border-radius:10px; padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,28px); margin-bottom:20px; position:relative; overflow:hidden; }
+  .formula-card::before{ content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px; background:var(--yellow); opacity:.14; border-radius:50%; }
+  .formula-label{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+  .formula-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-family:'JetBrains Mono', monospace; font-size:clamp(13px,3.2vw,15.5px); color:var(--white); }
+  .formula-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:6px 11px; white-space:nowrap; }
+  .formula-chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula-arrow{ color:rgba(255,255,255,.4); font-size:15px; }
+  .formula-shorthand{ margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:rgba(255,255,255,.55); }
+
+  .example-strip{ display:grid; gap:8px; margin-bottom:26px; }
+  .example-strip .ex-line{ font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; color:var(--ink); }
+  .example-strip .ex-line em{ font-style:normal; color:var(--ink-soft); }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .modal-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .modal-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:16px; position:relative; border-top:4px solid var(--accent); }
+  .modal-card.m-would{ --accent:var(--yellow-deep); }
+  .modal-card.m-could{ --accent:var(--teal); }
+  .modal-card.m-might{ --accent:var(--rose); }
+  .modal-term{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:14px; color:var(--ink); margin-bottom:6px; display:inline-block; padding:3px 8px; border-radius:5px; background:color-mix(in srgb, var(--accent) 16%, white); }
+  .modal-meaning{ font-size:13px; color:var(--ink-soft); margin-bottom:10px; line-height:1.5; }
+  .modal-example{ font-size:12.5px; font-style:italic; color:var(--ink); border-top:1px dashed var(--rule); padding-top:9px; }
+
+  @media (max-width:640px){
+    .modal-grid{ grid-template-columns:1fr; }
+    .formula-row{ font-size:12.5px; }
+  }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13.5px; color:var(--ink-soft); margin-bottom:8px; display:flex; align-items:flex-start; gap:2px; }
+  .q-context strong{ color:var(--ink); font-weight:700; margin-right:4px; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); }
+  .g-sentence strong{ color:var(--ink-soft); font-weight:700; margin-right:4px; }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:130px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:105px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Grammar Practice — Third Conditional</h1>
+    <p class="sub">Rewrite each sentence B using the Third Conditional so it means the same as sentence A, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <span class="gs-kicker">Grammar Summary</span>
+    <h2 class="gs-title">The Third Conditional</h2>
+    <p class="gs-intro">Used to talk about imaginary or unreal situations in the past — how the past could have been different if something had happened differently.</p>
+
+    <div class="formula-card">
+      <div class="formula-label">Structure</div>
+      <div class="formula-row">
+        <span class="formula-chip accent">If</span>
+        <span class="formula-chip">Past Perfect</span>
+        <span class="formula-arrow">,</span>
+        <span class="formula-chip accent">would / could / might</span>
+        <span class="formula-chip">have + Past Participle</span>
+      </div>
+      <div class="formula-shorthand">= If + had + V³, would have + V³</div>
+    </div>
+
+    <div class="example-strip">
+      <div class="ex-line">If I had studied harder, <em>I would have passed the exam.</em></div>
+      <div class="ex-line">If they had left earlier, <em>they wouldn't have missed the train.</em></div>
+      <div class="ex-line">If she had brought a map, <em>we could have found the hotel.</em></div>
+    </div>
+
+    <h3 class="gs-subhead">Modal verbs in the third conditional</h3>
+    <div class="modal-grid">
+      <div class="modal-card m-would">
+        <span class="modal-term">would have + V³</span>
+        <p class="modal-meaning">Expresses the most likely result.</p>
+        <p class="modal-example">If I had seen you, I would have spoken to you.</p>
+      </div>
+      <div class="modal-card m-could">
+        <span class="modal-term">could have + V³</span>
+        <p class="modal-meaning">Expresses possibility or ability.</p>
+        <p class="modal-example">If we had left earlier, we could have caught the bus.</p>
+      </div>
+      <div class="modal-card m-might">
+        <span class="modal-term">might have + V³</span>
+        <p class="modal-meaning">Expresses a possible result.</p>
+        <p class="modal-example">If he had taken the medicine, he might have felt better.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-g1">1</a>
+    <a href="#section-g2">2</a>
+    <a href="#section-g3">3</a>
+    <a href="#section-g4">4</a>
+    <a href="#section-g5">5</a>
+    <a href="#section-g6">6</a>
+    <a href="#section-g7">7</a>
+    <a href="#section-g8">8</a>
+    <a href="#section-g9">9</a>
+    <a href="#section-g10">10</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Group 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g1">
+      <div class="q-item" id="item-g1-0" data-answer1="they hadn&#x27;t run" data-answer2="they could have reached">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> They couldn&#x27;t reach the town today because they ran out of petrol.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> out of petrol, <input type="text" class="blank-input" id="in2-g1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the town today.</div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="q-item" id="item-g1-1" data-answer1="Rose hadn&#x27;t had" data-answer2="she would have stayed">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Rose didn&#x27;t stay with us, because she had other plans.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> other plans, <input type="text" class="blank-input" id="in2-g1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> with us.</div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="q-item" id="item-g1-2" data-answer1="Frank had found" data-answer2="he would have assembled">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> Frank didn&#x27;t find the instruction, so he didn&#x27;t assemble this device.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the instruction, <input type="text" class="blank-input" id="in2-g1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the device.</div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="q-item" id="item-g1-3" data-answer1="Sanjay hadn&#x27;t helped" data-answer2="we wouldn&#x27;t have known">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> Sanjay helped us, so we knew what to do.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us, <input type="text" class="blank-input" id="in2-g1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> what to do.</div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="q-item" id="item-g1-4" data-answer1="you hadn&#x27;t woken up" data-answer2="you wouldn&#x27;t have been">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> You were late because you woke up late that morning.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> late that morning, <input type="text" class="blank-input" id="in2-g1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> late.</div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="q-item" id="item-g1-5" data-answer1="we had left" data-answer2="we wouldn&#x27;t have missed">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> We missed the flight because we left home too late.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> home earlier, <input type="text" class="blank-input" id="in2-g1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the flight.</div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="q-item" id="item-g1-6" data-answer1="Lisa had revised" data-answer2="she would have passed">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> Lisa failed the exam because she didn&#x27;t revise enough.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough, <input type="text" class="blank-input" id="in2-g1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the exam.</div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="q-item" id="item-g1-7" data-answer1="it hadn&#x27;t rained all weekend" data-answer2="we would have gone">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> It rained all weekend, so we didn&#x27;t go hiking.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> , <input type="text" class="blank-input" id="in2-g1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> hiking.</div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="q-item" id="item-g1-8" data-answer1="they had booked" data-answer2="they would have had">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They forgot to book a hotel, so they had nowhere to stay.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a hotel, <input type="text" class="blank-input" id="in2-g1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> somewhere to stay.</div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="q-item" id="item-g1-9" data-answer1="I had charged" data-answer2="wouldn&#x27;t have switched off">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> I didn&#x27;t charge my phone, so it switched off during the journey.</div>
+        <div class="g-sentence"><strong>B:</strong> If <input type="text" class="blank-input" id="in1-g1-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my phone, it <input type="text" class="blank-input" id="in2-g1-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> during the journey.</div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Group 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Group 2</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g2">
+      <div class="q-item" id="item-g2-0" data-answer1="hadn&#x27;t run" data-answer2="could have reached">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> They couldn&#x27;t reach the town because they ran out of petrol.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> out of petrol, they <input type="text" class="blank-input" id="in2-g2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the town.</div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="q-item" id="item-g2-1" data-answer1="hadn&#x27;t had" data-answer2="would have stayed">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Rose didn&#x27;t stay with us because she had other plans.</div>
+        <div class="g-sentence"><strong>B:</strong> If Rose <input type="text" class="blank-input" id="in1-g2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> other plans, she <input type="text" class="blank-input" id="in2-g2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> with us.</div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="q-item" id="item-g2-2" data-answer1="had found" data-answer2="would have assembled">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> Frank didn&#x27;t assemble the device because he couldn&#x27;t find the instructions.</div>
+        <div class="g-sentence"><strong>B:</strong> If Frank <input type="text" class="blank-input" id="in1-g2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the instructions, he <input type="text" class="blank-input" id="in2-g2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the device.</div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="q-item" id="item-g2-3" data-answer1="hadn&#x27;t helped" data-answer2="wouldn&#x27;t have known">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> Sanjay helped us, so we knew what to do.</div>
+        <div class="g-sentence"><strong>B:</strong> If Sanjay <input type="text" class="blank-input" id="in1-g2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us, we <input type="text" class="blank-input" id="in2-g2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> what to do.</div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="q-item" id="item-g2-4" data-answer1="hadn&#x27;t woken up" data-answer2="wouldn&#x27;t have been">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> You were late because you woke up late that morning.</div>
+        <div class="g-sentence"><strong>B:</strong> If you <input type="text" class="blank-input" id="in1-g2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> late that morning, you <input type="text" class="blank-input" id="in2-g2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> late.</div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="q-item" id="item-g2-5" data-answer1="had left" data-answer2="wouldn&#x27;t have missed">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> We missed the flight because we left home too late.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> home earlier, we <input type="text" class="blank-input" id="in2-g2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the flight.</div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="q-item" id="item-g2-6" data-answer1="had revised" data-answer2="wouldn&#x27;t have failed">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> Lisa failed the exam because she didn&#x27;t revise enough.</div>
+        <div class="g-sentence"><strong>B:</strong> If Lisa <input type="text" class="blank-input" id="in1-g2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough, she <input type="text" class="blank-input" id="in2-g2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the exam.</div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="q-item" id="item-g2-7" data-answer1="hadn&#x27;t rained" data-answer2="would have gone">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> It rained all weekend, so we didn&#x27;t go hiking.</div>
+        <div class="g-sentence"><strong>B:</strong> If it <input type="text" class="blank-input" id="in1-g2-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> all weekend, we <input type="text" class="blank-input" id="in2-g2-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> hiking.</div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+      <div class="q-item" id="item-g2-8" data-answer1="had booked" data-answer2="would have had">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They forgot to book a hotel, so they had nowhere to stay.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g2-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a hotel, they <input type="text" class="blank-input" id="in2-g2-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> somewhere to stay.</div>
+        <div class="g-feedback" id="fb-g2-8"></div>
+      </div>
+      <div class="q-item" id="item-g2-9" data-answer1="had charged" data-answer2="wouldn&#x27;t have switched off">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> I didn&#x27;t charge my phone, so it switched off during the journey.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g2-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my phone, it <input type="text" class="blank-input" id="in2-g2-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> during the journey.</div>
+        <div class="g-feedback" id="fb-g2-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Group 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g3">
+    <div class="block-head"><h2>Group 3</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g3">
+      <div class="q-item" id="item-g3-0" data-answer1="had told" data-answer2="would have attended">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Tom didn&#x27;t attend the meeting because nobody told him about it.</div>
+        <div class="g-sentence"><strong>B:</strong> If somebody <input type="text" class="blank-input" id="in1-g3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Tom about the meeting, he <input type="text" class="blank-input" id="in2-g3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it.</div>
+        <div class="g-feedback" id="fb-g3-0"></div>
+      </div>
+      <div class="q-item" id="item-g3-1" data-answer1="hadn&#x27;t left" data-answer2="could have entered">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> We couldn&#x27;t enter the building because we left our ID cards at home.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our ID cards at home, we <input type="text" class="blank-input" id="in2-g3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the building.</div>
+        <div class="g-feedback" id="fb-g3-1"></div>
+      </div>
+      <div class="q-item" id="item-g3-2" data-answer1="had downloaded" data-answer2="wouldn&#x27;t have got">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> Sarah got lost because she didn&#x27;t download the map.</div>
+        <div class="g-sentence"><strong>B:</strong> If Sarah <input type="text" class="blank-input" id="in1-g3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the map, she <input type="text" class="blank-input" id="in2-g3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> lost.</div>
+        <div class="g-feedback" id="fb-g3-2"></div>
+      </div>
+      <div class="q-item" id="item-g3-3" data-answer1="had had" data-answer2="would have bought">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> I didn&#x27;t buy the jacket because I didn&#x27;t have enough money.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough money, I <input type="text" class="blank-input" id="in2-g3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the jacket.</div>
+        <div class="g-feedback" id="fb-g3-3"></div>
+      </div>
+      <div class="q-item" id="item-g3-4" data-answer1="hadn&#x27;t broken" data-answer2="wouldn&#x27;t have arrived">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> They arrived late because their car broke down.</div>
+        <div class="g-sentence"><strong>B:</strong> If their car <input type="text" class="blank-input" id="in1-g3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> down, they <input type="text" class="blank-input" id="in2-g3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> late.</div>
+        <div class="g-feedback" id="fb-g3-4"></div>
+      </div>
+      <div class="q-item" id="item-g3-5" data-answer1="had prepared" data-answer2="might have got">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Mark didn&#x27;t get the job because he didn&#x27;t prepare for the interview.</div>
+        <div class="g-sentence"><strong>B:</strong> If Mark <input type="text" class="blank-input" id="in1-g3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for the interview, he <input type="text" class="blank-input" id="in2-g3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the job.</div>
+        <div class="g-feedback" id="fb-g3-5"></div>
+      </div>
+      <div class="q-item" id="item-g3-6" data-answer1="had arrived" data-answer2="could have seen">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> We couldn&#x27;t see the match because we arrived after it had started.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g3-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> earlier, we <input type="text" class="blank-input" id="in2-g3-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the beginning of the match.</div>
+        <div class="g-feedback" id="fb-g3-6"></div>
+      </div>
+      <div class="q-item" id="item-g3-7" data-answer1="had found" data-answer2="wouldn&#x27;t have missed">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Anna missed the train because she couldn&#x27;t find her ticket.</div>
+        <div class="g-sentence"><strong>B:</strong> If Anna <input type="text" class="blank-input" id="in1-g3-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her ticket, she <input type="text" class="blank-input" id="in2-g3-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the train.</div>
+        <div class="g-feedback" id="fb-g3-7"></div>
+      </div>
+      <div class="q-item" id="item-g3-8" data-answer1="had offered" data-answer2="might have won">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> The company lost the contract because they offered a higher price.</div>
+        <div class="g-sentence"><strong>B:</strong> If the company <input type="text" class="blank-input" id="in1-g3-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a lower price, they <input type="text" class="blank-input" id="in2-g3-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the contract.</div>
+        <div class="g-feedback" id="fb-g3-8"></div>
+      </div>
+      <div class="q-item" id="item-g3-9" data-answer1="hadn&#x27;t stopped" data-answer2="could have finished">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> I couldn&#x27;t finish the report because my computer stopped working.</div>
+        <div class="g-sentence"><strong>B:</strong> If my computer <input type="text" class="blank-input" id="in1-g3-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> working, I <input type="text" class="blank-input" id="in2-g3-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the report.</div>
+        <div class="g-feedback" id="fb-g3-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check Group 3</button>
+      <button class="btn-ghost" data-reset="g3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g4">
+    <div class="block-head"><h2>Group 4</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g4">
+      <div class="q-item" id="item-g4-0" data-answer1="had saved" data-answer2="could have gone">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> James didn&#x27;t go abroad because he didn&#x27;t save enough money.</div>
+        <div class="g-sentence"><strong>B:</strong> If James <input type="text" class="blank-input" id="in1-g4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough money, he <input type="text" class="blank-input" id="in2-g4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> abroad.</div>
+        <div class="g-feedback" id="fb-g4-0"></div>
+      </div>
+      <div class="q-item" id="item-g4-1" data-answer1="hadn&#x27;t been" data-answer2="would have ordered">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> We didn&#x27;t order dessert because the restaurant was closing.</div>
+        <div class="g-sentence"><strong>B:</strong> If the restaurant <input type="text" class="blank-input" id="in1-g4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> closing, we <input type="text" class="blank-input" id="in2-g4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> dessert.</div>
+        <div class="g-feedback" id="fb-g4-1"></div>
+      </div>
+      <div class="q-item" id="item-g4-2" data-answer1="hadn&#x27;t lost" data-answer2="could have contacted">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> Maria wasn&#x27;t able to contact us because she lost her phone.</div>
+        <div class="g-sentence"><strong>B:</strong> If Maria <input type="text" class="blank-input" id="in1-g4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her phone, she <input type="text" class="blank-input" id="in2-g4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us.</div>
+        <div class="g-feedback" id="fb-g4-2"></div>
+      </div>
+      <div class="q-item" id="item-g4-3" data-answer1="hadn&#x27;t been" data-answer2="might have won">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The team lost the match because their best player was injured.</div>
+        <div class="g-sentence"><strong>B:</strong> If their best player <input type="text" class="blank-input" id="in1-g4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> injured, the team <input type="text" class="blank-input" id="in2-g4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the match.</div>
+        <div class="g-feedback" id="fb-g4-3"></div>
+      </div>
+      <div class="q-item" id="item-g4-4" data-answer1="hadn&#x27;t changed" data-answer2="would have recognised">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> I didn&#x27;t recognize him because he had changed his appearance.</div>
+        <div class="g-sentence"><strong>B:</strong> If he <input type="text" class="blank-input" id="in1-g4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his appearance, I <input type="text" class="blank-input" id="in2-g4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> him.</div>
+        <div class="g-feedback" id="fb-g4-4"></div>
+      </div>
+      <div class="q-item" id="item-g4-5" data-answer1="had known" data-answer2="would have taken">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> They didn&#x27;t take the shortcut because they didn&#x27;t know about it.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> about the shortcut, they <input type="text" class="blank-input" id="in2-g4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it.</div>
+        <div class="g-feedback" id="fb-g4-5"></div>
+      </div>
+      <div class="q-item" id="item-g4-6" data-answer1="hadn&#x27;t become" data-answer2="could have had">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> We couldn&#x27;t have dinner outside because the weather became cold.</div>
+        <div class="g-sentence"><strong>B:</strong> If the weather <input type="text" class="blank-input" id="in1-g4-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> cold, we <input type="text" class="blank-input" id="in2-g4-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> dinner outside.</div>
+        <div class="g-feedback" id="fb-g4-6"></div>
+      </div>
+      <div class="q-item" id="item-g4-7" data-answer1="had written" data-answer2="wouldn&#x27;t have forgotten">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Peter forgot the appointment because he didn&#x27;t write it in his calendar.</div>
+        <div class="g-sentence"><strong>B:</strong> If Peter <input type="text" class="blank-input" id="in1-g4-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the appointment in his calendar, he <input type="text" class="blank-input" id="in2-g4-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it.</div>
+        <div class="g-feedback" id="fb-g4-7"></div>
+      </div>
+      <div class="q-item" id="item-g4-8" data-answer1="had explained" data-answer2="would have understood">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> The students didn&#x27;t understand the topic because the teacher didn&#x27;t explain it clearly.</div>
+        <div class="g-sentence"><strong>B:</strong> If the teacher <input type="text" class="blank-input" id="in1-g4-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it clearly, the students <input type="text" class="blank-input" id="in2-g4-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the topic.</div>
+        <div class="g-feedback" id="fb-g4-8"></div>
+      </div>
+      <div class="q-item" id="item-g4-9" data-answer1="had had" data-answer2="would have sent">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> I didn&#x27;t send you the document because I didn&#x27;t have your email address.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g4-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your email address, I <input type="text" class="blank-input" id="in2-g4-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you the document.</div>
+        <div class="g-feedback" id="fb-g4-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check Group 4</button>
+      <button class="btn-ghost" data-reset="g4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g5">
+    <div class="block-head"><h2>Group 5</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g5">
+      <div class="q-item" id="item-g5-0" data-answer1="had had" data-answer2="could have visited">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> We didn&#x27;t visit the museum because we didn&#x27;t have enough time.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough time, we <input type="text" class="blank-input" id="in2-g5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the museum.</div>
+        <div class="g-feedback" id="fb-g5-0"></div>
+      </div>
+      <div class="q-item" id="item-g5-1" data-answer1="had applied" data-answer2="might have got">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Daniel missed the opportunity because he didn&#x27;t apply before the deadline.</div>
+        <div class="g-sentence"><strong>B:</strong> If Daniel <input type="text" class="blank-input" id="in1-g5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the deadline, he <input type="text" class="blank-input" id="in2-g5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the opportunity.</div>
+        <div class="g-feedback" id="fb-g5-1"></div>
+      </div>
+      <div class="q-item" id="item-g5-2" data-answer1="hadn&#x27;t changed" data-answer2="would have recognised">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> She didn&#x27;t recognize the restaurant because it had changed its name.</div>
+        <div class="g-sentence"><strong>B:</strong> If the restaurant <input type="text" class="blank-input" id="in1-g5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> its name, she <input type="text" class="blank-input" id="in2-g5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it.</div>
+        <div class="g-feedback" id="fb-g5-2"></div>
+      </div>
+      <div class="q-item" id="item-g5-3" data-answer1="had told" data-answer2="could have helped">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> I couldn&#x27;t help you because you didn&#x27;t tell me about the problem.</div>
+        <div class="g-sentence"><strong>B:</strong> If you <input type="text" class="blank-input" id="in1-g5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> me about the problem, I <input type="text" class="blank-input" id="in2-g5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you.</div>
+        <div class="g-feedback" id="fb-g5-3"></div>
+      </div>
+      <div class="q-item" id="item-g5-4" data-answer1="hadn&#x27;t made" data-answer2="might have won">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> They didn&#x27;t win the competition because they made several mistakes.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> several mistakes, they <input type="text" class="blank-input" id="in2-g5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the competition.</div>
+        <div class="g-feedback" id="fb-g5-4"></div>
+      </div>
+      <div class="q-item" id="item-g5-5" data-answer1="had brought" data-answer2="could have taken">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> We didn&#x27;t take any photos because we forgot to bring the camera.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the camera, we <input type="text" class="blank-input" id="in2-g5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> some photos.</div>
+        <div class="g-feedback" id="fb-g5-5"></div>
+      </div>
+      <div class="q-item" id="item-g5-6" data-answer1="had been feeling" data-answer2="would have come">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> Emma didn&#x27;t come to the party because she wasn&#x27;t feeling well.</div>
+        <div class="g-sentence"><strong>B:</strong> If Emma <input type="text" class="blank-input" id="in1-g5-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> well, she <input type="text" class="blank-input" id="in2-g5-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to the party.</div>
+        <div class="g-feedback" id="fb-g5-6"></div>
+      </div>
+      <div class="q-item" id="item-g5-7" data-answer1="hadn&#x27;t been talking" data-answer2="could have heard">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> The passengers missed the announcement because they were talking loudly.</div>
+        <div class="g-sentence"><strong>B:</strong> If the passengers <input type="text" class="blank-input" id="in1-g5-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> so loudly, they <input type="text" class="blank-input" id="in2-g5-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the announcement.</div>
+        <div class="g-feedback" id="fb-g5-7"></div>
+      </div>
+      <div class="q-item" id="item-g5-8" data-answer1="had informed" data-answer2="would have known">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> I didn&#x27;t know about the change because nobody informed me.</div>
+        <div class="g-sentence"><strong>B:</strong> If somebody <input type="text" class="blank-input" id="in1-g5-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> me, I <input type="text" class="blank-input" id="in2-g5-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> about the change.</div>
+        <div class="g-feedback" id="fb-g5-8"></div>
+      </div>
+      <div class="q-item" id="item-g5-9" data-answer1="hadn&#x27;t increased" data-answer2="wouldn&#x27;t have lost">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The restaurant lost many customers because it increased its prices.</div>
+        <div class="g-sentence"><strong>B:</strong> If the restaurant <input type="text" class="blank-input" id="in1-g5-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> its prices, it <input type="text" class="blank-input" id="in2-g5-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> so many customers.</div>
+        <div class="g-feedback" id="fb-g5-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check Group 5</button>
+      <button class="btn-ghost" data-reset="g5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g6">
+    <div class="block-head"><h2>Group 6</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g6">
+      <div class="q-item" id="item-g6-0" data-answer1="hadn&#x27;t left" data-answer2="could have finished">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> We couldn&#x27;t finish the project because two members left the team.</div>
+        <div class="g-sentence"><strong>B:</strong> If two members <input type="text" class="blank-input" id="in1-g6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the team, we <input type="text" class="blank-input" id="in2-g6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the project.</div>
+        <div class="g-feedback" id="fb-g6-0"></div>
+      </div>
+      <div class="q-item" id="item-g6-1" data-answer1="hadn&#x27;t forgotten" data-answer2="would have bought">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Jack didn&#x27;t buy the tickets because he forgot about the concert.</div>
+        <div class="g-sentence"><strong>B:</strong> If Jack <input type="text" class="blank-input" id="in1-g6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> about the concert, he <input type="text" class="blank-input" id="in2-g6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the tickets.</div>
+        <div class="g-feedback" id="fb-g6-1"></div>
+      </div>
+      <div class="q-item" id="item-g6-2" data-answer1="hadn&#x27;t been" data-answer2="wouldn&#x27;t have been">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> The flight was delayed because there was heavy snow.</div>
+        <div class="g-sentence"><strong>B:</strong> If there <input type="text" class="blank-input" id="in1-g6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> heavy snow, the flight <input type="text" class="blank-input" id="in2-g6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> delayed.</div>
+        <div class="g-feedback" id="fb-g6-2"></div>
+      </div>
+      <div class="q-item" id="item-g6-3" data-answer1="had been written" data-answer2="would have understood">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> I didn&#x27;t understand the instructions because they were written in technical language.</div>
+        <div class="g-sentence"><strong>B:</strong> If the instructions <input type="text" class="blank-input" id="in1-g6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in simpler language, I <input type="text" class="blank-input" id="in2-g6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> them.</div>
+        <div class="g-feedback" id="fb-g6-3"></div>
+      </div>
+      <div class="q-item" id="item-g6-4" data-answer1="had completed" data-answer2="might have received">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> Sarah didn&#x27;t get a promotion because she didn&#x27;t complete the training course.</div>
+        <div class="g-sentence"><strong>B:</strong> If Sarah <input type="text" class="blank-input" id="in1-g6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the training course, she <input type="text" class="blank-input" id="in2-g6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a promotion.</div>
+        <div class="g-feedback" id="fb-g6-4"></div>
+      </div>
+      <div class="q-item" id="item-g6-5" data-answer1="had had" data-answer2="could have repaired">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> They couldn&#x27;t repair the machine because they didn&#x27;t have the necessary tools.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the necessary tools, they <input type="text" class="blank-input" id="in2-g6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the machine.</div>
+        <div class="g-feedback" id="fb-g6-5"></div>
+      </div>
+      <div class="q-item" id="item-g6-6" data-answer1="hadn&#x27;t been" data-answer2="would have gone">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> We didn&#x27;t go swimming because the pool was closed.</div>
+        <div class="g-sentence"><strong>B:</strong> If the pool <input type="text" class="blank-input" id="in1-g6-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> closed, we <input type="text" class="blank-input" id="in2-g6-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> swimming.</div>
+        <div class="g-feedback" id="fb-g6-6"></div>
+      </div>
+      <div class="q-item" id="item-g6-7" data-answer1="had read" data-answer2="could have answered">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> He didn&#x27;t answer the question because he hadn&#x27;t read the article.</div>
+        <div class="g-sentence"><strong>B:</strong> If he <input type="text" class="blank-input" id="in1-g6-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the article, he <input type="text" class="blank-input" id="in2-g6-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the question.</div>
+        <div class="g-feedback" id="fb-g6-7"></div>
+      </div>
+      <div class="q-item" id="item-g6-8" data-answer1="had met" data-answer2="would have recognised">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> I didn&#x27;t recognize the woman because I had never met her before.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g6-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her before, I <input type="text" class="blank-input" id="in2-g6-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her.</div>
+        <div class="g-feedback" id="fb-g6-8"></div>
+      </div>
+      <div class="q-item" id="item-g6-9" data-answer1="had advertised" data-answer2="might have been">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The event was unsuccessful because the organizers didn&#x27;t advertise it properly.</div>
+        <div class="g-sentence"><strong>B:</strong> If the organizers <input type="text" class="blank-input" id="in1-g6-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it properly, the event <input type="text" class="blank-input" id="in2-g6-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> more successful.</div>
+        <div class="g-feedback" id="fb-g6-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g6">Check Group 6</button>
+      <button class="btn-ghost" data-reset="g6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g7">
+    <div class="block-head"><h2>Group 7</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g7">
+      <div class="q-item" id="item-g7-0" data-answer1="hadn&#x27;t been" data-answer2="could have reached">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> We didn&#x27;t reach the village because the road was blocked.</div>
+        <div class="g-sentence"><strong>B:</strong> If the road <input type="text" class="blank-input" id="in1-g7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> blocked, we <input type="text" class="blank-input" id="in2-g7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the village.</div>
+        <div class="g-feedback" id="fb-g7-0"></div>
+      </div>
+      <div class="q-item" id="item-g7-1" data-answer1="hadn&#x27;t made" data-answer2="might have passed">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> David didn&#x27;t pass his driving test because he made too many mistakes.</div>
+        <div class="g-sentence"><strong>B:</strong> If David <input type="text" class="blank-input" id="in1-g7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> so many mistakes, he <input type="text" class="blank-input" id="in2-g7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his driving test.</div>
+        <div class="g-feedback" id="fb-g7-1"></div>
+      </div>
+      <div class="q-item" id="item-g7-2" data-answer1="hadn&#x27;t had" data-answer2="could have attended">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> I couldn&#x27;t attend the lecture because I had an important meeting.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an important meeting, I <input type="text" class="blank-input" id="in2-g7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the lecture.</div>
+        <div class="g-feedback" id="fb-g7-2"></div>
+      </div>
+      <div class="q-item" id="item-g7-3" data-answer1="had planned" data-answer2="would have enjoyed">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> They didn&#x27;t enjoy the trip because they hadn&#x27;t planned it carefully.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the trip carefully, they <input type="text" class="blank-input" id="in2-g7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it more.</div>
+        <div class="g-feedback" id="fb-g7-3"></div>
+      </div>
+      <div class="q-item" id="item-g7-4" data-answer1="hadn&#x27;t already closed" data-answer2="could have bought">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> We didn&#x27;t buy anything because the shop had already closed.</div>
+        <div class="g-sentence"><strong>B:</strong> If the shop <input type="text" class="blank-input" id="in1-g7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> closed, we <input type="text" class="blank-input" id="in2-g7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> something.</div>
+        <div class="g-feedback" id="fb-g7-4"></div>
+      </div>
+      <div class="q-item" id="item-g7-5" data-answer1="had checked" data-answer2="would have received">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Olivia didn&#x27;t get the information because she didn&#x27;t check her email.</div>
+        <div class="g-sentence"><strong>B:</strong> If Olivia <input type="text" class="blank-input" id="in1-g7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her email, she <input type="text" class="blank-input" id="in2-g7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the information.</div>
+        <div class="g-feedback" id="fb-g7-5"></div>
+      </div>
+      <div class="q-item" id="item-g7-6" data-answer1="hadn&#x27;t been raining" data-answer2="could have played">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> The children couldn&#x27;t play outside because it was raining heavily.</div>
+        <div class="g-sentence"><strong>B:</strong> If it <input type="text" class="blank-input" id="in1-g7-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> heavily, the children <input type="text" class="blank-input" id="in2-g7-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> outside.</div>
+        <div class="g-feedback" id="fb-g7-6"></div>
+      </div>
+      <div class="q-item" id="item-g7-7" data-answer1="hadn&#x27;t thought" data-answer2="would have called">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> I didn&#x27;t call you because I thought you were busy.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g7-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you were busy, I <input type="text" class="blank-input" id="in2-g7-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you.</div>
+        <div class="g-feedback" id="fb-g7-7"></div>
+      </div>
+      <div class="q-item" id="item-g7-8" data-answer1="had received" data-answer2="could have expanded">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> The company didn&#x27;t expand because it didn&#x27;t receive enough investment.</div>
+        <div class="g-sentence"><strong>B:</strong> If the company <input type="text" class="blank-input" id="in1-g7-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough investment, it <input type="text" class="blank-input" id="in2-g7-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-g7-8"></div>
+      </div>
+      <div class="q-item" id="item-g7-9" data-answer1="had understood" data-answer2="could have completed">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> He wasn&#x27;t able to complete the task because he didn&#x27;t understand the requirements.</div>
+        <div class="g-sentence"><strong>B:</strong> If he <input type="text" class="blank-input" id="in1-g7-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the requirements, he <input type="text" class="blank-input" id="in2-g7-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the task.</div>
+        <div class="g-feedback" id="fb-g7-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g7">Check Group 7</button>
+      <button class="btn-ghost" data-reset="g7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g8">
+    <div class="block-head"><h2>Group 8</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g8">
+      <div class="q-item" id="item-g8-0" data-answer1="hadn&#x27;t changed" data-answer2="would have stayed">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> We didn&#x27;t stay at the beach because the weather changed suddenly.</div>
+        <div class="g-sentence"><strong>B:</strong> If the weather <input type="text" class="blank-input" id="in1-g8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> suddenly, we <input type="text" class="blank-input" id="in2-g8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the beach.</div>
+        <div class="g-feedback" id="fb-g8-0"></div>
+      </div>
+      <div class="q-item" id="item-g8-1" data-answer1="had read" data-answer2="might have accepted">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Nina didn&#x27;t accept the offer because she didn&#x27;t read the contract carefully.</div>
+        <div class="g-sentence"><strong>B:</strong> If Nina <input type="text" class="blank-input" id="in1-g8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the contract carefully, she <input type="text" class="blank-input" id="in2-g8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the offer.</div>
+        <div class="g-feedback" id="fb-g8-1"></div>
+      </div>
+      <div class="q-item" id="item-g8-2" data-answer1="hadn&#x27;t left" data-answer2="wouldn&#x27;t have lost">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> I lost my wallet because I left it on the bus.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it on the bus, I <input type="text" class="blank-input" id="in2-g8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my wallet.</div>
+        <div class="g-feedback" id="fb-g8-2"></div>
+      </div>
+      <div class="q-item" id="item-g8-3" data-answer1="had studied" data-answer2="would have passed">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The students failed the test because they didn&#x27;t study the material.</div>
+        <div class="g-sentence"><strong>B:</strong> If the students <input type="text" class="blank-input" id="in1-g8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the material, they <input type="text" class="blank-input" id="in2-g8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the test.</div>
+        <div class="g-feedback" id="fb-g8-3"></div>
+      </div>
+      <div class="q-item" id="item-g8-4" data-answer1="had entered" data-answer2="would have found">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> We didn&#x27;t find the address because we entered the wrong street name.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the correct street name, we <input type="text" class="blank-input" id="in2-g8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the address.</div>
+        <div class="g-feedback" id="fb-g8-4"></div>
+      </div>
+      <div class="q-item" id="item-g8-5" data-answer1="had invited" data-answer2="would have joined">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Robert didn&#x27;t join us because nobody invited him.</div>
+        <div class="g-sentence"><strong>B:</strong> If somebody <input type="text" class="blank-input" id="in1-g8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Robert, he <input type="text" class="blank-input" id="in2-g8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us.</div>
+        <div class="g-feedback" id="fb-g8-5"></div>
+      </div>
+      <div class="q-item" id="item-g8-6" data-answer1="had had" data-answer2="could have opened">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> I couldn&#x27;t open the file because I didn&#x27;t have the correct software.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g8-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the correct software, I <input type="text" class="blank-input" id="in2-g8-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the file.</div>
+        <div class="g-feedback" id="fb-g8-6"></div>
+      </div>
+      <div class="q-item" id="item-g8-7" data-answer1="hadn&#x27;t stopped" data-answer2="would have caught">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> They didn&#x27;t catch the train because they stopped for coffee.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g8-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for coffee, they <input type="text" class="blank-input" id="in2-g8-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the train.</div>
+        <div class="g-feedback" id="fb-g8-7"></div>
+      </div>
+      <div class="q-item" id="item-g8-8" data-answer1="hadn&#x27;t become" data-answer2="could have finished">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> She wasn&#x27;t able to finish the presentation because she became ill.</div>
+        <div class="g-sentence"><strong>B:</strong> If she <input type="text" class="blank-input" id="in1-g8-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> ill, she <input type="text" class="blank-input" id="in2-g8-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the presentation.</div>
+        <div class="g-feedback" id="fb-g8-8"></div>
+      </div>
+      <div class="q-item" id="item-g8-9" data-answer1="had reserved" data-answer2="wouldn&#x27;t have had to wait">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> We didn&#x27;t reserve a table, so we had to wait outside.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g8-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a table, we <input type="text" class="blank-input" id="in2-g8-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> outside.</div>
+        <div class="g-feedback" id="fb-g8-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g8">Check Group 8</button>
+      <button class="btn-ghost" data-reset="g8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g9">
+    <div class="block-head"><h2>Group 9</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g9">
+      <div class="q-item" id="item-g9-0" data-answer1="hadn&#x27;t been" data-answer2="could have attended">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Michael didn&#x27;t attend the conference because his flight was cancelled.</div>
+        <div class="g-sentence"><strong>B:</strong> If his flight <input type="text" class="blank-input" id="in1-g9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> cancelled, Michael <input type="text" class="blank-input" id="in2-g9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the conference.</div>
+        <div class="g-feedback" id="fb-g9-0"></div>
+      </div>
+      <div class="q-item" id="item-g9-1" data-answer1="hadn&#x27;t been" data-answer2="would have told">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> I didn&#x27;t tell her the truth because I was afraid of upsetting her.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> afraid of upsetting her, I <input type="text" class="blank-input" id="in2-g9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her the truth.</div>
+        <div class="g-feedback" id="fb-g9-1"></div>
+      </div>
+      <div class="q-item" id="item-g9-2" data-answer1="had received" data-answer2="could have completed">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They couldn&#x27;t complete the construction because they didn&#x27;t receive the materials on time.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the materials on time, they <input type="text" class="blank-input" id="in2-g9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the construction.</div>
+        <div class="g-feedback" id="fb-g9-2"></div>
+      </div>
+      <div class="q-item" id="item-g9-3" data-answer1="had arrived" data-answer2="could have watched">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> We didn&#x27;t watch the whole film because we arrived late.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> earlier, we <input type="text" class="blank-input" id="in2-g9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the whole film.</div>
+        <div class="g-feedback" id="fb-g9-3"></div>
+      </div>
+      <div class="q-item" id="item-g9-4" data-answer1="had achieved" data-answer2="might have got">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> John didn&#x27;t get into university because he didn&#x27;t achieve the required grades.</div>
+        <div class="g-sentence"><strong>B:</strong> If John <input type="text" class="blank-input" id="in1-g9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the required grades, he <input type="text" class="blank-input" id="in2-g9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> into university.</div>
+        <div class="g-feedback" id="fb-g9-4"></div>
+      </div>
+      <div class="q-item" id="item-g9-5" data-answer1="hadn&#x27;t agreed" data-answer2="wouldn&#x27;t have ended">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> The meeting ended early because everyone agreed on the proposal.</div>
+        <div class="g-sentence"><strong>B:</strong> If everyone <input type="text" class="blank-input" id="in1-g9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> on the proposal, the meeting <input type="text" class="blank-input" id="in2-g9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> early.</div>
+        <div class="g-feedback" id="fb-g9-5"></div>
+      </div>
+      <div class="q-item" id="item-g9-6" data-answer1="hadn&#x27;t been" data-answer2="could have replied">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> I couldn&#x27;t reply to your message because my phone battery was dead.</div>
+        <div class="g-sentence"><strong>B:</strong> If my phone battery <input type="text" class="blank-input" id="in1-g9-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> dead, I <input type="text" class="blank-input" id="in2-g9-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to your message.</div>
+        <div class="g-feedback" id="fb-g9-6"></div>
+      </div>
+      <div class="q-item" id="item-g9-7" data-answer1="had been" data-answer2="would have gone">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> They didn&#x27;t go skiing because there wasn&#x27;t enough snow.</div>
+        <div class="g-sentence"><strong>B:</strong> If there <input type="text" class="blank-input" id="in1-g9-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough snow, they <input type="text" class="blank-input" id="in2-g9-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> skiing.</div>
+        <div class="g-feedback" id="fb-g9-7"></div>
+      </div>
+      <div class="q-item" id="item-g9-8" data-answer1="hadn&#x27;t underestimated" data-answer2="wouldn&#x27;t have missed">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> Sarah missed the deadline because she underestimated how long the project would take.</div>
+        <div class="g-sentence"><strong>B:</strong> If Sarah <input type="text" class="blank-input" id="in1-g9-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> how long the project would take, she <input type="text" class="blank-input" id="in2-g9-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the deadline.</div>
+        <div class="g-feedback" id="fb-g9-8"></div>
+      </div>
+      <div class="q-item" id="item-g9-9" data-answer1="hadn&#x27;t been" data-answer2="would have recognised">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> We didn&#x27;t recognize the building because it had been completely renovated.</div>
+        <div class="g-sentence"><strong>B:</strong> If the building <input type="text" class="blank-input" id="in1-g9-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> completely renovated, we <input type="text" class="blank-input" id="in2-g9-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it.</div>
+        <div class="g-feedback" id="fb-g9-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g9">Check Group 9</button>
+      <button class="btn-ghost" data-reset="g9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g10">
+    <div class="block-head"><h2>Group 10</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete sentence B with the Third Conditional, so it means the same as sentence A.</p>
+    <div id="list-g10">
+      <div class="q-item" id="item-g10-0" data-answer1="had taken" data-answer2="wouldn&#x27;t have got">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> I didn&#x27;t take an umbrella, so I got completely wet.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an umbrella, I <input type="text" class="blank-input" id="in2-g10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> completely wet.</div>
+        <div class="g-feedback" id="fb-g10-0"></div>
+      </div>
+      <div class="q-item" id="item-g10-1" data-answer1="had saved" data-answer2="wouldn&#x27;t have lost">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> They didn&#x27;t save the document, so they lost all their work.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the document, they <input type="text" class="blank-input" id="in2-g10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> all their work.</div>
+        <div class="g-feedback" id="fb-g10-1"></div>
+      </div>
+      <div class="q-item" id="item-g10-2" data-answer1="hadn&#x27;t forgotten" data-answer2="could have entered">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> We couldn&#x27;t enter the concert because we had forgotten our tickets.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our tickets, we <input type="text" class="blank-input" id="in2-g10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the concert.</div>
+        <div class="g-feedback" id="fb-g10-2"></div>
+      </div>
+      <div class="q-item" id="item-g10-3" data-answer1="had told" data-answer2="might have been done">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> David didn&#x27;t tell his manager about the problem, so nothing was done.</div>
+        <div class="g-sentence"><strong>B:</strong> If David <input type="text" class="blank-input" id="in1-g10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his manager about the problem, something <input type="text" class="blank-input" id="in2-g10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> about it.</div>
+        <div class="g-feedback" id="fb-g10-3"></div>
+      </div>
+      <div class="q-item" id="item-g10-4" data-answer1="had booked" data-answer2="wouldn&#x27;t have had to pay">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> I didn&#x27;t book the hotel in advance, so I had to pay a higher price.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the hotel in advance, I <input type="text" class="blank-input" id="in2-g10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a higher price.</div>
+        <div class="g-feedback" id="fb-g10-4"></div>
+      </div>
+      <div class="q-item" id="item-g10-5" data-answer1="hadn&#x27;t underestimated" data-answer2="might have won">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> The team didn&#x27;t win because they underestimated their opponents.</div>
+        <div class="g-sentence"><strong>B:</strong> If the team <input type="text" class="blank-input" id="in1-g10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> their opponents, they <input type="text" class="blank-input" id="in2-g10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the match.</div>
+        <div class="g-feedback" id="fb-g10-5"></div>
+      </div>
+      <div class="q-item" id="item-g10-6" data-answer1="had had" data-answer2="wouldn&#x27;t have made">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> We didn&#x27;t have enough information, so we made the wrong decision.</div>
+        <div class="g-sentence"><strong>B:</strong> If we <input type="text" class="blank-input" id="in1-g10-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> enough information, we <input type="text" class="blank-input" id="in2-g10-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the wrong decision.</div>
+        <div class="g-feedback" id="fb-g10-6"></div>
+      </div>
+      <div class="q-item" id="item-g10-7" data-answer1="had brought" data-answer2="wouldn&#x27;t have felt">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Emma didn&#x27;t bring a coat, so she felt cold outside.</div>
+        <div class="g-sentence"><strong>B:</strong> If Emma <input type="text" class="blank-input" id="in1-g10-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a coat, she <input type="text" class="blank-input" id="in2-g10-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> cold outside.</div>
+        <div class="g-feedback" id="fb-g10-7"></div>
+      </div>
+      <div class="q-item" id="item-g10-8" data-answer1="had seen" data-answer2="wouldn&#x27;t have taken">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> I didn&#x27;t see the warning sign, so I took the wrong road.</div>
+        <div class="g-sentence"><strong>B:</strong> If I <input type="text" class="blank-input" id="in1-g10-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the warning sign, I <input type="text" class="blank-input" id="in2-g10-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the wrong road.</div>
+        <div class="g-feedback" id="fb-g10-8"></div>
+      </div>
+      <div class="q-item" id="item-g10-9" data-answer1="had checked" data-answer2="wouldn&#x27;t have been">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> They didn&#x27;t check the weather forecast, so they were caught in the storm.</div>
+        <div class="g-sentence"><strong>B:</strong> If they <input type="text" class="blank-input" id="in1-g10-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the weather forecast, they <input type="text" class="blank-input" id="in2-g10-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> caught in the storm.</div>
+        <div class="g-feedback" id="fb-g10-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g10">Check Group 10</button>
+      <button class="btn-ghost" data-reset="g10">Clear section</button>
+    </div>
+  </section>  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Third Conditional — for individual practice. Answers are checked against one accepted wording; a correct sentence phrased slightly differently may be marked wrong, so ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the fields don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2","g3","g4","g5","g6","g7","g8","g9","g10"];
+  var GROUP_COUNTS = {"g1":10,"g2":10,"g3":10,"g4":10,"g5":10,"g6":10,"g7":10,"g8":10,"g9":10,"g10":10};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    return s.toLowerCase()
+      .replace(/['’‘]/g, "'")
+      .replace(/[^\w\s']/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  document.querySelectorAll('.blank-input').forEach(function(inp){
+    inp.addEventListener('input', function(){
+      var item = inp.closest('.q-item');
+      item.classList.remove('correct','incorrect');
+      inp.classList.remove('wrong');
+      var qid = item.id.replace('item-','');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      updateScore();
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var ans2 = item.getAttribute('data-answer2') || '';
+      var in1 = document.getElementById('in1-' + qid);
+      var in2 = document.getElementById('in2-' + qid);
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      if (in1) in1.classList.remove('wrong');
+      if (in2) in2.classList.remove('wrong');
+      var v1 = in1 ? in1.value.trim() : '';
+      var v2 = in2 ? in2.value.trim() : '';
+      if (!v1 && !v2) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      var ok1 = normalize(v1) === normalize(ans1);
+      var ok2 = normalize(v2) === normalize(ans2);
+      if (ok1 && ok2) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        if (!ok1 && in1) in1.classList.add('wrong');
+        if (!ok2 && in2) in2.classList.add('wrong');
+        if (fb) { fb.innerHTML = 'Model answer: <strong>' + ans1 + '</strong> … <strong>' + ans2 + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      item.classList.remove('correct','incorrect');
+      var in1 = document.getElementById('in1-' + qid);
+      var in2 = document.getElementById('in2-' + qid);
+      if (in1) { in1.value = ''; in1.classList.remove('wrong'); }
+      if (in2) { in2.value = ''; in2.classList.remove('wrong'); }
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var ans2 = item.getAttribute('data-answer2') || '';
+      var qid = item.id.replace('item-','');
+      var in1 = document.getElementById('in1-' + qid);
+      var in2 = document.getElementById('in2-' + qid);
+      var v1 = in1 ? in1.value.trim() : '';
+      var v2 = in2 ? in2.value.trim() : '';
+      if (v1 || v2) {
+        answered++;
+        if (normalize(v1) === normalize(ans1) && normalize(v2) === normalize(ans2)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>

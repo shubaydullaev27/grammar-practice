@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Word Formation — Fill in the Gap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  /* ===== Grammar / reference summary — elevated visual design ===== */
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .wf-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:26px; }
+  .wf-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:12px 14px; display:flex; align-items:center; gap:10px; }
+  .wf-chain{ display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600; flex-wrap:wrap; }
+  .wf-word{ background:var(--paper); border:1px solid var(--rule); border-radius:5px; padding:3px 8px; color:var(--ink); }
+  .wf-word.result{ background:var(--yellow); border-color:var(--yellow); color:var(--black); }
+  .wf-arrow{ color:var(--ink-soft); font-size:13px; }
+  .wf-tag{ margin-left:auto; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--teal); background:var(--teal-bg); padding:3px 8px; border-radius:12px; white-space:nowrap; }
+
+  .mistakes-list{ display:grid; gap:8px; }
+  .mistake-row{ display:flex; align-items:center; gap:10px; font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:9px 14px; flex-wrap:wrap; }
+  .m-wrong{ color:var(--bad); text-decoration:line-through; text-decoration-color:rgba(209,56,47,.5); font-weight:600; }
+  .m-arrow{ color:var(--ink-soft); }
+  .m-right{ color:var(--good); font-weight:700; }
+  .m-icon{ font-size:13px; }
+
+  @media (max-width:640px){
+    .wf-grid{ grid-template-columns:1fr; }
+  }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 18px; max-width:64ch; }
+
+  .word-box{ background:var(--paper); border:1.5px dashed var(--rule); border-radius:10px; padding:14px 16px; margin-bottom:22px; }
+  .wb-label{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); display:block; margin-bottom:10px; }
+  .wb-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .wb-chip{ font-family:'Public Sans',sans-serif; font-size:13px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:20px; padding:7px 14px; cursor:pointer; transition:border-color .15s, background .15s, opacity .15s; user-select:none; }
+  .wb-chip:hover{ border-color:var(--ink-soft); }
+  .wb-chip.used{ opacity:.35; text-decoration:line-through; cursor:default; }
+
+  .q-item{ padding:14px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:120px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+
+  .g-feedback{ font-size:13px; margin-top:8px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:100px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Word Formation — Fill in the Gap</h1>
+    <p class="sub">Complete each sentence with the correct word from the box, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 18</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <span class="gs-kicker">Word Formation</span>
+    <h2 class="gs-title">Adjectives, Adverbs &amp; Nouns</h2>
+    <p class="gs-intro">Many words change form depending on their job in the sentence — an adjective describes a noun, an adverb describes a verb, and a noun names a thing or quality. Recognising the pattern helps you pick the right form.</p>
+
+    <div class="wf-grid">
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">beautiful</span><span class="wf-arrow">→</span><span class="wf-word result">beautifully</span></div><span class="wf-tag">adj → adv</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">dramatic</span><span class="wf-arrow">→</span><span class="wf-word result">dramatically</span></div><span class="wf-tag">adj → adv</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">honest</span><span class="wf-arrow">→</span><span class="wf-word result">honesty</span></div><span class="wf-tag">adj → noun</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">happy</span><span class="wf-arrow">→</span><span class="wf-word result">happiness</span></div><span class="wf-tag">adj → noun</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">care</span><span class="wf-arrow">→</span><span class="wf-word">careful</span><span class="wf-arrow">→</span><span class="wf-word result">carefully</span></div><span class="wf-tag">noun → adj → adv</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">week</span><span class="wf-arrow">→</span><span class="wf-word result">weekly</span></div><span class="wf-tag">noun → adj/adv</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">near</span><span class="wf-arrow">→</span><span class="wf-word result">nearby</span></div><span class="wf-tag">adv/adj</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">fresh</span><span class="wf-arrow">→</span><span class="wf-word result">freshly</span></div><span class="wf-tag">adj → adv</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">like</span><span class="wf-arrow">→</span><span class="wf-word result">likely</span></div><span class="wf-tag">adj, "probable"</span></div>
+      <div class="wf-card"><div class="wf-chain"><span class="wf-word">remarkable</span><span class="wf-arrow">→</span><span class="wf-word result">remarkably</span></div><span class="wf-tag">adj → adv</span></div>
+    </div>
+
+    <h3 class="gs-subhead">Common mistakes</h3>
+    <div class="mistakes-list">
+      <div class="mistake-row"><span class="m-icon">❌</span><span class="m-wrong">highly possible</span><span class="m-arrow">→</span><span class="m-icon">✅</span><span class="m-right">highly likely</span></div>
+      <div class="mistake-row"><span class="m-icon">❌</span><span class="m-wrong">fresh painted</span><span class="m-arrow">→</span><span class="m-icon">✅</span><span class="m-right">freshly painted</span></div>
+      <div class="mistake-row"><span class="m-icon">❌</span><span class="m-wrong">be carefully</span><span class="m-arrow">→</span><span class="m-icon">✅</span><span class="m-right">be careful</span></div>
+      <div class="mistake-row"><span class="m-icon">❌</span><span class="m-wrong">dramatic increased</span><span class="m-arrow">→</span><span class="m-icon">✅</span><span class="m-right">increased dramatically</span></div>
+    </div>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Reference</a>
+    <a href="#section-g1">Exercise 1</a>
+    <a href="#section-g2">Exercise 2</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete each sentence with a word from the box. Tap a word to drop it into the field you last tapped, or type it yourself. Each word is used once.</p>
+    <div class="word-box" id="box-g1">
+      <span class="wb-label">Word Box</span>
+      <div class="wb-chips">
+          <span class="wb-chip" data-word="beautifully">beautifully</span>
+          <span class="wb-chip" data-word="weekly">weekly</span>
+          <span class="wb-chip" data-word="dramatically">dramatically</span>
+          <span class="wb-chip" data-word="likely">likely</span>
+          <span class="wb-chip" data-word="freshly">freshly</span>
+          <span class="wb-chip" data-word="honesty">honesty</span>
+          <span class="wb-chip" data-word="careful">careful</span>
+          <span class="wb-chip" data-word="nearby">nearby</span>
+          <span class="wb-chip" data-word="remarkably">remarkably</span>
+          <span class="wb-chip" data-word="happiness">happiness</span>
+      </div>
+    </div>
+    <div id="list-g1">
+      <div class="q-item" id="item-g1-0" data-answer="nearby">
+        <div class="g-sentence"><span class="g-num">1</span>The local authority has opened a new hospital <input type="text" class="blank-input word-input" id="in-g1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> which is a five-minute drive from the town.</div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="q-item" id="item-g1-1" data-answer="happiness">
+        <div class="g-sentence"><span class="g-num">2</span><input type="text" class="blank-input word-input" id="in-g1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> can&#x27;t be sold or bought. It can only be achieved by working hard.</div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="q-item" id="item-g1-2" data-answer="likely">
+        <div class="g-sentence"><span class="g-num">3</span>It is highly <input type="text" class="blank-input word-input" id="in-g1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> that the company will thrive very fast. It is the best one.</div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="q-item" id="item-g1-3" data-answer="honesty">
+        <div class="g-sentence"><span class="g-num">4</span><input type="text" class="blank-input word-input" id="in-g1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> must be the supreme criterion while judging people&#x27;s deed.</div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="q-item" id="item-g1-4" data-answer="freshly">
+        <div class="g-sentence"><span class="g-num">5</span>This smells like a <input type="text" class="blank-input word-input" id="in-g1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> painted room; don&#x27;t you agree?</div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="q-item" id="item-g1-5" data-answer="careful">
+        <div class="g-sentence"><span class="g-num">6</span>I advise you to be very <input type="text" class="blank-input word-input" id="in-g1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> what you say to her. She&#x27;s not to be trusted!</div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="q-item" id="item-g1-6" data-answer="remarkably">
+        <div class="g-sentence"><span class="g-num">7</span><input type="text" class="blank-input word-input" id="in-g1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> , the urbanization is taking a dynamic pace as more people are moving to big cities.</div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="q-item" id="item-g1-7" data-answer="beautifully">
+        <div class="g-sentence"><span class="g-num">8</span>I read the info about my travel destination. It was a <input type="text" class="blank-input word-input" id="in-g1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> described paradise-like nook.</div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="q-item" id="item-g1-8" data-answer="dramatically">
+        <div class="g-sentence"><span class="g-num">9</span>The cost of public transport has risen <input type="text" class="blank-input word-input" id="in-g1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in the last decade.</div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="q-item" id="item-g1-9" data-answer="weekly">
+        <div class="g-sentence"><span class="g-num">10</span>The students&#x27; <input type="text" class="blank-input word-input" id="in-g1-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> training session involves making a presentation and writing an essay.</div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">8 items</span></div>
+    <p class="instructions">Complete each sentence with a word from the box. Tap a word to drop it into the field you last tapped, or type it yourself. Each word is used once.</p>
+    <div class="word-box" id="box-g2">
+      <span class="wb-label">Word Box</span>
+      <div class="wb-chips">
+          <span class="wb-chip" data-word="carefully">carefully</span>
+          <span class="wb-chip" data-word="happiness">happiness</span>
+          <span class="wb-chip" data-word="nearby">nearby</span>
+          <span class="wb-chip" data-word="dramatically">dramatically</span>
+          <span class="wb-chip" data-word="honestly">honestly</span>
+          <span class="wb-chip" data-word="beautifully">beautifully</span>
+          <span class="wb-chip" data-word="weekly">weekly</span>
+          <span class="wb-chip" data-word="likely">likely</span>
+      </div>
+    </div>
+    <div id="list-g2">
+      <div class="q-item" id="item-g2-0" data-answer="beautifully">
+        <div class="g-sentence"><span class="g-num">1</span>The castle was <input type="text" class="blank-input word-input" id="in-g2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> decorated for the royal celebration.</div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="q-item" id="item-g2-1" data-answer="honestly">
+        <div class="g-sentence"><span class="g-num">2</span>Please answer the interview questions <input type="text" class="blank-input word-input" id="in-g2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> ; don&#x27;t try to impress anyone with false information.</div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="q-item" id="item-g2-2" data-answer="dramatically">
+        <div class="g-sentence"><span class="g-num">3</span>The population has increased <input type="text" class="blank-input word-input" id="in-g2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> over the last twenty years.</div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="q-item" id="item-g2-3" data-answer="nearby">
+        <div class="g-sentence"><span class="g-num">4</span>There is a <input type="text" class="blank-input word-input" id="in-g2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> supermarket, so we don&#x27;t need to drive into the city.</div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="q-item" id="item-g2-4" data-answer="happiness">
+        <div class="g-sentence"><span class="g-num">5</span>Exercising regularly can improve your health and increase your <input type="text" class="blank-input word-input" id="in-g2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="q-item" id="item-g2-5" data-answer="weekly">
+        <div class="g-sentence"><span class="g-num">6</span>We have a <input type="text" class="blank-input word-input" id="in-g2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> team meeting every Monday morning.</div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="q-item" id="item-g2-6" data-answer="likely">
+        <div class="g-sentence"><span class="g-num">7</span>It is quite <input type="text" class="blank-input word-input" id="in-g2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> that she will accept the job offer.</div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="q-item" id="item-g2-7" data-answer="carefully">
+        <div class="g-sentence"><span class="g-num">8</span>Read the instructions <input type="text" class="blank-input word-input" id="in-g2-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before starting the experiment.</div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 18</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Word Formation — Fill in the Gap — for individual practice. Ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the fields don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2"];
+  var GROUP_COUNTS = {"g1":10,"g2":8};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    return s.toLowerCase().replace(/[^\w]/g, '').trim();
+  }
+
+  var lastFocused = {};
+
+  document.querySelectorAll('.word-input').forEach(function(inp){
+    var section = inp.closest('.block');
+    var gid = section ? section.id.replace('section-','') : null;
+    inp.addEventListener('focus', function(){ if (gid) lastFocused[gid] = inp; });
+    inp.addEventListener('input', function(){
+      var item = inp.closest('.q-item');
+      item.classList.remove('correct','incorrect');
+      var qid = item.id.replace('item-','');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      refreshChips(gid);
+      updateScore();
+    });
+  });
+
+  function refreshChips(gid){
+    if (!gid) return;
+    var used = {};
+    document.querySelectorAll('#list-' + gid + ' .word-input').forEach(function(inp){
+      var v = normalize(inp.value);
+      if (v) used[v] = true;
+    });
+    document.querySelectorAll('#box-' + gid + ' .wb-chip').forEach(function(chip){
+      var w = normalize(chip.getAttribute('data-word'));
+      chip.classList.toggle('used', !!used[w]);
+    });
+  }
+
+  document.querySelectorAll('.wb-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var box = chip.closest('.word-box');
+      var gid = box ? box.id.replace('box-','') : null;
+      if (!gid) return;
+      var target = lastFocused[gid];
+      if (!target) {
+        // fall back to first empty input in this section
+        var inputs = document.querySelectorAll('#list-' + gid + ' .word-input');
+        for (var i = 0; i < inputs.length; i++) {
+          if (!inputs[i].value.trim()) { target = inputs[i]; break; }
+        }
+      }
+      if (target) {
+        target.value = chip.getAttribute('data-word');
+        target.dispatchEvent(new Event('input'));
+        target.focus();
+      }
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var answer = item.getAttribute('data-answer') || '';
+      var inp = document.getElementById('in-' + qid);
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      var v = inp ? inp.value.trim() : '';
+      if (!v) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      if (normalize(v) === normalize(answer)) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        if (fb) { fb.innerHTML = 'Correct word: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      item.classList.remove('correct','incorrect');
+      var inp = document.getElementById('in-' + qid);
+      if (inp) inp.value = '';
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+    });
+    refreshChips(gid);
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var answer = item.getAttribute('data-answer') || '';
+      var qid = item.id.replace('item-','');
+      var inp = document.getElementById('in-' + qid);
+      var v = inp ? inp.value.trim() : '';
+      if (v) {
+        answered++;
+        if (normalize(v) === normalize(answer)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
