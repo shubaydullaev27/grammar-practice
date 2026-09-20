@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Vocabulary &amp; Grammar Practice Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:760px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0 0 24px; max-width:50ch; }
+  .id-fields{ display:flex; flex-wrap:wrap; gap:16px 24px; }
+  .id-fields div{ flex:1; min-width:150px; }
+  .id-fields label{ display:block; font-size:12px; color:rgba(255,255,255,.55); margin-bottom:6px; }
+  .id-fields input{ width:100%; border:none; border-bottom:1px solid rgba(255,255,255,.28); background:transparent; font-family:inherit; font-size:15px; color:var(--white); padding:4px 0; }
+  .id-fields input::placeholder{ color:rgba(255,255,255,.35); }
+  .id-fields input:focus{ outline:none; border-bottom-color:var(--yellow); }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .vocab-row{ display:grid; grid-template-columns: 28px 1fr 180px; align-items:center; gap:14px; padding:10px 0; border-bottom:1px dashed var(--rule); }
+  .vocab-row:last-child{ border-bottom:none; }
+  .v-num{ font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--ink-soft); }
+  .v-prompt{ font-size:14.5px; }
+  .answer-input{ width:100%; border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:9px 11px; font-family:inherit; font-size:16px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .reveal{ grid-column:3; font-size:12.5px; margin-top:4px; color:var(--bad); }
+  .reveal strong{ color:var(--ink); }
+
+  .g-item{ padding:15px 0; border-bottom:1px dashed var(--rule); }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-sentence{ font-size:15px; margin-bottom:12px; line-height:1.7; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; }
+  .g-item input.answer-input{ max-width:220px; margin:0 2px; }
+  .g-item textarea.answer-input{ resize:vertical; min-height:44px; width:100%; }
+  .g-feedback{ font-size:13px; margin-top:8px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+  .example{ background:var(--paper); border-left:3px solid var(--yellow); padding:10px 14px; font-size:13.5px; color:var(--ink-soft); margin-bottom:20px; border-radius:0 4px 4px 0; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:760px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  .noscript-banner{ display:none; }
+
+  @media (max-width:620px){
+    .vocab-row{ grid-template-columns: 22px 1fr; row-gap:8px; }
+    .vocab-row .answer-input{ grid-column: 1 / -1; }
+    .reveal{ grid-column: 1 / -1; }
+    .id-fields{ flex-direction:column; }
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .g-item input.answer-input{ max-width:160px; width:auto; display:inline-block; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+      <span id="dateStamp"></span>
+    </div>
+    <h1>Vocabulary &amp; Grammar Practice Test</h1>
+    <p class="sub">Work through the vocabulary spelling list and the Past Perfect grammar tasks below, then check your answers section by section.</p>
+    <div class="id-fields">
+      <div><label for="studentName">Name</label><input type="text" id="studentName" placeholder="Type your name"></div>
+      <div><label for="studentDate">Date</label><input type="text" id="studentDate" placeholder="dd/mm/yyyy"></div>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 36</span>
+  </div>
+
+  <!-- VOCABULARY -->
+  <section class="block" id="vocabSection">
+    <div class="block-head"><h2>Vocabulary</h2><span class="block-count">30 words</span></div>
+    <p class="instructions">Read the Russian / Uzbek translation, then type the correct English word. Pay close attention to spelling.</p>
+
+    <div id="vocabList">
+      <div class="vocab-row"><span class="v-num">1</span><span class="v-prompt">наследие / meros</span><input type="text" class="answer-input" id="vocab-0" data-answer="Legacy" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">2</span><span class="v-prompt">весло / плыть на весле / kurak / kurakda suzish</span><input type="text" class="answer-input" id="vocab-1" data-answer="Paddle" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">3</span><span class="v-prompt">колючий / ignabargli / uchli</span><input type="text" class="answer-input" id="vocab-2" data-answer="Spiky" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">4</span><span class="v-prompt">потрясающий / ajoyib / hayratlanarli</span><input type="text" class="answer-input" id="vocab-3" data-answer="Stunning" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">5</span><span class="v-prompt">расследовать / tekshirmoq</span><input type="text" class="answer-input" id="vocab-4" data-answer="Investigate" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">6</span><span class="v-prompt">багаж / yuk / bagaj</span><input type="text" class="answer-input" id="vocab-5" data-answer="Luggage" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">7</span><span class="v-prompt">очередь / navbat</span><input type="text" class="answer-input" id="vocab-6" data-answer="Queue" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">8</span><span class="v-prompt">отдалённый / uzoq / chekka</span><input type="text" class="answer-input" id="vocab-7" data-answer="Remote" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">9</span><span class="v-prompt">мусор / axlat</span><input type="text" class="answer-input" id="vocab-8" data-answer="Rubbish" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">10</span><span class="v-prompt">тротуар / piyodalar yo'lagi</span><input type="text" class="answer-input" id="vocab-9" data-answer="Sidewalk" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">11</span><span class="v-prompt">привлекать / апеллировать / jalb qilmoq / murojaat qilmoq</span><input type="text" class="answer-input" id="vocab-10" data-answer="Appeal" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">12</span><span class="v-prompt">место назначения / manzil</span><input type="text" class="answer-input" id="vocab-11" data-answer="Destination" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">13</span><span class="v-prompt">очень смешной / juda kulgili</span><input type="text" class="answer-input" id="vocab-12" data-answer="Hilarious" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">14</span><span class="v-prompt">игнорировать / e'tiborsiz qoldirmoq</span><input type="text" class="answer-input" id="vocab-13" data-answer="Ignore" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">15</span><span class="v-prompt">горький / achchiq</span><input type="text" class="answer-input" id="vocab-14" data-answer="Bitter" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">16</span><span class="v-prompt">плотник / duradgor</span><input type="text" class="answer-input" id="vocab-15" data-answer="Carpenter" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">17</span><span class="v-prompt">смелость / jasorat</span><input type="text" class="answer-input" id="vocab-16" data-answer="Courage" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">18</span><span class="v-prompt">редактор / muharrir</span><input type="text" class="answer-input" id="vocab-17" data-answer="Editor" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">19</span><span class="v-prompt">рабство / qullik</span><input type="text" class="answer-input" id="vocab-18" data-answer="Slavery" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">20</span><span class="v-prompt">пробка (на дороге) / tirbandlik</span><input type="text" class="answer-input" id="vocab-19" data-answer="Traffic jam" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">21</span><span class="v-prompt">сопровождать / hamrohlik qilmoq</span><input type="text" class="answer-input" id="vocab-20" data-answer="Accompany" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">22</span><span class="v-prompt">предприимчивый / sarguzashtlarga moyil</span><input type="text" class="answer-input" id="vocab-21" data-answer="Adventurous" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">23</span><span class="v-prompt">неожиданная встреча / to'qnashish / uchrashuv</span><input type="text" class="answer-input" id="vocab-22" data-answer="Encounter" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">24</span><span class="v-prompt">исследователь / tadqiqotchi / sayohatchi</span><input type="text" class="answer-input" id="vocab-23" data-answer="Explorer" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">25</span><span class="v-prompt">место обитания / yashash joyi / makon</span><input type="text" class="answer-input" id="vocab-24" data-answer="Habitat" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">26</span><span class="v-prompt">ответственность / mas'uliyat</span><input type="text" class="answer-input" id="vocab-25" data-answer="Responsibility" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">27</span><span class="v-prompt">отпуск / каникулы / ta'til</span><input type="text" class="answer-input" id="vocab-26" data-answer="Vacation" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">28</span><span class="v-prompt">тревожный / tashvishli / xavotirli</span><input type="text" class="answer-input" id="vocab-27" data-answer="Anxious" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">29</span><span class="v-prompt">несчастный / baxtsiz / g'amgin</span><input type="text" class="answer-input" id="vocab-28" data-answer="Miserable" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+      <div class="vocab-row"><span class="v-num">30</span><span class="v-prompt">окаменевший от страха / qo'rqib qolgan / dahshatga tushgan</span><input type="text" class="answer-input" id="vocab-29" data-answer="Petrified" autocomplete="off" spellcheck="false" placeholder="type the English word"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-check" data-check="vocab">Check vocabulary</button>
+      <button class="btn-ghost" data-reset="vocab">Clear section</button>
+    </div>
+  </section>
+
+  <!-- GRAMMAR PART A -->
+  <section class="block" id="gramASection">
+    <div class="block-head"><h2>Grammar — Past Perfect Form</h2><span class="block-count">3 items</span></div>
+    <p class="instructions">Complete the sentences with the correct past perfect form of the verb in brackets.</p>
+    <div class="example">e.g. I had been studying for two hours before my phone rang. (study)</div>
+
+    <div id="gramAList">
+      <div class="g-item">
+        <div class="g-sentence"><span class="g-num">1</span>We <input type="text" class="answer-input" id="gramA-0" data-answer="had been driving" autocomplete="off" spellcheck="false"> for about two hours when we ran out of petrol. <span class="g-hint">(drive)</span></div>
+        <div class="g-feedback" id="gramA-fb-0"></div>
+      </div>
+      <div class="g-item">
+        <div class="g-sentence"><span class="g-num">2</span><input type="text" class="answer-input" id="gramA-1" data-answer="Had you known" autocomplete="off" spellcheck="false"> Steve for a long time when you went into business together? <span class="g-hint">(you / know)</span></div>
+        <div class="g-feedback" id="gramA-fb-1"></div>
+      </div>
+      <div class="g-item">
+        <div class="g-sentence"><span class="g-num">3</span>Unfortunately, Lisa and Ollie <input type="text" class="answer-input" id="gramA-2" data-answer="hadn't finished" autocomplete="off" spellcheck="false"> preparing the meal when their guests arrived. <span class="g-hint">(not finish)</span></div>
+        <div class="g-feedback" id="gramA-fb-2"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-check" data-check="gramA">Check Part A</button>
+      <button class="btn-ghost" data-reset="gramA">Clear section</button>
+    </div>
+  </section>
+
+  <!-- GRAMMAR PART B -->
+  <section class="block" id="gramBSection">
+    <div class="block-head"><h2>Grammar — Combine the Sentences</h2><span class="block-count">3 items</span></div>
+    <p class="instructions">Combine the sentences using the correct form of the verbs in past tenses and the time expression in "quotation marks." Do not change the order of the sentences.</p>
+    <div class="example">e.g. I (swim) in the sea. I (get) stung by a jellyfish. "while" &nbsp;→&nbsp; While I was swimming in the sea, I got stung by a jellyfish.</div>
+
+    <div id="gramBList">
+      <div class="g-item">
+        <div class="g-sentence"><span class="g-num">1</span>The plane's engine (make) a strange noise. It (take) off. "as"</div>
+        <textarea class="answer-input" id="gramB-0" data-answer="The plane's engine made a strange noise as it took off." rows="1" placeholder="Write the combined sentence"></textarea>
+        <div class="g-feedback" id="gramB-fb-0"></div>
+      </div>
+      <div class="g-item">
+        <div class="g-sentence"><span class="g-num">2</span>We (never be) to Italy. We (go) to Naples last year. "before"</div>
+        <textarea class="answer-input" id="gramB-1" data-answer="We had never been to Italy before we went to Naples last year." rows="1" placeholder="Write the combined sentence"></textarea>
+        <div class="g-feedback" id="gramB-fb-1"></div>
+      </div>
+      <div class="g-item">
+        <div class="g-sentence"><span class="g-num">3</span>The storm (start). The ferry (leave) the port. "not long after"</div>
+        <textarea class="answer-input" id="gramB-2" data-answer="The storm started not long after the ferry had left the port." rows="1" placeholder="Write the combined sentence"></textarea>
+        <div class="g-feedback" id="gramB-fb-2"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-check" data-check="gramB">Check Part B</button>
+      <button class="btn-ghost" data-reset="gramB">Clear section</button>
+    </div>
+    <p class="g-feedback" style="margin-top:14px;">Other correct phrasings are sometimes possible for these — if yours differs from the model answer but sounds right, ask your teacher.</p>
+  </section>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 36</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Vocabulary &amp; Grammar Practice Test — for individual practice. Checking compares your typing to the answer key; ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the Check buttons don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var ALL_IDS = { vocab: [], gramA: [], gramB: [] };
+  for (var i = 0; i < 30; i++) ALL_IDS.vocab.push('vocab-' + i);
+  for (var i = 0; i < 3; i++) ALL_IDS.gramA.push('gramA-' + i);
+  for (var i = 0; i < 3; i++) ALL_IDS.gramB.push('gramB-' + i);
+  var TOTAL = ALL_IDS.vocab.length + ALL_IDS.gramA.length + ALL_IDS.gramB.length;
+
+  function normalize(s){
+    return s.toLowerCase().replace(/['’‘]/g,"'").replace(/[.,!?;:"“”]/g,"").replace(/\s+/g," ").trim();
+  }
+
+  function checkGroup(ids, withReveal){
+    var correct = 0;
+    ids.forEach(function(id){
+      var input = document.getElementById(id);
+      if (!input) return;
+      var answer = input.getAttribute('data-answer') || '';
+      var ok = normalize(input.value) === normalize(answer);
+      input.classList.remove('correct', 'incorrect');
+
+      var row = input.closest ? input.closest('.vocab-row') : null;
+      if (row) { var oldReveal = row.querySelector('.reveal'); if (oldReveal) oldReveal.remove(); }
+      var fb = document.getElementById(id + '-fb') || document.getElementById(id.replace(/^(vocab|gramA|gramB)-(\d+)$/, function(_, p, n){ return p + '-fb-' + n; }));
+
+      if (input.value.trim() === '') {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      } else if (ok) {
+        input.classList.add('correct');
+        correct++;
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        input.classList.add('incorrect');
+        if (row) {
+          var reveal = document.createElement('div');
+          reveal.className = 'reveal';
+          reveal.innerHTML = 'Correct answer: <strong>' + answer + '</strong>';
+          row.appendChild(reveal);
+        }
+        if (fb) { fb.innerHTML = 'Not quite — correct answer: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    return correct;
+  }
+
+  function updateScore(){
+    var total = 0;
+    ['vocab', 'gramA', 'gramB'].forEach(function(group){
+      ALL_IDS[group].forEach(function(id){
+        var input = document.getElementById(id);
+        if (!input) return;
+        var answer = input.getAttribute('data-answer') || '';
+        if (normalize(input.value) === normalize(answer)) total++;
+      });
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% complete';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var which = btn.getAttribute('data-check');
+      checkGroup(ALL_IDS[which]);
+      updateScore();
+    });
+  });
+
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var which = btn.getAttribute('data-reset');
+      ALL_IDS[which].forEach(function(id){
+        var el = document.getElementById(id);
+        el.value = '';
+        el.classList.remove('correct', 'incorrect');
+      });
+      if (which === 'vocab') document.querySelectorAll('#vocabList .reveal').forEach(function(e){ e.remove(); });
+      if (which === 'gramA') ALL_IDS.gramA.forEach(function(id, i){ var fb = document.getElementById('gramA-fb-' + i); if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; } });
+      if (which === 'gramB') ALL_IDS.gramB.forEach(function(id, i){ var fb = document.getElementById('gramB-fb-' + i); if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; } });
+      updateScore();
+    });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    checkGroup(ALL_IDS.vocab);
+    checkGroup(ALL_IDS.gramA);
+    checkGroup(ALL_IDS.gramB);
+    updateScore();
+    document.getElementById('vocabSection').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    document.querySelectorAll('[data-reset]').forEach(function(btn){ btn.click(); });
+  });
+
+  document.querySelectorAll('.answer-input').forEach(function(el){
+    el.addEventListener('input', updateScore);
+  });
+
+  var stamp = new Date();
+  document.getElementById('dateStamp').textContent = stamp.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>

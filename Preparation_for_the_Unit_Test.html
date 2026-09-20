@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Preparation for the Unit Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416;
+    --black-soft:#232327;
+    --yellow:#FFD530;
+    --yellow-deep:#E7BC12;
+    --white:#FFFFFF;
+    --paper:#F6F6F3;
+    --panel:#FFFFFF;
+    --ink:#1B1B1D;
+    --ink-soft:#5B5C60;
+    --rule:#E4E3DC;
+    --good:#1E8F52;
+    --good-bg:#E6F5EB;
+    --bad:#D1382F;
+    --bad-bg:#FBEAE8;
+    --focus:#141416;
+  }
+
+  *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.55;
+    font-size: 16px;
+    padding: clamp(16px, 4vw, 48px) clamp(12px, 3vw, 20px) 80px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .sheet{
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--panel);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(20,20,22,0.04), 0 24px 48px -30px rgba(20,20,22,0.35);
+  }
+
+  /* ---------- Header ---------- */
+  .masthead{
+    background: var(--black);
+    color: var(--white);
+    padding: clamp(28px, 5vw, 44px) clamp(20px, 5vw, 44px) clamp(24px, 4vw, 32px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dot-motif{
+    position:absolute;
+    top: 22px;
+    right: 24px;
+    display:grid;
+    grid-template-columns: repeat(3, 7px);
+    gap: 6px;
+    opacity: 0.9;
+  }
+  .dot-motif span{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--yellow);
+  }
+  .dot-motif span:nth-child(5){ background: var(--white); }
+
+  .eyebrow-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size:12.5px;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+    padding-right: 50px;
+  }
+  .eyebrow-row .brand{ color: var(--yellow); font-weight:600; }
+
+  h1{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size: clamp(28px, 6vw, 40px);
+    line-height:1.08;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+
+  .sub{
+    font-size: clamp(14px, 3vw, 16px);
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 26px;
+    max-width: 48ch;
+  }
+
+  .id-fields{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 24px 32px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .id-fields label{
+    display:block;
+    margin-bottom:6px;
+  }
+
+  .id-fields input{
+    border:none;
+    border-bottom: 1px solid rgba(255,255,255,0.28);
+    background:transparent;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--white);
+    padding: 4px 0;
+    width: 200px;
+    max-width: 42vw;
+  }
+  .id-fields input::placeholder{ color: rgba(255,255,255,0.35); }
+  .id-fields input:focus{ outline:none; border-bottom-color: var(--yellow); }
+
+  /* ---------- Progress bar ---------- */
+  .progress-bar{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    padding: 12px clamp(16px, 5vw, 44px);
+    background: var(--black-soft);
+    border-bottom: 2px solid var(--yellow);
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .progress-track{
+    flex:1;
+    height: 6px;
+    background: rgba(255,255,255,0.16);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background: var(--yellow);
+    transition: width .35s ease;
+  }
+  .score-tally{
+    font-variant-numeric: tabular-nums;
+    color: var(--white);
+    font-weight:700;
+    white-space:nowrap;
+    font-size: 13px;
+  }
+
+  /* ---------- Sections ---------- */
+  section.block{
+    padding: clamp(24px, 5vw, 34px) clamp(18px, 5vw, 44px);
+    border-bottom: 1px solid var(--rule);
+  }
+  section.block:last-of-type{ border-bottom:none; }
+
+  .block-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 20px;
+    margin-bottom: 4px;
+  }
+
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size: clamp(20px, 4vw, 24px);
+    margin: 0;
+    position: relative;
+    padding-bottom: 8px;
+  }
+  h2::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width: 34px; height: 4px;
+    background: var(--yellow);
+    border-radius: 2px;
+  }
+
+  .block-count{
+    font-size:12.5px;
+    color: var(--ink-soft);
+    white-space:nowrap;
+    padding-bottom: 10px;
+  }
+
+  .instructions{
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 16px 0 22px;
+    max-width: 62ch;
+  }
+
+  /* ---------- Vocabulary rows ---------- */
+  .vocab-row{
+    display:grid;
+    grid-template-columns: 30px 1fr 180px;
+    align-items:center;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .vocab-row:last-child{ border-bottom:none; }
+
+  .v-num{
+    font-family:'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  .v-prompt{
+    font-size: 14.5px;
+  }
+
+  .answer-input{
+    width:100%;
+    border: 1.5px solid var(--rule);
+    background: var(--white);
+    border-radius: 5px;
+    padding: 9px 11px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .answer-input:focus{
+    outline: none;
+    border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(255,213,48,0.45);
+  }
+  .answer-input.correct{ border-color: var(--good); background: var(--good-bg); }
+  .answer-input.incorrect{ border-color: var(--bad); background: var(--bad-bg); }
+
+  .reveal{
+    grid-column: 3;
+    font-size: 12.5px;
+    margin-top:4px;
+    color: var(--bad);
+  }
+  .reveal strong{ color: var(--ink); }
+
+  /* ---------- Grammar items ---------- */
+  .g-item{
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .g-item:last-child{ border-bottom:none; }
+
+  .g-num{
+    font-family:'Fraunces', serif;
+    color: var(--ink);
+    background: var(--yellow);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight:700;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .g-sentence{
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+  .g-hint{
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .g-item textarea.answer-input{
+    resize: vertical;
+    min-height: 44px;
+    width:100%;
+  }
+  .g-item input.answer-input{ max-width: 220px; }
+
+  .g-feedback{
+    font-size: 13px;
+    margin-top: 8px;
+    color: var(--ink-soft);
+  }
+  .g-feedback.correct{ color: var(--good); }
+  .g-feedback.incorrect{ color: var(--bad); }
+  .g-feedback strong{ color: var(--ink); font-weight:600; }
+
+  .example{
+    background: var(--paper);
+    border-left: 3px solid var(--yellow);
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ---------- Controls ---------- */
+  .controls{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  button{
+    font-family: 'Public Sans', sans-serif;
+    font-size: 14px;
+    font-weight:700;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor:pointer;
+    border: 1.5px solid transparent;
+    transition: transform .08s ease, opacity .15s ease, background .15s ease;
+    min-height: 44px;
+  }
+  button:active{ transform: translateY(1px); }
+
+  .btn-check{
+    background: var(--yellow);
+    color: var(--black);
+  }
+  .btn-check:hover{ background: var(--yellow-deep); }
+
+  .btn-ghost{
+    background: transparent;
+    color: var(--ink-soft);
+    border-color: var(--rule);
+  }
+  .btn-ghost:hover{ color: var(--ink); border-color: var(--ink-soft); }
+
+  /* ---------- Footer summary ---------- */
+  .summary{
+    padding: clamp(28px, 5vw, 34px) clamp(18px, 5vw, 44px) clamp(32px, 6vw, 44px);
+    text-align:center;
+    background: var(--black);
+    color: var(--white);
+  }
+  .summary-score{
+    font-family:'Fraunces', serif;
+    font-size: clamp(36px, 8vw, 46px);
+    font-weight: 600;
+    margin: 6px 0 4px;
+    color: var(--yellow);
+  }
+  .summary-label{
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.28); }
+  .summary .btn-ghost:hover{ color: var(--white); border-color: var(--white); }
+
+  footer.note{
+    max-width:760px;
+    margin: 18px auto 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align:center;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 620px){
+    .vocab-row{ grid-template-columns: 22px 1fr; row-gap: 8px; }
+    .vocab-row .answer-input{ grid-column: 1 / -1; }
+    .reveal{ grid-column: 1 / -1; }
+    .id-fields input{ max-width: 100%; width: 100%; }
+    .id-fields{ flex-direction:column; gap: 16px; }
+    .dot-motif{ top: 18px; right: 18px; }
+    .controls{ flex-direction: column; }
+    .controls button{ width:100%; }
+    .g-item input.answer-input{ max-width: 100%; width:100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+      <span id="dateStamp"></span>
+    </div>
+    <h1>Preparation for the Unit Test</h1>
+    <p class="sub">Work through the vocabulary and grammar below, then check your answers section by section.</p>
+    <div class="id-fields">
+      <div>
+        <label for="studentName">Name</label>
+        <input type="text" id="studentName" placeholder="Type your name">
+      </div>
+      <div>
+        <label for="studentDate">Date</label>
+        <input type="text" id="studentDate" placeholder="dd/mm/yyyy">
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 36</span>
+  </div>
+
+  <!-- VOCABULARY -->
+  <section class="block" id="vocabSection">
+    <div class="block-head">
+      <h2>Vocabulary</h2>
+      <span class="block-count">30 words</span>
+    </div>
+    <p class="instructions">Read the Russian / Uzbek translation, then type the correct English word. Pay close attention to spelling.</p>
+    <div id="vocabList"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="vocab">Check vocabulary</button>
+      <button class="btn-ghost" data-reset="vocab">Clear section</button>
+    </div>
+  </section>
+
+  <!-- GRAMMAR PART A -->
+  <section class="block" id="gramASection">
+    <div class="block-head">
+      <h2>Grammar — Part A</h2>
+      <span class="block-count">3 items</span>
+    </div>
+    <p class="instructions">Fill in each blank with the correct form of the verb in brackets.</p>
+    <div id="gramAList"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="gramA">Check Part A</button>
+      <button class="btn-ghost" data-reset="gramA">Clear section</button>
+    </div>
+  </section>
+
+  <!-- GRAMMAR PART B -->
+  <section class="block" id="gramBSection">
+    <div class="block-head">
+      <h2>Grammar — Part B</h2>
+      <span class="block-count">3 items</span>
+    </div>
+    <p class="instructions">Rewrite the two sentences as one, using a relative clause.</p>
+    <div class="example">e.g. I like the car. I bought it yesterday. &nbsp;→&nbsp; I like the car which I bought yesterday.</div>
+    <div id="gramBList"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="gramB">Check Part B</button>
+      <button class="btn-ghost" data-reset="gramB">Clear section</button>
+    </div>
+    <p class="g-feedback" style="margin-top:14px;">Other correct phrasings are sometimes possible for these — if yours differs from the model answer but sounds right, ask your teacher.</p>
+  </section>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 36</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Preparation for the Unit Test — for individual practice. Checking compares your typing to the answer key; ask your teacher if you think an answer should count.</footer>
+
+<script>
+(function(){
+
+  const VOCAB = [
+    ["ответственный за / mas'ul", "In charge"],
+    ["прерывать / bo'lmoq", "Interrupt"],
+    ["перекрёсток / chorraha", "Junction"],
+    ["обгонять / quvib o'tmoq", "Overtake"],
+    ["жара / волна жары / issiq to'lqini", "Heatwave"],
+    ["изобретательный / tasavvurga boy", "Imaginative"],
+    ["предотвращать / oldini olmoq", "Prevent"],
+    ["защищать / himoya qilmoq", "Protect"],
+    ["нехватка / tanqislik", "Shortage"],
+    ["имущество / mulk", "Possession"],
+    ["авария / несчастный случай / avariya / baxtsiz hodisa", "Accident"],
+    ["ездить на работу / qatnab ishlamoq", "Commute"],
+    ["экипаж / команда / ekipaj / jamoa", "Crew"],
+    ["ранить / jarohatlamoq", "Injure"],
+    ["навык / ko'nikma", "Skill"],
+    ["исследовать / tadqiq qilmoq", "Explore"],
+    ["оползень / ko'chki", "Landslide"],
+    ["инвалидность / nogironlik", "Disability"],
+    ["общительный / kirishimli", "Sociable"],
+    ["непригодный к работе / ishga yaroqsiz", "Unemployable"],
+    ["уменьшение / kamayish", "Decrease"],
+    ["засуха / qurg'oqchilik", "Drought"],
+    ["увеличение / oshish", "Increase"],
+    ["тропический / tropik", "Tropical"],
+    ["заработная плата / ish haqi", "Wages"],
+    ["в основном / asosan", "Basically"],
+    ["весёлый / quvnoq", "Cheerful"],
+    ["в наши дни / hozirgi kunda", "Nowadays"],
+    ["заменяемый / almashtiriladigan", "Replaceable"],
+    ["традиционный / an'anaviy", "Traditional"]
+  ];
+
+  const GRAM_A = [
+    { before: "It ", after: " (rain) since I got up.", hint: "rain", answer: "has been raining" },
+    { before: "Have they ", after: " (finish) the experiment yet?", hint: "finish", answer: "finished" },
+    { before: "Scientists have ", after: " (try) to find a solution to climate change for decades.", hint: "try", answer: "been trying" }
+  ];
+
+  const GRAM_B = [
+    { prompt: "I've just read a book. I think you'll like it.", answer: "I've just read a book that I think you will like." },
+    { prompt: "What's the name of the scientist? The one who discovered the X-ray?", answer: "What's the name of the scientist who discovered the X-ray?" },
+    { prompt: "Is that the girl? We went to her party last weekend.", answer: "Is that the girl whose party we went to last weekend?" }
+  ];
+
+  const TOTAL = VOCAB.length + GRAM_A.length + GRAM_B.length;
+
+  function normalize(s){
+    return s
+      .toLowerCase()
+      .replace(/['’‘]/g, "'")
+      .replace(/[.,!?;:"“”]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  const vocabList = document.getElementById('vocabList');
+  VOCAB.forEach((item, i) => {
+    const row = document.createElement('div');
+    row.className = 'vocab-row';
+    row.innerHTML = `
+      <span class="v-num">${i + 1}</span>
+      <span class="v-prompt">${item[0]}</span>
+      <input type="text" class="answer-input" id="vocab-${i}" autocomplete="off" spellcheck="false" placeholder="type the English word">
+    `;
+    vocabList.appendChild(row);
+  });
+
+  const gramAList = document.getElementById('gramAList');
+  GRAM_A.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'g-item';
+    div.innerHTML = `
+      <div class="g-sentence"><span class="g-num">${i + 1}</span>${item.before}<input type="text" class="answer-input" id="gramA-${i}" autocomplete="off" spellcheck="false">${item.after} <span class="g-hint">(${item.hint})</span></div>
+      <div class="g-feedback" id="gramA-fb-${i}"></div>
+    `;
+    gramAList.appendChild(div);
+  });
+
+  const gramBList = document.getElementById('gramBList');
+  GRAM_B.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'g-item';
+    div.innerHTML = `
+      <div class="g-sentence"><span class="g-num">${i + 1}</span>${item.prompt}</div>
+      <textarea class="answer-input" id="gramB-${i}" rows="1" placeholder="Write the combined sentence"></textarea>
+      <div class="g-feedback" id="gramB-fb-${i}"></div>
+    `;
+    gramBList.appendChild(div);
+  });
+
+  function checkVocab(){
+    let correct = 0;
+    VOCAB.forEach((item, i) => {
+      const input = document.getElementById('vocab-' + i);
+      const row = input.closest('.vocab-row');
+      const oldReveal = row.querySelector('.reveal');
+      if (oldReveal) oldReveal.remove();
+      const ok = normalize(input.value) === normalize(item[1]);
+      input.classList.remove('correct', 'incorrect');
+      if (input.value.trim() === '') {
+        // untouched
+      } else if (ok) {
+        input.classList.add('correct');
+        correct++;
+      } else {
+        input.classList.add('incorrect');
+        const reveal = document.createElement('div');
+        reveal.className = 'reveal';
+        reveal.innerHTML = `Correct answer: <strong>${item[1]}</strong>`;
+        row.appendChild(reveal);
+      }
+    });
+    return correct;
+  }
+
+  function checkGramA(){
+    let correct = 0;
+    GRAM_A.forEach((item, i) => {
+      const input = document.getElementById('gramA-' + i);
+      const fb = document.getElementById('gramA-fb-' + i);
+      const ok = normalize(input.value) === normalize(item.answer);
+      input.classList.remove('correct', 'incorrect');
+      if (input.value.trim() === '') {
+        fb.textContent = '';
+        fb.className = 'g-feedback';
+      } else if (ok) {
+        input.classList.add('correct');
+        fb.innerHTML = 'Correct.';
+        fb.className = 'g-feedback correct';
+        correct++;
+      } else {
+        input.classList.add('incorrect');
+        fb.innerHTML = `Not quite — correct answer: <strong>${item.answer}</strong>`;
+        fb.className = 'g-feedback incorrect';
+      }
+    });
+    return correct;
+  }
+
+  function checkGramB(){
+    let correct = 0;
+    GRAM_B.forEach((item, i) => {
+      const input = document.getElementById('gramB-' + i);
+      const fb = document.getElementById('gramB-fb-' + i);
+      const ok = normalize(input.value) === normalize(item.answer);
+      input.classList.remove('correct', 'incorrect');
+      if (input.value.trim() === '') {
+        fb.textContent = '';
+        fb.className = 'g-feedback';
+      } else if (ok) {
+        input.classList.add('correct');
+        fb.innerHTML = 'Matches the model answer.';
+        fb.className = 'g-feedback correct';
+        correct++;
+      } else {
+        input.classList.add('incorrect');
+        fb.innerHTML = `Model answer: <strong>${item.answer}</strong>`;
+        fb.className = 'g-feedback incorrect';
+      }
+    });
+    return correct;
+  }
+
+  function updateScore(){
+    let total = 0;
+    VOCAB.forEach((item, i) => {
+      if (normalize(document.getElementById('vocab-' + i).value) === normalize(item[1])) total++;
+    });
+    GRAM_A.forEach((item, i) => {
+      if (normalize(document.getElementById('gramA-' + i).value) === normalize(item.answer)) total++;
+    });
+    GRAM_B.forEach((item, i) => {
+      if (normalize(document.getElementById('gramB-' + i).value) === normalize(item.answer)) total++;
+    });
+    document.getElementById('scoreTally').textContent = `${total} / ${TOTAL}`;
+    document.getElementById('totalScore').textContent = `${total} / ${TOTAL}`;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% complete';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const which = btn.getAttribute('data-check');
+      if (which === 'vocab') checkVocab();
+      if (which === 'gramA') checkGramA();
+      if (which === 'gramB') checkGramB();
+      updateScore();
+    });
+  });
+
+  document.querySelectorAll('[data-reset]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const which = btn.getAttribute('data-reset');
+      let ids = [];
+      if (which === 'vocab') ids = VOCAB.map((_, i) => 'vocab-' + i);
+      if (which === 'gramA') ids = GRAM_A.map((_, i) => 'gramA-' + i);
+      if (which === 'gramB') ids = GRAM_B.map((_, i) => 'gramB-' + i);
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        el.value = '';
+        el.classList.remove('correct', 'incorrect');
+      });
+      if (which === 'vocab') document.querySelectorAll('#vocabList .reveal').forEach(e => e.remove());
+      if (which === 'gramA') GRAM_A.forEach((_, i) => { const fb = document.getElementById('gramA-fb-' + i); fb.textContent = ''; fb.className = 'g-feedback'; });
+      if (which === 'gramB') GRAM_B.forEach((_, i) => { const fb = document.getElementById('gramB-fb-' + i); fb.textContent = ''; fb.className = 'g-feedback'; });
+      updateScore();
+    });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', () => {
+    checkVocab(); checkGramA(); checkGramB(); updateScore();
+    document.getElementById('vocabSection').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', () => {
+    document.querySelectorAll('[data-reset]').forEach(btn => btn.click());
+  });
+
+  document.querySelectorAll('.answer-input').forEach(el => {
+    el.addEventListener('input', updateScore);
+  });
+
+  const stamp = new Date();
+  document.getElementById('dateStamp').textContent = stamp.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
