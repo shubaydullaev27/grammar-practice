@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>The Passive Voice — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  /* ===== Grammar summary — elevated visual design ===== */
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .formula-card{ background:var(--black); border-radius:10px; padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,28px); margin-bottom:20px; position:relative; overflow:hidden; }
+  .formula-card::before{ content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px; background:var(--yellow); opacity:.14; border-radius:50%; }
+  .formula-label{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+  .formula-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-family:'JetBrains Mono', monospace; font-size:clamp(13px,3.2vw,15.5px); color:var(--white); }
+  .formula-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:6px 11px; white-space:nowrap; }
+  .formula-chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula-arrow{ color:rgba(255,255,255,.4); font-size:15px; }
+  .formula-shorthand{ margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:rgba(255,255,255,.55); }
+
+  .example-strip{ display:grid; gap:8px; margin-bottom:26px; }
+  .example-strip .ex-line{ font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; color:var(--ink); }
+  .example-strip .ex-line em{ font-style:normal; color:var(--ink-soft); }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .modal-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .modal-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:16px; position:relative; border-top:4px solid var(--accent); }
+  .modal-card.m-would{ --accent:var(--yellow-deep); }
+  .modal-card.m-could{ --accent:var(--teal); }
+  .modal-card.m-might{ --accent:var(--rose); }
+  .modal-card.m-cont{ --accent:var(--plum); }
+  .modal-card.m-modal{ --accent:#3B6FD6; }
+  .modal-term{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:14px; color:var(--ink); margin-bottom:6px; display:inline-block; padding:3px 8px; border-radius:5px; background:color-mix(in srgb, var(--accent) 16%, white); }
+  .modal-meaning{ font-size:13px; color:var(--ink-soft); margin-bottom:10px; line-height:1.5; }
+  .modal-example{ font-size:12.5px; font-style:italic; color:var(--ink); border-top:1px dashed var(--rule); padding-top:9px; }
+
+  @media (max-width:640px){
+    .modal-grid{ grid-template-columns:1fr; }
+    .formula-row{ font-size:12.5px; }
+  }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13.5px; color:var(--ink-soft); margin-bottom:8px; display:flex; align-items:flex-start; gap:2px; }
+  .q-context strong{ color:var(--ink); font-weight:700; margin-right:4px; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); }
+  .g-sentence strong{ color:var(--ink-soft); font-weight:700; margin-right:4px; }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:130px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:105px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Grammar Practice — The Passive Voice</h1>
+    <p class="sub">Complete sentence B using the PASSIVE form so it means the same as sentence A, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 120</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <span class="gs-kicker">Grammar Summary</span>
+    <h2 class="gs-title">Passive Voice</h2>
+    <p class="gs-intro">Passive Voice is used when the action is more important than the person who does it.</p>
+
+    <div class="formula-card">
+      <div class="formula-label">Structure</div>
+      <div class="formula-row">
+        <span class="formula-chip">Object</span>
+        <span class="formula-arrow">+</span>
+        <span class="formula-chip accent">be</span>
+        <span class="formula-arrow">+</span>
+        <span class="formula-chip">Past Participle (V3)</span>
+        <span class="formula-arrow">+</span>
+        <span class="formula-chip">(by + agent)</span>
+      </div>
+      <div class="formula-shorthand">The agent (by …) is often omitted if it is unknown or unimportant.</div>
+    </div>
+
+    <div class="example-strip">
+      <div class="ex-line">The committee chose a new leader. <em>→ A new leader was chosen (by the committee).</em></div>
+      <div class="ex-line">People speak English in many countries. <em>→ English is spoken in many countries.</em></div>
+      <div class="ex-line">They will announce the results tomorrow. <em>→ The results will be announced tomorrow.</em></div>
+    </div>
+
+    <h3 class="gs-subhead">Common passive tenses</h3>
+    <div class="modal-grid">
+      <div class="modal-card m-would">
+        <span class="modal-term">am / is / are + V³</span>
+        <p class="modal-meaning">Present Simple Passive — general facts and routines.</p>
+        <p class="modal-example">English is spoken in many countries.</p>
+      </div>
+      <div class="modal-card m-could">
+        <span class="modal-term">was / were + V³</span>
+        <p class="modal-meaning">Past Simple Passive — a completed action in the past.</p>
+        <p class="modal-example">The Microsoft Corporation was started by Bill Gates.</p>
+      </div>
+      <div class="modal-card m-might">
+        <span class="modal-term">have / has been + V³</span>
+        <p class="modal-meaning">Present Perfect Passive — the result is visible now.</p>
+        <p class="modal-example">A website has been set up for new companies.</p>
+      </div>
+      <div class="modal-card m-cont">
+        <span class="modal-term">am / is / are / was / were + being + V³</span>
+        <p class="modal-meaning">Continuous Passive — an action in progress (present or past).</p>
+        <p class="modal-example">The road is being repaired at the moment.</p>
+      </div>
+      <div class="modal-card m-modal">
+        <span class="modal-term">modal + be + V³</span>
+        <p class="modal-meaning">Modal Passive — with can, must, should, will, may, might, etc.</p>
+        <p class="modal-example">All applications must be reviewed by the bank.</p>
+      </div>
+    </div>
+    <p style="margin-top:14px; font-size:12.5px; color:var(--ink-soft); font-family:'JetBrains Mono', monospace;">Any modal (can, could, must, should, will, would, may, might) can also combine with the perfect or continuous passive, e.g. <em>should have been finished</em>, <em>must be being tested</em>.</p>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-g1">1</a>
+    <a href="#section-g2">2</a>
+    <a href="#section-g3">3</a>
+    <a href="#section-g4">4</a>
+    <a href="#section-g5">5</a>
+    <a href="#section-g6">6</a>
+    <a href="#section-g7">7</a>
+    <a href="#section-g8">8</a>
+    <a href="#section-g9">9</a>
+    <a href="#section-g10">10</a>
+    <a href="#section-g11">11</a>
+    <a href="#section-g12">12</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Task 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g1">
+      <div class="q-item" id="item-g1-0" data-answer1="was started">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Bill Gates started the Microsoft Corporation in 1975.</div>
+        <div class="g-sentence"><strong>B:</strong> The Microsoft Corporation <input type="text" class="blank-input" id="in1-g1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by Bill Gates in 1975.</div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="q-item" id="item-g1-1" data-answer1="are being set up">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> People are setting up new independent cafés all the time.</div>
+        <div class="g-sentence"><strong>B:</strong> New independent cafés <input type="text" class="blank-input" id="in1-g1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> all the time.</div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="q-item" id="item-g1-2" data-answer1="must be reviewed">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> The bank must review all applications for loans.</div>
+        <div class="g-sentence"><strong>B:</strong> All applications for loans <input type="text" class="blank-input" id="in1-g1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="q-item" id="item-g1-3" data-answer1="has been set up">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The government has set up a website for people wanting to start a company.</div>
+        <div class="g-sentence"><strong>B:</strong> A website <input type="text" class="blank-input" id="in1-g1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for people wanting to start a company.</div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="q-item" id="item-g1-4" data-answer1="will be affected">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> No one knows if the global crisis will affect any more countries.</div>
+        <div class="g-sentence"><strong>B:</strong> No one knows if any more countries <input type="text" class="blank-input" id="in1-g1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the global crisis.</div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="q-item" id="item-g1-5" data-answer1="was written">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Shakespeare wrote Romeo and Juliet.</div>
+        <div class="g-sentence"><strong>B:</strong> Romeo and Juliet <input type="text" class="blank-input" id="in1-g1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by Shakespeare.</div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="q-item" id="item-g1-6" data-answer1="is being repaired">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> Someone is repairing the road.</div>
+        <div class="g-sentence"><strong>B:</strong> The road <input type="text" class="blank-input" id="in1-g1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the moment.</div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="q-item" id="item-g1-7" data-answer1="will be announced">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> They will announce the results tomorrow.</div>
+        <div class="g-sentence"><strong>B:</strong> The results <input type="text" class="blank-input" id="in1-g1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> tomorrow.</div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="q-item" id="item-g1-8" data-answer1="is spoken">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> People speak English in many countries.</div>
+        <div class="g-sentence"><strong>B:</strong> English <input type="text" class="blank-input" id="in1-g1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in many countries.</div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="q-item" id="item-g1-9" data-answer1="has been produced">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The company has produced a new smartphone.</div>
+        <div class="g-sentence"><strong>B:</strong> A new smartphone <input type="text" class="blank-input" id="in1-g1-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the company.</div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Task 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Task 2</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g2">
+      <div class="q-item" id="item-g2-0" data-answer1="were arrested">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> The police arrested three people after the incident.</div>
+        <div class="g-sentence"><strong>B:</strong> Three people <input type="text" class="blank-input" id="in1-g2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> after the incident.</div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="q-item" id="item-g2-1" data-answer1="are being cleaned">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is cleaning the windows at the moment.</div>
+        <div class="g-sentence"><strong>B:</strong> The windows <input type="text" class="blank-input" id="in1-g2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the moment.</div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="q-item" id="item-g2-2" data-answer1="has been cancelled">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They have cancelled the meeting because of the weather.</div>
+        <div class="g-sentence"><strong>B:</strong> The meeting <input type="text" class="blank-input" id="in1-g2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> because of the weather.</div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="q-item" id="item-g2-3" data-answer1="will be sent">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The company will send all customers an email tomorrow.</div>
+        <div class="g-sentence"><strong>B:</strong> All customers <input type="text" class="blank-input" id="in1-g2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an email tomorrow.</div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="q-item" id="item-g2-4" data-answer1="was stolen">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> Someone stole my bicycle last night.</div>
+        <div class="g-sentence"><strong>B:</strong> My bicycle <input type="text" class="blank-input" id="in1-g2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> last night.</div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="q-item" id="item-g2-5" data-answer1="is being built">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> They are building a new shopping centre near the station.</div>
+        <div class="g-sentence"><strong>B:</strong> A new shopping centre <input type="text" class="blank-input" id="in1-g2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> near the station.</div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="q-item" id="item-g2-6" data-answer1="must be approved">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> The manager must approve all applications.</div>
+        <div class="g-sentence"><strong>B:</strong> All applications <input type="text" class="blank-input" id="in1-g2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the manager.</div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="q-item" id="item-g2-7" data-answer1="is used">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> People use this room for important meetings.</div>
+        <div class="g-sentence"><strong>B:</strong> This room <input type="text" class="blank-input" id="in1-g2-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for important meetings.</div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+      <div class="q-item" id="item-g2-8" data-answer1="had already been repaired">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They had already repaired the machine before we arrived.</div>
+        <div class="g-sentence"><strong>B:</strong> The machine <input type="text" class="blank-input" id="in1-g2-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before we arrived.</div>
+        <div class="g-feedback" id="fb-g2-8"></div>
+      </div>
+      <div class="q-item" id="item-g2-9" data-answer1="will be published">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The university will publish the exam results next week.</div>
+        <div class="g-sentence"><strong>B:</strong> The exam results <input type="text" class="blank-input" id="in1-g2-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next week.</div>
+        <div class="g-feedback" id="fb-g2-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Task 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g3">
+    <div class="block-head"><h2>Task 3</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g3">
+      <div class="q-item" id="item-g3-0" data-answer1="has been damaged">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Someone has damaged the door.</div>
+        <div class="g-sentence"><strong>B:</strong> The door <input type="text" class="blank-input" id="in1-g3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g3-0"></div>
+      </div>
+      <div class="q-item" id="item-g3-1" data-answer1="was opened">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> They opened the museum in 1998.</div>
+        <div class="g-sentence"><strong>B:</strong> The museum <input type="text" class="blank-input" id="in1-g3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in 1998.</div>
+        <div class="g-feedback" id="fb-g3-1"></div>
+      </div>
+      <div class="q-item" id="item-g3-2" data-answer1="is being discussed">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> People are discussing the problem on social media.</div>
+        <div class="g-sentence"><strong>B:</strong> The problem <input type="text" class="blank-input" id="in1-g3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> on social media.</div>
+        <div class="g-feedback" id="fb-g3-2"></div>
+      </div>
+      <div class="q-item" id="item-g3-3" data-answer1="are employed">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The company employs more than 500 people.</div>
+        <div class="g-sentence"><strong>B:</strong> More than 500 people <input type="text" class="blank-input" id="in1-g3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the company.</div>
+        <div class="g-feedback" id="fb-g3-3"></div>
+      </div>
+      <div class="q-item" id="item-g3-4" data-answer1="haven&#x27;t been delivered">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> They haven't delivered our furniture yet.</div>
+        <div class="g-sentence"><strong>B:</strong> Our furniture <input type="text" class="blank-input" id="in1-g3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yet.</div>
+        <div class="g-feedback" id="fb-g3-4"></div>
+      </div>
+      <div class="q-item" id="item-g3-5" data-answer1="will be collected">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone will collect the documents this afternoon.</div>
+        <div class="g-sentence"><strong>B:</strong> The documents <input type="text" class="blank-input" id="in1-g3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this afternoon.</div>
+        <div class="g-feedback" id="fb-g3-5"></div>
+      </div>
+      <div class="q-item" id="item-g3-6" data-answer1="were given">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> The teacher gave the students some useful advice.</div>
+        <div class="g-sentence"><strong>B:</strong> The students <input type="text" class="blank-input" id="in1-g3-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> some useful advice by the teacher.</div>
+        <div class="g-feedback" id="fb-g3-6"></div>
+      </div>
+      <div class="q-item" id="item-g3-7" data-answer1="should be replaced">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> They should replace the old equipment.</div>
+        <div class="g-sentence"><strong>B:</strong> The old equipment <input type="text" class="blank-input" id="in1-g3-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g3-7"></div>
+      </div>
+      <div class="q-item" id="item-g3-8" data-answer1="was being followed">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> Someone was following the woman when she left the building.</div>
+        <div class="g-sentence"><strong>B:</strong> The woman <input type="text" class="blank-input" id="in1-g3-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when she left the building.</div>
+        <div class="g-feedback" id="fb-g3-8"></div>
+      </div>
+      <div class="q-item" id="item-g3-9" data-answer1="have been introduced">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The government has introduced new environmental regulations.</div>
+        <div class="g-sentence"><strong>B:</strong> New environmental regulations <input type="text" class="blank-input" id="in1-g3-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the government.</div>
+        <div class="g-feedback" id="fb-g3-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check Task 3</button>
+      <button class="btn-ghost" data-reset="g3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g4">
+    <div class="block-head"><h2>Task 4</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g4">
+      <div class="q-item" id="item-g4-0" data-answer1="were written">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Shakespeare wrote many famous plays.</div>
+        <div class="g-sentence"><strong>B:</strong> Many famous plays <input type="text" class="blank-input" id="in1-g4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by Shakespeare.</div>
+        <div class="g-feedback" id="fb-g4-0"></div>
+      </div>
+      <div class="q-item" id="item-g4-1" data-answer1="are being interviewed">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is interviewing the candidates now.</div>
+        <div class="g-sentence"><strong>B:</strong> The candidates <input type="text" class="blank-input" id="in1-g4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> now.</div>
+        <div class="g-feedback" id="fb-g4-1"></div>
+      </div>
+      <div class="q-item" id="item-g4-2" data-answer1="hasn&#x27;t been finished">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They haven't finished the construction yet.</div>
+        <div class="g-sentence"><strong>B:</strong> The construction <input type="text" class="blank-input" id="in1-g4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yet.</div>
+        <div class="g-feedback" id="fb-g4-2"></div>
+      </div>
+      <div class="q-item" id="item-g4-3" data-answer1="will be launched">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The company will launch the product in September.</div>
+        <div class="g-sentence"><strong>B:</strong> The product <input type="text" class="blank-input" id="in1-g4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in September.</div>
+        <div class="g-feedback" id="fb-g4-3"></div>
+      </div>
+      <div class="q-item" id="item-g4-4" data-answer1="is grown">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> People grow coffee in several South American countries.</div>
+        <div class="g-sentence"><strong>B:</strong> Coffee <input type="text" class="blank-input" id="in1-g4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in several South American countries.</div>
+        <div class="g-feedback" id="fb-g4-4"></div>
+      </div>
+      <div class="q-item" id="item-g4-5" data-answer1="had been cleaned">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had cleaned the office before the visitors arrived.</div>
+        <div class="g-sentence"><strong>B:</strong> The office <input type="text" class="blank-input" id="in1-g4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the visitors arrived.</div>
+        <div class="g-feedback" id="fb-g4-5"></div>
+      </div>
+      <div class="q-item" id="item-g4-6" data-answer1="can be solved">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> They can solve this problem easily.</div>
+        <div class="g-sentence"><strong>B:</strong> This problem <input type="text" class="blank-input" id="in1-g4-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> easily.</div>
+        <div class="g-feedback" id="fb-g4-6"></div>
+      </div>
+      <div class="q-item" id="item-g4-7" data-answer1="have been stolen">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone has stolen several paintings from the gallery.</div>
+        <div class="g-sentence"><strong>B:</strong> Several paintings <input type="text" class="blank-input" id="in1-g4-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> from the gallery.</div>
+        <div class="g-feedback" id="fb-g4-7"></div>
+      </div>
+      <div class="q-item" id="item-g4-8" data-answer1="was being repaired">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They were repairing the bridge when the accident happened.</div>
+        <div class="g-sentence"><strong>B:</strong> The bridge <input type="text" class="blank-input" id="in1-g4-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when the accident happened.</div>
+        <div class="g-feedback" id="fb-g4-8"></div>
+      </div>
+      <div class="q-item" id="item-g4-9" data-answer1="should be provided">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The government should provide more support for small businesses.</div>
+        <div class="g-sentence"><strong>B:</strong> More support for small businesses <input type="text" class="blank-input" id="in1-g4-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g4-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check Task 4</button>
+      <button class="btn-ghost" data-reset="g4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g5">
+    <div class="block-head"><h2>Task 5</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g5">
+      <div class="q-item" id="item-g5-0" data-answer1="was prepared">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> The chef prepared the meal specially for the guests.</div>
+        <div class="g-sentence"><strong>B:</strong> The meal <input type="text" class="blank-input" id="in1-g5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> specially for the guests.</div>
+        <div class="g-feedback" id="fb-g5-0"></div>
+      </div>
+      <div class="q-item" id="item-g5-1" data-answer1="is being painted">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is painting our house this week.</div>
+        <div class="g-sentence"><strong>B:</strong> Our house <input type="text" class="blank-input" id="in1-g5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this week.</div>
+        <div class="g-feedback" id="fb-g5-1"></div>
+      </div>
+      <div class="q-item" id="item-g5-2" data-answer1="has been changed">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They have changed the timetable.</div>
+        <div class="g-sentence"><strong>B:</strong> The timetable <input type="text" class="blank-input" id="in1-g5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g5-2"></div>
+      </div>
+      <div class="q-item" id="item-g5-3" data-answer1="will be announced">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The company will announce the decision on Monday.</div>
+        <div class="g-sentence"><strong>B:</strong> The decision <input type="text" class="blank-input" id="in1-g5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> on Monday.</div>
+        <div class="g-feedback" id="fb-g5-3"></div>
+      </div>
+      <div class="q-item" id="item-g5-4" data-answer1="is spoken">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> People speak Spanish in many parts of the world.</div>
+        <div class="g-sentence"><strong>B:</strong> Spanish <input type="text" class="blank-input" id="in1-g5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in many parts of the world.</div>
+        <div class="g-feedback" id="fb-g5-4"></div>
+      </div>
+      <div class="q-item" id="item-g5-5" data-answer1="had been stolen">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had stolen the documents before the police arrived.</div>
+        <div class="g-sentence"><strong>B:</strong> The documents <input type="text" class="blank-input" id="in1-g5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the police arrived.</div>
+        <div class="g-feedback" id="fb-g5-5"></div>
+      </div>
+      <div class="q-item" id="item-g5-6" data-answer1="must be completed">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> They must complete the project by Friday.</div>
+        <div class="g-sentence"><strong>B:</strong> The project <input type="text" class="blank-input" id="in1-g5-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by Friday.</div>
+        <div class="g-feedback" id="fb-g5-6"></div>
+      </div>
+      <div class="q-item" id="item-g5-7" data-answer1="is being checked">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone is checking your application at the moment.</div>
+        <div class="g-sentence"><strong>B:</strong> Your application <input type="text" class="blank-input" id="in1-g5-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the moment.</div>
+        <div class="g-feedback" id="fb-g5-7"></div>
+      </div>
+      <div class="q-item" id="item-g5-8" data-answer1="wasn&#x27;t invited">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They didn't invite me to the conference.</div>
+        <div class="g-sentence"><strong>B:</strong> I <input type="text" class="blank-input" id="in1-g5-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to the conference.</div>
+        <div class="g-feedback" id="fb-g5-8"></div>
+      </div>
+      <div class="q-item" id="item-g5-9" data-answer1="has been introduced">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The school has introduced a new assessment system.</div>
+        <div class="g-sentence"><strong>B:</strong> A new assessment system <input type="text" class="blank-input" id="in1-g5-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the school.</div>
+        <div class="g-feedback" id="fb-g5-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check Task 5</button>
+      <button class="btn-ghost" data-reset="g5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g6">
+    <div class="block-head"><h2>Task 6</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g6">
+      <div class="q-item" id="item-g6-0" data-answer1="was built">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> They built the first railway in the region in 1902.</div>
+        <div class="g-sentence"><strong>B:</strong> The first railway in the region <input type="text" class="blank-input" id="in1-g6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in 1902.</div>
+        <div class="g-feedback" id="fb-g6-0"></div>
+      </div>
+      <div class="q-item" id="item-g6-1" data-answer1="is being delivered">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is delivering the package right now.</div>
+        <div class="g-sentence"><strong>B:</strong> The package <input type="text" class="blank-input" id="in1-g6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> right now.</div>
+        <div class="g-feedback" id="fb-g6-1"></div>
+      </div>
+      <div class="q-item" id="item-g6-2" data-answer1="has already been discussed">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They have already discussed the issue.</div>
+        <div class="g-sentence"><strong>B:</strong> The issue <input type="text" class="blank-input" id="in1-g6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> already.</div>
+        <div class="g-feedback" id="fb-g6-2"></div>
+      </div>
+      <div class="q-item" id="item-g6-3" data-answer1="will be remembered">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> People will remember this event for many years.</div>
+        <div class="g-sentence"><strong>B:</strong> This event <input type="text" class="blank-input" id="in1-g6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for many years.</div>
+        <div class="g-feedback" id="fb-g6-3"></div>
+      </div>
+      <div class="q-item" id="item-g6-4" data-answer1="was broken">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> Someone broke the window during the storm.</div>
+        <div class="g-sentence"><strong>B:</strong> The window <input type="text" class="blank-input" id="in1-g6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> during the storm.</div>
+        <div class="g-feedback" id="fb-g6-4"></div>
+      </div>
+      <div class="q-item" id="item-g6-5" data-answer1="is being developed">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> They are developing a new treatment for the disease.</div>
+        <div class="g-sentence"><strong>B:</strong> A new treatment <input type="text" class="blank-input" id="in1-g6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for the disease.</div>
+        <div class="g-feedback" id="fb-g6-5"></div>
+      </div>
+      <div class="q-item" id="item-g6-6" data-answer1="should be kept">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> You should keep these documents in a safe place.</div>
+        <div class="g-sentence"><strong>B:</strong> These documents <input type="text" class="blank-input" id="in1-g6-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in a safe place.</div>
+        <div class="g-feedback" id="fb-g6-6"></div>
+      </div>
+      <div class="q-item" id="item-g6-7" data-answer1="had been switched off">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone had switched off the lights before we entered the room.</div>
+        <div class="g-sentence"><strong>B:</strong> The lights <input type="text" class="blank-input" id="in1-g6-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before we entered the room.</div>
+        <div class="g-feedback" id="fb-g6-7"></div>
+      </div>
+      <div class="q-item" id="item-g6-8" data-answer1="aren&#x27;t allowed to use">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> The company doesn't allow employees to use personal phones during working hours.</div>
+        <div class="g-sentence"><strong>B:</strong> Employees <input type="text" class="blank-input" id="in1-g6-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> personal phones during working hours.</div>
+        <div class="g-feedback" id="fb-g6-8"></div>
+      </div>
+      <div class="q-item" id="item-g6-9" data-answer1="may be postponed">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> They may postpone the meeting until next week.</div>
+        <div class="g-sentence"><strong>B:</strong> The meeting <input type="text" class="blank-input" id="in1-g6-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> until next week.</div>
+        <div class="g-feedback" id="fb-g6-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g6">Check Task 6</button>
+      <button class="btn-ghost" data-reset="g6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g7">
+    <div class="block-head"><h2>Task 7</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g7">
+      <div class="q-item" id="item-g7-0" data-answer1="has been invested">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> The government has invested millions of dollars in the project.</div>
+        <div class="g-sentence"><strong>B:</strong> Millions of dollars <input type="text" class="blank-input" id="in1-g7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in the project by the government.</div>
+        <div class="g-feedback" id="fb-g7-0"></div>
+      </div>
+      <div class="q-item" id="item-g7-1" data-answer1="is being tested">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is testing the new software.</div>
+        <div class="g-sentence"><strong>B:</strong> The new software <input type="text" class="blank-input" id="in1-g7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g7-1"></div>
+      </div>
+      <div class="q-item" id="item-g7-2" data-answer1="were invited">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They invited over 200 guests to the ceremony.</div>
+        <div class="g-sentence"><strong>B:</strong> Over 200 guests <input type="text" class="blank-input" id="in1-g7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to the ceremony.</div>
+        <div class="g-feedback" id="fb-g7-2"></div>
+      </div>
+      <div class="q-item" id="item-g7-3" data-answer1="are produced">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The factory produces thousands of cars every year.</div>
+        <div class="g-sentence"><strong>B:</strong> Thousands of cars <input type="text" class="blank-input" id="in1-g7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> every year.</div>
+        <div class="g-feedback" id="fb-g7-3"></div>
+      </div>
+      <div class="q-item" id="item-g7-4" data-answer1="will be repaired">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> Someone will repair the computer tomorrow.</div>
+        <div class="g-sentence"><strong>B:</strong> The computer <input type="text" class="blank-input" id="in1-g7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> tomorrow.</div>
+        <div class="g-feedback" id="fb-g7-4"></div>
+      </div>
+      <div class="q-item" id="item-g7-5" data-answer1="had been completed">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> They had completed the work before the deadline.</div>
+        <div class="g-sentence"><strong>B:</strong> The work <input type="text" class="blank-input" id="in1-g7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the deadline.</div>
+        <div class="g-feedback" id="fb-g7-5"></div>
+      </div>
+      <div class="q-item" id="item-g7-6" data-answer1="should be protected">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> People should protect endangered animals.</div>
+        <div class="g-sentence"><strong>B:</strong> Endangered animals <input type="text" class="blank-input" id="in1-g7-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g7-6"></div>
+      </div>
+      <div class="q-item" id="item-g7-7" data-answer1="has been taken">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone has taken my seat.</div>
+        <div class="g-sentence"><strong>B:</strong> My seat <input type="text" class="blank-input" id="in1-g7-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g7-7"></div>
+      </div>
+      <div class="q-item" id="item-g7-8" data-answer1="was being interviewed">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They were interviewing the applicant when I arrived.</div>
+        <div class="g-sentence"><strong>B:</strong> The applicant <input type="text" class="blank-input" id="in1-g7-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when I arrived.</div>
+        <div class="g-feedback" id="fb-g7-8"></div>
+      </div>
+      <div class="q-item" id="item-g7-9" data-answer1="cannot be guaranteed">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The company cannot guarantee delivery by Friday.</div>
+        <div class="g-sentence"><strong>B:</strong> Delivery by Friday <input type="text" class="blank-input" id="in1-g7-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the company.</div>
+        <div class="g-feedback" id="fb-g7-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g7">Check Task 7</button>
+      <button class="btn-ghost" data-reset="g7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g8">
+    <div class="block-head"><h2>Task 8</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g8">
+      <div class="q-item" id="item-g8-0" data-answer1="were stolen">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Someone stole several valuable items from the shop.</div>
+        <div class="g-sentence"><strong>B:</strong> Several valuable items <input type="text" class="blank-input" id="in1-g8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> from the shop.</div>
+        <div class="g-feedback" id="fb-g8-0"></div>
+      </div>
+      <div class="q-item" id="item-g8-1" data-answer1="is being renovated">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> They are renovating the old hotel.</div>
+        <div class="g-sentence"><strong>B:</strong> The old hotel <input type="text" class="blank-input" id="in1-g8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g8-1"></div>
+      </div>
+      <div class="q-item" id="item-g8-2" data-answer1="has been offered">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> The university has offered her a scholarship.</div>
+        <div class="g-sentence"><strong>B:</strong> She <input type="text" class="blank-input" id="in1-g8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a scholarship by the university.</div>
+        <div class="g-feedback" id="fb-g8-2"></div>
+      </div>
+      <div class="q-item" id="item-g8-3" data-answer1="will be published">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> They will publish the article next month.</div>
+        <div class="g-sentence"><strong>B:</strong> The article <input type="text" class="blank-input" id="in1-g8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next month.</div>
+        <div class="g-feedback" id="fb-g8-3"></div>
+      </div>
+      <div class="q-item" id="item-g8-4" data-answer1="is considered">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> People consider this building a historical monument.</div>
+        <div class="g-sentence"><strong>B:</strong> This building <input type="text" class="blank-input" id="in1-g8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a historical monument.</div>
+        <div class="g-feedback" id="fb-g8-4"></div>
+      </div>
+      <div class="q-item" id="item-g8-5" data-answer1="had already been informed">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had already informed the passengers about the delay.</div>
+        <div class="g-sentence"><strong>B:</strong> The passengers <input type="text" class="blank-input" id="in1-g8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> about the delay.</div>
+        <div class="g-feedback" id="fb-g8-5"></div>
+      </div>
+      <div class="q-item" id="item-g8-6" data-answer1="must be completed">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> They must complete all safety checks before the flight.</div>
+        <div class="g-sentence"><strong>B:</strong> All safety checks <input type="text" class="blank-input" id="in1-g8-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the flight.</div>
+        <div class="g-feedback" id="fb-g8-6"></div>
+      </div>
+      <div class="q-item" id="item-g8-7" data-answer1="was being interviewed">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone was interviewing the director when the fire alarm went off.</div>
+        <div class="g-sentence"><strong>B:</strong> The director <input type="text" class="blank-input" id="in1-g8-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when the fire alarm went off.</div>
+        <div class="g-feedback" id="fb-g8-7"></div>
+      </div>
+      <div class="q-item" id="item-g8-8" data-answer1="haven&#x27;t been repaired">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They haven't repaired the elevator yet.</div>
+        <div class="g-sentence"><strong>B:</strong> The elevator <input type="text" class="blank-input" id="in1-g8-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yet.</div>
+        <div class="g-feedback" id="fb-g8-8"></div>
+      </div>
+      <div class="q-item" id="item-g8-9" data-answer1="may be increased">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The company may increase the prices next year.</div>
+        <div class="g-sentence"><strong>B:</strong> The prices <input type="text" class="blank-input" id="in1-g8-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next year.</div>
+        <div class="g-feedback" id="fb-g8-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g8">Check Task 8</button>
+      <button class="btn-ghost" data-reset="g8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g9">
+    <div class="block-head"><h2>Task 9</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g9">
+      <div class="q-item" id="item-g9-0" data-answer1="has been arrested">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> The police have arrested the suspect.</div>
+        <div class="g-sentence"><strong>B:</strong> The suspect <input type="text" class="blank-input" id="in1-g9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the police.</div>
+        <div class="g-feedback" id="fb-g9-0"></div>
+      </div>
+      <div class="q-item" id="item-g9-1" data-answer1="is being prepared">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is preparing the conference room.</div>
+        <div class="g-sentence"><strong>B:</strong> The conference room <input type="text" class="blank-input" id="in1-g9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g9-1"></div>
+      </div>
+      <div class="q-item" id="item-g9-2" data-answer1="was built">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They built this stadium more than fifty years ago.</div>
+        <div class="g-sentence"><strong>B:</strong> This stadium <input type="text" class="blank-input" id="in1-g9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> more than fifty years ago.</div>
+        <div class="g-feedback" id="fb-g9-2"></div>
+      </div>
+      <div class="q-item" id="item-g9-3" data-answer1="is used">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> People use renewable energy in many countries.</div>
+        <div class="g-sentence"><strong>B:</strong> Renewable energy <input type="text" class="blank-input" id="in1-g9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in many countries.</div>
+        <div class="g-feedback" id="fb-g9-3"></div>
+      </div>
+      <div class="q-item" id="item-g9-4" data-answer1="will be delivered">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> They will deliver the new equipment next week.</div>
+        <div class="g-sentence"><strong>B:</strong> The new equipment <input type="text" class="blank-input" id="in1-g9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next week.</div>
+        <div class="g-feedback" id="fb-g9-4"></div>
+      </div>
+      <div class="q-item" id="item-g9-5" data-answer1="had been damaged">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had damaged the car before the owner returned.</div>
+        <div class="g-sentence"><strong>B:</strong> The car <input type="text" class="blank-input" id="in1-g9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the owner returned.</div>
+        <div class="g-feedback" id="fb-g9-5"></div>
+      </div>
+      <div class="q-item" id="item-g9-6" data-answer1="should be informed">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> They should inform all employees about the changes.</div>
+        <div class="g-sentence"><strong>B:</strong> All employees <input type="text" class="blank-input" id="in1-g9-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> about the changes.</div>
+        <div class="g-feedback" id="fb-g9-6"></div>
+      </div>
+      <div class="q-item" id="item-g9-7" data-answer1="have been sent">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone has sent you an invitation.</div>
+        <div class="g-sentence"><strong>B:</strong> You <input type="text" class="blank-input" id="in1-g9-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an invitation.</div>
+        <div class="g-feedback" id="fb-g9-7"></div>
+      </div>
+      <div class="q-item" id="item-g9-8" data-answer1="was being discussed">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They were discussing the proposal when the manager entered.</div>
+        <div class="g-sentence"><strong>B:</strong> The proposal <input type="text" class="blank-input" id="in1-g9-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when the manager entered.</div>
+        <div class="g-feedback" id="fb-g9-8"></div>
+      </div>
+      <div class="q-item" id="item-g9-9" data-answer1="must be replaced">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The company must replace the faulty products.</div>
+        <div class="g-sentence"><strong>B:</strong> The faulty products <input type="text" class="blank-input" id="in1-g9-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g9-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g9">Check Task 9</button>
+      <button class="btn-ghost" data-reset="g9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g10">
+    <div class="block-head"><h2>Task 10</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g10">
+      <div class="q-item" id="item-g10-0" data-answer1="was cleaned">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Someone cleaned the classroom after the lesson.</div>
+        <div class="g-sentence"><strong>B:</strong> The classroom <input type="text" class="blank-input" id="in1-g10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> after the lesson.</div>
+        <div class="g-feedback" id="fb-g10-0"></div>
+      </div>
+      <div class="q-item" id="item-g10-1" data-answer1="is currently being investigated">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> They are currently investigating the cause of the accident.</div>
+        <div class="g-sentence"><strong>B:</strong> The cause of the accident <input type="text" class="blank-input" id="in1-g10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g10-1"></div>
+      </div>
+      <div class="q-item" id="item-g10-2" data-answer1="have been sold">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> The company has sold all the tickets.</div>
+        <div class="g-sentence"><strong>B:</strong> All the tickets <input type="text" class="blank-input" id="in1-g10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the company.</div>
+        <div class="g-feedback" id="fb-g10-2"></div>
+      </div>
+      <div class="q-item" id="item-g10-3" data-answer1="will be completed">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> They will complete the new road next year.</div>
+        <div class="g-sentence"><strong>B:</strong> The new road <input type="text" class="blank-input" id="in1-g10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next year.</div>
+        <div class="g-feedback" id="fb-g10-3"></div>
+      </div>
+      <div class="q-item" id="item-g10-4" data-answer1="are made">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> People make these traditional carpets by hand.</div>
+        <div class="g-sentence"><strong>B:</strong> These traditional carpets <input type="text" class="blank-input" id="in1-g10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by hand.</div>
+        <div class="g-feedback" id="fb-g10-4"></div>
+      </div>
+      <div class="q-item" id="item-g10-5" data-answer1="had been removed">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had removed the furniture before we moved in.</div>
+        <div class="g-sentence"><strong>B:</strong> The furniture <input type="text" class="blank-input" id="in1-g10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before we moved in.</div>
+        <div class="g-feedback" id="fb-g10-5"></div>
+      </div>
+      <div class="q-item" id="item-g10-6" data-answer1="must be submitted">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> You must submit the application before Friday.</div>
+        <div class="g-sentence"><strong>B:</strong> The application <input type="text" class="blank-input" id="in1-g10-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before Friday.</div>
+        <div class="g-feedback" id="fb-g10-6"></div>
+      </div>
+      <div class="q-item" id="item-g10-7" data-answer1="are being interviewed">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone is interviewing several applicants today.</div>
+        <div class="g-sentence"><strong>B:</strong> Several applicants <input type="text" class="blank-input" id="in1-g10-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> today.</div>
+        <div class="g-feedback" id="fb-g10-7"></div>
+      </div>
+      <div class="q-item" id="item-g10-8" data-answer1="might be cancelled">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They might cancel the event because of the weather.</div>
+        <div class="g-sentence"><strong>B:</strong> The event <input type="text" class="blank-input" id="in1-g10-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> because of the weather.</div>
+        <div class="g-feedback" id="fb-g10-8"></div>
+      </div>
+      <div class="q-item" id="item-g10-9" data-answer1="aren&#x27;t allowed to enter">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The company doesn't allow customers to enter this area.</div>
+        <div class="g-sentence"><strong>B:</strong> Customers <input type="text" class="blank-input" id="in1-g10-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this area.</div>
+        <div class="g-feedback" id="fb-g10-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g10">Check Task 10</button>
+      <button class="btn-ghost" data-reset="g10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g11">
+    <div class="block-head"><h2>Task 11</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g11">
+      <div class="q-item" id="item-g11-0" data-answer1="was discovered">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> They discovered the ancient city in the nineteenth century.</div>
+        <div class="g-sentence"><strong>B:</strong> The ancient city <input type="text" class="blank-input" id="in1-g11-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in the nineteenth century.</div>
+        <div class="g-feedback" id="fb-g11-0"></div>
+      </div>
+      <div class="q-item" id="item-g11-1" data-answer1="is being repaired">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> Someone is repairing the air-conditioning system.</div>
+        <div class="g-sentence"><strong>B:</strong> The air-conditioning system <input type="text" class="blank-input" id="in1-g11-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g11-1"></div>
+      </div>
+      <div class="q-item" id="item-g11-2" data-answer1="has recently been renovated">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> They have recently renovated the library.</div>
+        <div class="g-sentence"><strong>B:</strong> The library <input type="text" class="blank-input" id="in1-g11-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> recently.</div>
+        <div class="g-feedback" id="fb-g11-2"></div>
+      </div>
+      <div class="q-item" id="item-g11-3" data-answer1="will be introduced">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> The government will introduce new measures next year.</div>
+        <div class="g-sentence"><strong>B:</strong> New measures <input type="text" class="blank-input" id="in1-g11-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next year.</div>
+        <div class="g-feedback" id="fb-g11-3"></div>
+      </div>
+      <div class="q-item" id="item-g11-4" data-answer1="is spoken">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> People speak English as a second language in many countries.</div>
+        <div class="g-sentence"><strong>B:</strong> English <input type="text" class="blank-input" id="in1-g11-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> as a second language in many countries.</div>
+        <div class="g-feedback" id="fb-g11-4"></div>
+      </div>
+      <div class="q-item" id="item-g11-5" data-answer1="had already been booked">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had already booked all the rooms.</div>
+        <div class="g-sentence"><strong>B:</strong> All the rooms <input type="text" class="blank-input" id="in1-g11-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> already.</div>
+        <div class="g-feedback" id="fb-g11-5"></div>
+      </div>
+      <div class="q-item" id="item-g11-6" data-answer1="should be provided">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> They should provide students with more opportunities.</div>
+        <div class="g-sentence"><strong>B:</strong> Students <input type="text" class="blank-input" id="in1-g11-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> with more opportunities.</div>
+        <div class="g-feedback" id="fb-g11-6"></div>
+      </div>
+      <div class="q-item" id="item-g11-7" data-answer1="were being checked">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone was checking the documents when I arrived.</div>
+        <div class="g-sentence"><strong>B:</strong> The documents <input type="text" class="blank-input" id="in1-g11-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when I arrived.</div>
+        <div class="g-feedback" id="fb-g11-7"></div>
+      </div>
+      <div class="q-item" id="item-g11-8" data-answer1="may be changed">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They may change the schedule at short notice.</div>
+        <div class="g-sentence"><strong>B:</strong> The schedule <input type="text" class="blank-input" id="in1-g11-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at short notice.</div>
+        <div class="g-feedback" id="fb-g11-8"></div>
+      </div>
+      <div class="q-item" id="item-g11-9" data-answer1="have been given">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The manager has given the employees new instructions.</div>
+        <div class="g-sentence"><strong>B:</strong> The employees <input type="text" class="blank-input" id="in1-g11-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> new instructions by the manager.</div>
+        <div class="g-feedback" id="fb-g11-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g11">Check Task 11</button>
+      <button class="btn-ghost" data-reset="g11">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g12">
+    <div class="block-head"><h2>Task 12</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences so that the second sentence has the same meaning as the first. Use the PASSIVE form.</p>
+    <div id="list-g12">
+      <div class="q-item" id="item-g12-0" data-answer1="was damaged">
+        <div class="q-context"><span class="g-num">1</span><strong>A:</strong> Someone damaged the equipment during the move.</div>
+        <div class="g-sentence"><strong>B:</strong> The equipment <input type="text" class="blank-input" id="in1-g12-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> during the move.</div>
+        <div class="g-feedback" id="fb-g12-0"></div>
+      </div>
+      <div class="q-item" id="item-g12-1" data-answer1="are being built">
+        <div class="q-context"><span class="g-num">2</span><strong>A:</strong> They are building several new houses in this area.</div>
+        <div class="g-sentence"><strong>B:</strong> Several new houses <input type="text" class="blank-input" id="in1-g12-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in this area.</div>
+        <div class="g-feedback" id="fb-g12-1"></div>
+      </div>
+      <div class="q-item" id="item-g12-2" data-answer1="has been rejected">
+        <div class="q-context"><span class="g-num">3</span><strong>A:</strong> The company has rejected his application.</div>
+        <div class="g-sentence"><strong>B:</strong> His application <input type="text" class="blank-input" id="in1-g12-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the company.</div>
+        <div class="g-feedback" id="fb-g12-2"></div>
+      </div>
+      <div class="q-item" id="item-g12-3" data-answer1="will be announced">
+        <div class="q-context"><span class="g-num">4</span><strong>A:</strong> They will announce the winner at the end of the ceremony.</div>
+        <div class="g-sentence"><strong>B:</strong> The winner <input type="text" class="blank-input" id="in1-g12-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the end of the ceremony.</div>
+        <div class="g-feedback" id="fb-g12-3"></div>
+      </div>
+      <div class="q-item" id="item-g12-4" data-answer1="is often criticized">
+        <div class="q-context"><span class="g-num">5</span><strong>A:</strong> People often criticize the government for this policy.</div>
+        <div class="g-sentence"><strong>B:</strong> The government <input type="text" class="blank-input" id="in1-g12-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for this policy.</div>
+        <div class="g-feedback" id="fb-g12-4"></div>
+      </div>
+      <div class="q-item" id="item-g12-5" data-answer1="had been locked">
+        <div class="q-context"><span class="g-num">6</span><strong>A:</strong> Someone had locked the doors before the employees arrived.</div>
+        <div class="g-sentence"><strong>B:</strong> The doors <input type="text" class="blank-input" id="in1-g12-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the employees arrived.</div>
+        <div class="g-feedback" id="fb-g12-5"></div>
+      </div>
+      <div class="q-item" id="item-g12-6" data-answer1="have to be replaced">
+        <div class="q-context"><span class="g-num">7</span><strong>A:</strong> They have to replace the damaged cables immediately.</div>
+        <div class="g-sentence"><strong>B:</strong> The damaged cables <input type="text" class="blank-input" id="in1-g12-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> immediately.</div>
+        <div class="g-feedback" id="fb-g12-6"></div>
+      </div>
+      <div class="q-item" id="item-g12-7" data-answer1="are being examined">
+        <div class="q-context"><span class="g-num">8</span><strong>A:</strong> Someone is examining the patient's results.</div>
+        <div class="g-sentence"><strong>B:</strong> The patient's results <input type="text" class="blank-input" id="in1-g12-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"></div>
+        <div class="g-feedback" id="fb-g12-7"></div>
+      </div>
+      <div class="q-item" id="item-g12-8" data-answer1="was being built">
+        <div class="q-context"><span class="g-num">9</span><strong>A:</strong> They were building the new hospital when we visited the area.</div>
+        <div class="g-sentence"><strong>B:</strong> The new hospital <input type="text" class="blank-input" id="in1-g12-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> when we visited the area.</div>
+        <div class="g-feedback" id="fb-g12-8"></div>
+      </div>
+      <div class="q-item" id="item-g12-9" data-answer1="could be reduced">
+        <div class="q-context"><span class="g-num">10</span><strong>A:</strong> The company could reduce its costs by changing suppliers.</div>
+        <div class="g-sentence"><strong>B:</strong> Its costs <input type="text" class="blank-input" id="in1-g12-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by changing suppliers.</div>
+        <div class="g-feedback" id="fb-g12-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g12">Check Task 12</button>
+      <button class="btn-ghost" data-reset="g12">Clear section</button>
+    </div>
+  </section>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 120</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — The Passive Voice — for individual practice. Answers are checked against one accepted wording; a correct sentence phrased slightly differently may be marked wrong, so ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the fields don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2","g3","g4","g5","g6","g7","g8","g9","g10","g11","g12"];
+  var GROUP_COUNTS = {"g1":10,"g2":10,"g3":10,"g4":10,"g5":10,"g6":10,"g7":10,"g8":10,"g9":10,"g10":10,"g11":10,"g12":10};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    return s.toLowerCase()
+      .replace(/['’‘]/g, "'")
+      .replace(/[^\w\s']/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  document.querySelectorAll('.blank-input').forEach(function(inp){
+    inp.addEventListener('input', function(){
+      var item = inp.closest('.q-item');
+      item.classList.remove('correct','incorrect');
+      inp.classList.remove('wrong');
+      var qid = item.id.replace('item-','');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      updateScore();
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var ans2 = item.getAttribute('data-answer2') || '';
+      var in1 = document.getElementById('in1-' + qid);
+      var in2 = document.getElementById('in2-' + qid);
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      if (in1) in1.classList.remove('wrong');
+      if (in2) in2.classList.remove('wrong');
+      var v1 = in1 ? in1.value.trim() : '';
+      var v2 = in2 ? in2.value.trim() : '';
+      if (!v1 && !v2) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      var ok1 = normalize(v1) === normalize(ans1);
+      var ok2 = normalize(v2) === normalize(ans2);
+      if (ok1 && ok2) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        if (!ok1 && in1) in1.classList.add('wrong');
+        if (!ok2 && in2) in2.classList.add('wrong');
+        if (fb) { fb.innerHTML = 'Model answer: <strong>' + ans1 + '</strong> … <strong>' + ans2 + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      item.classList.remove('correct','incorrect');
+      var in1 = document.getElementById('in1-' + qid);
+      var in2 = document.getElementById('in2-' + qid);
+      if (in1) { in1.value = ''; in1.classList.remove('wrong'); }
+      if (in2) { in2.value = ''; in2.classList.remove('wrong'); }
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var ans2 = item.getAttribute('data-answer2') || '';
+      var qid = item.id.replace('item-','');
+      var in1 = document.getElementById('in1-' + qid);
+      var in2 = document.getElementById('in2-' + qid);
+      var v1 = in1 ? in1.value.trim() : '';
+      var v2 = in2 ? in2.value.trim() : '';
+      if (v1 || v2) {
+        answered++;
+        if (normalize(v1) === normalize(ans1) && normalize(v2) === normalize(ans2)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
