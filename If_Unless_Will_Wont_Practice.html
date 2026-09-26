@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>If / Unless + will / won't — Conditional Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .formula-card{ background:var(--black); border-radius:10px; padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,28px); margin-bottom:20px; position:relative; overflow:hidden; }
+  .formula-card::before{ content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px; background:var(--yellow); opacity:.14; border-radius:50%; }
+  .formula-label{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+  .formula-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-family:'JetBrains Mono', monospace; font-size:clamp(13px,3.2vw,15.5px); color:var(--white); }
+  .formula-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:6px 11px; white-space:nowrap; }
+  .formula-chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula-arrow{ color:rgba(255,255,255,.4); font-size:15px; }
+  .formula-shorthand{ margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:rgba(255,255,255,.55); }
+
+  .example-strip{ display:grid; gap:8px; margin-bottom:26px; }
+  .example-strip .ex-line{ font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; color:var(--ink); }
+  .example-strip .ex-line em{ font-style:normal; color:var(--ink-soft); }
+  .example-strip .ex-line.bad{ border-left-color:var(--bad); }
+  .example-strip .ex-line.good{ border-left-color:var(--good); }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .modal-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .modal-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:16px; position:relative; border-top:4px solid var(--accent); }
+  .modal-card.m-if{ --accent:var(--teal); }
+  .modal-card.m-unless{ --accent:var(--plum); }
+  .modal-card.m-will{ --accent:var(--yellow-deep); }
+  .modal-card.m-wont{ --accent:var(--rose); }
+  .modal-term{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:14px; color:var(--ink); margin-bottom:6px; display:inline-block; padding:3px 8px; border-radius:5px; background:color-mix(in srgb, var(--accent) 16%, white); }
+  .modal-meaning{ font-size:13px; color:var(--ink-soft); margin-bottom:10px; line-height:1.5; }
+  .modal-example{ font-size:12.5px; font-style:italic; color:var(--ink); border-top:1px dashed var(--rule); padding-top:9px; }
+
+  @media (max-width:640px){
+    .modal-grid{ grid-template-columns:repeat(2,1fr); }
+    .formula-row{ font-size:12.5px; }
+  }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13.5px; color:var(--ink-soft); margin-bottom:2px; display:flex; align-items:flex-start; gap:2px; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:90px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:80px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>If / Unless + will / won&#x27;t</h1>
+    <p class="sub">Complete each sentence with <strong>if</strong>, <strong>unless</strong>, <strong>will</strong>, or <strong>won&#x27;t</strong>, then check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 120</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <span class="gs-kicker">Grammar Summary</span>
+    <h2 class="gs-title">First Conditional: if / unless + will / won&#x27;t</h2>
+    <p class="gs-intro">We use <strong>if</strong> and <strong>unless</strong> to introduce a possible condition, and <strong>will</strong> / <strong>won&#x27;t</strong> to show the likely future result.</p>
+
+    <div class="formula-card">
+      <div class="formula-label">Structure</div>
+      <div class="formula-row">
+        <span class="formula-chip accent">if / unless</span>
+        <span class="formula-arrow">+</span>
+        <span class="formula-chip">Present Simple</span>
+        <span class="formula-arrow">,</span>
+        <span class="formula-chip accent">will / won&#x27;t</span>
+        <span class="formula-arrow">+</span>
+        <span class="formula-chip">base verb</span>
+      </div>
+      <div class="formula-shorthand">Important: after if / unless, normally use the Present Simple — not will.</div>
+    </div>
+
+    <div class="example-strip">
+      <div class="ex-line good">If you study, you will pass. <em>→ a possible condition, a likely result</em></div>
+      <div class="ex-line good">Unless you study, you won&#x27;t pass. <em>→ = If you don&#x27;t study, you won&#x27;t pass.</em></div>
+      <div class="ex-line bad">❌ If it will rain, we will stay home. <em>→ no will after if</em></div>
+      <div class="ex-line good">✅ If it rains, we will stay home. <em>→ present simple after if</em></div>
+    </div>
+
+    <h3 class="gs-subhead">The four words</h3>
+    <div class="modal-grid">
+      <div class="modal-card m-if">
+        <span class="modal-term">if</span>
+        <p class="modal-meaning">Introduces a possible condition.</p>
+        <p class="modal-example">If you study, you will pass.</p>
+      </div>
+      <div class="modal-card m-unless">
+        <span class="modal-term">unless</span>
+        <p class="modal-meaning">Means &quot;if&#x27; not&quot; — a negative condition.</p>
+        <p class="modal-example">Unless you study, you won&#x27;t pass.</p>
+      </div>
+      <div class="modal-card m-will">
+        <span class="modal-term">will</span>
+        <p class="modal-meaning">Shows the likely, positive future result.</p>
+        <p class="modal-example">If it rains, we will stay home.</p>
+      </div>
+      <div class="modal-card m-wont">
+        <span class="modal-term">won&#x27;t</span>
+        <p class="modal-meaning">Will not — usually a negative future result.</p>
+        <p class="modal-example">If it rains, we won&#x27;t go out.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-g1">1</a>
+    <a href="#section-g2">2</a>
+    <a href="#section-g3">3</a>
+    <a href="#section-g4">4</a>
+    <a href="#section-g5">5</a>
+    <a href="#section-g6">6</a>
+    <a href="#section-g7">7</a>
+    <a href="#section-g8">8</a>
+    <a href="#section-g9">9</a>
+    <a href="#section-g10">10</a>
+    <a href="#section-g11">11</a>
+    <a href="#section-g12">12</a>
+  </div>
+
+  <section class="block" id="section-g1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g1">
+      <div class="q-item" id="item-g1-0" data-answer1="will">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you eat good food and do more exercise, you <input type="text" class="blank-input" id="in1-g1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be healthier.</div>
+        <div class="g-feedback" id="fb-g1-0"></div>
+      </div>
+      <div class="q-item" id="item-g1-1" data-answer1="unless">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">Many people visit their families over the New Year&#x27;s holiday, <input type="text" class="blank-input" id="in1-g1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> they have to work.</div>
+        <div class="g-feedback" id="fb-g1-1"></div>
+      </div>
+      <div class="q-item" id="item-g1-2" data-answer1="will">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence">If you walk everywhere instead of taking the bus, your fitness <input type="text" class="blank-input" id="in1-g1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> improve.</div>
+        <div class="g-feedback" id="fb-g1-2"></div>
+      </div>
+      <div class="q-item" id="item-g1-3" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">Unless pollution is reduced significantly, air quality <input type="text" class="blank-input" id="in1-g1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> get better.</div>
+        <div class="g-feedback" id="fb-g1-3"></div>
+      </div>
+      <div class="q-item" id="item-g1-4" data-answer1="if">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">At this company, you can earn more money <input type="text" class="blank-input" id="in1-g1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you work longer hours.</div>
+        <div class="g-feedback" id="fb-g1-4"></div>
+      </div>
+      <div class="q-item" id="item-g1-5" data-answer1="will">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">It <input type="text" class="blank-input" id="in1-g1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> really help the environment if recycling becomes more common.</div>
+        <div class="g-feedback" id="fb-g1-5"></div>
+      </div>
+      <div class="q-item" id="item-g1-6" data-answer1="unless">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence">This government will remain very unpopular <input type="text" class="blank-input" id="in1-g1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> taxes are lowered.</div>
+        <div class="g-feedback" id="fb-g1-6"></div>
+      </div>
+      <div class="q-item" id="item-g1-7" data-answer1="will">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">Do you believe that if people are happy at work, they <input type="text" class="blank-input" id="in1-g1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be happier in general?</div>
+        <div class="g-feedback" id="fb-g1-7"></div>
+      </div>
+      <div class="q-item" id="item-g1-8" data-answer1="if">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">The president has promised to improve education <input type="text" class="blank-input" id="in1-g1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> he stays in power next year.</div>
+        <div class="g-feedback" id="fb-g1-8"></div>
+      </div>
+      <div class="q-item" id="item-g1-9" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">You <input type="text" class="blank-input" id="in1-g1-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> find out what you&#x27;re capable of achieving unless you try.</div>
+        <div class="g-feedback" id="fb-g1-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="g1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g2">
+      <div class="q-item" id="item-g2-0" data-answer1="will">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">You <input type="text" class="blank-input" id="in1-g2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> feel tired tomorrow if you don&#x27;t get enough sleep tonight.</div>
+        <div class="g-feedback" id="fb-g2-0"></div>
+      </div>
+      <div class="q-item" id="item-g2-1" data-answer1="unless">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">We won&#x27;t go to the beach <input type="text" class="blank-input" id="in1-g2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the weather improves.</div>
+        <div class="g-feedback" id="fb-g2-1"></div>
+      </div>
+      <div class="q-item" id="item-g2-2" data-answer1="if">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you leave now, you&#x27;ll arrive before the meeting starts.</div>
+        <div class="g-feedback" id="fb-g2-2"></div>
+      </div>
+      <div class="q-item" id="item-g2-3" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">She <input type="text" class="blank-input" id="in1-g2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> pass the exam unless she studies harder.</div>
+        <div class="g-feedback" id="fb-g2-3"></div>
+      </div>
+      <div class="q-item" id="item-g2-4" data-answer1="if">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">You can borrow my car <input type="text" class="blank-input" id="in1-g2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you promise to drive carefully.</div>
+        <div class="g-feedback" id="fb-g2-4"></div>
+      </div>
+      <div class="q-item" id="item-g2-5" data-answer1="if">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the shop is still open, I&#x27;ll buy some bread on my way home.</div>
+        <div class="g-feedback" id="fb-g2-5"></div>
+      </div>
+      <div class="q-item" id="item-g2-6" data-answer1="unless">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence">He won&#x27;t improve his English <input type="text" class="blank-input" id="in1-g2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> he practises regularly.</div>
+        <div class="g-feedback" id="fb-g2-6"></div>
+      </div>
+      <div class="q-item" id="item-g2-7" data-answer1="will">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">If you don&#x27;t hurry, you <input type="text" class="blank-input" id="in1-g2-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> miss the beginning of the film.</div>
+        <div class="g-feedback" id="fb-g2-7"></div>
+      </div>
+      <div class="q-item" id="item-g2-8" data-answer1="will">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">They <input type="text" class="blank-input" id="in1-g2-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to finish the project on time if they work together.</div>
+        <div class="g-feedback" id="fb-g2-8"></div>
+      </div>
+      <div class="q-item" id="item-g2-9" data-answer1="unless">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g2-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you ask for help, you&#x27;ll probably have to solve the problem yourself.</div>
+        <div class="g-feedback" id="fb-g2-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="g2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g3">
+    <div class="block-head"><h2>Exercise 3</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g3">
+      <div class="q-item" id="item-g3-0" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you drink too much coffee in the evening, you <input type="text" class="blank-input" id="in1-g3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> sleep well.</div>
+        <div class="g-feedback" id="fb-g3-0"></div>
+      </div>
+      <div class="q-item" id="item-g3-1" data-answer1="will">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> have a picnic tomorrow unless it rains.</div>
+        <div class="g-feedback" id="fb-g3-1"></div>
+      </div>
+      <div class="q-item" id="item-g3-2" data-answer1="if">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you take an umbrella, you won&#x27;t get wet.</div>
+        <div class="g-feedback" id="fb-g3-2"></div>
+      </div>
+      <div class="q-item" id="item-g3-3" data-answer1="unless">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">You won&#x27;t understand the instructions <input type="text" class="blank-input" id="in1-g3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you read them carefully.</div>
+        <div class="g-feedback" id="fb-g3-3"></div>
+      </div>
+      <div class="q-item" id="item-g3-4" data-answer1="will">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">If Sarah finishes work early, she <input type="text" class="blank-input" id="in1-g3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> join us for dinner.</div>
+        <div class="g-feedback" id="fb-g3-4"></div>
+      </div>
+      <div class="q-item" id="item-g3-5" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">The children <input type="text" class="blank-input" id="in1-g3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be allowed to play outside if the weather gets worse.</div>
+        <div class="g-feedback" id="fb-g3-5"></div>
+      </div>
+      <div class="q-item" id="item-g3-6" data-answer1="unless">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g3-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you hurry, you&#x27;ll miss the last bus.</div>
+        <div class="g-feedback" id="fb-g3-6"></div>
+      </div>
+      <div class="q-item" id="item-g3-7" data-answer1="if">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">I&#x27;ll call you tonight <input type="text" class="blank-input" id="in1-g3-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> I get home too late.</div>
+        <div class="g-feedback" id="fb-g3-7"></div>
+      </div>
+      <div class="q-item" id="item-g3-8" data-answer1="will">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If you don&#x27;t save your work, you <input type="text" class="blank-input" id="in1-g3-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> lose everything.</div>
+        <div class="g-feedback" id="fb-g3-8"></div>
+      </div>
+      <div class="q-item" id="item-g3-9" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">He <input type="text" class="blank-input" id="in1-g3-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> get the job unless he performs well at the interview.</div>
+        <div class="g-feedback" id="fb-g3-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check Exercise 3</button>
+      <button class="btn-ghost" data-reset="g3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g4">
+    <div class="block-head"><h2>Exercise 4</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g4">
+      <div class="q-item" id="item-g4-0" data-answer1="if">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you eat too many sweets, you may have problems with your teeth.</div>
+        <div class="g-feedback" id="fb-g4-0"></div>
+      </div>
+      <div class="q-item" id="item-g4-1" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">I <input type="text" class="blank-input" id="in1-g4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> lend you my laptop unless you promise to take good care of it.</div>
+        <div class="g-feedback" id="fb-g4-1"></div>
+      </div>
+      <div class="q-item" id="item-g4-2" data-answer1="will">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence">If we leave before seven, we <input type="text" class="blank-input" id="in1-g4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> avoid the traffic.</div>
+        <div class="g-feedback" id="fb-g4-2"></div>
+      </div>
+      <div class="q-item" id="item-g4-3" data-answer1="unless">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">You won&#x27;t make much progress <input type="text" class="blank-input" id="in1-g4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you practise speaking regularly.</div>
+        <div class="g-feedback" id="fb-g4-3"></div>
+      </div>
+      <div class="q-item" id="item-g4-4" data-answer1="will">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">She <input type="text" class="blank-input" id="in1-g4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be disappointed if nobody comes to her party.</div>
+        <div class="g-feedback" id="fb-g4-4"></div>
+      </div>
+      <div class="q-item" id="item-g4-5" data-answer1="if">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the train is delayed, we&#x27;ll arrive before lunch.</div>
+        <div class="g-feedback" id="fb-g4-5"></div>
+      </div>
+      <div class="q-item" id="item-g4-6" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence">They <input type="text" class="blank-input" id="in1-g4-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> finish the work today if they don&#x27;t get some extra help.</div>
+        <div class="g-feedback" id="fb-g4-6"></div>
+      </div>
+      <div class="q-item" id="item-g4-7" data-answer1="will">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">Unless you wear a jacket, you <input type="text" class="blank-input" id="in1-g4-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> feel cold outside.</div>
+        <div class="g-feedback" id="fb-g4-7"></div>
+      </div>
+      <div class="q-item" id="item-g4-8" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If he doesn&#x27;t apologise, I <input type="text" class="blank-input" id="in1-g4-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> speak to him again.</div>
+        <div class="g-feedback" id="fb-g4-8"></div>
+      </div>
+      <div class="q-item" id="item-g4-9" data-answer1="if">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">We can go for a walk <input type="text" class="blank-input" id="in1-g4-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it starts raining.</div>
+        <div class="g-feedback" id="fb-g4-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check Exercise 4</button>
+      <button class="btn-ghost" data-reset="g4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g5">
+    <div class="block-head"><h2>Exercise 5</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g5">
+      <div class="q-item" id="item-g5-0" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you don&#x27;t charge your phone, it <input type="text" class="blank-input" id="in1-g5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> work during the day.</div>
+        <div class="g-feedback" id="fb-g5-0"></div>
+      </div>
+      <div class="q-item" id="item-g5-1" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> order a taxi unless the buses stop running.</div>
+        <div class="g-feedback" id="fb-g5-1"></div>
+      </div>
+      <div class="q-item" id="item-g5-2" data-answer1="if">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you study regularly, you&#x27;ll find the final exam easier.</div>
+        <div class="g-feedback" id="fb-g5-2"></div>
+      </div>
+      <div class="q-item" id="item-g5-3" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">She <input type="text" class="blank-input" id="in1-g5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to attend the meeting if she has to work late.</div>
+        <div class="g-feedback" id="fb-g5-3"></div>
+      </div>
+      <div class="q-item" id="item-g5-4" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">Unless they reduce the price, many customers <input type="text" class="blank-input" id="in1-g5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> buy the product.</div>
+        <div class="g-feedback" id="fb-g5-4"></div>
+      </div>
+      <div class="q-item" id="item-g5-5" data-answer1="if">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">I&#x27;ll send you the details <input type="text" class="blank-input" id="in1-g5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> I receive the information.</div>
+        <div class="g-feedback" id="fb-g5-5"></div>
+      </div>
+      <div class="q-item" id="item-g5-6" data-answer1="will">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence">If the weather is nice this weekend, we <input type="text" class="blank-input" id="in1-g5-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> go hiking.</div>
+        <div class="g-feedback" id="fb-g5-6"></div>
+      </div>
+      <div class="q-item" id="item-g5-7" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">You <input type="text" class="blank-input" id="in1-g5-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> improve your pronunciation unless you practise speaking aloud.</div>
+        <div class="g-feedback" id="fb-g5-7"></div>
+      </div>
+      <div class="q-item" id="item-g5-8" data-answer1="if">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g5-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you don&#x27;t hurry, you&#x27;ll be late for your appointment.</div>
+        <div class="g-feedback" id="fb-g5-8"></div>
+      </div>
+      <div class="q-item" id="item-g5-9" data-answer1="will">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">He <input type="text" class="blank-input" id="in1-g5-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> feel better if he gets some rest.</div>
+        <div class="g-feedback" id="fb-g5-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check Exercise 5</button>
+      <button class="btn-ghost" data-reset="g5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g6">
+    <div class="block-head"><h2>Exercise 6</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g6">
+      <div class="q-item" id="item-g6-0" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you don&#x27;t water the plants, they <input type="text" class="blank-input" id="in1-g6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> survive.</div>
+        <div class="g-feedback" id="fb-g6-0"></div>
+      </div>
+      <div class="q-item" id="item-g6-1" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> start the meeting until everyone arrives.</div>
+        <div class="g-feedback" id="fb-g6-1"></div>
+      </div>
+      <div class="q-item" id="item-g6-2" data-answer1="if">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you follow the instructions carefully, you shouldn&#x27;t have any problems.</div>
+        <div class="g-feedback" id="fb-g6-2"></div>
+      </div>
+      <div class="q-item" id="item-g6-3" data-answer1="will">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">If she gets the promotion, she <input type="text" class="blank-input" id="in1-g6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> earn a higher salary.</div>
+        <div class="g-feedback" id="fb-g6-3"></div>
+      </div>
+      <div class="q-item" id="item-g6-4" data-answer1="unless">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">You won&#x27;t find a solution <input type="text" class="blank-input" id="in1-g6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you look at the problem differently.</div>
+        <div class="g-feedback" id="fb-g6-4"></div>
+      </div>
+      <div class="q-item" id="item-g6-5" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">They <input type="text" class="blank-input" id="in1-g6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to enter the building unless they have an ID card.</div>
+        <div class="g-feedback" id="fb-g6-5"></div>
+      </div>
+      <div class="q-item" id="item-g6-6" data-answer1="if">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g6-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> it gets too cold, we&#x27;ll go inside.</div>
+        <div class="g-feedback" id="fb-g6-6"></div>
+      </div>
+      <div class="q-item" id="item-g6-7" data-answer1="will">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">If you continue working so hard, you <input type="text" class="blank-input" id="in1-g6-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> eventually become exhausted.</div>
+        <div class="g-feedback" id="fb-g6-7"></div>
+      </div>
+      <div class="q-item" id="item-g6-8" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">I <input type="text" class="blank-input" id="in1-g6-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> tell anyone your secret unless you give me permission.</div>
+        <div class="g-feedback" id="fb-g6-8"></div>
+      </div>
+      <div class="q-item" id="item-g6-9" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">If he doesn&#x27;t leave soon, he <input type="text" class="blank-input" id="in1-g6-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> catch the train.</div>
+        <div class="g-feedback" id="fb-g6-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g6">Check Exercise 6</button>
+      <button class="btn-ghost" data-reset="g6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g7">
+    <div class="block-head"><h2>Exercise 7</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g7">
+      <div class="q-item" id="item-g7-0" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">You <input type="text" class="blank-input" id="in1-g7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> get a good result if you don&#x27;t prepare properly.</div>
+        <div class="g-feedback" id="fb-g7-0"></div>
+      </div>
+      <div class="q-item" id="item-g7-1" data-answer1="unless">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> we book the tickets today, we may not get good seats.</div>
+        <div class="g-feedback" id="fb-g7-1"></div>
+      </div>
+      <div class="q-item" id="item-g7-2" data-answer1="unless">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence">She won&#x27;t know about the change <input type="text" class="blank-input" id="in1-g7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you tell her.</div>
+        <div class="g-feedback" id="fb-g7-2"></div>
+      </div>
+      <div class="q-item" id="item-g7-3" data-answer1="will">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">If you keep practising, your English <input type="text" class="blank-input" id="in1-g7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> improve.</div>
+        <div class="g-feedback" id="fb-g7-3"></div>
+      </div>
+      <div class="q-item" id="item-g7-4" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to enter the restaurant unless we make a reservation.</div>
+        <div class="g-feedback" id="fb-g7-4"></div>
+      </div>
+      <div class="q-item" id="item-g7-5" data-answer1="unless">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the weather changes, the match will take place as planned.</div>
+        <div class="g-feedback" id="fb-g7-5"></div>
+      </div>
+      <div class="q-item" id="item-g7-6" data-answer1="will">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence">If I finish my work early, I <input type="text" class="blank-input" id="in1-g7-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> help you with yours.</div>
+        <div class="g-feedback" id="fb-g7-6"></div>
+      </div>
+      <div class="q-item" id="item-g7-7" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">He <input type="text" class="blank-input" id="in1-g7-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> understand the lesson unless he asks the teacher for help.</div>
+        <div class="g-feedback" id="fb-g7-7"></div>
+      </div>
+      <div class="q-item" id="item-g7-8" data-answer1="will">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If you don&#x27;t take an umbrella, you <input type="text" class="blank-input" id="in1-g7-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> get wet.</div>
+        <div class="g-feedback" id="fb-g7-8"></div>
+      </div>
+      <div class="q-item" id="item-g7-9" data-answer1="if">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">I&#x27;ll wait here <input type="text" class="blank-input" id="in1-g7-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you come back before six.</div>
+        <div class="g-feedback" id="fb-g7-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g7">Check Exercise 7</button>
+      <button class="btn-ghost" data-reset="g7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g8">
+    <div class="block-head"><h2>Exercise 8</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g8">
+      <div class="q-item" id="item-g8-0" data-answer1="will">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you eat breakfast every morning, you <input type="text" class="blank-input" id="in1-g8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> probably have more energy.</div>
+        <div class="g-feedback" id="fb-g8-0"></div>
+      </div>
+      <div class="q-item" id="item-g8-1" data-answer1="unless">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">We won&#x27;t make a decision <input type="text" class="blank-input" id="in1-g8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> we have all the information.</div>
+        <div class="g-feedback" id="fb-g8-1"></div>
+      </div>
+      <div class="q-item" id="item-g8-2" data-answer1="if">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you don&#x27;t check the address, you might go to the wrong place.</div>
+        <div class="g-feedback" id="fb-g8-2"></div>
+      </div>
+      <div class="q-item" id="item-g8-3" data-answer1="will">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">She <input type="text" class="blank-input" id="in1-g8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be late if there is heavy traffic.</div>
+        <div class="g-feedback" id="fb-g8-3"></div>
+      </div>
+      <div class="q-item" id="item-g8-4" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">Unless you save enough money, you <input type="text" class="blank-input" id="in1-g8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to afford the trip.</div>
+        <div class="g-feedback" id="fb-g8-4"></div>
+      </div>
+      <div class="q-item" id="item-g8-5" data-answer1="will">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">If they invite us, we <input type="text" class="blank-input" id="in1-g8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> definitely go.</div>
+        <div class="g-feedback" id="fb-g8-5"></div>
+      </div>
+      <div class="q-item" id="item-g8-6" data-answer1="unless">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence">You won&#x27;t learn new vocabulary <input type="text" class="blank-input" id="in1-g8-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you use it regularly.</div>
+        <div class="g-feedback" id="fb-g8-6"></div>
+      </div>
+      <div class="q-item" id="item-g8-7" data-answer1="unless">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g8-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> he apologises, she won&#x27;t forgive him.</div>
+        <div class="g-feedback" id="fb-g8-7"></div>
+      </div>
+      <div class="q-item" id="item-g8-8" data-answer1="will">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If the shop closes early, we <input type="text" class="blank-input" id="in1-g8-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> have to come back tomorrow.</div>
+        <div class="g-feedback" id="fb-g8-8"></div>
+      </div>
+      <div class="q-item" id="item-g8-9" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">They <input type="text" class="blank-input" id="in1-g8-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> finish the project on time unless they work faster.</div>
+        <div class="g-feedback" id="fb-g8-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g8">Check Exercise 8</button>
+      <button class="btn-ghost" data-reset="g8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g9">
+    <div class="block-head"><h2>Exercise 9</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g9">
+      <div class="q-item" id="item-g9-0" data-answer1="will">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you don&#x27;t wear comfortable shoes, your feet <input type="text" class="blank-input" id="in1-g9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> hurt.</div>
+        <div class="g-feedback" id="fb-g9-0"></div>
+      </div>
+      <div class="q-item" id="item-g9-1" data-answer1="if">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you practise every day, you will become more confident.</div>
+        <div class="g-feedback" id="fb-g9-1"></div>
+      </div>
+      <div class="q-item" id="item-g9-2" data-answer1="will">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> miss the train if we don&#x27;t leave now.</div>
+        <div class="g-feedback" id="fb-g9-2"></div>
+      </div>
+      <div class="q-item" id="item-g9-3" data-answer1="unless">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">She won&#x27;t accept the offer <input type="text" class="blank-input" id="in1-g9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> they increase the salary.</div>
+        <div class="g-feedback" id="fb-g9-3"></div>
+      </div>
+      <div class="q-item" id="item-g9-4" data-answer1="will">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">If the weather improves, we <input type="text" class="blank-input" id="in1-g9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> go out for dinner.</div>
+        <div class="g-feedback" id="fb-g9-4"></div>
+      </div>
+      <div class="q-item" id="item-g9-5" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">Unless you speak clearly, people <input type="text" class="blank-input" id="in1-g9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> understand you.</div>
+        <div class="g-feedback" id="fb-g9-5"></div>
+      </div>
+      <div class="q-item" id="item-g9-6" data-answer1="if">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g9-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> I have enough time after work, I&#x27;ll visit my grandparents.</div>
+        <div class="g-feedback" id="fb-g9-6"></div>
+      </div>
+      <div class="q-item" id="item-g9-7" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">He <input type="text" class="blank-input" id="in1-g9-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> pass the driving test unless he practises more.</div>
+        <div class="g-feedback" id="fb-g9-7"></div>
+      </div>
+      <div class="q-item" id="item-g9-8" data-answer1="will">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If you don&#x27;t back up your files, you <input type="text" class="blank-input" id="in1-g9-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> lose them.</div>
+        <div class="g-feedback" id="fb-g9-8"></div>
+      </div>
+      <div class="q-item" id="item-g9-9" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g9-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> go swimming if the pool is closed.</div>
+        <div class="g-feedback" id="fb-g9-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g9">Check Exercise 9</button>
+      <button class="btn-ghost" data-reset="g9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g10">
+    <div class="block-head"><h2>Exercise 10</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g10">
+      <div class="q-item" id="item-g10-0" data-answer1="will">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">You <input type="text" class="blank-input" id="in1-g10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> feel more relaxed if you take a short break.</div>
+        <div class="g-feedback" id="fb-g10-0"></div>
+      </div>
+      <div class="q-item" id="item-g10-1" data-answer1="will">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence">Unless the company changes its policy, many employees <input type="text" class="blank-input" id="in1-g10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> leave.</div>
+        <div class="g-feedback" id="fb-g10-1"></div>
+      </div>
+      <div class="q-item" id="item-g10-2" data-answer1="if">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you finish your homework, you can watch television.</div>
+        <div class="g-feedback" id="fb-g10-2"></div>
+      </div>
+      <div class="q-item" id="item-g10-3" data-answer1="will">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">If I see Tom tomorrow, I <input type="text" class="blank-input" id="in1-g10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> give him your message.</div>
+        <div class="g-feedback" id="fb-g10-3"></div>
+      </div>
+      <div class="q-item" id="item-g10-4" data-answer1="unless">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">She won&#x27;t improve her writing <input type="text" class="blank-input" id="in1-g10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> she reads more.</div>
+        <div class="g-feedback" id="fb-g10-4"></div>
+      </div>
+      <div class="q-item" id="item-g10-5" data-answer1="will">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">If we don&#x27;t leave soon, we <input type="text" class="blank-input" id="in1-g10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> arrive after dark.</div>
+        <div class="g-feedback" id="fb-g10-5"></div>
+      </div>
+      <div class="q-item" id="item-g10-6" data-answer1="if">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g10-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you are careful, you won&#x27;t make many mistakes.</div>
+        <div class="g-feedback" id="fb-g10-6"></div>
+      </div>
+      <div class="q-item" id="item-g10-7" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">They <input type="text" class="blank-input" id="in1-g10-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to afford the house unless they save more money.</div>
+        <div class="g-feedback" id="fb-g10-7"></div>
+      </div>
+      <div class="q-item" id="item-g10-8" data-answer1="will">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If the restaurant is full, we <input type="text" class="blank-input" id="in1-g10-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> find somewhere else to eat.</div>
+        <div class="g-feedback" id="fb-g10-8"></div>
+      </div>
+      <div class="q-item" id="item-g10-9" data-answer1="unless">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">You won&#x27;t know the answer <input type="text" class="blank-input" id="in1-g10-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you try to solve the problem.</div>
+        <div class="g-feedback" id="fb-g10-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g10">Check Exercise 10</button>
+      <button class="btn-ghost" data-reset="g10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g11">
+    <div class="block-head"><h2>Exercise 11</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g11">
+      <div class="q-item" id="item-g11-0" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you don&#x27;t eat properly, you <input type="text" class="blank-input" id="in1-g11-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> have enough energy for the day.</div>
+        <div class="g-feedback" id="fb-g11-0"></div>
+      </div>
+      <div class="q-item" id="item-g11-1" data-answer1="unless">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g11-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> he studies harder, he won&#x27;t pass the exam.</div>
+        <div class="g-feedback" id="fb-g11-1"></div>
+      </div>
+      <div class="q-item" id="item-g11-2" data-answer1="will">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g11-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> stay at home if the weather is terrible.</div>
+        <div class="g-feedback" id="fb-g11-2"></div>
+      </div>
+      <div class="q-item" id="item-g11-3" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">Unless you book early, you <input type="text" class="blank-input" id="in1-g11-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> find a cheap hotel.</div>
+        <div class="g-feedback" id="fb-g11-3"></div>
+      </div>
+      <div class="q-item" id="item-g11-4" data-answer1="will">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">If she calls me tonight, I <input type="text" class="blank-input" id="in1-g11-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> tell her the news.</div>
+        <div class="g-feedback" id="fb-g11-4"></div>
+      </div>
+      <div class="q-item" id="item-g11-5" data-answer1="unless">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">You won&#x27;t improve your fitness <input type="text" class="blank-input" id="in1-g11-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you exercise regularly.</div>
+        <div class="g-feedback" id="fb-g11-5"></div>
+      </div>
+      <div class="q-item" id="item-g11-6" data-answer1="if">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g11-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> they arrive before eight, we&#x27;ll have dinner together.</div>
+        <div class="g-feedback" id="fb-g11-6"></div>
+      </div>
+      <div class="q-item" id="item-g11-7" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">He <input type="text" class="blank-input" id="in1-g11-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be able to finish the work unless someone helps him.</div>
+        <div class="g-feedback" id="fb-g11-7"></div>
+      </div>
+      <div class="q-item" id="item-g11-8" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If you don&#x27;t take your medicine regularly, you <input type="text" class="blank-input" id="in1-g11-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> feel better.</div>
+        <div class="g-feedback" id="fb-g11-8"></div>
+      </div>
+      <div class="q-item" id="item-g11-9" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">We <input type="text" class="blank-input" id="in1-g11-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> go to the concert if we can&#x27;t find any tickets.</div>
+        <div class="g-feedback" id="fb-g11-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g11">Check Exercise 11</button>
+      <button class="btn-ghost" data-reset="g11">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-g12">
+    <div class="block-head"><h2>Exercise 12</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with <strong>if / unless / will / won't</strong>.</p>
+    <div id="list-g12">
+      <div class="q-item" id="item-g12-0" data-answer1="will">
+        <div class="q-context"><span class="g-num">1</span></div>
+        <div class="g-sentence">If you listen carefully, you <input type="text" class="blank-input" id="in1-g12-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> understand the instructions.</div>
+        <div class="g-feedback" id="fb-g12-0"></div>
+      </div>
+      <div class="q-item" id="item-g12-1" data-answer1="if">
+        <div class="q-context"><span class="g-num">2</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g12-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you leave your passport at home, you won&#x27;t be able to travel.</div>
+        <div class="g-feedback" id="fb-g12-1"></div>
+      </div>
+      <div class="q-item" id="item-g12-2" data-answer1="will">
+        <div class="q-context"><span class="g-num">3</span></div>
+        <div class="g-sentence">I <input type="text" class="blank-input" id="in1-g12-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> call you later if I have enough time.</div>
+        <div class="g-feedback" id="fb-g12-2"></div>
+      </div>
+      <div class="q-item" id="item-g12-3" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">4</span></div>
+        <div class="g-sentence">Unless we leave now, we <input type="text" class="blank-input" id="in1-g12-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> arrive before the shops close.</div>
+        <div class="g-feedback" id="fb-g12-3"></div>
+      </div>
+      <div class="q-item" id="item-g12-4" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">5</span></div>
+        <div class="g-sentence">If she doesn&#x27;t apologise, I <input type="text" class="blank-input" id="in1-g12-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> forgive her.</div>
+        <div class="g-feedback" id="fb-g12-4"></div>
+      </div>
+      <div class="q-item" id="item-g12-5" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">6</span></div>
+        <div class="g-sentence">You <input type="text" class="blank-input" id="in1-g12-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> get better at speaking unless you practise with other people.</div>
+        <div class="g-feedback" id="fb-g12-5"></div>
+      </div>
+      <div class="q-item" id="item-g12-6" data-answer1="if">
+        <div class="q-context"><span class="g-num">7</span></div>
+        <div class="g-sentence"> <input type="text" class="blank-input" id="in1-g12-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the weather is good tomorrow, we&#x27;ll have lunch outside.</div>
+        <div class="g-feedback" id="fb-g12-6"></div>
+      </div>
+      <div class="q-item" id="item-g12-7" data-answer1="will">
+        <div class="q-context"><span class="g-num">8</span></div>
+        <div class="g-sentence">They <input type="text" class="blank-input" id="in1-g12-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be disappointed if we don&#x27;t attend the event.</div>
+        <div class="g-feedback" id="fb-g12-7"></div>
+      </div>
+      <div class="q-item" id="item-g12-8" data-answer1="won&#x27;t">
+        <div class="q-context"><span class="g-num">9</span></div>
+        <div class="g-sentence">If you don&#x27;t set an alarm, you <input type="text" class="blank-input" id="in1-g12-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> wake up on time.</div>
+        <div class="g-feedback" id="fb-g12-8"></div>
+      </div>
+      <div class="q-item" id="item-g12-9" data-answer1="unless">
+        <div class="q-context"><span class="g-num">10</span></div>
+        <div class="g-sentence">We can go by car <input type="text" class="blank-input" id="in1-g12-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the roads are too dangerous.</div>
+        <div class="g-feedback" id="fb-g12-9"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="g12">Check Exercise 12</button>
+      <button class="btn-ghost" data-reset="g12">Clear section</button>
+    </div>
+  </section>
+
+  <div class="summary" id="summary">
+    <div class="summary-label">Your score</div>
+    <div class="summary-score" id="totalScore">0 / 120</div>
+    <div class="summary-label" id="totalPercent">0% answered</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — If / Unless + will / won&#x27;t — for individual practice. Answers are checked against one accepted wording; if you think a different answer should also count, ask your teacher.<br><span style="opacity:.8;">If the fields don&#x27;t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["g1","g2","g3","g4","g5","g6","g7","g8","g9","g10","g11","g12"];
+  var GROUP_COUNTS = {"g1":10,"g2":10,"g3":10,"g4":10,"g5":10,"g6":10,"g7":10,"g8":10,"g9":10,"g10":10,"g11":10,"g12":10};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    return s.toLowerCase()
+      .replace(/['’‘]/g, "'")
+      .replace(/[^\w\s']/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  document.querySelectorAll('.blank-input').forEach(function(inp){
+    inp.addEventListener('input', function(){
+      var item = inp.closest('.q-item');
+      item.classList.remove('correct','incorrect');
+      inp.classList.remove('wrong');
+      var qid = item.id.replace('item-','');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      updateScore();
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var in1 = document.getElementById('in1-' + qid);
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      if (in1) in1.classList.remove('wrong');
+      var v1 = in1 ? in1.value.trim() : '';
+      if (!v1) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      var ok1 = normalize(v1) === normalize(ans1);
+      if (ok1) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        if (in1) in1.classList.add('wrong');
+        if (fb) { fb.innerHTML = 'Model answer: <strong>' + ans1 + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      item.classList.remove('correct','incorrect');
+      var in1 = document.getElementById('in1-' + qid);
+      if (in1) { in1.value = ''; in1.classList.remove('wrong'); }
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var qid = item.id.replace('item-','');
+      var in1 = document.getElementById('in1-' + qid);
+      var v1 = in1 ? in1.value.trim() : '';
+      if (v1) {
+        answered++;
+        if (normalize(v1) === normalize(ans1)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-g1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
