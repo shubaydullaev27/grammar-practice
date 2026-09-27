@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Should Have / Shouldn't Have Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box ul{ margin:8px 0; padding-left:20px; }
+  .rule-box li{ margin-bottom:4px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; }
+  .rule-box .form-line{ font-weight:700; margin-top:10px; }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:10px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .passage{ background:var(--white); border:1.5px solid var(--rule); border-radius:8px; padding:18px 20px; font-size:16px; color:var(--ink); line-height:1.85; margin-bottom:8px; box-shadow:0 2px 10px -6px rgba(20,20,22,.12); cursor:text; user-select:text; }
+  .passage-tip{ font-size:12px; color:var(--ink-soft); font-style:italic; margin:0 0 18px; }
+  mark.user-highlight{ background:var(--yellow); color:var(--ink); padding:1px 2px; border-radius:2px; cursor:pointer; }
+
+  .g-item{ padding:10px 0; border-bottom:1px dashed var(--rule); font-size:15px; line-height:1.9; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13.5px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:8px 10px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:230px; width:200px; display:inline-block; margin:0 3px; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:150px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+      <span id="dateStamp"></span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE</div>
+    <h1>Should Have / Shouldn't Have</h1>
+    <p class="sub">Read each short story, then complete the sentences using <strong>should have</strong> or <strong>shouldn't have</strong> and the verb given in brackets.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 75</span>
+  </div>
+
+  <div class="rule-box">
+    <h3>Should have / shouldn't have</h3>
+    <p>We use <strong>should have + past participle (V3)</strong> to talk about something that was a good idea, but <strong>did not happen</strong>.</p>
+    <ul>
+      <li><strong>should have + V3</strong> → the person did not do something they needed to do.
+        <div class="ex">I should have studied more. (= I didn't study enough.)</div>
+      </li>
+    </ul>
+    <p>We use <strong>shouldn't have + V3</strong> to talk about something that was a <strong>bad idea and happened</strong>.</p>
+    <ul>
+      <li><strong>shouldn't have + V3</strong> → the person did something they should not have done.
+        <div class="ex">I shouldn't have stayed up so late. (= I stayed up too late.)</div>
+      </li>
+    </ul>
+    <div class="form-line">Form: should have + V3 &nbsp;·&nbsp; shouldn't have + V3</div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 75</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Should Have / Shouldn't Have Practice — for individual practice. Checking compares your typing to the answer key; ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the Check buttons don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Tom's exam", "text": "Tom had an important English exam yesterday, but he didn't prepare properly. He knew about the exam for several weeks, but he kept delaying his preparation because he thought he had plenty of time. The evening before the exam, he spent several hours playing computer games instead of studying. He went to bed very late and woke up feeling tired. In the morning, he was in such a hurry that he didn't eat breakfast before leaving home. During the exam, he couldn't concentrate well and forgot some information that he had studied before. After the exam, Tom realized that he had made several mistakes and wished he had prepared more carefully.", "items": [["He ________ for the exam earlier.", "PREPARE", "should have prepared"], ["He ________ computer games for several hours.", "PLAY", "shouldn't have played"], ["He ________ to bed so late.", "GO", "shouldn't have gone"], ["He ________ breakfast before the exam.", "EAT", "should have eaten"], ["He ________ more carefully for the exam.", "STUDY", "should have studied"]]}, {"title": "Anna's shopping trip", "text": "Anna went shopping for her best friend's birthday last Saturday. She had planned to buy one special present and had saved some money for it. However, when she arrived at the shopping center, she saw several things that she liked and started buying them without thinking carefully. She bought a new bag, a pair of shoes and some clothes, even though she didn't really need them. She also didn't compare prices because she was in a hurry. By the end of the afternoon, she had spent almost all her money. When she finally found a nice present for her friend, she realized that she didn't have enough money to buy it.", "items": [["Anna ________ her money more carefully.", "SPEND", "should have spent"], ["She ________ so many things that she didn't need.", "BUY", "shouldn't have bought"], ["She ________ prices before buying the products.", "COMPARE", "should have compared"], ["She ________ almost all her money on unnecessary things.", "SPEND", "shouldn't have spent"], ["She ________ some money for her friend's present.", "SAVE", "should have saved"]]}, {"title": "David's job interview", "text": "David had an important job interview on Monday morning. He knew that the position was very important to him, so he had planned to prepare carefully during the weekend. However, he became busy with other things and didn't spend enough time getting ready. On Monday morning, he left home late because he had forgotten to set his alarm. He also didn't check the traffic before leaving, so he arrived at the company about ten minutes late. During the interview, he couldn't answer some basic questions about the company because he hadn't researched it. When he returned home, David realized that he had not taken the interview seriously enough.", "items": [["David ________ more carefully for the interview.", "PREPARE", "should have prepared"], ["He ________ his alarm before going to bed.", "SET", "should have set"], ["He ________ home so late.", "LEAVE", "shouldn't have left"], ["He ________ the traffic before leaving.", "CHECK", "should have checked"], ["He ________ more about the company.", "LEARN", "should have learned"]]}, {"title": "Maria's mountain trip", "text": "Maria went on a short trip to the mountains with three of her friends last weekend. Before leaving, she checked the weather forecast and saw that the weather might become cold and rainy in the evening. However, she decided not to take a jacket because the morning was warm and sunny. After several hours of walking, the weather suddenly changed and it started raining heavily. Maria became cold because she was wearing only a light T-shirt. She also realized that her phone battery was almost empty because she had forgotten to charge it before leaving home. When she got separated from her friends for a short time, she couldn't call them.", "items": [["Maria ________ a jacket with her.", "TAKE", "should have taken"], ["She ________ the weather forecast more seriously.", "CONSIDER", "should have considered"], ["She ________ her phone before leaving home.", "CHARGE", "should have charged"], ["She ________ with such a low phone battery.", "LEAVE", "shouldn't have left"], ["She ________ warmer clothes for the evening.", "BRING", "should have brought"]]}, {"title": "James at the gym", "text": "James had a busy day at work yesterday and felt very tired when he finished. He had planned to go to the gym in the evening, but he had not eaten anything since lunchtime. Instead of having a proper meal, he drank an energy drink and went directly to the gym. During his workout, he felt weak and had difficulty doing his usual exercises. He then decided to lift a very heavy weight because he wanted to make his workout more challenging. He didn't ask anyone for help before doing it. Luckily, he didn't hurt himself, but he had to stop exercising early because he felt exhausted.", "items": [["James ________ something before going to the gym.", "EAT", "should have eaten"], ["He ________ to the gym when he was so tired.", "GO", "shouldn't have gone"], ["He ________ only an energy drink before exercising.", "DRINK", "shouldn't have drunk"], ["He ________ such a heavy weight.", "LIFT", "shouldn't have lifted"], ["He ________ someone for help.", "ASK", "should have asked"]]}, {"title": "Lucy meets her cousin", "text": "Lucy was planning to meet her cousin at a café on Saturday afternoon. They had agreed to meet at 3 p.m., and her cousin told her that she would have to leave at 4:30. Lucy wanted to arrive on time, but she stayed at home longer than she had planned. She finally left at 2:50 without checking the traffic. Unfortunately, there was a lot of traffic on the way, and she arrived at the café almost forty minutes late. Her cousin had waited for her for some time, but she eventually left. Lucy also forgot to send her a message because she was worried about getting there quickly. She felt sorry when she realized what had happened.", "items": [["Lucy ________ home earlier.", "LEAVE", "should have left"], ["She ________ the traffic before leaving.", "CHECK", "should have checked"], ["She ________ her cousin that she was going to be late.", "TELL", "should have told"], ["She ________ her cousin waiting for so long.", "KEEP", "shouldn't have kept"], ["She ________ enough time for the journey.", "ALLOW", "should have allowed"]]}, {"title": "Ben cooks dinner", "text": "Ben decided to cook dinner for his family last Friday because his parents were coming home late from work. He found a recipe online and started preparing the food, but he was in a hurry because he wanted to finish before they arrived. He didn't read the recipe carefully and accidentally added twice as much salt as he needed. He also cooked the meat at a very high temperature because he wanted it to be ready quickly. As a result, the meat became dry and difficult to eat. When his family arrived, Ben served the dinner, but nobody enjoyed it very much. He apologized and realized that he should have been more careful while cooking.", "items": [["Ben ________ the recipe more carefully.", "READ", "should have read"], ["He ________ so much salt to the food.", "ADD", "shouldn't have added"], ["He ________ the meat at such a high temperature.", "COOK", "shouldn't have cooked"], ["He ________ more careful while preparing the meal.", "BE", "should have been"], ["He ________ more time to cook the food properly.", "TAKE", "should have taken"]]}, {"title": "Emma's presentation", "text": "Emma had to give an important presentation at university last week. Her teacher had told the students about the presentation two weeks earlier, so Emma had plenty of time to prepare. However, she was busy with other assignments and didn't start working on her presentation until the night before. She spent several hours making her slides and stayed awake until 3 a.m. The next morning, she was extremely tired and found it difficult to concentrate. During the presentation, she spoke too quickly and forgot some important information. After the lesson, her teacher told her that the presentation could have been much better with more careful preparation.", "items": [["Emma ________ her presentation earlier.", "START", "should have started"], ["She ________ her preparation until the last night.", "LEAVE", "shouldn't have left"], ["She ________ awake until 3 a.m.", "STAY", "shouldn't have stayed"], ["She ________ enough before the presentation.", "SLEEP", "should have slept"], ["She ________ more time preparing her ideas.", "SPEND", "should have spent"]]}, {"title": "Ryan's borrowed bicycle", "text": "Ryan borrowed his friend's new bicycle for the weekend. His friend told him that the bicycle was expensive and asked him to be careful with it. On Saturday, Ryan rode the bicycle around the city and had a great time. When he returned home, he left the bicycle outside his house instead of putting it in the garage. During the night, it rained heavily, and the bicycle became very wet and dirty. The next morning, Ryan decided to clean it quickly before returning it. He used a rough cloth and accidentally scratched the paint. When he gave the bicycle back to his friend, he felt embarrassed and apologized for not taking better care of it.", "items": [["Ryan ________ the bicycle somewhere safe.", "KEEP", "should have kept"], ["He ________ it outside overnight.", "LEAVE", "shouldn't have left"], ["He ________ the bicycle in the rain.", "LEAVE", "shouldn't have left"], ["He ________ a soft cloth to clean it.", "USE", "should have used"], ["He ________ more careful with his friend's bicycle.", "BE", "should have been"]]}, {"title": "Sophie's birthday party", "text": "Sophie decided to organize a small birthday party at her house for some of her close friends. She invited ten people and expected everyone to arrive at around 7 p.m. However, she didn't prepare enough food because she thought some guests might not come. She also bought only a few bottles of drinks. When everyone arrived, there wasn't enough food or drink for all the guests. Later in the evening, Sophie played music quite loudly without thinking about her neighbors. One of them came to her door and complained about the noise. Sophie apologized and turned the music down. At the end of the evening, she realized that she should have planned the party more carefully.", "items": [["Sophie ________ enough food for everyone.", "PREPARE", "should have prepared"], ["She ________ enough drinks.", "BUY", "should have bought"], ["She ________ her neighbors about the party.", "TELL", "should have told"], ["She ________ the music so loudly.", "PLAY", "shouldn't have played"], ["She ________ the party more carefully.", "ORGANIZE", "should have organized"]]}, {"title": "Mark's driving test", "text": "Mark had an important driving test yesterday. He knew that he needed to practice, but he spent most of the weekend watching films and playing games instead. On the morning of the test, he woke up late because he had forgotten to set his alarm. He quickly got dressed and left home without having breakfast. When he arrived at the driving center, he realized that he had also forgotten to bring his documents. He had to return home to get them and arrived just before the test started. During the test, he was nervous and made several mistakes because he had not practiced enough. Afterward, Mark realized that he should have taken the test more seriously.", "items": [["Mark ________ more before the driving test.", "PRACTICE", "should have practiced"], ["He ________ most of the weekend playing games.", "SPEND", "shouldn't have spent"], ["He ________ his alarm before going to bed.", "SET", "should have set"], ["He ________ breakfast before leaving home.", "HAVE", "should have had"], ["He ________ his documents with him.", "BRING", "should have brought"]]}, {"title": "Daniel at the restaurant", "text": "Daniel went to a restaurant with some friends on Friday evening. He had been working all day and was very hungry, so he ordered several dishes without looking carefully at the menu. He also ordered a very spicy meal even though he knew that spicy food sometimes caused problems for him. During dinner, he ate too quickly because he was hungry. After the meal, he felt uncomfortable and had to go home earlier than his friends. The next day, he realized that he had made several poor choices. He decided that he needed to be more careful about what and how much he ate.", "items": [["Daniel ________ the menu more carefully.", "READ", "should have read"], ["He ________ so many dishes.", "ORDER", "shouldn't have ordered"], ["He ________ such a spicy meal.", "ORDER", "shouldn't have ordered"], ["He ________ so quickly.", "EAT", "shouldn't have eaten"], ["He ________ more careful about his food choices.", "BE", "should have been"]]}, {"title": "Sarah's weekend trip", "text": "Sarah was preparing for a weekend trip with her family. They planned to spend two days in another city and visit several interesting places. Before leaving, her father reminded everyone to check their bags carefully. However, Sarah was in a hurry and packed everything at the last minute. When they arrived at the hotel, she discovered that she had forgotten her phone charger and toothbrush. She also realized that she had brought several unnecessary clothes but not enough warm clothes for the cold evening. Luckily, her family helped her find a shop where she could buy what she needed. Sarah decided that next time she would prepare her bag earlier.", "items": [["Sarah ________ her bag earlier.", "PACK", "should have packed"], ["She ________ everything at the last minute.", "PACK", "shouldn't have packed"], ["She ________ her phone charger.", "FORGET", "shouldn't have forgotten"], ["She ________ so many unnecessary clothes.", "BRING", "shouldn't have brought"], ["She ________ warmer clothes.", "TAKE", "should have taken"]]}, {"title": "Alex's meeting", "text": "Alex had an important meeting with his manager at work yesterday afternoon. He wanted to discuss a new project, so he had prepared some notes in advance. However, before the meeting, one of his colleagues asked him to help with another task. Alex became busy and forgot to take his notes with him. During the meeting, his manager asked several questions about the project, but Alex couldn't remember all the details. He also gave some information too quickly and later realized that one of the figures he mentioned was incorrect. After the meeting, he felt disappointed because he knew he could have done much better with better preparation.", "items": [["Alex ________ his notes with him.", "TAKE", "should have taken"], ["He ________ his preparation.", "FORGET", "shouldn't have forgotten"], ["He ________ all the details before the meeting.", "REVIEW", "should have reviewed"], ["He ________ the information so quickly.", "GIVE", "shouldn't have given"], ["He ________ the figures before the meeting.", "CHECK", "should have checked"]]}, {"title": "Emily's school project", "text": "Emily was studying for an important school project with her classmates. They had agreed to finish their work by Friday afternoon, but Emily didn't complete her part on time. She had promised to send her research to the group on Thursday evening, but she decided to go out with her friends instead. She also didn't tell her classmates that she would be late with the work. On Friday morning, the others had to wait for her information before they could finish the project. Emily eventually sent her research, but they had very little time left to prepare everything. She apologized to her classmates and realized that she should have been more responsible.", "items": [["Emily ________ her part of the project on time.", "FINISH", "should have finished"], ["She ________ out with her friends instead of working.", "GO", "shouldn't have gone"], ["She ________ her classmates about the delay.", "TELL", "should have told"], ["She ________ her research earlier.", "SEND", "should have sent"], ["She ________ more responsible about the project.", "BE", "should have been"]]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+
+  function normalize(s){
+    return s.toLowerCase().replace(/['’‘]/g,"'").replace(/[.,!?;:"“”]/g,"").replace(/\s+/g," ").trim();
+  }
+
+  // Build DOM
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    section.id = 'task' + tIdx + 'Section';
+
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>Task ' + (tIdx+1) + ' — ' + task.title + '</h2><span class="block-count">' + task.items.length + ' items</span>';
+    section.appendChild(head);
+
+    var passage = document.createElement('div');
+    passage.className = 'passage';
+    passage.textContent = task.text;
+    section.appendChild(passage);
+
+    var tip = document.createElement('p');
+    tip.className = 'passage-tip';
+    tip.textContent = 'Tip: select any text above to highlight it in yellow. Tap a highlight to remove it.';
+    section.appendChild(tip);
+
+    var list = document.createElement('div');
+    list.id = 'task' + tIdx + 'List';
+
+    task.items.forEach(function(item, iIdx){
+      var sentence = item[0], hint = item[1], answer = item[2];
+      var parts = sentence.split('________');
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+
+      var num = document.createElement('span');
+      num.className = 'g-num';
+      num.textContent = (iIdx+1);
+      wrap.appendChild(num);
+      wrap.appendChild(document.createTextNode(parts[0]));
+
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'answer-input';
+      input.id = 'task' + tIdx + '-' + iIdx;
+      input.setAttribute('data-answer', answer);
+      input.autocomplete = 'off';
+      input.spellcheck = false;
+      wrap.appendChild(input);
+
+      wrap.appendChild(document.createTextNode(parts[1] + ' '));
+      var hintSpan = document.createElement('span');
+      hintSpan.className = 'g-hint';
+      hintSpan.textContent = '(' + hint + ')';
+      wrap.appendChild(hintSpan);
+
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback';
+      fb.id = 'task' + tIdx + '-fb-' + iIdx;
+      wrap.appendChild(fb);
+
+      list.appendChild(wrap);
+    });
+    section.appendChild(list);
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check Task ' + (tIdx+1) + '</button>' +
+                          '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+
+    container.appendChild(section);
+
+    function highlightSelection(){
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || sel.rangeCount === 0) return;
+      var range = sel.getRangeAt(0);
+      if (!passage.contains(range.commonAncestorContainer)) return;
+      if (range.collapsed || range.toString().trim() === '') return;
+      var mark = document.createElement('mark');
+      mark.className = 'user-highlight';
+      try {
+        range.surroundContents(mark);
+      } catch(e) {
+        var contents = range.extractContents();
+        mark.appendChild(contents);
+        range.insertNode(mark);
+      }
+      sel.removeAllRanges();
+    }
+
+    passage.addEventListener('mouseup', highlightSelection);
+    passage.addEventListener('touchend', function(){ setTimeout(highlightSelection, 10); });
+
+    passage.addEventListener('click', function(e){
+      var mark = e.target.closest('mark.user-highlight');
+      if (mark) {
+        var parent = mark.parentNode;
+        while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+        parent.removeChild(mark);
+        parent.normalize();
+      }
+    });
+  });
+
+  function idsForTask(tIdx){
+    var ids = [];
+    TASKS[tIdx].items.forEach(function(_, iIdx){ ids.push('task' + tIdx + '-' + iIdx); });
+    return ids;
+  }
+
+  function checkTask(tIdx){
+    var correct = 0;
+    idsForTask(tIdx).forEach(function(id){
+      var input = document.getElementById(id);
+      if (!input) return;
+      var answer = input.getAttribute('data-answer') || '';
+      var ok = normalize(input.value) === normalize(answer);
+      input.classList.remove('correct', 'incorrect');
+      var fb = document.getElementById(id.replace(/^(task\d+)-(\d+)$/, '$1-fb-$2'));
+
+      if (input.value.trim() === '') {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      } else if (ok) {
+        input.classList.add('correct');
+        correct++;
+        if (fb) { fb.innerHTML = ' Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        input.classList.add('incorrect');
+        if (fb) { fb.innerHTML = ' Not quite — correct answer: <strong>' + answer + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    return correct;
+  }
+
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(_, tIdx){
+      idsForTask(tIdx).forEach(function(id){
+        var input = document.getElementById(id);
+        if (!input) return;
+        var answer = input.getAttribute('data-answer') || '';
+        if (normalize(input.value) === normalize(answer)) total++;
+      });
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% complete';
+  }
+
+  container.addEventListener('click', function(e){
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) {
+      checkTask(parseInt(checkBtn.getAttribute('data-check'), 10));
+      updateScore();
+      return;
+    }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var tIdx = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      idsForTask(tIdx).forEach(function(id){
+        var el = document.getElementById(id);
+        el.value = '';
+        el.classList.remove('correct', 'incorrect');
+        var fb = document.getElementById(id.replace(/^(task\d+)-(\d+)$/, '$1-fb-$2'));
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      });
+      updateScore();
+    }
+  });
+
+  container.addEventListener('input', function(e){
+    if (e.target.classList.contains('answer-input')) updateScore();
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, tIdx){ checkTask(tIdx); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    document.querySelectorAll('[data-reset]').forEach(function(btn){ btn.click(); });
+  });
+
+  var stamp = new Date();
+  document.getElementById('dateStamp').textContent = stamp.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
