@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Second Conditional Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; margin:4px 0 10px 0; }
+  .rule-box .form-line{ font-weight:700; margin:6px 0 14px; }
+  .rule-box .note-line{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .g-item{ padding:12px 0; border-bottom:1px dashed var(--rule); font-size:15.5px; line-height:2; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13px; margin:0 2px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:7px 9px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:160px; width:140px; display:inline-block; margin:0 3px; text-align:center; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+      <span id="dateStamp"></span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE</div>
+    <h1>Second Conditional</h1>
+    <p class="sub">Complete each sentence using the Second Conditional and the verb given in brackets, then check your answers task by task.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 80</span>
+  </div>
+
+  <div class="rule-box">
+    <h3>Second Conditional</h3>
+    <p>We use the <strong>Second Conditional</strong> to talk about <strong>imaginary, unlikely, or unreal situations</strong> in the present or future.</p>
+    <div class="form-line">Form: If + Past Simple, would + base verb</div>
+    <div class="ex">If I had more money, I would travel more.<br>She would buy it if it were cheaper.</div>
+    <p><strong>Negative:</strong></p>
+    <div class="ex">If I didn't have work, I would go with you.<br>He wouldn't be late if he left earlier.</div>
+    <div class="note-line"><strong>Note:</strong> With I / he / she / it, we often use <strong>were</strong> instead of <strong>was</strong> in formal English: <em>If I were you, I would apologize.</em></div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 80</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Second Conditional Practice — for individual practice. Checking compares your typing to the answer key; ask your teacher if you think an answer should count.<br><span style="opacity:.8;">If the Check buttons don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Task 1", "items": [{"template": "If I @0@ more free time, I @1@ another language.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "learn", "answer": "would learn"}]}, {"template": "She @0@ a new laptop if she @1@ enough money.", "blanks": [{"hint": "buy", "answer": "would buy"}, {"hint": "have", "answer": "had"}]}, {"template": "If we @0@ closer to the city center, we @1@ there more often.", "blanks": [{"hint": "live", "answer": "lived"}, {"hint": "go", "answer": "would go"}]}, {"template": "They @0@ so tired if they @1@ more.", "blanks": [{"hint": "not/be", "answer": "wouldn't be"}, {"hint": "sleep", "answer": "slept"}]}, {"template": "If he @0@ the answer, he @1@ us.", "blanks": [{"hint": "know", "answer": "knew"}, {"hint": "tell", "answer": "would tell"}]}, {"template": "I @0@ you if I @1@ enough time.", "blanks": [{"hint": "help", "answer": "would help"}, {"hint": "have", "answer": "had"}]}, {"template": "If you @0@ so much, you @1@ more time for your family.", "blanks": [{"hint": "not/work", "answer": "didn't work"}, {"hint": "have", "answer": "would have"}]}, {"template": "We @0@ around Europe if we @1@ a longer holiday.", "blanks": [{"hint": "travel", "answer": "would travel"}, {"hint": "have", "answer": "had"}]}]}, {"title": "Task 2", "items": [{"template": "If I @0@ you, I @1@ to the teacher.", "blanks": [{"hint": "be", "answer": "were"}, {"hint": "talk", "answer": "would talk"}]}, {"template": "He @0@ to another city if he @1@ a good job there.", "blanks": [{"hint": "move", "answer": "would move"}, {"hint": "find", "answer": "found"}]}, {"template": "If she @0@ how to drive, she @1@ a car.", "blanks": [{"hint": "know", "answer": "knew"}, {"hint": "buy", "answer": "would buy"}]}, {"template": "We @0@ at this restaurant if it @1@ too expensive.", "blanks": [{"hint": "not/eat", "answer": "wouldn't eat"}, {"hint": "be", "answer": "were"}]}, {"template": "If they @0@ more experience, they @1@ for that position.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "apply", "answer": "would apply"}]}, {"template": "I @0@ to the gym more often if I @1@ so busy.", "blanks": [{"hint": "go", "answer": "would go"}, {"hint": "not/be", "answer": "weren't"}]}, {"template": "If you @0@ a large amount of money, what @1@ you @2@?", "blanks": [{"hint": "win", "answer": "won"}, {"hint": null, "answer": "would"}, {"hint": "do", "answer": "do"}]}, {"template": "She @0@ more if she @1@ so many responsibilities.", "blanks": [{"hint": "travel", "answer": "would travel"}, {"hint": "not/have", "answer": "didn't have"}]}]}, {"title": "Task 3", "items": [{"template": "If I @0@ Spanish, I @1@ in Spain.", "blanks": [{"hint": "speak", "answer": "spoke"}, {"hint": "work", "answer": "would work"}]}, {"template": "He @0@ so nervous if he @1@ better.", "blanks": [{"hint": "not/feel", "answer": "wouldn't feel"}, {"hint": "prepare", "answer": "prepared"}]}, {"template": "If we @0@ a bigger house, we @1@ more people.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "invite", "answer": "would invite"}]}, {"template": "They @0@ a new car if they @1@ more money.", "blanks": [{"hint": "buy", "answer": "would buy"}, {"hint": "earn", "answer": "earned"}]}, {"template": "If she @0@ more confident, she @1@ English more often.", "blanks": [{"hint": "be", "answer": "were"}, {"hint": "speak", "answer": "would speak"}]}, {"template": "I @0@ that hotel if I @1@ how expensive it was.", "blanks": [{"hint": "not/choose", "answer": "wouldn't choose"}, {"hint": "know", "answer": "knew"}]}, {"template": "If you @0@ live anywhere in the world, where @1@ you @2@?", "blanks": [{"hint": "can", "answer": "could"}, {"hint": null, "answer": "would"}, {"hint": "live", "answer": "live"}]}, {"template": "We @0@ out tonight if the weather @1@ better.", "blanks": [{"hint": "go", "answer": "would go"}, {"hint": "be", "answer": "were"}]}]}, {"title": "Task 4", "items": [{"template": "If my parents @0@ me more money, I @1@ a new phone.", "blanks": [{"hint": "give", "answer": "gave"}, {"hint": "buy", "answer": "would buy"}]}, {"template": "She @0@ worried if she @1@ what was happening.", "blanks": [{"hint": "not/be", "answer": "wouldn't be"}, {"hint": "know", "answer": "knew"}]}, {"template": "If I @0@ a chance to meet a famous person, I @1@ them many questions.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "ask", "answer": "would ask"}]}, {"template": "He @0@ football professionally if he @1@ younger.", "blanks": [{"hint": "play", "answer": "would play"}, {"hint": "be", "answer": "were"}]}, {"template": "If we @0@ so far away, we @1@ you more often.", "blanks": [{"hint": "not/live", "answer": "didn't live"}, {"hint": "visit", "answer": "would visit"}]}, {"template": "They @0@ better results if they @1@ more regularly.", "blanks": [{"hint": "get", "answer": "would get"}, {"hint": "study", "answer": "studied"}]}, {"template": "If you @0@ the manager, what @1@ you @2@?", "blanks": [{"hint": "be", "answer": "were"}, {"hint": null, "answer": "would"}, {"hint": "change", "answer": "change"}]}, {"template": "I @0@ that job if I @1@ another choice.", "blanks": [{"hint": "not/take", "answer": "wouldn't take"}, {"hint": "have", "answer": "had"}]}]}, {"title": "Task 5", "items": [{"template": "If I @0@ a million dollars, I @1@ a large house.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "build", "answer": "would build"}]}, {"template": "She @0@ to play the guitar if she @1@ more free time.", "blanks": [{"hint": "learn", "answer": "would learn"}, {"hint": "have", "answer": "had"}]}, {"template": "If he @0@ afraid of flying, he @1@ abroad more often.", "blanks": [{"hint": "not/be", "answer": "weren't"}, {"hint": "travel", "answer": "would travel"}]}, {"template": "We @0@ them if we @1@ about their problem.", "blanks": [{"hint": "help", "answer": "would help"}, {"hint": "know", "answer": "knew"}]}, {"template": "If they @0@ in a warmer country, they @1@ more time outdoors.", "blanks": [{"hint": "live", "answer": "lived"}, {"hint": "spend", "answer": "would spend"}]}, {"template": "I @0@ that phone if it @1@ so much.", "blanks": [{"hint": "not/buy", "answer": "wouldn't buy"}, {"hint": "cost", "answer": "cost"}]}, {"template": "If you @0@ the opportunity to study abroad, where @1@ you @2@?", "blanks": [{"hint": "have", "answer": "had"}, {"hint": null, "answer": "would"}, {"hint": "go", "answer": "go"}]}, {"template": "He @0@ much happier if he @1@ a job that he enjoyed.", "blanks": [{"hint": "be", "answer": "would be"}, {"hint": "have", "answer": "had"}]}]}, {"title": "Task 6", "items": [{"template": "If I @0@ her address, I @1@ her a letter.", "blanks": [{"hint": "know", "answer": "knew"}, {"hint": "send", "answer": "would send"}]}, {"template": "He @0@ a better computer if he @1@ enough money.", "blanks": [{"hint": "buy", "answer": "would buy"}, {"hint": "have", "answer": "had"}]}, {"template": "If we @0@ so much homework, we @1@ to the cinema.", "blanks": [{"hint": "not/have", "answer": "didn't have"}, {"hint": "go", "answer": "would go"}]}, {"template": "They @0@ to the countryside if they @1@ a suitable house.", "blanks": [{"hint": "move", "answer": "would move"}, {"hint": "find", "answer": "found"}]}, {"template": "If she @0@ more organized, she @1@ important things.", "blanks": [{"hint": "be", "answer": "were"}, {"hint": "not/forget", "answer": "wouldn't forget"}]}, {"template": "I @0@ another skill if I @1@ more free time.", "blanks": [{"hint": "learn", "answer": "would learn"}, {"hint": "have", "answer": "had"}]}, {"template": "If you @0@ a wallet on the street, what @1@ you @2@?", "blanks": [{"hint": "see", "answer": "saw"}, {"hint": null, "answer": "would"}, {"hint": "do", "answer": "do"}]}, {"template": "We @0@ late if we @1@ home earlier.", "blanks": [{"hint": "not/be", "answer": "wouldn't be"}, {"hint": "leave", "answer": "left"}]}]}, {"title": "Task 7", "items": [{"template": "If he @0@ a car, he @1@ to work every day.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "drive", "answer": "would drive"}]}, {"template": "She @0@ so stressed if she @1@ more breaks.", "blanks": [{"hint": "not/feel", "answer": "wouldn't feel"}, {"hint": "take", "answer": "took"}]}, {"template": "If I @0@ you, I @1@ that offer immediately.", "blanks": [{"hint": "be", "answer": "were"}, {"hint": "not/accept", "answer": "wouldn't accept"}]}, {"template": "They @0@ us more often if they @1@ closer.", "blanks": [{"hint": "visit", "answer": "would visit"}, {"hint": "live", "answer": "lived"}]}, {"template": "If we @0@ about the problem, we @1@ to help.", "blanks": [{"hint": "know", "answer": "knew"}, {"hint": "try", "answer": "would try"}]}, {"template": "He @0@ abroad if his parents @1@ the idea.", "blanks": [{"hint": "study", "answer": "would study"}, {"hint": "support", "answer": "supported"}]}, {"template": "If you @0@ a free year, where @1@ you @2@?", "blanks": [{"hint": "have", "answer": "had"}, {"hint": null, "answer": "would"}, {"hint": "travel", "answer": "travel"}]}, {"template": "I @0@ so much money if I @1@ more.", "blanks": [{"hint": "not/spend", "answer": "wouldn't spend"}, {"hint": "earn", "answer": "earned"}]}]}, {"title": "Task 8", "items": [{"template": "If I @0@ French fluently, I @1@ for that job.", "blanks": [{"hint": "speak", "answer": "spoke"}, {"hint": "apply", "answer": "would apply"}]}, {"template": "She @0@ to the concert if she @1@ a ticket.", "blanks": [{"hint": "go", "answer": "would go"}, {"hint": "have", "answer": "had"}]}, {"template": "If he @0@ so shy, he @1@ to more people.", "blanks": [{"hint": "not/be", "answer": "weren't"}, {"hint": "talk", "answer": "would talk"}]}, {"template": "We @0@ a larger apartment if we @1@ more.", "blanks": [{"hint": "buy", "answer": "would buy"}, {"hint": "earn", "answer": "earned"}]}, {"template": "If they @0@ enough information, they @1@ a better decision.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "make", "answer": "would make"}]}, {"template": "I @0@ you with the project if I @1@ the topic better.", "blanks": [{"hint": "help", "answer": "would help"}, {"hint": "understand", "answer": "understood"}]}, {"template": "If you @0@ able to change one thing about your school, what @1@ you @2@?", "blanks": [{"hint": "be", "answer": "were"}, {"hint": null, "answer": "would"}, {"hint": "change", "answer": "change"}]}, {"template": "He @0@ that university if he @1@ how expensive it was.", "blanks": [{"hint": "not/choose", "answer": "wouldn't choose"}, {"hint": "know", "answer": "knew"}]}]}, {"title": "Task 9", "items": [{"template": "If my family @0@ abroad, I @1@ them every year.", "blanks": [{"hint": "live", "answer": "lived"}, {"hint": "visit", "answer": "would visit"}]}, {"template": "She @0@ to drive if she @1@ more confidence.", "blanks": [{"hint": "learn", "answer": "would learn"}, {"hint": "have", "answer": "had"}]}, {"template": "If I @0@ so much work, I @1@ you for dinner.", "blanks": [{"hint": "not/have", "answer": "didn't have"}, {"hint": "join", "answer": "would join"}]}, {"template": "They @0@ so many mistakes if they @1@ their work carefully.", "blanks": [{"hint": "not/make", "answer": "wouldn't make"}, {"hint": "check", "answer": "checked"}]}, {"template": "If he @0@ more patient, he @1@ with difficult situations better.", "blanks": [{"hint": "be", "answer": "were"}, {"hint": "deal", "answer": "would deal"}]}, {"template": "We @0@ more often if flights @1@ so expensive.", "blanks": [{"hint": "travel", "answer": "would travel"}, {"hint": "not/be", "answer": "weren't"}]}, {"template": "If you @0@ a better job, @1@ you @2@ your current one?", "blanks": [{"hint": "find", "answer": "found"}, {"hint": null, "answer": "would"}, {"hint": "leave", "answer": "leave"}]}, {"template": "I @0@ a house if I @1@ enough money.", "blanks": [{"hint": "buy", "answer": "would buy"}, {"hint": "save", "answer": "saved"}]}]}, {"title": "Task 10", "items": [{"template": "If I @0@ the opportunity, I @1@ at a foreign university.", "blanks": [{"hint": "have", "answer": "had"}, {"hint": "study", "answer": "would study"}]}, {"template": "He @0@ happier if he @1@ more time with his family.", "blanks": [{"hint": "be", "answer": "would be"}, {"hint": "spend", "answer": "spent"}]}, {"template": "If she @0@ to work tomorrow, she @1@ with us.", "blanks": [{"hint": "not/need", "answer": "didn't need"}, {"hint": "come", "answer": "would come"}]}, {"template": "We @0@ hiking this weekend if the weather @1@ warmer.", "blanks": [{"hint": "go", "answer": "would go"}, {"hint": "be", "answer": "were"}]}, {"template": "If they @0@ the truth, they @1@ so angry.", "blanks": [{"hint": "know", "answer": "knew"}, {"hint": "not/be", "answer": "wouldn't be"}]}, {"template": "I @0@ a different course if I @1@ the chance to start again.", "blanks": [{"hint": "choose", "answer": "would choose"}, {"hint": "have", "answer": "had"}]}, {"template": "If you @0@ a free trip anywhere in the world, where @1@ you @2@?", "blanks": [{"hint": "win", "answer": "won"}, {"hint": null, "answer": "would"}, {"hint": "go", "answer": "go"}]}, {"template": "She @0@ so much if she @1@ more information.", "blanks": [{"hint": "not/worry", "answer": "wouldn't worry"}, {"hint": "have", "answer": "had"}]}]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+
+  function normalize(s){
+    return s.toLowerCase().replace(/['’‘]/g,"'").replace(/[.,!?;:"“”]/g,"").replace(/\s+/g," ").trim();
+  }
+
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    section.id = 'task' + tIdx + 'Section';
+
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>' + task.title + '</h2><span class="block-count">' + task.items.length + ' items</span>';
+    section.appendChild(head);
+
+    var list = document.createElement('div');
+    list.id = 'task' + tIdx + 'List';
+
+    task.items.forEach(function(itemObj, iIdx){
+      var parts = itemObj.template.split(/@(\d)@/);
+      // parts alternates: text, blankIndex, text, blankIndex, text...
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+
+      var num = document.createElement('span');
+      num.className = 'g-num';
+      num.textContent = (iIdx+1);
+      wrap.appendChild(num);
+
+      for (var p = 0; p < parts.length; p++) {
+        if (p % 2 === 0) {
+          if (parts[p]) wrap.appendChild(document.createTextNode(parts[p]));
+        } else {
+          var blankIdx = parseInt(parts[p], 10);
+          var blank = itemObj.blanks[blankIdx];
+          var input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'answer-input';
+          input.id = 'task' + tIdx + '-' + iIdx + '-' + blankIdx;
+          input.setAttribute('data-answer', blank.answer);
+          input.autocomplete = 'off';
+          input.spellcheck = false;
+          wrap.appendChild(input);
+          if (blank.hint) {
+            var hintSpan = document.createElement('span');
+            hintSpan.className = 'g-hint';
+            hintSpan.textContent = '(' + blank.hint + ')';
+            wrap.appendChild(hintSpan);
+          }
+        }
+      }
+
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback';
+      fb.id = 'task' + tIdx + '-fb-' + iIdx;
+      wrap.appendChild(fb);
+
+      list.appendChild(wrap);
+    });
+    section.appendChild(list);
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check ' + task.title + '</button>' +
+                          '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+
+    container.appendChild(section);
+  });
+
+  function idsForTask(tIdx){
+    var ids = [];
+    TASKS[tIdx].items.forEach(function(itemObj, iIdx){
+      itemObj.blanks.forEach(function(_, bIdx){ ids.push('task' + tIdx + '-' + iIdx + '-' + bIdx); });
+    });
+    return ids;
+  }
+
+  function fbIdForBlankId(id){
+    // id format: task{t}-{i}-{b}  -> fb id: task{t}-fb-{i}
+    var m = id.match(/^task(\d+)-(\d+)-(\d+)$/);
+    return m ? ('task' + m[1] + '-fb-' + m[2]) : null;
+  }
+
+  function checkTask(tIdx){
+    var correct = 0;
+    var itemStatus = {}; // iIdx -> {all:bool, any:bool}
+    idsForTask(tIdx).forEach(function(id){
+      var input = document.getElementById(id);
+      if (!input) return;
+      var m = id.match(/^task(\d+)-(\d+)-(\d+)$/);
+      var iIdx = m[2];
+      var answer = input.getAttribute('data-answer') || '';
+      var ok = normalize(input.value) === normalize(answer);
+      input.classList.remove('correct', 'incorrect');
+      if (!itemStatus[iIdx]) itemStatus[iIdx] = { all: true, any: false, wrongAnswers: [] };
+      if (input.value.trim() === '') {
+        itemStatus[iIdx].all = false;
+      } else if (ok) {
+        input.classList.add('correct');
+        correct++;
+        itemStatus[iIdx].any = true;
+      } else {
+        input.classList.add('incorrect');
+        itemStatus[iIdx].all = false;
+        itemStatus[iIdx].any = true;
+        itemStatus[iIdx].wrongAnswers.push(answer);
+      }
+    });
+    Object.keys(itemStatus).forEach(function(iIdx){
+      var fb = document.getElementById('task' + tIdx + '-fb-' + iIdx);
+      if (!fb) return;
+      var status = itemStatus[iIdx];
+      if (!status.any) { fb.textContent = ''; fb.className = 'g-feedback'; return; }
+      if (status.all && status.wrongAnswers.length === 0) {
+        fb.innerHTML = ' Correct.'; fb.className = 'g-feedback correct';
+      } else {
+        var full = TASKS[tIdx].items[iIdx].blanks.map(function(b){ return b.answer; }).join(' / ');
+        fb.innerHTML = ' Not quite — correct answer: <strong>' + full + '</strong>'; fb.className = 'g-feedback incorrect';
+      }
+    });
+    return correct;
+  }
+
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(task, tIdx){
+      task.items.forEach(function(itemObj, iIdx){
+        var allCorrect = true;
+        itemObj.blanks.forEach(function(blank, bIdx){
+          var input = document.getElementById('task' + tIdx + '-' + iIdx + '-' + bIdx);
+          if (!input || normalize(input.value) !== normalize(blank.answer)) allCorrect = false;
+        });
+        if (allCorrect) total++;
+      });
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% complete';
+  }
+
+  container.addEventListener('click', function(e){
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) {
+      checkTask(parseInt(checkBtn.getAttribute('data-check'), 10));
+      updateScore();
+      return;
+    }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var tIdx = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      idsForTask(tIdx).forEach(function(id){
+        var el = document.getElementById(id);
+        el.value = '';
+        el.classList.remove('correct', 'incorrect');
+      });
+      TASKS[tIdx].items.forEach(function(_, iIdx){
+        var fb = document.getElementById('task' + tIdx + '-fb-' + iIdx);
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      });
+      updateScore();
+    }
+  });
+
+  container.addEventListener('input', function(e){
+    if (e.target.classList.contains('answer-input')) updateScore();
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, tIdx){ checkTask(tIdx); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    document.querySelectorAll('[data-reset]').forEach(function(btn){ btn.click(); });
+  });
+
+  var stamp = new Date();
+  document.getElementById('dateStamp').textContent = stamp.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
