@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Reported Speech &amp; Reported Questions — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#E7BC12; --teal-bg:#FBF3D5;
+    --plum:#FFD530; --plum-bg:#FBF3D5;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .app{ max-width:820px; margin:0 auto; }
+
+  /* Page switcher */
+  .page-switcher{ display:flex; gap:10px; margin-bottom:16px; background:var(--black); border-radius:8px; padding:6px; }
+  .page-tab{ flex:1; font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; color:rgba(255,255,255,.6); background:transparent; border:none; border-radius:6px; padding:14px 10px; cursor:pointer; transition:background .15s, color .15s; }
+  .page-tab.active{ background:var(--yellow); color:var(--black); }
+  .page-tab:not(.active):hover{ color:var(--white); background:rgba(255,255,255,.08); }
+  .page-tab .tab-sub{ display:block; font-size:11px; font-weight:600; opacity:.75; margin-top:2px; }
+
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+  .page{ display:none; }
+  .page.active{ display:block; }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .formula-card{ background:var(--black); border-radius:10px; padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,28px); margin-bottom:20px; position:relative; overflow:hidden; }
+  .formula-card::before{ content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px; background:var(--yellow); opacity:.14; border-radius:50%; }
+  .formula-label{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+  .formula-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-family:'JetBrains Mono', monospace; font-size:clamp(13px,3.2vw,15.5px); color:var(--white); }
+  .formula-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:6px 11px; white-space:nowrap; }
+  .formula-chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula-arrow{ color:rgba(255,255,255,.4); font-size:15px; }
+  .formula-shorthand{ margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:rgba(255,255,255,.55); }
+  .formula-pattern{ padding:12px 0; border-bottom:1px solid rgba(255,255,255,.1); }
+  .formula-pattern:first-of-type{ padding-top:2px; }
+  .formula-pattern:last-of-type{ border-bottom:none; padding-bottom:2px; }
+  .formula-pattern-label{ font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:9px; }
+
+  .example-strip{ display:grid; gap:8px; margin-bottom:22px; }
+  .example-strip .ex-line{ font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; color:var(--ink); }
+  .example-strip .ex-line em{ font-style:normal; color:var(--ink-soft); }
+  .example-strip .ex-line.bad{ border-left-color:var(--bad); }
+  .example-strip .ex-line.good{ border-left-color:var(--yellow-deep); }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:22px 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .modal-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:8px; }
+  .modal-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:12px 14px; }
+  .modal-term{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size:12.5px; color:var(--ink); margin-bottom:5px; }
+  .modal-meaning{ font-size:12.5px; color:var(--ink-soft); }
+
+  /* Detailed grammar reference blocks (color-scoped to the platform's own palette: teal for RS, plum for RQ) */
+  .rs-summary{ --gx:var(--teal); --gx-bg:var(--teal-bg); --gx-deep:#8A6710; }
+  .rq-summary{ --gx:var(--plum); --gx-bg:var(--plum-bg); --gx-deep:#8A6710; }
+
+  .gx-table-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:22px; box-shadow:0 1px 0 rgba(20,20,22,.03); }
+  .gx-table{ width:100%; border-collapse:collapse; }
+  .gx-table thead th{ background:var(--black); color:var(--gx); text-align:left; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:11px 14px; border-bottom:2px solid var(--gx); }
+  .gx-table tbody td{ padding:10px 14px; font-size:13px; color:var(--ink); border-top:1px solid var(--rule); background:var(--panel); vertical-align:top; }
+  .gx-table tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .gx-table .cell-main{ font-weight:600; display:block; }
+  .gx-table .cell-sub{ display:block; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:2px; }
+
+  .gs-subhead.gx-subhead::before{ background:var(--gx); }
+
+  .card-grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:8px; }
+  .card-grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:8px; }
+  @media (max-width:640px){ .card-grid-2, .card-grid-3{ grid-template-columns:1fr; } }
+
+  .ex-card{ background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--gx); border-radius:0 8px 8px 0; padding:13px 14px; }
+  .ex-pill{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:600; color:var(--gx-deep); background:var(--gx-bg); padding:3px 9px; border-radius:5px; margin-bottom:9px; }
+  .ex-direct{ font-size:12.5px; color:var(--ink-soft); margin:0 0 4px; }
+  .ex-reported{ font-size:12.5px; color:var(--ink); margin:0; }
+  .ex-card b{ color:var(--ink); font-weight:700; }
+
+  .rule-card{ background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--gx); border-radius:0 8px 8px 0; padding:15px 16px; margin-bottom:12px; }
+  .rc-formula{ font-family:'JetBrains Mono',monospace; font-size:11.5px; background:#F4F4F1; border-radius:6px; padding:8px 11px; margin:9px 0; color:var(--ink); line-height:1.6; }
+  .rc-line{ font-size:12.5px; margin:5px 0; color:var(--ink); }
+  .rc-line b{ color:var(--gx-deep); }
+  .rc-wrong{ color:var(--bad); font-size:12.5px; margin:5px 0; }
+  .rc-right{ color:#8A6710; font-size:12.5px; margin:5px 0; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:20px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13.5px; color:var(--ink-soft); margin-bottom:6px; display:flex; align-items:flex-start; gap:2px; }
+  .ctx-text{ font-style:italic; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); padding-left:30px; }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:220px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; padding-left:30px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:0; width:100%; margin:4px 0; }
+    .g-sentence{ padding-left:0; display:block; }
+    .g-feedback{ padding-left:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="app">
+
+  <div class="page-switcher">
+    <button class="page-tab active" data-target="page-speech">Reported Speech<span class="tab-sub">Part 1 · 77 items</span></button>
+    <button class="page-tab" data-target="page-questions">Reported Questions<span class="tab-sub">Part 2 · 77 items</span></button>
+  </div>
+
+  <!-- ============ PAGE 1: REPORTED SPEECH ============ -->
+  <div class="page active" id="page-speech">
+    <div class="sheet">
+
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row">
+          <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+        </div>
+        <h1>Reported Speech</h1>
+        <p class="sub">Rewrite each direct statement as reported speech. Check your answers section by section.</p>
+      </div>
+
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-rs"></div></div>
+        <span class="score-tally" id="scoreTally-rs">0 / 77</span>
+      </div>
+
+      <section class="grammar-summary" id="grammar-summary-rs">
+        <span class="gs-kicker">Grammar Summary</span>
+        <h2 class="gs-title">Reported Speech</h2>
+        <p class="gs-intro">We use reported speech to tell someone what another person said. The verb tense usually shifts one step back into the past.</p>
+
+        <div class="formula-card">
+          <div class="formula-label">Structure</div>
+          <div class="formula-row">
+            <span class="formula-chip accent">Subject + said / told + (that)</span>
+            <span class="formula-arrow">+</span>
+            <span class="formula-chip">clause, one tense back</span>
+          </div>
+          <div class="formula-shorthand">“I am tired.” → He said (that) he was tired.</div>
+        </div>
+
+        <div class="example-strip">
+          <div class="ex-line good">“I will see you tomorrow.” → He said that he would see me the next day.</div>
+          <div class="ex-line good">“Don't be late.” → She told me not to be late.</div>
+          <div class="ex-line good">“Please help me.” → He asked me to help him.</div>
+        </div>
+
+        <div class="rs-summary">
+          <h3 class="gs-subhead gx-subhead">Tense changes, in full</h3>
+          <div class="gx-table-wrap">
+            <table class="gx-table">
+              <thead><tr><th>Direct Speech</th><th>Reported Speech</th></tr></thead>
+              <tbody>
+                <tr><td><span class="cell-main">Present Simple</span><span class="cell-sub">V1 / V1+s</span></td><td><span class="cell-main">Past Simple</span><span class="cell-sub">V2</span></td></tr>
+                <tr><td><span class="cell-main">Present Continuous</span><span class="cell-sub">am/is/are + V-ing</span></td><td><span class="cell-main">Past Continuous</span><span class="cell-sub">was/were + V-ing</span></td></tr>
+                <tr><td><span class="cell-main">Present Perfect</span><span class="cell-sub">have/has + V3</span></td><td><span class="cell-main">Past Perfect</span><span class="cell-sub">had + V3</span></td></tr>
+                <tr><td><span class="cell-main">Past Simple</span><span class="cell-sub">V2</span></td><td><span class="cell-main">Past Perfect</span><span class="cell-sub">had + V3</span></td></tr>
+                <tr><td><span class="cell-main">Past Continuous</span><span class="cell-sub">was/were + V-ing</span></td><td><span class="cell-main">Past Perfect Continuous</span><span class="cell-sub">had been + V-ing</span></td></tr>
+                <tr><td><span class="cell-main">will</span><span class="cell-sub">will + V1</span></td><td><span class="cell-main">would</span><span class="cell-sub">would + V1</span></td></tr>
+                <tr><td><span class="cell-main">can</span><span class="cell-sub">can + V1</span></td><td><span class="cell-main">could</span><span class="cell-sub">could + V1</span></td></tr>
+                <tr><td><span class="cell-main">may</span><span class="cell-sub">may + V1</span></td><td><span class="cell-main">might</span><span class="cell-sub">might + V1</span></td></tr>
+                <tr><td><span class="cell-main">must</span><span class="cell-sub">must + V1</span></td><td><span class="cell-main">had to</span><span class="cell-sub">had to + V1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="gs-subhead gx-subhead">Six shifts in action</h3>
+          <div class="card-grid-3">
+            <div class="ex-card">
+              <span class="ex-pill">Present Simple → Past Simple</span>
+              <p class="ex-direct">Direct: "I <b>work</b> here."</p>
+              <p class="ex-reported">Reported: He said (that) he <b>worked</b> there.</p>
+            </div>
+            <div class="ex-card">
+              <span class="ex-pill">Present Continuous → Past Continuous</span>
+              <p class="ex-direct">Direct: "I <b>am studying</b>."</p>
+              <p class="ex-reported">Reported: She said (that) she <b>was studying</b>.</p>
+            </div>
+            <div class="ex-card">
+              <span class="ex-pill">Present Perfect → Past Perfect</span>
+              <p class="ex-direct">Direct: "I <b>have finished</b>."</p>
+              <p class="ex-reported">Reported: He said (that) he <b>had finished</b>.</p>
+            </div>
+            <div class="ex-card">
+              <span class="ex-pill">Past Simple → Past Perfect</span>
+              <p class="ex-direct">Direct: "I <b>lost</b> my keys."</p>
+              <p class="ex-reported">Reported: She said she <b>had lost</b> her keys.</p>
+            </div>
+            <div class="ex-card">
+              <span class="ex-pill">Will → Would</span>
+              <p class="ex-direct">Direct: "I <b>will call</b> you."</p>
+              <p class="ex-reported">Reported: He said that he <b>would call</b> me.</p>
+            </div>
+            <div class="ex-card">
+              <span class="ex-pill">Can → Could</span>
+              <p class="ex-direct">Direct: "I <b>can swim</b>."</p>
+              <p class="ex-reported">Reported: She said she <b>could swim</b>.</p>
+            </div>
+          </div>
+
+          <h3 class="gs-subhead gx-subhead">Time &amp; place words also change</h3>
+          <div class="gx-table-wrap">
+            <table class="gx-table">
+              <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+              <tbody>
+                <tr><td>now</td><td>then</td></tr>
+                <tr><td>today</td><td>that day</td></tr>
+                <tr><td>tonight</td><td>that night</td></tr>
+                <tr><td>yesterday</td><td>the day before</td></tr>
+                <tr><td>tomorrow</td><td>the next day / the following day</td></tr>
+                <tr><td>last week</td><td>the week before</td></tr>
+                <tr><td>next week</td><td>the following week</td></tr>
+                <tr><td>ago</td><td>before</td></tr>
+                <tr><td>here</td><td>there</td></tr>
+                <tr><td>this</td><td>that</td></tr>
+                <tr><td>these</td><td>those</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="jump-nav">
+        <a href="#grammar-summary-rs">Grammar</a>
+        <a href="#section-rs-e1">1</a>
+    <a href="#section-rs-e2">2</a>
+    <a href="#section-rs-e3">3</a>
+    <a href="#section-rs-e4">4</a>
+    <a href="#section-rs-e5">5</a>
+    <a href="#section-rs-e6">6</a>
+    <a href="#section-rs-e7">7</a>
+    <a href="#section-rs-e8">8</a>
+    <a href="#section-rs-e9">9</a>
+    <a href="#section-rs-e10">10</a>
+    <a href="#section-rs-e11">11</a>
+      </div>
+
+  <section class="block" id="section-rs-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e1">
+      <div class="q-item" id="item-rs-e1-0" data-answer1="he couldn&#x27;t find his keys">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I can’t find my keys.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e1-1" data-answer1="they had enjoyed the concert the night before">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We enjoyed the concert last night.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e1-2" data-answer1="she had never eaten sushi before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I have never eaten sushi before.”</span></div>
+        <div class="g-sentence">Anna told me <input type="text" class="blank-input" id="in1-rs-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e1-3" data-answer1="he would help me with my project the next day">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I will help you with your project tomorrow.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e1-4" data-answer1="we should wear a helmet when riding a bike">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“You should wear a helmet when riding a bike.”</span></div>
+        <div class="g-sentence">The instructor told us <input type="text" class="blank-input" id="in1-rs-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e1-5" data-answer1="she was going to the supermarket then">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“I am going to the supermarket now.”</span></div>
+        <div class="g-sentence">Maria said <input type="text" class="blank-input" id="in1-rs-e1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e1-6" data-answer1="not to forget to call her when I arrived">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t forget to call me when you arrive.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e1-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="rs-e1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e2">
+      <div class="q-item" id="item-rs-e2-0" data-answer1="he lived near the university">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I live near the university.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e2-1" data-answer1="she was studying for her exam">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“I am studying for my exam.”</span></div>
+        <div class="g-sentence">Sarah said <input type="text" class="blank-input" id="in1-rs-e2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e2-2" data-answer1="they had gone to the cinema the day before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“We went to the cinema yesterday.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e2-3" data-answer1="he had already finished his homework">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have already finished my homework.”</span></div>
+        <div class="g-sentence">Tom said <input type="text" class="blank-input" id="in1-rs-e2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e2-4" data-answer1="she would send me the information that night">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will send you the information tonight.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e2-5" data-answer1="he could help me with that problem">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“I can help you with this problem.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e2-6" data-answer1="not to touch that button">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t touch that button.”</span></div>
+        <div class="g-sentence">The technician told us <input type="text" class="blank-input" id="in1-rs-e2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e2-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="rs-e2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e3">
+    <div class="block-head"><h2>Exercise 3</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e3">
+      <div class="q-item" id="item-rs-e3-0" data-answer1="he didn&#x27;t understand that question">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I don’t understand this question.”</span></div>
+        <div class="g-sentence">The student said <input type="text" class="blank-input" id="in1-rs-e3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e3-1" data-answer1="they were waiting for the manager">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We are waiting for the manager.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e3-2" data-answer1="she had bought that laptop the month before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I bought this laptop last month.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e3-3" data-answer1="he had never visited Italy">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have never visited Italy.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e3-4" data-answer1="she would meet me at the station the next day">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will meet you at the station tomorrow.”</span></div>
+        <div class="g-sentence">Anna told me <input type="text" class="blank-input" id="in1-rs-e3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e3-5" data-answer1="we should check our answers">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You should check your answers.”</span></div>
+        <div class="g-sentence">The teacher told us <input type="text" class="blank-input" id="in1-rs-e3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e3-6" data-answer1="not to open the window">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t open the window.”</span></div>
+        <div class="g-sentence">My mother told me <input type="text" class="blank-input" id="in1-rs-e3-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e3-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e3">Check Exercise 3</button>
+      <button class="btn-ghost" data-reset="rs-e3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e4">
+    <div class="block-head"><h2>Exercise 4</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e4">
+      <div class="q-item" id="item-rs-e4-0" data-answer1="he needed some help">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I need some help.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e4-1" data-answer1="they were having dinner then">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We are having dinner now.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e4-2" data-answer1="she had seen my brother the day before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I saw your brother yesterday.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e4-3" data-answer1="he had lost his wallet">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have lost my wallet.”</span></div>
+        <div class="g-sentence">John said <input type="text" class="blank-input" id="in1-rs-e4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e4-4" data-answer1="he would call me later">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will call you later.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e4-5" data-answer1="we had to wear a seat belt">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You must wear a seat belt.”</span></div>
+        <div class="g-sentence">The policeman told us <input type="text" class="blank-input" id="in1-rs-e4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e4-6" data-answer1="not to make so much noise">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t make so much noise.”</span></div>
+        <div class="g-sentence">The teacher told the students <input type="text" class="blank-input" id="in1-rs-e4-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e4-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e4">Check Exercise 4</button>
+      <button class="btn-ghost" data-reset="rs-e4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e5">
+    <div class="block-head"><h2>Exercise 5</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e5">
+      <div class="q-item" id="item-rs-e5-0" data-answer1="she worked in a bank">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I work in a bank.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e5-1" data-answer1="he was feeling much better that day">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“I am feeling much better today.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e5-2" data-answer1="they had visited their grandparents the previous weekend">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“We visited our grandparents last weekend.”</span></div>
+        <div class="g-sentence">They told me <input type="text" class="blank-input" id="in1-rs-e5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e5-3" data-answer1="she had already seen that film">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have already seen this film.”</span></div>
+        <div class="g-sentence">Maria said <input type="text" class="blank-input" id="in1-rs-e5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e5-4" data-answer1="he would finish the report the next day">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will finish the report tomorrow.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e5-5" data-answer1="I should take an umbrella">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You should take an umbrella.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e5-6" data-answer1="not to forget my passport">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t forget your passport.”</span></div>
+        <div class="g-sentence">My father told me <input type="text" class="blank-input" id="in1-rs-e5-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e5-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e5">Check Exercise 5</button>
+      <button class="btn-ghost" data-reset="rs-e5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e6">
+    <div class="block-head"><h2>Exercise 6</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e6">
+      <div class="q-item" id="item-rs-e6-0" data-answer1="he didn&#x27;t like that restaurant">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I don’t like this restaurant.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e6-1" data-answer1="they were planning a trip">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We are planning a trip.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e6-2" data-answer1="she had met her two days before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I met her two days ago.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e6-3" data-answer1="he had never tried skiing">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have never tried skiing.”</span></div>
+        <div class="g-sentence">Tom said <input type="text" class="blank-input" id="in1-rs-e6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e6-4" data-answer1="he could finish the work that night">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I can finish the work tonight.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e6-5" data-answer1="I should talk to my teacher">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You should talk to your teacher.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e6-6" data-answer1="not to use his computer">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t use my computer.”</span></div>
+        <div class="g-sentence">He told his brother <input type="text" class="blank-input" id="in1-rs-e6-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e6-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e6">Check Exercise 6</button>
+      <button class="btn-ghost" data-reset="rs-e6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e7">
+    <div class="block-head"><h2>Exercise 7</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e7">
+      <div class="q-item" id="item-rs-e7-0" data-answer1="she was very busy that day">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I am very busy today.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e7-1" data-answer1="they usually ate there">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We usually eat here.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e7-2" data-answer1="he had lost his phone the day before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I lost my phone yesterday.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e7-3" data-answer1="she had just arrived">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have just arrived.”</span></div>
+        <div class="g-sentence">Anna said <input type="text" class="blank-input" id="in1-rs-e7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e7-4" data-answer1="he would probably be late">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will probably be late.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e7-5" data-answer1="I could use her car">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You can use my car.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e7-6" data-answer1="not to tell anyone about that">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t tell anyone about this.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e7-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e7-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e7">Check Exercise 7</button>
+      <button class="btn-ghost" data-reset="rs-e7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e8">
+    <div class="block-head"><h2>Exercise 8</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e8">
+      <div class="q-item" id="item-rs-e8-0" data-answer1="she needed to leave then">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I need to leave now.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e8-1" data-answer1="they were working on a new project">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We are working on a new project.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e8-2" data-answer1="he had bought those shoes the week before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I bought these shoes last week.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e8-3" data-answer1="she had forgotten her name">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have forgotten her name.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e8-4" data-answer1="he would help me with my homework">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will help you with your homework.”</span></div>
+        <div class="g-sentence">Tom told me <input type="text" class="blank-input" id="in1-rs-e8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e8-5" data-answer1="I should be more careful">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You should be more careful.”</span></div>
+        <div class="g-sentence">The doctor told him <input type="text" class="blank-input" id="in1-rs-e8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e8-6" data-answer1="not to park our cars there">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t park your car here.”</span></div>
+        <div class="g-sentence">The security guard told us <input type="text" class="blank-input" id="in1-rs-e8-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e8-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e8">Check Exercise 8</button>
+      <button class="btn-ghost" data-reset="rs-e8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e9">
+    <div class="block-head"><h2>Exercise 9</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e9">
+      <div class="q-item" id="item-rs-e9-0" data-answer1="he was tired">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I am tired.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e9-1" data-answer1="they had finished the project">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We have finished the project.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e9-2" data-answer1="she had visited London the previous year">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I visited London last year.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e9-3" data-answer1="he was going to buy a new phone">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I am going to buy a new phone.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e9-4" data-answer1="she would see me the next day">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will see you tomorrow.”</span></div>
+        <div class="g-sentence">Anna said <input type="text" class="blank-input" id="in1-rs-e9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e9-5" data-answer1="we could leave early that day">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You can leave early today.”</span></div>
+        <div class="g-sentence">The manager told us <input type="text" class="blank-input" id="in1-rs-e9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e9-6" data-answer1="not to forget to lock the door">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t forget to lock the door.”</span></div>
+        <div class="g-sentence">She told him <input type="text" class="blank-input" id="in1-rs-e9-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e9-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e9">Check Exercise 9</button>
+      <button class="btn-ghost" data-reset="rs-e9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e10">
+    <div class="block-head"><h2>Exercise 10</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e10">
+      <div class="q-item" id="item-rs-e10-0" data-answer1="he didn&#x27;t have enough money">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I don&#x27;t have enough money.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e10-1" data-answer1="she was looking for her passport">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“I am looking for my passport.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e10-2" data-answer1="they had stayed at that hotel the previous year">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“We stayed at this hotel last year.”</span></div>
+        <div class="g-sentence">They told me <input type="text" class="blank-input" id="in1-rs-e10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e10-3" data-answer1="he had already paid for the tickets">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have already paid for the tickets.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e10-4" data-answer1="she could meet me the following week">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I can meet you next week.”</span></div>
+        <div class="g-sentence">She told me <input type="text" class="blank-input" id="in1-rs-e10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e10-5" data-answer1="I should get some rest">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You should get some rest.”</span></div>
+        <div class="g-sentence">The doctor told me <input type="text" class="blank-input" id="in1-rs-e10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e10-6" data-answer1="not to worry about the problem">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t worry about the problem.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e10-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e10-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e10">Check Exercise 10</button>
+      <button class="btn-ghost" data-reset="rs-e10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rs-e11">
+    <div class="block-head"><h2>Exercise 11</h2><span class="block-count">7 items</span></div>
+    <div id="list-rs-e11">
+      <div class="q-item" id="item-rs-e11-0" data-answer1="she knew the answer">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“I know the answer.”</span></div>
+        <div class="g-sentence">She said <input type="text" class="blank-input" id="in1-rs-e11-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-0"></div>
+      </div>
+      <div class="q-item" id="item-rs-e11-1" data-answer1="they were going to leave soon">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“We are going to leave soon.”</span></div>
+        <div class="g-sentence">They said <input type="text" class="blank-input" id="in1-rs-e11-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-1"></div>
+      </div>
+      <div class="q-item" id="item-rs-e11-2" data-answer1="he hadn&#x27;t seen her at the party">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“I didn&#x27;t see him at the party.”</span></div>
+        <div class="g-sentence">He told me <input type="text" class="blank-input" id="in1-rs-e11-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-2"></div>
+      </div>
+      <div class="q-item" id="item-rs-e11-3" data-answer1="she had lost her keys">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“I have lost my keys.”</span></div>
+        <div class="g-sentence">Sarah said <input type="text" class="blank-input" id="in1-rs-e11-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-3"></div>
+      </div>
+      <div class="q-item" id="item-rs-e11-4" data-answer1="he would explain everything later">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“I will explain everything later.”</span></div>
+        <div class="g-sentence">He said <input type="text" class="blank-input" id="in1-rs-e11-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-4"></div>
+      </div>
+      <div class="q-item" id="item-rs-e11-5" data-answer1="we had to finish that that day">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“You must finish this today.”</span></div>
+        <div class="g-sentence">The teacher told us <input type="text" class="blank-input" id="in1-rs-e11-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-5"></div>
+      </div>
+      <div class="q-item" id="item-rs-e11-6" data-answer1="not to speak so loudly">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Don’t speak so loudly.”</span></div>
+        <div class="g-sentence">She told him <input type="text" class="blank-input" id="in1-rs-e11-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rs-e11-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rs-e11">Check Exercise 11</button>
+      <button class="btn-ghost" data-reset="rs-e11">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-rs">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="totalScore-rs">0 / 77</div>
+        <div class="summary-label" id="totalPercent-rs">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-rs">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-rs">Start over</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ PAGE 2: REPORTED QUESTIONS ============ -->
+  <div class="page" id="page-questions">
+    <div class="sheet">
+
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row">
+          <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+        </div>
+        <h1>Reported Questions</h1>
+        <p class="sub">Rewrite each direct question as a reported question. Check your answers section by section.</p>
+      </div>
+
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-rq"></div></div>
+        <span class="score-tally" id="scoreTally-rq">0 / 77</span>
+      </div>
+
+      <section class="grammar-summary" id="grammar-summary-rq">
+        <span class="gs-kicker">Grammar Summary</span>
+        <h2 class="gs-title">Reported Questions</h2>
+        <p class="gs-intro">We use reported questions to tell someone what another person asked. Word order becomes normal statement order — no auxiliary inversion.</p>
+
+        <div class="formula-card">
+          <div class="formula-label">Two patterns</div>
+
+          <div class="formula-pattern">
+            <div class="formula-pattern-label">Yes/No Questions</div>
+            <div class="formula-row">
+              <span class="formula-chip accent">if / whether</span>
+              <span class="formula-chip">+ subject + verb</span>
+            </div>
+          </div>
+
+          <div class="formula-pattern">
+            <div class="formula-pattern-label">Wh- Questions</div>
+            <div class="formula-row">
+              <span class="formula-chip accent">question word</span>
+              <span class="formula-chip">+ subject + verb</span>
+            </div>
+          </div>
+
+          <div class="formula-shorthand">Yes/No questions use if/whether. Wh- questions keep the question word.</div>
+        </div>
+
+        <div class="example-strip">
+          <div class="ex-line good">“Are you tired?” → He asked me if I was tired.</div>
+          <div class="ex-line good">“Where do you live?” → She asked me where I lived.</div>
+          <div class="ex-line bad">❌ She asked me where did I live. <em>→ no question word order</em></div>
+          <div class="ex-line good">✅ She asked me where I lived.</div>
+        </div>
+
+        <div class="rq-summary">
+          <h3 class="gs-subhead gx-subhead">Step 1 — Identify the type of question</h3>
+          <div class="card-grid-2">
+            <div class="ex-card">
+              <span class="ex-pill">Wh- Questions</span>
+              <p class="ex-direct" style="margin-bottom:9px;">Keep the question word (what, where, when, why, who, how…).</p>
+              <div class="rc-formula">asked + Question word + Subject + Verb</div>
+              <p class="ex-reported" style="margin-bottom:4px;">▸ "Where do you live?" → He asked where I lived.</p>
+              <p class="ex-reported">▸ "Why were you late?" → The teacher asked why I had been late.</p>
+            </div>
+            <div class="ex-card">
+              <span class="ex-pill">Yes/No Questions</span>
+              <p class="ex-direct" style="margin-bottom:9px;">Use <b>if</b> or <b>whether</b>.</p>
+              <div class="rc-formula">asked + if / whether + Subject + Verb</div>
+              <p class="ex-reported" style="margin-bottom:4px;">▸ "Are you busy?" → He asked if I was busy.</p>
+              <p class="ex-reported">▸ "Can you swim?" → She asked whether I could swim.</p>
+            </div>
+          </div>
+
+          <h3 class="gs-subhead gx-subhead">Step 2 — Change the word order</h3>
+          <div class="rule-card">
+            <span class="ex-pill">Use statement word order in reported questions.</span>
+            <p class="rc-line"><b>Direct:</b> Question word + Auxiliary + Subject + Verb — Where <b>do</b> you live?</p>
+            <p class="rc-line"><b>Reported:</b> Question word + Subject + Verb</p>
+            <p class="rc-wrong">✗ He asked where did I live.</p>
+            <p class="rc-right">✓ He asked where I lived.</p>
+          </div>
+
+          <h3 class="gs-subhead gx-subhead">Step 3 — Shift the tense and modals</h3>
+          <div class="gx-table-wrap">
+            <table class="gx-table">
+              <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+              <tbody>
+                <tr><td><span class="cell-main">Present Simple</span><span class="cell-sub">V1 / V1+s</span></td><td><span class="cell-main">Past Simple</span><span class="cell-sub">V2</span></td></tr>
+                <tr><td><span class="cell-main">Present Continuous</span><span class="cell-sub">am/is/are + V-ing</span></td><td><span class="cell-main">Past Continuous</span><span class="cell-sub">was/were + V-ing</span></td></tr>
+                <tr><td><span class="cell-main">Present Perfect</span><span class="cell-sub">have/has + V3</span></td><td><span class="cell-main">Past Perfect</span><span class="cell-sub">had + V3</span></td></tr>
+                <tr><td><span class="cell-main">Past Simple</span><span class="cell-sub">V2</span></td><td><span class="cell-main">Past Perfect</span><span class="cell-sub">had + V3</span></td></tr>
+                <tr><td><span class="cell-main">will</span><span class="cell-sub">will + V1</span></td><td><span class="cell-main">would</span><span class="cell-sub">would + V1</span></td></tr>
+                <tr><td><span class="cell-main">can</span><span class="cell-sub">can + V1</span></td><td><span class="cell-main">could</span><span class="cell-sub">could + V1</span></td></tr>
+                <tr><td><span class="cell-main">may</span><span class="cell-sub">may + V1</span></td><td><span class="cell-main">might</span><span class="cell-sub">might + V1</span></td></tr>
+                <tr><td><span class="cell-main">should</span><span class="cell-sub">should + V1</span></td><td><span class="cell-main">should</span><span class="cell-sub">should + V1 (no change)</span></td></tr>
+                <tr><td><span class="cell-main">must</span><span class="cell-sub">must + V1</span></td><td><span class="cell-main">had to</span><span class="cell-sub">had to + V1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="gs-subhead gx-subhead">Step 4 — Change time &amp; place words</h3>
+          <div class="gx-table-wrap">
+            <table class="gx-table">
+              <thead><tr><th>Direct</th><th>Reported</th></tr></thead>
+              <tbody>
+                <tr><td>now</td><td>then</td></tr>
+                <tr><td>today</td><td>that day</td></tr>
+                <tr><td>tonight</td><td>that night</td></tr>
+                <tr><td>yesterday</td><td>the day before</td></tr>
+                <tr><td>tomorrow</td><td>the next day / the following day</td></tr>
+                <tr><td>last week</td><td>the week before</td></tr>
+                <tr><td>next week</td><td>the following week</td></tr>
+                <tr><td>ago</td><td>before</td></tr>
+                <tr><td>here</td><td>there</td></tr>
+                <tr><td>this</td><td>that</td></tr>
+                <tr><td>these</td><td>those</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="jump-nav">
+        <a href="#grammar-summary-rq">Grammar</a>
+        <a href="#section-rq-e1">1</a>
+    <a href="#section-rq-e2">2</a>
+    <a href="#section-rq-e3">3</a>
+    <a href="#section-rq-e4">4</a>
+    <a href="#section-rq-e5">5</a>
+    <a href="#section-rq-e6">6</a>
+    <a href="#section-rq-e7">7</a>
+    <a href="#section-rq-e8">8</a>
+    <a href="#section-rq-e9">9</a>
+    <a href="#section-rq-e10">10</a>
+    <a href="#section-rq-e11">11</a>
+      </div>
+
+  <section class="block" id="section-rq-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e1">
+      <div class="q-item" id="item-rq-e1-0" data-answer1="if he could show him how to use that printer" data-answer2="whether he could show him how to use that printer" data-alt="if he could show her how to use that printer|whether he could show her how to use that printer|if she could show him how to use that printer|whether she could show him how to use that printer|if she could show her how to use that printer|whether she could show her how to use that printer">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Can you show me how to use this printer?”</span></div>
+        <div class="g-sentence">The teacher asked the student <input type="text" class="blank-input" id="in1-rq-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-1" data-answer1="what time the train left the next day">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“What time does the train leave tomorrow?”</span></div>
+        <div class="g-sentence">He asked his friend <input type="text" class="blank-input" id="in1-rq-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-2" data-answer1="if they had completed the cleaning the day before" data-answer2="whether they had completed the cleaning the day before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did they complete the cleaning yesterday?”</span></div>
+        <div class="g-sentence">She asked the janitor <input type="text" class="blank-input" id="in1-rq-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-3" data-answer1="where she had bought that beautiful dress">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Where did you buy this beautiful dress?”</span></div>
+        <div class="g-sentence">Her sister asked her <input type="text" class="blank-input" id="in1-rq-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-4" data-answer1="if I was going to join the football match the following week" data-answer2="whether I was going to join the football match the following week">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Are you going to join the football match next week?”</span></div>
+        <div class="g-sentence">My teammate asked me <input type="text" class="blank-input" id="in1-rq-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-5" data-answer1="when the new cinema would open in town">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“When will the new cinema open in town?”</span></div>
+        <div class="g-sentence">The children asked their parents <input type="text" class="blank-input" id="in1-rq-e1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-6" data-answer1="why he hadn&#x27;t attended the meeting the day before" data-alt="why she hadn&#x27;t attended the meeting the day before">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Why didn’t you attend the meeting yesterday?”</span></div>
+        <div class="g-sentence">The manager asked the employee <input type="text" class="blank-input" id="in1-rq-e1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="rq-e1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e2">
+      <div class="q-item" id="item-rq-e2-0" data-answer1="if I liked that restaurant" data-answer2="whether I liked that restaurant">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Do you like this restaurant?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-1" data-answer1="where he worked">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“Where do you work?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-2" data-answer1="if I had seen Sarah the day before" data-answer2="whether I had seen Sarah the day before">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did you see Sarah yesterday?”</span></div>
+        <div class="g-sentence">Tom asked me <input type="text" class="blank-input" id="in1-rq-e2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-3" data-answer1="why I was late">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Why are you late?”</span></div>
+        <div class="g-sentence">The teacher asked me <input type="text" class="blank-input" id="in1-rq-e2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-4" data-answer1="if he could help me with that exercise" data-answer2="whether he could help me with that exercise">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Can you help me with this exercise?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-5" data-answer1="when I would finish the project">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“When will you finish the project?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-6" data-answer1="if I had ever been to Spain" data-answer2="whether I had ever been to Spain">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Have you ever been to Spain?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="rq-e2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e3">
+    <div class="block-head"><h2>Exercise 3</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e3">
+      <div class="q-item" id="item-rq-e3-0" data-answer1="if her brother was at home" data-answer2="whether her brother was at home">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Is your brother at home?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e3-1" data-answer1="what time the shop opened">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“What time does the shop open?”</span></div>
+        <div class="g-sentence">He asked the assistant <input type="text" class="blank-input" id="in1-rq-e3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e3-2" data-answer1="if I had enjoyed the concert" data-answer2="whether I had enjoyed the concert">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did you enjoy the concert?”</span></div>
+        <div class="g-sentence">Anna asked me <input type="text" class="blank-input" id="in1-rq-e3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e3-3" data-answer1="where he had put his keys">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Where did you put my keys?”</span></div>
+        <div class="g-sentence">He asked his wife <input type="text" class="blank-input" id="in1-rq-e3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e3-4" data-answer1="if they were coming to the party" data-answer2="whether they were coming to the party">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Are they coming to the party?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e3-5" data-answer1="why he had left early">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Why did you leave early?”</span></div>
+        <div class="g-sentence">The manager asked him <input type="text" class="blank-input" id="in1-rq-e3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e3-6" data-answer1="if I would be there the next day" data-answer2="whether I would be there the next day">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Will you be here tomorrow?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e3-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e3-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e3">Check Exercise 3</button>
+      <button class="btn-ghost" data-reset="rq-e3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e4">
+    <div class="block-head"><h2>Exercise 4</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e4">
+      <div class="q-item" id="item-rq-e4-0" data-answer1="if I could drive" data-answer2="whether I could drive">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Can you drive?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e4-1" data-answer1="where he was going">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“Where are you going?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e4-2" data-answer1="if they had finished the work" data-answer2="whether they had finished the work">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did they finish the work?”</span></div>
+        <div class="g-sentence">The manager asked the workers <input type="text" class="blank-input" id="in1-rq-e4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e4-3" data-answer1="what I had bought at the shop">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“What did you buy at the shop?”</span></div>
+        <div class="g-sentence">My mother asked me <input type="text" class="blank-input" id="in1-rq-e4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e4-4" data-answer1="if the student had finished his homework" data-answer2="whether the student had finished his homework" data-alt="if the student had finished her homework|whether the student had finished her homework">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Have you finished your homework?”</span></div>
+        <div class="g-sentence">The teacher asked the student <input type="text" class="blank-input" id="in1-rq-e4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e4-5" data-answer1="when I was going to leave">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“When are you going to leave?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e4-6" data-answer1="why he hadn&#x27;t called her">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Why haven&#x27;t you called me?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e4-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e4-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e4">Check Exercise 4</button>
+      <button class="btn-ghost" data-reset="rq-e4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e5">
+    <div class="block-head"><h2>Exercise 5</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e5">
+      <div class="q-item" id="item-rq-e5-0" data-answer1="if I knew her brother" data-answer2="whether I knew her brother">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Do you know my brother?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e5-1" data-answer1="how much that phone cost">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“How much does this phone cost?”</span></div>
+        <div class="g-sentence">He asked the shop assistant <input type="text" class="blank-input" id="in1-rq-e5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e5-2" data-answer1="if Sarah had sent the email" data-answer2="whether Sarah had sent the email">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did Sarah send the email?”</span></div>
+        <div class="g-sentence">I asked him <input type="text" class="blank-input" id="in1-rq-e5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e5-3" data-answer1="where I had been">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Where have you been?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e5-4" data-answer1="if they could park there" data-answer2="whether they could park there">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Can we park here?”</span></div>
+        <div class="g-sentence">They asked the security guard <input type="text" class="blank-input" id="in1-rq-e5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e5-5" data-answer1="when I had arrived">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“When did you arrive?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e5-6" data-answer1="if I would help them the next day" data-answer2="whether I would help them the next day">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Will you help us tomorrow?”</span></div>
+        <div class="g-sentence">They asked me <input type="text" class="blank-input" id="in1-rq-e5-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e5-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e5">Check Exercise 5</button>
+      <button class="btn-ghost" data-reset="rq-e5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e6">
+    <div class="block-head"><h2>Exercise 6</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e6">
+      <div class="q-item" id="item-rq-e6-0" data-answer1="if I was feeling better" data-answer2="whether I was feeling better">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Are you feeling better?”</span></div>
+        <div class="g-sentence">The doctor asked me <input type="text" class="blank-input" id="in1-rq-e6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e6-1" data-answer1="what he was doing">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“What are you doing?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e6-2" data-answer1="if I had bought anything" data-answer2="whether I had bought anything">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did you buy anything?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e6-3" data-answer1="why she had cancelled the meeting">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Why did she cancel the meeting?”</span></div>
+        <div class="g-sentence">The manager asked <input type="text" class="blank-input" id="in1-rq-e6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e6-4" data-answer1="if he could use my phone" data-answer2="whether he could use my phone">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Can I use your phone?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e6-5" data-answer1="where I would stay">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Where will you stay?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e6-6" data-answer1="if they had arrived yet" data-answer2="whether they had arrived yet">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Have they arrived yet?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e6-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e6-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e6">Check Exercise 6</button>
+      <button class="btn-ghost" data-reset="rq-e6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e7">
+    <div class="block-head"><h2>Exercise 7</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e7">
+      <div class="q-item" id="item-rq-e7-0" data-answer1="if I spoke Spanish" data-answer2="whether I spoke Spanish">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Do you speak Spanish?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e7-1" data-answer1="where he had learned English">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“Where did you learn English?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e7-2" data-answer1="if Tom was coming with us" data-answer2="whether Tom was coming with us">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Is Tom coming with us?”</span></div>
+        <div class="g-sentence">Anna asked me <input type="text" class="blank-input" id="in1-rq-e7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e7-3" data-answer1="what time the film had started">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“What time did the film start?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e7-4" data-answer1="if he could send her the document" data-answer2="whether he could send her the document">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Can you send me the document?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e7-5" data-answer1="why they were laughing">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Why are you laughing?”</span></div>
+        <div class="g-sentence">The teacher asked the students <input type="text" class="blank-input" id="in1-rq-e7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e7-6" data-answer1="if he had seen his glasses" data-answer2="whether he had seen his glasses">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Have you seen my glasses?”</span></div>
+        <div class="g-sentence">He asked his wife <input type="text" class="blank-input" id="in1-rq-e7-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e7-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e7">Check Exercise 7</button>
+      <button class="btn-ghost" data-reset="rq-e7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e8">
+    <div class="block-head"><h2>Exercise 8</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e8">
+      <div class="q-item" id="item-rq-e8-0" data-answer1="if I had a car" data-answer2="whether I had a car">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Do you have a car?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e8-1" data-answer1="what I had done the previous weekend">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“What did you do last weekend?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e8-2" data-answer1="if he was going to study abroad" data-answer2="whether he was going to study abroad">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Are you going to study abroad?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e8-3" data-answer1="where my sister lived">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Where does your sister live?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e8-4" data-answer1="if we had enjoyed our holiday" data-answer2="whether we had enjoyed our holiday">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Did you enjoy your holiday?”</span></div>
+        <div class="g-sentence">She asked us <input type="text" class="blank-input" id="in1-rq-e8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e8-5" data-answer1="when I would come back">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“When will you come back?”</span></div>
+        <div class="g-sentence">They asked me <input type="text" class="blank-input" id="in1-rq-e8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e8-6" data-answer1="if the teacher could explain that rule" data-answer2="whether the teacher could explain that rule">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Can you explain this rule?”</span></div>
+        <div class="g-sentence">The student asked the teacher <input type="text" class="blank-input" id="in1-rq-e8-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e8-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e8">Check Exercise 8</button>
+      <button class="btn-ghost" data-reset="rq-e8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e9">
+    <div class="block-head"><h2>Exercise 9</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e9">
+      <div class="q-item" id="item-rq-e9-0" data-answer1="if that was my bag" data-answer2="whether that was my bag">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Is this your bag?”</span></div>
+        <div class="g-sentence">The woman asked me <input type="text" class="blank-input" id="in1-rq-e9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e9-1" data-answer1="why I had chosen that university">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“Why did you choose this university?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e9-2" data-answer1="if the student knew the answer" data-answer2="whether the student knew the answer">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Do you know the answer?”</span></div>
+        <div class="g-sentence">The teacher asked the student <input type="text" class="blank-input" id="in1-rq-e9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e9-3" data-answer1="where they were staying">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Where are they staying?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e9-4" data-answer1="if he had finished the report" data-answer2="whether he had finished the report">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Have you finished the report?”</span></div>
+        <div class="g-sentence">The manager asked him <input type="text" class="blank-input" id="in1-rq-e9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e9-5" data-answer1="if she would attend the meeting" data-answer2="whether she would attend the meeting">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Will you attend the meeting?”</span></div>
+        <div class="g-sentence">He asked her <input type="text" class="blank-input" id="in1-rq-e9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e9-6" data-answer1="how I had solved the problem">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“How did you solve the problem?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e9-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e9-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e9">Check Exercise 9</button>
+      <button class="btn-ghost" data-reset="rq-e9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e10">
+    <div class="block-head"><h2>Exercise 10</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e10">
+      <div class="q-item" id="item-rq-e10-0" data-answer1="if I could speak more slowly" data-answer2="whether I could speak more slowly">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Can you speak more slowly?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e10-1" data-answer1="what that word meant">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“What does this word mean?”</span></div>
+        <div class="g-sentence">She asked the teacher <input type="text" class="blank-input" id="in1-rq-e10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e10-2" data-answer1="if I had locked the door" data-answer2="whether I had locked the door">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did you lock the door?”</span></div>
+        <div class="g-sentence">My father asked me <input type="text" class="blank-input" id="in1-rq-e10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e10-3" data-answer1="why they were waiting outside">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Why are they waiting outside?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e10-4" data-answer1="if we were ready for the exam" data-answer2="whether we were ready for the exam">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Are you ready for the exam?”</span></div>
+        <div class="g-sentence">The teacher asked us <input type="text" class="blank-input" id="in1-rq-e10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e10-5" data-answer1="where he had bought his laptop">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Where did you buy your laptop?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e10-6" data-answer1="when the results would be announced">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“When will the results be announced?”</span></div>
+        <div class="g-sentence">The students asked the teacher <input type="text" class="blank-input" id="in1-rq-e10-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e10-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e10">Check Exercise 10</button>
+      <button class="btn-ghost" data-reset="rq-e10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-rq-e11">
+    <div class="block-head"><h2>Exercise 11</h2><span class="block-count">7 items</span></div>
+    <div id="list-rq-e11">
+      <div class="q-item" id="item-rq-e11-0" data-answer1="if I needed any help" data-answer2="whether I needed any help">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Do you need any help?”</span></div>
+        <div class="g-sentence">She asked me <input type="text" class="blank-input" id="in1-rq-e11-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e11-1" data-answer1="how long she had lived there">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“How long have you lived here?”</span></div>
+        <div class="g-sentence">He asked her <input type="text" class="blank-input" id="in1-rq-e11-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e11-2" data-answer1="if I had called the doctor" data-answer2="whether I had called the doctor">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Did you call the doctor?”</span></div>
+        <div class="g-sentence">The receptionist asked me <input type="text" class="blank-input" id="in1-rq-e11-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e11-3" data-answer1="what I was looking for">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“What are you looking for?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e11-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e11-4" data-answer1="if I could come to his office the next day" data-answer2="whether I could come to his office the next day">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Can you come to my office tomorrow?”</span></div>
+        <div class="g-sentence">The manager asked me <input type="text" class="blank-input" id="in1-rq-e11-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e11-5" data-answer1="why he had chosen that option">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Why did you choose that option?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e11-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e11-6" data-answer1="if I had ever tried Indian food" data-answer2="whether I had ever tried Indian food">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Have you ever tried Indian food?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e11-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e11-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e11">Check Exercise 11</button>
+      <button class="btn-ghost" data-reset="rq-e11">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-rq">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="totalScore-rq">0 / 77</div>
+        <div class="summary-label" id="totalPercent-rq">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-rq">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-rq">Start over</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Reported Speech &amp; Reported Questions — for individual practice. Answers are checked against one accepted wording (yes/no questions accept both if and whether); if you think a different answer should also count, ask your teacher.<br><span style="opacity:.8;">If the fields don&#x27;t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  function normalize(s){
+    s = s.toLowerCase().replace(/['’‘]/g, "'");
+    s = s.replace(/won't/g, "will not");
+    s = s.replace(/can't/g, "can not");
+    s = s.replace(/shan't/g, "shall not");
+    s = s.replace(/n't/g, " not");
+    s = s.replace(/'ll/g, " will");
+    s = s.replace(/'ve/g, " have");
+    s = s.replace(/'re/g, " are");
+    s = s.replace(/'m/g, " am");
+    return s
+      .replace(/[^\w\s]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  // For reported STATEMENTS, an optional leading "that" (e.g. "he said that he couldn't find his keys")
+  // is always grammatically correct alongside the version without "that". This checks both forms.
+  function matchesAnswer(nv, ans, allowThat){
+    var na = normalize(ans);
+    if (nv === na) return true;
+    if (allowThat && nv === ('that ' + na)) return true;
+    return false;
+  }
+
+  function isMatch(value, item, allowThat){
+    var ans1 = item.getAttribute('data-answer1') || '';
+    var ans2 = item.getAttribute('data-answer2');
+    var nv = normalize(value);
+    if (matchesAnswer(nv, ans1, allowThat)) return true;
+    if (ans2 && matchesAnswer(nv, ans2, allowThat)) return true;
+    // data-alt holds extra accepted phrasings (e.g. alternate genders for unspecified roles
+    // like "the teacher" / "the student"), separated by "|".
+    var alt = item.getAttribute('data-alt');
+    if (alt) {
+      var alts = alt.split('|');
+      for (var i = 0; i < alts.length; i++) {
+        if (matchesAnswer(nv, alts[i], allowThat)) return true;
+      }
+    }
+    return false;
+  }
+
+  function modelAnswerText(item){
+    var ans1 = item.getAttribute('data-answer1') || '';
+    var ans2 = item.getAttribute('data-answer2');
+    return ans2 ? (ans1 + ' <span style="opacity:.6;">(or ' + ans2 + ')</span>') : ans1;
+  }
+
+  // ---- Generic group logic, parameterized by page suffix ('rs' or 'rq') and group list ----
+  function setupPage(suffix, groups, groupCounts){
+    var TOTAL = 0;
+    Object.keys(groupCounts).forEach(function(k){ TOTAL += groupCounts[k]; });
+    // Reported statements (suffix 'rs') may optionally start with "that"; reported questions never use "that".
+    var allowThat = (suffix === 'rs');
+
+    function checkGroup(gid){
+      document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+        var qid = item.id.replace('item-','');
+        var in1 = document.getElementById('in1-' + qid);
+        var fb = document.getElementById('fb-' + qid);
+        item.classList.remove('correct','incorrect');
+        if (in1) in1.classList.remove('wrong');
+        var v1 = in1 ? in1.value.trim() : '';
+        if (!v1) {
+          if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+          return;
+        }
+        if (isMatch(v1, item, allowThat)) {
+          item.classList.add('correct');
+          if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+        } else {
+          item.classList.add('incorrect');
+          if (in1) in1.classList.add('wrong');
+          if (fb) { fb.innerHTML = 'Model answer: <strong>' + modelAnswerText(item) + '</strong>'; fb.className = 'g-feedback incorrect'; }
+        }
+      });
+      updateScore();
+    }
+
+    function resetGroup(gid){
+      document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+        var qid = item.id.replace('item-','');
+        item.classList.remove('correct','incorrect');
+        var in1 = document.getElementById('in1-' + qid);
+        if (in1) { in1.value = ''; in1.classList.remove('wrong'); }
+        var fb = document.getElementById('fb-' + qid);
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      });
+      updateScore();
+    }
+
+    function updateScore(){
+      var total = 0, answered = 0;
+      groups.forEach(function(gid){
+        document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+          var qid = item.id.replace('item-','');
+          var in1 = document.getElementById('in1-' + qid);
+          var v1 = in1 ? in1.value.trim() : '';
+          if (v1) {
+            answered++;
+            if (isMatch(v1, item, allowThat)) total++;
+          }
+        });
+      });
+      var st = document.getElementById('scoreTally-' + suffix);
+      var ts = document.getElementById('totalScore-' + suffix);
+      var pf = document.getElementById('progressFill-' + suffix);
+      var tp = document.getElementById('totalPercent-' + suffix);
+      if (st) st.textContent = total + ' / ' + TOTAL;
+      if (ts) ts.textContent = total + ' / ' + TOTAL;
+      if (pf) pf.style.width = (answered / TOTAL * 100) + '%';
+      if (tp) tp.textContent = Math.round(answered / TOTAL * 100) + '% answered';
+    }
+
+    groups.forEach(function(gid){
+      document.querySelectorAll('#list-' + gid + ' .blank-input').forEach(function(inp){
+        inp.addEventListener('input', function(){
+          var item = inp.closest('.q-item');
+          item.classList.remove('correct','incorrect');
+          inp.classList.remove('wrong');
+          var qid = item.id.replace('item-','');
+          var fb = document.getElementById('fb-' + qid);
+          if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+          updateScore();
+        });
+      });
+      var checkBtn = document.querySelector('[data-check="' + gid + '"]');
+      var resetBtn = document.querySelector('[data-reset="' + gid + '"]');
+      if (checkBtn) checkBtn.addEventListener('click', function(){ checkGroup(gid); });
+      if (resetBtn) resetBtn.addEventListener('click', function(){ resetGroup(gid); });
+    });
+
+    var checkAll = document.getElementById('checkAllBtn-' + suffix);
+    var resetAll = document.getElementById('resetAllBtn-' + suffix);
+    if (checkAll) checkAll.addEventListener('click', function(){
+      groups.forEach(checkGroup);
+      updateScore();
+      document.getElementById('section-' + groups[0]).scrollIntoView({ behavior: 'smooth' });
+    });
+    if (resetAll) resetAll.addEventListener('click', function(){
+      groups.forEach(resetGroup);
+      updateScore();
+    });
+
+    updateScore();
+  }
+
+  var RS_GROUPS = ["rs-e1","rs-e2","rs-e3","rs-e4","rs-e5","rs-e6","rs-e7","rs-e8","rs-e9","rs-e10","rs-e11"];
+  var RS_COUNTS = {"rs-e1":7,"rs-e2":7,"rs-e3":7,"rs-e4":7,"rs-e5":7,"rs-e6":7,"rs-e7":7,"rs-e8":7,"rs-e9":7,"rs-e10":7,"rs-e11":7};
+  var RQ_GROUPS = ["rq-e1","rq-e2","rq-e3","rq-e4","rq-e5","rq-e6","rq-e7","rq-e8","rq-e9","rq-e10","rq-e11"];
+  var RQ_COUNTS = {"rq-e1":7,"rq-e2":7,"rq-e3":7,"rq-e4":7,"rq-e5":7,"rq-e6":7,"rq-e7":7,"rq-e8":7,"rq-e9":7,"rq-e10":7,"rq-e11":7};
+
+  setupPage('rs', RS_GROUPS, RS_COUNTS);
+  setupPage('rq', RQ_GROUPS, RQ_COUNTS);
+
+  // ---- Page switcher ----
+  document.querySelectorAll('.page-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.page-tab').forEach(function(t){ t.classList.remove('active'); });
+      document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
