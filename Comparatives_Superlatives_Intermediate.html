@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Comparatives and Superlatives — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .formula-card{ background:var(--black); border-radius:10px; padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,28px); margin-bottom:20px; position:relative; overflow:hidden; }
+  .formula-card::before{ content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px; background:var(--yellow); opacity:.14; border-radius:50%; }
+  .formula-label{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+  .formula-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-family:'JetBrains Mono', monospace; font-size:clamp(13px,3.2vw,15.5px); color:var(--white); }
+  .formula-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:6px 11px; white-space:nowrap; }
+  .formula-chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula-arrow{ color:rgba(255,255,255,.4); font-size:15px; }
+  .formula-shorthand{ margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:rgba(255,255,255,.55); }
+
+  .example-strip{ display:grid; gap:8px; margin-bottom:26px; }
+  .example-strip .ex-line{ font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; color:var(--ink); }
+  .example-strip .ex-line em{ font-style:normal; color:var(--ink-soft); }
+  .example-strip .ex-line.bad{ border-left-color:var(--bad); }
+  .example-strip .ex-line.good{ border-left-color:var(--good); }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .modal-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:26px; }
+  .modal-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:16px; position:relative; border-top:4px solid var(--accent); }
+  .modal-card.m-comp{ --accent:var(--teal); }
+  .modal-card.m-less{ --accent:var(--plum); }
+  .modal-card.m-as{ --accent:var(--yellow-deep); }
+  .modal-card.m-mod{ --accent:var(--rose); }
+  .modal-card.m-sup{ --accent:#3B6FE0; }
+  .modal-term{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:13px; color:var(--ink); margin-bottom:6px; display:inline-block; padding:3px 8px; border-radius:5px; background:color-mix(in srgb, var(--accent) 16%, white); }
+  .modal-meaning{ font-size:12.5px; color:var(--ink-soft); margin-bottom:10px; line-height:1.5; }
+  .modal-example{ font-size:12px; font-style:italic; color:var(--ink); border-top:1px dashed var(--rule); padding-top:9px; }
+
+  @media (max-width:640px){
+    .modal-grid{ grid-template-columns:repeat(2,1fr); }
+    .formula-row{ font-size:12.5px; }
+  }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13px; color:var(--ink-soft); margin-bottom:6px; display:flex; align-items:flex-start; gap:2px; }
+  .ctx-text{ font-style:italic; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); padding-left:30px; }
+  .hint{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--teal); background:var(--teal-bg); padding:2px 6px; border-radius:4px; white-space:nowrap; }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:150px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; padding-left:30px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:110px; }
+    .g-sentence, .g-feedback{ padding-left:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Comparatives &amp; Superlatives</h1>
+    <p class="sub">Complete the second sentence so it has the same meaning as the first, using the word in brackets. Check your answers section by section.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 90</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <span class="gs-kicker">Grammar Summary</span>
+    <h2 class="gs-title">Comparatives &amp; Superlatives</h2>
+    <p class="gs-intro">We use comparatives to compare <strong>two</strong> people or things, and superlatives to compare <strong>one</strong> with a whole group.</p>
+
+    <div class="formula-card">
+      <div class="formula-label">Structure</div>
+      <div class="formula-row">
+        <span class="formula-chip accent">short adj</span>
+        <span class="formula-chip">+ -er + than</span>
+        <span class="formula-arrow">/</span>
+        <span class="formula-chip accent">more</span>
+        <span class="formula-chip">+ long adj + than</span>
+      </div>
+      <div class="formula-shorthand">tall → taller than · expensive → more expensive than</div>
+    </div>
+
+    <div class="example-strip">
+      <div class="ex-line good">Bakhrom is taller than Sardor. <em>→ short adjective + -er</em></div>
+      <div class="ex-line good">Samarkand is more interesting than Tashkent. <em>→ long adjective + more</em></div>
+    </div>
+
+    <h3 class="gs-subhead">Five patterns to know</h3>
+    <div class="modal-grid">
+      <div class="modal-card m-comp">
+        <span class="modal-term">-er / more</span>
+        <p class="modal-meaning">Comparing two things.</p>
+        <p class="modal-example">This phone is more expensive than that one.</p>
+      </div>
+      <div class="modal-card m-less">
+        <span class="modal-term">less</span>
+        <p class="modal-meaning">Opposite of more.</p>
+        <p class="modal-example">Tashkent is less exciting than Samarkand.</p>
+      </div>
+      <div class="modal-card m-as">
+        <span class="modal-term">as … as</span>
+        <p class="modal-meaning">Equal comparison (or not as … as).</p>
+        <p class="modal-example">Ali is as tall as Bek.</p>
+      </div>
+      <div class="modal-card m-mod">
+        <span class="modal-term">modifiers</span>
+        <p class="modal-meaning">much / far / a lot (big); a little / slightly / a bit (small).</p>
+        <p class="modal-example">This bag is slightly heavier than that one.</p>
+      </div>
+      <div class="modal-card m-sup">
+        <span class="modal-term">-est / most</span>
+        <p class="modal-meaning">Comparing one with a whole group.</p>
+        <p class="modal-example">Ali is the tallest student in the class.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-e1">1</a>
+    <a href="#section-e2">2</a>
+    <a href="#section-e3">3</a>
+    <a href="#section-e4">4</a>
+    <a href="#section-e5">5</a>
+    <a href="#section-e6">6</a>
+    <a href="#section-e7">7</a>
+    <a href="#section-e8">8</a>
+    <a href="#section-e9">9</a>
+    <a href="#section-e10">10</a>
+    <a href="#section-e11">11</a>
+    <a href="#section-e12">12</a>
+    <a href="#section-e13">13</a>
+    <a href="#section-e14">14</a>
+    <a href="#section-e15">15</a>
+  </div>
+
+  <section class="block" id="section-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e1">
+      <div class="q-item" id="item-e1-0" data-answer1="is taller than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">Sardor isn&#x27;t as tall as Bakhrom.</span></div>
+        <div class="g-sentence">Bakhrom <input type="text" class="blank-input" id="in1-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Sardor. <span class="hint">(taller)</span></div>
+        <div class="g-feedback" id="fb-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-e1-1" data-answer1="less exciting than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">Samarkand is more exciting than Tashkent.</span></div>
+        <div class="g-sentence">Tashkent is <input type="text" class="blank-input" id="in1-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Samarkand. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-e1-2" data-answer1="just as important as">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Beauty and intelligence are both important to me.</span></div>
+        <div class="g-sentence">Beauty is <input type="text" class="blank-input" id="in1-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> intelligence to me. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-e1-3" data-answer1="as confident as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Some people are less confident about their looks than others.</span></div>
+        <div class="g-sentence">Some people aren&#x27;t <input type="text" class="blank-input" id="in1-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> others about their looks. <span class="hint">(as)</span></div>
+        <div class="g-feedback" id="fb-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-e1-4" data-answer1="a lot worse than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">My new brand of lipstick is far better than my old brand.</span></div>
+        <div class="g-sentence">My old brand of lipstick is <input type="text" class="blank-input" id="in1-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my new brand. <span class="hint">(lot)</span></div>
+        <div class="g-feedback" id="fb-e1-4"></div>
+      </div>
+      <div class="q-item" id="item-e1-5" data-answer1="slightly more expensive than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">This phone is slightly cheaper than that one.</span></div>
+        <div class="g-sentence">That phone is <input type="text" class="blank-input" id="in1-e1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(expensive)</span></div>
+        <div class="g-feedback" id="fb-e1-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="e1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e2">
+      <div class="q-item" id="item-e2-0" data-answer1="more durable than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">This backpack isn&#x27;t as durable as the hiking one.</span></div>
+        <div class="g-sentence">The hiking backpack is <input type="text" class="blank-input" id="in1-e2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e2-0"></div>
+      </div>
+      <div class="q-item" id="item-e2-1" data-answer1="less detailed than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">His presentation was more detailed than mine.</span></div>
+        <div class="g-sentence">My presentation was <input type="text" class="blank-input" id="in1-e2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e2-1"></div>
+      </div>
+      <div class="q-item" id="item-e2-2" data-answer1="much more comfortable than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">These sneakers aren&#x27;t as comfortable as the leather boots.</span></div>
+        <div class="g-sentence">The leather boots are <input type="text" class="blank-input" id="in1-e2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> these sneakers. <span class="hint">(much)</span></div>
+        <div class="g-feedback" id="fb-e2-2"></div>
+      </div>
+      <div class="q-item" id="item-e2-3" data-answer1="a lot less interesting than">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">The documentary was far more interesting than the movie.</span></div>
+        <div class="g-sentence">The movie was <input type="text" class="blank-input" id="in1-e2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the documentary. <span class="hint">(lot)</span></div>
+        <div class="g-feedback" id="fb-e2-3"></div>
+      </div>
+      <div class="q-item" id="item-e2-4" data-answer1="just as neat as">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">Her handwriting is as neat as her sister&#x27;s.</span></div>
+        <div class="g-sentence">Her sister&#x27;s handwriting is <input type="text" class="blank-input" id="in1-e2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> hers. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e2-4"></div>
+      </div>
+      <div class="q-item" id="item-e2-5" data-answer1="as aggressively as">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">Their team plays more aggressively than ours.</span></div>
+        <div class="g-sentence">Our team doesn&#x27;t play <input type="text" class="blank-input" id="in1-e2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> theirs. <span class="hint">(as)</span></div>
+        <div class="g-feedback" id="fb-e2-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="e2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e3">
+    <div class="block-head"><h2>Exercise 3</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e3">
+      <div class="q-item" id="item-e3-0" data-answer1="less cold than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">This winter is colder than last year&#x27;s winter.</span></div>
+        <div class="g-sentence">Last year&#x27;s winter was <input type="text" class="blank-input" id="in1-e3-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e3-0"></div>
+      </div>
+      <div class="q-item" id="item-e3-1" data-answer1="much more spacious than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">The hotel room is not as spacious as the apartment.</span></div>
+        <div class="g-sentence">The apartment is <input type="text" class="blank-input" id="in1-e3-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the hotel room. <span class="hint">(much)</span></div>
+        <div class="g-feedback" id="fb-e3-1"></div>
+      </div>
+      <div class="q-item" id="item-e3-2" data-answer1="equally as impressive as">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Her singing is just as impressive as her dancing.</span></div>
+        <div class="g-sentence">Her dancing is <input type="text" class="blank-input" id="in1-e3-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her singing. <span class="hint">(equally)</span></div>
+        <div class="g-feedback" id="fb-e3-2"></div>
+      </div>
+      <div class="q-item" id="item-e3-3" data-answer1="less challenging than">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">This puzzle is more challenging than the previous one.</span></div>
+        <div class="g-sentence">The previous puzzle was <input type="text" class="blank-input" id="in1-e3-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e3-3"></div>
+      </div>
+      <div class="q-item" id="item-e3-4" data-answer1="much slower than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">The new bus route is a lot faster than the old route.</span></div>
+        <div class="g-sentence">The old route is <input type="text" class="blank-input" id="in1-e3-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(much)</span></div>
+        <div class="g-feedback" id="fb-e3-4"></div>
+      </div>
+      <div class="q-item" id="item-e3-5" data-answer1="slightly heavier than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">My new laptop is slightly lighter than my old one.</span></div>
+        <div class="g-sentence">My old laptop is <input type="text" class="blank-input" id="in1-e3-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my new one. <span class="hint">(heavier)</span></div>
+        <div class="g-feedback" id="fb-e3-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e3">Check Exercise 3</button>
+      <button class="btn-ghost" data-reset="e3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e4">
+    <div class="block-head"><h2>Exercise 4</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e4">
+      <div class="q-item" id="item-e4-0" data-answer1="less expensive than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The blue jacket is more expensive than the black one.</span></div>
+        <div class="g-sentence">The black jacket is <input type="text" class="blank-input" id="in1-e4-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the blue one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e4-0"></div>
+      </div>
+      <div class="q-item" id="item-e4-1" data-answer1="as big as">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">Your bedroom is bigger than mine.</span></div>
+        <div class="g-sentence">My bedroom isn&#x27;t <input type="text" class="blank-input" id="in1-e4-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yours. <span class="hint">(as)</span></div>
+        <div class="g-feedback" id="fb-e4-1"></div>
+      </div>
+      <div class="q-item" id="item-e4-2" data-answer1="much worse than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">This restaurant is much better than the one near my house.</span></div>
+        <div class="g-sentence">The restaurant near my house is <input type="text" class="blank-input" id="in1-e4-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(worse)</span></div>
+        <div class="g-feedback" id="fb-e4-2"></div>
+      </div>
+      <div class="q-item" id="item-e4-3" data-answer1="just as strong as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">The two brothers are equally strong.</span></div>
+        <div class="g-sentence">The younger brother is <input type="text" class="blank-input" id="in1-e4-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the older one. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e4-3"></div>
+      </div>
+      <div class="q-item" id="item-e4-4" data-answer1="less stressful than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">My new job is far more stressful than my previous one.</span></div>
+        <div class="g-sentence">My previous job was <input type="text" class="blank-input" id="in1-e4-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e4-4"></div>
+      </div>
+      <div class="q-item" id="item-e4-5" data-answer1="slightly harder than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">This exercise is a little easier than the previous one.</span></div>
+        <div class="g-sentence">The previous exercise is <input type="text" class="blank-input" id="in1-e4-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(harder)</span></div>
+        <div class="g-feedback" id="fb-e4-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e4">Check Exercise 4</button>
+      <button class="btn-ghost" data-reset="e4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e5">
+    <div class="block-head"><h2>Exercise 5</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e5">
+      <div class="q-item" id="item-e5-0" data-answer1="less crowded than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The city centre is more crowded than the suburbs.</span></div>
+        <div class="g-sentence">The suburbs are <input type="text" class="blank-input" id="in1-e5-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the city centre. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e5-0"></div>
+      </div>
+      <div class="q-item" id="item-e5-1" data-answer1="more useful than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This book is not as useful as that one.</span></div>
+        <div class="g-sentence">That book is <input type="text" class="blank-input" id="in1-e5-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e5-1"></div>
+      </div>
+      <div class="q-item" id="item-e5-2" data-answer1="much slower than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">My current phone is much faster than my old phone.</span></div>
+        <div class="g-sentence">My old phone is <input type="text" class="blank-input" id="in1-e5-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my current phone. <span class="hint">(slower)</span></div>
+        <div class="g-feedback" id="fb-e5-2"></div>
+      </div>
+      <div class="q-item" id="item-e5-3" data-answer1="equally as successful as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Her first presentation was as successful as her second one.</span></div>
+        <div class="g-sentence">Her second presentation was <input type="text" class="blank-input" id="in1-e5-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her first one. <span class="hint">(equally)</span></div>
+        <div class="g-feedback" id="fb-e5-3"></div>
+      </div>
+      <div class="q-item" id="item-e5-4" data-answer1="wider than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This road is slightly narrower than the main road.</span></div>
+        <div class="g-sentence">The main road is <input type="text" class="blank-input" id="in1-e5-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this road. <span class="hint">(wider)</span></div>
+        <div class="g-feedback" id="fb-e5-4"></div>
+      </div>
+      <div class="q-item" id="item-e5-5" data-answer1="less reliable than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The new model is far more reliable than the old model.</span></div>
+        <div class="g-sentence">The old model is <input type="text" class="blank-input" id="in1-e5-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new model. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e5-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e5">Check Exercise 5</button>
+      <button class="btn-ghost" data-reset="e5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e6">
+    <div class="block-head"><h2>Exercise 6</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e6">
+      <div class="q-item" id="item-e6-0" data-answer1="shorter than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">My brother is taller than me.</span></div>
+        <div class="g-sentence">I am <input type="text" class="blank-input" id="in1-e6-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my brother. <span class="hint">(shorter)</span></div>
+        <div class="g-feedback" id="fb-e6-0"></div>
+      </div>
+      <div class="q-item" id="item-e6-1" data-answer1="more luxurious than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This hotel isn&#x27;t as luxurious as the other one.</span></div>
+        <div class="g-sentence">The other hotel is <input type="text" class="blank-input" id="in1-e6-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e6-1"></div>
+      </div>
+      <div class="q-item" id="item-e6-2" data-answer1="much easier than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">The second test was much more difficult than the first.</span></div>
+        <div class="g-sentence">The first test was <input type="text" class="blank-input" id="in1-e6-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the second. <span class="hint">(easier)</span></div>
+        <div class="g-feedback" id="fb-e6-2"></div>
+      </div>
+      <div class="q-item" id="item-e6-3" data-answer1="just as large as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Their house is just as large as ours.</span></div>
+        <div class="g-sentence">Our house is <input type="text" class="blank-input" id="in1-e6-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> theirs. <span class="hint">(large)</span></div>
+        <div class="g-feedback" id="fb-e6-3"></div>
+      </div>
+      <div class="q-item" id="item-e6-4" data-answer1="a bit weaker than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This coffee is a bit stronger than the one I had earlier.</span></div>
+        <div class="g-sentence">The coffee I had earlier was <input type="text" class="blank-input" id="in1-e6-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(weaker)</span></div>
+        <div class="g-feedback" id="fb-e6-4"></div>
+      </div>
+      <div class="q-item" id="item-e6-5" data-answer1="more convenient than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">Online shopping is less convenient for him than shopping in stores.</span></div>
+        <div class="g-sentence">Shopping in stores is <input type="text" class="blank-input" id="in1-e6-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> online shopping for him. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e6-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e6">Check Exercise 6</button>
+      <button class="btn-ghost" data-reset="e6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e7">
+    <div class="block-head"><h2>Exercise 7</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e7">
+      <div class="q-item" id="item-e7-0" data-answer1="slower than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The train is faster than the bus.</span></div>
+        <div class="g-sentence">The bus is <input type="text" class="blank-input" id="in1-e7-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the train. <span class="hint">(slower)</span></div>
+        <div class="g-feedback" id="fb-e7-0"></div>
+      </div>
+      <div class="q-item" id="item-e7-1" data-answer1="more complicated than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This problem isn&#x27;t as complicated as the previous one.</span></div>
+        <div class="g-sentence">The previous problem is <input type="text" class="blank-input" id="in1-e7-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e7-1"></div>
+      </div>
+      <div class="q-item" id="item-e7-2" data-answer1="a lot darker than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">The new office is a lot brighter than the old one.</span></div>
+        <div class="g-sentence">The old office is <input type="text" class="blank-input" id="in1-e7-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(darker)</span></div>
+        <div class="g-feedback" id="fb-e7-2"></div>
+      </div>
+      <div class="q-item" id="item-e7-3" data-answer1="just as effective as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">These two products are equally effective.</span></div>
+        <div class="g-sentence">The first product is <input type="text" class="blank-input" id="in1-e7-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the second one. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e7-3"></div>
+      </div>
+      <div class="q-item" id="item-e7-4" data-answer1="less experienced than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">My current teacher is far more experienced than my previous teacher.</span></div>
+        <div class="g-sentence">My previous teacher was <input type="text" class="blank-input" id="in1-e7-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my current teacher. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e7-4"></div>
+      </div>
+      <div class="q-item" id="item-e7-5" data-answer1="slightly bigger than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">This apartment is slightly smaller than ours.</span></div>
+        <div class="g-sentence">Our apartment is <input type="text" class="blank-input" id="in1-e7-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(bigger)</span></div>
+        <div class="g-feedback" id="fb-e7-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e7">Check Exercise 7</button>
+      <button class="btn-ghost" data-reset="e7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e8">
+    <div class="block-head"><h2>Exercise 8</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e8">
+      <div class="q-item" id="item-e8-0" data-answer1="more expensive than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">A bicycle is cheaper than a motorbike.</span></div>
+        <div class="g-sentence">A motorbike is <input type="text" class="blank-input" id="in1-e8-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a bicycle. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e8-0"></div>
+      </div>
+      <div class="q-item" id="item-e8-1" data-answer1="more popular than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This restaurant isn&#x27;t as popular as the one downtown.</span></div>
+        <div class="g-sentence">The restaurant downtown is <input type="text" class="blank-input" id="in1-e8-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e8-1"></div>
+      </div>
+      <div class="q-item" id="item-e8-2" data-answer1="much worse than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Her second essay was much better than her first.</span></div>
+        <div class="g-sentence">Her first essay was <input type="text" class="blank-input" id="in1-e8-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her second. <span class="hint">(worse)</span></div>
+        <div class="g-feedback" id="fb-e8-2"></div>
+      </div>
+      <div class="q-item" id="item-e8-3" data-answer1="just as useful as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">The two courses are equally useful.</span></div>
+        <div class="g-sentence">This course is <input type="text" class="blank-input" id="in1-e8-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the other one. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e8-3"></div>
+      </div>
+      <div class="q-item" id="item-e8-4" data-answer1="less large than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">The new shopping centre is far larger than the old one.</span></div>
+        <div class="g-sentence">The old shopping centre is <input type="text" class="blank-input" id="in1-e8-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e8-4"></div>
+      </div>
+      <div class="q-item" id="item-e8-5" data-answer1="a little less comfortable than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">My new chair is a little more comfortable than my old one.</span></div>
+        <div class="g-sentence">My old chair is <input type="text" class="blank-input" id="in1-e8-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e8-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e8">Check Exercise 8</button>
+      <button class="btn-ghost" data-reset="e8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e9">
+    <div class="block-head"><h2>Exercise 9</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e9">
+      <div class="q-item" id="item-e9-0" data-answer1="less economical than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The blue car is more economical than the red one.</span></div>
+        <div class="g-sentence">The red car is <input type="text" class="blank-input" id="in1-e9-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the blue one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e9-0"></div>
+      </div>
+      <div class="q-item" id="item-e9-1" data-answer1="more interesting than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This lesson isn&#x27;t as interesting as yesterday&#x27;s lesson.</span></div>
+        <div class="g-sentence">Yesterday&#x27;s lesson was <input type="text" class="blank-input" id="in1-e9-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e9-1"></div>
+      </div>
+      <div class="q-item" id="item-e9-2" data-answer1="much lighter than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Your suitcase is much heavier than mine.</span></div>
+        <div class="g-sentence">My suitcase is <input type="text" class="blank-input" id="in1-e9-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yours. <span class="hint">(lighter)</span></div>
+        <div class="g-feedback" id="fb-e9-2"></div>
+      </div>
+      <div class="q-item" id="item-e9-3" data-answer1="equally as impressive as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">His results are just as impressive as hers.</span></div>
+        <div class="g-sentence">Her results are <input type="text" class="blank-input" id="in1-e9-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his. <span class="hint">(equally)</span></div>
+        <div class="g-feedback" id="fb-e9-3"></div>
+      </div>
+      <div class="q-item" id="item-e9-4" data-answer1="more expensive than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This restaurant is slightly cheaper than that one.</span></div>
+        <div class="g-sentence">That restaurant is <input type="text" class="blank-input" id="in1-e9-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(expensive)</span></div>
+        <div class="g-feedback" id="fb-e9-4"></div>
+      </div>
+      <div class="q-item" id="item-e9-5" data-answer1="less efficient than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The new system is far more efficient than the old system.</span></div>
+        <div class="g-sentence">The old system is <input type="text" class="blank-input" id="in1-e9-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new system. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e9-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e9">Check Exercise 9</button>
+      <button class="btn-ghost" data-reset="e9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e10">
+    <div class="block-head"><h2>Exercise 10</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e10">
+      <div class="q-item" id="item-e10-0" data-answer1="less patient than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">My sister is more patient than I am.</span></div>
+        <div class="g-sentence">I am <input type="text" class="blank-input" id="in1-e10-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my sister. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e10-0"></div>
+      </div>
+      <div class="q-item" id="item-e10-1" data-answer1="more comfortable than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This sofa isn&#x27;t as comfortable as the armchair.</span></div>
+        <div class="g-sentence">The armchair is <input type="text" class="blank-input" id="in1-e10-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this sofa. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e10-1"></div>
+      </div>
+      <div class="q-item" id="item-e10-2" data-answer1="much smaller than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">The new airport is much bigger than the old one.</span></div>
+        <div class="g-sentence">The old airport is <input type="text" class="blank-input" id="in1-e10-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(smaller)</span></div>
+        <div class="g-feedback" id="fb-e10-2"></div>
+      </div>
+      <div class="q-item" id="item-e10-3" data-answer1="just as effective as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Both solutions are equally effective.</span></div>
+        <div class="g-sentence">The second solution is <input type="text" class="blank-input" id="in1-e10-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the first one. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e10-3"></div>
+      </div>
+      <div class="q-item" id="item-e10-4" data-answer1="a lot shorter than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This route is a lot longer than the other route.</span></div>
+        <div class="g-sentence">The other route is <input type="text" class="blank-input" id="in1-e10-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(shorter)</span></div>
+        <div class="g-feedback" id="fb-e10-4"></div>
+      </div>
+      <div class="q-item" id="item-e10-5" data-answer1="slightly less demanding than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">My current course is slightly more demanding than my previous course.</span></div>
+        <div class="g-sentence">My previous course was <input type="text" class="blank-input" id="in1-e10-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my current one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e10-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e10">Check Exercise 10</button>
+      <button class="btn-ghost" data-reset="e10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e11">
+    <div class="block-head"><h2>Exercise 11</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e11">
+      <div class="q-item" id="item-e11-0" data-answer1="noisier than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The countryside is quieter than the city.</span></div>
+        <div class="g-sentence">The city is <input type="text" class="blank-input" id="in1-e11-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the countryside. <span class="hint">(noisier)</span></div>
+        <div class="g-feedback" id="fb-e11-0"></div>
+      </div>
+      <div class="q-item" id="item-e11-1" data-answer1="more expensive than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This watch isn&#x27;t as expensive as that one.</span></div>
+        <div class="g-sentence">That watch is <input type="text" class="blank-input" id="in1-e11-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e11-1"></div>
+      </div>
+      <div class="q-item" id="item-e11-2" data-answer1="less exciting than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">The second match was far more exciting than the first.</span></div>
+        <div class="g-sentence">The first match was <input type="text" class="blank-input" id="in1-e11-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the second. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e11-2"></div>
+      </div>
+      <div class="q-item" id="item-e11-3" data-answer1="equally as spacious as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Her new apartment is just as spacious as her old one.</span></div>
+        <div class="g-sentence">Her old apartment is <input type="text" class="blank-input" id="in1-e11-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her new one. <span class="hint">(equally)</span></div>
+        <div class="g-feedback" id="fb-e11-3"></div>
+      </div>
+      <div class="q-item" id="item-e11-4" data-answer1="a bit slower than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This computer is a bit faster than my old one.</span></div>
+        <div class="g-sentence">My old computer is <input type="text" class="blank-input" id="in1-e11-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(slower)</span></div>
+        <div class="g-feedback" id="fb-e11-4"></div>
+      </div>
+      <div class="q-item" id="item-e11-5" data-answer1="much less popular than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The new restaurant is much more popular than the old one.</span></div>
+        <div class="g-sentence">The old restaurant is <input type="text" class="blank-input" id="in1-e11-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e11-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e11">Check Exercise 11</button>
+      <button class="btn-ghost" data-reset="e11">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e12">
+    <div class="block-head"><h2>Exercise 12</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e12">
+      <div class="q-item" id="item-e12-0" data-answer1="less warm than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">This jacket is warmer than that one.</span></div>
+        <div class="g-sentence">That jacket is <input type="text" class="blank-input" id="in1-e12-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e12-0"></div>
+      </div>
+      <div class="q-item" id="item-e12-1" data-answer1="clearer than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">Your answer isn&#x27;t as clear as mine.</span></div>
+        <div class="g-sentence">My answer is <input type="text" class="blank-input" id="in1-e12-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yours. <span class="hint">(clearer)</span></div>
+        <div class="g-feedback" id="fb-e12-1"></div>
+      </div>
+      <div class="q-item" id="item-e12-2" data-answer1="a lot less spacious than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">The new apartment is a lot more spacious than our old one.</span></div>
+        <div class="g-sentence">Our old apartment is <input type="text" class="blank-input" id="in1-e12-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e12-2"></div>
+      </div>
+      <div class="q-item" id="item-e12-3" data-answer1="just as qualified as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Both candidates are equally qualified.</span></div>
+        <div class="g-sentence">The second candidate is <input type="text" class="blank-input" id="in1-e12-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the first one. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e12-3"></div>
+      </div>
+      <div class="q-item" id="item-e12-4" data-answer1="slightly easier than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This exercise is slightly more difficult than the previous one.</span></div>
+        <div class="g-sentence">The previous exercise is <input type="text" class="blank-input" id="in1-e12-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(easier)</span></div>
+        <div class="g-feedback" id="fb-e12-4"></div>
+      </div>
+      <div class="q-item" id="item-e12-5" data-answer1="far less advanced than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The new camera is far more advanced than my old camera.</span></div>
+        <div class="g-sentence">My old camera is <input type="text" class="blank-input" id="in1-e12-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e12-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e12">Check Exercise 12</button>
+      <button class="btn-ghost" data-reset="e12">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e13">
+    <div class="block-head"><h2>Exercise 13</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e13">
+      <div class="q-item" id="item-e13-0" data-answer1="less modern than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The second hotel is more modern than the first one.</span></div>
+        <div class="g-sentence">The first hotel is <input type="text" class="blank-input" id="in1-e13-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the second one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e13-0"></div>
+      </div>
+      <div class="q-item" id="item-e13-1" data-answer1="heavier than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This bag isn&#x27;t as heavy as that suitcase.</span></div>
+        <div class="g-sentence">That suitcase is <input type="text" class="blank-input" id="in1-e13-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this bag. <span class="hint">(heavier)</span></div>
+        <div class="g-feedback" id="fb-e13-1"></div>
+      </div>
+      <div class="q-item" id="item-e13-2" data-answer1="less flexible than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Her new job is much more flexible than her previous job.</span></div>
+        <div class="g-sentence">Her previous job was <input type="text" class="blank-input" id="in1-e13-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her new job. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e13-2"></div>
+      </div>
+      <div class="q-item" id="item-e13-3" data-answer1="just as impressive as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">The two performances were equally impressive.</span></div>
+        <div class="g-sentence">The first performance was <input type="text" class="blank-input" id="in1-e13-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the second. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e13-3"></div>
+      </div>
+      <div class="q-item" id="item-e13-4" data-answer1="slightly narrower than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This street is a little wider than the next one.</span></div>
+        <div class="g-sentence">The next street is <input type="text" class="blank-input" id="in1-e13-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(narrower)</span></div>
+        <div class="g-feedback" id="fb-e13-4"></div>
+      </div>
+      <div class="q-item" id="item-e13-5" data-answer1="less difficult than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The final exam was far more difficult than the practice test.</span></div>
+        <div class="g-sentence">The practice test was <input type="text" class="blank-input" id="in1-e13-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the final exam. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e13-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e13">Check Exercise 13</button>
+      <button class="btn-ghost" data-reset="e13">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e14">
+    <div class="block-head"><h2>Exercise 14</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e14">
+      <div class="q-item" id="item-e14-0" data-answer1="slower than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">My new phone is faster than my old one.</span></div>
+        <div class="g-sentence">My old phone is <input type="text" class="blank-input" id="in1-e14-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my new one. <span class="hint">(slower)</span></div>
+        <div class="g-feedback" id="fb-e14-0"></div>
+      </div>
+      <div class="q-item" id="item-e14-1" data-answer1="more central than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This hotel isn&#x27;t as central as the other one.</span></div>
+        <div class="g-sentence">The other hotel is <input type="text" class="blank-input" id="in1-e14-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e14-1"></div>
+      </div>
+      <div class="q-item" id="item-e14-2" data-answer1="a lot less attractive than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">The new design is a lot more attractive than the old design.</span></div>
+        <div class="g-sentence">The old design is <input type="text" class="blank-input" id="in1-e14-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e14-2"></div>
+      </div>
+      <div class="q-item" id="item-e14-3" data-answer1="equally as good as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Their results were just as good as ours.</span></div>
+        <div class="g-sentence">Our results were <input type="text" class="blank-input" id="in1-e14-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> theirs. <span class="hint">(equally)</span></div>
+        <div class="g-feedback" id="fb-e14-3"></div>
+      </div>
+      <div class="q-item" id="item-e14-4" data-answer1="slightly longer than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This route is slightly shorter than the alternative route.</span></div>
+        <div class="g-sentence">The alternative route is <input type="text" class="blank-input" id="in1-e14-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(longer)</span></div>
+        <div class="g-feedback" id="fb-e14-4"></div>
+      </div>
+      <div class="q-item" id="item-e14-5" data-answer1="much more difficult to use than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The new software is much easier to use than the old software.</span></div>
+        <div class="g-sentence">The old software is <input type="text" class="blank-input" id="in1-e14-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new software. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e14-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e14">Check Exercise 14</button>
+      <button class="btn-ghost" data-reset="e14">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e15">
+    <div class="block-head"><h2>Exercise 15</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the second sentence so it means the same as the first. Use the word in brackets.</p>
+    <div id="list-e15">
+      <div class="q-item" id="item-e15-0" data-answer1="smaller than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The new library is larger than the old one.</span></div>
+        <div class="g-sentence">The old library is <input type="text" class="blank-input" id="in1-e15-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(smaller)</span></div>
+        <div class="g-feedback" id="fb-e15-0"></div>
+      </div>
+      <div class="q-item" id="item-e15-1" data-answer1="more entertaining than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">This film isn&#x27;t as entertaining as the series.</span></div>
+        <div class="g-sentence">The series is <input type="text" class="blank-input" id="in1-e15-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this film. <span class="hint">(more)</span></div>
+        <div class="g-feedback" id="fb-e15-1"></div>
+      </div>
+      <div class="q-item" id="item-e15-2" data-answer1="less powerful than">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">My current laptop is far more powerful than my previous one.</span></div>
+        <div class="g-sentence">My previous laptop was <input type="text" class="blank-input" id="in1-e15-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my current one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e15-2"></div>
+      </div>
+      <div class="q-item" id="item-e15-3" data-answer1="just as acceptable as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">Both answers are equally acceptable.</span></div>
+        <div class="g-sentence">The second answer is <input type="text" class="blank-input" id="in1-e15-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the first one. <span class="hint">(just)</span></div>
+        <div class="g-feedback" id="fb-e15-3"></div>
+      </div>
+      <div class="q-item" id="item-e15-4" data-answer1="a little less comfortable than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">This chair is a little more comfortable than that one.</span></div>
+        <div class="g-sentence">That chair is <input type="text" class="blank-input" id="in1-e15-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e15-4"></div>
+      </div>
+      <div class="q-item" id="item-e15-5" data-answer1="much less efficient than">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">The new transport system is much more efficient than the old one.</span></div>
+        <div class="g-sentence">The old transport system is <input type="text" class="blank-input" id="in1-e15-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new one. <span class="hint">(less)</span></div>
+        <div class="g-feedback" id="fb-e15-5"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="e15">Check Exercise 15</button>
+      <button class="btn-ghost" data-reset="e15">Clear section</button>
+    </div>
+  </section>
+
+  <div class="summary" id="summary">
+    <div class="summary-label">Your score</div>
+    <div class="summary-score" id="totalScore">0 / 90</div>
+    <div class="summary-label" id="totalPercent">0% answered</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Comparatives &amp; Superlatives — for individual practice. Answers are checked against one accepted wording; if you think a different answer should also count, ask your teacher.<br><span style="opacity:.8;">If the fields don&#x27;t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+(function(){
+  var GROUPS = ["e1","e2","e3","e4","e5","e6","e7","e8","e9","e10","e11","e12","e13","e14","e15"];
+  var GROUP_COUNTS = {"e1":6,"e2":6,"e3":6,"e4":6,"e5":6,"e6":6,"e7":6,"e8":6,"e9":6,"e10":6,"e11":6,"e12":6,"e13":6,"e14":6,"e15":6};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  function normalize(s){
+    s = s.toLowerCase().replace(/['’‘]/g, "'");
+    s = s.replace(/won't/g, "will not");
+    s = s.replace(/can't/g, "can not");
+    s = s.replace(/shan't/g, "shall not");
+    s = s.replace(/n't/g, " not");
+    s = s.replace(/'ll/g, " will");
+    s = s.replace(/'ve/g, " have");
+    s = s.replace(/'re/g, " are");
+    s = s.replace(/'m/g, " am");
+    return s
+      .replace(/[^\w\s]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  document.querySelectorAll('.blank-input').forEach(function(inp){
+    inp.addEventListener('input', function(){
+      var item = inp.closest('.q-item');
+      item.classList.remove('correct','incorrect');
+      inp.classList.remove('wrong');
+      var qid = item.id.replace('item-','');
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+      updateScore();
+    });
+  });
+
+  function checkGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var in1 = document.getElementById('in1-' + qid);
+      var fb = document.getElementById('fb-' + qid);
+      item.classList.remove('correct','incorrect');
+      if (in1) in1.classList.remove('wrong');
+      var v1 = in1 ? in1.value.trim() : '';
+      if (!v1) {
+        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        return;
+      }
+      var ok1 = normalize(v1) === normalize(ans1);
+      if (ok1) {
+        item.classList.add('correct');
+        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+      } else {
+        item.classList.add('incorrect');
+        if (in1) in1.classList.add('wrong');
+        if (fb) { fb.innerHTML = 'Model answer: <strong>' + ans1 + '</strong>'; fb.className = 'g-feedback incorrect'; }
+      }
+    });
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      item.classList.remove('correct','incorrect');
+      var in1 = document.getElementById('in1-' + qid);
+      if (in1) { in1.value = ''; in1.classList.remove('wrong'); }
+      var fb = document.getElementById('fb-' + qid);
+      if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+    });
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var ans1 = item.getAttribute('data-answer1') || '';
+      var qid = item.id.replace('item-','');
+      var in1 = document.getElementById('in1-' + qid);
+      var v1 = in1 ? in1.value.trim() : '';
+      if (v1) {
+        answered++;
+        if (normalize(v1) === normalize(ans1)) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-e1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
