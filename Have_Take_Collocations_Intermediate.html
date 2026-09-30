@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Have / Take — Collocations Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:22px 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .gx-table-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:8px; box-shadow:0 1px 0 rgba(20,20,22,.03); }
+  .gx-table{ width:100%; border-collapse:collapse; }
+  .gx-table thead th{ background:var(--black); color:var(--yellow); text-align:left; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:11px 14px; border-bottom:2px solid var(--yellow); }
+  .gx-table tbody td{ padding:10px 14px; font-size:13px; color:var(--ink); border-top:1px solid var(--rule); background:var(--panel); vertical-align:top; }
+  .gx-table tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .gx-table .cell-main{ font-weight:700; font-family:'JetBrains Mono',monospace; font-size:12.5px; display:block; }
+  .gx-table .cell-sub{ display:block; font-size:12px; color:var(--ink-soft); margin-top:3px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:16px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .passage{ font-size:14.5px; line-height:2.6; color:var(--ink); }
+
+  .cloze-blank{ display:inline-flex; vertical-align:middle; margin:0 3px; border-radius:6px; overflow:hidden; border:1.5px solid var(--rule); }
+  .cloze-opt{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; padding:3px 9px; border:none; background:var(--paper); color:var(--ink-soft); cursor:pointer; transition:background .15s, color .15s; }
+  .cloze-opt + .cloze-opt{ border-left:1.5px solid var(--rule); }
+  .cloze-opt:hover{ background:#ECECE7; }
+  .cloze-opt.selected{ background:var(--black); color:var(--yellow); }
+  .cloze-blank.correct .cloze-opt.selected{ background:var(--good); color:#fff; }
+  .cloze-blank.incorrect .cloze-opt.selected{ background:var(--bad); color:#fff; }
+  .cloze-blank.incorrect .cloze-opt.reveal{ background:var(--good-bg); color:var(--good); }
+
+  .task-feedback{ font-size:13px; color:var(--good); font-weight:600; margin-top:16px; min-height:1px; }
+  .task-feedback.incomplete{ color:var(--ink-soft); font-weight:400; font-style:italic; }
+  .task-feedback.has-errors{ color:var(--bad); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .passage{ line-height:2.9; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <h1>Have / Take — Collocations</h1>
+    <p class="sub">Read each passage and tap the correct word to complete the collocation. Check your answers task by task.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 92</span>
+  </div>
+
+  <section class="grammar-summary" id="grammar-summary">
+    <span class="gs-kicker">Grammar Summary</span>
+    <h2 class="gs-title">Have &amp; Take Collocations</h2>
+    <p class="gs-intro">"Have" and "take" both combine with certain nouns to form fixed expressions. The meaning depends on the whole phrase, not the verb alone — so it helps to learn each collocation as a single chunk.</p>
+
+    <h3 class="gs-subhead">Collocations with take</h3>
+    <div class="gx-table-wrap">
+      <table class="gx-table">
+        <thead><tr><th>Collocation</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="cell-main">take advantage (of)</td><td>make use of an opportunity</td></tr>
+          <tr><td class="cell-main">take place</td><td>happen, occur</td></tr>
+          <tr><td class="cell-main">take turns</td><td>do something one after another, alternating</td></tr>
+          <tr><td class="cell-main">take it for granted</td><td>assume something without question</td></tr>
+          <tr><td class="cell-main">take something seriously</td><td>treat something as important</td></tr>
+          <tr><td class="cell-main">take my/your word for it</td><td>believe someone without proof</td></tr>
+          <tr><td class="cell-main">take care of</td><td>look after</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="gs-subhead">Collocations with have</h3>
+    <div class="gx-table-wrap">
+      <table class="gx-table">
+        <thead><tr><th>Collocation</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="cell-main">have a feeling (that)</td><td>sense or suspect something</td></tr>
+          <tr><td class="cell-main">have a clue</td><td>know / understand (usually "not have a clue")</td></tr>
+          <tr><td class="cell-main">have a word with</td><td>speak briefly to someone</td></tr>
+          <tr><td class="cell-main">have difficulty (doing something)</td><td>find something hard to do</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="jump-nav">
+    <a href="#grammar-summary">Grammar</a>
+    <a href="#section-t1">1</a>
+    <a href="#section-t2">2</a>
+    <a href="#section-t3">3</a>
+    <a href="#section-t4">4</a>
+    <a href="#section-t5">5</a>
+    <a href="#section-t6">6</a>
+    <a href="#section-t7">7</a>
+    <a href="#section-t8">8</a>
+    <a href="#section-t9">9</a>
+    <a href="#section-t10">10</a>
+  </div>
+
+  <section class="block" id="section-t1">
+    <div class="block-head"><h2>Task 1</h2><span class="block-count">10 blanks</span></div>
+    <p class="passage" id="passage-t1">Kim: Do you fancy coming to see the football match with me on Saturday?
+Lee: What? Do you have tickets?
+Kim: Yes. My company always gets tickets for the big matches, so I thought I’d <span class="cloze-blank" id="cb-t1-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of it this time!
+Lee: That’s wonderful. Is it all right if I <span class="cloze-blank" id="cb-t1-1" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with my wife and let you know? I <span class="cloze-blank" id="cb-t1-2" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a feeling that she’s invited some friends over that day, but I don’t <span class="cloze-blank" id="cb-t1-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue at what time.
+Kim: Well, the match starts at half past seven, so <span class="cloze-blank" id="cb-t1-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> my word for it – it’s going to be a great game!
+Lee: Well, we usually <span class="cloze-blank" id="cb-t1-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns to go out on a Saturday while the other one <span class="cloze-blank" id="cb-t1-6" data-answer="takes"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> care of the children. It should be my turn to go out this week, but I can’t <span class="cloze-blank" id="cb-t1-7" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted!
+Kim: I understand – I don’t expect you to <span class="cloze-blank" id="cb-t1-8" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a decision before you speak to her.
+Lee: Great – I really hope I can make it, but I’ll let you know if I <span class="cloze-blank" id="cb-t1-9" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty arranging things!</p>
+    <div class="task-feedback" id="fb-t1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t1">Check Task 1</button>
+      <button class="btn-ghost" data-reset="t1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t2">
+    <div class="block-head"><h2>Task 2</h2><span class="block-count">9 blanks</span></div>
+    <p class="passage" id="passage-t2">The school is organizing a special science exhibition next month. The students want to <span class="cloze-blank" id="cb-t2-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the opportunity to show their projects to parents and teachers. The exhibition will <span class="cloze-blank" id="cb-t2-1" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> place in the main hall on Friday afternoon. Some students <span class="cloze-blank" id="cb-t2-2" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty speaking in front of large groups, so their teacher is helping them practise. She also tells everyone to <span class="cloze-blank" id="cb-t2-3" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the event seriously because it is an important part of their final project. Nobody <span class="cloze-blank" id="cb-t2-4" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a clue about how many visitors will come, but several students <span class="cloze-blank" id="cb-t2-5" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a feeling that the hall will be very busy. During the preparation, they <span class="cloze-blank" id="cb-t2-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns decorating the room. The teacher reminds them that they shouldn’t <span class="cloze-blank" id="cb-t2-7" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that the school will provide everything. Before the event, she wants to <span class="cloze-blank" id="cb-t2-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with each group leader.</p>
+    <div class="task-feedback" id="fb-t2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t2">Check Task 2</button>
+      <button class="btn-ghost" data-reset="t2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t3">
+    <div class="block-head"><h2>Task 3</h2><span class="block-count">9 blanks</span></div>
+    <p class="passage" id="passage-t3">Tom and his friends are planning a weekend trip to the mountains. They want to <span class="cloze-blank" id="cb-t3-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the good weather before winter arrives. The trip will <span class="cloze-blank" id="cb-t3-1" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> place next Saturday, and everyone is excited about it. Tom <span class="cloze-blank" id="cb-t3-2" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a feeling that they need to leave early because the roads may be busy. His friend Mark doesn’t <span class="cloze-blank" id="cb-t3-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue how long the journey will take, but he says he will check the route. The friends usually <span class="cloze-blank" id="cb-t3-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns driving when they travel long distances. Tom tells them to <span class="cloze-blank" id="cb-t3-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> his word for it when he says the mountain views are amazing. He also reminds everyone to <span class="cloze-blank" id="cb-t3-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> care of their belongings. Nobody wants to <span class="cloze-blank" id="cb-t3-7" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that everything will go according to plan. If they <span class="cloze-blank" id="cb-t3-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty finding the hotel, they will call the owner.</p>
+    <div class="task-feedback" id="fb-t3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t3">Check Task 3</button>
+      <button class="btn-ghost" data-reset="t3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t4">
+    <div class="block-head"><h2>Task 4</h2><span class="block-count">8 blanks</span></div>
+    <p class="passage" id="passage-t4">Maria has just started a new job at an international company. She wants to <span class="cloze-blank" id="cb-t4-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of every opportunity to learn from her colleagues. She <span class="cloze-blank" id="cb-t4-1" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a feeling that the first few weeks will be challenging. During meetings, employees <span class="cloze-blank" id="cb-t4-2" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns presenting their ideas. Her manager tells her to <span class="cloze-blank" id="cb-t4-3" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the training seriously because it will help her understand the company better. Maria doesn’t <span class="cloze-blank" id="cb-t4-4" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue where some of the documents are, so she asks a colleague for help. Her manager also tells her not to <span class="cloze-blank" id="cb-t4-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that she will always have someone to help her. Before the end of the week, he wants to <span class="cloze-blank" id="cb-t4-6" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with her about her progress. Maria knows she may <span class="cloze-blank" id="cb-t4-7" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty understanding some of the new systems, but she is ready to learn.</p>
+    <div class="task-feedback" id="fb-t4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t4">Check Task 4</button>
+      <button class="btn-ghost" data-reset="t4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t5">
+    <div class="block-head"><h2>Task 5</h2><span class="block-count">10 blanks</span></div>
+    <p class="passage" id="passage-t5">The annual school sports day will <span class="cloze-blank" id="cb-t5-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> place next Friday. The students are excited because they can <span class="cloze-blank" id="cb-t5-1" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the event to spend time outside with their classmates. Some students <span class="cloze-blank" id="cb-t5-2" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a feeling that their team will win, while others don’t <span class="cloze-blank" id="cb-t5-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue which team is strongest. During the competitions, students <span class="cloze-blank" id="cb-t5-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns helping the teachers organize the activities. The head teacher asks everyone to <span class="cloze-blank" id="cb-t5-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the competition seriously but also enjoy themselves. She reminds the students to <span class="cloze-blank" id="cb-t5-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> care of the sports equipment. They shouldn’t <span class="cloze-blank" id="cb-t5-7" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that everything will be provided for them. Before the event starts, she wants to <span class="cloze-blank" id="cb-t5-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with the team leaders. Some students may <span class="cloze-blank" id="cb-t5-9" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty completing certain activities, so teachers will be available to help.</p>
+    <div class="task-feedback" id="fb-t5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t5">Check Task 5</button>
+      <button class="btn-ghost" data-reset="t5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t6">
+    <div class="block-head"><h2>Task 6</h2><span class="block-count">9 blanks</span></div>
+    <p class="passage" id="passage-t6">James is preparing for an important English exam. He wants to <span class="cloze-blank" id="cb-t6-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of every free hour he has. He <span class="cloze-blank" id="cb-t6-1" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a feeling that vocabulary will be the most difficult part of the exam. His teacher tells him to <span class="cloze-blank" id="cb-t6-2" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the exam seriously and practise every day. James doesn’t <span class="cloze-blank" id="cb-t6-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue which topics will appear, so he is reviewing everything carefully. He and his classmates <span class="cloze-blank" id="cb-t6-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns asking each other questions. His teacher tells him, “<span class="cloze-blank" id="cb-t6-5" data-answer="take"><button type="button" class="cloze-opt" data-value="Have">Have</button><button type="button" class="cloze-opt" data-value="Take">Take</button></span> my word for it, regular practice will help you improve.” James also knows that he shouldn’t <span class="cloze-blank" id="cb-t6-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that he will get a good result without working hard. If he <span class="cloze-blank" id="cb-t6-7" data-answer="takes"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> difficulty with a topic, he asks his teacher for help. Before the exam, he wants to <span class="cloze-blank" id="cb-t6-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with his classmates about their study plans.</p>
+    <div class="task-feedback" id="fb-t6"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t6">Check Task 6</button>
+      <button class="btn-ghost" data-reset="t6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t7">
+    <div class="block-head"><h2>Task 7</h2><span class="block-count">10 blanks</span></div>
+    <p class="passage" id="passage-t7">A new shopping centre will <span class="cloze-blank" id="cb-t7-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> place near the city centre next month. Local businesses are hoping to <span class="cloze-blank" id="cb-t7-1" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the increased number of visitors. One shop owner <span class="cloze-blank" id="cb-t7-2" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a feeling that the area will become much busier. However, some business owners don’t <span class="cloze-blank" id="cb-t7-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue how the changes will affect them. The local council tells them to <span class="cloze-blank" id="cb-t7-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the situation seriously and prepare for possible changes. During meetings, business owners <span class="cloze-blank" id="cb-t7-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns sharing their opinions. The council also asks them to <span class="cloze-blank" id="cb-t7-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> care of the streets around their shops. They shouldn’t <span class="cloze-blank" id="cb-t7-7" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that customers will automatically visit them. One owner wants to <span class="cloze-blank" id="cb-t7-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with the council representative because she <span class="cloze-blank" id="cb-t7-9" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> difficulty understanding the new parking rules.</p>
+    <div class="task-feedback" id="fb-t7"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t7">Check Task 7</button>
+      <button class="btn-ghost" data-reset="t7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t8">
+    <div class="block-head"><h2>Task 8</h2><span class="block-count">9 blanks</span></div>
+    <p class="passage" id="passage-t8">Anna and her brother are organizing a family celebration. The party will <span class="cloze-blank" id="cb-t8-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> place at their grandparents’ house on Sunday. They want to <span class="cloze-blank" id="cb-t8-1" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the large garden if the weather is good. Anna <span class="cloze-blank" id="cb-t8-2" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a feeling that everyone will arrive early, but her brother doesn’t <span class="cloze-blank" id="cb-t8-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue what time some relatives will arrive. They <span class="cloze-blank" id="cb-t8-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns preparing the food and decorating the garden. Their mother tells them to <span class="cloze-blank" id="cb-t8-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> care of the decorations because some of them are expensive. She also reminds them not to <span class="cloze-blank" id="cb-t8-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that everyone can help. Anna tells her brother, “<span class="cloze-blank" id="cb-t8-7" data-answer="take"><button type="button" class="cloze-opt" data-value="Have">Have</button><button type="button" class="cloze-opt" data-value="Take">Take</button></span> my word for it, everything will be ready on time.” If they <span class="cloze-blank" id="cb-t8-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty organizing the tables, they will ask their cousins for help.</p>
+    <div class="task-feedback" id="fb-t8"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t8">Check Task 8</button>
+      <button class="btn-ghost" data-reset="t8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t9">
+    <div class="block-head"><h2>Task 9</h2><span class="block-count">8 blanks</span></div>
+    <p class="passage" id="passage-t9">The university is offering students a chance to study abroad for one semester. Emma wants to <span class="cloze-blank" id="cb-t9-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the opportunity because she believes it will be useful for her future. She <span class="cloze-blank" id="cb-t9-1" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> a feeling that living in another country will be exciting but challenging. Her friend doesn’t <span class="cloze-blank" id="cb-t9-2" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue what the application process is like, so Emma explains it to her. The students are told to <span class="cloze-blank" id="cb-t9-3" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the opportunity seriously because there are only a limited number of places. They <span class="cloze-blank" id="cb-t9-4" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns helping each other complete the forms. Emma reminds her friend not to <span class="cloze-blank" id="cb-t9-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted that they will be accepted. Before submitting the application, Emma wants to <span class="cloze-blank" id="cb-t9-6" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with her teacher. She expects to <span class="cloze-blank" id="cb-t9-7" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> difficulty choosing the right university, but she knows her teacher can help.</p>
+    <div class="task-feedback" id="fb-t9"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t9">Check Task 9</button>
+      <button class="btn-ghost" data-reset="t9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-t10">
+    <div class="block-head"><h2>Task 10</h2><span class="block-count">10 blanks</span></div>
+    <p class="passage" id="passage-t10">The company is planning a large meeting for all its employees. The meeting will <span class="cloze-blank" id="cb-t10-0" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> place on Monday morning. The manager wants everyone to <span class="cloze-blank" id="cb-t10-1" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> the meeting seriously because several important changes will be discussed. Employees are encouraged to <span class="cloze-blank" id="cb-t10-2" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> advantage of the opportunity to ask questions. Some workers <span class="cloze-blank" id="cb-t10-3" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a feeling that the changes will affect their daily responsibilities, but others don’t <span class="cloze-blank" id="cb-t10-4" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a clue what will happen. During the meeting, employees will <span class="cloze-blank" id="cb-t10-5" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> turns speaking to the manager. He reminds them to <span class="cloze-blank" id="cb-t10-6" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> care of company equipment and not <span class="cloze-blank" id="cb-t10-7" data-answer="take"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> it for granted. One employee asks to <span class="cloze-blank" id="cb-t10-8" data-answer="have"><button type="button" class="cloze-opt" data-value="have">have</button><button type="button" class="cloze-opt" data-value="take">take</button></span> a word with the manager after the meeting because she <span class="cloze-blank" id="cb-t10-9" data-answer="has"><button type="button" class="cloze-opt" data-value="has">has</button><button type="button" class="cloze-opt" data-value="takes">takes</button></span> difficulty understanding one of the new rules. The manager says he will be happy to explain it.</p>
+    <div class="task-feedback" id="fb-t10"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t10">Check Task 10</button>
+      <button class="btn-ghost" data-reset="t10">Clear section</button>
+    </div>
+  </section>
+
+  <div class="summary" id="summary">
+    <div class="summary-label">Your score</div>
+    <div class="summary-score" id="totalScore">0 / 92</div>
+    <div class="summary-label" id="totalPercent">0% answered</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Grammar Practice — Have / Take Collocations — for individual practice. If you think an answer should also be accepted, ask your teacher.</footer>
+
+<script>
+(function(){
+  var GROUPS = ["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10"];
+  var GROUP_COUNTS = {"t1":10,"t2":9,"t3":9,"t4":8,"t5":10,"t6":9,"t7":10,"t8":9,"t9":8,"t10":10};
+  var TOTAL = 0;
+  Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
+
+  document.querySelectorAll('.cloze-opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var blank = btn.closest('.cloze-blank');
+      blank.classList.remove('correct','incorrect');
+      blank.querySelectorAll('.cloze-opt').forEach(function(b){ b.classList.remove('selected','reveal'); });
+      btn.classList.add('selected');
+      var gid = blank.closest('.block').id.replace('section-','');
+      var fb = document.getElementById('fb-' + gid);
+      if (fb) { fb.textContent = ''; fb.className = 'task-feedback'; }
+      updateScore();
+    });
+  });
+
+  function checkGroup(gid){
+    var blanks = document.querySelectorAll('#section-' + gid + ' .cloze-blank');
+    var answeredCount = 0, correctCount = 0;
+    blanks.forEach(function(blank){
+      var ans = (blank.getAttribute('data-answer') || '').toLowerCase();
+      var selected = blank.querySelector('.cloze-opt.selected');
+      blank.classList.remove('correct','incorrect');
+      blank.querySelectorAll('.cloze-opt').forEach(function(b){ b.classList.remove('reveal'); });
+      if (!selected) return;
+      answeredCount++;
+      if (selected.getAttribute('data-value').toLowerCase() === ans) {
+        blank.classList.add('correct');
+        correctCount++;
+      } else {
+        blank.classList.add('incorrect');
+        blank.querySelectorAll('.cloze-opt').forEach(function(b){
+          if (b.getAttribute('data-value').toLowerCase() === ans) b.classList.add('reveal');
+        });
+      }
+    });
+    var fb = document.getElementById('fb-' + gid);
+    if (fb) {
+      if (answeredCount === 0) {
+        fb.textContent = '';
+        fb.className = 'task-feedback';
+      } else if (answeredCount < blanks.length) {
+        fb.textContent = (blanks.length - answeredCount) + ' blank(s) left to answer.';
+        fb.className = 'task-feedback incomplete';
+      } else if (correctCount === blanks.length) {
+        fb.textContent = 'All correct — nice work!';
+        fb.className = 'task-feedback';
+      } else {
+        fb.textContent = correctCount + ' / ' + blanks.length + ' correct. Incorrect ones are highlighted, with the right answer shown.';
+        fb.className = 'task-feedback has-errors';
+      }
+    }
+    updateScore();
+  }
+
+  function resetGroup(gid){
+    document.querySelectorAll('#section-' + gid + ' .cloze-blank').forEach(function(blank){
+      blank.classList.remove('correct','incorrect');
+      blank.querySelectorAll('.cloze-opt').forEach(function(b){ b.classList.remove('selected','reveal'); });
+    });
+    var fb = document.getElementById('fb-' + gid);
+    if (fb) { fb.textContent = ''; fb.className = 'task-feedback'; }
+    updateScore();
+  }
+
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.cloze-blank').forEach(function(blank){
+      var ans = (blank.getAttribute('data-answer') || '').toLowerCase();
+      var selected = blank.querySelector('.cloze-opt.selected');
+      if (selected) {
+        answered++;
+        if (selected.getAttribute('data-value').toLowerCase() === ans) total++;
+      }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    updateScore();
+    document.getElementById('section-t1').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('resetAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(resetGroup);
+    updateScore();
+  });
+
+  updateScore();
+})();
+</script>
+
+</body>
+</html>

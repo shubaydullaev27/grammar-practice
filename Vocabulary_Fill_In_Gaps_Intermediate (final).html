@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Vocabulary — Fill in the Gaps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .app{ max-width:820px; margin:0 auto; }
+
+  /* Page switcher */
+  .page-switcher{ display:flex; gap:10px; margin-bottom:16px; background:var(--black); border-radius:8px; padding:6px; }
+  .page-tab{ flex:1; font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; color:rgba(255,255,255,.6); background:transparent; border:none; border-radius:6px; padding:14px 10px; cursor:pointer; transition:background .15s, color .15s; }
+  .page-tab.active{ background:var(--yellow); color:var(--black); }
+  .page-tab:not(.active):hover{ color:var(--white); background:rgba(255,255,255,.08); }
+  .page-tab .tab-sub{ display:block; font-size:11px; font-weight:600; opacity:.75; margin-top:2px; }
+
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+  .page{ display:none; }
+  .page.active{ display:block; }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .instructions-band{ padding: 18px clamp(18px,5vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%); border-bottom:1px solid var(--rule); font-size:13.5px; color:var(--ink-soft); }
+  .instructions-band b{ color:var(--ink); }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,4.5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; flex-wrap:wrap; }
+  h3{ font-family:'Fraunces',serif; font-weight:600; font-size:18px; margin:0; position:relative; padding-bottom:6px; }
+  h3::after{ content:""; position:absolute; left:0; bottom:0; width:26px; height:3px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12px; color:var(--ink-soft); white-space:nowrap; padding-bottom:8px; }
+
+  .word-bank{ display:flex; flex-wrap:wrap; gap:8px; padding:12px; background:var(--paper); border:1.5px dashed var(--rule); border-radius:10px; margin-bottom:16px; }
+  .bank-word{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; color:var(--ink); background:var(--panel); border:1.5px solid var(--rule); border-radius:20px; padding:7px 14px; cursor:pointer; transition:transform .08s, background .15s, border-color .15s, opacity .15s; }
+  .bank-word:hover:not(:disabled){ border-color:var(--black); }
+  .bank-word:active:not(:disabled){ transform:translateY(1px); }
+  .bank-word:disabled{ opacity:.3; cursor:default; text-decoration:line-through; }
+
+  .passage{ font-size:14.5px; line-height:2.6; color:var(--ink); }
+
+  .fill-blank{ display:inline-flex; align-items:center; justify-content:center; min-width:96px; font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; color:var(--ink); background:var(--panel); border:1.5px solid var(--rule); border-bottom:2.5px solid var(--ink-soft); border-radius:6px; padding:3px 10px; margin:0 3px; cursor:pointer; vertical-align:middle; transition:border-color .15s, background .15s; }
+  .fill-blank:hover{ border-color:var(--black); }
+  .fill-blank .blank-placeholder{ color:var(--ink-soft); opacity:.5; letter-spacing:2px; }
+  .fill-blank.filled{ border-bottom-color:var(--black); background:var(--paper); }
+  .fill-blank.correct{ border-color:var(--good); border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .fill-blank.incorrect{ border-color:var(--bad); border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .fill-blank .reveal-answer{ display:block; font-size:10.5px; color:var(--good); font-weight:700; margin-top:1px; }
+
+  .task-feedback{ font-size:13px; color:var(--good); font-weight:600; margin-top:14px; min-height:1px; }
+  .task-feedback.incomplete{ color:var(--ink-soft); font-weight:400; font-style:italic; }
+  .task-feedback.has-errors{ color:var(--bad); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .passage{ line-height:2.9; }
+    .fill-blank{ min-width:84px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  .app{ max-width:820px; margin:0 auto; }
+  .page-switcher{ display:flex; gap:10px; margin-bottom:16px; background:var(--black); border-radius:8px; padding:6px; }
+  .page-tab{ flex:1; font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; color:rgba(255,255,255,.6); background:transparent; border:none; border-radius:6px; padding:14px 10px; cursor:pointer; transition:background .15s, color .15s; }
+  .page-tab.active{ background:var(--yellow); color:var(--black); }
+  .page-tab:not(.active):hover{ color:var(--white); background:rgba(255,255,255,.08); }
+  .page-tab .tab-sub{ display:block; font-size:11px; font-weight:600; opacity:.75; margin-top:2px; }
+  .page{ display:none; }
+  .page.active{ display:block; }
+
+  .gap{ white-space:nowrap; display:inline-block; margin:0 2px; }
+  .blank-idx{ font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; color:var(--ink-soft); margin-right:2px; vertical-align:middle; }
+  .fill-blank.active{ border-color:var(--black); border-bottom-color:var(--yellow-deep); box-shadow:0 0 0 3px rgba(255,213,48,.55); background:var(--white); }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="app">
+
+  <div class="page-switcher">
+    <button class="page-tab active" data-target="page-appearance">Appearance<span class="tab-sub">Exercise 1 · 165 gaps</span></button>
+    <button class="page-tab" data-target="page-work">Work &amp; Employment<span class="tab-sub">Exercise 2 · 120 gaps</span></button>
+  </div>
+
+  <div class="page active" id="page-appearance">
+    <div class="sheet">
+
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row">
+          <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+        </div>
+        <h1>Appearance &amp; Physical Description</h1>
+        <p class="sub">Use every word from the box once to complete each passage. Check your answers task by task.</p>
+      </div>
+
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-e1"></div></div>
+        <span class="score-tally" id="scoreTally-e1">0 / 165</span>
+      </div>
+
+      <div class="instructions-band">
+        <b>How it works:</b> every word in the box is used exactly once per task. Tap a word to drop it into the next empty gap, or tap a numbered gap first to choose where the word goes. Tap a filled gap to take the word back.
+      </div>
+
+      <div class="jump-nav">
+        <a href="#section-e1-t1">1</a>
+        <a href="#section-e1-t2">2</a>
+        <a href="#section-e1-t3">3</a>
+        <a href="#section-e1-t4">4</a>
+        <a href="#section-e1-t5">5</a>
+        <a href="#section-e1-t6">6</a>
+        <a href="#section-e1-t7">7</a>
+        <a href="#section-e1-t8">8</a>
+        <a href="#section-e1-t9">9</a>
+        <a href="#section-e1-t10">10</a>
+        <a href="#section-e1-t11">11</a>
+        <a href="#section-e1-t12">12</a>
+        <a href="#section-e1-t13">13</a>
+        <a href="#section-e1-t14">14</a>
+        <a href="#section-e1-t15">15</a>
+      </div>
+
+  <section class="block" id="section-e1-t1">
+    <div class="block-head"><h3>Task 1</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t1">
+<button type="button" class="bank-word" id="bank-e1-t1-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t1-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t1-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t1-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t1-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t1-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t1-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t1-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t1-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t1-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t1-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t1">People often change their appearance when they want a fresh start. My sister recently decided to change her hairstyle before starting university. She had always had long brown hair, but she decided to cut it and have a short <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t1-0" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>. She also <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t1-1" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair a dark red colour. At first, she wasn&#x27;t sure about the result, but her friends loved it. She has always been quite <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t1-2" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, with a light, delicate figure, so almost any hairstyle looks good on her. She also has long <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t1-3" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>, which make her eyes look bigger. Her brother, on the other hand, is quite <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t1-4" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> because he spends a lot of time at the gym. Our uncle lost his hair years ago and is now completely <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t1-5" data-answer="bald"><span class="blank-placeholder">···</span></span></span>, but he keeps a thick grey <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t1-6" data-answer="moustache"><span class="blank-placeholder">···</span></span></span> to make up for it. After years of sitting at a desk, he became <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t1-7" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>, so he started walking every day to get back into <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t1-8" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. Our <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t1-9" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> neighbour, who is over eighty, says he wishes he could still carry a heavy bag on his <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t1-10" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> like in the old days.</p>
+    <div class="task-feedback" id="fb-e1-t1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t1">Check Task 1</button>
+      <button class="btn-ghost" data-reset="e1-t1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t2">
+    <div class="block-head"><h3>Task 2</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t2">
+<button type="button" class="bank-word" id="bank-e1-t2-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t2-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t2-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t2-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t2-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t2-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t2-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t2-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t2-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t2-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t2-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t2">My grandfather has always cared about keeping fit and healthy. Although he is nearly ninety and therefore quite <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t2-0" data-answer="elderly"><span class="blank-placeholder">···</span></span></span>, he still goes for a long walk every morning. He believes that regular exercise helps him stay in good <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t2-1" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. He used to work in construction, so he is still <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t2-2" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>, with strong arms and a broad chest, and he can lift a heavy sack onto his <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t2-3" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> without any help. He lost most of his hair many years ago and is now completely <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t2-4" data-answer="bald"><span class="blank-placeholder">···</span></span></span>. However, he doesn&#x27;t worry about his appearance. He also has a thick white <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t2-5" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, which he has had since he was a young man. His granddaughter, my cousin, loves experimenting with her look. Last month she <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t2-6" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> the ends of her hair pink and cut herself a short <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t2-7" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>. She is naturally very <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t2-8" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, and she wears dark mascara to make her <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t2-9" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> look thicker. Their neighbour, in contrast, has gained a lot of weight and is now <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t2-10" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>, so his doctor has told him to start walking every morning, just like my grandfather.</p>
+    <div class="task-feedback" id="fb-e1-t2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t2">Check Task 2</button>
+      <button class="btn-ghost" data-reset="e1-t2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t3">
+    <div class="block-head"><h3>Task 3</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t3">
+<button type="button" class="bank-word" id="bank-e1-t3-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t3-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t3-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t3-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t3-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t3-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t3-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t3-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t3-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t3-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t3-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t3">As a teenager, David was tall and quite <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t3-0" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, with thin arms and a narrow chest, but he didn&#x27;t pay much attention to his health. He often ate fast food and rarely exercised. Over time, he gained a lot of weight and became <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t3-1" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>. His doctor advised him to change his lifestyle and get back into <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t3-2" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. David joined a gym and began swimming twice a week. After six months, he had lost a lot of weight and looked much more <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t3-3" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>, with broad, muscular arms. He could even carry his heavy gym bag on one <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t3-4" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> without any trouble. David&#x27;s father, who is over seventy-five, is quite <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t3-5" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> now and needs help with heavy shopping. He lost his hair in his thirties and has been completely <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t3-6" data-answer="bald"><span class="blank-placeholder">···</span></span></span> ever since, but he still wears a neat grey <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t3-7" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>. David&#x27;s sister, Maya, loves changing her look. Last summer she <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t3-8" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair green and cut herself a short <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t3-9" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, and she wears such long false <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t3-10" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> that people often stare at her.</p>
+    <div class="task-feedback" id="fb-e1-t3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t3">Check Task 3</button>
+      <button class="btn-ghost" data-reset="e1-t3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t4">
+    <div class="block-head"><h3>Task 4</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t4">
+<button type="button" class="bank-word" id="bank-e1-t4-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t4-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t4-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t4-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t4-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t4-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t4-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t4-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t4-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t4-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t4-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t4">Sarah decided to completely change her appearance before a special event. She had always worn her hair naturally, but this time she wanted something different. First, she <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t4-0" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair blonde, although her natural colour is dark brown. Then she went to a hairdresser and had her <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t4-1" data-answer="fringe"><span class="blank-placeholder">···</span></span></span> cut much shorter. She was initially worried that the new style might not suit her, but her friends loved it. Sarah is naturally quite <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t4-2" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, so the new hairstyle made her face look even more elegant. She also has long, dark <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t4-3" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>. She says that regular exercise helps her stay in good <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t4-4" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. Her hair is now <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t4-5" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span>-length, and she wears a light scarf over it. At the event, she met her friend&#x27;s grandfather, a very kind and <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t4-6" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> gentleman with a white <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t4-7" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, who told her that he had been <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t4-8" data-answer="bald"><span class="blank-placeholder">···</span></span></span> since he was twenty. Her friend&#x27;s brother, a rugby player, looked <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t4-9" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> in his suit, while another guest said that his doctor had warned him about his weight, so he was afraid of becoming <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t4-10" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e1-t4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t4">Check Task 4</button>
+      <button class="btn-ghost" data-reset="e1-t4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t5">
+    <div class="block-head"><h3>Task 5</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t5">
+<button type="button" class="bank-word" id="bank-e1-t5-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t5-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t5-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t5-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t5-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t5-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t5-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t5-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t5-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t5-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t5-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t5">My neighbour has lived in our area for more than fifty years. He is now over eighty, which makes him the most <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t5-0" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> resident in our street, but he is still very active. He used to be a professional swimmer, so he is still quite <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t5-1" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> for his age. He has broad, strong arms, and he can easily carry his toolbox on one <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t5-2" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span>. He started losing his hair when he was in his forties and is now completely <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t5-3" data-answer="bald"><span class="blank-placeholder">···</span></span></span>. In fact, he says it saves him time in the morning. He also has a neat grey <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t5-4" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, which makes him look very distinguished. His wife, on the other hand, enjoys trying new looks. Last week she <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t5-5" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair light brown and asked the hairdresser for a soft <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t5-6" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>. She has always been <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t5-7" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, and she says that walking to the market every day keeps her in good <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t5-8" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. Their daughter, who works in the theatre, wears long false <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t5-9" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> every evening before a performance, while their son admits that he has become <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t5-10" data-answer="overweight"><span class="blank-placeholder">···</span></span></span> since he started working night shifts.</p>
+    <div class="task-feedback" id="fb-e1-t5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t5">Check Task 5</button>
+      <button class="btn-ghost" data-reset="e1-t5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t6">
+    <div class="block-head"><h3>Task 6</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t6">
+<button type="button" class="bank-word" id="bank-e1-t6-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t6-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t6-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t6-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t6-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t6-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t6-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t6-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t6-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t6-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t6-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t6">Emma used to be quite <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t6-0" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>, but she decided to make some changes to her lifestyle last year. She started going to the gym and stopped eating so much fast food. Now she is much more <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t6-1" data-answer="slim"><span class="blank-placeholder">···</span></span></span> and feels healthier. She also decided to change her appearance. She <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t6-2" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair dark brown and asked the hairdresser to give her a short <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t6-3" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>. Her friends especially noticed her beautiful eyes because she has very long <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t6-4" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>. Emma says she feels much more confident now, and she wants to stay in good <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t6-5" data-answer="shape"><span class="blank-placeholder">···</span></span></span> for the rest of her life. Her grandmother is the most <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t6-6" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> member of the family, and she likes to rest her head on Emma&#x27;s <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t6-7" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> when they watch television. Emma&#x27;s brother is very <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t6-8" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> because he trains as a boxer, and her uncle, who lost his hair years ago, is completely <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t6-9" data-answer="bald"><span class="blank-placeholder">···</span></span></span> but proudly wears a thick black <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t6-10" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e1-t6"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t6">Check Task 6</button>
+      <button class="btn-ghost" data-reset="e1-t6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t7">
+    <div class="block-head"><h3>Task 7</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t7">
+<button type="button" class="bank-word" id="bank-e1-t7-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t7-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t7-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t7-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t7-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t7-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t7-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t7-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t7-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t7-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t7-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t7">My uncle has changed his appearance quite a lot over the years. When he was younger, he had thick black hair and no facial hair. Later, he grew a <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t7-0" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, which he has kept for more than twenty years. He began losing his hair in his thirties and is now almost completely <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t7-1" data-answer="bald"><span class="blank-placeholder">···</span></span></span>. Recently, he <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t7-2" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> the remaining hair grey because he wanted his appearance to look more natural. Although he is now over seventy and therefore <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t7-3" data-answer="elderly"><span class="blank-placeholder">···</span></span></span>, he still exercises regularly to stay in good <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t7-4" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. As a young man he was very <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t7-5" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, but in middle age he became <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t7-6" data-answer="overweight"><span class="blank-placeholder">···</span></span></span> because he stopped playing football. Now he says he wants to look more <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t7-7" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>, like his son, who lifts weights. His daughter has beautiful long <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t7-8" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> and a soft <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t7-9" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, and she loves to rest her hand on her father&#x27;s <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t7-10" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> when they pose for photographs.</p>
+    <div class="task-feedback" id="fb-e1-t7"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t7">Check Task 7</button>
+      <button class="btn-ghost" data-reset="e1-t7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t8">
+    <div class="block-head"><h3>Task 8</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t8">
+<button type="button" class="bank-word" id="bank-e1-t8-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t8-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t8-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t8-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t8-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t8-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t8-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t8-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t8-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t8-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t8-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t8">My brother has always been interested in fitness. When he was younger, he was slightly <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t8-0" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>, but he decided to change his diet and start exercising. Today, he is quite <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t8-1" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> because he goes to the gym several times a week. He can carry two heavy bags on one <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t8-2" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> without any trouble, and his waist has become much more <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t8-3" data-answer="slim"><span class="blank-placeholder">···</span></span></span> than it was before. My sister, who has naturally long <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t8-4" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>, often jokes that she spends more time choosing clothes than he does! Our grandfather, who is in his eighties, is the most <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t8-5" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> person we know, and he keeps fit by walking every day. He has been <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t8-6" data-answer="bald"><span class="blank-placeholder">···</span></span></span> for decades and often says that his thick grey <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t8-7" data-answer="moustache"><span class="blank-placeholder">···</span></span></span> is all the hair he needs. My sister recently <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t8-8" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair copper red and asked for a straight <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t8-9" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, and she says she wants to stay in good <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t8-10" data-answer="shape"><span class="blank-placeholder">···</span></span></span> too.</p>
+    <div class="task-feedback" id="fb-e1-t8"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t8">Check Task 8</button>
+      <button class="btn-ghost" data-reset="e1-t8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t9">
+    <div class="block-head"><h3>Task 9</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t9">
+<button type="button" class="bank-word" id="bank-e1-t9-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t9-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t9-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t9-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t9-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t9-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t9-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t9-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t9-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t9-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t9-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t9">My aunt Laila has always loved trying new styles. Last spring, she went to the salon and asked the hairdresser to cut a short <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t9-0" data-answer="fringe"><span class="blank-placeholder">···</span></span></span> that would cover her forehead. She also <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t9-1" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair a deep chestnut colour because she wanted to hide a few grey strands. Laila is naturally very <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t9-2" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, so she can wear almost any style of clothes without difficulty. Her husband, on the other hand, prefers a classic look and has worn a neat <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t9-3" data-answer="moustache"><span class="blank-placeholder">···</span></span></span> for as long as I can remember. He lost most of his hair in his twenties and is now <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t9-4" data-answer="bald"><span class="blank-placeholder">···</span></span></span>, so he always wears a cap in winter. Their son plays rugby and is very <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t9-5" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>, though he says he must be careful with his diet to avoid becoming <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t9-6" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>. Both of them regularly visit their <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t9-7" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> neighbour, Mrs Karimova, who is nearly ninety and loves hearing about fashion. Last week, Laila&#x27;s daughter, who has long curled <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t9-8" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>, sat next to Mrs Karimova and rested her head on her <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t9-9" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> while they looked at old photographs. Mrs Karimova told them that walking every day is the secret to staying in good <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t9-10" data-answer="shape"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e1-t9"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t9">Check Task 9</button>
+      <button class="btn-ghost" data-reset="e1-t9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t10">
+    <div class="block-head"><h3>Task 10</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t10">
+<button type="button" class="bank-word" id="bank-e1-t10-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t10-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t10-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t10-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t10-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t10-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t10-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t10-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t10-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t10-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t10-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t10">Tom has been a personal trainer for over ten years, and he takes his own fitness very seriously. He is tall and <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t10-0" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>, with strong arms and a broad chest, which is why many people ask him for advice. Many of his clients come to him because they want to get back into <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t10-1" data-answer="shape"><span class="blank-placeholder">···</span></span></span> after a long period of inactivity. One of them, a middle-aged man who was slightly <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t10-2" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>, lost twelve kilograms in four months. Tom himself has no hair at all — he became <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t10-3" data-answer="bald"><span class="blank-placeholder">···</span></span></span> in his twenties and shaves his head every week. His girlfriend, an actress, often uses special mascara to make her <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t10-4" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> look even longer on stage, and she <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t10-5" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair red for her latest role. Another client, a very <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t10-6" data-answer="slim"><span class="blank-placeholder">···</span></span></span> woman, wants to build muscle, so Tom gives her special exercises for her arms and <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t10-7" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span>. His oldest client, a cheerful <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t10-8" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> gentleman with a white <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t10-9" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, comes twice a week and never misses a session. His youngest client, a schoolgirl with a short <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t10-10" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, joined the gym to prepare for a dance competition.</p>
+    <div class="task-feedback" id="fb-e1-t10"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t10">Check Task 10</button>
+      <button class="btn-ghost" data-reset="e1-t10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t11">
+    <div class="block-head"><h3>Task 11</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t11">
+<button type="button" class="bank-word" id="bank-e1-t11-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t11-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t11-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t11-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t11-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t11-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t11-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t11-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t11-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t11-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t11-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t11">My uncle Rustam is a barber, so he pays a lot of attention to how people look. He has been almost completely <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t11-0" data-answer="bald"><span class="blank-placeholder">···</span></span></span> since the age of thirty, but he jokes that it saves him money on shampoo. He compensates for this with a thick black <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t11-1" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, which he trims every morning. Last week, he <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t11-2" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> the hair of a customer bright blue for a fancy-dress party. Uncle Rustam used to be quite heavy, but after a strict diet he became much more <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t11-3" data-answer="slim"><span class="blank-placeholder">···</span></span></span>. When he finished work yesterday, he was so tired that he fell asleep with his head on his wife&#x27;s <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t11-4" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span>. Many of his customers are <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t11-5" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> men who come every Friday just to talk. Some young customers ask for a short <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t11-6" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, and a few ask him for advice about how to become more <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t11-7" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> at the gym. His own doctor once told him that he had been <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t11-8" data-answer="overweight"><span class="blank-placeholder">···</span></span></span> for too long and needed to get back into <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t11-9" data-answer="shape"><span class="blank-placeholder">···</span></span></span>. His wife, a make-up artist, spends hours applying long false <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t11-10" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> on actresses.</p>
+    <div class="task-feedback" id="fb-e1-t11"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t11">Check Task 11</button>
+      <button class="btn-ghost" data-reset="e1-t11">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t12">
+    <div class="block-head"><h3>Task 12</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t12">
+<button type="button" class="bank-word" id="bank-e1-t12-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t12-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t12-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t12-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t12-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t12-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t12-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t12-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t12-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t12-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t12-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t12">Last weekend, I went to a family wedding where I met relatives of all ages. My great-grandmother, who is ninety-two, is our only truly <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t12-0" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> relative, but she still dances at every celebration. My cousin Farrukh, who plays rugby, looked very <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t12-1" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> in his dark suit, with a broad chest and strong arms. His little sister had a short <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t12-2" data-answer="fringe"><span class="blank-placeholder">···</span></span></span> that kept falling into her eyes, so her mother clipped it back. The bride had applied dark mascara to her <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t12-3" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>, which made her eyes look bigger in the photographs. One of the guests, a man who was clearly <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t12-4" data-answer="overweight"><span class="blank-placeholder">···</span></span></span>, said that his doctor had told him to walk more and eat less sugar. The groom&#x27;s father, who lost all his hair years ago and is now <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t12-5" data-answer="bald"><span class="blank-placeholder">···</span></span></span>, made a funny speech about his own head. His brother, who has a big grey <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t12-6" data-answer="moustache"><span class="blank-placeholder">···</span></span></span>, cried on the bride&#x27;s <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t12-7" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> during the ceremony. The bridesmaid, a very <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t12-8" data-answer="slim"><span class="blank-placeholder">···</span></span></span> girl in a green dress, had <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t12-9" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> her hair a light gold colour the day before. The groom, who trains every morning, said that he was in the best <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t12-10" data-answer="shape"><span class="blank-placeholder">···</span></span></span> of his life.</p>
+    <div class="task-feedback" id="fb-e1-t12"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t12">Check Task 12</button>
+      <button class="btn-ghost" data-reset="e1-t12">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t13">
+    <div class="block-head"><h3>Task 13</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t13">
+<button type="button" class="bank-word" id="bank-e1-t13-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t13-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t13-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t13-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t13-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t13-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t13-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t13-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t13-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t13-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t13-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t13">Mr Anderson has taught at our school for thirty years, and students often talk about his appearance. He lost his hair when he was quite young and has been <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t13-0" data-answer="bald"><span class="blank-placeholder">···</span></span></span> ever since, although he always wears a smart hat outdoors. He also grew a large <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t13-1" data-answer="moustache"><span class="blank-placeholder">···</span></span></span> in his forties, which he says makes him look more serious. Recently, he <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t13-2" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> it black because it had started to turn white. Although he is not a young man any more, he does his best to stay in good <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t13-3" data-answer="shape"><span class="blank-placeholder">···</span></span></span> by cycling to work every day. His daughter, a dancer, is naturally very <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t13-4" data-answer="slim"><span class="blank-placeholder">···</span></span></span> and light on her feet. His son, on the other hand, is a weightlifter and looks very <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t13-5" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>. Mr Anderson&#x27;s father is now <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t13-6" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> and lives nearby, so Mr Anderson lets him lean on his <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t13-7" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> when they go for a walk. Mr Anderson&#x27;s wife, a hairdresser, has cut her own hair into a short <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t13-8" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, and she wears very long false <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t13-9" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> at parties. Their neighbour admits that he has become <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t13-10" data-answer="overweight"><span class="blank-placeholder">···</span></span></span> since he stopped playing football.</p>
+    <div class="task-feedback" id="fb-e1-t13"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t13">Check Task 13</button>
+      <button class="btn-ghost" data-reset="e1-t13">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t14">
+    <div class="block-head"><h3>Task 14</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t14">
+<button type="button" class="bank-word" id="bank-e1-t14-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t14-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t14-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t14-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t14-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t14-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t14-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t14-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t14-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t14-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t14-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t14">In our neighbourhood, there is a small beauty salon run by a woman called Dilnoza. Many of her customers are <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t14-0" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> ladies who come every Friday to have their hair washed and styled. Some of them ask for a soft <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t14-1" data-answer="fringe"><span class="blank-placeholder">···</span></span></span> to hide their forehead, while others prefer to keep their hair off their face. Dilnoza also offers a service in which she carefully attaches false <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t14-2" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span>, and younger customers love how dramatic their eyes look afterwards. She herself used to be <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t14-3" data-answer="overweight"><span class="blank-placeholder">···</span></span></span> as a teenager, but she started walking to work and now feels much healthier. When customers feel stressed, she gently massages their neck and <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t14-4" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> to help them relax. Her husband works next door as a barber. He has a thick black <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t14-5" data-answer="moustache"><span class="blank-placeholder">···</span></span></span> and has been <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t14-6" data-answer="bald"><span class="blank-placeholder">···</span></span></span> since he was twenty-five. Last week, a customer asked to change the colour of his hair, so the barber <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t14-7" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> it bright orange. One of their regular customers, a very <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t14-8" data-answer="slim"><span class="blank-placeholder">···</span></span></span> model, comes for facials, while another, a bodybuilder who is extremely <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t14-9" data-answer="well-built"><span class="blank-placeholder">···</span></span></span>, comes for haircuts. Dilnoza says that regular walks help everyone stay in good <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t14-10" data-answer="shape"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e1-t14"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t14">Check Task 14</button>
+      <button class="btn-ghost" data-reset="e1-t14">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e1-t15">
+    <div class="block-head"><h3>Task 15</h3><span class="block-count">11 blanks</span></div>
+    <div class="word-bank" id="bank-e1-t15">
+<button type="button" class="bank-word" id="bank-e1-t15-0" data-word="bald">bald</button>
+<button type="button" class="bank-word" id="bank-e1-t15-1" data-word="dyed">dyed</button>
+<button type="button" class="bank-word" id="bank-e1-t15-2" data-word="elderly">elderly</button>
+<button type="button" class="bank-word" id="bank-e1-t15-3" data-word="eyelashes">eyelashes</button>
+<button type="button" class="bank-word" id="bank-e1-t15-4" data-word="fringe">fringe</button>
+<button type="button" class="bank-word" id="bank-e1-t15-5" data-word="moustache">moustache</button>
+<button type="button" class="bank-word" id="bank-e1-t15-6" data-word="overweight">overweight</button>
+<button type="button" class="bank-word" id="bank-e1-t15-7" data-word="shape">shape</button>
+<button type="button" class="bank-word" id="bank-e1-t15-8" data-word="shoulder">shoulder</button>
+<button type="button" class="bank-word" id="bank-e1-t15-9" data-word="slim">slim</button>
+<button type="button" class="bank-word" id="bank-e1-t15-10" data-word="well-built">well-built</button>
+    </div>
+    <p class="passage" id="passage-e1-t15">Two brothers, Aziz and Sanjar, could hardly look more different. Aziz is tall and very <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e1-t15-0" data-answer="well-built"><span class="blank-placeholder">···</span></span></span> because he lifts weights four times a week and plays football at weekends. Sanjar, in contrast, is thin and <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e1-t15-1" data-answer="slim"><span class="blank-placeholder">···</span></span></span>, and he prefers running to weightlifting. Aziz started losing his hair at twenty-five and is now almost completely <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e1-t15-2" data-answer="bald"><span class="blank-placeholder">···</span></span></span>, while Sanjar still has thick dark hair, which he <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e1-t15-3" data-answer="dyed"><span class="blank-placeholder">···</span></span></span> bright red once as a joke. Both of them agree that the most important thing is to stay in good <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e1-t15-4" data-answer="shape"><span class="blank-placeholder">···</span></span></span>, whatever your body type. Their father, a retired teacher in his eighties, is the most <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e1-t15-5" data-answer="elderly"><span class="blank-placeholder">···</span></span></span> person in the family. He has a grey <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e1-t15-6" data-answer="moustache"><span class="blank-placeholder">···</span></span></span> that he trims carefully every morning. Their mother often says she is worried about their cousin, who has become <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e1-t15-7" data-answer="overweight"><span class="blank-placeholder">···</span></span></span> and rarely goes outside. Their little sister, who loves make-up, has very long, dark <span class="gap"><b class="blank-idx">9</b><span class="fill-blank" id="blank-e1-t15-8" data-answer="eyelashes"><span class="blank-placeholder">···</span></span></span> and recently cut herself a short <span class="gap"><b class="blank-idx">10</b><span class="fill-blank" id="blank-e1-t15-9" data-answer="fringe"><span class="blank-placeholder">···</span></span></span>, and she likes to lean her head on Aziz&#x27;s strong <span class="gap"><b class="blank-idx">11</b><span class="fill-blank" id="blank-e1-t15-10" data-answer="shoulder"><span class="blank-placeholder">···</span></span></span> when she is tired.</p>
+    <div class="task-feedback" id="fb-e1-t15"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e1-t15">Check Task 15</button>
+      <button class="btn-ghost" data-reset="e1-t15">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-e1">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="totalScore-e1">0 / 165</div>
+        <div class="summary-label" id="totalPercent-e1">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-e1">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-e1">Start over</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page" id="page-work">
+    <div class="sheet">
+
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row">
+          <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+        </div>
+        <h1>Work &amp; Employment</h1>
+        <p class="sub">Use every word from the box once to complete each passage. Check your answers task by task.</p>
+      </div>
+
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-e2"></div></div>
+        <span class="score-tally" id="scoreTally-e2">0 / 120</span>
+      </div>
+
+      <div class="instructions-band">
+        <b>How it works:</b> every word in the box is used exactly once per task. Tap a word to drop it into the next empty gap, or tap a numbered gap first to choose where the word goes. Tap a filled gap to take the word back.
+      </div>
+
+      <div class="jump-nav">
+        <a href="#section-e2-t1">1</a>
+        <a href="#section-e2-t2">2</a>
+        <a href="#section-e2-t3">3</a>
+        <a href="#section-e2-t4">4</a>
+        <a href="#section-e2-t5">5</a>
+        <a href="#section-e2-t6">6</a>
+        <a href="#section-e2-t7">7</a>
+        <a href="#section-e2-t8">8</a>
+        <a href="#section-e2-t9">9</a>
+        <a href="#section-e2-t10">10</a>
+        <a href="#section-e2-t11">11</a>
+        <a href="#section-e2-t12">12</a>
+        <a href="#section-e2-t13">13</a>
+        <a href="#section-e2-t14">14</a>
+        <a href="#section-e2-t15">15</a>
+      </div>
+
+  <section class="block" id="section-e2-t1">
+    <div class="block-head"><h3>Task 1</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t1">
+<button type="button" class="bank-word" id="bank-e2-t1-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t1-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t1-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t1-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t1-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t1-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t1-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t1-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t1">Choosing the right career is an important decision because people spend a large part of their lives at work. Some people mainly consider the <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t1-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span> they can earn, while others are more interested in <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t1-1" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> and want to enjoy what they do every day. There are thousands of different <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t1-2" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> available, from teaching and medicine to technology and design. Before applying for a particular position, however, it is important to have the necessary <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t1-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>. People should also consider their <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t1-4" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>, especially if they want to have enough free time for their families. Those who move to another city for work also need to find affordable <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t1-5" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>. Finally, nobody wants to be made <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t1-6" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>, and a period of <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t1-7" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> can be stressful for the whole family.</p>
+    <div class="task-feedback" id="fb-e2-t1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t1">Check Task 1</button>
+      <button class="btn-ghost" data-reset="e2-t1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t2">
+    <div class="block-head"><h3>Task 2</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t2">
+<button type="button" class="bank-word" id="bank-e2-t2-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t2-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t2-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t2-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t2-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t2-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t2-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t2-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t2">Working abroad can be an exciting opportunity, but it requires careful planning. Before accepting a job in another country, employees should find out how much their <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t2-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span> will be and whether it is enough to cover everyday expenses. They also need to think about <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t2-1" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>, as renting a home can be expensive in some cities. Another important factor is the number of <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t2-2" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>. Some people prefer to work longer hours if they receive more money, while others prefer a better balance between work and personal life. Companies may also offer additional benefits, such as health insurance or paid holidays. In some professions, workers also need a special <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t2-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> before they can start working. The most popular <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t2-4" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> for foreign workers include nursing, engineering and teaching. Many of them say that <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t2-5" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> matters as much as money. However, if a company closes and employees are made <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t2-6" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>, they may face a long period of <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t2-7" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> in a foreign country.</p>
+    <div class="task-feedback" id="fb-e2-t2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t2">Check Task 2</button>
+      <button class="btn-ghost" data-reset="e2-t2">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t3">
+    <div class="block-head"><h3>Task 3</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t3">
+<button type="button" class="bank-word" id="bank-e2-t3-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t3-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t3-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t3-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t3-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t3-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t3-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t3-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t3">The job market can change quickly, and this sometimes creates difficulties for employees. When a company has financial problems, it may decide to reduce the number of workers. As a result, some employees may be made <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t3-0" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>. This means that their jobs are removed because the company no longer needs their positions. Losing a job can lead to a period of <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t3-1" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span>, especially if it takes several months to find another position. During this time, people may improve their skills, gain a new <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t3-2" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, or apply for jobs in different <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t3-3" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>. Finding a new position with a good <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t3-4" data-answer="salary"><span class="blank-placeholder">···</span></span></span> can take time. Some people even move to another city and must arrange temporary <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t3-5" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>. When they finally start again, many say that <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t3-6" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> and reasonable <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t3-7" data-answer="working hours"><span class="blank-placeholder">···</span></span></span> matter more to them than they did before.</p>
+    <div class="task-feedback" id="fb-e2-t3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t3">Check Task 3</button>
+      <button class="btn-ghost" data-reset="e2-t3">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t4">
+    <div class="block-head"><h3>Task 4</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t4">
+<button type="button" class="bank-word" id="bank-e2-t4-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t4-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t4-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t4-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t4-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t4-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t4-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t4-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t4">Many people believe that a good job is about more than just money. A high <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t4-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span> is certainly attractive, but it does not always make people happy at work. Employees also need reasonable <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t4-1" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>, supportive colleagues and opportunities to develop their skills. When people enjoy their responsibilities and feel that their work is meaningful, they often experience greater <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t4-2" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span>. Companies can also improve working conditions by providing useful benefits, such as health insurance and extra holidays. For workers who move to another city, affordable <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t4-3" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> can also make a big difference. Some <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t4-4" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>, such as nursing, require a professional <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t4-5" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, but they often lead to rewarding careers. On the other hand, when a business struggles, workers may be made <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t4-6" data-answer="redundant"><span class="blank-placeholder">···</span></span></span> and face a period of <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t4-7" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e2-t4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t4">Check Task 4</button>
+      <button class="btn-ghost" data-reset="e2-t4">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t5">
+    <div class="block-head"><h3>Task 5</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t5">
+<button type="button" class="bank-word" id="bank-e2-t5-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t5-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t5-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t5-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t5-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t5-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t5-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t5-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t5">Anna recently decided to change her career because she was unhappy in her previous job. Although she had a reasonable <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t5-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span>, she worked very long <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t5-1" data-answer="working hours"><span class="blank-placeholder">···</span></span></span> and had little free time. She also felt that there were few opportunities for professional development. After several months of searching, she found a new position in a different company. The new job pays slightly less, but it provides several useful benefits, including flexible working arrangements and extra holidays. Most importantly, Anna says that her level of <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t5-2" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> has improved significantly. She is also happy that she is not worried about becoming <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t5-3" data-answer="redundant"><span class="blank-placeholder">···</span></span></span> because the company is doing very well. To get the job, she needed a new <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t5-4" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, so she studied in the evenings for a year and passed the final exam. She now lives in company <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t5-5" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> near the office. Her friend Lola is still looking for work; she says that <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t5-6" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> is a serious problem among graduates in some <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t5-7" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e2-t5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t5">Check Task 5</button>
+      <button class="btn-ghost" data-reset="e2-t5">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t6">
+    <div class="block-head"><h3>Task 6</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t6">
+<button type="button" class="bank-word" id="bank-e2-t6-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t6-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t6-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t6-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t6-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t6-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t6-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t6-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t6">Finding suitable employment after university can be challenging, particularly for young people without much work experience. Many employers expect applicants to have a relevant <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t6-0" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, as well as practical skills. There are many different <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t6-1" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> that graduates can consider, but competition for popular positions can be high. Some companies offer a low starting <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t6-2" data-answer="salary"><span class="blank-placeholder">···</span></span></span> but provide training and opportunities for promotion. Others offer higher pay but expect employees to work longer <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t6-3" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>. Without enough experience, some young people may also face a period of <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t6-4" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> after graduating. Those who accept a job in a big city must also budget for expensive <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t6-5" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>. Many graduates say that <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t6-6" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> is more important than money in the long run, and they hope never to be made <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t6-7" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e2-t6"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t6">Check Task 6</button>
+      <button class="btn-ghost" data-reset="e2-t6">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t7">
+    <div class="block-head"><h3>Task 7</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t7">
+<button type="button" class="bank-word" id="bank-e2-t7-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t7-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t7-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t7-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t7-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t7-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t7-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t7-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t7">Moving to another country for work can provide people with valuable experience and new career opportunities. However, it is important to research the local job market before making a decision. Workers should find out about average <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t7-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span>, employment laws and typical <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t7-1" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>. They should also check the cost of <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t7-2" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>, particularly if they are moving to a large city. Another important issue is whether their professional <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t7-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> is recognised in the new country. Some companies also offer additional benefits, such as health insurance, transport or help with moving expenses. Certain <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t7-4" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>, such as engineering, are in high demand abroad. Workers also need to know what happens if they are made <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t7-5" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>, and how long a period of <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t7-6" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> might last. Above all, most people hope to find real <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t7-7" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> in their new country.</p>
+    <div class="task-feedback" id="fb-e2-t7"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t7">Check Task 7</button>
+      <button class="btn-ghost" data-reset="e2-t7">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t8">
+    <div class="block-head"><h3>Task 8</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t8">
+<button type="button" class="bank-word" id="bank-e2-t8-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t8-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t8-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t8-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t8-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t8-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t8-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t8-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t8">When a company is successful, it often tries to keep its employees satisfied and motivated. A competitive <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t8-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span> can help attract talented workers, but companies may also provide additional benefits, such as bonuses, private healthcare and paid holidays. Flexible <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t8-1" data-answer="working hours"><span class="blank-placeholder">···</span></span></span> can be particularly useful for employees who have families or other responsibilities. Some employers even provide low-cost <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t8-2" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> for staff who move from other cities. In many <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t8-3" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>, a strong <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t8-4" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> makes it easier to win a promotion. Employees who feel valued often report higher <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t8-5" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span>. On the other hand, if a company experiences serious financial difficulties, it may have to reduce staff and make some employees <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t8-6" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>. This can increase <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t8-7" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> in the local area and make it more difficult for people to find new jobs.</p>
+    <div class="task-feedback" id="fb-e2-t8"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t8">Check Task 8</button>
+      <button class="btn-ghost" data-reset="e2-t8">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t9">
+    <div class="block-head"><h3>Task 9</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t9">
+<button type="button" class="bank-word" id="bank-e2-t9-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t9-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t9-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t9-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t9-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t9-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t9-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t9-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t9">Karim recently accepted a job offer in Dubai and is very excited about the move. The company offered him a good <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t9-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span>, which is higher than what he earned at home. He will also work regular <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t9-1" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>, from nine to five, so he will be able to enjoy his evenings. The firm has promised to help him find affordable <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t9-2" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> near the office during his first month. In addition, he will receive several benefits, including private health insurance and a yearly flight home. Karim has a master&#x27;s degree, and this <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t9-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> was one of the main reasons he was chosen. There are many well-paid <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t9-4" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> in Dubai, and Karim&#x27;s new role in engineering is one of them. Most importantly, he hopes that the friendly team and interesting projects will bring him a high level of <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t9-5" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span>. Back home, many of his friends are struggling with <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t9-6" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span>, and a few were recently made <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t9-7" data-answer="redundant"><span class="blank-placeholder">···</span></span></span> when a factory closed.</p>
+    <div class="task-feedback" id="fb-e2-t9"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t9">Check Task 9</button>
+      <button class="btn-ghost" data-reset="e2-t9">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t10">
+    <div class="block-head"><h3>Task 10</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t10">
+<button type="button" class="bank-word" id="bank-e2-t10-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t10-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t10-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t10-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t10-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t10-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t10-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t10-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t10">When the factory closed last year, more than two hundred workers were suddenly made <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t10-0" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>. Many of them had spent their whole careers there and were worried about their future. The local rate of <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t10-1" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> rose sharply, and the town council organised free training courses. Some workers decided to gain a new <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t10-2" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, such as a diploma in electrical engineering. Others considered changing to completely different <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t10-3" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>, like teaching or customer service. One man, Bakhtiyor, finally found a new position with a lower <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t10-4" data-answer="salary"><span class="blank-placeholder">···</span></span></span> than before, but he was happy to be working again. His new <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t10-5" data-answer="working hours"><span class="blank-placeholder">···</span></span></span> are shorter, so he can spend more time with his children. The company also arranged temporary <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t10-6" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> for those who had to move to another town. Bakhtiyor says that his <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t10-7" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> is now much higher than it was at the factory.</p>
+    <div class="task-feedback" id="fb-e2-t10"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t10">Check Task 10</button>
+      <button class="btn-ghost" data-reset="e2-t10">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t11">
+    <div class="block-head"><h3>Task 11</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t11">
+<button type="button" class="bank-word" id="bank-e2-t11-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t11-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t11-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t11-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t11-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t11-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t11-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t11-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t11">A survey of young employees in the technology sector produced some interesting results. Most people said that flexible <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t11-0" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>, which allow them to start early or finish late, were more important to them than a large office or free lunches. Many also valued a high <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t11-1" data-answer="salary"><span class="blank-placeholder">···</span></span></span>, although few said that money was their only priority. Those who worked for companies providing cheap <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t11-2" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> for new staff felt more secure when moving to a new city. However, the biggest factor in staying at a company was <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t11-3" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span>, rather than money alone. Nearly everyone said they were afraid of being made <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t11-4" data-answer="redundant"><span class="blank-placeholder">···</span></span></span> during a period of economic difficulty, and many worried about long-term <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t11-5" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span>. Most employees had a university <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t11-6" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, and they said that several new <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t11-7" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>, such as data analyst, did not even exist ten years ago.</p>
+    <div class="task-feedback" id="fb-e2-t11"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t11">Check Task 11</button>
+      <button class="btn-ghost" data-reset="e2-t11">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t12">
+    <div class="block-head"><h3>Task 12</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t12">
+<button type="button" class="bank-word" id="bank-e2-t12-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t12-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t12-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t12-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t12-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t12-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t12-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t12-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t12">Nilufar has just graduated from university with a degree in economics and is looking for her first job. She knows that a good <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t12-0" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> is essential in today&#x27;s competitive market, so she has also taken extra courses in accounting. There are many interesting <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t12-1" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> open to graduates, from banking to marketing, but she wants to be careful in choosing. She hopes to receive a fair <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t12-2" data-answer="salary"><span class="blank-placeholder">···</span></span></span> from the beginning, although she knows that her first pay will probably be modest. Nilufar is also prepared to accept long <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t12-3" data-answer="working hours"><span class="blank-placeholder">···</span></span></span> in the early years of her career, if that helps her gain experience. She is well aware that high <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t12-4" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> among young people makes the search more challenging. She would like to find affordable <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t12-5" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> close to the office, and she dreams of real <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t12-6" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span>. Her biggest fear is being made <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t12-7" data-answer="redundant"><span class="blank-placeholder">···</span></span></span> soon after starting.</p>
+    <div class="task-feedback" id="fb-e2-t12"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t12">Check Task 12</button>
+      <button class="btn-ghost" data-reset="e2-t12">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t13">
+    <div class="block-head"><h3>Task 13</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t13">
+<button type="button" class="bank-word" id="bank-e2-t13-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t13-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t13-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t13-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t13-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t13-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t13-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t13-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t13">Last year, Malika was offered a position at a large company in a city about 300 kilometres from her home. She compared the <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t13-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span> with her old one and found that it was about twenty per cent higher. The company also offered a range of benefits, including free medical check-ups and a travel allowance. However, she had to find suitable <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t13-1" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span> in the new city, which turned out to be more expensive than she expected. Her contract states clear <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t13-2" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>, so she can leave the office at five every day. She also had to prove her <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t13-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> by showing her degree certificate. Six months later, rumours spread that the company might make some employees <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t13-4" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>, and she began to feel worried, because <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t13-5" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> in the city was already high. Even so, Malika says that her <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t13-6" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> has been much greater in the new role because she works with talented and supportive people. She has met colleagues from many different <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t13-7" data-answer="occupations"><span class="blank-placeholder">···</span></span></span>, from designers to lawyers.</p>
+    <div class="task-feedback" id="fb-e2-t13"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t13">Check Task 13</button>
+      <button class="btn-ghost" data-reset="e2-t13">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t14">
+    <div class="block-head"><h3>Task 14</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t14">
+<button type="button" class="bank-word" id="bank-e2-t14-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t14-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t14-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t14-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t14-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t14-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t14-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t14-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t14">The government recently published a report on the labour market. It showed that <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t14-0" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> had fallen slightly compared with the previous year, which was good news for many families. The report also listed the most popular <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t14-1" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> among young people, including software developer, nurse and electrician. According to the survey, people in healthcare often work long <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t14-2" data-answer="working hours"><span class="blank-placeholder">···</span></span></span>, including night shifts and weekends. A professional <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t14-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span> was required for almost seventy per cent of the new positions. The average <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t14-4" data-answer="salary"><span class="blank-placeholder">···</span></span></span> rose by four per cent, although housing costs increased even faster, so many workers struggle to pay for <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t14-5" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>. The report also mentioned that thousands of workers were made <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t14-6" data-answer="redundant"><span class="blank-placeholder">···</span></span></span> in the construction industry, while doctors and teachers reported the highest levels of <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t14-7" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span>.</p>
+    <div class="task-feedback" id="fb-e2-t14"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t14">Check Task 14</button>
+      <button class="btn-ghost" data-reset="e2-t14">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-e2-t15">
+    <div class="block-head"><h3>Task 15</h3><span class="block-count">8 blanks</span></div>
+    <div class="word-bank" id="bank-e2-t15">
+<button type="button" class="bank-word" id="bank-e2-t15-0" data-word="working hours">working hours</button>
+<button type="button" class="bank-word" id="bank-e2-t15-1" data-word="salary">salary</button>
+<button type="button" class="bank-word" id="bank-e2-t15-2" data-word="occupations">occupations</button>
+<button type="button" class="bank-word" id="bank-e2-t15-3" data-word="redundant">redundant</button>
+<button type="button" class="bank-word" id="bank-e2-t15-4" data-word="unemployment">unemployment</button>
+<button type="button" class="bank-word" id="bank-e2-t15-5" data-word="accommodation">accommodation</button>
+<button type="button" class="bank-word" id="bank-e2-t15-6" data-word="job satisfaction">job satisfaction</button>
+<button type="button" class="bank-word" id="bank-e2-t15-7" data-word="qualification">qualification</button>
+    </div>
+    <p class="passage" id="passage-e2-t15">Choosing a career is never easy, and different people value different things. For some, the most important factor is a high <span class="gap"><b class="blank-idx">1</b><span class="fill-blank" id="blank-e2-t15-0" data-answer="salary"><span class="blank-placeholder">···</span></span></span> that allows them to live comfortably. For others, <span class="gap"><b class="blank-idx">2</b><span class="fill-blank" id="blank-e2-t15-1" data-answer="job satisfaction"><span class="blank-placeholder">···</span></span></span> matters more, and they would accept lower pay to do meaningful work. There are hundreds of <span class="gap"><b class="blank-idx">3</b><span class="fill-blank" id="blank-e2-t15-2" data-answer="occupations"><span class="blank-placeholder">···</span></span></span> to choose from, and it can take years to find the right one. Some of them require a long university course and a professional <span class="gap"><b class="blank-idx">4</b><span class="fill-blank" id="blank-e2-t15-3" data-answer="qualification"><span class="blank-placeholder">···</span></span></span>, while others can be learned on the job. Workers who move abroad must also consider <span class="gap"><b class="blank-idx">5</b><span class="fill-blank" id="blank-e2-t15-4" data-answer="accommodation"><span class="blank-placeholder">···</span></span></span>, because rent can take a large part of their income. Long <span class="gap"><b class="blank-idx">6</b><span class="fill-blank" id="blank-e2-t15-5" data-answer="working hours"><span class="blank-placeholder">···</span></span></span> can also leave little time for family life. Finally, nobody likes the idea of being made <span class="gap"><b class="blank-idx">7</b><span class="fill-blank" id="blank-e2-t15-6" data-answer="redundant"><span class="blank-placeholder">···</span></span></span>, and a long period of <span class="gap"><b class="blank-idx">8</b><span class="fill-blank" id="blank-e2-t15-7" data-answer="unemployment"><span class="blank-placeholder">···</span></span></span> worries almost everyone, so many people prefer jobs in stable industries.</p>
+    <div class="task-feedback" id="fb-e2-t15"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="e2-t15">Check Task 15</button>
+      <button class="btn-ghost" data-reset="e2-t15">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-e2">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="totalScore-e2">0 / 120</div>
+        <div class="summary-label" id="totalPercent-e2">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-e2">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-e2">Start over</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Vocabulary Practice — Fill in the Gaps — for individual practice. If you think an answer should also be accepted, ask your teacher.</footer>
+
+<script>
+(function(){
+  function normalize(s){ return s.toLowerCase().trim(); }
+  function gidOf(blank){ return blank.id.replace('blank-','').split('-').slice(0,2).join('-'); }
+  function blanksOf(gid){ return document.querySelectorAll('#passage-' + gid + ' .fill-blank'); }
+
+  function setActive(blank){
+    var gid = gidOf(blank);
+    blanksOf(gid).forEach(function(b){ b.classList.remove('active'); });
+    if (blank) blank.classList.add('active');
+  }
+  function clearActive(gid){ blanksOf(gid).forEach(function(b){ b.classList.remove('active'); }); }
+
+  function targetFor(gid){
+    var list = blanksOf(gid), i;
+    for (i = 0; i < list.length; i++) if (list[i].classList.contains('active') && !list[i].classList.contains('filled')) return list[i];
+    for (i = 0; i < list.length; i++) if (!list[i].classList.contains('filled')) return list[i];
+    return null;
+  }
+
+  function fillBlank(blank, word, bankBtn){
+    blank.classList.add('filled');
+    blank.classList.remove('correct','incorrect','active');
+    blank.textContent = word;
+    blank.setAttribute('data-filled-word', word);
+    blank.setAttribute('data-bank-id', bankBtn.id);
+    bankBtn.disabled = true;
+    var fb = document.getElementById('fb-' + gidOf(blank));
+    if (fb) { fb.textContent = ''; fb.className = 'task-feedback'; }
+  }
+  function clearBlank(blank){
+    var bankId = blank.getAttribute('data-bank-id');
+    if (bankId) { var b = document.getElementById(bankId); if (b) b.disabled = false; }
+    blank.classList.remove('filled','correct','incorrect','active');
+    blank.removeAttribute('data-filled-word');
+    blank.removeAttribute('data-bank-id');
+    blank.innerHTML = '<span class="blank-placeholder">···</span>';
+  }
+
+  document.querySelectorAll('.word-bank').forEach(function(bankEl){
+    var gid = bankEl.id.replace('bank-','');
+    bankEl.querySelectorAll('.bank-word').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (btn.disabled) return;
+        var target = targetFor(gid);
+        if (!target) return;
+        fillBlank(target, btn.getAttribute('data-word'), btn);
+        updateScores();
+      });
+    });
+  });
+
+  document.querySelectorAll('.fill-blank').forEach(function(blank){
+    blank.addEventListener('click', function(){
+      if (blank.classList.contains('filled')) {
+        clearBlank(blank);
+        setActive(blank);
+        updateScores();
+      } else if (blank.classList.contains('active')) {
+        blank.classList.remove('active');
+      } else {
+        setActive(blank);
+      }
+    });
+  });
+
+  function checkGroup(gid){
+    var blanks = blanksOf(gid);
+    var answered = 0, correct = 0;
+    blanks.forEach(function(blank){
+      var ans = normalize(blank.getAttribute('data-answer') || '');
+      blank.classList.remove('correct','incorrect','active');
+      var r = blank.querySelector('.reveal-answer'); if (r) r.remove();
+      if (!blank.classList.contains('filled')) return;
+      answered++;
+      if (normalize(blank.getAttribute('data-filled-word') || '') === ans) { blank.classList.add('correct'); correct++; }
+      else {
+        blank.classList.add('incorrect');
+        var rev = document.createElement('span');
+        rev.className = 'reveal-answer';
+        rev.textContent = blank.getAttribute('data-answer');
+        blank.appendChild(rev);
+      }
+    });
+    var fb = document.getElementById('fb-' + gid);
+    if (fb) {
+      if (answered === 0) { fb.textContent = ''; fb.className = 'task-feedback'; }
+      else if (answered < blanks.length) { fb.textContent = (blanks.length - answered) + ' gap(s) still empty.'; fb.className = 'task-feedback incomplete'; }
+      else if (correct === blanks.length) { fb.textContent = 'All correct — nice work!'; fb.className = 'task-feedback'; }
+      else { fb.textContent = correct + ' / ' + blanks.length + ' correct. Tap an incorrect gap to try again.'; fb.className = 'task-feedback has-errors'; }
+    }
+    updateScores();
+  }
+  function resetGroup(gid){
+    blanksOf(gid).forEach(clearBlank);
+    var fb = document.getElementById('fb-' + gid);
+    if (fb) { fb.textContent = ''; fb.className = 'task-feedback'; }
+    updateScores();
+  }
+
+  var PAGES = { e1: [], e2: [] };
+  for (var i = 1; i <= 15; i++) { PAGES.e1.push('e1-t' + i); PAGES.e2.push('e2-t' + i); }
+  var PAGE_IDS = { e1: 'page-appearance', e2: 'page-work' };
+
+  function updateScores(){
+    Object.keys(PAGES).forEach(function(sfx){
+      var total = 0, answered = 0, all = 0;
+      document.querySelectorAll('#' + PAGE_IDS[sfx] + ' .fill-blank').forEach(function(blank){
+        all++;
+        if (blank.classList.contains('filled')) {
+          answered++;
+          if (normalize(blank.getAttribute('data-filled-word') || '') === normalize(blank.getAttribute('data-answer') || '')) total++;
+        }
+      });
+      document.getElementById('scoreTally-' + sfx).textContent = total + ' / ' + all;
+      document.getElementById('totalScore-' + sfx).textContent = total + ' / ' + all;
+      document.getElementById('progressFill-' + sfx).style.width = (answered / all * 100) + '%';
+      document.getElementById('totalPercent-' + sfx).textContent = Math.round(answered / all * 100) + '% answered';
+    });
+  }
+
+  document.querySelectorAll('[data-check]').forEach(function(btn){
+    btn.addEventListener('click', function(){ checkGroup(btn.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(btn){
+    btn.addEventListener('click', function(){ resetGroup(btn.getAttribute('data-reset')); });
+  });
+  Object.keys(PAGES).forEach(function(sfx){
+    document.getElementById('checkAllBtn-' + sfx).addEventListener('click', function(){
+      PAGES[sfx].forEach(checkGroup);
+      document.getElementById('section-' + PAGES[sfx][0]).scrollIntoView({ behavior: 'smooth' });
+    });
+    document.getElementById('resetAllBtn-' + sfx).addEventListener('click', function(){
+      PAGES[sfx].forEach(resetGroup);
+    });
+  });
+
+  document.querySelectorAll('.page-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.page-tab').forEach(function(t){ t.classList.remove('active'); });
+      document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  updateScores();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Prefixes: in- / over- / mis- / re- — Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:22px 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .gx-table-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:8px; box-shadow:0 1px 0 rgba(20,20,22,.03); }
+  .gx-table{ width:100%; border-collapse:collapse; }
+  .gx-table thead th{ background:var(--black); color:var(--yellow); text-align:left; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:11px 14px; border-bottom:2px solid var(--yellow); }
+  .gx-table tbody td{ padding:10px 14px; font-size:13px; color:var(--ink); border-top:1px solid var(--rule); background:var(--panel); vertical-align:top; }
+  .gx-table tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .gx-table .cell-main{ font-weight:700; font-family:'JetBrains Mono',monospace; font-size:12.5px; display:block; }
+  .gx-table .cell-sub{ display:block; font-size:12px; color:var(--ink-soft); margin-top:3px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:16px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .passage{ font-size:14.5px; line-height:2.6; color:var(--ink); }
+
+  .cloze-blank{ display:inline-flex; vertical-align:middle; margin:0 3px; border-radius:6px; overflow:hidden; border:1.5px solid var(--rule); }
+  .cloze-opt{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; padding:3px 9px; border:none; background:var(--paper); color:var(--ink-soft); cursor:pointer; transition:background .15s, color .15s; }
+  .cloze-opt + .cloze-opt{ border-left:1.5px solid var(--rule); }
+  .cloze-opt:hover{ background:#ECECE7; }
+  .cloze-opt.selected{ background:var(--black); color:var(--yellow); }
+  .cloze-blank.correct .cloze-opt.selected{ background:var(--good); color:#fff; }
+  .cloze-blank.incorrect .cloze-opt.selected{ background:var(--bad); color:#fff; }
+  .cloze-blank.incorrect .cloze-opt.reveal{ background:var(--good-bg); color:var(--good); }
+
+  .task-feedback{ font-size:13px; color:var(--good); font-weight:600; margin-top:16px; min-height:1px; }
+  .task-feedback.incomplete{ color:var(--ink-soft); font-weight:400; font-style:italic; }
+  .task-feedback.has-errors{ color:var(--bad); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .passage{ line-height:2.9; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  .directions{ font-size:14.5px; margin:0 0 6px; }
+  .prefixes{ font-size:14px; margin:0 0 14px; color:var(--ink-soft); }
+  .prefixes b{ color:var(--bad); }
+  s{ text-decoration-thickness:2px; }
+  .wordbox{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .chip{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; padding:5px 11px; border-radius:20px; background:var(--paper); border:1.5px solid var(--rule); color:var(--ink); }
+  .chip.used{ text-decoration:line-through; color:var(--ink-soft); opacity:.7; }
+  ol.qs{ list-style:none; margin:0; padding:0; counter-reset:q; }
+  ol.qs li{ counter-increment:q; display:flex; gap:10px; padding:9px 0; font-size:15px; line-height:2.1; border-bottom:1px dashed var(--rule); }
+  ol.qs li::before{ content:counter(q) ")"; font-weight:700; color:var(--ink-soft); min-width:26px; }
+  ol.qs li:last-child{ border-bottom:none; }
+  .q-body{ flex:1; }
+  .ex-ans .pre{ color:var(--bad); font-weight:700; border-bottom:2px solid var(--bad); }
+  .ex-ans .stem{ color:#1F3864; font-weight:700; border-bottom:2px solid #1F3864; }
+  .ans{ font-family:'JetBrains Mono',monospace; font-size:13.5px; font-weight:600; width:min(170px,42vw); padding:3px 8px; margin:0 3px; border:1.5px solid var(--rule); border-radius:6px; background:var(--paper); color:var(--ink); vertical-align:middle; }
+  .ans:focus{ outline:none; border-color:var(--black); background:#fff; box-shadow:0 0 0 3px var(--yellow); }
+  .ans.correct{ background:var(--good); color:#fff; border-color:var(--good); }
+  .ans.incorrect{ background:var(--bad-bg); color:var(--bad); border-color:var(--bad); }
+  .key{ display:none; font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:700; color:var(--good); background:var(--good-bg); padding:2px 8px; border-radius:6px; margin-left:4px; }
+  .key.show{ display:inline-block; }
+</style>
+</head>
+<body>
+<noscript><div style="background:#D1382F;color:#fff;text-align:center;padding:16px 18px;font-size:14px;font-weight:700;">⚠ This page needs JavaScript to check your answers. Open it in Safari or Chrome.</div></noscript>
+<div class="sheet">
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div>
+    <h1>Prefixes: in- / over- / mis- / re-</h1>
+    <p class="sub">Type the correct form of the word from the box, adding the right prefix. Press Enter or tap “Check” to see your answers.</p>
+  </div>
+  <div class="progress-bar"><span>Progress</span><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="score-tally" id="scoreTally">0 / 90</span></div>
+  <div class="jump-nav"><a href="#section-t1">1</a><a href="#section-t2">2</a><a href="#section-t3">3</a><a href="#section-t4">4</a><a href="#section-t5">5</a><a href="#section-t6">6</a><a href="#section-t7">7</a><a href="#section-t8">8</a><a href="#section-t9">9</a><a href="#section-t10">10</a><a href="#section-t11">11</a><a href="#section-t12">12</a><a href="#section-t13">13</a><a href="#section-t14">14</a><a href="#section-t15">15</a></div>
+  <section class="block" id="section-t1">
+    <div class="block-head"><h2>Task 1</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The missing keys <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> under the sofa after a week.</span></li>
+<li><span class="q-body">We had to <input class="ans" type="text" id="a-1-0" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 1 question 2"><span class="key"></span> the chairs in the hall to make more space.</span></li>
+<li><span class="q-body">Ten o'clock is an <input class="ans" type="text" id="a-1-1" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 1 question 3"><span class="key"></span> time for me because I have a doctor's appointment.</span></li>
+<li><span class="q-body">I refused to buy the <input class="ans" type="text" id="a-1-2" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 1 question 4"><span class="key"></span> sunglasses at the airport shop.</span></li>
+<li><span class="q-body">I <input class="ans" type="text" id="a-1-3" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 1 question 5"><span class="key"></span> the directions, so we ended up in the wrong town.</span></li>
+<li><span class="q-body">Tom often <input class="ans" type="text" id="a-1-4" data-answer="overspends" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 1 question 6"><span class="key"></span> on clothes, so he has no savings.</span></li>
+<li><span class="q-body">If the children <input class="ans" type="text" id="a-1-5" data-answer="misbehave" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 1 question 7"><span class="key"></span> at the museum, they will not go on the next trip.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t1">Check Task 1</button>
+      <button class="btn-ghost" data-reset="t1">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t2">
+    <div class="block-head"><h2>Task 2</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">After the storm, the sun <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> behind the clouds.</span></li>
+<li><span class="q-body">The shop's opening hours are very <input class="ans" type="text" id="a-2-0" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 2 question 2"><span class="key"></span> for people who work until eight.</span></li>
+<li><span class="q-body">Please don't <input class="ans" type="text" id="a-2-1" data-answer="misunderstand" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 2 question 3"><span class="key"></span> me; I'm not criticising your work.</span></li>
+<li><span class="q-body">The puppy <input class="ans" type="text" id="a-2-2" data-answer="misbehaves" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 2 question 4"><span class="key"></span> whenever it is left alone at home.</span></li>
+<li><span class="q-body">Everyone agreed that the tickets for the concert were <input class="ans" type="text" id="a-2-3" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 2 question 5"><span class="key"></span>.</span></li>
+<li><span class="q-body">The teacher decided to <input class="ans" type="text" id="a-2-4" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 2 question 6"><span class="key"></span> the desks into groups of four.</span></li>
+<li><span class="q-body">We <input class="ans" type="text" id="a-2-5" data-answer="overspent" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 2 question 7"><span class="key"></span> our budget on the holiday last summer.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t2">Check Task 2</button>
+      <button class="btn-ghost" data-reset="t2">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t3">
+    <div class="block-head"><h2>Task 3</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The singer will <span class="ex-ans"><span class="pre">re</span><span class="stem">appear</span></span> on stage after a short break.</span></li>
+<li><span class="q-body">Could we <input class="ans" type="text" id="a-3-0" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 3 question 2"><span class="key"></span> our lunch for Thursday? I have a meeting on Wednesday.</span></li>
+<li><span class="q-body">There was a <input class="ans" type="text" id="a-3-1" data-answer="misunderstanding" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 3 question 3"><span class="key"></span> about the date, so I arrived a day early.</span></li>
+<li><span class="q-body">The passengers were asked to leave the train because they were <input class="ans" type="text" id="a-3-2" data-answer="misbehaving" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 3 question 4"><span class="key"></span> and shouting at the staff.</span></li>
+<li><span class="q-body">It is very <input class="ans" type="text" id="a-3-3" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 3 question 5"><span class="key"></span> to have no shop near our house.</span></li>
+<li><span class="q-body">The hotel room was <input class="ans" type="text" id="a-3-4" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 3 question 6"><span class="key"></span>, so we looked for a cheaper one.</span></li>
+<li><span class="q-body">If you keep <input class="ans" type="text" id="a-3-5" data-answer="overspending" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 3 question 7"><span class="key"></span> like this, you'll run out of money before the end of the month.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t3">Check Task 3</button>
+      <button class="btn-ghost" data-reset="t3">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t4">
+    <div class="block-head"><h2>Task 4</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The rash <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> two days after the treatment ended.</span></li>
+<li><span class="q-body">He tends to <input class="ans" type="text" id="a-4-0" data-answer="overspend" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 4 question 2"><span class="key"></span> on gadgets, so he never has any savings.</span></li>
+<li><span class="q-body">A bus stop that is far from the school is <input class="ans" type="text" id="a-4-1" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 4 question 3"><span class="key"></span> for young children.</span></li>
+<li><span class="q-body">My sister wants to <input class="ans" type="text" id="a-4-2" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 4 question 4"><span class="key"></span> her bedroom to make it look bigger.</span></li>
+<li><span class="q-body">The boys were sent out of class because they <input class="ans" type="text" id="a-4-3" data-answer="misbehaved" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 4 question 5"><span class="key"></span> again.</span></li>
+<li><span class="q-body">Fresh fruit at that market is <input class="ans" type="text" id="a-4-4" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 4 question 6"><span class="key"></span> compared with other shops.</span></li>
+<li><span class="q-body">Many tourists <input class="ans" type="text" id="a-4-5" data-answer="misunderstand" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 4 question 7"><span class="key"></span> the local customs and offend people by accident.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t4">Check Task 4</button>
+      <button class="btn-ghost" data-reset="t4">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t5">
+    <div class="block-head"><h2>Task 5</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The bird <span class="ex-ans"><span class="pre">re</span><span class="stem">appears</span></span> in our garden every spring.</span></li>
+<li><span class="q-body">It is very <input class="ans" type="text" id="a-5-0" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 5 question 2"><span class="key"></span> that the lift is out of order today.</span></li>
+<li><span class="q-body">I <input class="ans" type="text" id="a-5-1" data-answer="overspent" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 5 question 3"><span class="key"></span> at the sale yesterday and now I can't pay my rent.</span></li>
+<li><span class="q-body">Her dog is well trained and never <input class="ans" type="text" id="a-5-2" data-answer="misbehaves" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 5 question 4"><span class="key"></span> in public.</span></li>
+<li><span class="q-body">The manager <input class="ans" type="text" id="a-5-3" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 5 question 5"><span class="key"></span> my question and gave a completely different answer.</span></li>
+<li><span class="q-body">Customers said the small cup of coffee was <input class="ans" type="text" id="a-5-4" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 5 question 6"><span class="key"></span>.</span></li>
+<li><span class="q-body">Sorry, I have to <input class="ans" type="text" id="a-5-5" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 5 question 7"><span class="key"></span> our appointment because my car broke down.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t5">Check Task 5</button>
+      <button class="btn-ghost" data-reset="t5">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t6">
+    <div class="block-head"><h2>Task 6</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The website <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> online after the technical problem was fixed.</span></li>
+<li><span class="q-body">Some fans <input class="ans" type="text" id="a-6-0" data-answer="misbehaved" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 6 question 2"><span class="key"></span> during the match, so the police had to come.</span></li>
+<li><span class="q-body">They will <input class="ans" type="text" id="a-6-1" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 6 question 3"><span class="key"></span> the furniture when the new sofa arrives.</span></li>
+<li><span class="q-body">The train times are <input class="ans" type="text" id="a-6-2" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 6 question 4"><span class="key"></span> for people who live in villages.</span></li>
+<li><span class="q-body">Students who <input class="ans" type="text" id="a-6-3" data-answer="overspend" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 6 question 5"><span class="key"></span> in the first week often have no money left.</span></li>
+<li><span class="q-body">We didn't buy the <input class="ans" type="text" id="a-6-4" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 6 question 6"><span class="key"></span> jacket because it cost more than a coat.</span></li>
+<li><span class="q-body">You must have <input class="ans" type="text" id="a-6-5" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 6 question 7"><span class="key"></span> the instructions; the answer is not 'yes'.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t6"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t6">Check Task 6</button>
+      <button class="btn-ghost" data-reset="t6">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t7">
+    <div class="block-head"><h2>Task 7</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">My lost earring suddenly <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> in my coat pocket.</span></li>
+<li><span class="q-body">It was all a big <input class="ans" type="text" id="a-7-0" data-answer="misunderstanding" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 7 question 2"><span class="key"></span>, and we are still good friends.</span></li>
+<li><span class="q-body">Would you help me <input class="ans" type="text" id="a-7-1" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 7 question 3"><span class="key"></span> the books so the big ones are at the bottom?</span></li>
+<li><span class="q-body">The teacher warned the class not to <input class="ans" type="text" id="a-7-2" data-answer="misbehave" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 7 question 4"><span class="key"></span> while she was away.</span></li>
+<li><span class="q-body">Mia is careful with money and never <input class="ans" type="text" id="a-7-3" data-answer="overspends" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 7 question 5"><span class="key"></span>.</span></li>
+<li><span class="q-body">The tourists paid too much for the <input class="ans" type="text" id="a-7-4" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 7 question 6"><span class="key"></span> souvenirs.</span></li>
+<li><span class="q-body">I'm sorry to call so late – is it an <input class="ans" type="text" id="a-7-5" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 7 question 7"><span class="key"></span> time to talk?</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t7"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t7">Check Task 7</button>
+      <button class="btn-ghost" data-reset="t7">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t8">
+    <div class="block-head"><h2>Task 8</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The pain will <span class="ex-ans"><span class="pre">re</span><span class="stem">appear</span></span> if you stop taking the medicine.</span></li>
+<li><span class="q-body">We <input class="ans" type="text" id="a-8-0" data-answer="overspent" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 8 question 2"><span class="key"></span> on food during the trip, so we ate at home for a week.</span></li>
+<li><span class="q-body">The message was so unclear that many people <input class="ans" type="text" id="a-8-1" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 8 question 3"><span class="key"></span> it.</span></li>
+<li><span class="q-body">My nephew <input class="ans" type="text" id="a-8-2" data-answer="misbehaves" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 8 question 4"><span class="key"></span> in shops when he is tired.</span></li>
+<li><span class="q-body">Why are these plain T-shirts so <input class="ans" type="text" id="a-8-3" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 8 question 5"><span class="key"></span>?</span></li>
+<li><span class="q-body">The company plans to <input class="ans" type="text" id="a-8-4" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 8 question 6"><span class="key"></span> its offices to save space.</span></li>
+<li><span class="q-body">The new schedule is <input class="ans" type="text" id="a-8-5" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 8 question 7"><span class="key"></span> for parents who finish work at six.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t8"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t8">Check Task 8</button>
+      <button class="btn-ghost" data-reset="t8">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t9">
+    <div class="block-head"><h2>Task 9</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The old song <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> in the charts after thirty years.</span></li>
+<li><span class="q-body">I'm sorry, I <input class="ans" type="text" id="a-9-0" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 9 question 2"><span class="key"></span> what you said. Could you repeat it?</span></li>
+<li><span class="q-body">Parking is very <input class="ans" type="text" id="a-9-1" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 9 question 3"><span class="key"></span> near the station, so I take the bus.</span></li>
+<li><span class="q-body">It's easy to <input class="ans" type="text" id="a-9-2" data-answer="overspend" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 9 question 4"><span class="key"></span> when you shop online at night.</span></li>
+<li><span class="q-body">The shirts in this shop are <input class="ans" type="text" id="a-9-3" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 9 question 5"><span class="key"></span>, so I never buy anything there.</span></li>
+<li><span class="q-body">I am going to <input class="ans" type="text" id="a-9-4" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 9 question 6"><span class="key"></span> my schedule so I can meet you on Friday.</span></li>
+<li><span class="q-body">The guests <input class="ans" type="text" id="a-9-5" data-answer="misbehaved" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 9 question 7"><span class="key"></span> so badly that the manager asked them to leave.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t9"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t9">Check Task 9</button>
+      <button class="btn-ghost" data-reset="t9">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t10">
+    <div class="block-head"><h2>Task 10</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">Her smile <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> when she saw her friends.</span></li>
+<li><span class="q-body">She promised not to <input class="ans" type="text" id="a-10-0" data-answer="overspend" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 10 question 2"><span class="key"></span> this month.</span></li>
+<li><span class="q-body">If you <input class="ans" type="text" id="a-10-1" data-answer="misbehave" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 10 question 3"><span class="key"></span> in an exam, you may be sent out.</span></li>
+<li><span class="q-body">Many people <input class="ans" type="text" id="a-10-2" data-answer="misunderstand" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 10 question 4"><span class="key"></span> how the new system works.</span></li>
+<li><span class="q-body">The bag was so <input class="ans" type="text" id="a-10-3" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 10 question 5"><span class="key"></span> that we left without buying it.</span></li>
+<li><span class="q-body">A restaurant without a car park is <input class="ans" type="text" id="a-10-4" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 10 question 6"><span class="key"></span> for large families.</span></li>
+<li><span class="q-body">We can <input class="ans" type="text" id="a-10-5" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 10 question 7"><span class="key"></span> the room if you don't like the layout.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t10"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t10">Check Task 10</button>
+      <button class="btn-ghost" data-reset="t10">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t11">
+    <div class="block-head"><h2>Task 11</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The mountain <span class="ex-ans"><span class="pre">re</span><span class="stem">appears</span></span> from the mist every morning.</span></li>
+<li><span class="q-body">Children often <input class="ans" type="text" id="a-11-0" data-answer="misbehave" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 11 question 2"><span class="key"></span> when they feel ignored.</span></li>
+<li><span class="q-body">My brother <input class="ans" type="text" id="a-11-1" data-answer="overspends" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 11 question 3"><span class="key"></span> every December on presents.</span></li>
+<li><span class="q-body">I hope you don't <input class="ans" type="text" id="a-11-2" data-answer="misunderstand" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 11 question 4"><span class="key"></span> my advice as criticism.</span></li>
+<li><span class="q-body">Luxury watches are often <input class="ans" type="text" id="a-11-3" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 11 question 5"><span class="key"></span> for what they really are.</span></li>
+<li><span class="q-body">The organisers had to <input class="ans" type="text" id="a-11-4" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 11 question 6"><span class="key"></span> the schedule because of the rain.</span></li>
+<li><span class="q-body">I found the hotel <input class="ans" type="text" id="a-11-5" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 11 question 7"><span class="key"></span> because it was so far from the centre.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t11"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t11">Check Task 11</button>
+      <button class="btn-ghost" data-reset="t11">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t12">
+    <div class="block-head"><h2>Task 12</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The stain <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> after we washed the shirt.</span></li>
+<li><span class="q-body">Let's <input class="ans" type="text" id="a-12-0" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 12 question 2"><span class="key"></span> the meeting for next Monday.</span></li>
+<li><span class="q-body">A simple <input class="ans" type="text" id="a-12-1" data-answer="misunderstanding" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 12 question 3"><span class="key"></span> can cause an argument between friends.</span></li>
+<li><span class="q-body">The team captain was fined for <input class="ans" type="text" id="a-12-2" data-answer="misbehaving" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 12 question 4"><span class="key"></span> during the match.</span></li>
+<li><span class="q-body">They <input class="ans" type="text" id="a-12-3" data-answer="overspent" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 12 question 5"><span class="key"></span> so much on the wedding that they had debts for years.</span></li>
+<li><span class="q-body">At fifty dollars, a plain cheese pizza is <input class="ans" type="text" id="a-12-4" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 12 question 6"><span class="key"></span>.</span></li>
+<li><span class="q-body">It's a bit <input class="ans" type="text" id="a-12-5" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 12 question 7"><span class="key"></span> to come to your house because there is no direct bus.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t12"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t12">Check Task 12</button>
+      <button class="btn-ghost" data-reset="t12">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t13">
+    <div class="block-head"><h2>Task 13</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The lost files <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> on the server this morning.</span></li>
+<li><span class="q-body">The reviewer called the new phone <input class="ans" type="text" id="a-13-0" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 13 question 2"><span class="key"></span> and not worth buying.</span></li>
+<li><span class="q-body">The delivery time was <input class="ans" type="text" id="a-13-1" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 13 question 3"><span class="key"></span>, so I asked them to come in the evening.</span></li>
+<li><span class="q-body">You will <input class="ans" type="text" id="a-13-2" data-answer="overspend" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 13 question 4"><span class="key"></span> if you don't write down what you buy.</span></li>
+<li><span class="q-body">She likes to <input class="ans" type="text" id="a-13-3" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 13 question 5"><span class="key"></span> her flowers every week to keep the room fresh.</span></li>
+<li><span class="q-body">Sam <input class="ans" type="text" id="a-13-4" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 13 question 6"><span class="key"></span> the rules of the game, so he lost points.</span></li>
+<li><span class="q-body">Dogs that are not trained often <input class="ans" type="text" id="a-13-5" data-answer="misbehave" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 13 question 7"><span class="key"></span> when guests visit.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t13"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t13">Check Task 13</button>
+      <button class="btn-ghost" data-reset="t13">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t14">
+    <div class="block-head"><h2>Task 14</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The moon <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> from behind the clouds.</span></li>
+<li><span class="q-body">I'd never pay thirty dollars for a <input class="ans" type="text" id="a-14-0" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 14 question 2"><span class="key"></span> sandwich like that.</span></li>
+<li><span class="q-body">The clinic is open only in the mornings, which is <input class="ans" type="text" id="a-14-1" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 14 question 3"><span class="key"></span> for students.</span></li>
+<li><span class="q-body">My grandmother often <input class="ans" type="text" id="a-14-2" data-answer="misunderstands" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 14 question 4"><span class="key"></span> the questions in surveys.</span></li>
+<li><span class="q-body">They will <input class="ans" type="text" id="a-14-3" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 14 question 5"><span class="key"></span> the timetable after the school holidays.</span></li>
+<li><span class="q-body">I was surprised that such a polite boy could <input class="ans" type="text" id="a-14-4" data-answer="misbehave" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 14 question 6"><span class="key"></span> like that.</span></li>
+<li><span class="q-body">Try not to <input class="ans" type="text" id="a-14-5" data-answer="overspend" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 14 question 7"><span class="key"></span> on snacks at the cinema.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t14"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t14">Check Task 14</button>
+      <button class="btn-ghost" data-reset="t14">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-t15">
+    <div class="block-head"><h2>Task 15</h2><span class="block-count">6 blanks</span></div>
+    <p class="directions"><b>Complete the sentences with the correct form of the words from the box.</b></p>
+    <p class="prefixes">Use the prefixes: <b>in-, over-, mis-</b> or <b><s>re-</s></b></p>
+    <div class="wordbox"><span class="chip used">appear</span><span class="chip">arrange</span><span class="chip">behave</span><span class="chip">convenient</span><span class="chip">priced</span><span class="chip">spend</span><span class="chip">understand</span></div>
+    <ol class="qs">
+      <li><span class="q-body">The pop star <span class="ex-ans"><span class="pre">re</span><span class="stem">appeared</span></span> in public after six months.</span></li>
+<li><span class="q-body">Many visitors think the entry fee is <input class="ans" type="text" id="a-15-0" data-answer="overpriced" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 15 question 2"><span class="key"></span>.</span></li>
+<li><span class="q-body">We need to <input class="ans" type="text" id="a-15-1" data-answer="rearrange" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 15 question 3"><span class="key"></span> the seats because more guests are coming.</span></li>
+<li><span class="q-body">The email was not clear, so I <input class="ans" type="text" id="a-15-2" data-answer="misunderstood" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 15 question 4"><span class="key"></span> what to do.</span></li>
+<li><span class="q-body">I know it's <input class="ans" type="text" id="a-15-3" data-answer="inconvenient" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 15 question 5"><span class="key"></span>, but could you come back tomorrow?</span></li>
+<li><span class="q-body">The pupils were <input class="ans" type="text" id="a-15-4" data-answer="misbehaving" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 15 question 6"><span class="key"></span> so much that the substitute teacher gave up.</span></li>
+<li><span class="q-body">After <input class="ans" type="text" id="a-15-5" data-answer="overspending" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Task 15 question 7"><span class="key"></span> on holiday, they had to work extra hours.</span></li>
+    </ol>
+    <div class="task-feedback" id="fb-t15"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t15">Check Task 15</button>
+      <button class="btn-ghost" data-reset="t15">Clear section</button>
+    </div>
+  </section>
+  <div class="summary">
+    <div class="summary-label" id="totalPercent">0% answered</div>
+    <div class="summary-score" id="totalScore">0 / 90</div>
+    <div class="summary-label">total score</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check all tasks</button>
+      <button class="btn-ghost" id="resetAllBtn">Reset everything</button>
+    </div>
+  </div>
+</div>
+<footer class="note">Inter Nation · English Practice Sheet</footer>
+<script>
+(function(){
+  var N=15, TOTAL=N*6;
+  function norm(v){return (v||'').trim().toLowerCase();}
+  function inputs(g){return document.querySelectorAll('#section-'+g+' .ans');}
+  function check(g){
+    var ins=inputs(g), done=0, ok=0;
+    ins.forEach(function(el){
+      var key=el.parentNode.querySelector('.key');
+      el.classList.remove('correct','incorrect'); key.classList.remove('show'); key.textContent='';
+      if(!norm(el.value)) return;
+      done++;
+      if(norm(el.value)===el.dataset.answer){el.classList.add('correct');ok++;}
+      else{el.classList.add('incorrect');key.textContent=el.dataset.answer;key.classList.add('show');}
+    });
+    var fb=document.getElementById('fb-'+g);
+    if(done===0){fb.textContent='';fb.className='task-feedback';}
+    else if(done<ins.length){fb.textContent=(ins.length-done)+' blank(s) left to answer.';fb.className='task-feedback incomplete';}
+    else if(ok===ins.length){fb.textContent='All correct — nice work!';fb.className='task-feedback';}
+    else{fb.textContent=ok+' / '+ins.length+' correct. Wrong answers are marked, with the right one shown.';fb.className='task-feedback has-errors';}
+    update();
+  }
+  function reset(g){
+    inputs(g).forEach(function(el){el.value='';el.classList.remove('correct','incorrect');var k=el.parentNode.querySelector('.key');k.classList.remove('show');k.textContent='';});
+    var fb=document.getElementById('fb-'+g);fb.textContent='';fb.className='task-feedback';update();
+  }
+  function update(){
+    var s=0,a=0;
+    document.querySelectorAll('.ans').forEach(function(el){
+      if(norm(el.value)) a++;
+      if(el.classList.contains('correct')) s++;
+    });
+    document.getElementById('scoreTally').textContent=s+' / '+TOTAL;
+    document.getElementById('totalScore').textContent=s+' / '+TOTAL;
+    document.getElementById('progressFill').style.width=(a/TOTAL*100)+'%';
+    document.getElementById('totalPercent').textContent=Math.round(a/TOTAL*100)+'% answered';
+  }
+  document.querySelectorAll('.ans').forEach(function(el){
+    el.addEventListener('input',function(){
+      el.classList.remove('correct','incorrect');
+      var k=el.parentNode.querySelector('.key');k.classList.remove('show');
+      update();
+    });
+    el.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){check(el.closest('.block').id.replace('section-',''));}
+    });
+  });
+  document.querySelectorAll('[data-check]').forEach(function(b){b.addEventListener('click',function(){check(b.dataset.check);});});
+  document.querySelectorAll('[data-reset]').forEach(function(b){b.addEventListener('click',function(){reset(b.dataset.reset);});});
+  document.getElementById('checkAllBtn').addEventListener('click',function(){for(var i=1;i<=N;i++)check('t'+i);document.getElementById('section-t1').scrollIntoView({behavior:'smooth'});});
+  document.getElementById('resetAllBtn').addEventListener('click',function(){for(var i=1;i<=N;i++)reset('t'+i);});
+  update();
+})();
+</script>
+</body>
+</html>
