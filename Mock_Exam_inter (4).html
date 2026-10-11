@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mock Exam 4 – Grammar, Vocabulary, Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#141416; --yellow:#FFD530; --yellow-deep:#E7BC12;
+  --paper:#F3F3EF; --panel:#FFFFFF; --ink:#18181B; --soft:#5E5F64; --rule:#E2E1D9; --field:#F7F7F3; --fieldline:#C9C8BE;
+  --good:#1E8F52; --goodbg:#E6F5EB; --bad:#C8352C; --badbg:#FBEAE8; --focus:#2F62C9;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --black:#0B0B0C; --paper:#101012; --panel:#1A1A1D; --ink:#EEEEEA; --soft:#A5A6A1; --rule:#2F2F33; --field:#232327; --fieldline:#45454B;
+    --good:#58C98A; --goodbg:#16301F; --bad:#F0736A; --badbg:#3A1D1B; --focus:#7BA5FF;
+  }
+}
+:root[data-theme="dark"]{
+  --black:#0B0B0C; --paper:#101012; --panel:#1A1A1D; --ink:#EEEEEA; --soft:#A5A6A1; --rule:#2F2F33; --field:#232327; --fieldline:#45454B;
+  --good:#58C98A; --goodbg:#16301F; --bad:#F0736A; --badbg:#3A1D1B; --focus:#7BA5FF;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px); height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;scroll-padding-top:130px;min-height:100%;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;padding:clamp(12px,3vw,40px) clamp(10px,3vw,20px) 80px}
+.wrap{max-width:860px;margin:0 auto}body[data-tab=reading] .wrap{max-width:1120px}
+.sheet{margin:0 auto;background:var(--panel);border-radius:8px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 24px 48px -32px rgba(0,0,0,.4)}
+
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.masthead{position:relative;background:var(--black);color:#fff;padding:clamp(24px,5vw,40px) clamp(18px,5vw,44px) clamp(20px,4vw,28px);border-radius:8px 8px 0 0}
+.dots{position:absolute;top:22px;right:26px;display:grid;grid-template-columns:repeat(3,8px);gap:6px}.dots span{width:8px;height:8px;border-radius:50%;background:var(--yellow)}.dots span:nth-child(5){background:#fff}
+.masthead .kicker{margin:0 0 12px;font-size:13.5px;color:var(--yellow);font-weight:600}
+.masthead h1{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(28px,6.5vw,44px);line-height:1.05;margin:0 0 12px;letter-spacing:-.015em}
+.masthead p{margin:0;max-width:60ch;color:rgba(255,255,255,.76);font-size:15px}
+.weight{display:inline-block;margin-top:18px;background:var(--yellow);color:#141416;font-weight:800;font-size:15px;padding:6px 14px;border-radius:999px}
+.candidate{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:18px clamp(18px,5vw,44px);border-bottom:1px solid var(--rule)}
+.candidate label{display:block;font-size:13px;color:var(--soft);font-weight:600;margin-bottom:4px}
+.candidate input{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--fieldline);background:var(--field);color:var(--ink);border-radius:6px}
+@media (max-width:560px){.candidate{grid-template-columns:1fr 1fr}.candidate div:first-child{grid-column:1/-1}}
+.plan{padding:24px clamp(18px,5vw,44px) 8px}
+.plan h2{font-family:'Fraunces',Georgia,serif;font-size:21px;margin:0 0 4px}
+.plan .note{margin:0 0 14px;color:var(--soft);font-size:14px}
+.tablewrap{overflow-x:auto;max-width:100%;border:1px solid var(--rule);border-radius:8px}
+table.plan-table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.plan-table th,.plan-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+.plan-table th{font-size:13px;color:var(--soft);font-weight:700;background:var(--field)}
+.plan-table td.num,.plan-table th.num{text-align:right;white-space:nowrap}
+.plan-table td:first-child{white-space:nowrap}
+.plan-table tr.total td{font-weight:800;border-bottom:0;background:var(--field)}
+.plan-table td.yours{color:var(--good);font-weight:800}
+.plan-table .yourscol{display:none}
+
+.bar{display:flex;align-items:center;gap:14px;padding:10px clamp(14px,4vw,44px);background:var(--black);color:#fff;border-bottom:3px solid var(--yellow);font-size:14px}
+.bar .count{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.track{flex:1;height:6px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--yellow);transition:width .25s}
+.btn{font:inherit;font-weight:800;border:0;border-radius:8px;padding:9px 18px;cursor:pointer;background:var(--yellow);color:#141416}
+.btn:hover{background:var(--yellow-deep)}
+.btn.ghost{background:transparent;color:inherit;border:2px solid currentColor}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.exercise{padding:30px clamp(18px,5vw,44px) 10px;border-top:1px solid var(--rule)}
+.exercise:first-of-type{border-top:0}
+.ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:3px solid var(--yellow);padding-bottom:8px;margin-bottom:10px;width:100%}
+.ex-head h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,4.5vw,26px);margin:0;line-height:1.15}
+.ex-head .meta{font-size:13.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.instr{margin:0 0 18px;color:var(--soft);font-style:italic}
+.q{list-style:none;position:relative;margin:0 0 20px;padding-left:40px}
+.exercise ol{margin:0;padding:0}
+.qn{position:absolute;left:0;top:1px;min-width:28px;height:28px;padding:0 6px;border-radius:14px;background:var(--yellow);color:#141416;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center}
+.line{margin:0 0 6px}
+.line.ctx{color:var(--soft)}
+.line.stem{font-weight:500}
+.blank{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--fieldline);border-radius:6px;padding:4px 10px;margin:2px 4px;min-width:5ch;max-width:100%}
+.blank.wide{display:block;width:100%;margin:6px 0 0;padding:8px 12px}
+.hint{font-size:14px;color:var(--soft);margin-right:2px;font-weight:600}
+.opts{display:grid;gap:8px;margin-top:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--field);cursor:pointer}
+.opt:hover{border-color:var(--fieldline)}
+.opt input{margin:5px 0 0;accent-color:#141416}
+.opt .letter{min-width:22px;height:22px;border-radius:50%;background:var(--panel);border:1px solid var(--rule);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.opt:has(input:checked){border-color:var(--ink);background:var(--panel);box-shadow:inset 0 0 0 1px var(--ink)}
+.fb{display:none;margin-top:6px;font-size:14px;font-weight:600}
+.unit.is-wrong .fb{display:block;color:var(--bad)}
+.unit.is-right .fb{display:block;color:var(--good)}
+.unit.is-wrong .blank,.unit.is-wrong .opts,.unit.is-wrong select{outline:2px solid var(--bad);outline-offset:1px}
+.unit.is-right .blank,.unit.is-right select{outline:2px solid var(--good);outline-offset:1px}
+.unit.is-wrong .opt:has(input:checked){background:var(--badbg)}
+.unit.is-right .opt:has(input:checked){background:var(--goodbg)}
+.wordbox{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:14px;border:2px dashed var(--fieldline);border-radius:10px}
+.chip{background:var(--field);border:1px solid var(--rule);border-radius:999px;padding:3px 14px;font-weight:700}
+.passage{white-space:pre-line;line-height:2.1;margin:0 0 20px}
+.sel-unit{display:inline}
+.cn{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:11px;background:var(--yellow);color:#141416;font-size:12px;font-weight:800;margin:0 4px 0 2px;vertical-align:middle;padding:0 5px}
+select.cloze{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--fieldline);border-radius:6px;padding:3px 6px;vertical-align:middle}
+.sel-unit .fb{display:none;margin:0 0 0 4px}
+.sel-unit.is-wrong .fb,.sel-unit.is-right .fb{display:inline}
+.textbox{background:var(--field);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.textbox h3{font-family:'Fraunces',Georgia,serif;margin:0 0 8px;font-size:19px}
+.textbox p{margin:0 0 10px;line-height:1.7}
+.textbox p:last-child{margin:0}
+.result{margin:24px clamp(18px,5vw,44px);padding:24px;border-radius:10px;background:var(--black);color:#fff;display:none}
+.panel.submitted .result{display:block}
+.result .big{font-family:'Fraunces',Georgia,serif;font-size:clamp(40px,10vw,64px);font-weight:700;line-height:1;margin:0 0 6px}
+.result .big small{font-size:.4em;color:var(--yellow);font-weight:600;margin-left:8px}
+.result p{margin:0;color:rgba(255,255,255,.78)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;padding:8px clamp(18px,5vw,44px) 36px}
+.actions .btn.ghost{color:var(--ink)}
+.layout{display:block}
+@media (min-width:980px){
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+  .layout .left{position:sticky;top:calc(var(--tabh,72px) + 56px);align-self:start;max-height:calc(100vh - var(--tabh,72px) - 76px);overflow:auto;border-right:1px solid var(--rule)}
+}
+@media print{.bar,.actions,.tabs{display:none}.panel[hidden]{display:none}body{background:#fff;padding:0}.sheet{box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+.gbar{margin-top:6px;border-radius:12px;border-bottom:3px solid var(--yellow);box-shadow:0 10px 24px -14px rgba(0,0,0,.6);padding:8px 8px 8px 16px}
+.gbar .btn{padding:8px 16px}
+.results{background:var(--black);color:#fff;border-radius:12px;padding:clamp(20px,5vw,36px);margin:0 0 12px}
+.results[hidden]{display:none}
+.res-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.results h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(26px,6vw,38px);margin:0;line-height:1.1}
+.results .who{margin:0 0 6px;color:var(--yellow);font-weight:700;font-size:14px}
+.verdict{font-weight:800;font-size:clamp(22px,6vw,34px);letter-spacing:.04em;padding:10px 26px;border-radius:12px;color:#fff;border:3px solid #fff}
+.verdict.pass{background:#1E8F52}
+.verdict.fail{background:#C8352C}
+.res-total{margin:22px 0 4px;font-family:'Fraunces',Georgia,serif;font-size:clamp(40px,10vw,64px);font-weight:700;line-height:1}
+.res-total small{font-size:.38em;color:var(--yellow);font-weight:600;margin-left:8px}
+.res-sub{margin:0 0 22px;color:rgba(255,255,255,.75)}
+.res-row{display:grid;grid-template-columns:minmax(90px,1fr) 2fr auto;gap:6px 14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.18)}
+.res-row b{font-size:16px}
+.res-row .meter{height:8px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden}
+.res-row .meter i{display:block;height:100%;background:var(--yellow);width:0}
+.res-row .val{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.res-note{margin:16px 0 0;font-size:14px;color:rgba(255,255,255,.7)}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal[hidden]{display:none}
+.dlg{background:var(--panel);color:var(--ink);border-radius:12px;max-width:440px;width:100%;padding:24px;border-top:6px solid var(--yellow)}
+.dlg h3{font-family:'Fraunces',Georgia,serif;font-size:24px;margin:0 0 8px}
+.dlg p{margin:0 0 8px;color:var(--soft)}
+.dlg .warn{color:var(--bad);font-weight:700}
+.dlg .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.dlg .btn.ghost{color:var(--ink)}
+.exam-done .actions{display:none}
+.tabs-wrap{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);margin:0 0 12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--black);border-radius:12px;padding:6px;box-shadow:0 10px 24px -14px rgba(0,0,0,.6)}
+.tab{font:inherit;border:0;background:transparent;color:#A8A8AC;border-radius:8px;padding:10px 6px;cursor:pointer;text-align:center;line-height:1.25;min-width:0}
+.tab b{display:block;font-size:clamp(14px,3.6vw,17px);font-weight:800}
+.tab span{display:block;font-size:clamp(11px,2.8vw,13px);color:#77777C;font-weight:600;font-variant-numeric:tabular-nums}
+.tab:hover{background:rgba(255,255,255,.06)}
+.tab[aria-selected=true]{background:var(--yellow);color:#141416}
+.tab[aria-selected=true] span{color:#5B4A00}
+.tab:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.panel[hidden]{display:none}
+
+/*enhance*/
+.chip{font:inherit;color:inherit}
+.chip.pick{cursor:pointer;transition:border-color .15s,opacity .15s}
+.chip.pick:hover{border-color:var(--ink)}
+.chip.pick.used{opacity:.45;text-decoration:line-through}
+.exam-done .chip.pick{cursor:default;pointer-events:none}
+.pickhint{margin:-6px 0 10px;font-size:14px;color:var(--soft)}
+.hl-bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px clamp(18px,4vw,36px);background:var(--panel);border-bottom:1px solid var(--rule)}
+.hl-bar .lbl{font-weight:700;font-size:14px;margin-right:2px}
+.hl-btn{font:inherit;font-size:14px;font-weight:700;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:8px;padding:4px 12px;cursor:pointer;user-select:none;-webkit-user-select:none}
+
+.hl-btn:hover{filter:brightness(.95)}
+.hl-note{flex:1 1 220px;margin:0;font-size:13px;color:var(--soft)}
+mark.hl{background:#FFE066;color:#141416;border-radius:3px;padding:0 1px;cursor:pointer}
+mark.hl:hover{background:#FFC700}
+
+/*enhance2*/
+.hl-tip{margin:0;padding:12px clamp(18px,5vw,44px) 0;font-size:14px;color:var(--soft)}
+.gbar .hl-btn{color:#fff;border-color:rgba(255,255,255,.55);padding:4px 10px;font-size:13px;white-space:nowrap}
+.gbar .hl-btn[hidden]{display:none}
+@media (max-width:520px){.gbar{flex-wrap:wrap}.gbar .track{order:5;flex-basis:100%}}
+</style>
+</head>
+<body data-tab="grammar">
+<div class="wrap">
+  <section class="results" id="results" tabindex="-1" aria-live="polite" hidden>
+    <div class="res-top"><div><p class="who" id="who"></p><h2>Your results</h2></div><div class="verdict" id="verdict"></div></div>
+    <p class="res-total"><span id="tot-score">0.0</span><small id="tot-max"></small></p>
+    <p class="res-sub" id="res-sub"></p>
+    <div id="res-rows"></div>
+    <p class="res-note">Your answers are now locked. Open the tabs below to see the correct answers.</p>
+  </section>
+  <div class="tabs-wrap">
+    <nav class="tabs" role="tablist" aria-label="Exam sections"><button class="tab" role="tab" id="tab-grammar" data-target="grammar" aria-controls="grammar" aria-selected="false"><b>Grammar</b><span>Part 1 · 50 items</span></button><button class="tab" role="tab" id="tab-vocab" data-target="vocab" aria-controls="vocab" aria-selected="false"><b>Vocabulary</b><span>Part 2 · 36 items</span></button><button class="tab" role="tab" id="tab-reading" data-target="reading" aria-controls="reading" aria-selected="false"><b>Reading</b><span>Part 3 · 10 items</span></button></nav>
+    <div class="bar gbar"><span class="count" id="count">Answered 0 / 96</span><div class="track"><div class="fill" id="fill"></div></div><button type="button" class="hl-btn" id="hl-clear" hidden>Clear highlights</button><button class="btn" id="submit" type="button">Submit exam</button></div>
+  </div>
+  <section class="panel" id="grammar" role="tabpanel" aria-label="Grammar" data-nq="50">
+<div class="sheet">
+  <header class="masthead">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="kicker">Mock exam 4 · Part 1 of 3</p>
+    <h1>Grammar</h1>
+    <p>Answer all 50 questions. Each correct answer earns 0.5 marks. Spelling counts.</p>
+    <span class="weight">25% of the exam</span>
+  </header>
+  <div class="candidate">
+    <div><label>Name</label><input data-f="nm" type="text" autocomplete="off"></div>
+    <div><label>Group</label><input data-f="gr" type="text" autocomplete="off"></div>
+    <div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div>
+  </div>
+  <section class="exercise" id="ex1"><div class="ex-head"><h2>1. Passive voice</h2><span class="meta">Questions 1–5 · 2.5 marks</span></div><p class="instr">Complete the sentences so that the second sentence has the same meaning as the first. Use the passive form.</p><ol><li class="q unit" data-kind="fill" data-ex="ex1" data-marks="5"><span class="qn">1</span><div class="line ctx">A: Shakespeare wrote many famous plays.</div><div class="line stem">B: Many famous plays <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;were written&quot;]" style="width:26ch" aria-label="answer"> by Shakespeare.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex1" data-marks="5"><span class="qn">2</span><div class="line ctx">A: They haven&#x27;t finished the construction yet.</div><div class="line stem">B: The construction <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;hasn&#x27;t been finished&quot;]" style="width:26ch" aria-label="answer"> yet.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex1" data-marks="5"><span class="qn">3</span><div class="line ctx">A: The company will launch the product in September.</div><div class="line stem">B: The product <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;will be launched&quot;]" style="width:26ch" aria-label="answer"> in September.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex1" data-marks="5"><span class="qn">4</span><div class="line ctx">A: Someone had cleaned the office before the visitors arrived.</div><div class="line stem">B: The office <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had been cleaned&quot;]" style="width:26ch" aria-label="answer"> before the visitors arrived.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex1" data-marks="5"><span class="qn">5</span><div class="line ctx">A: They can solve this problem easily.</div><div class="line stem">B: This problem <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;can be solved&quot;]" style="width:26ch" aria-label="answer"> easily.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex2"><div class="ex-head"><h2>2. If / unless + will / won’t</h2><span class="meta">Questions 6–10 · 2.5 marks</span></div><p class="instr">Complete the sentences with if / unless / will / won’t.</p><ol><li class="q unit" data-kind="fill" data-ex="ex2" data-marks="5"><span class="qn">6</span><div class="line">We <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;won&#x27;t&quot;]" style="width:16ch" aria-label="answer"> order a taxi unless the buses stop running.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex2" data-marks="5"><span class="qn">7</span><div class="line"> <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;if&quot;]" style="width:16ch" aria-label="answer"> you study regularly, you&#x27;ll find the final exam easier.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex2" data-marks="5"><span class="qn">8</span><div class="line">If the weather is nice this weekend, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;will&quot;]" style="width:16ch" aria-label="answer"> go hiking.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex2" data-marks="5"><span class="qn">9</span><div class="line">You <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;won&#x27;t&quot;]" style="width:16ch" aria-label="answer"> improve your pronunciation unless you practise speaking aloud.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex2" data-marks="5"><span class="qn">10</span><div class="line">He <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;will&quot;]" style="width:16ch" aria-label="answer"> feel better if he gets some rest.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex3"><div class="ex-head"><h2>3. Direct and indirect questions (A)</h2><span class="meta">Questions 11–15 · 2.5 marks</span></div><p class="instr">Choose the correct option.</p><ol><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="1"><span class="qn">11</span><div class="line stem">You want to know when the lesson starts.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-11" value="0"><span class="letter">a</span><span>Do you know when does the lesson start?</span></label><label class="opt"><input type="radio" name="qex3-11" value="1"><span class="letter">b</span><span>Do you know when the lesson starts?</span></label><label class="opt"><input type="radio" name="qex3-11" value="2"><span class="letter">c</span><span>Do you know when starts the lesson?</span></label><label class="opt"><input type="radio" name="qex3-11" value="3"><span class="letter">d</span><span>Do you know when the lesson does start?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="1"><span class="qn">12</span><div class="line stem">You want to know why Anna is late.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-12" value="0"><span class="letter">a</span><span>Do you know why is Anna late?</span></label><label class="opt"><input type="radio" name="qex3-12" value="1"><span class="letter">b</span><span>Do you know why Anna is late?</span></label><label class="opt"><input type="radio" name="qex3-12" value="2"><span class="letter">c</span><span>Do you know why Anna she is late?</span></label><label class="opt"><input type="radio" name="qex3-12" value="3"><span class="letter">d</span><span>Do you know why does Anna late?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="0"><span class="qn">13</span><div class="line stem">You want to know where the meeting will take place.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-13" value="0"><span class="letter">a</span><span>Can you tell me where the meeting will take place?</span></label><label class="opt"><input type="radio" name="qex3-13" value="1"><span class="letter">b</span><span>Can you tell me where will the meeting take place?</span></label><label class="opt"><input type="radio" name="qex3-13" value="2"><span class="letter">c</span><span>Can you tell me where does the meeting take place?</span></label><label class="opt"><input type="radio" name="qex3-13" value="3"><span class="letter">d</span><span>Can you tell me where the meeting will takes place?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="2"><span class="qn">14</span><div class="line stem">You want to know whether Sarah has been to Italy.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-14" value="0"><span class="letter">a</span><span>Do you know has Sarah been to Italy?</span></label><label class="opt"><input type="radio" name="qex3-14" value="1"><span class="letter">b</span><span>Do you know if Sarah been to Italy?</span></label><label class="opt"><input type="radio" name="qex3-14" value="2"><span class="letter">c</span><span>Do you know if Sarah has been to Italy?</span></label><label class="opt"><input type="radio" name="qex3-14" value="3"><span class="letter">d</span><span>Do you know if has Sarah been to Italy?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="3"><span class="qn">15</span><div class="line stem">You want to know what time the shop closes.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-15" value="0"><span class="letter">a</span><span>Could you tell me what time closes the shop?</span></label><label class="opt"><input type="radio" name="qex3-15" value="1"><span class="letter">b</span><span>Could you tell me what time does the shop close?</span></label><label class="opt"><input type="radio" name="qex3-15" value="2"><span class="letter">c</span><span>Could you tell me what time the shop does close?</span></label><label class="opt"><input type="radio" name="qex3-15" value="3"><span class="letter">d</span><span>Could you tell me what time the shop closes?</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex4"><div class="ex-head"><h2>4. Direct and indirect questions (B)</h2><span class="meta">Questions 16–20 · 2.5 marks</span></div><p class="instr">Choose the correct option.</p><ol><li class="q unit" data-kind="mc" data-ex="ex4" data-marks="5" data-ans="1"><span class="qn">16</span><div class="line stem">You want to know why he left early.</div><div class="opts"><label class="opt"><input type="radio" name="qex4-16" value="0"><span class="letter">a</span><span>Do you know why he did leave early?</span></label><label class="opt"><input type="radio" name="qex4-16" value="1"><span class="letter">b</span><span>Do you know why he left early?</span></label><label class="opt"><input type="radio" name="qex4-16" value="2"><span class="letter">c</span><span>Do you know why did he leave early?</span></label><label class="opt"><input type="radio" name="qex4-16" value="3"><span class="letter">d</span><span>Do you know why left he early?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex4" data-marks="5" data-ans="3"><span class="qn">17</span><div class="line stem">You want to know how much the computer costs.</div><div class="opts"><label class="opt"><input type="radio" name="qex4-17" value="0"><span class="letter">a</span><span>Do you know how much does the computer cost?</span></label><label class="opt"><input type="radio" name="qex4-17" value="1"><span class="letter">b</span><span>Do you know how much costs the computer?</span></label><label class="opt"><input type="radio" name="qex4-17" value="2"><span class="letter">c</span><span>Do you know how much the computer does cost?</span></label><label class="opt"><input type="radio" name="qex4-17" value="3"><span class="letter">d</span><span>Do you know how much the computer costs?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex4" data-marks="5" data-ans="2"><span class="qn">18</span><div class="line stem">You want to know what she wants.</div><div class="opts"><label class="opt"><input type="radio" name="qex4-18" value="0"><span class="letter">a</span><span>Can you tell me what wants she?</span></label><label class="opt"><input type="radio" name="qex4-18" value="1"><span class="letter">b</span><span>Can you tell me what she does want?</span></label><label class="opt"><input type="radio" name="qex4-18" value="2"><span class="letter">c</span><span>Can you tell me what she wants?</span></label><label class="opt"><input type="radio" name="qex4-18" value="3"><span class="letter">d</span><span>Can you tell me what does she want?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex4" data-marks="5" data-ans="3"><span class="qn">19</span><div class="line stem">You want to know how often he goes to the gym.</div><div class="opts"><label class="opt"><input type="radio" name="qex4-19" value="0"><span class="letter">a</span><span>Do you know how often goes he to the gym?</span></label><label class="opt"><input type="radio" name="qex4-19" value="1"><span class="letter">b</span><span>Do you know how often does he go to the gym?</span></label><label class="opt"><input type="radio" name="qex4-19" value="2"><span class="letter">c</span><span>Do you know how often he does go to the gym?</span></label><label class="opt"><input type="radio" name="qex4-19" value="3"><span class="letter">d</span><span>Do you know how often he goes to the gym?</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex4" data-marks="5" data-ans="2"><span class="qn">20</span><div class="line stem">You want to know if they have received your email.</div><div class="opts"><label class="opt"><input type="radio" name="qex4-20" value="0"><span class="letter">a</span><span>Do you know if have they received my email?</span></label><label class="opt"><input type="radio" name="qex4-20" value="1"><span class="letter">b</span><span>Do you know if they received have my email?</span></label><label class="opt"><input type="radio" name="qex4-20" value="2"><span class="letter">c</span><span>Do you know if they have received my email?</span></label><label class="opt"><input type="radio" name="qex4-20" value="3"><span class="letter">d</span><span>Do you know have they received my email?</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex5"><div class="ex-head"><h2>5. Third conditional (A)</h2><span class="meta">Questions 21–25 · 2.5 marks</span></div><p class="instr">Choose the correct option a–d to complete each sentence.</p><ol><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="1"><span class="qn">21</span><div class="line stem">If I had seen the warning sign, …</div><div class="opts"><label class="opt"><input type="radio" name="qex5-21" value="0"><span class="letter">a</span><span>I wouldn&#x27;t take that road.</span></label><label class="opt"><input type="radio" name="qex5-21" value="1"><span class="letter">b</span><span>I wouldn&#x27;t have taken that road.</span></label><label class="opt"><input type="radio" name="qex5-21" value="2"><span class="letter">c</span><span>I won&#x27;t take that road.</span></label><label class="opt"><input type="radio" name="qex5-21" value="3"><span class="letter">d</span><span>I don&#x27;t take that road.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="2"><span class="qn">22</span><div class="line stem">If they had booked earlier, …</div><div class="opts"><label class="opt"><input type="radio" name="qex5-22" value="0"><span class="letter">a</span><span>they would get cheaper tickets.</span></label><label class="opt"><input type="radio" name="qex5-22" value="1"><span class="letter">b</span><span>they get cheaper tickets.</span></label><label class="opt"><input type="radio" name="qex5-22" value="2"><span class="letter">c</span><span>they would have got cheaper tickets.</span></label><label class="opt"><input type="radio" name="qex5-22" value="3"><span class="letter">d</span><span>they will get cheaper tickets.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="0"><span class="qn">23</span><div class="line stem">We might have stayed longer …</div><div class="opts"><label class="opt"><input type="radio" name="qex5-23" value="0"><span class="letter">a</span><span>if the weather had been better.</span></label><label class="opt"><input type="radio" name="qex5-23" value="1"><span class="letter">b</span><span>if the weather is better.</span></label><label class="opt"><input type="radio" name="qex5-23" value="2"><span class="letter">c</span><span>if the weather would be better.</span></label><label class="opt"><input type="radio" name="qex5-23" value="3"><span class="letter">d</span><span>if the weather was better.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="3"><span class="qn">24</span><div class="line stem">They wouldn&#x27;t have missed the meeting …</div><div class="opts"><label class="opt"><input type="radio" name="qex5-24" value="0"><span class="letter">a</span><span>if they would check the time.</span></label><label class="opt"><input type="radio" name="qex5-24" value="1"><span class="letter">b</span><span>if they checked the time.</span></label><label class="opt"><input type="radio" name="qex5-24" value="2"><span class="letter">c</span><span>if they check the time.</span></label><label class="opt"><input type="radio" name="qex5-24" value="3"><span class="letter">d</span><span>if they had checked the time.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="0"><span class="qn">25</span><div class="line stem">She could have won the competition …</div><div class="opts"><label class="opt"><input type="radio" name="qex5-25" value="0"><span class="letter">a</span><span>if she had prepared more carefully.</span></label><label class="opt"><input type="radio" name="qex5-25" value="1"><span class="letter">b</span><span>if she prepares more carefully.</span></label><label class="opt"><input type="radio" name="qex5-25" value="2"><span class="letter">c</span><span>if she prepared more carefully.</span></label><label class="opt"><input type="radio" name="qex5-25" value="3"><span class="letter">d</span><span>if she would prepare more carefully.</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex6"><div class="ex-head"><h2>6. Third conditional (B)</h2><span class="meta">Questions 26–30 · 2.5 marks</span></div><p class="instr">Choose the correct option a–d to complete each sentence.</p><ol><li class="q unit" data-kind="mc" data-ex="ex6" data-marks="5" data-ans="0"><span class="qn">26</span><div class="line stem">He would have bought the car …</div><div class="opts"><label class="opt"><input type="radio" name="qex6-26" value="0"><span class="letter">a</span><span>if he had had enough money.</span></label><label class="opt"><input type="radio" name="qex6-26" value="1"><span class="letter">b</span><span>if he has enough money.</span></label><label class="opt"><input type="radio" name="qex6-26" value="2"><span class="letter">c</span><span>if he would have enough money.</span></label><label class="opt"><input type="radio" name="qex6-26" value="3"><span class="letter">d</span><span>if he had enough money.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex6" data-marks="5" data-ans="0"><span class="qn">27</span><div class="line stem">If I hadn&#x27;t seen the sign, …</div><div class="opts"><label class="opt"><input type="radio" name="qex6-27" value="0"><span class="letter">a</span><span>I would have turned left.</span></label><label class="opt"><input type="radio" name="qex6-27" value="1"><span class="letter">b</span><span>I will turn left.</span></label><label class="opt"><input type="radio" name="qex6-27" value="2"><span class="letter">c</span><span>I would turn left.</span></label><label class="opt"><input type="radio" name="qex6-27" value="3"><span class="letter">d</span><span>I turned left.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex6" data-marks="5" data-ans="1"><span class="qn">28</span><div class="line stem">If she had taken the medicine, …</div><div class="opts"><label class="opt"><input type="radio" name="qex6-28" value="0"><span class="letter">a</span><span>she would feel better.</span></label><label class="opt"><input type="radio" name="qex6-28" value="1"><span class="letter">b</span><span>she would have felt better.</span></label><label class="opt"><input type="radio" name="qex6-28" value="2"><span class="letter">c</span><span>she feels better.</span></label><label class="opt"><input type="radio" name="qex6-28" value="3"><span class="letter">d</span><span>she will feel better.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex6" data-marks="5" data-ans="1"><span class="qn">29</span><div class="line stem">We wouldn&#x27;t have missed the concert …</div><div class="opts"><label class="opt"><input type="radio" name="qex6-29" value="0"><span class="letter">a</span><span>if we would arrive earlier.</span></label><label class="opt"><input type="radio" name="qex6-29" value="1"><span class="letter">b</span><span>if we had arrived earlier.</span></label><label class="opt"><input type="radio" name="qex6-29" value="2"><span class="letter">c</span><span>if we arrived earlier.</span></label><label class="opt"><input type="radio" name="qex6-29" value="3"><span class="letter">d</span><span>if we arrive earlier.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex6" data-marks="5" data-ans="3"><span class="qn">30</span><div class="line stem">She might have stayed longer …</div><div class="opts"><label class="opt"><input type="radio" name="qex6-30" value="0"><span class="letter">a</span><span>if she wouldn&#x27;t have to work.</span></label><label class="opt"><input type="radio" name="qex6-30" value="1"><span class="letter">b</span><span>if she doesn&#x27;t have to work.</span></label><label class="opt"><input type="radio" name="qex6-30" value="2"><span class="letter">c</span><span>if she didn&#x27;t have to work.</span></label><label class="opt"><input type="radio" name="qex6-30" value="3"><span class="letter">d</span><span>if she hadn&#x27;t had to work.</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex7"><div class="ex-head"><h2>7. Reported speech</h2><span class="meta">Questions 31–35 · 2.5 marks</span></div><p class="instr">Report what each person said. Complete the second sentence.</p><ol><li class="q unit" data-kind="fill" data-ex="ex7" data-marks="5"><span class="qn">31</span><div class="line ctx">“We are having dinner now.”</div><div class="line stem">They said <input class="blank wide" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;they were having dinner then&quot;]" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex7" data-marks="5"><span class="qn">32</span><div class="line ctx">“I saw your brother yesterday.”</div><div class="line stem">She told me <input class="blank wide" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;she had seen my brother the day before&quot;]" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex7" data-marks="5"><span class="qn">33</span><div class="line ctx">“I have lost my wallet.”</div><div class="line stem">John said <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;he had lost his wallet&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex7" data-marks="5"><span class="qn">34</span><div class="line ctx">“You must wear a seat belt.”</div><div class="line stem">The policeman told us <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;we had to wear a seat belt&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex7" data-marks="5"><span class="qn">35</span><div class="line ctx">“Don’t make so much noise.”</div><div class="line stem">The teacher told the students <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;not to make so much noise&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex8"><div class="ex-head"><h2>8. Reported questions</h2><span class="meta">Questions 36–40 · 2.5 marks</span></div><p class="instr">Report each question. Complete the second sentence.</p><ol><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">36</span><div class="line ctx">“Can you drive?”</div><div class="line stem">He asked me <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;if I could drive&quot;, &quot;whether I could drive&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">37</span><div class="line ctx">“Where are you going?”</div><div class="line stem">She asked him <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;where he was going&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">38</span><div class="line ctx">“What did you buy at the shop?”</div><div class="line stem">My mother asked me <input class="blank wide" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;what I had bought at the shop&quot;]" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">39</span><div class="line ctx">“When are you going to leave?”</div><div class="line stem">He asked me <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;when I was going to leave&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">40</span><div class="line ctx">“Why haven&#x27;t you called me?”</div><div class="line stem">She asked him <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;why he hadn&#x27;t called her&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex9"><div class="ex-head"><h2>9. Should have / shouldn’t have</h2><span class="meta">Questions 41–45 · 2.5 marks</span></div><p class="instr">Read the text. Then complete each sentence with should have or shouldn’t have and the verb in capitals, in the correct form.</p><div class="textbox"><h3>Maria&#x27;s mountain trip</h3><p>Maria went on a short trip to the mountains with three of her friends last weekend. Before leaving, she checked the weather forecast and saw that the weather might become cold and rainy in the evening. However, she decided not to take a jacket because the morning was warm and sunny. After several hours of walking, the weather suddenly changed and it started raining heavily. Maria became cold because she was wearing only a light T-shirt. She also realized that her phone battery was almost empty because she had forgotten to charge it before leaving home. When she got separated from her friends for a short time, she couldn&#x27;t call them.</p></div><ol><li class="q unit" data-kind="fill" data-ex="ex9" data-marks="5"><span class="qn">41</span><div class="line">Maria <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;should have taken&quot;, &quot;should&#x27;ve taken&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(TAKE)</span> a jacket with her.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex9" data-marks="5"><span class="qn">42</span><div class="line">She <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;should have considered&quot;, &quot;should&#x27;ve considered&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(CONSIDER)</span> the weather forecast more seriously.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex9" data-marks="5"><span class="qn">43</span><div class="line">She <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;should have charged&quot;, &quot;should&#x27;ve charged&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(CHARGE)</span> her phone before leaving home.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex9" data-marks="5"><span class="qn">44</span><div class="line">She <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;shouldn&#x27;t have left&quot;, &quot;shouldn&#x27;t have left&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(LEAVE)</span> with such a low phone battery.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex9" data-marks="5"><span class="qn">45</span><div class="line">She <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;should have brought&quot;, &quot;should&#x27;ve brought&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(BRING)</span> warmer clothes for the evening.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex10"><div class="ex-head"><h2>10. Second conditional</h2><span class="meta">Questions 46–50 · 2.5 marks</span></div><p class="instr">Put the verbs in brackets into the correct form. Both gaps in a sentence must be correct to earn the mark.</p><ol><li class="q unit" data-kind="fill" data-ex="ex10" data-marks="5"><span class="qn">46</span><div class="line">If my parents <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;gave&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(give)</span> me more money, I <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would buy&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(buy)</span> a new phone.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex10" data-marks="5"><span class="qn">47</span><div class="line">She <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;wouldn&#x27;t be&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(not/be)</span> worried if she <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;knew&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(know)</span> what was happening.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex10" data-marks="5"><span class="qn">48</span><div class="line">If I <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(have)</span> a chance to meet a famous person, I <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would ask&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(ask)</span> them many questions.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex10" data-marks="5"><span class="qn">49</span><div class="line">He <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would play&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(play)</span> football professionally if he <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;were&quot;]" style="width:16ch" aria-label="answer"><span class="hint">(be)</span> younger.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex10" data-marks="5"><span class="qn">50</span><div class="line">If we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;didn&#x27;t live&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(not/live)</span> so far away, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would visit&quot;]" style="width:26ch" aria-label="answer"><span class="hint">(visit)</span> you more often.</div><div class="fb"></div></li></ol></section>
+  <div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section><section class="panel" id="vocab" role="tabpanel" aria-label="Vocabulary" data-nq="36">
+<div class="sheet">
+  <header class="masthead">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="kicker">Mock exam 4 · Part 2 of 3</p>
+    <h1>Vocabulary</h1>
+    <p>Answer all 36 questions: 0.2 marks per answer in exercise 1, 0.5 marks in exercises 2–4. Spelling counts.</p>
+    <span class="weight">15% of the exam</span>
+  </header>
+  <div class="candidate">
+    <div><label>Name</label><input data-f="nm" type="text" autocomplete="off"></div>
+    <div><label>Group</label><input data-f="gr" type="text" autocomplete="off"></div>
+    <div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div>
+  </div>
+  <section class="exercise" id="v1"><div class="ex-head"><h2>1. Have / take</h2><span class="meta">Questions 1–10 · 2.0 marks</span></div><p class="instr">Read the text and choose the correct word for each gap.</p><p class="passage">The company is planning a large meeting for all its employees. The meeting will <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="take"><span class="cn">1</span><select class="cloze" aria-label="Blank 1"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> place on Monday morning. The manager wants everyone to <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="take"><span class="cn">2</span><select class="cloze" aria-label="Blank 2"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> the meeting seriously because several important changes will be discussed. Employees are encouraged to <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="take"><span class="cn">3</span><select class="cloze" aria-label="Blank 3"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> advantage of the opportunity to ask questions. Some workers <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="have"><span class="cn">4</span><select class="cloze" aria-label="Blank 4"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> a feeling that the changes will affect their daily responsibilities, but others don’t <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="have"><span class="cn">5</span><select class="cloze" aria-label="Blank 5"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> a clue what will happen. During the meeting, employees will <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="take"><span class="cn">6</span><select class="cloze" aria-label="Blank 6"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> turns speaking to the manager. He reminds them to <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="take"><span class="cn">7</span><select class="cloze" aria-label="Blank 7"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> care of company equipment and not <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="take"><span class="cn">8</span><select class="cloze" aria-label="Blank 8"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> it for granted. One employee asks to <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="have"><span class="cn">9</span><select class="cloze" aria-label="Blank 9"><option value="">…</option><option value="have">have</option><option value="take">take</option></select><span class="fb"></span></span> a word with the manager after the meeting because she <span class="sel-unit unit" data-kind="sel" data-ex="v1" data-marks="2" data-ans="has"><span class="cn">10</span><select class="cloze" aria-label="Blank 10"><option value="">…</option><option value="has">has</option><option value="takes">takes</option></select><span class="fb"></span></span> difficulty understanding one of the new rules. The manager says he will be happy to explain it.</p></section><section class="exercise" id="v2"><div class="ex-head"><h2>2. Prefixes</h2><span class="meta">Questions 11–17 · 3.5 marks</span></div><p class="instr">Complete the sentences with the correct form of the words from the box.</p><p class="instr" style="margin-top:-8px">Use the prefixes <b>in-</b>, <b>over-</b>, <b>mis-</b> or <b>re-</b>.</p><p class="pickhint">Click a word to copy it into a gap, then add the prefix and change the ending if needed.</p><div class="wordbox"><button type="button" class="chip pick" data-word="appear">appear</button><button type="button" class="chip pick" data-word="arrange">arrange</button><button type="button" class="chip pick" data-word="behave">behave</button><button type="button" class="chip pick" data-word="convenient">convenient</button><button type="button" class="chip pick" data-word="priced">priced</button><button type="button" class="chip pick" data-word="spend">spend</button><button type="button" class="chip pick" data-word="understand">understand</button></div><ol><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">11</span><div class="line">The rash <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;reappeared&quot;]" style="width:16ch" aria-label="answer"> two days after the treatment ended.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">12</span><div class="line">He tends to <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;overspend&quot;]" style="width:16ch" aria-label="answer"> on gadgets, so he never has any savings.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">13</span><div class="line">A bus stop that is far from the school is <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;inconvenient&quot;]" style="width:26ch" aria-label="answer"> for young children.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">14</span><div class="line">My sister wants to <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;rearrange&quot;]" style="width:16ch" aria-label="answer"> her bedroom to make it look bigger.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">15</span><div class="line">The boys were sent out of class because they <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;misbehaved&quot;]" style="width:16ch" aria-label="answer"> again.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">16</span><div class="line">Fresh fruit at that market is <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;overpriced&quot;]" style="width:16ch" aria-label="answer"> compared with other shops.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">17</span><div class="line">Many tourists <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;misunderstand&quot;]" style="width:26ch" aria-label="answer"> the local customs and offend people by accident.</div><div class="fb"></div></li></ol></section><section class="exercise" id="v3"><div class="ex-head"><h2>3. Appearance</h2><span class="meta">Questions 18–28 · 5.5 marks</span></div><p class="instr">Complete the sentences with the words from the box. Use each word once.</p><p class="pickhint">Click a word to place it in a gap. Each word is used once.</p><div class="wordbox"><button type="button" class="chip pick" data-word="attractive">attractive</button><button type="button" class="chip pick" data-word="braces">braces</button><button type="button" class="chip pick" data-word="bright">bright</button><button type="button" class="chip pick" data-word="bun">bun</button><button type="button" class="chip pick" data-word="casual">casual</button><button type="button" class="chip pick" data-word="freckled">freckled</button><button type="button" class="chip pick" data-word="glasses">glasses</button><button type="button" class="chip pick" data-word="overweight">overweight</button><button type="button" class="chip pick" data-word="plait">plait</button><button type="button" class="chip pick" data-word="receding">receding</button><button type="button" class="chip pick" data-word="sideburns">sideburns</button></div><ol><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">18</span><div class="line">The little girl had her long hair in a <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;plait&quot;]" style="width:16ch" aria-label="answer"> down her back.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">19</span><div class="line">My father’s hairline is <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;receding&quot;]" style="width:16ch" aria-label="answer">, so he is worried about going bald.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">20</span><div class="line">He has long <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;sideburns&quot;]" style="width:16ch" aria-label="answer"> down the sides of his face, like a rock star.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">21</span><div class="line">She has a <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;freckled&quot;]" style="width:16ch" aria-label="answer"> face, with lots of tiny brown spots across her nose.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">22</span><div class="line">He wears <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;braces&quot;]" style="width:16ch" aria-label="answer"> on his teeth to make them straight.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">23</span><div class="line">I can’t read the small print without my <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;glasses&quot;]" style="width:16ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">24</span><div class="line">The doctor told him he was <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;overweight&quot;]" style="width:16ch" aria-label="answer"> and should do more exercise.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">25</span><div class="line">She is a very <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;attractive&quot;]" style="width:16ch" aria-label="answer"> woman with big green eyes and a lovely smile.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">26</span><div class="line">I never wear a suit at the weekend; I prefer <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;casual&quot;]" style="width:16ch" aria-label="answer"> clothes.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">27</span><div class="line">The ballet dancer wore her hair in a neat <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;bun&quot;]" style="width:16ch" aria-label="answer"> on top of her head.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">28</span><div class="line">She wore a <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;bright&quot;]" style="width:16ch" aria-label="answer"> red dress that everyone noticed.</div><div class="fb"></div></li></ol></section><section class="exercise" id="v4"><div class="ex-head"><h2>4. Work and employment</h2><span class="meta">Questions 29–36 · 4.0 marks</span></div><p class="instr">Choose the correct option to complete each sentence.</p><ol><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="1"><span class="qn">29</span><div class="line stem">I get paid a ………… of ten dollars an hour.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-29" value="0"><span class="letter">a</span><span>contract</span></label><label class="opt"><input type="radio" name="qv4-29" value="1"><span class="letter">b</span><span>wage</span></label><label class="opt"><input type="radio" name="qv4-29" value="2"><span class="letter">c</span><span>pension</span></label><label class="opt"><input type="radio" name="qv4-29" value="3"><span class="letter">d</span><span>bonus</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="2"><span class="qn">30</span><div class="line stem">Our employer gave us all an extra week’s pay at Christmas as a ………….</div><div class="opts"><label class="opt"><input type="radio" name="qv4-30" value="0"><span class="letter">a</span><span>pension</span></label><label class="opt"><input type="radio" name="qv4-30" value="1"><span class="letter">b</span><span>vacancy</span></label><label class="opt"><input type="radio" name="qv4-30" value="2"><span class="letter">c</span><span>bonus</span></label><label class="opt"><input type="radio" name="qv4-30" value="3"><span class="letter">d</span><span>interview</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="3"><span class="qn">31</span><div class="line stem">There were over two hundred ………… for the job, but only one was chosen.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-31" value="0"><span class="letter">a</span><span>colleagues</span></label><label class="opt"><input type="radio" name="qv4-31" value="1"><span class="letter">b</span><span>employers</span></label><label class="opt"><input type="radio" name="qv4-31" value="2"><span class="letter">c</span><span>shifts</span></label><label class="opt"><input type="radio" name="qv4-31" value="3"><span class="letter">d</span><span>applicants</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="0"><span class="qn">32</span><div class="line stem">He has been ………… for six months and is finding it hard to pay his bills.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-32" value="0"><span class="letter">a</span><span>unemployed</span></label><label class="opt"><input type="radio" name="qv4-32" value="1"><span class="letter">b</span><span>retired</span></label><label class="opt"><input type="radio" name="qv4-32" value="2"><span class="letter">c</span><span>promoted</span></label><label class="opt"><input type="radio" name="qv4-32" value="3"><span class="letter">d</span><span>hired</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="1"><span class="qn">33</span><div class="line stem">She asked her ………… for a day off to attend her sister’s wedding.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-33" value="0"><span class="letter">a</span><span>pension</span></label><label class="opt"><input type="radio" name="qv4-33" value="1"><span class="letter">b</span><span>manager</span></label><label class="opt"><input type="radio" name="qv4-33" value="2"><span class="letter">c</span><span>uniform</span></label><label class="opt"><input type="radio" name="qv4-33" value="3"><span class="letter">d</span><span>career</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="2"><span class="qn">34</span><div class="line stem">The company is going to ………… fifty workers because it has lost money.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-34" value="0"><span class="letter">a</span><span>employ</span></label><label class="opt"><input type="radio" name="qv4-34" value="1"><span class="letter">b</span><span>earn</span></label><label class="opt"><input type="radio" name="qv4-34" value="2"><span class="letter">c</span><span>dismiss</span></label><label class="opt"><input type="radio" name="qv4-34" value="3"><span class="letter">d</span><span>apply</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="3"><span class="qn">35</span><div class="line stem">Many people look forward to ………… because they can finally stop working and relax.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-35" value="0"><span class="letter">a</span><span>promotion</span></label><label class="opt"><input type="radio" name="qv4-35" value="1"><span class="letter">b</span><span>overtime</span></label><label class="opt"><input type="radio" name="qv4-35" value="2"><span class="letter">c</span><span>training</span></label><label class="opt"><input type="radio" name="qv4-35" value="3"><span class="letter">d</span><span>retirement</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="v4" data-marks="5" data-ans="0"><span class="qn">36</span><div class="line stem">The working ………… in this factory are very good: it is clean, safe and well lit.</div><div class="opts"><label class="opt"><input type="radio" name="qv4-36" value="0"><span class="letter">a</span><span>conditions</span></label><label class="opt"><input type="radio" name="qv4-36" value="1"><span class="letter">b</span><span>strikes</span></label><label class="opt"><input type="radio" name="qv4-36" value="2"><span class="letter">c</span><span>deadlines</span></label><label class="opt"><input type="radio" name="qv4-36" value="3"><span class="letter">d</span><span>wages</span></label></div><div class="fb"></div></li></ol></section>
+  <div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section><section class="panel" id="reading" role="tabpanel" aria-label="Reading" data-nq="10">
+<div class="sheet">
+  <header class="masthead">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="kicker">Mock exam 4 · Part 3 of 3</p>
+    <h1>Reading</h1>
+    <p>Read the text, then answer all 10 questions. Each correct answer earns 1 mark. Spelling counts in Task 2.</p>
+    <span class="weight">10% of the exam</span>
+  </header>
+  <div class="candidate">
+    <div><label>Name</label><input data-f="nm" type="text" autocomplete="off"></div>
+    <div><label>Group</label><input data-f="gr" type="text" autocomplete="off"></div>
+    <div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div>
+  </div>
+  <div class="layout"><div class="left"><div class="hl-bar" role="toolbar" aria-label="Highlighter"><span class="lbl">Highlighter</span><p class="hl-note">Select text to highlight it – in the passage or the questions. Click a highlight to remove it.</p></div><div class="textbox" style="margin:0;border:0;border-radius:0;background:transparent;padding:24px clamp(18px,4vw,36px)"><h3 style="font-size:24px">Are electric cars the answer?</h3><p>The internal combustion engine has powered cars for over a century, but its dominance is now being challenged. In Norway, more than four out of five new cars sold are electric, and many other countries have announced plans to end the sale of new petrol and diesel vehicles within the next decade or two. Are electric cars really the solution to transport pollution, or is the picture more complicated?</p><p>The main argument in their favour is that they produce no exhaust fumes. In crowded cities, where air quality is a serious health problem, this could make a real difference. Electric motors are also much more efficient than petrol engines, and the cars are quieter, cheaper to maintain because they have fewer moving parts, and cheaper to run. Drivers can even charge them at home overnight.</p><p>However, the environmental advantages depend on where the electricity comes from. If a country’s power stations burn coal, charging an electric car simply moves pollution from the exhaust pipe to the power station. Manufacturing also has an impact: producing a battery requires large amounts of energy and materials such as lithium, cobalt and nickel, which are mined in ways that can harm local communities and ecosystems. Studies suggest that an electric car has to be driven for tens of thousands of kilometres before it makes up for the emissions created during its production.</p><p>Practical problems remain. Electric vehicles are still more expensive to buy than equivalent petrol cars, although prices are falling. Charging points are not evenly distributed, and people who live in flats without private parking often have nowhere to plug in. Long journeys require planning, since charging takes longer than filling a tank. Many potential buyers also worry about how long batteries will last and how they will be disposed of or recycled.</p><p>Even so, most analysts expect electric cars to become the norm. Battery technology is improving rapidly, and governments are investing in charging networks. Yet experts warn that switching to electric cars alone will not solve congestion, noise or road accidents. Better public transport, cycling routes and shorter journeys are likely to matter as much as the type of engine under the bonnet.</p></div></div><div class="right"><section class="exercise" id="r1"><div class="ex-head"><h2>Task 1</h2><span class="meta">Questions 1–5 · 5.0 marks</span></div><p class="instr">Choose the correct answer.</p><ol><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="1"><span class="qn">1</span><div class="line stem">Why could electric cars make a real difference in cities?</div><div class="opts"><label class="opt"><input type="radio" name="qr1-1" value="0"><span class="letter">a</span><span>They are much faster than petrol cars.</span></label><label class="opt"><input type="radio" name="qr1-1" value="1"><span class="letter">b</span><span>They produce no exhaust fumes, so the air could be cleaner.</span></label><label class="opt"><input type="radio" name="qr1-1" value="2"><span class="letter">c</span><span>They are cheaper to buy.</span></label><label class="opt"><input type="radio" name="qr1-1" value="3"><span class="letter">d</span><span>They need no charging points.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="1"><span class="qn">2</span><div class="line stem">The environmental advantage of an electric car depends on…</div><div class="opts"><label class="opt"><input type="radio" name="qr1-2" value="0"><span class="letter">a</span><span>how far it is driven each week.</span></label><label class="opt"><input type="radio" name="qr1-2" value="1"><span class="letter">b</span><span>where the electricity comes from.</span></label><label class="opt"><input type="radio" name="qr1-2" value="2"><span class="letter">c</span><span>the size of its battery.</span></label><label class="opt"><input type="radio" name="qr1-2" value="3"><span class="letter">d</span><span>the speed at which it charges.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="0"><span class="qn">3</span><div class="line stem">What does the writer say about battery production?</div><div class="opts"><label class="opt"><input type="radio" name="qr1-3" value="0"><span class="letter">a</span><span>It uses materials which are mined in ways that can harm people and nature.</span></label><label class="opt"><input type="radio" name="qr1-3" value="1"><span class="letter">b</span><span>It is cheaper than making a petrol engine.</span></label><label class="opt"><input type="radio" name="qr1-3" value="2"><span class="letter">c</span><span>It is now completely clean.</span></label><label class="opt"><input type="radio" name="qr1-3" value="3"><span class="letter">d</span><span>It is done only in countries with renewable energy.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="1"><span class="qn">4</span><div class="line stem">Which problem do people living in flats often face?</div><div class="opts"><label class="opt"><input type="radio" name="qr1-4" value="0"><span class="letter">a</span><span>Their cars are too big for parking spaces.</span></label><label class="opt"><input type="radio" name="qr1-4" value="1"><span class="letter">b</span><span>They may have nowhere to charge the car.</span></label><label class="opt"><input type="radio" name="qr1-4" value="2"><span class="letter">c</span><span>Batteries do not work in cities.</span></label><label class="opt"><input type="radio" name="qr1-4" value="3"><span class="letter">d</span><span>They cannot afford insurance.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="0"><span class="qn">5</span><div class="line stem">Which of these does the writer NOT mention?</div><div class="opts"><label class="opt"><input type="radio" name="qr1-5" value="0"><span class="letter">a</span><span>the top speed of electric cars</span></label><label class="opt"><input type="radio" name="qr1-5" value="1"><span class="letter">b</span><span>charging time</span></label><label class="opt"><input type="radio" name="qr1-5" value="2"><span class="letter">c</span><span>recycling of batteries</span></label><label class="opt"><input type="radio" name="qr1-5" value="3"><span class="letter">d</span><span>the number of moving parts</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="r2"><div class="ex-head"><h2>Task 2</h2><span class="meta">Questions 6–10 · 5.0 marks</span></div><p class="instr">Read the text again and complete the sentences. Use NO MORE THAN TWO WORDS from the text for each answer.</p><ol><li class="q unit" data-kind="fill" data-ex="r2" data-marks="10"><span class="qn">6</span><div class="line">Electric cars are cheaper to maintain because they have fewer <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;moving parts&quot;]" style="width:26ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="r2" data-marks="10"><span class="qn">7</span><div class="line">If power stations burn <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;coal&quot;]" style="width:16ch" aria-label="answer">, charging a car simply moves the pollution.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="r2" data-marks="10"><span class="qn">8</span><div class="line">Batteries need materials such as lithium, cobalt and <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;nickel&quot;]" style="width:16ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="r2" data-marks="10"><span class="qn">9</span><div class="line">Drivers can charge their cars at home <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;overnight&quot;]" style="width:16ch" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="r2" data-marks="10"><span class="qn">10</span><div class="line">Better public transport and <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;cycling routes&quot;]" style="width:26ch" aria-label="answer"> may matter as much as the type of engine.</div><div class="fb"></div></li></ol></section></div></div>
+  <div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section>
+</div>
+<div class="modal" id="confirm" hidden role="dialog" aria-modal="true" aria-labelledby="dlg-h">
+  <div class="dlg">
+    <h3 id="dlg-h">Submit the whole exam?</h3>
+    <p>Grammar, Vocabulary and Reading will all be submitted together.</p>
+    <p class="warn">You cannot change any answer after submitting.</p>
+    <p id="unans-msg"></p>
+    <div class="row"><button class="btn ghost" id="cancel" type="button">Go back</button><button class="btn" id="confirm-yes" type="button">Submit now</button></div>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS_PCT=45;   // pass mark: percentage of the total marks (change here if needed)
+  function norm(s){
+    s=String(s).toLowerCase().replace(/[\u2018\u2019`]/g,"'");
+    s=s.replace(/\bcan't\b/g,'can not').replace(/\bcannot\b/g,'can not').replace(/\bwon't\b/g,'will not').replace(/\bshan't\b/g,'shall not');
+    s=s.replace(/n't\b/g,' not').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will');
+    s=s.replace(/[-\u2013\u2014]/g,' ').replace(/[^a-z0-9\s']/g,'').replace(/'/g,'');
+    return s.replace(/\s+/g,'');
+  }
+  function fmt(t){return (t/10).toFixed(1)}
+  function pctStr(num,den){var p=Math.floor(num*1000/den)/10; return (p%1===0?p.toFixed(0):p.toFixed(1))+'%';}
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var panels=$$('.panel'), units=$$('.unit'), submitted=false;
+  var PNAME={grammar:'Grammar',vocab:'Vocabulary',reading:'Reading'};
+
+  function isAnswered(u){
+    var k=u.dataset.kind;
+    if(k==='fill') return $$('input.blank',u).every(function(i){return i.value.trim()!==''});
+    if(k==='mc') return !!$('input[type=radio]:checked',u);
+    if(k==='sel') return $('select',u).value!=='';
+    return false;
+  }
+  function update(){
+    var n=units.filter(isAnswered).length;
+    $('#count').textContent='Answered '+n+' / '+units.length;
+    $('#fill').style.width=(100*n/units.length)+'%';
+  }
+  function evaluate(u){
+    var k=u.dataset.kind, ok=false, shown='';
+    if(k==='fill'){
+      var ins=$$('input.blank',u);
+      ok=ins.every(function(i){return JSON.parse(i.dataset.acc).map(norm).indexOf(norm(i.value))>-1});
+      shown=ins.map(function(i){return JSON.parse(i.dataset.acc)[0]}).join('  /  ');
+    }else if(k==='mc'){
+      var c=$('input[type=radio]:checked',u);
+      ok=!!c && c.value===u.dataset.ans;
+      shown=$('input[value="'+u.dataset.ans+'"]',u).closest('.opt').textContent.trim();
+    }else{
+      var s=$('select',u); ok=s.value===u.dataset.ans; shown=u.dataset.ans;
+    }
+    return {ok:ok,shown:shown};
+  }
+
+  /* ---------- confirm dialog ---------- */
+  var modal=$('#confirm'), lastFocus=null;
+  function openConfirm(){
+    if(submitted) return;
+    lastFocus=document.activeElement;
+    var parts=panels.map(function(p){var un=$$('.unit',p).filter(function(u){return !isAnswered(u)}).length; return un?(PNAME[p.id]+': '+un):null}).filter(Boolean);
+    $('#unans-msg').textContent=parts.length?('Unanswered \u2013 '+parts.join(', ')+'. These will count as incorrect.'):'All questions are answered.';
+    modal.hidden=false; $('#cancel').focus();
+  }
+  function closeConfirm(){modal.hidden=true; if(lastFocus) lastFocus.focus();}
+  modal.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeConfirm();
+    if(e.key==='Tab'){var f=$$('button',modal), a=f[0], z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}
+  });
+  $('#cancel').addEventListener('click',closeConfirm);
+  $('#confirm-yes').addEventListener('click',function(){closeConfirm();submit();});
+  $$('.submit-all').concat([$('#submit')]).forEach(function(b){b.addEventListener('click',openConfirm)});
+
+  /* ---------- submit (final) ---------- */
+  function submit(){
+    if(submitted) return; submitted=true;
+    var total=0, max=0, rows=[];
+    panels.forEach(function(p){
+      var sc=0, mx=0;
+      $$('.unit',p).forEach(function(u){
+        var r=evaluate(u), m=+u.dataset.marks; mx+=m;
+        u.classList.remove('is-right','is-wrong');
+        var fb=$('.fb',u);
+        if(r.ok){u.classList.add('is-right');sc+=m;fb.textContent=u.dataset.kind==='sel'?'\u2713':'\u2713 Correct';}
+        else{u.classList.add('is-wrong');fb.textContent=(u.dataset.kind==='sel'?'\u2192 ':'Correct answer: ')+r.shown;}
+      });
+      total+=sc; max+=mx; rows.push({id:p.id,sc:sc,mx:mx});
+    });
+    // lock everything permanently
+    $$('input,select,button.submit-all').forEach(function(e){ if(!e.closest('.candidate')) e.disabled=true; });
+    document.body.classList.add('exam-done');
+    var sb=$('#submit'); sb.disabled=true; sb.textContent='Submitted';
+    // results
+    var pass=total*100>=PASS_PCT*max;
+    var v=$('#verdict'); v.textContent=pass?'PASSED':'FAILED'; v.className='verdict '+(pass?'pass':'fail');
+    $('#tot-score').textContent=fmt(total); $('#tot-max').textContent='/ '+fmt(max)+' marks';
+    $('#res-sub').textContent='Overall: '+pctStr(total,max)+'  \u00b7  Pass mark: '+PASS_PCT+'%';
+    var nm=$('input[data-f=nm]').value.trim(); $('#who').textContent=nm?nm:'Mock exam';
+    $('#res-rows').innerHTML='';
+    rows.forEach(function(r){
+      var d=document.createElement('div'); d.className='res-row';
+      d.innerHTML='<b>'+PNAME[r.id]+'</b><div class="meter"><i></i></div><span class="val">'+fmt(r.sc)+' / '+fmt(r.mx)+' \u00b7 '+pctStr(r.sc,r.mx)+'</span>';
+      $('#res-rows').appendChild(d);
+      $('i',d).style.width=(100*r.sc/r.mx)+'%';
+    });
+    var res=$('#results'); res.hidden=false; setH();
+    // announce + move to top
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'}); res.focus({preventScroll:true});
+  }
+
+  document.addEventListener('input',function(e){
+    var t=e.target;
+    if(t&&t.dataset&&t.dataset.f){ $$('input[data-f="'+t.dataset.f+'"]').forEach(function(o){if(o!==t)o.value=t.value}); }
+    update();
+  });
+  document.addEventListener('change',update);
+
+  /* ---------- tabs ---------- */
+  var tabs=$$('.tab'), wrap=$('.tabs-wrap');
+  function setH(){ document.documentElement.style.setProperty('--tabh',wrap.offsetHeight+'px'); }
+  function show(id,focus){
+    tabs.forEach(function(t){var on=t.dataset.target===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1; if(on&&focus)t.focus();});
+    panels.forEach(function(p){p.hidden=(p.id!==id)});
+    document.body.dataset.tab=id;
+    try{ if(history.replaceState) history.replaceState(null,'','#'+id); }catch(e){}
+    window.scrollTo({top:0}); setH();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t.dataset.target)});
+    t.addEventListener('keydown',function(e){
+      var k=e.key, j=-1;
+      if(k==='ArrowRight') j=(i+1)%tabs.length; else if(k==='ArrowLeft') j=(i+tabs.length-1)%tabs.length;
+      else if(k==='Home') j=0; else if(k==='End') j=tabs.length-1;
+      if(j>-1){e.preventDefault();show(tabs[j].dataset.target,true);}
+    });
+  });
+  var start=(location.hash||'').slice(1);
+  show(panels.some(function(p){return p.id===start})?start:'grammar');
+  update();
+  window.addEventListener('resize',setH);
+})();
+</script>
+<script>
+(function(){
+  /* ---- pick words from the box ---- */
+  var last={};
+  function nz(s){return String(s).toLowerCase().replace(/[^a-z]/g,'')}
+  function refresh(ex){
+    var vals=[].map.call(ex.querySelectorAll('input.blank'),function(i){return nz(i.value)});
+    [].forEach.call(ex.querySelectorAll('.chip.pick'),function(c){var w=nz(c.dataset.word);c.classList.toggle('used',vals.some(function(v){return v.indexOf(w)>-1}));});
+  }
+  document.addEventListener('focusin',function(e){var t=e.target; if(t&&t.classList&&t.classList.contains('blank')){var ex=t.closest('.exercise'); if(ex) last[ex.id]=t;}});
+  document.addEventListener('click',function(e){
+    var c=e.target.closest&&e.target.closest('.chip.pick'); if(!c||document.body.classList.contains('exam-done')) return;
+    var ex=c.closest('.exercise'), ins=[].slice.call(ex.querySelectorAll('input.blank')), t=last[ex.id];
+    if(!(t&&!t.value.trim())) t=ins.filter(function(i){return !i.value.trim()})[0]||t||ins[0];
+    t.value=c.dataset.word; t.dispatchEvent(new Event('input',{bubbles:true})); t.focus();
+    try{t.setSelectionRange(t.value.length,t.value.length)}catch(_){}
+    refresh(ex);
+  });
+  document.addEventListener('input',function(e){var ex=e.target.closest&&e.target.closest('.exercise'); if(ex&&ex.querySelector('.chip.pick')) refresh(ex);});
+
+  /* ---- highlighter (auto, everywhere) ---- */
+  var SKIP='input,select,option,button,textarea,.qn,.cn,.fb,.candidate,.masthead,.tabs-wrap,.modal,.hl-bar';
+  function elOf(n){return n.nodeType===1?n:n.parentElement;}
+  function okNode(n){var el=elOf(n); return !!(el&&el.closest('#reading')&&el.closest('.exercise,.textbox')&&!el.closest(SKIP));}
+  function live(){
+    var s=window.getSelection(); if(!s||!s.rangeCount||s.isCollapsed) return null;
+    var r=s.getRangeAt(0), el=elOf(r.commonAncestorContainer), panel=el&&el.closest('.panel');
+    if(!panel||panel.id!=='reading'||panel.hidden) return null;
+    if(!okNode(r.startContainer)&&!okNode(r.endContainer)) return null;
+    return r;
+  }
+  function textNodes(r){
+    var root=elOf(r.commonAncestorContainer), out=[], w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    while(w.nextNode()){var n=w.currentNode; if(r.intersectsNode(n)&&n.nodeValue.trim()!==''&&okNode(n)) out.push(n);}
+    return out;
+  }
+  var clearBtn=document.getElementById('hl-clear');
+  function sync(){ if(clearBtn) clearBtn.hidden=!(document.querySelector('mark.hl')&&document.body.dataset.tab==='reading'); }
+  function unwrap(m){var p=m.parentNode; while(m.firstChild) p.insertBefore(m.firstChild,m); p.removeChild(m); p.normalize(); sync();}
+  function mark(r){
+    textNodes(r).forEach(function(n){
+      if(n.parentNode.classList&&n.parentNode.classList.contains('hl')) return;
+      var s=(n===r.startContainer)?r.startOffset:0, e=(n===r.endContainer)?r.endOffset:n.nodeValue.length;
+      if(e<=s) return;
+      var mid=n.splitText(s); mid.splitText(e-s);
+      var m=document.createElement('mark'); m.className='hl'; m.title='Click to remove';
+      mid.parentNode.insertBefore(m,mid); m.appendChild(mid);
+    });
+    window.getSelection().removeAllRanges(); sync();
+  }
+  var justSelected=false, lastType='mouse', timer=null;
+  function auto(){var r=live(); if(r){justSelected=true; mark(r); setTimeout(function(){justSelected=false},120);}}
+  document.addEventListener('pointerdown',function(e){lastType=e.pointerType||'mouse'; justSelected=false;});
+  document.addEventListener('pointerup',function(e){
+    if(e.pointerType==='touch') return;
+    if(live()){justSelected=true; setTimeout(auto,0);}
+  });
+  document.addEventListener('selectionchange',function(){
+    if(lastType!=='touch') return;
+    clearTimeout(timer); if(live()) timer=setTimeout(auto,800);
+  });
+  /* capture: a drag-select inside an answer option must not tick the radio; a click on a highlight removes it */
+  document.addEventListener('click',function(e){
+    var t=e.target; if(!t||!t.closest) return;
+    var m=t.closest('mark.hl');
+    if(justSelected){ if(t.closest('.opt')){e.preventDefault(); e.stopPropagation();} return; }
+    if(m){
+      var s=window.getSelection(); if(s&&!s.isCollapsed) return;
+      e.preventDefault(); e.stopPropagation(); unwrap(m);
+    }
+  },true);
+  if(clearBtn) clearBtn.addEventListener('click',function(){[].slice.call(document.querySelectorAll('mark.hl')).forEach(unwrap); sync();});
+  sync(); new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['data-tab']});
+})();
+</script>
+</body>
+</html>
