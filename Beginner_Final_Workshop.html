@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Beginner Final Workshop — Grammar, Vocabulary &amp; Irregular Verbs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .app{ max-width:820px; margin:0 auto; }
+
+  .page-switcher{ display:flex; gap:8px; margin-bottom:16px; background:var(--black); border-radius:8px; padding:6px; position:sticky; top:8px; z-index:10; }
+  .page-tab{ flex:1; font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; color:rgba(255,255,255,.6); background:transparent; border:none; border-radius:6px; padding:12px 8px; cursor:pointer; transition:background .15s, color .15s; min-height:0; }
+  .page-tab.active{ background:var(--yellow); color:var(--black); }
+  .page-tab:not(.active):hover{ color:var(--white); background:rgba(255,255,255,.08); }
+  .page-tab .tab-sub{ display:block; font-size:11px; font-weight:600; opacity:.75; margin-top:2px; }
+  .page{ display:none; }
+  .page.active{ display:block; }
+
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .level-badge{ display:inline-flex; align-items:center; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:4px 11px; border-radius:20px; margin-bottom:12px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:60ch; }
+
+  .progress-bar{ position:sticky; top:68px; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); scroll-margin-top:130px; }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 18px; max-width:66ch; }
+  .sub-instr{ font-size:13.5px; font-weight:700; color:var(--ink); margin:20px 0 4px; padding:6px 10px; background:var(--paper); border-left:3px solid var(--yellow); border-radius:0 4px 4px 0; }
+  .sub-instr:first-child{ margin-top:6px; }
+  .example{ font-size:13.5px; background:var(--paper); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; margin:0 0 14px; color:var(--ink); }
+  .example u{ text-decoration:none; font-weight:700; background:rgba(255,213,48,.45); padding:0 3px; border-radius:3px; }
+  .hint{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--teal); background:var(--teal-bg); padding:2px 6px; border-radius:4px; white-space:nowrap; }
+  .ref-box{ font-size:13.5px; background:var(--paper); border:1.5px dashed var(--rule); border-radius:10px; padding:10px 14px; margin:0 0 12px; font-family:'JetBrains Mono',monospace; }
+
+  .item{ display:flex; gap:10px; align-items:flex-start; padding:14px 0; border-bottom:1px dashed var(--rule); }
+  .item:last-child{ border-bottom:none; }
+  .item-body{ flex:1; min-width:0; font-size:14.5px; line-height:2.2; color:var(--ink); }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; flex:0 0 auto; margin-top:5px; }
+  .prompt{ color:var(--ink-soft); font-style:italic; }
+
+  .dialogue{ display:flex; flex-direction:column; gap:6px; padding:4px 0; }
+  .dlg{ display:flex; gap:10px; font-size:14.5px; line-height:2.3; }
+  .spk{ flex:0 0 22px; font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--ink-soft); }
+  .dlg-text{ flex:1; min-width:0; }
+  .dlg-inline{ line-height:2.3; }
+
+  .gap{ white-space:nowrap; display:inline-block; margin:0 2px; }
+  .blank-idx{ font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; color:var(--ink-soft); margin-right:2px; vertical-align:middle; }
+
+  /* choice toggle */
+  .unit.choice{ display:inline-flex; vertical-align:middle; border-radius:6px; overflow:hidden; border:1.5px solid var(--rule); white-space:normal; }
+  button.opt{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; padding:4px 10px; min-height:0; border:none; border-radius:0; background:var(--paper); color:var(--ink-soft); cursor:pointer; transition:background .15s,color .15s; }
+  button.opt + button.opt{ border-left:1.5px solid var(--rule); }
+  button.opt:hover{ background:#ECECE7; }
+  button.opt.sel{ background:var(--black); color:var(--yellow); }
+  .unit.choice.correct button.opt.sel{ background:var(--good); color:#fff; }
+  .unit.choice.incorrect button.opt.sel{ background:var(--bad); color:#fff; }
+  .unit.choice.incorrect button.opt.key{ background:var(--good-bg); color:var(--good); }
+
+  /* text cells */
+  input.cell{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; width:120px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; vertical-align:middle; }
+  input.cell.wide{ width:100%; max-width:520px; text-align:left; margin-top:2px; }
+  input.cell:focus{ border-bottom-color:var(--black); background:var(--white); }
+  input.cell.correct{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  input.cell.incorrect{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .reveal{ font-size:12.5px; font-weight:700; color:var(--good); margin-left:6px; white-space:normal; }
+  input.cell.wide + .reveal, .unit.tiles > .reveal, .unit.fix > .reveal{ display:block; margin:4px 0 0; line-height:1.5; }
+
+  /* tile builder */
+  .unit.tiles{ display:block; margin:4px 0; }
+  .tile-line{ display:flex; align-items:center; gap:8px; }
+  .tile-label{ font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--ink-soft); }
+  .tile-area{ flex:0 1 auto; min-width:140px; min-height:42px; display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:5px 8px; border:1.5px dashed var(--rule); border-radius:10px; background:var(--paper); line-height:1.2; }
+  .tile-area:empty::before{ content:'tap the words in order…'; color:var(--ink-soft); opacity:.6; font-size:12.5px; font-style:italic; }
+  .tile-end{ font-weight:700; font-size:16px; }
+  .tile-bank{ display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; line-height:1.2; }
+  button.tile{ font-family:'Public Sans',sans-serif; font-size:13.5px; font-weight:600; min-height:0; padding:6px 12px; border-radius:20px; border:1.5px solid var(--rule); background:var(--panel); color:var(--ink); cursor:pointer; transition:border-color .15s, opacity .15s; }
+  button.tile:hover:not(:disabled){ border-color:var(--black); }
+  button.tile.used{ opacity:.25; cursor:default; text-decoration:line-through; }
+  button.tile.placed{ background:var(--black); color:var(--yellow); border-color:var(--black); }
+  .unit.tiles.correct .tile-area{ border-style:solid; border-color:var(--good); background:var(--good-bg); }
+  .unit.tiles.correct button.tile.placed{ background:var(--good); color:#fff; border-color:var(--good); }
+  .unit.tiles.incorrect .tile-area{ border-style:solid; border-color:var(--bad); background:var(--bad-bg); }
+  .unit.tiles.incorrect button.tile.placed{ background:var(--bad); color:#fff; border-color:var(--bad); }
+
+  /* find & fix */
+  .unit.fix{ display:block; }
+  .fix-sentence{ line-height:2.3; }
+  button.tok{ font-family:'Public Sans',sans-serif; font-size:14.5px; font-weight:500; min-height:0; padding:1px 4px; margin:0 1px; border:none; border-bottom:2px dashed var(--rule); border-radius:3px; background:transparent; color:var(--ink); cursor:pointer; }
+  button.tok:hover{ background:var(--paper); border-bottom-color:var(--ink-soft); }
+  button.tok.sel{ background:rgba(255,213,48,.55); border-bottom:2px solid var(--black); font-weight:700; }
+  .unit.fix.correct button.tok.sel{ background:var(--good-bg); border-bottom-color:var(--good); color:var(--good); }
+  .unit.fix.incorrect button.tok.sel{ background:var(--bad-bg); border-bottom-color:var(--bad); color:var(--bad); }
+  .fix-end{ font-weight:500; }
+  .fix-row{ display:flex; align-items:center; gap:8px; margin-top:2px; }
+  .fix-row[hidden]{ display:none; }
+  .fix-label{ font-size:12.5px; color:var(--ink-soft); font-style:italic; }
+  input.fix-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; width:160px; outline:none; }
+  input.fix-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .unit.fix.correct input.fix-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .unit.fix.incorrect input.fix-input{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+
+  /* word bank */
+  .word-bank{ display:flex; flex-wrap:wrap; gap:8px; padding:12px; background:var(--paper); border:1.5px dashed var(--rule); border-radius:10px; margin:0 0 14px; }
+  button.bank-word{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; min-height:0; color:var(--ink); background:var(--panel); border:1.5px solid var(--rule); border-radius:20px; padding:7px 14px; cursor:pointer; transition:transform .08s, border-color .15s, opacity .15s; }
+  button.bank-word:hover:not(:disabled){ border-color:var(--black); }
+  button.bank-word:disabled{ opacity:.3; cursor:default; text-decoration:line-through; }
+  .passage{ font-size:14.5px; line-height:2.6; color:var(--ink); margin:6px 0 0; }
+  .unit.fill-blank{ display:inline-flex; align-items:center; justify-content:center; min-width:96px; font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; color:var(--ink); background:var(--panel); border:1.5px solid var(--rule); border-bottom:2.5px solid var(--ink-soft); border-radius:6px; padding:3px 10px; cursor:pointer; vertical-align:middle; transition:border-color .15s, background .15s; }
+  .unit.fill-blank:hover{ border-color:var(--black); }
+  .unit.fill-blank .ph{ color:var(--ink-soft); opacity:.5; letter-spacing:2px; }
+  .unit.fill-blank.filled{ border-bottom-color:var(--black); background:var(--paper); }
+  .unit.fill-blank.active{ border-color:var(--black); border-bottom-color:var(--yellow-deep); box-shadow:0 0 0 3px rgba(255,213,48,.55); background:var(--white); }
+  .unit.fill-blank.correct{ border-color:var(--good); border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .unit.fill-blank.incorrect{ border-color:var(--bad); border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .unit.fill-blank .reveal-answer{ display:block; font-size:10.5px; color:var(--good); font-weight:700; margin-left:8px; }
+
+  /* info table */
+  .info-table-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin:0 0 12px; }
+  .info-table{ width:100%; border-collapse:collapse; font-size:13px; }
+  .info-table th{ background:var(--black); color:var(--yellow); text-align:left; font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; padding:9px 12px; border-bottom:2px solid var(--yellow); }
+  .info-table td{ padding:8px 12px; border-top:1px solid var(--rule); background:var(--panel); }
+  .info-table tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .info-table td:first-child{ font-weight:700; }
+
+  /* multiple choice a/b */
+  .unit.mc{ display:block; }
+  .mc-stem{ font-size:14.5px; line-height:1.6; margin-bottom:8px; }
+  .mc-q{ display:block; color:var(--ink-soft); }
+  .mc-options{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+  @media (max-width:520px){ .mc-options{ grid-template-columns:1fr; } }
+  .mc-option{ display:flex; align-items:center; gap:9px; font-size:13.5px; background:var(--paper); border:1.5px solid var(--rule); border-radius:8px; padding:9px 11px; cursor:pointer; transition:border-color .15s, background .15s; line-height:1.3; }
+  .mc-option:hover{ border-color:var(--ink-soft); }
+  .mc-option input{ accent-color:var(--black); width:16px; height:16px; flex:0 0 auto; }
+  .mc-letter{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px; color:var(--ink-soft); background:var(--white); border:1px solid var(--rule); border-radius:5px; width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
+  .mc-option.picked{ border-color:var(--black); background:var(--white); }
+  .unit.mc.correct .mc-option.picked{ border-color:var(--good); background:var(--good-bg); }
+  .unit.mc.correct .mc-option.picked .mc-letter{ background:var(--good); color:#fff; border-color:var(--good); }
+  .unit.mc.incorrect .mc-option.picked{ border-color:var(--bad); background:var(--bad-bg); }
+  .unit.mc.incorrect .mc-option.picked .mc-letter{ background:var(--bad); color:#fff; border-color:var(--bad); }
+  .unit.mc.incorrect .mc-option.key{ border-color:var(--good); background:var(--good-bg); }
+  .unit.mc.incorrect .mc-option.key .mc-letter{ background:var(--good); color:#fff; border-color:var(--good); }
+
+  /* irregular verbs rows */
+  .irr-row{ display:grid; grid-template-columns:26px 1fr 150px 150px; gap:10px 12px; align-items:center; padding:12px 0; border-bottom:1px dashed var(--rule); }
+  .irr-row:last-child{ border-bottom:none; }
+  .irr-row .g-num{ margin-top:0; }
+  .irr-tr{ display:flex; flex-direction:column; line-height:1.4; min-width:0; }
+  .tr-uz{ font-weight:800; font-style:italic; font-size:17px; color:var(--ink); line-height:1.3; }
+  .tr-ru{ font-weight:400; font-style:italic; font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+  .irr-in{ display:flex; flex-direction:column; gap:2px; }
+  .irr-in label{ font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); }
+  .irr-in input.cell{ width:100%; text-align:left; }
+  .irr-in .reveal{ margin-left:0; font-size:12px; }
+  @media (max-width:640px){
+    .irr-row{ grid-template-columns:26px 1fr 1fr; }
+    .irr-tr{ grid-column:2 / 4; }
+    .irr-in:first-of-type{ grid-column:2; }
+  }
+
+  .task-feedback{ font-size:13px; color:var(--good); font-weight:600; margin-top:14px; min-height:1px; }
+  .task-feedback.incomplete{ color:var(--ink-soft); font-weight:400; font-style:italic; }
+  .task-feedback.has-errors{ color:var(--bad); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .page-tab{ font-size:12.5px; padding:10px 4px; }
+    .page-tab .tab-sub{ font-size:10px; }
+    .tile-area{ flex:1 1 auto; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="app">
+
+  <div class="page-switcher">
+    <button class="page-tab active" data-target="page-grammar">Grammar<span class="tab-sub">14 exercises · 116 items</span></button>
+    <button class="page-tab" data-target="page-vocab">Vocabulary<span class="tab-sub">5 exercises · 36 items</span></button>
+    <button class="page-tab" data-target="page-irr">Irregular Verbs<span class="tab-sub">35 verbs · 70 answers</span></button>
+  </div>
+
+  <div class="page active" id="page-grammar" data-sfx="g">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · Final Workshop</span></div>
+        <span class="level-badge">Beginner</span>
+        <h1>Grammar</h1>
+        <p class="sub">There is / are, can, like + -ing, past simple, would like and going to — 14 exercises. Check your answers exercise by exercise.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="pf-g"></div></div>
+        <span class="score-tally" id="st-g">0 / 0</span>
+      </div>
+      <div class="jump-nav">
+        <a href="#sec-g1">1</a>
+        <a href="#sec-g2">2</a>
+        <a href="#sec-g3">3</a>
+        <a href="#sec-g4">4</a>
+        <a href="#sec-g5">5</a>
+        <a href="#sec-g6">6</a>
+        <a href="#sec-g7">7</a>
+        <a href="#sec-g8">8</a>
+        <a href="#sec-g9">9</a>
+        <a href="#sec-g10">10</a>
+        <a href="#sec-g11">11</a>
+        <a href="#sec-g12">12</a>
+        <a href="#sec-g13">13</a>
+        <a href="#sec-g14">14</a>
+      </div>
+  <section class="block" id="sec-g1" data-ex="g1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Choose the correct answers.</p>
+
+    <div class="items">
+<div class="dialogue"><div class="dlg"><b class="spk">A</b><div class="dlg-text">I want to go to London with my friends, but it’s expensive! <span class="gap"><b class="blank-idx">1</b><span class="unit choice" data-type="choice" data-answer="There aren’t"><button type="button" class="opt" data-value="There isn’t">There isn’t</button><button type="button" class="opt" data-value="There aren’t">There aren’t</button></span></span> any cheap hotels.</div></div>
+<div class="dlg"><b class="spk">B</b><div class="dlg-text">No, but <span class="gap"><b class="blank-idx">2</b><span class="unit choice" data-type="choice" data-answer="there’s"><button type="button" class="opt" data-value="there’s">there’s</button><button type="button" class="opt" data-value="is there">is there</button></span></span> a website with cheap rooms. They are in people’s homes. <span class="gap"><b class="blank-idx">3</b><span class="unit choice" data-type="choice" data-answer="There are"><button type="button" class="opt" data-value="There are">There are</button><button type="button" class="opt" data-value="There’s">There’s</button></span></span> lots of rooms in London.</div></div>
+<div class="dlg"><b class="spk">A</b><div class="dlg-text">Great! <span class="gap"><b class="blank-idx">4</b><span class="unit choice" data-type="choice" data-answer="Are there"><button type="button" class="opt" data-value="There are">There are</button><button type="button" class="opt" data-value="Are there">Are there</button></span></span> any rooms for four or five people?</div></div>
+<div class="dlg"><b class="spk">B</b><div class="dlg-text">No, <span class="gap"><b class="blank-idx">5</b><span class="unit choice" data-type="choice" data-answer="there aren’t"><button type="button" class="opt" data-value="there aren’t">there aren’t</button><button type="button" class="opt" data-value="there isn’t">there isn’t</button></span></span>. You need a flat, not a room! But <span class="gap"><b class="blank-idx">6</b><span class="unit choice" data-type="choice" data-answer="there are"><button type="button" class="opt" data-value="they are">they are</button><button type="button" class="opt" data-value="there are">there are</button></span></span> flats on the website, too.</div></div>
+<div class="dlg"><b class="spk">A</b><div class="dlg-text">OK. <span class="gap"><b class="blank-idx">7</b><span class="unit choice" data-type="choice" data-answer="Is there"><button type="button" class="opt" data-value="Is there">Is there</button><button type="button" class="opt" data-value="There’s">There’s</button></span></span> a flat in Soho? We want to stay there.</div></div>
+<div class="dlg"><b class="spk">B</b><div class="dlg-text">Yes, <span class="gap"><b class="blank-idx">8</b><span class="unit choice" data-type="choice" data-answer="there is"><button type="button" class="opt" data-value="it is">it is</button><button type="button" class="opt" data-value="there is">there is</button></span></span>. Look! <span class="gap"><b class="blank-idx">9</b><span class="unit choice" data-type="choice" data-answer="There’re|There are"><button type="button" class="opt" data-value="There’re">There’re</button><button type="button" class="opt" data-value="There are">There are</button></span></span> two sofas in the living room, but <span class="gap"><b class="blank-idx">10</b><span class="unit choice" data-type="choice" data-answer="there isn’t"><button type="button" class="opt" data-value="there isn’t">there isn’t</button><button type="button" class="opt" data-value="it isn’t">it isn’t</button></span></span> a TV.</div></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g1">Check</button>
+      <button class="btn-ghost" data-reset="g1">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g2" data-ex="g2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">10 items</span></div>
+    
+
+    <div class="items">
+<p class="sub-instr">Part A — Put the words in the correct order.</p>
+<div class="item"><span class="g-num">1</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Is there an iron for clothes in your room&quot;]" data-end="?"><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">iron</button><button type="button" class="tile" data-i="1">there</button><button type="button" class="tile" data-i="2">Is</button><button type="button" class="tile" data-i="3">an</button><button type="button" class="tile" data-i="4">for</button><button type="button" class="tile" data-i="5">clothes</button><button type="button" class="tile" data-i="6">room</button><button type="button" class="tile" data-i="7">your</button><button type="button" class="tile" data-i="8">in</button></div></div></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;There aren&#x27;t any towels in the bathroom&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">in</button><button type="button" class="tile" data-i="1">aren&#x27;t</button><button type="button" class="tile" data-i="2">the bathroom</button><button type="button" class="tile" data-i="3">There</button><button type="button" class="tile" data-i="4">towels</button><button type="button" class="tile" data-i="5">any</button></div></div></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Is there an en-suite bathroom in our room&quot;]" data-end="?"><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">our room</button><button type="button" class="tile" data-i="1">there</button><button type="button" class="tile" data-i="2">in</button><button type="button" class="tile" data-i="3">Is</button><button type="button" class="tile" data-i="4">an en-suite bathroom</button></div></div></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Is there a car park in the hotel&quot;]" data-end="?"><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">a car park</button><button type="button" class="tile" data-i="1">in</button><button type="button" class="tile" data-i="2">Is</button><button type="button" class="tile" data-i="3">there</button><button type="button" class="tile" data-i="4">the hotel</button></div></div></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;There are not any refreshments in the fridge&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">are</button><button type="button" class="tile" data-i="1">the fridge</button><button type="button" class="tile" data-i="2">not</button><button type="button" class="tile" data-i="3">There</button><button type="button" class="tile" data-i="4">in</button><button type="button" class="tile" data-i="5">refreshments</button><button type="button" class="tile" data-i="6">any</button></div></div></div></div>
+<p class="sub-instr">Part B — One word is wrong in each sentence. Tap the wrong word, then type the correct word.</p>
+<div class="item"><span class="g-num">1</span><div class="item-body"><div class="unit fix" data-type="fix" data-wrong="0" data-fix="All"><div class="fix-sentence"><button type="button" class="tok" data-i="0">Each</button> <button type="button" class="tok" data-i="1">hotels</button> <button type="button" class="tok" data-i="2">are</button> <button type="button" class="tok" data-i="3">very</button> <button type="button" class="tok" data-i="4">expensive</button> <button type="button" class="tok" data-i="5">in</button> <button type="button" class="tok" data-i="6">Dubai</button><span class="fix-end">.</span></div><div class="fix-row" hidden><span class="fix-label">Correct it:</span> <input type="text" class="fix-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="correct word…"></div></div></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><div class="unit fix" data-type="fix" data-wrong="3" data-fix="have"><div class="fix-sentence"><button type="button" class="tok" data-i="0">All</button> <button type="button" class="tok" data-i="1">the</button> <button type="button" class="tok" data-i="2">flats</button> <button type="button" class="tok" data-i="3">has</button> <button type="button" class="tok" data-i="4">a</button> <button type="button" class="tok" data-i="5">new</button> <button type="button" class="tok" data-i="6">shower</button><span class="fix-end">.</span></div><div class="fix-row" hidden><span class="fix-label">Correct it:</span> <input type="text" class="fix-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="correct word…"></div></div></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><div class="unit fix" data-type="fix" data-wrong="2" data-fix="museums"><div class="fix-sentence"><button type="button" class="tok" data-i="0">All</button> <button type="button" class="tok" data-i="1">the</button> <button type="button" class="tok" data-i="2">museum</button> <button type="button" class="tok" data-i="3">in</button> <button type="button" class="tok" data-i="4">Madrid</button> <button type="button" class="tok" data-i="5">are</button> <button type="button" class="tok" data-i="6">very</button> <button type="button" class="tok" data-i="7">interesting</button><span class="fix-end">.</span></div><div class="fix-row" hidden><span class="fix-label">Correct it:</span> <input type="text" class="fix-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="correct word…"></div></div></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><div class="unit fix" data-type="fix" data-wrong="2" data-fix="room"><div class="fix-sentence"><button type="button" class="tok" data-i="0">Is</button> <button type="button" class="tok" data-i="1">each</button> <button type="button" class="tok" data-i="2">rooms</button> <button type="button" class="tok" data-i="3">the</button> <button type="button" class="tok" data-i="4">same</button> <button type="button" class="tok" data-i="5">colour</button><span class="fix-end">?</span></div><div class="fix-row" hidden><span class="fix-label">Correct it:</span> <input type="text" class="fix-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="correct word…"></div></div></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><div class="unit fix" data-type="fix" data-wrong="2" data-fix="is"><div class="fix-sentence"><button type="button" class="tok" data-i="0">Each</button> <button type="button" class="tok" data-i="1">key</button> <button type="button" class="tok" data-i="2">are</button> <button type="button" class="tok" data-i="3">different</button><span class="fix-end">.</span></div><div class="fix-row" hidden><span class="fix-label">Correct it:</span> <input type="text" class="fix-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="correct word…"></div></div></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g2">Check</button>
+      <button class="btn-ghost" data-reset="g2">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g3" data-ex="g3">
+    <div class="block-head"><h2>Exercise 3</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the sentences with CAN and CAN’T.</p>
+<div class="example"><b>Example:</b> Flowers <u>can’t</u> grow with no water. <span class="hint">(negative)</span></div>
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">A girl <input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> open a door. <span class="hint">(positive)</span></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a sailor work on a ship? <span class="hint">(question)</span></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">A boy <input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> read a book fast. <span class="hint">(positive)</span></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">An elephant <input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> play in a circus. <span class="hint">(positive)</span></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">Wild animals <input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&#x27;t&quot;, &quot;cannot&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> live in a house. <span class="hint">(negative)</span></div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body">Robbie <input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> paint a picture of a sun. <span class="hint">(positive)</span></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g3">Check</button>
+      <button class="btn-ghost" data-reset="g3">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g4" data-ex="g4">
+    <div class="block-head"><h2>Exercise 4</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Choose the correct option.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="can swim"><button type="button" class="opt" data-value="can swim">can swim</button><button type="button" class="opt" data-value="can swimming">can swimming</button></span></span>.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">Alex is very clever. He <span class="gap"><span class="unit choice" data-type="choice" data-answer="can speak"><button type="button" class="opt" data-value="can speaks">can speaks</button><button type="button" class="opt" data-value="can speak">can speak</button></span></span> 6 languages.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">My sister <span class="gap"><span class="unit choice" data-type="choice" data-answer="can’t"><button type="button" class="opt" data-value="canot">canot</button><button type="button" class="opt" data-value="can’t">can’t</button></span></span> cook well.</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">Robert’s teacher <span class="gap"><span class="unit choice" data-type="choice" data-answer="can play"><button type="button" class="opt" data-value="can to play">can to play</button><button type="button" class="opt" data-value="can play">can play</button></span></span> CS GO (video game).</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="can"><button type="button" class="opt" data-value="am can">am can</button><button type="button" class="opt" data-value="can">can</button></span></span> use computer.</div></div>
+    </div>
+    <div class="task-feedback" id="fb-g4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g4">Check</button>
+      <button class="btn-ghost" data-reset="g4">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g5" data-ex="g5">
+    <div class="block-head"><h2>Exercise 5</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Correct the mistakes in each sentence. Rewrite the sentence correctly.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body"><span class="prompt">My brother is can play football</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;My brother can play football.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><span class="prompt">Does your neighbor can use a camera?</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Can your neighbor use a camera?&quot;, &quot;Can your neighbour use a camera?&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><span class="prompt">I amcan run fast</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;I can run fast.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><span class="prompt">Julia isn&#x27;t can read, she is 3 years old</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Julia can&#x27;t read, she is 3 years old.&quot;, &quot;Julia cannot read, she is 3 years old.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><span class="prompt">Dogs cannot flying, but birds can flying</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Dogs cannot fly, but birds can fly.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g5">Check</button>
+      <button class="btn-ghost" data-reset="g5">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g6" data-ex="g6">
+    <div class="block-head"><h2>Exercise 6</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Put the words in the correct order. Tap the words to build the sentence.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;They like watching movies&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">movies</button><button type="button" class="tile" data-i="1">they</button><button type="button" class="tile" data-i="2">watching</button><button type="button" class="tile" data-i="3">like</button></div></div></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;I don&#x27;t like a sandwich&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">like</button><button type="button" class="tile" data-i="1">don&#x27;t</button><button type="button" class="tile" data-i="2">I</button><button type="button" class="tile" data-i="3">a sandwich</button></div></div></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;We love playing football&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">football</button><button type="button" class="tile" data-i="1">playing</button><button type="button" class="tile" data-i="2">we</button><button type="button" class="tile" data-i="3">love</button></div></div></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Do you like ice-cream&quot;]" data-end="?"><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">you</button><button type="button" class="tile" data-i="1">like</button><button type="button" class="tile" data-i="2">do</button><button type="button" class="tile" data-i="3">ice-cream</button></div></div></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Mary doesn&#x27;t like singing&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">doesn&#x27;t</button><button type="button" class="tile" data-i="1">singing</button><button type="button" class="tile" data-i="2">Mary</button><button type="button" class="tile" data-i="3">like</button></div></div></div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;I like going out with friends&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">going out</button><button type="button" class="tile" data-i="1">I</button><button type="button" class="tile" data-i="2">with friends</button><button type="button" class="tile" data-i="3">like</button></div></div></div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;She doesn&#x27;t like playing any sport&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">She</button><button type="button" class="tile" data-i="1">doesn&#x27;t</button><button type="button" class="tile" data-i="2">playing</button><button type="button" class="tile" data-i="3">like</button><button type="button" class="tile" data-i="4">any sport</button></div></div></div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;He hates cooking&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">hates</button><button type="button" class="tile" data-i="1">He</button><button type="button" class="tile" data-i="2">cooking</button></div></div></div></div>
+<div class="item"><span class="g-num">9</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;She loves swimming in the pool&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">swimming</button><button type="button" class="tile" data-i="1">She</button><button type="button" class="tile" data-i="2">in the pool</button><button type="button" class="tile" data-i="3">loves</button></div></div></div></div>
+<div class="item"><span class="g-num">10</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;My mother loves books&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">My</button><button type="button" class="tile" data-i="1">loves</button><button type="button" class="tile" data-i="2">mother</button><button type="button" class="tile" data-i="3">books</button></div></div></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g6"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g6">Check</button>
+      <button class="btn-ghost" data-reset="g6">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g7" data-ex="g7">
+    <div class="block-head"><h2>Exercise 7</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Correct the mistakes in each sentence. Rewrite the sentence correctly.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body"><span class="prompt">She like see her friends.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;She likes seeing her friends.&quot;, &quot;She likes to see her friends.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><span class="prompt">He don&#x27;t like runing.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;He doesn&#x27;t like running.&quot;, &quot;He doesn&#x27;t like to run.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><span class="prompt">What books you do like reading?</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;What books do you like reading?&quot;, &quot;What books do you like to read?&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><span class="prompt">Do they likes takking photos?</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Do they like taking photos?&quot;, &quot;Do they like to take photos?&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><span class="prompt">They doesn&#x27;t likes animals.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;They don&#x27;t like animals.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body"><span class="prompt">What does she likes do?</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;What does she like doing?&quot;, &quot;What does she like to do?&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="write the correct sentence…"></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g7"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g7">Check</button>
+      <button class="btn-ghost" data-reset="g7">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g8" data-ex="g8">
+    <div class="block-head"><h2>Exercise 8</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with the PAST SIMPLE of the verbs.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">The match <input type="text" class="unit cell" data-type="input" data-accept="[&quot;finished&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(finish)</span> at 9.30 yesterday.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">My mother <input type="text" class="unit cell" data-type="input" data-accept="[&quot;worked&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(work)</span> in that hospital 10 years ago.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><input type="text" class="unit cell" data-type="input" data-accept="[&quot;Were they&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(they / be)</span> at home on Fridays?</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">I <input type="text" class="unit cell" data-type="input" data-accept="[&quot;studied&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(study)</span> biology at university.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">Malika <input type="text" class="unit cell" data-type="input" data-accept="[&quot;was&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(be)</span> in India on holiday last year.</div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body">Karim <input type="text" class="unit cell" data-type="input" data-accept="[&quot;wrote&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(write)</span> to Helen many times but she didn&#x27;t answer.</div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body">I <input type="text" class="unit cell" data-type="input" data-accept="[&quot;didn&#x27;t go&quot;, &quot;did not go&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(not go)</span> out. I stayed with my family last night.</div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body">Picasso <input type="text" class="unit cell" data-type="input" data-accept="[&quot;painted&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(paint)</span> this picture two centuries ago.</div></div>
+<div class="item"><span class="g-num">9</span><div class="item-body">I <input type="text" class="unit cell" data-type="input" data-accept="[&quot;watched&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(watch)</span> Barbie last Saturday.</div></div>
+<div class="item"><span class="g-num">10</span><div class="item-body">My sisters <input type="text" class="unit cell" data-type="input" data-accept="[&quot;weren&#x27;t&quot;, &quot;were not&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(not be)</span> at home last week. They left for the village.</div></div>
+    </div>
+    <div class="task-feedback" id="fb-g8"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g8">Check</button>
+      <button class="btn-ghost" data-reset="g8">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g9" data-ex="g9">
+    <div class="block-head"><h2>Exercise 9</h2><span class="block-count">9 items</span></div>
+    <p class="instructions">Complete the sentences with the PAST SIMPLE of the verbs.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">We <input type="text" class="unit cell" data-type="input" data-accept="[&quot;went&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(go)</span> to school yesterday.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">They <input type="text" class="unit cell" data-type="input" data-accept="[&quot;saw&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(see)</span> a movie last weekend.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">He <input type="text" class="unit cell" data-type="input" data-accept="[&quot;had&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(have)</span> cereal for breakfast.</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">Mary <input type="text" class="unit cell" data-type="input" data-accept="[&quot;was&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(to be)</span> ill last week.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">Malika <input type="text" class="unit cell" data-type="input" data-accept="[&quot;went&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(go)</span> swimming yesterday.</div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body">He <input type="text" class="unit cell" data-type="input" data-accept="[&quot;did&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(do)</span> well on his last English test.</div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body">I <input type="text" class="unit cell" data-type="input" data-accept="[&quot;made&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(make)</span> more than 10 phone calls yesterday.</div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body">My friend <input type="text" class="unit cell" data-type="input" data-accept="[&quot;was&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(to be)</span> in bed at 9 PM yesterday.</div></div>
+<div class="item"><span class="g-num">9</span><div class="item-body">We <input type="text" class="unit cell" data-type="input" data-accept="[&quot;went&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> <span class="hint">(go)</span> to the beach last week.</div></div>
+    </div>
+    <div class="task-feedback" id="fb-g9"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g9">Check</button>
+      <button class="btn-ghost" data-reset="g9">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g10" data-ex="g10">
+    <div class="block-head"><h2>Exercise 10</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Choose the correct past verbs.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">We <span class="gap"><span class="unit choice" data-type="choice" data-answer="went"><button type="button" class="opt" data-value="went">went</button><button type="button" class="opt" data-value="were">were</button></span></span> to Istanbul last year.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="lost"><button type="button" class="opt" data-value="met">met</button><button type="button" class="opt" data-value="lost">lost</button></span></span> my credit card this morning.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="sold"><button type="button" class="opt" data-value="sold">sold</button><button type="button" class="opt" data-value="saw">saw</button></span></span> my car for $4000.</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="met"><button type="button" class="opt" data-value="met">met</button><button type="button" class="opt" data-value="knew">knew</button></span></span> my best friend on holiday.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="saw"><button type="button" class="opt" data-value="took">took</button><button type="button" class="opt" data-value="saw">saw</button></span></span> Jack at the department store.</div></div>
+    </div>
+    <div class="task-feedback" id="fb-g10"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g10">Check</button>
+      <button class="btn-ghost" data-reset="g10">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g11" data-ex="g11">
+    <div class="block-head"><h2>Exercise 11</h2><span class="block-count">13 items</span></div>
+    <p class="instructions">Rewrite the sentences in the PAST SIMPLE.</p>
+<div class="example"><b>Example:</b> We write an essay at the lesson. → <u>We wrote an essay at the lesson.</u></div>
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body"><span class="prompt">They finish their work at 7.30.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;They finished their work at 7.30.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><span class="prompt">My parents don&#x27;t use a laptop.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;My parents didn&#x27;t use a laptop.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><span class="prompt">Do you watch TV every day?</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Did you watch TV every day?&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><span class="prompt">We visit our grandparents every month.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;We visited our grandparents every month.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><span class="prompt">Malika doesn&#x27;t meet her friends very often.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Malika didn&#x27;t meet her friends very often.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body"><span class="prompt">Mark isn&#x27;t here.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;Mark wasn&#x27;t here.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body"><span class="prompt">This dog is funny.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;This dog was funny.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body"><span class="prompt">I do not sleep a lot.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;I did not sleep a lot.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">9</span><div class="item-body"><span class="prompt">You look sad.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;You looked sad.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">10</span><div class="item-body"><span class="prompt">The winter is cold.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;The winter was cold.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">11</span><div class="item-body"><span class="prompt">They help me.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;They helped me.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">12</span><div class="item-body"><span class="prompt">We are hungry.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;We were hungry.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+<div class="item"><span class="g-num">13</span><div class="item-body"><span class="prompt">This book isn&#x27;t boring.</span><br><input type="text" class="unit cell wide" data-type="input" data-accept="[&quot;This book wasn&#x27;t boring.&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="rewrite in the past simple…"></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g11"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g11">Check</button>
+      <button class="btn-ghost" data-reset="g11">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g12" data-ex="g12">
+    <div class="block-head"><h2>Exercise 12</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Put the words in order to make sentences. Tap the words to build each sentence.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;I would like a cup of lemonade&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">lemonade</button><button type="button" class="tile" data-i="1">I</button><button type="button" class="tile" data-i="2">a cup of</button><button type="button" class="tile" data-i="3">would</button><button type="button" class="tile" data-i="4">like</button></div></div></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Would you like a burger&quot;]" data-end="?"><div class="tile-line"><span class="tile-label">A</span><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">you</button><button type="button" class="tile" data-i="1">burger</button><button type="button" class="tile" data-i="2">like</button><button type="button" class="tile" data-i="3">Would</button><button type="button" class="tile" data-i="4">a</button></div></div><div class="unit tiles" data-type="tiles" data-accept="[&quot;No, thank you&quot;]" data-end="."><div class="tile-line"><span class="tile-label">B</span><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">you</button><button type="button" class="tile" data-i="1">thank</button><button type="button" class="tile" data-i="2">No,</button></div></div></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;He would like to have some water&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">have</button><button type="button" class="tile" data-i="1">would</button><button type="button" class="tile" data-i="2">to</button><button type="button" class="tile" data-i="3">some water</button><button type="button" class="tile" data-i="4">He</button><button type="button" class="tile" data-i="5">like</button></div></div></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Would you like to try this jam&quot;]" data-end="?"><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">try</button><button type="button" class="tile" data-i="1">Would</button><button type="button" class="tile" data-i="2">like</button><button type="button" class="tile" data-i="3">you</button><button type="button" class="tile" data-i="4">to</button><button type="button" class="tile" data-i="5">this</button><button type="button" class="tile" data-i="6">jam</button></div></div></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;I would like some ice-cream&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">ice-cream</button><button type="button" class="tile" data-i="1">I</button><button type="button" class="tile" data-i="2">some</button><button type="button" class="tile" data-i="3">would</button><button type="button" class="tile" data-i="4">like</button></div></div></div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Would you like sweets&quot;]" data-end="?"><div class="tile-line"><span class="tile-label">A</span><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">you</button><button type="button" class="tile" data-i="1">sweets</button><button type="button" class="tile" data-i="2">like</button><button type="button" class="tile" data-i="3">Would</button></div></div><div class="unit tiles" data-type="tiles" data-accept="[&quot;Yes, please&quot;]" data-end="."><div class="tile-line"><span class="tile-label">B</span><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">please</button><button type="button" class="tile" data-i="1">Yes,</button></div></div></div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;He would like to drink some coffee with milk&quot;]" data-end="."><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">drink</button><button type="button" class="tile" data-i="1">would</button><button type="button" class="tile" data-i="2">to</button><button type="button" class="tile" data-i="3">some coffee with milk</button><button type="button" class="tile" data-i="4">He</button><button type="button" class="tile" data-i="5">like</button></div></div></div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body"><div class="unit tiles" data-type="tiles" data-accept="[&quot;Would you like to try this pizza&quot;]" data-end="?"><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">try</button><button type="button" class="tile" data-i="1">Would</button><button type="button" class="tile" data-i="2">like</button><button type="button" class="tile" data-i="3">you</button><button type="button" class="tile" data-i="4">to</button><button type="button" class="tile" data-i="5">this</button><button type="button" class="tile" data-i="6">pizza</button></div></div></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g12"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g12">Check</button>
+      <button class="btn-ghost" data-reset="g12">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g13" data-ex="g13">
+    <div class="block-head"><h2>Exercise 13</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Choose the correct word.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">My friend <span class="gap"><span class="unit choice" data-type="choice" data-answer="would like"><button type="button" class="opt" data-value="like">like</button><button type="button" class="opt" data-value="would like">would like</button></span></span> to buy a computer.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">Jack <span class="gap"><span class="unit choice" data-type="choice" data-answer="doesn’t"><button type="button" class="opt" data-value="doesn’t">doesn’t</button><button type="button" class="opt" data-value="don’t">don’t</button></span></span> like dogs.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">Do you like <span class="gap"><span class="unit choice" data-type="choice" data-answer="swimming"><button type="button" class="opt" data-value="swim">swim</button><button type="button" class="opt" data-value="swimming">swimming</button></span></span>?</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="can’t"><button type="button" class="opt" data-value="cant">cant</button><button type="button" class="opt" data-value="can’t">can’t</button></span></span> speak English at all.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">“<span class="gap"><span class="unit choice" data-type="choice" data-answer="Do"><button type="button" class="opt" data-value="Do">Do</button><button type="button" class="opt" data-value="Would">Would</button></span></span> you want a drink?” – “No, thanks!”</div></div>
+    </div>
+    <div class="task-feedback" id="fb-g13"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g13">Check</button>
+      <button class="btn-ghost" data-reset="g13">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-g14" data-ex="g14">
+    <div class="block-head"><h2>Exercise 14</h2><span class="block-count">12 items</span></div>
+    <p class="instructions">Choose the correct words.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">I <span class="gap"><span class="unit choice" data-type="choice" data-answer="am going"><button type="button" class="opt" data-value="go">go</button><button type="button" class="opt" data-value="am going">am going</button></span></span> to travel next month.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">Selena <span class="gap"><span class="unit choice" data-type="choice" data-answer="isn’t"><button type="button" class="opt" data-value="isn’t">isn’t</button><button type="button" class="opt" data-value="doesn’t">doesn’t</button></span></span> going to sleep.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><span class="gap"><span class="unit choice" data-type="choice" data-answer="Are you"><button type="button" class="opt" data-value="You are">You are</button><button type="button" class="opt" data-value="Are you">Are you</button></span></span> going to have lunch?</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">Jasur and Malika are going <span class="gap"><span class="unit choice" data-type="choice" data-answer="to play"><button type="button" class="opt" data-value="play">play</button><button type="button" class="opt" data-value="to play">to play</button></span></span> in the garden.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">Is your cousin <span class="gap"><span class="unit choice" data-type="choice" data-answer="going to be"><button type="button" class="opt" data-value="going to be">going to be</button><button type="button" class="opt" data-value="going to being">going to being</button></span></span> a teacher?</div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body">Are we <span class="gap"><span class="unit choice" data-type="choice" data-answer="going to see"><button type="button" class="opt" data-value="going to see">going to see</button><button type="button" class="opt" data-value="go to see">go to see</button></span></span> that film tonight?</div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body">She <span class="gap"><span class="unit choice" data-type="choice" data-answer="’s going"><button type="button" class="opt" data-value="goes">goes</button><button type="button" class="opt" data-value="’s going">’s going</button></span></span> to help us.</div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body">Alex <span class="gap"><span class="unit choice" data-type="choice" data-answer="isn’t"><button type="button" class="opt" data-value="isn’t">isn’t</button><button type="button" class="opt" data-value="doesn’t">doesn’t</button></span></span> going to cook a meal.</div></div>
+<div class="item"><span class="g-num">9</span><div class="item-body"><span class="gap"><span class="unit choice" data-type="choice" data-answer="Are you"><button type="button" class="opt" data-value="You’re">You’re</button><button type="button" class="opt" data-value="Are you">Are you</button></span></span> going to sleep?</div></div>
+<div class="item"><span class="g-num">10</span><div class="item-body">They’re going <span class="gap"><span class="unit choice" data-type="choice" data-answer="to watch"><button type="button" class="opt" data-value="watch">watch</button><button type="button" class="opt" data-value="to watch">to watch</button></span></span> a film.</div></div>
+<div class="item"><span class="g-num">11</span><div class="item-body">Is Sam <span class="gap"><span class="unit choice" data-type="choice" data-answer="going to be"><button type="button" class="opt" data-value="going to be">going to be</button><button type="button" class="opt" data-value="going to being">going to being</button></span></span> a teacher?</div></div>
+<div class="item"><span class="g-num">12</span><div class="item-body"><div class="dlg-inline"><b>ANNA:</b> Are we going to meet tonight?</div><div class="dlg-inline"><b>BEN:</b> Yes, <span class="gap"><span class="unit choice" data-type="choice" data-answer="we are"><button type="button" class="opt" data-value="we are">we are</button><button type="button" class="opt" data-value="are going">are going</button></span></span>.</div></div></div>
+    </div>
+    <div class="task-feedback" id="fb-g14"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="g14">Check</button>
+      <button class="btn-ghost" data-reset="g14">Clear</button>
+    </div>
+  </section>
+      <div class="summary">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="ts-g">0 / 0</div>
+        <div class="summary-label" id="tp-g">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" data-checkall="g">Check everything</button>
+          <button class="btn-ghost" data-resetall="g">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-vocab" data-sfx="v">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · Final Workshop</span></div>
+        <span class="level-badge">Beginner</span>
+        <h1>Vocabulary</h1>
+        <p class="sub">Hotel words, everyday verbs, born / died and word meanings — 5 exercises.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="pf-v"></div></div>
+        <span class="score-tally" id="st-v">0 / 0</span>
+      </div>
+      <div class="jump-nav">
+        <a href="#sec-v1">1</a>
+        <a href="#sec-v2">2</a>
+        <a href="#sec-v3">3</a>
+        <a href="#sec-v4">4</a>
+        <a href="#sec-v5">5</a>
+      </div>
+  <section class="block" id="sec-v1" data-ex="v1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the gaps with the words from the box. Tap a word to place it in the next gap (or tap a numbered gap first). Tap a filled gap to take the word back.</p>
+<div class="word-bank"><button type="button" class="bank-word" id="bw-v1-0" data-word="towels">towels</button><button type="button" class="bank-word" id="bw-v1-1" data-word="air conditioning">air conditioning</button><button type="button" class="bank-word" id="bw-v1-2" data-word="bath">bath</button><button type="button" class="bank-word" id="bw-v1-3" data-word="lift">lift</button><button type="button" class="bank-word" id="bw-v1-4" data-word="car park">car park</button><button type="button" class="bank-word" id="bw-v1-5" data-word="gym">gym</button><button type="button" class="bank-word" id="bw-v1-6" data-word="restaurant">restaurant</button><button type="button" class="bank-word" id="bw-v1-7" data-word="refreshments">refreshments</button><button type="button" class="bank-word" id="bw-v1-8" data-word="safe">safe</button><button type="button" class="bank-word" id="bw-v1-9" data-word="Wi-fi">Wi-fi</button></div>
+    <div class="items">
+<p class="passage">Marmara Pera is a nice hotel in Istanbul, Turkey. It’s got 10 floors, but there isn’t a <span class="gap"><b class="blank-idx">1</b><span class="unit fill-blank" data-type="bank" data-answer="lift"><span class="ph">···</span></span></span>. Each room has got a TV and free <span class="gap"><b class="blank-idx">2</b><span class="unit fill-blank" data-type="bank" data-answer="Wi-fi"><span class="ph">···</span></span></span> so you can talk to your friends on Telegram any time. There’s a <span class="gap"><b class="blank-idx">3</b><span class="unit fill-blank" data-type="bank" data-answer="safe"><span class="ph">···</span></span></span> in the room for your money, and there’s also a minibar with <span class="gap"><b class="blank-idx">4</b><span class="unit fill-blank" data-type="bank" data-answer="refreshments"><span class="ph">···</span></span></span>. The rooms are not hot because there’s <span class="gap"><b class="blank-idx">5</b><span class="unit fill-blank" data-type="bank" data-answer="air conditioning"><span class="ph">···</span></span></span>. The bathrooms have got a shower and a <span class="gap"><b class="blank-idx">6</b><span class="unit fill-blank" data-type="bank" data-answer="bath"><span class="ph">···</span></span></span>, and there are always clean <span class="gap"><b class="blank-idx">7</b><span class="unit fill-blank" data-type="bank" data-answer="towels"><span class="ph">···</span></span></span> in the cupboard. You can eat something in the hotel <span class="gap"><b class="blank-idx">8</b><span class="unit fill-blank" data-type="bank" data-answer="restaurant"><span class="ph">···</span></span></span>. The hotel has got a <span class="gap"><b class="blank-idx">9</b><span class="unit fill-blank" data-type="bank" data-answer="gym"><span class="ph">···</span></span></span> and a fitness center. It is good for you if you have a car, because there is a <span class="gap"><b class="blank-idx">10</b><span class="unit fill-blank" data-type="bank" data-answer="car park"><span class="ph">···</span></span></span>.</p>
+    </div>
+    <div class="task-feedback" id="fb-v1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="v1">Check</button>
+      <button class="btn-ghost" data-reset="v1">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-v2" data-ex="v2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">10 items</span></div>
+    <p class="instructions">Complete the sentences with the verbs in the box. Tap a word to place it in the next gap.</p>
+<div class="word-bank"><button type="button" class="bank-word" id="bw-v2-0" data-word="cook">cook</button><button type="button" class="bank-word" id="bw-v2-1" data-word="use">use</button><button type="button" class="bank-word" id="bw-v2-2" data-word="take">take</button><button type="button" class="bank-word" id="bw-v2-3" data-word="listen">listen</button><button type="button" class="bank-word" id="bw-v2-4" data-word="play">play</button><button type="button" class="bank-word" id="bw-v2-5" data-word="read">read</button><button type="button" class="bank-word" id="bw-v2-6" data-word="buy">buy</button><button type="button" class="bank-word" id="bw-v2-7" data-word="travel">travel</button><button type="button" class="bank-word" id="bw-v2-8" data-word="watch">watch</button><button type="button" class="bank-word" id="bw-v2-9" data-word="work">work</button></div>
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">I usually <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="cook"><span class="ph">···</span></span></span> breakfast at seven o&#x27;clock.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">Do you <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="use"><span class="ph">···</span></span></span> Telegram at work?</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">They always <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="watch"><span class="ph">···</span></span></span> TV at the weekend.</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">Does she <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="buy"><span class="ph">···</span></span></span> new clothes at the shopping mall?</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">I often <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="listen"><span class="ph">···</span></span></span> to music on the radio.</div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body">My sister wants to <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="travel"><span class="ph">···</span></span></span> to other countries.</div></div>
+<div class="item"><span class="g-num">7</span><div class="item-body">We <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="read"><span class="ph">···</span></span></span> books in the evening.</div></div>
+<div class="item"><span class="g-num">8</span><div class="item-body">Do you <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="take"><span class="ph">···</span></span></span> photos on your mobile phone?</div></div>
+<div class="item"><span class="g-num">9</span><div class="item-body">Children don&#x27;t <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="work"><span class="ph">···</span></span></span> in the garden.</div></div>
+<div class="item"><span class="g-num">10</span><div class="item-body">Do you <span class="gap"><span class="unit fill-blank" data-type="bank" data-answer="play"><span class="ph">···</span></span></span> video games in your free time?</div></div>
+    </div>
+    <div class="task-feedback" id="fb-v2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="v2">Check</button>
+      <button class="btn-ghost" data-reset="v2">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-v3" data-ex="v3">
+    <div class="block-head"><h2>Exercise 3</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Read the information. Then complete the sentences with <em>was born</em> or <em>died</em>.</p>
+<div class="info-table-wrap"><table class="info-table"><thead><tr><th>Name</th><th>Job</th><th>Born</th><th>Died</th></tr></thead><tbody><tr><td>Alan Jack</td><td>writer</td><td>15th September 1890</td><td>12th January 1976</td></tr><tr><td>Jamal Black</td><td>painter</td><td>4th July 1899</td><td>6th June 1984</td></tr><tr><td>Rodrigues</td><td>actor</td><td>27th November 1940</td><td>20th July 1973</td></tr><tr><td>Helen Smith</td><td>nurse</td><td>12th May 1820</td><td>13th August 1910</td></tr><tr><td>Wilson Cameron</td><td>footballer</td><td>22nd October 1929</td><td>20th March 1990</td></tr></tbody></table></div>
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">Helen Smith <span class="gap"><span class="unit choice" data-type="choice" data-answer="died"><button type="button" class="opt" data-value="was born">was born</button><button type="button" class="opt" data-value="died">died</button></span></span> in 1910.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">Wilson Cameron <span class="gap"><span class="unit choice" data-type="choice" data-answer="was born"><button type="button" class="opt" data-value="was born">was born</button><button type="button" class="opt" data-value="died">died</button></span></span> in 1929.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">Alan Jack <span class="gap"><span class="unit choice" data-type="choice" data-answer="was born"><button type="button" class="opt" data-value="was born">was born</button><button type="button" class="opt" data-value="died">died</button></span></span> on 15th September.</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">Jamal Black <span class="gap"><span class="unit choice" data-type="choice" data-answer="died"><button type="button" class="opt" data-value="was born">was born</button><button type="button" class="opt" data-value="died">died</button></span></span> on 6th June.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">Rodrigues <span class="gap"><span class="unit choice" data-type="choice" data-answer="died"><button type="button" class="opt" data-value="was born">was born</button><button type="button" class="opt" data-value="died">died</button></span></span> when he was thirty-two.</div></div>
+    </div>
+    <div class="task-feedback" id="fb-v3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="v3">Check</button>
+      <button class="btn-ghost" data-reset="v3">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-v4" data-ex="v4">
+    <div class="block-head"><h2>Exercise 4</h2><span class="block-count">5 items</span></div>
+    <p class="instructions">Read the sentences. Then choose the correct answers.</p>
+
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body"><div class="unit mc" data-type="mc" data-answer="b"><div class="mc-stem">They don&#x27;t like that music. It&#x27;s awful! <em class="mc-q">What does awful mean?</em></div><div class="mc-options"><label class="mc-option"><input type="radio" name="mc-v4-1" value="a"><span class="mc-letter">a</span><span class="mc-text">interesting</span></label><label class="mc-option"><input type="radio" name="mc-v4-1" value="b"><span class="mc-letter">b</span><span class="mc-text">really bad</span></label></div></div></div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body"><div class="unit mc" data-type="mc" data-answer="b"><div class="mc-stem">Sardor is sad because he lost his phone yesterday. <em class="mc-q">What does sad mean?</em></div><div class="mc-options"><label class="mc-option"><input type="radio" name="mc-v4-2" value="a"><span class="mc-letter">a</span><span class="mc-text">happy</span></label><label class="mc-option"><input type="radio" name="mc-v4-2" value="b"><span class="mc-letter">b</span><span class="mc-text">not happy</span></label></div></div></div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body"><div class="unit mc" data-type="mc" data-answer="a"><div class="mc-stem">This house is huge. <em class="mc-q">What does huge mean?</em></div><div class="mc-options"><label class="mc-option"><input type="radio" name="mc-v4-3" value="a"><span class="mc-letter">a</span><span class="mc-text">very big</span></label><label class="mc-option"><input type="radio" name="mc-v4-3" value="b"><span class="mc-letter">b</span><span class="mc-text">very small</span></label></div></div></div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body"><div class="unit mc" data-type="mc" data-answer="b"><div class="mc-stem">Please, help me. This exercise is difficult. <em class="mc-q">What does difficult mean?</em></div><div class="mc-options"><label class="mc-option"><input type="radio" name="mc-v4-4" value="a"><span class="mc-letter">a</span><span class="mc-text">easy</span></label><label class="mc-option"><input type="radio" name="mc-v4-4" value="b"><span class="mc-letter">b</span><span class="mc-text">hard</span></label></div></div></div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body"><div class="unit mc" data-type="mc" data-answer="b"><div class="mc-stem">Most people read online news because they are short. <em class="mc-q">What does short mean?</em></div><div class="mc-options"><label class="mc-option"><input type="radio" name="mc-v4-5" value="a"><span class="mc-letter">a</span><span class="mc-text">long</span></label><label class="mc-option"><input type="radio" name="mc-v4-5" value="b"><span class="mc-letter">b</span><span class="mc-text">not long</span></label></div></div></div></div>
+    </div>
+    <div class="task-feedback" id="fb-v4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="v4">Check</button>
+      <button class="btn-ghost" data-reset="v4">Clear</button>
+    </div>
+  </section>
+
+  <section class="block" id="sec-v5" data-ex="v5">
+    <div class="block-head"><h2>Exercise 5</h2><span class="block-count">6 items</span></div>
+    <p class="instructions">Complete the sentences with the correct form of the words in the box.</p>
+<div class="ref-box"><b>Words:</b> buy / have / learn / finish / move / change</div>
+    <div class="items">
+<div class="item"><span class="g-num">1</span><div class="item-body">All my friends <input type="text" class="unit cell" data-type="input" data-accept="[&quot;have&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> children.</div></div>
+<div class="item"><span class="g-num">2</span><div class="item-body">My neighbor <input type="text" class="unit cell" data-type="input" data-accept="[&quot;learns&quot;, &quot;learned&quot;, &quot;learnt&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> French at college.</div></div>
+<div class="item"><span class="g-num">3</span><div class="item-body">I am going to <input type="text" class="unit cell" data-type="input" data-accept="[&quot;move&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> abroad next year.</div></div>
+<div class="item"><span class="g-num">4</span><div class="item-body">Tourists always <input type="text" class="unit cell" data-type="input" data-accept="[&quot;buy&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> souvenirs from my town.</div></div>
+<div class="item"><span class="g-num">5</span><div class="item-body">I <input type="text" class="unit cell" data-type="input" data-accept="[&quot;changed&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my job because I didn&#x27;t like my boss.</div></div>
+<div class="item"><span class="g-num">6</span><div class="item-body">Last year my little brother <input type="text" class="unit cell" data-type="input" data-accept="[&quot;finished&quot;, &quot;changed&quot;]" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> school.</div></div>
+    </div>
+    <div class="task-feedback" id="fb-v5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="v5">Check</button>
+      <button class="btn-ghost" data-reset="v5">Clear</button>
+    </div>
+  </section>
+      <div class="summary">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="ts-v">0 / 0</div>
+        <div class="summary-label" id="tp-v">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" data-checkall="v">Check everything</button>
+          <button class="btn-ghost" data-resetall="v">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-irr" data-sfx="i">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · Final Workshop</span></div>
+        <span class="level-badge">Beginner</span>
+        <h1>Irregular Verbs Test</h1>
+        <p class="sub">Only the translations are given. Write the infinitive and the Past Simple of 35 irregular verbs.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="pf-i"></div></div>
+        <span class="score-tally" id="st-i">0 / 0</span>
+      </div>
+      <div class="jump-nav">
+        <a href="#sec-irr">Test</a>
+      </div>
+  <section class="block" id="sec-irr" data-ex="irr">
+    <div class="block-head"><h2>Irregular Verbs Test</h2><span class="block-count">70 answers</span></div>
+    <p class="instructions">Read the Uzbek and Russian translations. Write the <b>infinitive (V1)</b> and the <b>Past Simple (V2)</b> form of each verb. (For <em>be</em> write both forms, e.g. was/were.)</p>
+    <div class="irr-list">
+      <div class="irr-row">
+        <span class="g-num">1</span>
+        <div class="irr-tr"><span class="tr-uz">bo’lmoq, bor bo’lmoq</span><span class="tr-ru">быть, являться</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;be&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;was/were&quot;, &quot;were/was&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">2</span>
+        <div class="irr-tr"><span class="tr-uz">sindirmoq</span><span class="tr-ru">ломать, разбивать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;break&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;broke&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">3</span>
+        <div class="irr-tr"><span class="tr-uz">sotib olmoq</span><span class="tr-ru">покупать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;buy&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;bought&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">4</span>
+        <div class="irr-tr"><span class="tr-uz">qodir bo’lmoq</span><span class="tr-ru">мочь, уметь</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;can&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;could&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">5</span>
+        <div class="irr-tr"><span class="tr-uz">kelmoq</span><span class="tr-ru">приходить, приезжать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;come&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;came&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">6</span>
+        <div class="irr-tr"><span class="tr-uz">bajarmoq</span><span class="tr-ru">делать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;do&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;did&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">7</span>
+        <div class="irr-tr"><span class="tr-uz">ichmoq</span><span class="tr-ru">пить</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;drink&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;drank&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">8</span>
+        <div class="irr-tr"><span class="tr-uz">haydamoq</span><span class="tr-ru">водить (машину)</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;drive&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;drove&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">9</span>
+        <div class="irr-tr"><span class="tr-uz">yemoq</span><span class="tr-ru">есть, кушать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;eat&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;ate&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">10</span>
+        <div class="irr-tr"><span class="tr-uz">qulamoq</span><span class="tr-ru">падать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;fall&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;fell&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">11</span>
+        <div class="irr-tr"><span class="tr-uz">unutmoq</span><span class="tr-ru">забывать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;forget&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;forgot&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">12</span>
+        <div class="irr-tr"><span class="tr-uz">olmoq, yetib kelmoq</span><span class="tr-ru">получать, добираться</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;get&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;got&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">13</span>
+        <div class="irr-tr"><span class="tr-uz">bermoq</span><span class="tr-ru">давать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;give&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;gave&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">14</span>
+        <div class="irr-tr"><span class="tr-uz">bormoq, yurmoq</span><span class="tr-ru">идти, ехать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;go&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;went&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">15</span>
+        <div class="irr-tr"><span class="tr-uz">egalik qilmoq</span><span class="tr-ru">иметь</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;have&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;had&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">16</span>
+        <div class="irr-tr"><span class="tr-uz">bilmoq</span><span class="tr-ru">знать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;know&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;knew&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">17</span>
+        <div class="irr-tr"><span class="tr-uz">o’rganmoq</span><span class="tr-ru">учить</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;learn&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;learnt&quot;, &quot;learned&quot;, &quot;learnt/learned&quot;, &quot;learned/learnt&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">18</span>
+        <div class="irr-tr"><span class="tr-uz">jo’nab ketmoq, unutib qoldirmoq</span><span class="tr-ru">уходить, покидать, оставлять</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;leave&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;left&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">19</span>
+        <div class="irr-tr"><span class="tr-uz">yo’qotmoq, yutqazmoq</span><span class="tr-ru">терять, проигрывать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;lose&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;lost&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">20</span>
+        <div class="irr-tr"><span class="tr-uz">uchrashmoq</span><span class="tr-ru">встречать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;meet&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;met&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">21</span>
+        <div class="irr-tr"><span class="tr-uz">o’qimoq</span><span class="tr-ru">читать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;read&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;read&quot;, &quot;read/red&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">22</span>
+        <div class="irr-tr"><span class="tr-uz">minmoq</span><span class="tr-ru">ездить верхом</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;ride&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;rode&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">23</span>
+        <div class="irr-tr"><span class="tr-uz">yugurmoq</span><span class="tr-ru">бегать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;run&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;ran&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">24</span>
+        <div class="irr-tr"><span class="tr-uz">aytmoq</span><span class="tr-ru">сказать, говорить</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;say&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;said&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">25</span>
+        <div class="irr-tr"><span class="tr-uz">ko’rmoq</span><span class="tr-ru">видеть</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;see&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;saw&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">26</span>
+        <div class="irr-tr"><span class="tr-uz">sotmoq</span><span class="tr-ru">продавать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;sell&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;sold&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">27</span>
+        <div class="irr-tr"><span class="tr-uz">o’tirmoq</span><span class="tr-ru">сидеть</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;sit&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;sat&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">28</span>
+        <div class="irr-tr"><span class="tr-uz">uxlamoq</span><span class="tr-ru">спать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;sleep&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;slept&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">29</span>
+        <div class="irr-tr"><span class="tr-uz">gapirmoq</span><span class="tr-ru">говорить</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;speak&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;spoke&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">30</span>
+        <div class="irr-tr"><span class="tr-uz">olmoq, olib ketmoq</span><span class="tr-ru">брать, забирать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;take&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;took&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">31</span>
+        <div class="irr-tr"><span class="tr-uz">o’qitmoq</span><span class="tr-ru">преподавать, учить</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;teach&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;taught&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">32</span>
+        <div class="irr-tr"><span class="tr-uz">aytib bermoq</span><span class="tr-ru">рассказывать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;tell&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;told&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">33</span>
+        <div class="irr-tr"><span class="tr-uz">o’ylamoq</span><span class="tr-ru">думать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;think&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;thought&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">34</span>
+        <div class="irr-tr"><span class="tr-uz">kiymoq</span><span class="tr-ru">носить (одежду)</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;wear&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;wore&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+      <div class="irr-row">
+        <span class="g-num">35</span>
+        <div class="irr-tr"><span class="tr-uz">yozmoq</span><span class="tr-ru">писать</span></div>
+        <div class="irr-in"><label>Infinitive (V1)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;write&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="infinitive"></div>
+        <div class="irr-in"><label>Past Simple (V2)</label><input type="text" class="unit cell" data-type="input" data-accept="[&quot;wrote&quot;]" data-mode="tok" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="past simple"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="fb-irr"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="irr">Check</button>
+      <button class="btn-ghost" data-reset="irr">Clear</button>
+    </div>
+  </section>
+      <div class="summary">
+        <div class="summary-label">Your score</div>
+        <div class="summary-score" id="ts-i">0 / 0</div>
+        <div class="summary-label" id="tp-i">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" data-checkall="i">Check everything</button>
+          <button class="btn-ghost" data-resetall="i">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Beginner Final Workshop — for individual practice. If you think an answer should also be accepted, ask your teacher.</footer>
+
+<script>
+(function(){
+  /* ---------- normalisation ---------- */
+  function normalize(s){
+    s = (s || '').toLowerCase().replace(/[’‘`]/g, "'");
+    s = s.replace(/\bcannot\b/g, "can not");
+    s = s.replace(/\bwon't\b/g, "will not");
+    s = s.replace(/\bcan't\b/g, "can not");
+    s = s.replace(/\bshan't\b/g, "shall not");
+    s = s.replace(/n't\b/g, " not");
+    s = s.replace(/'ll\b/g, " will");
+    s = s.replace(/'ve\b/g, " have");
+    s = s.replace(/'re\b/g, " are");
+    s = s.replace(/'m\b/g, " am");
+    return s.replace(/[^\w\s]/g, "").replace(/\s+/g, " ").trim();
+  }
+  function tokNorm(s){
+    var t = (s || '').toLowerCase().replace(/[’‘`]/g, "'").match(/[a-z']+/g) || [];
+    if (t.length > 1 && t[0] === 'to') t.shift();
+    return t.join('/');
+  }
+  function acceptList(u){ try { return JSON.parse(u.getAttribute('data-accept')) || []; } catch(e){ return []; } }
+  function uniqueDisplay(list, f){
+    var seen = {}, out = [];
+    list.forEach(function(a){ var k = f(a); if (!seen[k]) { seen[k] = 1; out.push(a); } });
+    return out.slice(0, 3).join('  /  ');
+  }
+  function sectionOf(el){ return el.closest('section.block'); }
+  function clearFb(el){
+    var sec = sectionOf(el); if (!sec) return;
+    var fb = document.getElementById('fb-' + sec.getAttribute('data-ex'));
+    if (fb) { fb.textContent = ''; fb.className = 'task-feedback'; }
+  }
+  function addReveal(u, text, inside){
+    var r = document.createElement('span');
+    r.className = 'reveal'; r.textContent = text;
+    if (inside) u.appendChild(r); else u.parentNode.insertBefore(r, u.nextSibling);
+    return r;
+  }
+
+  /* ---------- handlers per unit type ---------- */
+  var H = {};
+
+  H.choice = {
+    answered: function(u){ return !!u.querySelector('.opt.sel'); },
+    ok: function(u){
+      var s = u.querySelector('.opt.sel');
+      return !!s && u.getAttribute('data-answer').split('|').indexOf(s.getAttribute('data-value')) > -1;
+    },
+    unmark: function(u){
+      u.classList.remove('correct','incorrect');
+      u.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('key'); });
+    },
+    mark: function(u, ok){
+      H.choice.unmark(u); u.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) {
+        var acc = u.getAttribute('data-answer').split('|');
+        u.querySelectorAll('.opt').forEach(function(o){ if (acc.indexOf(o.getAttribute('data-value')) > -1) o.classList.add('key'); });
+      }
+    },
+    clear: function(u){ H.choice.unmark(u); u.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('sel'); }); }
+  };
+
+  function inputNorm(u){ return u.getAttribute('data-mode') === 'tok' ? tokNorm : normalize; }
+  H.input = {
+    answered: function(u){ return u.value.trim() !== ''; },
+    ok: function(u){
+      var f = inputNorm(u), nv = f(u.value);
+      if (!nv) return false;
+      return acceptList(u).some(function(a){ return f(a) === nv; });
+    },
+    unmark: function(u){
+      u.classList.remove('correct','incorrect');
+      var r = u.nextElementSibling;
+      if (r && r.classList.contains('reveal')) r.parentNode.removeChild(r);
+    },
+    mark: function(u, ok){
+      H.input.unmark(u); u.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) addReveal(u, '→ ' + uniqueDisplay(acceptList(u), inputNorm(u)));
+    },
+    clear: function(u){ H.input.unmark(u); u.value = ''; }
+  };
+
+  H.tiles = {
+    placed: function(u){ return u.querySelectorAll('.tile-area .tile'); },
+    total: function(u){ return u.querySelectorAll('.tile-bank .tile').length; },
+    answered: function(u){ return H.tiles.placed(u).length === H.tiles.total(u); },
+    text: function(u){ return Array.prototype.map.call(H.tiles.placed(u), function(b){ return b.textContent; }).join(' '); },
+    ok: function(u){
+      var n = normalize(H.tiles.text(u));
+      return acceptList(u).some(function(a){ return normalize(a) === n; });
+    },
+    unmark: function(u){
+      u.classList.remove('correct','incorrect');
+      var r = u.querySelector(':scope > .reveal'); if (r) r.parentNode.removeChild(r);
+    },
+    mark: function(u, ok){
+      H.tiles.unmark(u); u.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) addReveal(u, 'Model answer: ' + acceptList(u)[0] + (u.getAttribute('data-end') || ''), true);
+    },
+    clear: function(u){
+      H.tiles.unmark(u);
+      Array.prototype.slice.call(H.tiles.placed(u)).forEach(function(p){ p.parentNode.removeChild(p); });
+      u.querySelectorAll('.tile-bank .tile').forEach(function(b){ b.classList.remove('used'); b.disabled = false; });
+    }
+  };
+
+  H.fix = {
+    answered: function(u){ return u.getAttribute('data-sel') !== null && u.querySelector('.fix-input').value.trim() !== ''; },
+    ok: function(u){
+      return Number(u.getAttribute('data-sel')) === Number(u.getAttribute('data-wrong')) &&
+             normalize(u.querySelector('.fix-input').value) === normalize(u.getAttribute('data-fix'));
+    },
+    unmark: function(u){
+      u.classList.remove('correct','incorrect');
+      var r = u.querySelector(':scope > .reveal'); if (r) r.parentNode.removeChild(r);
+    },
+    mark: function(u, ok){
+      H.fix.unmark(u); u.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) {
+        var toks = u.querySelectorAll('.tok'), w = toks[Number(u.getAttribute('data-wrong'))];
+        addReveal(u, 'Wrong word: ' + (w ? w.textContent : '') + ' → ' + u.getAttribute('data-fix'), true);
+      }
+    },
+    clear: function(u){
+      H.fix.unmark(u);
+      u.removeAttribute('data-sel');
+      u.querySelectorAll('.tok').forEach(function(t){ t.classList.remove('sel'); });
+      var row = u.querySelector('.fix-row'); row.hidden = true;
+      u.querySelector('.fix-input').value = '';
+    }
+  };
+
+  H.mc = {
+    answered: function(u){ return !!u.querySelector('input[type="radio"]:checked'); },
+    ok: function(u){ var c = u.querySelector('input[type="radio"]:checked'); return !!c && c.value === u.getAttribute('data-answer'); },
+    unmark: function(u){
+      u.classList.remove('correct','incorrect');
+      u.querySelectorAll('.mc-option').forEach(function(o){ o.classList.remove('key'); });
+    },
+    mark: function(u, ok){
+      H.mc.unmark(u); u.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) {
+        var k = u.querySelector('input[value="' + u.getAttribute('data-answer') + '"]');
+        if (k) k.closest('.mc-option').classList.add('key');
+      }
+    },
+    clear: function(u){
+      H.mc.unmark(u);
+      u.querySelectorAll('input[type="radio"]').forEach(function(r){ r.checked = false; });
+      u.querySelectorAll('.mc-option').forEach(function(o){ o.classList.remove('picked'); });
+    }
+  };
+
+  H.bank = {
+    answered: function(u){ return u.classList.contains('filled'); },
+    ok: function(u){ return (u.getAttribute('data-word') || '').toLowerCase() === (u.getAttribute('data-answer') || '').toLowerCase(); },
+    unmark: function(u){
+      u.classList.remove('correct','incorrect');
+      var r = u.querySelector('.reveal-answer'); if (r) r.parentNode.removeChild(r);
+    },
+    mark: function(u, ok){
+      H.bank.unmark(u); u.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) {
+        var r = document.createElement('span'); r.className = 'reveal-answer';
+        r.textContent = u.getAttribute('data-answer'); u.appendChild(r);
+      }
+    },
+    clear: function(u){
+      var id = u.getAttribute('data-bank-id');
+      if (id) { var b = document.getElementById(id); if (b) b.disabled = false; }
+      u.classList.remove('filled','correct','incorrect','active');
+      u.removeAttribute('data-word'); u.removeAttribute('data-bank-id');
+      u.innerHTML = '<span class="ph">···</span>';
+    }
+  };
+
+  function H_of(u){ return H[u.getAttribute('data-type')]; }
+
+  /* ---------- scoring ---------- */
+  function updateScores(){
+    document.querySelectorAll('.page').forEach(function(page){
+      var sfx = page.getAttribute('data-sfx');
+      var all = 0, answered = 0, correct = 0;
+      page.querySelectorAll('.unit').forEach(function(u){
+        all++;
+        var h = H_of(u);
+        if (h.answered(u)) { answered++; if (h.ok(u)) correct++; }
+      });
+      var pct = all ? Math.round(answered / all * 100) : 0;
+      document.getElementById('st-' + sfx).textContent = correct + ' / ' + all;
+      document.getElementById('ts-' + sfx).textContent = correct + ' / ' + all;
+      document.getElementById('pf-' + sfx).style.width = pct + '%';
+      document.getElementById('tp-' + sfx).textContent = pct + '% answered';
+    });
+  }
+
+  function checkSection(sec){
+    var units = sec.querySelectorAll('.unit'), answered = 0, correct = 0;
+    units.forEach(function(u){
+      var h = H_of(u); h.unmark(u);
+      if (h.answered(u)) {
+        answered++;
+        var ok = h.ok(u); if (ok) correct++;
+        h.mark(u, ok);
+      }
+    });
+    var fb = document.getElementById('fb-' + sec.getAttribute('data-ex'));
+    if (fb) {
+      var total = units.length;
+      if (answered === 0) { fb.textContent = ''; fb.className = 'task-feedback'; }
+      else if (answered < total) { fb.textContent = correct + ' / ' + answered + ' correct so far · ' + (total - answered) + ' still to answer.'; fb.className = 'task-feedback incomplete'; }
+      else if (correct === total) { fb.textContent = 'All correct — nice work!'; fb.className = 'task-feedback'; }
+      else { fb.textContent = correct + ' / ' + total + ' correct. The right answers are shown for the mistakes.'; fb.className = 'task-feedback has-errors'; }
+    }
+    updateScores();
+  }
+  function resetSection(sec){
+    sec.querySelectorAll('.unit').forEach(function(u){ H_of(u).clear(u); });
+    var fb = document.getElementById('fb-' + sec.getAttribute('data-ex'));
+    if (fb) { fb.textContent = ''; fb.className = 'task-feedback'; }
+    updateScores();
+  }
+
+  /* ---------- bank helpers ---------- */
+  function firstTarget(sec){
+    var blanks = sec.querySelectorAll('.unit.fill-blank'), i;
+    for (i = 0; i < blanks.length; i++) if (blanks[i].classList.contains('active') && !blanks[i].classList.contains('filled')) return blanks[i];
+    for (i = 0; i < blanks.length; i++) if (!blanks[i].classList.contains('filled')) return blanks[i];
+    return null;
+  }
+  function clearActive(sec){ sec.querySelectorAll('.unit.fill-blank').forEach(function(b){ b.classList.remove('active'); }); }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click', function(e){
+    var t = e.target; if (!t || !t.closest) return;
+    var el;
+
+    if ((el = t.closest('.unit.choice .opt'))) {
+      var u = el.closest('.unit.choice');
+      H.choice.unmark(u);
+      u.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('sel'); });
+      el.classList.add('sel'); clearFb(u); updateScores(); return;
+    }
+    if ((el = t.closest('.unit.tiles .tile-bank .tile'))) {
+      if (el.disabled || el.classList.contains('used')) return;
+      var tu = el.closest('.unit.tiles');
+      H.tiles.unmark(tu);
+      var p = document.createElement('button');
+      p.type = 'button'; p.className = 'tile placed'; p.textContent = el.textContent;
+      p.setAttribute('data-i', el.getAttribute('data-i'));
+      tu.querySelector('.tile-area').appendChild(p);
+      el.classList.add('used'); el.disabled = true;
+      clearFb(tu); updateScores(); return;
+    }
+    if ((el = t.closest('.unit.tiles .tile-area .tile'))) {
+      var tu2 = el.closest('.unit.tiles');
+      H.tiles.unmark(tu2);
+      var b = tu2.querySelector('.tile-bank .tile[data-i="' + el.getAttribute('data-i') + '"]');
+      if (b) { b.classList.remove('used'); b.disabled = false; }
+      el.parentNode.removeChild(el);
+      clearFb(tu2); updateScores(); return;
+    }
+    if ((el = t.closest('.unit.fix .tok'))) {
+      var fu = el.closest('.unit.fix');
+      H.fix.unmark(fu);
+      fu.querySelectorAll('.tok').forEach(function(k){ k.classList.remove('sel'); });
+      el.classList.add('sel');
+      fu.setAttribute('data-sel', el.getAttribute('data-i'));
+      var row = fu.querySelector('.fix-row'); row.hidden = false;
+      var inp = fu.querySelector('.fix-input'); if (inp) inp.focus();
+      clearFb(fu); updateScores(); return;
+    }
+    if ((el = t.closest('button.bank-word'))) {
+      if (el.disabled) return;
+      var sec = sectionOf(el);
+      var target = firstTarget(sec);
+      if (!target) return;
+      target.classList.add('filled'); target.classList.remove('correct','incorrect','active');
+      target.textContent = el.getAttribute('data-word');
+      target.setAttribute('data-word', el.getAttribute('data-word'));
+      target.setAttribute('data-bank-id', el.id);
+      el.disabled = true; clearFb(target); updateScores(); return;
+    }
+    if ((el = t.closest('.unit.fill-blank'))) {
+      var sec2 = sectionOf(el);
+      if (el.classList.contains('filled')) {
+        H.bank.clear(el); clearActive(sec2); el.classList.add('active');
+      } else if (el.classList.contains('active')) {
+        el.classList.remove('active');
+      } else {
+        clearActive(sec2); el.classList.add('active');
+      }
+      clearFb(el); updateScores(); return;
+    }
+    if ((el = t.closest('[data-check]'))) {
+      var s = document.getElementById('sec-' + el.getAttribute('data-check'));
+      if (s) checkSection(s); return;
+    }
+    if ((el = t.closest('[data-reset]'))) {
+      var s2 = document.getElementById('sec-' + el.getAttribute('data-reset'));
+      if (s2) resetSection(s2); return;
+    }
+    if ((el = t.closest('[data-checkall]'))) {
+      var pg = el.closest('.page');
+      pg.querySelectorAll('section.block').forEach(checkSection);
+      var first = pg.querySelector('section.block'); if (first && first.scrollIntoView) first.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    if ((el = t.closest('[data-resetall]'))) {
+      el.closest('.page').querySelectorAll('section.block').forEach(resetSection);
+      return;
+    }
+    if ((el = t.closest('.page-tab'))) {
+      document.querySelectorAll('.page-tab').forEach(function(x){ x.classList.remove('active'); });
+      document.querySelectorAll('.page').forEach(function(x){ x.classList.remove('active'); });
+      el.classList.add('active');
+      document.getElementById(el.getAttribute('data-target')).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+  });
+
+  document.addEventListener('input', function(e){
+    var t = e.target; if (!t || !t.matches) return;
+    if (t.matches('input.unit.cell')) { H.input.unmark(t); clearFb(t); updateScores(); }
+    else if (t.matches('input.fix-input')) { var u = t.closest('.unit.fix'); H.fix.unmark(u); clearFb(u); updateScores(); }
+  });
+
+  document.addEventListener('change', function(e){
+    var r = e.target; if (!r || !r.matches || !r.matches('.unit.mc input[type="radio"]')) return;
+    var u = r.closest('.unit.mc');
+    H.mc.unmark(u);
+    u.querySelectorAll('.mc-option').forEach(function(o){ o.classList.remove('picked'); });
+    r.closest('.mc-option').classList.add('picked');
+    clearFb(u); updateScores();
+  });
+
+  updateScores();
+})();
+
+</script>
+
+</body>
+</html>
