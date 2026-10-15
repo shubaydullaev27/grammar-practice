@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Causative Have / Get — Explanation &amp; Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .level-badge{ display:inline-flex; align-items:center; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:4px 11px; border-radius:20px; margin-bottom:12px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:4px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+  .instructions{ font-size:14px; color:var(--ink-soft); font-style:italic; margin:16px 0 22px; max-width:64ch; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13.5px; color:var(--ink-soft); margin-bottom:6px; display:flex; align-items:flex-start; gap:2px; }
+  .ctx-text{ font-style:italic; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); padding-left:30px; }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:180px; max-width:100%; text-align:left; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; padding-left:30px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .mc-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .mc-item:last-child{ border-bottom:none; }
+  .mc-stem{ font-size:14.5px; color:var(--ink); margin-bottom:12px; line-height:1.6; }
+  .mc-options{ display:grid; gap:8px; grid-template-columns:repeat(3,1fr); }
+  .mc-options.opt3{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:640px){ .mc-options{ grid-template-columns:1fr; } }
+  .mc-option{ display:flex; align-items:center; gap:9px; font-size:13.5px; color:var(--ink); background:var(--paper); border:1.5px solid var(--rule); border-radius:8px; padding:9px 11px; cursor:pointer; transition:border-color .15s, background .15s; }
+  .mc-option:hover{ border-color:var(--ink-soft); }
+  .mc-option input{ accent-color:var(--black); width:16px; height:16px; flex:0 0 auto; }
+  .mc-letter{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size:12px; color:var(--ink-soft); background:var(--white); border:1px solid var(--rule); border-radius:5px; width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
+  .mc-option.picked{ border-color:var(--black); background:var(--white); }
+  .mc-item.correct .mc-option.picked{ border-color:var(--good); background:var(--good-bg); }
+  .mc-item.correct .mc-option.picked .mc-letter{ background:var(--good); color:var(--white); border-color:var(--good); }
+  .mc-item.incorrect .mc-option.picked{ border-color:var(--bad); background:var(--bad-bg); }
+  .mc-item.incorrect .mc-option.picked .mc-letter{ background:var(--bad); color:var(--white); border-color:var(--bad); }
+  .mc-item.incorrect .mc-option.answer-key{ border-color:var(--good); background:var(--good-bg); }
+  .mc-item.incorrect .mc-option.answer-key .mc-letter{ background:var(--good); color:var(--white); border-color:var(--good); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-check-mc{ background:var(--yellow); color:var(--black); }
+  .btn-check-mc:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .g-sentence{ padding-left:0; }
+    .g-feedback{ padding-left:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  .blank-input.short-input{ min-width:90px; width:90px; text-align:center; }
+
+  .hint{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--teal); background:var(--teal-bg); padding:2px 6px; border-radius:4px; white-space:nowrap; }
+  .note-tag{ font-size:11.5px; font-weight:700; color:var(--ink); background:rgba(255,213,48,.45); padding:2px 8px; border-radius:20px; white-space:nowrap; }
+  .blank-input.short-input{ min-width:0; width:96px; text-align:center; }
+  .blank-input.mid-input{ min-width:0; width:130px; text-align:center; }
+  .q-item .g-sentence{ line-height:2.4; padding-left:0; }
+  .q-item .g-num{ margin-right:6px; }
+
+  /* explanation */
+  .explain{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background: radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%); border-bottom:3px solid var(--black); }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-title::after{ display:none; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:64ch; margin:0 0 22px; }
+  .pat{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+  .pat-head{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+  .pat-num{ font-family:'Fraunces',serif; font-weight:700; width:26px; height:26px; border-radius:50%; background:var(--yellow); color:var(--black); display:inline-flex; align-items:center; justify-content:center; font-size:14px; flex:0 0 auto; }
+  .pat-title{ font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; margin:0; }
+  .formula{ background:var(--black); border-radius:8px; padding:12px 14px; margin-bottom:8px; display:flex; flex-wrap:wrap; align-items:center; gap:7px 8px; font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--white); }
+  .formula .chip{ background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:5px 10px; white-space:nowrap; }
+  .formula .chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula .plus{ color:rgba(255,255,255,.4); }
+  .ex-lines{ display:grid; gap:7px; margin:10px 0 8px; }
+  .ex-line{ font-size:13.5px; border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:8px 13px; background:var(--paper); }
+  .ex-line em{ font-style:normal; color:var(--ink-soft); }
+  .ex-line b{ background:rgba(255,213,48,.5); padding:0 3px; border-radius:3px; font-weight:700; }
+  .pat-note{ font-size:13px; color:var(--ink-soft); margin:8px 0 0; }
+  .pat-note b{ color:var(--ink); }
+  .tbl-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin:6px 0 14px; }
+  .tbl{ width:100%; border-collapse:collapse; font-size:13px; }
+  .tbl th{ background:var(--black); color:var(--yellow); text-align:left; font-size:11.5px; letter-spacing:.04em; text-transform:uppercase; padding:10px 14px; border-bottom:2px solid var(--yellow); }
+  .tbl td{ padding:10px 14px; border-top:1px solid var(--rule); background:var(--panel); vertical-align:top; }
+  .tbl tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .tbl td:first-child{ font-weight:700; white-space:nowrap; }
+  .tbl code{ font-family:'JetBrains Mono',monospace; font-size:12px; background:var(--paper); padding:2px 6px; border-radius:4px; }
+  .decision{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px; }
+  .decision div{ background:var(--paper); border:1px solid var(--rule); border-radius:8px; padding:12px 14px; font-size:13.5px; }
+  .decision b{ display:block; margin-bottom:4px; }
+  .decision .q{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--teal); }
+  @media (max-width:620px){ .decision{ grid-template-columns:1fr; } }
+
+  .example-box{ font-size:13.5px; background:var(--paper); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; margin:0 0 14px; }
+  .example-box u{ text-decoration:none; font-weight:700; background:rgba(255,213,48,.5); padding:0 3px; border-radius:3px; }
+
+  .part-head{ display:flex; align-items:flex-start; gap:12px; margin:22px 0 6px; }
+  .part-head:first-of-type{ margin-top:14px; }
+  .part-letter{ flex:0 0 auto; width:30px; height:30px; border:2px solid var(--black); border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:16px; background:var(--yellow); }
+  .part-head p{ margin:3px 0 0; font-size:14px; font-weight:700; line-height:1.45; }
+  .part-head p span{ font-weight:400; color:var(--ink-soft); }
+  .task-feedback{ font-size:13px; color:var(--good); font-weight:600; margin-top:14px; min-height:1px; }
+  .task-feedback.incomplete{ color:var(--ink-soft); font-weight:400; font-style:italic; }
+  .task-feedback.has-errors{ color:var(--bad); }
+  .jump-nav a.lbl{ border-color:transparent; color:var(--ink); background:rgba(255,213,48,.5); }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div>
+    <h1>Causatives: have / get</h1>
+    <p class="sub">Read the explanation, then work through 10 tasks. Each task has Part A (services) and Part B (people), six items each.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 120</span>
+  </div>
+
+  <div class="jump-nav">
+    <a href="#sec-explain">Explanation</a>
+    <a class="lbl" href="#section-t1">Task</a>
+    <a href="#section-t1">1</a>
+    <a href="#section-t2">2</a>
+    <a href="#section-t3">3</a>
+    <a href="#section-t4">4</a>
+    <a href="#section-t5">5</a>
+    <a href="#section-t6">6</a>
+    <a href="#section-t7">7</a>
+    <a href="#section-t8">8</a>
+    <a href="#section-t9">9</a>
+    <a href="#section-t10">10</a>
+  </div>
+
+  <section class="explain" id="sec-explain">
+    <span class="gs-kicker">Explanation</span>
+    <h2 class="gs-title">Causative have / get</h2>
+    <p class="gs-intro">We use the causative to say that <strong>someone else does a job for us</strong> (a service we arrange), or that <strong>something happens to us</strong> without us doing it. The verbs are <strong>have</strong> and <strong>get</strong>, and the pattern after them decides the meaning.</p>
+
+    <div class="pat"><div class="pat-head"><span class="pat-num">1</span><h3 class="pat-title">Something is done for you</h3></div><div class="formula"><span class="chip">Subject</span><span class="plus">+</span><span class="chip accent">have / get</span><span class="plus">+</span><span class="chip">object</span><span class="plus">+</span><span class="chip accent">V3</span></div><div class="ex-lines"><div class="ex-line">I <b>had</b> my shoes <b>repaired</b>. <em>= Someone repaired them for me.</em></div><div class="ex-line">We will <b>get</b> the room <b>painted</b>. <em>= Someone will paint it for us.</em></div></div><p class="pat-note"><b>Use:</b> services or jobs you arrange. <b>V3</b> is the past participle (repaired, painted, stolen, broken). <b>Get</b> is often more informal.</p></div>
+
+    <div class="pat"><div class="pat-head"><span class="pat-num">2</span><h3 class="pat-title">Say who does the job</h3></div><div class="formula"><span class="chip">Subject</span><span class="plus">+</span><span class="chip accent">have</span><span class="plus">+</span><span class="chip">person</span><span class="plus">+</span><span class="chip accent">V1</span></div><div class="formula"><span class="chip">Subject</span><span class="plus">+</span><span class="chip accent">get</span><span class="plus">+</span><span class="chip">person</span><span class="plus">+</span><span class="chip accent">to + V1</span></div><div class="ex-lines"><div class="ex-line">I <b>had</b> a mechanic <b>check</b> the engine.</div><div class="ex-line">I <b>got</b> a mechanic <b>to check</b> the engine.</div></div><p class="pat-note"><b>V1</b> is the base verb. After <b>have + person</b> do <b>not</b> add <em>to</em>. After <b>get + person</b> use <em>to</em>. <b>Get</b> can suggest that you persuaded someone or managed to arrange the action.</p></div>
+
+    <div class="pat"><div class="pat-head"><span class="pat-num">3</span><h3 class="pat-title">Something unexpected happens</h3></div><div class="formula"><span class="chip">Subject</span><span class="plus">+</span><span class="chip accent">have</span><span class="plus">+</span><span class="chip">object</span><span class="plus">+</span><span class="chip accent">V3</span></div><div class="ex-lines"><div class="ex-line">She <b>had</b> her purse <b>stolen</b>. <em>= Someone stole it from her.</em></div><div class="ex-line">They <b>had</b> their gate <b>damaged</b>. <em>= Their gate was damaged.</em></div></div><p class="pat-note">The same form can describe an <b>unwanted experience</b>. It does <b>not</b> mean the person arranged it.</p></div>
+
+    <div class="pat"><div class="pat-head"><span class="pat-num">4</span><h3 class="pat-title">Change have / get, not the pattern</h3></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Tense</th><th>Pattern</th><th>Example</th></tr></thead><tbody><tr><td>Past</td><td><code>had / got + object + V3</code></td><td>I had my car washed.</td></tr><tr><td>Present</td><td><code>have / has / get / gets + object + V3</code></td><td>She has her hair cut every month.</td></tr><tr><td>After will / should / must</td><td><code>have / get + object + V3</code></td><td>We should have the roof inspected.</td></tr><tr><td>Present perfect</td><td><code>have / has had + object + V3</code></td><td>He has had the lock replaced.</td></tr></tbody></table></div><p class="pat-note"><b>Careful:</b> in <em>He has had the lock replaced</em>, the first <b>has</b> marks the tense; <b>had</b> is the causative verb.</p></div>
+
+    <div class="pat"><div class="pat-head"><span class="pat-num">5</span><h3 class="pat-title">A quick decision</h3></div><div class="decision"><div><b>Object first?</b><span class="q">have the wall painted</span><br>Use <b>V3</b>.</div><div><b>Person first?</b><span class="q">have a painter paint<br>get a painter to paint</span><br>Use <b>V1</b> after have, <b>to + V1</b> after get.</div></div><p class="pat-note">Look <b>immediately after</b> have / get to decide.</p></div>
+  </section>
+
+  <section class="block" id="section-t1">
+    <div class="block-head"><h2>Task 1</h2><span class="block-count">12 items</span></div>
+    <div id="list-t1">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+<div class="example-box"><b>Example:</b> Last week, I <u>had</u> my bike <u>repaired</u>. <span class="hint">(repair)</span> &nbsp;(or <u>got</u> … <u>repaired</u>)</div>
+      <div class="q-item" id="item-t1A-0" data-pairs="[[&quot;had&quot;, &quot;renovated&quot;], [&quot;got&quot;, &quot;renovated&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last month, we <input type="text" class="blank-input short-input" id="in1-t1A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our kitchen <input type="text" class="blank-input mid-input" id="in2-t1A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at a very low price. <span class="hint">(renovate)</span></div>
+        <div class="g-feedback" id="fb-t1A-0"></div>
+      </div>
+      <div class="q-item" id="item-t1A-1" data-pairs="[[&quot;has&quot;, &quot;done&quot;], [&quot;gets&quot;, &quot;done&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> Maria <input type="text" class="blank-input short-input" id="in1-t1A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her nails <input type="text" class="blank-input mid-input" id="in2-t1A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> every two weeks. <span class="hint">(do)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t1A-1"></div>
+      </div>
+      <div class="q-item" id="item-t1A-2" data-pairs="[[&quot;have&quot;, &quot;examined&quot;], [&quot;get&quot;, &quot;examined&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> You should <input type="text" class="blank-input short-input" id="in1-t1A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> that cough <input type="text" class="blank-input mid-input" id="in2-t1A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> soon. <span class="hint">(examine)</span></div>
+        <div class="g-feedback" id="fb-t1A-2"></div>
+      </div>
+      <div class="q-item" id="item-t1A-3" data-pairs="[[&quot;have&quot;, &quot;installed&quot;], [&quot;get&quot;, &quot;installed&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We are going to <input type="text" class="blank-input short-input" id="in1-t1A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a satellite dish <input type="text" class="blank-input mid-input" id="in2-t1A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next week. <span class="hint">(install)</span></div>
+        <div class="g-feedback" id="fb-t1A-3"></div>
+      </div>
+      <div class="q-item" id="item-t1A-4" data-pairs="[[&quot;had&quot;, &quot;trimmed&quot;], [&quot;got&quot;, &quot;trimmed&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> Yesterday, my brother <input type="text" class="blank-input short-input" id="in1-t1A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his beard <input type="text" class="blank-input mid-input" id="in2-t1A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the barber’s. <span class="hint">(trim)</span></div>
+        <div class="g-feedback" id="fb-t1A-4"></div>
+      </div>
+      <div class="q-item" id="item-t1A-5" data-pairs="[[&quot;have&quot;, &quot;replaced&quot;], [&quot;get&quot;, &quot;replaced&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> I must <input type="text" class="blank-input short-input" id="in1-t1A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my bike tyres <input type="text" class="blank-input mid-input" id="in2-t1A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the race. <span class="hint">(replace)</span></div>
+        <div class="g-feedback" id="fb-t1A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+<div class="example-box"><b>Example:</b> Last week, I <u>had</u> a mechanic <u>repair</u> my bike. <span class="hint">(repair)</span> &nbsp;(or <u>got</u> … <u>to repair</u>)</div>
+      <div class="q-item" id="item-t1B-0" data-pairs="[[&quot;had&quot;, &quot;clean&quot;], [&quot;got&quot;, &quot;to clean&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Yesterday, the teacher <input type="text" class="blank-input short-input" id="in1-t1B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a student <input type="text" class="blank-input mid-input" id="in2-t1B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the board. <span class="hint">(clean)</span></div>
+        <div class="g-feedback" id="fb-t1B-0"></div>
+      </div>
+      <div class="q-item" id="item-t1B-1" data-pairs="[[&quot;have&quot;, &quot;fix&quot;], [&quot;get&quot;, &quot;to fix&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> Let’s <input type="text" class="blank-input short-input" id="in1-t1B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an electrician <input type="text" class="blank-input mid-input" id="in2-t1B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the lights. <span class="hint">(fix)</span></div>
+        <div class="g-feedback" id="fb-t1B-1"></div>
+      </div>
+      <div class="q-item" id="item-t1B-2" data-pairs="[[&quot;have&quot;, &quot;film&quot;], [&quot;get&quot;, &quot;to film&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> We will <input type="text" class="blank-input short-input" id="in1-t1B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a photographer <input type="text" class="blank-input mid-input" id="in2-t1B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the party. <span class="hint">(film)</span></div>
+        <div class="g-feedback" id="fb-t1B-2"></div>
+      </div>
+      <div class="q-item" id="item-t1B-3" data-pairs="[[&quot;had&quot;, &quot;carry&quot;], [&quot;got&quot;, &quot;to carry&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> She <input type="text" class="blank-input short-input" id="in1-t1B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her brother <input type="text" class="blank-input mid-input" id="in2-t1B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her suitcase to the station last night. <span class="hint">(carry)</span></div>
+        <div class="g-feedback" id="fb-t1B-3"></div>
+      </div>
+      <div class="q-item" id="item-t1B-4" data-pairs="[[&quot;have&quot;, &quot;read&quot;], [&quot;get&quot;, &quot;to read&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> You should <input type="text" class="blank-input short-input" id="in1-t1B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a lawyer <input type="text" class="blank-input mid-input" id="in2-t1B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the contract. <span class="hint">(read)</span></div>
+        <div class="g-feedback" id="fb-t1B-4"></div>
+      </div>
+      <div class="q-item" id="item-t1B-5" data-pairs="[[&quot;has&quot;, &quot;book&quot;], [&quot;gets&quot;, &quot;to book&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> He always <input type="text" class="blank-input short-input" id="in1-t1B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his secretary <input type="text" class="blank-input mid-input" id="in2-t1B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his appointments. <span class="hint">(book)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t1B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t1"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t1">Check Task 1</button>
+      <button class="btn-ghost" data-reset="t1">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t2">
+    <div class="block-head"><h2>Task 2</h2><span class="block-count">12 items</span></div>
+    <div id="list-t2">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t2A-0" data-pairs="[[&quot;had&quot;, &quot;painted&quot;], [&quot;got&quot;, &quot;painted&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> They <input type="text" class="blank-input short-input" id="in1-t2A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> their house <input type="text" class="blank-input mid-input" id="in2-t2A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> bright yellow last summer. <span class="hint">(paint)</span></div>
+        <div class="g-feedback" id="fb-t2A-0"></div>
+      </div>
+      <div class="q-item" id="item-t2A-1" data-pairs="[[&quot;have&quot;, &quot;sent&quot;], [&quot;get&quot;, &quot;sent&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> We can <input type="text" class="blank-input short-input" id="in1-t2A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the parcel <input type="text" class="blank-input mid-input" id="in2-t2A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to your office tomorrow. <span class="hint">(send)</span></div>
+        <div class="g-feedback" id="fb-t2A-1"></div>
+      </div>
+      <div class="q-item" id="item-t2A-2" data-pairs="[[&quot;has&quot;, &quot;pressed&quot;], [&quot;gets&quot;, &quot;pressed&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> He <input type="text" class="blank-input short-input" id="in1-t2A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his suits <input type="text" class="blank-input mid-input" id="in2-t2A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the dry cleaner’s every week. <span class="hint">(press)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t2A-2"></div>
+      </div>
+      <div class="q-item" id="item-t2A-3" data-pairs="[[&quot;have&quot;, &quot;framed&quot;], [&quot;get&quot;, &quot;framed&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> I want to <input type="text" class="blank-input short-input" id="in1-t2A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> these wedding photos <input type="text" class="blank-input mid-input" id="in2-t2A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before Sunday. <span class="hint">(frame)</span></div>
+        <div class="g-feedback" id="fb-t2A-3"></div>
+      </div>
+      <div class="q-item" id="item-t2A-4" data-pairs="[[&quot;had&quot;, &quot;polished&quot;], [&quot;got&quot;, &quot;polished&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> Two days ago, she <input type="text" class="blank-input short-input" id="in1-t2A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her ring <input type="text" class="blank-input mid-input" id="in2-t2A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for the party. <span class="hint">(polish)</span></div>
+        <div class="g-feedback" id="fb-t2A-4"></div>
+      </div>
+      <div class="q-item" id="item-t2A-5" data-pairs="[[&quot;have&quot;, &quot;copied&quot;], [&quot;get&quot;, &quot;copied&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> You need to <input type="text" class="blank-input short-input" id="in1-t2A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your documents <input type="text" class="blank-input mid-input" id="in2-t2A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the interview. <span class="hint">(copy)</span></div>
+        <div class="g-feedback" id="fb-t2A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t2B-0" data-pairs="[[&quot;had&quot;, &quot;send&quot;], [&quot;got&quot;, &quot;to send&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last week, our boss <input type="text" class="blank-input short-input" id="in1-t2B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the interns <input type="text" class="blank-input mid-input" id="in2-t2B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> all the emails. <span class="hint">(send)</span></div>
+        <div class="g-feedback" id="fb-t2B-0"></div>
+      </div>
+      <div class="q-item" id="item-t2B-1" data-pairs="[[&quot;have&quot;, &quot;give&quot;], [&quot;get&quot;, &quot;to give&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> I want to <input type="text" class="blank-input short-input" id="in1-t2B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a trainer <input type="text" class="blank-input mid-input" id="in2-t2B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> me a new exercise plan. <span class="hint">(give)</span></div>
+        <div class="g-feedback" id="fb-t2B-1"></div>
+      </div>
+      <div class="q-item" id="item-t2B-2" data-pairs="[[&quot;had&quot;, &quot;replace&quot;], [&quot;got&quot;, &quot;to replace&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> They <input type="text" class="blank-input short-input" id="in1-t2B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a plumber <input type="text" class="blank-input mid-input" id="in2-t2B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the pipes before moving in. <span class="hint">(replace)</span></div>
+        <div class="g-feedback" id="fb-t2B-2"></div>
+      </div>
+      <div class="q-item" id="item-t2B-3" data-pairs="[[&quot;have&quot;, &quot;email&quot;], [&quot;get&quot;, &quot;to email&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> Can you <input type="text" class="blank-input short-input" id="in1-t2B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your cousin <input type="text" class="blank-input mid-input" id="in2-t2B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us some information? <span class="hint">(email)</span></div>
+        <div class="g-feedback" id="fb-t2B-3"></div>
+      </div>
+      <div class="q-item" id="item-t2B-4" data-pairs="[[&quot;have&quot;, &quot;show&quot;], [&quot;get&quot;, &quot;to show&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> We are going to <input type="text" class="blank-input short-input" id="in1-t2B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a guide <input type="text" class="blank-input mid-input" id="in2-t2B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us around the old city. <span class="hint">(show)</span></div>
+        <div class="g-feedback" id="fb-t2B-4"></div>
+      </div>
+      <div class="q-item" id="item-t2B-5" data-pairs="[[&quot;have&quot;, &quot;walk&quot;], [&quot;get&quot;, &quot;to walk&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> My parents often <input type="text" class="blank-input short-input" id="in1-t2B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a neighbour <input type="text" class="blank-input mid-input" id="in2-t2B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> their dog at weekends. <span class="hint">(walk)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t2B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t2"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t2">Check Task 2</button>
+      <button class="btn-ghost" data-reset="t2">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t3">
+    <div class="block-head"><h2>Task 3</h2><span class="block-count">12 items</span></div>
+    <div id="list-t3">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t3A-0" data-pairs="[[&quot;had&quot;, &quot;repaired&quot;], [&quot;got&quot;, &quot;repaired&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Yesterday, I <input type="text" class="blank-input short-input" id="in1-t3A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my phone screen <input type="text" class="blank-input mid-input" id="in2-t3A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the mall. <span class="hint">(repair)</span></div>
+        <div class="g-feedback" id="fb-t3A-0"></div>
+      </div>
+      <div class="q-item" id="item-t3A-1" data-pairs="[[&quot;have&quot;, &quot;removed&quot;], [&quot;get&quot;, &quot;removed&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> They are going to <input type="text" class="blank-input short-input" id="in1-t3A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the old carpet <input type="text" class="blank-input mid-input" id="in2-t3A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next month. <span class="hint">(remove)</span></div>
+        <div class="g-feedback" id="fb-t3A-1"></div>
+      </div>
+      <div class="q-item" id="item-t3A-2" data-pairs="[[&quot;have&quot;, &quot;serviced&quot;], [&quot;get&quot;, &quot;serviced&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> My parents <input type="text" class="blank-input short-input" id="in1-t3A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the heating system <input type="text" class="blank-input mid-input" id="in2-t3A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> every autumn. <span class="hint">(service)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t3A-2"></div>
+      </div>
+      <div class="q-item" id="item-t3A-3" data-pairs="[[&quot;have&quot;, &quot;made&quot;], [&quot;get&quot;, &quot;made&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> You could <input type="text" class="blank-input short-input" id="in1-t3A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the dress <input type="text" class="blank-input mid-input" id="in2-t3A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in a different colour. <span class="hint">(make)</span></div>
+        <div class="g-feedback" id="fb-t3A-3"></div>
+      </div>
+      <div class="q-item" id="item-t3A-4" data-pairs="[[&quot;had&quot;, &quot;pulled&quot;], [&quot;got&quot;, &quot;pulled&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> He <input type="text" class="blank-input short-input" id="in1-t3A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his tooth <input type="text" class="blank-input mid-input" id="in2-t3A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> last night at the emergency clinic. <span class="hint">(pull)</span></div>
+        <div class="g-feedback" id="fb-t3A-4"></div>
+      </div>
+      <div class="q-item" id="item-t3A-5" data-pairs="[[&quot;have&quot;, &quot;renewed&quot;], [&quot;get&quot;, &quot;renewed&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> We must <input type="text" class="blank-input short-input" id="in1-t3A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our passports <input type="text" class="blank-input mid-input" id="in2-t3A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the trip. <span class="hint">(renew)</span></div>
+        <div class="g-feedback" id="fb-t3A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t3B-0" data-pairs="[[&quot;had&quot;, &quot;check&quot;], [&quot;got&quot;, &quot;to check&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> I <input type="text" class="blank-input short-input" id="in1-t3B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my sister <input type="text" class="blank-input mid-input" id="in2-t3B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my essay before I sent it. <span class="hint">(check)</span></div>
+        <div class="g-feedback" id="fb-t3B-0"></div>
+      </div>
+      <div class="q-item" id="item-t3B-1" data-pairs="[[&quot;have&quot;, &quot;examine&quot;], [&quot;get&quot;, &quot;to examine&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> You should <input type="text" class="blank-input short-input" id="in1-t3B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a doctor <input type="text" class="blank-input mid-input" id="in2-t3B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your knee. <span class="hint">(examine)</span></div>
+        <div class="g-feedback" id="fb-t3B-1"></div>
+      </div>
+      <div class="q-item" id="item-t3B-2" data-pairs="[[&quot;had&quot;, &quot;take&quot;], [&quot;got&quot;, &quot;to take&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> Last summer, we <input type="text" class="blank-input short-input" id="in1-t3B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a local fisherman <input type="text" class="blank-input mid-input" id="in2-t3B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us across the lake. <span class="hint">(take)</span></div>
+        <div class="g-feedback" id="fb-t3B-2"></div>
+      </div>
+      <div class="q-item" id="item-t3B-3" data-pairs="[[&quot;have&quot;, &quot;adjust&quot;], [&quot;get&quot;, &quot;to adjust&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> She will <input type="text" class="blank-input short-input" id="in1-t3B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a tailor <input type="text" class="blank-input mid-input" id="in2-t3B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the dress. <span class="hint">(adjust)</span></div>
+        <div class="g-feedback" id="fb-t3B-3"></div>
+      </div>
+      <div class="q-item" id="item-t3B-4" data-pairs="[[&quot;have&quot;, &quot;cook&quot;], [&quot;get&quot;, &quot;to cook&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> I’d like to <input type="text" class="blank-input short-input" id="in1-t3B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a chef <input type="text" class="blank-input mid-input" id="in2-t3B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a special dinner for my wife. <span class="hint">(cook)</span></div>
+        <div class="g-feedback" id="fb-t3B-4"></div>
+      </div>
+      <div class="q-item" id="item-t3B-5" data-pairs="[[&quot;has&quot;, &quot;welcome&quot;], [&quot;gets&quot;, &quot;to welcome&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> She usually <input type="text" class="blank-input short-input" id="in1-t3B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her assistant <input type="text" class="blank-input mid-input" id="in2-t3B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the visitors at the entrance. <span class="hint">(welcome)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t3B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t3"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t3">Check Task 3</button>
+      <button class="btn-ghost" data-reset="t3">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t4">
+    <div class="block-head"><h2>Task 4</h2><span class="block-count">12 items</span></div>
+    <div id="list-t4">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t4A-0" data-pairs="[[&quot;had&quot;, &quot;cleaned&quot;], [&quot;got&quot;, &quot;cleaned&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last week, the school <input type="text" class="blank-input short-input" id="in1-t4A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> its windows <input type="text" class="blank-input mid-input" id="in2-t4A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for the first time in years. <span class="hint">(clean)</span></div>
+        <div class="g-feedback" id="fb-t4A-0"></div>
+      </div>
+      <div class="q-item" id="item-t4A-1" data-pairs="[[&quot;have&quot;, &quot;cut&quot;], [&quot;get&quot;, &quot;cut&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> I should <input type="text" class="blank-input short-input" id="in1-t4A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my hair <input type="text" class="blank-input mid-input" id="in2-t4A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the interview. <span class="hint">(cut)</span></div>
+        <div class="g-feedback" id="fb-t4A-1"></div>
+      </div>
+      <div class="q-item" id="item-t4A-2" data-pairs="[[&quot;has&quot;, &quot;washed&quot;], [&quot;gets&quot;, &quot;washed&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> Our neighbour <input type="text" class="blank-input short-input" id="in1-t4A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her car <input type="text" class="blank-input mid-input" id="in2-t4A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> every Saturday. <span class="hint">(wash)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t4A-2"></div>
+      </div>
+      <div class="q-item" id="item-t4A-3" data-pairs="[[&quot;have&quot;, &quot;printed&quot;], [&quot;get&quot;, &quot;printed&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We will <input type="text" class="blank-input short-input" id="in1-t4A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the leaflets <input type="text" class="blank-input mid-input" id="in2-t4A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> tomorrow morning. <span class="hint">(print)</span></div>
+        <div class="g-feedback" id="fb-t4A-3"></div>
+      </div>
+      <div class="q-item" id="item-t4A-4" data-pairs="[[&quot;had&quot;, &quot;designed&quot;], [&quot;got&quot;, &quot;designed&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> Anna <input type="text" class="blank-input short-input" id="in1-t4A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her wedding dress <input type="text" class="blank-input mid-input" id="in2-t4A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in Paris two years ago. <span class="hint">(design)</span></div>
+        <div class="g-feedback" id="fb-t4A-4"></div>
+      </div>
+      <div class="q-item" id="item-t4A-5" data-pairs="[[&quot;have&quot;, &quot;checked&quot;], [&quot;get&quot;, &quot;checked&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> You’d better <input type="text" class="blank-input short-input" id="in1-t4A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the roof <input type="text" class="blank-input mid-input" id="in2-t4A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the winter. <span class="hint">(check)</span></div>
+        <div class="g-feedback" id="fb-t4A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t4B-0" data-pairs="[[&quot;had&quot;, &quot;repair&quot;], [&quot;got&quot;, &quot;to repair&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last month, the council <input type="text" class="blank-input short-input" id="in1-t4B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> workers <input type="text" class="blank-input mid-input" id="in2-t4B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the road. <span class="hint">(repair)</span></div>
+        <div class="g-feedback" id="fb-t4B-0"></div>
+      </div>
+      <div class="q-item" id="item-t4B-1" data-pairs="[[&quot;have&quot;, &quot;drive&quot;], [&quot;get&quot;, &quot;to drive&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> You can <input type="text" class="blank-input short-input" id="in1-t4B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a friend <input type="text" class="blank-input mid-input" id="in2-t4B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you to the airport. <span class="hint">(drive)</span></div>
+        <div class="g-feedback" id="fb-t4B-1"></div>
+      </div>
+      <div class="q-item" id="item-t4B-2" data-pairs="[[&quot;had&quot;, &quot;collect&quot;], [&quot;got&quot;, &quot;to collect&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> He <input type="text" class="blank-input short-input" id="in1-t4B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his neighbour <input type="text" class="blank-input mid-input" id="in2-t4B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his post while he was on holiday. <span class="hint">(collect)</span></div>
+        <div class="g-feedback" id="fb-t4B-2"></div>
+      </div>
+      <div class="q-item" id="item-t4B-3" data-pairs="[[&quot;have&quot;, &quot;design&quot;], [&quot;get&quot;, &quot;to design&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We will <input type="text" class="blank-input short-input" id="in1-t4B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our students <input type="text" class="blank-input mid-input" id="in2-t4B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the posters for the festival. <span class="hint">(design)</span></div>
+        <div class="g-feedback" id="fb-t4B-3"></div>
+      </div>
+      <div class="q-item" id="item-t4B-4" data-pairs="[[&quot;have&quot;, &quot;help&quot;], [&quot;get&quot;, &quot;to help&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> I need to <input type="text" class="blank-input short-input" id="in1-t4B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my brother <input type="text" class="blank-input mid-input" id="in2-t4B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> me with the move. <span class="hint">(help)</span></div>
+        <div class="g-feedback" id="fb-t4B-4"></div>
+      </div>
+      <div class="q-item" id="item-t4B-5" data-pairs="[[&quot;have&quot;, &quot;teach&quot;], [&quot;get&quot;, &quot;to teach&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> Our teachers sometimes <input type="text" class="blank-input short-input" id="in1-t4B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the older students <input type="text" class="blank-input mid-input" id="in2-t4B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the younger ones. <span class="hint">(teach)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t4B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t4"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t4">Check Task 4</button>
+      <button class="btn-ghost" data-reset="t4">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t5">
+    <div class="block-head"><h2>Task 5</h2><span class="block-count">12 items</span></div>
+    <div id="list-t5">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t5A-0" data-pairs="[[&quot;had&quot;, &quot;tidied&quot;], [&quot;got&quot;, &quot;tidied&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last Sunday, we <input type="text" class="blank-input short-input" id="in1-t5A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our garden <input type="text" class="blank-input mid-input" id="in2-t5A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for the party. <span class="hint">(tidy)</span></div>
+        <div class="g-feedback" id="fb-t5A-0"></div>
+      </div>
+      <div class="q-item" id="item-t5A-1" data-pairs="[[&quot;have&quot;, &quot;translated&quot;], [&quot;get&quot;, &quot;translated&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> Can I <input type="text" class="blank-input short-input" id="in1-t5A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this letter <input type="text" class="blank-input mid-input" id="in2-t5A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> into English? <span class="hint">(translate)</span></div>
+        <div class="g-feedback" id="fb-t5A-1"></div>
+      </div>
+      <div class="q-item" id="item-t5A-2" data-pairs="[[&quot;have&quot;, &quot;cleaned&quot;], [&quot;get&quot;, &quot;cleaned&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> I <input type="text" class="blank-input short-input" id="in1-t5A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my teeth <input type="text" class="blank-input mid-input" id="in2-t5A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the dentist twice a year. <span class="hint">(clean)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t5A-2"></div>
+      </div>
+      <div class="q-item" id="item-t5A-3" data-pairs="[[&quot;have&quot;, &quot;collected&quot;], [&quot;get&quot;, &quot;collected&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> They will <input type="text" class="blank-input short-input" id="in1-t5A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the old furniture <input type="text" class="blank-input mid-input" id="in2-t5A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next Monday. <span class="hint">(collect)</span></div>
+        <div class="g-feedback" id="fb-t5A-3"></div>
+      </div>
+      <div class="q-item" id="item-t5A-4" data-pairs="[[&quot;had&quot;, &quot;decorated&quot;], [&quot;got&quot;, &quot;decorated&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> Last weekend, she <input type="text" class="blank-input short-input" id="in1-t5A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her wedding cake <input type="text" class="blank-input mid-input" id="in2-t5A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> with fresh flowers. <span class="hint">(decorate)</span></div>
+        <div class="g-feedback" id="fb-t5A-4"></div>
+      </div>
+      <div class="q-item" id="item-t5A-5" data-pairs="[[&quot;have&quot;, &quot;inspected&quot;], [&quot;get&quot;, &quot;inspected&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> You should <input type="text" class="blank-input short-input" id="in1-t5A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your oven <input type="text" class="blank-input mid-input" id="in2-t5A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> every six months. <span class="hint">(inspect)</span></div>
+        <div class="g-feedback" id="fb-t5A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t5B-0" data-pairs="[[&quot;had&quot;, &quot;inspect&quot;], [&quot;got&quot;, &quot;to inspect&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Yesterday, my mother <input type="text" class="blank-input short-input" id="in1-t5B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a mechanic <input type="text" class="blank-input mid-input" id="in2-t5B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the engine. <span class="hint">(inspect)</span></div>
+        <div class="g-feedback" id="fb-t5B-0"></div>
+      </div>
+      <div class="q-item" id="item-t5B-1" data-pairs="[[&quot;have&quot;, &quot;check&quot;], [&quot;get&quot;, &quot;to check&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> Why don’t you <input type="text" class="blank-input short-input" id="in1-t5B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an expert <input type="text" class="blank-input mid-input" id="in2-t5B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this painting? <span class="hint">(check)</span></div>
+        <div class="g-feedback" id="fb-t5B-1"></div>
+      </div>
+      <div class="q-item" id="item-t5B-2" data-pairs="[[&quot;had&quot;, &quot;repeat&quot;], [&quot;got&quot;, &quot;to repeat&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> Last night, the director <input type="text" class="blank-input short-input" id="in1-t5B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the actors <input type="text" class="blank-input mid-input" id="in2-t5B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the scene three times. <span class="hint">(repeat)</span></div>
+        <div class="g-feedback" id="fb-t5B-2"></div>
+      </div>
+      <div class="q-item" id="item-t5B-3" data-pairs="[[&quot;have&quot;, &quot;do&quot;], [&quot;get&quot;, &quot;to do&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> I will <input type="text" class="blank-input short-input" id="in1-t5B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a friend <input type="text" class="blank-input mid-input" id="in2-t5B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the babysitting. <span class="hint">(do)</span></div>
+        <div class="g-feedback" id="fb-t5B-3"></div>
+      </div>
+      <div class="q-item" id="item-t5B-4" data-pairs="[[&quot;have&quot;, &quot;redesign&quot;], [&quot;get&quot;, &quot;to redesign&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> We should <input type="text" class="blank-input short-input" id="in1-t5B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a professional <input type="text" class="blank-input mid-input" id="in2-t5B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our website. <span class="hint">(redesign)</span></div>
+        <div class="g-feedback" id="fb-t5B-4"></div>
+      </div>
+      <div class="q-item" id="item-t5B-5" data-pairs="[[&quot;has&quot;, &quot;submit&quot;], [&quot;gets&quot;, &quot;to submit&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> The manager always <input type="text" class="blank-input short-input" id="in1-t5B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his team <input type="text" class="blank-input mid-input" id="in2-t5B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the reports on Fridays. <span class="hint">(submit)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t5B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t5"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t5">Check Task 5</button>
+      <button class="btn-ghost" data-reset="t5">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t6">
+    <div class="block-head"><h2>Task 6</h2><span class="block-count">12 items</span></div>
+    <div id="list-t6">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t6A-0" data-pairs="[[&quot;had&quot;, &quot;taken&quot;], [&quot;got&quot;, &quot;taken&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> I <input type="text" class="blank-input short-input" id="in1-t6A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my passport photo <input type="text" class="blank-input mid-input" id="in2-t6A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> last Tuesday. <span class="hint">(take)</span></div>
+        <div class="g-feedback" id="fb-t6A-0"></div>
+      </div>
+      <div class="q-item" id="item-t6A-1" data-pairs="[[&quot;have&quot;, &quot;painted&quot;], [&quot;get&quot;, &quot;painted&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> We want to <input type="text" class="blank-input short-input" id="in1-t6A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the house <input type="text" class="blank-input mid-input" id="in2-t6A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before we sell it. <span class="hint">(paint)</span></div>
+        <div class="g-feedback" id="fb-t6A-1"></div>
+      </div>
+      <div class="q-item" id="item-t6A-2" data-pairs="[[&quot;has&quot;, &quot;dyed&quot;], [&quot;gets&quot;, &quot;dyed&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> My sister <input type="text" class="blank-input short-input" id="in1-t6A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her hair <input type="text" class="blank-input mid-input" id="in2-t6A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> blonde every spring. <span class="hint">(dye)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t6A-2"></div>
+      </div>
+      <div class="q-item" id="item-t6A-3" data-pairs="[[&quot;have&quot;, &quot;altered&quot;], [&quot;get&quot;, &quot;altered&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> I am going to <input type="text" class="blank-input short-input" id="in1-t6A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my coat <input type="text" class="blank-input mid-input" id="in2-t6A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the tailor’s. <span class="hint">(alter)</span></div>
+        <div class="g-feedback" id="fb-t6A-3"></div>
+      </div>
+      <div class="q-item" id="item-t6A-4" data-pairs="[[&quot;had&quot;, &quot;fixed&quot;], [&quot;got&quot;, &quot;fixed&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> They <input type="text" class="blank-input short-input" id="in1-t6A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the broken window <input type="text" class="blank-input mid-input" id="in2-t6A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> this morning. <span class="hint">(fix)</span></div>
+        <div class="g-feedback" id="fb-t6A-4"></div>
+      </div>
+      <div class="q-item" id="item-t6A-5" data-pairs="[[&quot;have&quot;, &quot;scanned&quot;], [&quot;get&quot;, &quot;scanned&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> You must <input type="text" class="blank-input short-input" id="in1-t6A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your bag <input type="text" class="blank-input mid-input" id="in2-t6A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the airport. <span class="hint">(scan)</span></div>
+        <div class="g-feedback" id="fb-t6A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t6B-0" data-pairs="[[&quot;had&quot;, &quot;write&quot;], [&quot;got&quot;, &quot;to write&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last term, our teacher <input type="text" class="blank-input short-input" id="in1-t6B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the students <input type="text" class="blank-input mid-input" id="in2-t6B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a short play. <span class="hint">(write)</span></div>
+        <div class="g-feedback" id="fb-t6B-0"></div>
+      </div>
+      <div class="q-item" id="item-t6B-1" data-pairs="[[&quot;have&quot;, &quot;open&quot;], [&quot;get&quot;, &quot;to open&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> Could you <input type="text" class="blank-input short-input" id="in1-t6B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> someone <input type="text" class="blank-input mid-input" id="in2-t6B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the door for me? <span class="hint">(open)</span></div>
+        <div class="g-feedback" id="fb-t6B-1"></div>
+      </div>
+      <div class="q-item" id="item-t6B-2" data-pairs="[[&quot;had&quot;, &quot;cover&quot;], [&quot;got&quot;, &quot;to cover&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> I <input type="text" class="blank-input short-input" id="in1-t6B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a colleague <input type="text" class="blank-input mid-input" id="in2-t6B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my shift last Sunday. <span class="hint">(cover)</span></div>
+        <div class="g-feedback" id="fb-t6B-2"></div>
+      </div>
+      <div class="q-item" id="item-t6B-3" data-pairs="[[&quot;have&quot;, &quot;play&quot;], [&quot;get&quot;, &quot;to play&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We are going to <input type="text" class="blank-input short-input" id="in1-t6B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a band <input type="text" class="blank-input mid-input" id="in2-t6B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the wedding. <span class="hint">(play)</span></div>
+        <div class="g-feedback" id="fb-t6B-3"></div>
+      </div>
+      <div class="q-item" id="item-t6B-4" data-pairs="[[&quot;have&quot;, &quot;test&quot;], [&quot;get&quot;, &quot;to test&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> You must <input type="text" class="blank-input short-input" id="in1-t6B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> an electrician <input type="text" class="blank-input mid-input" id="in2-t6B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the wiring before you move in. <span class="hint">(test)</span></div>
+        <div class="g-feedback" id="fb-t6B-4"></div>
+      </div>
+      <div class="q-item" id="item-t6B-5" data-pairs="[[&quot;has&quot;, &quot;take&quot;], [&quot;gets&quot;, &quot;to take&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> Our director often <input type="text" class="blank-input short-input" id="in1-t6B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his assistant <input type="text" class="blank-input mid-input" id="in2-t6B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the minutes of the meeting. <span class="hint">(take)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t6B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t6"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t6">Check Task 6</button>
+      <button class="btn-ghost" data-reset="t6">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t7">
+    <div class="block-head"><h2>Task 7</h2><span class="block-count">12 items</span></div>
+    <div id="list-t7">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t7A-0" data-pairs="[[&quot;had&quot;, &quot;fitted&quot;], [&quot;got&quot;, &quot;fitted&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last year, we <input type="text" class="blank-input short-input" id="in1-t7A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> solar panels <input type="text" class="blank-input mid-input" id="in2-t7A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> on our roof. <span class="hint">(fit)</span></div>
+        <div class="g-feedback" id="fb-t7A-0"></div>
+      </div>
+      <div class="q-item" id="item-t7A-1" data-pairs="[[&quot;have&quot;, &quot;updated&quot;], [&quot;get&quot;, &quot;updated&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> You should <input type="text" class="blank-input short-input" id="in1-t7A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your computer <input type="text" class="blank-input mid-input" id="in2-t7A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> regularly. <span class="hint">(update)</span></div>
+        <div class="g-feedback" id="fb-t7A-1"></div>
+      </div>
+      <div class="q-item" id="item-t7A-2" data-pairs="[[&quot;has&quot;, &quot;polished&quot;], [&quot;gets&quot;, &quot;polished&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> Our boss <input type="text" class="blank-input short-input" id="in1-t7A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his shoes <input type="text" class="blank-input mid-input" id="in2-t7A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> every morning. <span class="hint">(polish)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t7A-2"></div>
+      </div>
+      <div class="q-item" id="item-t7A-3" data-pairs="[[&quot;have&quot;, &quot;repainted&quot;], [&quot;get&quot;, &quot;repainted&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We will <input type="text" class="blank-input short-input" id="in1-t7A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the whole office <input type="text" class="blank-input mid-input" id="in2-t7A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> next weekend. <span class="hint">(repaint)</span></div>
+        <div class="g-feedback" id="fb-t7A-3"></div>
+      </div>
+      <div class="q-item" id="item-t7A-4" data-pairs="[[&quot;had&quot;, &quot;resized&quot;], [&quot;got&quot;, &quot;resized&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> My grandmother <input type="text" class="blank-input short-input" id="in1-t7A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her wedding ring <input type="text" class="blank-input mid-input" id="in2-t7A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> last month. <span class="hint">(resize)</span></div>
+        <div class="g-feedback" id="fb-t7A-4"></div>
+      </div>
+      <div class="q-item" id="item-t7A-5" data-pairs="[[&quot;have&quot;, &quot;wrapped&quot;], [&quot;get&quot;, &quot;wrapped&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> I need to <input type="text" class="blank-input short-input" id="in1-t7A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> these gifts <input type="text" class="blank-input mid-input" id="in2-t7A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before Friday. <span class="hint">(wrap)</span></div>
+        <div class="g-feedback" id="fb-t7A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t7B-0" data-pairs="[[&quot;had&quot;, &quot;guide&quot;], [&quot;got&quot;, &quot;to guide&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Yesterday, the headmaster <input type="text" class="blank-input short-input" id="in1-t7B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a pupil <input type="text" class="blank-input mid-input" id="in2-t7B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the new students around the school. <span class="hint">(guide)</span></div>
+        <div class="g-feedback" id="fb-t7B-0"></div>
+      </div>
+      <div class="q-item" id="item-t7B-1" data-pairs="[[&quot;have&quot;, &quot;teach&quot;], [&quot;get&quot;, &quot;to teach&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> I want to <input type="text" class="blank-input short-input" id="in1-t7B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my friend <input type="text" class="blank-input mid-input" id="in2-t7B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> me some English. <span class="hint">(teach)</span></div>
+        <div class="g-feedback" id="fb-t7B-1"></div>
+      </div>
+      <div class="q-item" id="item-t7B-2" data-pairs="[[&quot;had&quot;, &quot;feed&quot;], [&quot;got&quot;, &quot;to feed&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> We <input type="text" class="blank-input short-input" id="in1-t7B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the neighbours <input type="text" class="blank-input mid-input" id="in2-t7B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our cat while we were away. <span class="hint">(feed)</span></div>
+        <div class="g-feedback" id="fb-t7B-2"></div>
+      </div>
+      <div class="q-item" id="item-t7B-3" data-pairs="[[&quot;have&quot;, &quot;translate&quot;], [&quot;get&quot;, &quot;to translate&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> She will <input type="text" class="blank-input short-input" id="in1-t7B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her sister <input type="text" class="blank-input mid-input" id="in2-t7B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her wedding speech. <span class="hint">(translate)</span></div>
+        <div class="g-feedback" id="fb-t7B-3"></div>
+      </div>
+      <div class="q-item" id="item-t7B-4" data-pairs="[[&quot;have&quot;, &quot;call&quot;], [&quot;get&quot;, &quot;to call&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> You can <input type="text" class="blank-input short-input" id="in1-t7B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the receptionist <input type="text" class="blank-input mid-input" id="in2-t7B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a taxi for you. <span class="hint">(call)</span></div>
+        <div class="g-feedback" id="fb-t7B-4"></div>
+      </div>
+      <div class="q-item" id="item-t7B-5" data-pairs="[[&quot;have&quot;, &quot;complete&quot;], [&quot;get&quot;, &quot;to complete&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> Many companies <input type="text" class="blank-input short-input" id="in1-t7B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> their employees <input type="text" class="blank-input mid-input" id="in2-t7B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> online training every year. <span class="hint">(complete)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t7B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t7"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t7">Check Task 7</button>
+      <button class="btn-ghost" data-reset="t7">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t8">
+    <div class="block-head"><h2>Task 8</h2><span class="block-count">12 items</span></div>
+    <div id="list-t8">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t8A-0" data-pairs="[[&quot;had&quot;, &quot;translated&quot;], [&quot;got&quot;, &quot;translated&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Yesterday, the café <input type="text" class="blank-input short-input" id="in1-t8A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> its menu <input type="text" class="blank-input mid-input" id="in2-t8A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> into three languages. <span class="hint">(translate)</span></div>
+        <div class="g-feedback" id="fb-t8A-0"></div>
+      </div>
+      <div class="q-item" id="item-t8A-1" data-pairs="[[&quot;have&quot;, &quot;developed&quot;], [&quot;get&quot;, &quot;developed&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> You could <input type="text" class="blank-input short-input" id="in1-t8A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the photos <input type="text" class="blank-input mid-input" id="in2-t8A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in a day. <span class="hint">(develop)</span></div>
+        <div class="g-feedback" id="fb-t8A-1"></div>
+      </div>
+      <div class="q-item" id="item-t8A-2" data-pairs="[[&quot;have&quot;, &quot;washed&quot;], [&quot;get&quot;, &quot;washed&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> We <input type="text" class="blank-input short-input" id="in1-t8A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our carpets <input type="text" class="blank-input mid-input" id="in2-t8A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> once a year. <span class="hint">(wash)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t8A-2"></div>
+      </div>
+      <div class="q-item" id="item-t8A-3" data-pairs="[[&quot;have&quot;, &quot;built&quot;], [&quot;get&quot;, &quot;built&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> They are going to <input type="text" class="blank-input short-input" id="in1-t8A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a new bathroom <input type="text" class="blank-input mid-input" id="in2-t8A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in May. <span class="hint">(build)</span></div>
+        <div class="g-feedback" id="fb-t8A-3"></div>
+      </div>
+      <div class="q-item" id="item-t8A-4" data-pairs="[[&quot;had&quot;, &quot;adjusted&quot;], [&quot;got&quot;, &quot;adjusted&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> I <input type="text" class="blank-input short-input" id="in1-t8A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my glasses <input type="text" class="blank-input mid-input" id="in2-t8A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the optician’s last week. <span class="hint">(adjust)</span></div>
+        <div class="g-feedback" id="fb-t8A-4"></div>
+      </div>
+      <div class="q-item" id="item-t8A-5" data-pairs="[[&quot;have&quot;, &quot;repaired&quot;], [&quot;get&quot;, &quot;repaired&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> We should <input type="text" class="blank-input short-input" id="in1-t8A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the crack in the wall <input type="text" class="blank-input mid-input" id="in2-t8A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> immediately. <span class="hint">(repair)</span></div>
+        <div class="g-feedback" id="fb-t8A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t8B-0" data-pairs="[[&quot;had&quot;, &quot;build&quot;], [&quot;got&quot;, &quot;to build&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last year, my uncle <input type="text" class="blank-input short-input" id="in1-t8B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a builder <input type="text" class="blank-input mid-input" id="in2-t8B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a small house. <span class="hint">(build)</span></div>
+        <div class="g-feedback" id="fb-t8B-0"></div>
+      </div>
+      <div class="q-item" id="item-t8B-1" data-pairs="[[&quot;have&quot;, &quot;bring&quot;], [&quot;get&quot;, &quot;to bring&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> Let’s <input type="text" class="blank-input short-input" id="in1-t8B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the waiter <input type="text" class="blank-input mid-input" id="in2-t8B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us the menu again. <span class="hint">(bring)</span></div>
+        <div class="g-feedback" id="fb-t8B-1"></div>
+      </div>
+      <div class="q-item" id="item-t8B-2" data-pairs="[[&quot;had&quot;, &quot;draw&quot;], [&quot;got&quot;, &quot;to draw&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> She <input type="text" class="blank-input short-input" id="in1-t8B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her students <input type="text" class="blank-input mid-input" id="in2-t8B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> posters for the school festival last week. <span class="hint">(draw)</span></div>
+        <div class="g-feedback" id="fb-t8B-2"></div>
+      </div>
+      <div class="q-item" id="item-t8B-3" data-pairs="[[&quot;have&quot;, &quot;lead&quot;], [&quot;get&quot;, &quot;to lead&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> They will <input type="text" class="blank-input short-input" id="in1-t8B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a guide <input type="text" class="blank-input mid-input" id="in2-t8B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> them to the top of the mountain. <span class="hint">(lead)</span></div>
+        <div class="g-feedback" id="fb-t8B-3"></div>
+      </div>
+      <div class="q-item" id="item-t8B-4" data-pairs="[[&quot;have&quot;, &quot;write&quot;], [&quot;get&quot;, &quot;to write&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> I need to <input type="text" class="blank-input short-input" id="in1-t8B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my lawyer <input type="text" class="blank-input mid-input" id="in2-t8B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a letter to the bank. <span class="hint">(write)</span></div>
+        <div class="g-feedback" id="fb-t8B-4"></div>
+      </div>
+      <div class="q-item" id="item-t8B-5" data-pairs="[[&quot;has&quot;, &quot;prepare&quot;], [&quot;gets&quot;, &quot;to prepare&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> The chef always <input type="text" class="blank-input short-input" id="in1-t8B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his assistants <input type="text" class="blank-input mid-input" id="in2-t8B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the vegetables before lunch. <span class="hint">(prepare)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t8B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t8"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t8">Check Task 8</button>
+      <button class="btn-ghost" data-reset="t8">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t9">
+    <div class="block-head"><h2>Task 9</h2><span class="block-count">12 items</span></div>
+    <div id="list-t9">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t9A-0" data-pairs="[[&quot;had&quot;, &quot;serviced&quot;], [&quot;got&quot;, &quot;serviced&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last Saturday, we <input type="text" class="blank-input short-input" id="in1-t9A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our car <input type="text" class="blank-input mid-input" id="in2-t9A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before the trip. <span class="hint">(service)</span></div>
+        <div class="g-feedback" id="fb-t9A-0"></div>
+      </div>
+      <div class="q-item" id="item-t9A-1" data-pairs="[[&quot;have&quot;, &quot;brought&quot;], [&quot;get&quot;, &quot;brought&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> You can <input type="text" class="blank-input short-input" id="in1-t9A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your coffee <input type="text" class="blank-input mid-input" id="in2-t9A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to your desk. <span class="hint">(bring)</span></div>
+        <div class="g-feedback" id="fb-t9A-1"></div>
+      </div>
+      <div class="q-item" id="item-t9A-2" data-pairs="[[&quot;has&quot;, &quot;made&quot;], [&quot;gets&quot;, &quot;made&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> The singer <input type="text" class="blank-input short-input" id="in1-t9A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her costumes <input type="text" class="blank-input mid-input" id="in2-t9A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in Italy every season. <span class="hint">(make)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t9A-2"></div>
+      </div>
+      <div class="q-item" id="item-t9A-3" data-pairs="[[&quot;have&quot;, &quot;engraved&quot;], [&quot;get&quot;, &quot;engraved&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We are going to <input type="text" class="blank-input short-input" id="in1-t9A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our names <input type="text" class="blank-input mid-input" id="in2-t9A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> on the trophy. <span class="hint">(engrave)</span></div>
+        <div class="g-feedback" id="fb-t9A-3"></div>
+      </div>
+      <div class="q-item" id="item-t9A-4" data-pairs="[[&quot;had&quot;, &quot;carried&quot;], [&quot;got&quot;, &quot;carried&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> Yesterday, I <input type="text" class="blank-input short-input" id="in1-t9A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my suitcase <input type="text" class="blank-input mid-input" id="in2-t9A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to my room. <span class="hint">(carry)</span></div>
+        <div class="g-feedback" id="fb-t9A-4"></div>
+      </div>
+      <div class="q-item" id="item-t9A-5" data-pairs="[[&quot;have&quot;, &quot;treated&quot;], [&quot;get&quot;, &quot;treated&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> You ought to <input type="text" class="blank-input short-input" id="in1-t9A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> that wound <input type="text" class="blank-input mid-input" id="in2-t9A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the hospital. <span class="hint">(treat)</span></div>
+        <div class="g-feedback" id="fb-t9A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t9B-0" data-pairs="[[&quot;had&quot;, &quot;reset&quot;], [&quot;got&quot;, &quot;to reset&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Yesterday, we <input type="text" class="blank-input short-input" id="in1-t9B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a technician <input type="text" class="blank-input mid-input" id="in2-t9B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the printer. <span class="hint">(reset)</span></div>
+        <div class="g-feedback" id="fb-t9B-0"></div>
+      </div>
+      <div class="q-item" id="item-t9B-1" data-pairs="[[&quot;have&quot;, &quot;proofread&quot;], [&quot;get&quot;, &quot;to proofread&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> You should <input type="text" class="blank-input short-input" id="in1-t9B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a friend <input type="text" class="blank-input mid-input" id="in2-t9B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your CV before you send it. <span class="hint">(proofread)</span></div>
+        <div class="g-feedback" id="fb-t9B-1"></div>
+      </div>
+      <div class="q-item" id="item-t9B-2" data-pairs="[[&quot;had&quot;, &quot;wash&quot;], [&quot;got&quot;, &quot;to wash&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> She <input type="text" class="blank-input short-input" id="in1-t9B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her little brother <input type="text" class="blank-input mid-input" id="in2-t9B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the dishes after dinner last night. <span class="hint">(wash)</span></div>
+        <div class="g-feedback" id="fb-t9B-2"></div>
+      </div>
+      <div class="q-item" id="item-t9B-3" data-pairs="[[&quot;have&quot;, &quot;call&quot;], [&quot;get&quot;, &quot;to call&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> I will <input type="text" class="blank-input short-input" id="in1-t9B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my assistant <input type="text" class="blank-input mid-input" id="in2-t9B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you tomorrow. <span class="hint">(call)</span></div>
+        <div class="g-feedback" id="fb-t9B-3"></div>
+      </div>
+      <div class="q-item" id="item-t9B-4" data-pairs="[[&quot;have&quot;, &quot;arrange&quot;], [&quot;get&quot;, &quot;to arrange&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> We could <input type="text" class="blank-input short-input" id="in1-t9B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the students <input type="text" class="blank-input mid-input" id="in2-t9B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the room before class. <span class="hint">(arrange)</span></div>
+        <div class="g-feedback" id="fb-t9B-4"></div>
+      </div>
+      <div class="q-item" id="item-t9B-5" data-pairs="[[&quot;have&quot;, &quot;clean&quot;], [&quot;get&quot;, &quot;to clean&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> Our parents always <input type="text" class="blank-input short-input" id="in1-t9B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> us <input type="text" class="blank-input mid-input" id="in2-t9B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> our rooms on Saturdays. <span class="hint">(clean)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t9B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t9"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t9">Check Task 9</button>
+      <button class="btn-ghost" data-reset="t9">Clear task</button>
+    </div>
+  </section>
+  <section class="block" id="section-t10">
+    <div class="block-head"><h2>Task 10</h2><span class="block-count">12 items</span></div>
+    <div id="list-t10">
+    <div class="part-head"><span class="part-letter">A</span><p>Services: complete with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. <span>Both patterns are possible.</span></p></div>
+
+      <div class="q-item" id="item-t10A-0" data-pairs="[[&quot;had&quot;, &quot;covered&quot;], [&quot;got&quot;, &quot;covered&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last night, the restaurant <input type="text" class="blank-input short-input" id="in1-t10A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the tables <input type="text" class="blank-input mid-input" id="in2-t10A-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> with white cloths. <span class="hint">(cover)</span></div>
+        <div class="g-feedback" id="fb-t10A-0"></div>
+      </div>
+      <div class="q-item" id="item-t10A-1" data-pairs="[[&quot;have&quot;, &quot;shortened&quot;], [&quot;get&quot;, &quot;shortened&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> I would like to <input type="text" class="blank-input short-input" id="in1-t10A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> my trousers <input type="text" class="blank-input mid-input" id="in2-t10A-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> for the wedding. <span class="hint">(shorten)</span></div>
+        <div class="g-feedback" id="fb-t10A-1"></div>
+      </div>
+      <div class="q-item" id="item-t10A-2" data-pairs="[[&quot;have&quot;, &quot;delivered&quot;], [&quot;get&quot;, &quot;delivered&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> We <input type="text" class="blank-input short-input" id="in1-t10A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the newspaper <input type="text" class="blank-input mid-input" id="in2-t10A-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> to the house every morning. <span class="hint">(deliver)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t10A-2"></div>
+      </div>
+      <div class="q-item" id="item-t10A-3" data-pairs="[[&quot;have&quot;, &quot;vaccinated&quot;], [&quot;get&quot;, &quot;vaccinated&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> They will <input type="text" class="blank-input short-input" id="in1-t10A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> their dog <input type="text" class="blank-input mid-input" id="in2-t10A-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> at the vet’s tomorrow. <span class="hint">(vaccinate)</span></div>
+        <div class="g-feedback" id="fb-t10A-3"></div>
+      </div>
+      <div class="q-item" id="item-t10A-4" data-pairs="[[&quot;had&quot;, &quot;shaped&quot;], [&quot;got&quot;, &quot;shaped&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> My cousin <input type="text" class="blank-input short-input" id="in1-t10A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her eyebrows <input type="text" class="blank-input mid-input" id="in2-t10A-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yesterday. <span class="hint">(shape)</span></div>
+        <div class="g-feedback" id="fb-t10A-4"></div>
+      </div>
+      <div class="q-item" id="item-t10A-5" data-pairs="[[&quot;have&quot;, &quot;sharpened&quot;], [&quot;get&quot;, &quot;sharpened&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> You should <input type="text" class="blank-input short-input" id="in1-t10A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your knife <input type="text" class="blank-input mid-input" id="in2-t10A-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> regularly. <span class="hint">(sharpen)</span></div>
+        <div class="g-feedback" id="fb-t10A-5"></div>
+      </div>
+    <div class="part-head"><span class="part-letter">B</span><p>People: complete with <b>have</b> OR <b>get</b> and the correct verb form. <span>With <b>get</b>, include <b>to</b> in the second gap.</span></p></div>
+
+      <div class="q-item" id="item-t10B-0" data-pairs="[[&quot;had&quot;, &quot;create&quot;], [&quot;got&quot;, &quot;to create&quot;]]">
+        <div class="g-sentence"><span class="g-num">1</span> Last week, the principal <input type="text" class="blank-input short-input" id="in1-t10B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the teachers <input type="text" class="blank-input mid-input" id="in2-t10B-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a new timetable. <span class="hint">(create)</span></div>
+        <div class="g-feedback" id="fb-t10B-0"></div>
+      </div>
+      <div class="q-item" id="item-t10B-1" data-pairs="[[&quot;have&quot;, &quot;make&quot;], [&quot;get&quot;, &quot;to make&quot;]]">
+        <div class="g-sentence"><span class="g-num">2</span> I’d like to <input type="text" class="blank-input short-input" id="in1-t10B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a designer <input type="text" class="blank-input mid-input" id="in2-t10B-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a poster for my event. <span class="hint">(make)</span></div>
+        <div class="g-feedback" id="fb-t10B-1"></div>
+      </div>
+      <div class="q-item" id="item-t10B-2" data-pairs="[[&quot;had&quot;, &quot;meet&quot;], [&quot;got&quot;, &quot;to meet&quot;]]">
+        <div class="g-sentence"><span class="g-num">3</span> He <input type="text" class="blank-input short-input" id="in1-t10B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> his cousin <input type="text" class="blank-input mid-input" id="in2-t10B-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> him at the airport yesterday. <span class="hint">(meet)</span></div>
+        <div class="g-feedback" id="fb-t10B-2"></div>
+      </div>
+      <div class="q-item" id="item-t10B-3" data-pairs="[[&quot;have&quot;, &quot;deliver&quot;], [&quot;get&quot;, &quot;to deliver&quot;]]">
+        <div class="g-sentence"><span class="g-num">4</span> We are going to <input type="text" class="blank-input short-input" id="in1-t10B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the bakery <input type="text" class="blank-input mid-input" id="in2-t10B-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the cake to our house. <span class="hint">(deliver)</span></div>
+        <div class="g-feedback" id="fb-t10B-3"></div>
+      </div>
+      <div class="q-item" id="item-t10B-4" data-pairs="[[&quot;have&quot;, &quot;watch&quot;], [&quot;get&quot;, &quot;to watch&quot;]]">
+        <div class="g-sentence"><span class="g-num">5</span> You can <input type="text" class="blank-input short-input" id="in1-t10B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> a guard <input type="text" class="blank-input mid-input" id="in2-t10B-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> your luggage while you eat. <span class="hint">(watch)</span></div>
+        <div class="g-feedback" id="fb-t10B-4"></div>
+      </div>
+      <div class="q-item" id="item-t10B-5" data-pairs="[[&quot;has&quot;, &quot;help&quot;], [&quot;gets&quot;, &quot;to help&quot;]]">
+        <div class="g-sentence"><span class="g-num">6</span> She often <input type="text" class="blank-input short-input" id="in1-t10B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her daughter <input type="text" class="blank-input mid-input" id="in2-t10B-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> her with the shopping. <span class="hint">(help)</span> <span class="note-tag">Use the present simple.</span></div>
+        <div class="g-feedback" id="fb-t10B-5"></div>
+      </div>
+    </div>
+    <div class="task-feedback" id="tfb-t10"></div>
+    <div class="controls">
+      <button class="btn-check" data-check="t10">Check Task 10</button>
+      <button class="btn-ghost" data-reset="t10">Clear task</button>
+    </div>
+  </section>
+
+  <div class="summary" id="summary">
+    <div class="summary-label">Your score</div>
+    <div class="summary-score" id="totalScore">0 / 120</div>
+    <div class="summary-label" id="totalPercent">0% answered</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Start over</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Causatives — have / get — for individual practice. If you think an answer should also be accepted, ask your teacher.</footer>
+
+<script>
+(function(){
+  var TOTAL = 120;
+  var GROUPS = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"];
+  var MODELS = {"t1A-0": "had / got … renovated", "t1A-1": "has / gets … done", "t1A-2": "have / get … examined", "t1A-3": "have / get … installed", "t1A-4": "had / got … trimmed", "t1A-5": "have / get … replaced", "t1B-0": "had … clean   or   got … to clean", "t1B-1": "have … fix   or   get … to fix", "t1B-2": "have … film   or   get … to film", "t1B-3": "had … carry   or   got … to carry", "t1B-4": "have … read   or   get … to read", "t1B-5": "has … book   or   gets … to book", "t2A-0": "had / got … painted", "t2A-1": "have / get … sent", "t2A-2": "has / gets … pressed", "t2A-3": "have / get … framed", "t2A-4": "had / got … polished", "t2A-5": "have / get … copied", "t2B-0": "had … send   or   got … to send", "t2B-1": "have … give   or   get … to give", "t2B-2": "had … replace   or   got … to replace", "t2B-3": "have … email   or   get … to email", "t2B-4": "have … show   or   get … to show", "t2B-5": "have … walk   or   get … to walk", "t3A-0": "had / got … repaired", "t3A-1": "have / get … removed", "t3A-2": "have / get … serviced", "t3A-3": "have / get … made", "t3A-4": "had / got … pulled", "t3A-5": "have / get … renewed", "t3B-0": "had … check   or   got … to check", "t3B-1": "have … examine   or   get … to examine", "t3B-2": "had … take   or   got … to take", "t3B-3": "have … adjust   or   get … to adjust", "t3B-4": "have … cook   or   get … to cook", "t3B-5": "has … welcome   or   gets … to welcome", "t4A-0": "had / got … cleaned", "t4A-1": "have / get … cut", "t4A-2": "has / gets … washed", "t4A-3": "have / get … printed", "t4A-4": "had / got … designed", "t4A-5": "have / get … checked", "t4B-0": "had … repair   or   got … to repair", "t4B-1": "have … drive   or   get … to drive", "t4B-2": "had … collect   or   got … to collect", "t4B-3": "have … design   or   get … to design", "t4B-4": "have … help   or   get … to help", "t4B-5": "have … teach   or   get … to teach", "t5A-0": "had / got … tidied", "t5A-1": "have / get … translated", "t5A-2": "have / get … cleaned", "t5A-3": "have / get … collected", "t5A-4": "had / got … decorated", "t5A-5": "have / get … inspected", "t5B-0": "had … inspect   or   got … to inspect", "t5B-1": "have … check   or   get … to check", "t5B-2": "had … repeat   or   got … to repeat", "t5B-3": "have … do   or   get … to do", "t5B-4": "have … redesign   or   get … to redesign", "t5B-5": "has … submit   or   gets … to submit", "t6A-0": "had / got … taken", "t6A-1": "have / get … painted", "t6A-2": "has / gets … dyed", "t6A-3": "have / get … altered", "t6A-4": "had / got … fixed", "t6A-5": "have / get … scanned", "t6B-0": "had … write   or   got … to write", "t6B-1": "have … open   or   get … to open", "t6B-2": "had … cover   or   got … to cover", "t6B-3": "have … play   or   get … to play", "t6B-4": "have … test   or   get … to test", "t6B-5": "has … take   or   gets … to take", "t7A-0": "had / got … fitted", "t7A-1": "have / get … updated", "t7A-2": "has / gets … polished", "t7A-3": "have / get … repainted", "t7A-4": "had / got … resized", "t7A-5": "have / get … wrapped", "t7B-0": "had … guide   or   got … to guide", "t7B-1": "have … teach   or   get … to teach", "t7B-2": "had … feed   or   got … to feed", "t7B-3": "have … translate   or   get … to translate", "t7B-4": "have … call   or   get … to call", "t7B-5": "have … complete   or   get … to complete", "t8A-0": "had / got … translated", "t8A-1": "have / get … developed", "t8A-2": "have / get … washed", "t8A-3": "have / get … built", "t8A-4": "had / got … adjusted", "t8A-5": "have / get … repaired", "t8B-0": "had … build   or   got … to build", "t8B-1": "have … bring   or   get … to bring", "t8B-2": "had … draw   or   got … to draw", "t8B-3": "have … lead   or   get … to lead", "t8B-4": "have … write   or   get … to write", "t8B-5": "has … prepare   or   gets … to prepare", "t9A-0": "had / got … serviced", "t9A-1": "have / get … brought", "t9A-2": "has / gets … made", "t9A-3": "have / get … engraved", "t9A-4": "had / got … carried", "t9A-5": "have / get … treated", "t9B-0": "had … reset   or   got … to reset", "t9B-1": "have … proofread   or   get … to proofread", "t9B-2": "had … wash   or   got … to wash", "t9B-3": "have … call   or   get … to call", "t9B-4": "have … arrange   or   get … to arrange", "t9B-5": "have … clean   or   get … to clean", "t10A-0": "had / got … covered", "t10A-1": "have / get … shortened", "t10A-2": "have / get … delivered", "t10A-3": "have / get … vaccinated", "t10A-4": "had / got … shaped", "t10A-5": "have / get … sharpened", "t10B-0": "had … create   or   got … to create", "t10B-1": "have … make   or   get … to make", "t10B-2": "had … meet   or   got … to meet", "t10B-3": "have … deliver   or   get … to deliver", "t10B-4": "have … watch   or   get … to watch", "t10B-5": "has … help   or   gets … to help"};
+  function normalize(s){
+    return (s || '').toLowerCase().replace(/[’‘`]/g, "'").replace(/[^\w\s']/g, '').replace(/\s+/g, ' ').trim();
+  }
+  function pairsOf(item){ try { return JSON.parse(item.getAttribute('data-pairs')); } catch(e){ return []; } }
+  function evaluate(item){
+    var qid = item.id.replace('item-','');
+    var v1 = normalize(document.getElementById('in1-' + qid).value);
+    var v2 = normalize(document.getElementById('in2-' + qid).value);
+    var ok = false, ok1 = false, ok2 = false;
+    pairsOf(item).forEach(function(p){
+      var a = normalize(p[0]) === v1, b = normalize(p[1]) === v2;
+      if (a) ok1 = true; if (b) ok2 = true; if (a && b) ok = true;
+    });
+    return { ok: ok, ok1: ok1, ok2: ok2, v1: v1, v2: v2 };
+  }
+  function clearItem(item){
+    var qid = item.id.replace('item-','');
+    item.classList.remove('correct','incorrect');
+    ['in1-','in2-'].forEach(function(p){ document.getElementById(p + qid).classList.remove('wrong'); });
+    var fb = document.getElementById('fb-' + qid); fb.textContent = ''; fb.className = 'g-feedback';
+    var tf = document.getElementById('tfb-' + item.closest('section').id.replace('section-',''));
+    if (tf) { tf.textContent = ''; tf.className = 'task-feedback'; }
+  }
+  function checkGroup(gid){
+    var answered = 0, correct = 0, total = 0;
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      total++;
+      item.classList.remove('correct','incorrect');
+      ['in1-','in2-'].forEach(function(p){ document.getElementById(p + qid).classList.remove('wrong'); });
+      var fb = document.getElementById('fb-' + qid); fb.textContent = ''; fb.className = 'g-feedback';
+      var r = evaluate(item);
+      if (!r.v1 && !r.v2) return;
+      answered++;
+      if (r.ok) {
+        correct++; item.classList.add('correct');
+        fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct';
+      } else {
+        item.classList.add('incorrect');
+        var i1 = document.getElementById('in1-' + qid), i2 = document.getElementById('in2-' + qid);
+        if (!r.ok1 || (r.ok1 && r.ok2)) i1.classList.add('wrong');
+        if (!r.ok2 || (r.ok1 && r.ok2)) i2.classList.add('wrong');
+        var tip = (qid.indexOf('B') > -1 && r.ok1 && r.ok2) ? ' <span style="opacity:.7;">(have + V1 · get + to + V1)</span>' : '';
+        fb.innerHTML = 'Model answer: <strong>' + MODELS[qid] + '</strong>' + tip; fb.className = 'g-feedback incorrect';
+      }
+    });
+    var tf = document.getElementById('tfb-' + gid);
+    if (tf) {
+      if (answered === 0) { tf.textContent = ''; tf.className = 'task-feedback'; }
+      else if (answered < total) { tf.textContent = correct + ' / ' + answered + ' correct so far · ' + (total - answered) + ' still to answer.'; tf.className = 'task-feedback incomplete'; }
+      else if (correct === total) { tf.textContent = 'All correct — nice work!'; tf.className = 'task-feedback'; }
+      else { tf.textContent = correct + ' / ' + total + ' correct. The right answers are shown for the mistakes.'; tf.className = 'task-feedback has-errors'; }
+    }
+    updateScore();
+  }
+  function resetGroup(gid){
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      clearItem(item);
+      document.getElementById('in1-' + qid).value = ''; document.getElementById('in2-' + qid).value = '';
+    });
+    updateScore();
+  }
+  function updateScore(){
+    var total = 0, answered = 0;
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var r = evaluate(item);
+      if (r.v1 || r.v2) { answered++; if (r.ok) total++; }
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (answered / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(answered / TOTAL * 100) + '% answered';
+  }
+  document.querySelectorAll('.blank-input').forEach(function(inp){
+    inp.addEventListener('input', function(){ clearItem(inp.closest('.q-item')); updateScore(); });
+  });
+  document.querySelectorAll('[data-check]').forEach(function(b){ b.addEventListener('click', function(){ checkGroup(b.getAttribute('data-check')); }); });
+  document.querySelectorAll('[data-reset]').forEach(function(b){ b.addEventListener('click', function(){ resetGroup(b.getAttribute('data-reset')); }); });
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    GROUPS.forEach(checkGroup);
+    document.getElementById('section-' + GROUPS[0]).scrollIntoView({ behavior: 'smooth' });
+  });
+  document.getElementById('resetAllBtn').addEventListener('click', function(){ GROUPS.forEach(resetGroup); });
+  updateScore();
+})();
+</script>
+
+</body>
+</html>
