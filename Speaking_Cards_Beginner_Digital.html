@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Speaking Cards — Beginner Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:820px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  /* ---------- masthead ---------- */
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(22px,4vw,30px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 10px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0 0 6px; max-width:56ch; }
+  .sub strong{ color:rgba(255,255,255,.92); font-weight:600; }
+
+  /* ---------- topic nav strip ---------- */
+  .nav-strip-wrap{ position:sticky; top:0; z-index:5; background:var(--black-soft); border-bottom:2px solid var(--yellow); padding:10px 0; }
+  .nav-strip{ display:flex; gap:10px; overflow-x:auto; padding: 4px clamp(16px,5vw,44px); scrollbar-width:none; -ms-overflow-style:none; }
+  .nav-strip::-webkit-scrollbar{ display:none; }
+  .nav-chip{ flex:0 0 auto; display:flex; flex-direction:column; align-items:center; gap:4px; width:64px; text-decoration:none; padding:4px 2px 2px; border-radius:8px; transition:background .15s; }
+  .nav-chip:active{ background:rgba(255,255,255,.08); }
+  
+  .nav-chip-letter{ font-size:10px; font-weight:700; color:var(--yellow); letter-spacing:.02em; }
+  .nav-chip-title{ display:none; }
+
+  /* ---------- intro note ---------- */
+  .intro-note{ padding: 18px clamp(20px,5vw,44px); background:var(--paper); border-bottom:1px solid var(--rule); font-size:13.5px; color:var(--ink-soft); }
+  .intro-note strong{ color:var(--ink); }
+
+  /* ---------- card block ---------- */
+  .card-block{ border-bottom:10px solid var(--paper); }
+  .card-block:last-of-type{ border-bottom:none; }
+
+  .card-hero{ position:relative; width:100%; aspect-ratio: 16/8; overflow:hidden; background:var(--black); }
+  
+  .card-hero-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,15,17,.15) 0%, rgba(15,15,17,.35) 55%, rgba(15,15,17,.88) 100%); display:flex; flex-direction:column; justify-content:space-between; padding: 14px 18px 16px; }
+  .card-hero-top{ display:flex; align-items:center; gap:10px; }
+  .card-badge{ width:34px; height:34px; border-radius:50%; overflow:hidden; box-shadow:0 0 0 2px rgba(255,255,255,.85); flex:0 0 auto; }
+  
+  .card-tag{ font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--black); background:var(--yellow); padding:4px 9px; border-radius:20px; }
+  .card-title{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(22px,5.4vw,30px); line-height:1.12; color:var(--white); margin:0; text-shadow: 0 2px 14px rgba(0,0,0,.35); }
+
+  .card-body{ padding: 20px clamp(18px,5vw,40px) 28px; background:var(--panel); }
+
+  .part-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin: 4px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--accent); }
+  .part-head-2{ margin-top:26px; }
+  .part-label{ font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:var(--ink); }
+  .reveal-all{ font-size:12px; font-weight:600; color:var(--accent); background:transparent; border:1.3px solid var(--accent); border-radius:20px; padding:5px 12px; cursor:pointer; white-space:nowrap; }
+  .reveal-all:active{ background:var(--accent); color:var(--white); }
+
+  .qa-list{ display:flex; flex-direction:column; gap:8px; }
+  details.qa{ border:1.3px solid var(--rule); border-radius:10px; overflow:hidden; background:var(--paper); }
+  details.qa[open]{ border-color:var(--accent); }
+  details.qa summary{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px; padding:12px 14px; font-size:14.5px; font-weight:600; color:var(--ink); }
+  details.qa summary::-webkit-details-marker{ display:none; }
+  .qa-num{ flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--accent); color:var(--white); font-size:11.5px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .qa-q{ flex:1; }
+  .qa-chevron{ flex:0 0 auto; width:9px; height:9px; border-right:2px solid var(--ink-soft); border-bottom:2px solid var(--ink-soft); transform:rotate(45deg); transition:transform .18s; margin-top:-3px; }
+  details.qa[open] .qa-chevron{ transform:rotate(-135deg); margin-top:3px; }
+  .qa-a{ padding: 2px 14px 14px 46px; }
+  .qa-a-label{ display:block; font-size:10.5px; font-weight:700; letter-spacing:.05em; color:var(--accent); margin-bottom:4px; }
+  .qa-a p{ margin:0; font-size:14px; color:var(--ink-soft); font-style:italic; line-height:1.6; }
+
+  footer.note{ max-width:820px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:520px){
+    .nav-chip{ width:56px; }
+    
+    .card-hero{ aspect-ratio: 16/10; }
+    .qa-a{ padding-left:14px; }
+  }
+
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{background:var(--paper)}
+.nav-strip-wrap{top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--black-soft);z-index:10}
+.nav-dot{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--yellow)}
+.card-hero{aspect-ratio:auto;min-height:150px;background:linear-gradient(135deg,var(--accent),var(--black) 135%)}
+.card-hero-overlay{background:none;min-height:150px}
+.hero-letter{position:absolute;right:18px;bottom:-26px;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:150px;line-height:1;color:rgba(255,255,255,.16);pointer-events:none}
+.card-badge{display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:800;font-size:15px}
+.progress{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--white);background:rgba(0,0,0,.35);padding:4px 10px;border-radius:20px}
+.qa-done{display:none;font-size:11px;font-weight:700;color:var(--accent);margin-right:2px}
+details.qa.done .qa-done{display:inline}
+.qa-a{padding:4px 14px 16px 46px}
+.write-label{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--accent);margin-bottom:6px}
+.status{font-weight:600;letter-spacing:0;color:var(--ink-soft);font-size:11.5px}
+.status.ok{color:#2E8B74}
+textarea.mine{width:100%;min-height:84px;resize:vertical;font:inherit;font-size:15px;line-height:1.55;color:var(--ink);background:var(--panel);border:1.3px solid var(--rule);border-radius:8px;padding:10px 12px}
+textarea.mine:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.show-sample{margin-top:10px;font:inherit;font-size:12.5px;font-weight:600;color:var(--accent);background:transparent;border:1.3px solid var(--accent);border-radius:20px;padding:5px 12px;cursor:pointer}
+.samples{display:none;margin-top:10px;gap:8px;flex-direction:column}
+.samples.show{display:flex}
+.sample{border-left:4px solid var(--accent);background:var(--paper);border-radius:0 8px 8px 0;padding:9px 12px}
+.qa-a-label{margin-bottom:3px}
+.clear-btn{font:inherit;font-size:12px;font-weight:600;color:var(--ink-soft);background:transparent;border:1.3px solid var(--rule);border-radius:20px;padding:6px 14px;cursor:pointer;margin-top:10px}
+@media (max-width:520px){.qa-a{padding-left:14px}.hero-letter{font-size:110px}}
+:root{--theme-note:1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#101012;--panel:#1b1b1e;--ink:#F1F1EE;--ink-soft:#A9AAAE;--rule:#34343A}}
+:root[data-theme="dark"]{--paper:#101012;--panel:#1b1b1e;--ink:#F1F1EE;--ink-soft:#A9AAAE;--rule:#34343A}
+
+.ic{width:20px;height:20px}.nav-dot .ic{width:19px;height:19px}.card-badge .ic{width:20px;height:20px}
+.nav-dot{background:linear-gradient(145deg,var(--accent),color-mix(in srgb,var(--accent) 60%,#000))}
+.card-hero{min-height:170px;background:radial-gradient(circle at 85% 20%,color-mix(in srgb,var(--accent) 70%,#fff) 0,transparent 45%),linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 45%,#000))}
+.card-hero::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:2px solid rgba(255,255,255,.14);right:-60px;top:-90px}
+.card-hero::after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07);right:60px;bottom:-60px}
+.card-hero-overlay{min-height:170px;z-index:1}
+.hero-icon{position:absolute;right:20px;top:50%;margin-top:-62px;width:124px;height:124px;color:rgba(255,255,255,.9);display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));z-index:1}
+.ic-xl{width:100%;height:100%}
+.card-title{font-size:clamp(26px,6.5vw,36px);max-width:62%}
+.pbar{height:6px;border-radius:6px;background:var(--rule);overflow:hidden;margin:0 0 18px}
+.pbar i{display:block;height:100%;width:0;background:var(--accent);border-radius:6px;transition:width .4s}
+.sample p{font-style:normal;color:var(--ink)}
+details.qa{background:var(--panel);box-shadow:0 4px 12px -10px rgba(20,20,22,.5)}
+details.qa[open]{background:var(--paper)}
+.sheet{box-shadow:0 30px 60px -34px rgba(20,20,22,.5)}
+@media (max-width:520px){.hero-icon{width:84px;height:84px;margin-top:-42px;right:14px}.card-title{max-width:66%}}
+</style></head><body>
+<div class="sheet">
+<header class="masthead"><div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div class="eyebrow-row"><span class="brand">Inter Nation</span><span>Speaking Practice</span></div>
+<h1>Speaking Cards</h1>
+<p class="sub"><strong>Beginner Speaking Practice · 10 Topic Cards.</strong> Each card has two parts: short warm-up questions, then longer discussion questions. Tap a question, write your own answer, then open the sample answer to compare. <strong>Your answers save automatically</strong> on this device.</p></header>
+<div class="nav-strip-wrap"><nav class="nav-strip"><a class="nav-chip" href="#card-A" style="--accent:#E0964B"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 22h36l-3 30H17z"/><path d="M24 22v-4a8 8 0 0116 0v4"/></svg></span><span class="nav-chip-letter">Card A</span></a>
+<a class="nav-chip" href="#card-B" style="--accent:#33607D"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="20"/><path d="M32 22l9 7-3 10H26l-3-10z"/><path d="M32 12v10M41 29l11-3M38 39l7 10M26 39l-7 10M23 29L12 26"/></svg></span><span class="nav-chip-letter">Card B</span></a>
+<a class="nav-chip" href="#card-C" style="--accent:#B23A48"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="21"/><path d="M32 18v15l10 6"/></svg></span><span class="nav-chip-letter">Card C</span></a>
+<a class="nav-chip" href="#card-D" style="--accent:#2E8B74"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 32L32 12l22 20"/><path d="M16 28v24h32V28"/><path d="M27 52V38h10v14"/></svg></span><span class="nav-chip-letter">Card D</span></a>
+<a class="nav-chip" href="#card-E" style="--accent:#4A5A8C"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 24h32v14a14 14 0 01-14 14h-4a14 14 0 01-14-14z"/><path d="M44 28h4a6 6 0 010 12h-5"/><path d="M22 8v6M30 8v6M38 8v6"/></svg></span><span class="nav-chip-letter">Card E</span></a>
+<a class="nav-chip" href="#card-F" style="--accent:#7C4C9E"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 52V22h18v30M26 52V12h20v40M46 52V30h10v22M4 52h56"/><path d="M14 30h4M14 38h4M32 20h8M32 28h8M32 36h8"/></svg></span><span class="nav-chip-letter">Card F</span></a>
+<a class="nav-chip" href="#card-G" style="--accent:#1E8FA0"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="6"/><circle cx="44" cy="20" r="6"/><circle cx="32" cy="36" r="5"/><path d="M8 52c0-9 5-14 12-14s12 5 12 14M32 52c0-9 5-14 12-14s12 5 12 14"/></svg></span><span class="nav-chip-letter">Card G</span></a>
+<a class="nav-chip" href="#card-H" style="--accent:#4A90B8"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52S10 38 10 24a11 11 0 0122-3 11 11 0 0122 3c0 14-22 28-22 28z"/></svg></span><span class="nav-chip-letter">Card H</span></a>
+<a class="nav-chip" href="#card-I" style="--accent:#C1713F"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="14" width="44" height="32" rx="6"/><path d="M10 30h44M32 14v16"/><circle cx="22" cy="50" r="5"/><circle cx="42" cy="50" r="5"/></svg></span><span class="nav-chip-letter">Card I</span></a>
+<a class="nav-chip" href="#card-J" style="--accent:#6B4E71"><span class="nav-dot"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="9"/><path d="M24 6v5M6 24h5M11 11l4 4M37 11l-4 4"/><path d="M26 54h24a9 9 0 000-18 13 13 0 00-25 3 8 8 0 001 15z"/></svg></span><span class="nav-chip-letter">Card J</span></a>
+</nav></div>
+<section class="card-block" id="card-A" style="--accent:#E0964B">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 22h36l-3 30H17z"/><path d="M24 22v-4a8 8 0 0116 0v4"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 22h36l-3 30H17z"/><path d="M24 22v-4a8 8 0 0116 0v4"/></svg></span><span class="card-tag">CARD A</span><span class="progress" data-progress="A">0 / 8 written</span></div><h2 class="card-title">Shopping</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="A"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-A" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="A-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you like shopping?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like shopping?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I like shopping because it is fun. I usually buy nice clothes and shoes.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. I don’t like shopping because it is boring and tiring.</p></div></div></div></details>
+<details class="qa" data-key="A-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">Do you go shopping on Sundays?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you go shopping on Sundays?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. On Sundays I am free, so I go to the shops with my family.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. On Sundays the shops are very crowded, so I stay at home.</p></div></div></div></details>
+<details class="qa" data-key="A-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Do you buy your clothes online?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you buy your clothes online?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. It is easy and fast. I can buy clothes from my phone.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. I want to try on clothes in the shop first.</p></div></div></div></details>
+<details class="qa" data-key="A-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">Are clothes cheap in your country?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Are clothes cheap in your country?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, many clothes are cheap, especially at the bazaar.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, they are not cheap. Good clothes are very expensive.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-A" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="A-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">How do you spend your free time?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How do you spend your free time?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like to spend my free time with my friends. We walk in the park, play games, and talk. I feel happy after that.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have much free time. I study all day, and in the evening I am tired. I usually sleep or watch TV at home.</p></div></div></div></details>
+<details class="qa" data-key="A-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">How often do you go shopping?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How often do you go shopping?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I go shopping every weekend. I like to buy clothes, shoes, and food. Shopping makes me happy.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I go shopping very rarely, maybe once a month. I don’t like crowds, so I buy only things I need.</p></div></div></div></details>
+<details class="qa" data-key="A-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Speak about a shopping centre you like.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about a shopping centre you like."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like “Mega Planet” in Tashkent. It has many shops, a food court, and a cinema. I can spend a few hours there and enjoy myself.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t like big shopping centres. They are noisy, crowded, and expensive. I prefer small shops near my house.</p></div></div></div></details>
+<details class="qa" data-key="A-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">Speak about your day.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about your day."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Today is a good day. I woke up at 7 a.m., had a tasty breakfast, and went to school. I had interesting lessons and met my friends. In the evening I will relax.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Today is a hard day. I woke up late and I was very tired. My lessons were boring and I have a lot of homework. I want to go to sleep.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-B" style="--accent:#33607D">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="20"/><path d="M32 22l9 7-3 10H26l-3-10z"/><path d="M32 12v10M41 29l11-3M38 39l7 10M26 39l-7 10M23 29L12 26"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="20"/><path d="M32 22l9 7-3 10H26l-3-10z"/><path d="M32 12v10M41 29l11-3M38 39l7 10M26 39l-7 10M23 29L12 26"/></svg></span><span class="card-tag">CARD B</span><span class="progress" data-progress="B">0 / 8 written</span></div><h2 class="card-title">Hobby &amp; Free Time</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="B"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-B" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="B-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">What is your hobby?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What is your hobby?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My hobby is playing football. I play with my friends in the park. It is a lot of fun.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have a hobby. I have no free time and I am tired after school or work.</p></div></div></div></details>
+<details class="qa" data-key="B-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">Do you like cooking at home?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like cooking at home?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I like cooking because it is interesting. I can make plov and pasta.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. Cooking is boring and takes a lot of time. My mother usually cooks.</p></div></div></div></details>
+<details class="qa" data-key="B-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Do you do morning exercises?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you do morning exercises?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I exercise for ten minutes every morning. It makes me strong and happy.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. In the morning I am sleepy and I want to sleep more.</p></div></div></div></details>
+<details class="qa" data-key="B-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">Do you like watching films?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like watching films?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I like comedies and action films. I watch films with my family at the weekend.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. Films are long and I fall asleep. I like listening to music more.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-B" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="B-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">Speak about your last holiday.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about your last holiday."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My last holiday was very nice. I went to the mountains with my family in summer. We walked, took photos, and ate good food. I enjoyed it very much.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>My last holiday was not good. I stayed at home because I had no money. The weather was hot and I was bored.</p></div></div></div></details>
+<details class="qa" data-key="B-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">Speak about your last birthday party.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about your last birthday party."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>For my last birthday, I had a small party at home. My friends and family came. We ate cake, played games, and talked. It was a happy day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>My last birthday was not very good. I was ill, so I had no party. Only my family gave me a small cake. I was sad.</p></div></div></div></details>
+<details class="qa" data-key="B-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Speak about your house.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about your house."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I live in a nice house with my family. It has a kitchen, a living room, and three bedrooms. I like my house because it is comfortable and quiet.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>My house is small and old. It has only two rooms and a small kitchen. It is noisy, and I want a bigger house.</p></div></div></div></details>
+<details class="qa" data-key="B-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">Talk about a book you like.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Talk about a book you like."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like the book Harry Potter because it has magic, adventure, and interesting characters. I enjoy reading it in my free time.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t like reading books. They are long and boring. I prefer watching videos on my phone.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-C" style="--accent:#B23A48">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="21"/><path d="M32 18v15l10 6"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="21"/><path d="M32 18v15l10 6"/></svg></span><span class="card-tag">CARD C</span><span class="progress" data-progress="C">0 / 8 written</span></div><h2 class="card-title">Daily Routine</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="C"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-C" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="C-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you often get up early?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you often get up early?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I usually get up at 6:30. I like the quiet morning.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. I like sleeping. I get up at 8 o’clock and I am often late.</p></div></div></div></details>
+<details class="qa" data-key="C-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">Do you always have breakfast with your family?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you always have breakfast with your family?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. We eat bread and eggs and drink tea together.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. Everyone is busy in the morning, so I eat alone or I don’t eat.</p></div></div></div></details>
+<details class="qa" data-key="C-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">What time do you go to school/university/work?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What time do you go to school/university/work?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I go to school at 8 o’clock. It is not far from my house.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I go to school at 7:30. It is too early and I am always sleepy.</p></div></div></div></details>
+<details class="qa" data-key="C-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">What time do you have dinner?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What time do you have dinner?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I have dinner at 7 in the evening with my family. We talk about our day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I have dinner very late, at 10 p.m., because I come home late. I am tired.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-C" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="C-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">What do you do on Saturdays and Sundays?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What do you do on Saturdays and Sundays?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>On Saturdays and Sundays, I usually rest and spend time with my family. Sometimes I visit my grandparents or play football with my friends.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>On weekends, I stay at home. I do my homework and help with the housework. It is boring and I have no plans.</p></div></div></div></details>
+<details class="qa" data-key="C-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">Speak about your favourite day of the week.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about your favourite day of the week."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My favourite day is Saturday. I don’t go to school, and I can sleep more. I meet my friends and we have fun.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have a favourite day. Every day is the same for me: school, homework, and sleep. I like Monday the least.</p></div></div></div></details>
+<details class="qa" data-key="C-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Which days of the week do you have your English lessons?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Which days of the week do you have your English lessons?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I have English lessons on Tuesday, Thursday, and Saturday. I like learning new words and speaking with my teacher.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I have English lessons on Monday, Wednesday, and Friday. They are difficult for me and I am often tired.</p></div></div></div></details>
+<details class="qa" data-key="C-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">How often do you meet your friends?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How often do you meet your friends?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I meet my friends every weekend. We play games, walk, and drink tea. I love spending time with them.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I meet my friends rarely, maybe once a month. We are all busy and some friends live far from me.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-D" style="--accent:#2E8B74">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 32L32 12l22 20"/><path d="M16 28v24h32V28"/><path d="M27 52V38h10v14"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 32L32 12l22 20"/><path d="M16 28v24h32V28"/><path d="M27 52V38h10v14"/></svg></span><span class="card-tag">CARD D</span><span class="progress" data-progress="D">0 / 8 written</span></div><h2 class="card-title">House / Flat</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="D"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-D" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="D-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you live in a house or flat?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you live in a house or flat?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I live in a house. It is big and cozy.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I live in a flat. It is small and old.</p></div></div></div></details>
+<details class="qa" data-key="D-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">How many rooms are there in your house/flat?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How many rooms are there in your house/flat?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>There are five rooms: a kitchen, a living room, and three bedrooms.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>There are only two rooms. It is small and there is not enough space.</p></div></div></div></details>
+<details class="qa" data-key="D-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Which room do you like?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Which room do you like?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like my bedroom. It is my favourite room.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t really like any room. They are all small. Maybe the kitchen is OK.</p></div></div></div></details>
+<details class="qa" data-key="D-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">Why do you like this room?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Why do you like this room?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like it because it is comfortable and quiet. I have my desk and my books there.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t like it very much. It is small and dark, and it is noisy.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-D" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="D-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you like big or small houses/flats? Why?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like big or small houses/flats? Why?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like big houses. There is space for all my family and for guests. Also, a big house can have a garden.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t like big houses. They are expensive and hard to clean. I like small flats because they are cheaper and warm.</p></div></div></div></details>
+<details class="qa" data-key="D-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">What facilities are there in your house/flat?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What facilities are there in your house/flat?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>In my house there is a kitchen, a living room, two bedrooms, and a bathroom. We also have internet, an air conditioner, and a small garden.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>There are only basic things in my flat. We have a kitchen and a bathroom, but there is no air conditioner and no garden. The internet is slow.</p></div></div></div></details>
+<details class="qa" data-key="D-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Can you speak about your living room?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Can you speak about your living room?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My living room is big and bright. It has a sofa, a table, and a TV. I like spending time there with my family.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>My living room is small and dark. There is an old sofa and a TV. There is not much space, so I don’t like sitting there.</p></div></div></div></details>
+<details class="qa" data-key="D-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">What are expensive possessions in your house?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What are expensive possessions in your house?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My laptop and my smartphone are expensive. I use them every day for study, so they are very useful.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have expensive things. I have only an old phone and a simple table. I can’t buy expensive things.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-E" style="--accent:#4A5A8C">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 24h32v14a14 14 0 01-14 14h-4a14 14 0 01-14-14z"/><path d="M44 28h4a6 6 0 010 12h-5"/><path d="M22 8v6M30 8v6M38 8v6"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 24h32v14a14 14 0 01-14 14h-4a14 14 0 01-14-14z"/><path d="M44 28h4a6 6 0 010 12h-5"/><path d="M22 8v6M30 8v6M38 8v6"/></svg></span><span class="card-tag">CARD E</span><span class="progress" data-progress="E">0 / 8 written</span></div><h2 class="card-title">Cafés &amp; Future Plans</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="E"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-E" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="E-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you like going to cafés?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like going to cafés?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I like meeting my friends there and drinking tea.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. Cafés are noisy and expensive. I prefer staying at home.</p></div></div></div></details>
+<details class="qa" data-key="E-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">What cafés are popular in your town?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What cafés are popular in your town?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Many cafés are popular in my town, for example “Bon!” and “Safia”. They are nice and clean.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t know popular cafés because I don’t go often. Most cafés are crowded and noisy.</p></div></div></div></details>
+<details class="qa" data-key="E-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">What food and drinks do you order at cafés?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What food and drinks do you order at cafés?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I usually order tea, coffee, a cake, or a sandwich. Everything is tasty.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I usually order only tea or water. The food is expensive and not always tasty.</p></div></div></div></details>
+<details class="qa" data-key="E-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">Are cafés expensive in your country/city?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Are cafés expensive in your country/city?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>No, many cafés are not expensive. I can have tea and a cake for a small price.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Yes, they are expensive. A coffee and a cake cost a lot of money for a student.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-E" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="E-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">What are your plans for the future?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What are your plans for the future?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I want to study at a good university, learn English well, and get a good job. I also want to travel to other countries.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have clear plans. I don’t know what I want to do. It is difficult for me to plan the future.</p></div></div></div></details>
+<details class="qa" data-key="E-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">What are you going to do after the exam?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What are you going to do after the exam?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>After the exam, I am going to celebrate with my family and rest. Then I am going to study more English.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I am not going to do anything special. I will be very tired, so I will sleep at home all day.</p></div></div></div></details>
+<details class="qa" data-key="E-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Are you going to study in Uzbekistan or in another country?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Are you going to study in Uzbekistan or in another country?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I am going to study in another country, for example in Korea or Turkey. I want to get a new experience and learn about another culture.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I am not going to study abroad. It is expensive and I will miss my family. I am going to study in Uzbekistan.</p></div></div></div></details>
+<details class="qa" data-key="E-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">What are you going to do this weekend?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What are you going to do this weekend?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>This weekend I am going to meet my friends and play football. In the evening I am going to watch a film.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I am not going to do anything special this weekend. I will stay at home and do my homework. I have no plans.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-F" style="--accent:#7C4C9E">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 52V22h18v30M26 52V12h20v40M46 52V30h10v22M4 52h56"/><path d="M14 30h4M14 38h4M32 20h8M32 28h8M32 36h8"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 52V22h18v30M26 52V12h20v40M46 52V30h10v22M4 52h56"/><path d="M14 30h4M14 38h4M32 20h8M32 28h8M32 36h8"/></svg></span><span class="card-tag">CARD F</span><span class="progress" data-progress="F">0 / 8 written</span></div><h2 class="card-title">Neighbours</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="F"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-F" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="F-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you have good neighbours?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you have good neighbours?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. They are kind and friendly.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. They are noisy and not friendly.</p></div></div></div></details>
+<details class="qa" data-key="F-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">What are their jobs?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What are their jobs?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>One neighbour is a doctor and another is a teacher.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t know. They never talk about their jobs.</p></div></div></div></details>
+<details class="qa" data-key="F-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Do you often talk to your neighbours?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you often talk to your neighbours?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. We talk every day when we meet near the door.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. We only say “hello” sometimes.</p></div></div></div></details>
+<details class="qa" data-key="F-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">Do you help your neighbours?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you help your neighbours?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I help an old neighbour carry her bags.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. I am busy and I don’t know them well.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-F" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="F-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">Speak about one of your neighbours.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Speak about one of your neighbours."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My neighbour is Mr. Aziz. He is a kind man and he is a teacher. He is 50 years old. He often helps my family and is always friendly.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>My neighbour is not a nice man. He listens to loud music at night and never says “hello”. I don’t like him.</p></div></div></div></details>
+<details class="qa" data-key="F-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">When do you usually meet your neighbour?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: When do you usually meet your neighbour?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I usually meet my neighbour in the morning when I go to school. We also meet in the yard in the evening and talk.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I meet my neighbour very rarely, only sometimes on the stairs. I try not to meet him.</p></div></div></div></details>
+<details class="qa" data-key="F-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Has your neighbour got a pet?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Has your neighbour got a pet?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, he has. He has a white cat. It is very cute and I like playing with it.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Yes, he has. He has a big dog. It barks at night and I am afraid of it.</p></div></div></div></details>
+<details class="qa" data-key="F-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">Do you like your neighbour? Why?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like your neighbour? Why?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. He is kind, he helps people, and he gives sweets to children.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. He is noisy and rude. He doesn’t help anybody.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-G" style="--accent:#1E8FA0">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="6"/><circle cx="44" cy="20" r="6"/><circle cx="32" cy="36" r="5"/><path d="M8 52c0-9 5-14 12-14s12 5 12 14M32 52c0-9 5-14 12-14s12 5 12 14"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="6"/><circle cx="44" cy="20" r="6"/><circle cx="32" cy="36" r="5"/><path d="M8 52c0-9 5-14 12-14s12 5 12 14M32 52c0-9 5-14 12-14s12 5 12 14"/></svg></span><span class="card-tag">CARD G</span><span class="progress" data-progress="G">0 / 8 written</span></div><h2 class="card-title">Family</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="G"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-G" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="G-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">How many people are there in your family?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How many people are there in your family?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>There are five people in my family: my mother, my father, my brother, my sister, and me. We are a big family.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>There are only three people in my family. My family is small and sometimes I feel alone.</p></div></div></div></details>
+<details class="qa" data-key="G-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">Do you have any brothers or sisters?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you have any brothers or sisters?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I have one brother and one sister. They are funny and kind.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. I am the only child. I am sometimes lonely.</p></div></div></div></details>
+<details class="qa" data-key="G-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">What are your parents’ jobs?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What are your parents&#x27; jobs?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My father is a doctor and my mother is a teacher. They like their jobs.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>My father is a builder and my mother is a shop assistant. Their jobs are hard and they come home tired.</p></div></div></div></details>
+<details class="qa" data-key="G-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">What do you like doing with your family?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What do you like doing with your family?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like watching films, cooking, and going to the park with my family.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t like doing many things with my family. We are all busy and we only eat together.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-G" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="G-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">What is your favourite day of the week?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What is your favourite day of the week?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My favourite day is Sunday. My family is at home, we cook plov, and we rest together.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have a favourite day. Every day is the same, and weekends are boring.</p></div></div></div></details>
+<details class="qa" data-key="G-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">What do you do with your family on Sundays?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What do you do with your family on Sundays?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>On Sundays, we go to the park or visit my grandparents. Then we have a big lunch together. It is a happy day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>On Sundays, we don’t do anything special. We stay at home and clean the house. I am bored.</p></div></div></div></details>
+<details class="qa" data-key="G-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Where did you go with your family last time?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Where did you go with your family last time?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Last month we went to Charvak Lake. The weather was sunny and we had a picnic. It was a wonderful day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Last time we went to the market to buy food. It was crowded and tiring. I didn’t like it.</p></div></div></div></details>
+<details class="qa" data-key="G-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">How did you spend your time with your family?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How did you spend your time with your family?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>We had a picnic, played games, talked, and took photos. We laughed a lot and I felt very happy.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>It was not great. We were tired and we didn’t talk much. Everybody looked at their phones.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-H" style="--accent:#4A90B8">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52S10 38 10 24a11 11 0 0122-3 11 11 0 0122 3c0 14-22 28-22 28z"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52S10 38 10 24a11 11 0 0122-3 11 11 0 0122 3c0 14-22 28-22 28z"/></svg></span><span class="card-tag">CARD H</span><span class="progress" data-progress="H">0 / 8 written</span></div><h2 class="card-title">Friends</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="H"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-H" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="H-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you have friends?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you have friends?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I have many good friends at school.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t have many friends. I have only one or two because I am shy.</p></div></div></div></details>
+<details class="qa" data-key="H-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">Do you often meet with friends?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you often meet with friends?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I meet them every weekend and at school every day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. We meet rarely because we are busy and live far from each other.</p></div></div></div></details>
+<details class="qa" data-key="H-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Who is your best friend?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Who is your best friend?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My best friend is Aziz. We are friends for five years. He is very kind.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have a best friend. I have some friends, but nobody is very close to me.</p></div></div></div></details>
+<details class="qa" data-key="H-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">What does your friend like?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What does your friend like?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>He likes football and computer games. He is funny.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>He likes only video games. I don’t like it because he doesn’t want to go outside.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-H" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="H-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you like meeting with your friends?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like meeting with your friends?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I love meeting my friends. We have fun, laugh, and talk about everything.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Not always. Sometimes I am tired and I prefer to stay at home.</p></div></div></div></details>
+<details class="qa" data-key="H-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">When did you meet with them last time?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: When did you meet with them last time?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I met my friends last Saturday. It was a great day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I met them two weeks ago. It was a short meeting, only for one hour.</p></div></div></div></details>
+<details class="qa" data-key="H-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">What did you do together?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What did you do together?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>We walked in the park, ate ice cream, and played football.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>We sat in a cafe and looked at our phones. We didn’t do much.</p></div></div></div></details>
+<details class="qa" data-key="H-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">Did you like it?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Did you like it?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I did. It was a lot of fun and I felt happy.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I didn’t. It was boring and I was tired.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-I" style="--accent:#C1713F">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="14" width="44" height="32" rx="6"/><path d="M10 30h44M32 14v16"/><circle cx="22" cy="50" r="5"/><circle cx="42" cy="50" r="5"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="14" width="44" height="32" rx="6"/><path d="M10 30h44M32 14v16"/><circle cx="22" cy="50" r="5"/><circle cx="42" cy="50" r="5"/></svg></span><span class="card-tag">CARD I</span><span class="progress" data-progress="I">0 / 8 written</span></div><h2 class="card-title">Job / School / Transport</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="I"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-I" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="I-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">Have you got a job or are you a student?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Have you got a job or are you a student?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I am a student. I like studying and I learn new things every day.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I am a student, but I don’t like it very much. It is hard and I am often tired.</p></div></div></div></details>
+<details class="qa" data-key="I-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">What do you study?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What do you study?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I study English, maths, and IT. They are interesting subjects.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I study many subjects, like chemistry and physics. They are difficult and boring for me.</p></div></div></div></details>
+<details class="qa" data-key="I-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Where do you study?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Where do you study?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I study at a good school in Tashkent. The teachers are kind.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I study at a small, old school. It is far from my house.</p></div></div></div></details>
+<details class="qa" data-key="I-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">Is your school/university in the city center?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Is your school/university in the city center?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, it is. It is near the metro, so it is easy to get there.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, it isn’t. It is far from the center and I travel for one hour.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-I" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="I-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">How do you usually go to work or school?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How do you usually go to work or school?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I usually go to school by metro. It is fast and cheap, and I can listen to music on the way.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I usually go to school by bus. The trip is long and the bus is crowded. I am often late.</p></div></div></div></details>
+<details class="qa" data-key="I-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">What is your favorite type of transport?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What is your favorite type of transport?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My favorite transport is the metro. The Tashkent metro is beautiful, fast, and clean.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have a favorite type of transport. Buses are crowded and taxis are expensive. I just walk.</p></div></div></div></details>
+<details class="qa" data-key="I-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Is public transport popular in your city?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Is public transport popular in your city?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, it is very popular. Many people use buses and the metro because it is cheap.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, it is not very popular. Buses are old, late, and crowded, so many people prefer cars or taxis.</p></div></div></div></details>
+<details class="qa" data-key="I-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">How often do you use public transport?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: How often do you use public transport?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I use public transport every day. I go to school by metro and come home by bus.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I almost never use public transport. I walk, or my parents take me by car, because buses are crowded.</p></div></div></div></details>
+</div>
+</div></section>
+<section class="card-block" id="card-J" style="--accent:#6B4E71">
+<div class="card-hero"><span class="hero-icon"><svg class="ic-xl" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="9"/><path d="M24 6v5M6 24h5M11 11l4 4M37 11l-4 4"/><path d="M26 54h24a9 9 0 000-18 13 13 0 00-25 3 8 8 0 001 15z"/></svg></span><div class="card-hero-overlay"><div class="card-hero-top"><span class="card-badge"><svg class="ic" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="9"/><path d="M24 6v5M6 24h5M11 11l4 4M37 11l-4 4"/><path d="M26 54h24a9 9 0 000-18 13 13 0 00-25 3 8 8 0 001 15z"/></svg></span><span class="card-tag">CARD J</span><span class="progress" data-progress="J">0 / 8 written</span></div><h2 class="card-title">Weather &amp; Food</h2></div></div>
+<div class="card-body">
+<div class="pbar"><i data-bar="J"></i></div>
+<div class="part-head"><span class="part-label">Part 1 · Warm-up Questions</span><button class="reveal-all" data-target="card-J" data-scope="p1">Open all</button></div>
+<div class="qa-list" data-group="p1"><details class="qa" data-key="J-p1-1"><summary><span class="qa-num">1</span><span class="qa-q">What is the weather like today?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What is the weather like today?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Today is sunny and warm. It is a nice day and I feel good.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Today is cold, cloudy, and windy. I don’t like this weather.</p></div></div></div></details>
+<details class="qa" data-key="J-p1-2"><summary><span class="qa-num">2</span><span class="qa-q">Do you like rainy weather?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you like rainy weather?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. Rain is calm and nice. I like to stay at home and drink hot tea.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. The streets are wet and cold, and I can’t go out.</p></div></div></div></details>
+<details class="qa" data-key="J-p1-3"><summary><span class="qa-num">3</span><span class="qa-q">Is it hot in summer in your country?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Is it hot in summer in your country?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, it is very hot. But I like hot weather because I can swim and eat ice cream.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>Yes, it is very hot. I don’t like it because it is too hot to go outside and I feel tired.</p></div></div></div></details>
+<details class="qa" data-key="J-p1-4"><summary><span class="qa-num">4</span><span class="qa-q">What is the weather like in winter?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What is the weather like in winter?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>In winter it is cold and snowy. I like snow because I can play with my friends.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>In winter it is very cold and grey. I am always cold and I don’t like it.</p></div></div></div></details>
+</div>
+<div class="part-head part-head-2"><span class="part-label">Part 2 · Discussion Questions</span><button class="reveal-all" data-target="card-J" data-scope="p2">Open all</button></div>
+<div class="qa-list" data-group="p2"><details class="qa" data-key="J-p2-1"><summary><span class="qa-num">1</span><span class="qa-q">Do you often eat fast food?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Do you often eat fast food?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>Yes, I do. I like burgers and lavash. They are tasty and quick.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>No, I don’t. Fast food is not healthy. I prefer home food.</p></div></div></div></details>
+<details class="qa" data-key="J-p2-2"><summary><span class="qa-num">2</span><span class="qa-q">What do you order at restaurants?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What do you order at restaurants?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I usually order plov, a salad, and tea. Everything is tasty and I enjoy it.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I order a simple salad and tea. Restaurants are expensive, so I don’t order much.</p></div></div></div></details>
+<details class="qa" data-key="J-p2-3"><summary><span class="qa-num">3</span><span class="qa-q">Describe your favourite cafe.</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: Describe your favourite cafe."></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>My favourite cafe is small and cozy. It is near my house. There is nice music, the waiters are friendly, and the food is tasty.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t have a favourite cafe. Most cafes are noisy and expensive. I like my home more.</p></div></div></div></details>
+<details class="qa" data-key="J-p2-4"><summary><span class="qa-num">4</span><span class="qa-q">What do you like eating at your favourite cafe?</span><span class="qa-done">✓ written</span><span class="qa-chevron" aria-hidden="true"></span></summary>
+<div class="qa-a"><div class="write-label"><span>YOUR ANSWER</span><span class="status" aria-live="polite"></span></div>
+<textarea class="mine" rows="3" placeholder="Write your answer here. It saves automatically." aria-label="Your answer to: What do you like eating at your favourite cafe?"></textarea>
+<button class="show-sample" type="button">Show sample answer</button>
+<div class="samples"><div class="sample"><span class="qa-a-label">POSITIVE SAMPLE</span><p>I like eating pizza and cake there. I also like orange juice. Everything is fresh and tasty.</p></div><div class="sample"><span class="qa-a-label">NEGATIVE SAMPLE</span><p>I don’t eat much there. I only drink tea because the food is expensive and not always fresh.</p></div></div></div></details>
+</div>
+</div></section>
+
+</div>
+<footer class="note">Samples are models only. Use your own words and ideas when you speak.<br>Your answers are stored in this browser on this device. Clearing browser data will remove them.<br><button class="clear-btn" id="clear" type="button">Clear all my answers</button></footer>
+<script>
+var mem={};
+function sget(k){try{var v=localStorage.getItem(k);return v===null?(mem[k]||null):v}catch(e){return mem[k]||null}}
+function sset(k,v){mem[k]=v;try{if(v){localStorage.setItem(k,v)}else{localStorage.removeItem(k)}return true}catch(e){return false}}
+var PRE='bsc1:',timers={};
+function updateProgress(L){
+  var card=document.getElementById('card-'+L),n=0,tot=0;
+  card.querySelectorAll('details.qa').forEach(function(d){tot++;if(d.classList.contains('done'))n++});
+  document.querySelector('[data-progress="'+L+'"]').textContent=n+' / '+tot+' written';document.querySelector('[data-bar="'+L+'"]').style.width=(n/tot*100)+'%';
+}
+document.querySelectorAll('details.qa').forEach(function(d){
+  var key=d.getAttribute('data-key'),ta=d.querySelector('textarea'),st=d.querySelector('.status'),L=key.charAt(0);
+  var saved=sget(PRE+key);
+  if(saved){ta.value=saved;d.classList.add('done')}
+  function save(){clearTimeout(timers[key]);var ok=sset(PRE+key,ta.value.trim()?ta.value:'');
+    d.classList.toggle('done',!!ta.value.trim());updateProgress(L);
+    st.className='status'+(ok?' ok':'');st.textContent=ok?'Saved ✓':'Could not save on this browser'}
+  ta.addEventListener('input',function(){st.className='status';st.textContent='Saving…';clearTimeout(timers[key]);timers[key]=setTimeout(save,400)});
+  ta.addEventListener('blur',save);
+  d.addEventListener('toggle',function(){if(!d.open)save()});
+  d._save=save;
+  d.querySelector('.show-sample').addEventListener('click',function(e){
+    var s=d.querySelector('.samples'),on=s.classList.toggle('show');e.target.textContent=on?'Hide sample answer':'Show sample answer'});
+});
+'ABCDEFGHIJ'.split('').forEach(updateProgress);
+function flush(){document.querySelectorAll('details.qa').forEach(function(d){if(d._save&&timers[d.getAttribute('data-key')])d._save()})}
+window.addEventListener('pagehide',flush);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')flush()});
+document.querySelectorAll('.reveal-all').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var list=document.getElementById(btn.getAttribute('data-target')).querySelector('.qa-list[data-group="'+btn.getAttribute('data-scope')+'"]');
+    var items=list.querySelectorAll('details.qa');
+    var anyClosed=Array.prototype.some.call(items,function(d){return !d.open});
+    items.forEach(function(d){d.open=anyClosed});
+    btn.textContent=anyClosed?'Close all':'Open all';
+  });
+});
+var cb=document.getElementById('clear'),armed=false;
+cb.addEventListener('click',function(){
+  if(!armed){armed=true;cb.textContent='Tap again to delete ALL my answers';setTimeout(function(){armed=false;cb.textContent='Clear all my answers'},4000);return}
+  document.querySelectorAll('details.qa').forEach(function(d){var t=d.querySelector('textarea');t.value='';d.classList.remove('done');sset(PRE+d.getAttribute('data-key'),'');d.querySelector('.status').textContent=''});
+  'ABCDEFGHIJ'.split('').forEach(updateProgress);armed=false;cb.textContent='Clear all my answers';
+});
+</script></body></html>

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><script src="mock-config.js" onerror="void 0"></script><script>window.__initHash=location.hash;</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mock Exam 1 – Upper-Intermediate – Grammar, Vocabulary, Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#141416; --yellow:#FFD530; --yellow-deep:#E7BC12;
+  --paper:#F3F3EF; --panel:#FFFFFF; --ink:#18181B; --soft:#5E5F64; --rule:#E2E1D9; --field:#F7F7F3; --fieldline:#C9C8BE;
+  --good:#1E8F52; --goodbg:#E6F5EB; --bad:#C8352C; --badbg:#FBEAE8; --focus:#2F62C9;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --black:#0B0B0C; --paper:#101012; --panel:#1A1A1D; --ink:#EEEEEA; --soft:#A5A6A1; --rule:#2F2F33; --field:#232327; --fieldline:#45454B;
+    --good:#58C98A; --goodbg:#16301F; --bad:#F0736A; --badbg:#3A1D1B; --focus:#7BA5FF;
+  }
+}
+:root[data-theme="dark"]{
+  --black:#0B0B0C; --paper:#101012; --panel:#1A1A1D; --ink:#EEEEEA; --soft:#A5A6A1; --rule:#2F2F33; --field:#232327; --fieldline:#45454B;
+  --good:#58C98A; --goodbg:#16301F; --bad:#F0736A; --badbg:#3A1D1B; --focus:#7BA5FF;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px); height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;scroll-padding-top:130px;min-height:100%;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;padding:clamp(12px,3vw,40px) clamp(10px,3vw,20px) 80px}
+.wrap{max-width:860px;margin:0 auto}body[data-tab=reading] .wrap{max-width:1120px}
+.sheet{margin:0 auto;background:var(--panel);border-radius:8px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 24px 48px -32px rgba(0,0,0,.4)}
+
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.masthead{position:relative;background:var(--black);color:#fff;padding:clamp(24px,5vw,40px) clamp(18px,5vw,44px) clamp(20px,4vw,28px);border-radius:8px 8px 0 0}
+.dots{position:absolute;top:22px;right:26px;display:grid;grid-template-columns:repeat(3,8px);gap:6px}.dots span{width:8px;height:8px;border-radius:50%;background:var(--yellow)}.dots span:nth-child(5){background:#fff}
+.masthead .kicker{margin:0 0 12px;font-size:13.5px;color:var(--yellow);font-weight:600}
+.masthead h1{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(28px,6.5vw,44px);line-height:1.05;margin:0 0 12px;letter-spacing:-.015em}
+.masthead p{margin:0;max-width:60ch;color:rgba(255,255,255,.76);font-size:15px}
+.weight{display:inline-block;margin-top:18px;background:var(--yellow);color:#141416;font-weight:800;font-size:15px;padding:6px 14px;border-radius:999px}
+.candidate{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:18px clamp(18px,5vw,44px);border-bottom:1px solid var(--rule)}
+.candidate label{display:block;font-size:13px;color:var(--soft);font-weight:600;margin-bottom:4px}
+.candidate input{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--fieldline);background:var(--field);color:var(--ink);border-radius:6px}
+@media (max-width:560px){.candidate{grid-template-columns:1fr 1fr}.candidate div:first-child{grid-column:1/-1}}
+.plan{padding:24px clamp(18px,5vw,44px) 8px}
+.plan h2{font-family:'Fraunces',Georgia,serif;font-size:21px;margin:0 0 4px}
+.plan .note{margin:0 0 14px;color:var(--soft);font-size:14px}
+.tablewrap{overflow-x:auto;max-width:100%;border:1px solid var(--rule);border-radius:8px}
+table.plan-table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.plan-table th,.plan-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+.plan-table th{font-size:13px;color:var(--soft);font-weight:700;background:var(--field)}
+.plan-table td.num,.plan-table th.num{text-align:right;white-space:nowrap}
+.plan-table td:first-child{white-space:nowrap}
+.plan-table tr.total td{font-weight:800;border-bottom:0;background:var(--field)}
+.plan-table td.yours{color:var(--good);font-weight:800}
+.plan-table .yourscol{display:none}
+
+.bar{display:flex;align-items:center;gap:14px;padding:10px clamp(14px,4vw,44px);background:var(--black);color:#fff;border-bottom:3px solid var(--yellow);font-size:14px}
+.bar .count{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.track{flex:1;height:6px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--yellow);transition:width .25s}
+.btn{font:inherit;font-weight:800;border:0;border-radius:8px;padding:9px 18px;cursor:pointer;background:var(--yellow);color:#141416}
+.btn:hover{background:var(--yellow-deep)}
+.btn.ghost{background:transparent;color:inherit;border:2px solid currentColor}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.exercise{padding:30px clamp(18px,5vw,44px) 10px;border-top:1px solid var(--rule)}
+.exercise:first-of-type{border-top:0}
+.ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:3px solid var(--yellow);padding-bottom:8px;margin-bottom:10px;width:100%}
+.ex-head h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,4.5vw,26px);margin:0;line-height:1.15}
+.ex-head .meta{font-size:13.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.instr{margin:0 0 18px;color:var(--soft);font-style:italic}
+.q{list-style:none;position:relative;margin:0 0 20px;padding-left:40px}
+.exercise ol{margin:0;padding:0}
+.qn{position:absolute;left:0;top:1px;min-width:28px;height:28px;padding:0 6px;border-radius:14px;background:var(--yellow);color:#141416;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center}
+.line{margin:0 0 6px}
+.line.ctx{color:var(--soft)}
+.line.stem{font-weight:500}
+.blank{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--fieldline);border-radius:6px;padding:4px 10px;margin:2px 4px;min-width:5ch;max-width:100%}
+.blank.wide{display:block;width:100%;margin:6px 0 0;padding:8px 12px}
+.hint{font-size:14px;color:var(--soft);margin-right:2px;font-weight:600}
+.opts{display:grid;gap:8px;margin-top:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--field);cursor:pointer}
+.opt:hover{border-color:var(--fieldline)}
+.opt input{margin:5px 0 0;accent-color:#141416}
+.opt .letter{min-width:22px;height:22px;border-radius:50%;background:var(--panel);border:1px solid var(--rule);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.opt:has(input:checked){border-color:var(--ink);background:var(--panel);box-shadow:inset 0 0 0 1px var(--ink)}
+.fb{display:none;margin-top:6px;font-size:14px;font-weight:600}
+.unit.is-wrong .fb{display:block;color:var(--bad)}
+.unit.is-right .fb{display:block;color:var(--good)}
+.unit.is-wrong .blank,.unit.is-wrong .opts,.unit.is-wrong select{outline:2px solid var(--bad);outline-offset:1px}
+.unit.is-right .blank,.unit.is-right select{outline:2px solid var(--good);outline-offset:1px}
+.unit.is-wrong .opt:has(input:checked){background:var(--badbg)}
+.unit.is-right .opt:has(input:checked){background:var(--goodbg)}
+.wordbox{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:14px;border:2px dashed var(--fieldline);border-radius:10px}
+.chip{background:var(--field);border:1px solid var(--rule);border-radius:999px;padding:3px 14px;font-weight:700}
+.passage{white-space:pre-line;line-height:2.1;margin:0 0 20px}
+.sel-unit{display:inline}
+.cn{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:11px;background:var(--yellow);color:#141416;font-size:12px;font-weight:800;margin:0 4px 0 2px;vertical-align:middle;padding:0 5px}
+select.cloze{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--fieldline);border-radius:6px;padding:3px 6px;vertical-align:middle}
+.sel-unit .fb{display:none;margin:0 0 0 4px}
+.sel-unit.is-wrong .fb,.sel-unit.is-right .fb{display:inline}
+.textbox{background:var(--field);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.textbox h3{font-family:'Fraunces',Georgia,serif;margin:0 0 8px;font-size:19px}
+.textbox p{margin:0 0 10px;line-height:1.7}
+.textbox p:last-child{margin:0}
+.result{margin:24px clamp(18px,5vw,44px);padding:24px;border-radius:10px;background:var(--black);color:#fff;display:none}
+.panel.submitted .result{display:block}
+.result .big{font-family:'Fraunces',Georgia,serif;font-size:clamp(40px,10vw,64px);font-weight:700;line-height:1;margin:0 0 6px}
+.result .big small{font-size:.4em;color:var(--yellow);font-weight:600;margin-left:8px}
+.result p{margin:0;color:rgba(255,255,255,.78)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;padding:8px clamp(18px,5vw,44px) 36px}
+.actions .btn.ghost{color:var(--ink)}
+.layout{display:block}
+@media (min-width:980px){
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+  .layout .left{position:sticky;top:calc(var(--tabh,72px) + 56px);align-self:start;max-height:calc(100vh - var(--tabh,72px) - 76px);overflow:auto;border-right:1px solid var(--rule)}
+}
+@media print{.bar,.actions,.tabs{display:none}.panel[hidden]{display:none}body{background:#fff;padding:0}.sheet{box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+.gbar{margin-top:6px;border-radius:12px;border-bottom:3px solid var(--yellow);box-shadow:0 10px 24px -14px rgba(0,0,0,.6);padding:8px 8px 8px 16px}
+.gbar .btn{padding:8px 16px}
+.results{background:var(--black);color:#fff;border-radius:12px;padding:clamp(20px,5vw,36px);margin:0 0 12px}
+.results[hidden]{display:none}
+.res-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.results h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(26px,6vw,38px);margin:0;line-height:1.1}
+.results .who{margin:0 0 6px;color:var(--yellow);font-weight:700;font-size:14px}
+.verdict{font-weight:800;font-size:clamp(22px,6vw,34px);letter-spacing:.04em;padding:10px 26px;border-radius:12px;color:#fff;border:3px solid #fff}
+.verdict.pass{background:#1E8F52}
+.verdict.fail{background:#C8352C}
+.res-total{margin:22px 0 4px;font-family:'Fraunces',Georgia,serif;font-size:clamp(40px,10vw,64px);font-weight:700;line-height:1}
+.res-total small{font-size:.38em;color:var(--yellow);font-weight:600;margin-left:8px}
+.res-sub{margin:0 0 22px;color:rgba(255,255,255,.75)}
+.res-row{display:grid;grid-template-columns:minmax(90px,1fr) 2fr auto;gap:6px 14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.18)}
+.res-row b{font-size:16px}
+.res-row .meter{height:8px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden}
+.res-row .meter i{display:block;height:100%;background:var(--yellow);width:0}
+.res-row .val{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.res-note{margin:16px 0 0;font-size:14px;color:rgba(255,255,255,.7)}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal[hidden]{display:none}
+.dlg{background:var(--panel);color:var(--ink);border-radius:12px;max-width:440px;width:100%;padding:24px;border-top:6px solid var(--yellow)}
+.dlg h3{font-family:'Fraunces',Georgia,serif;font-size:24px;margin:0 0 8px}
+.dlg p{margin:0 0 8px;color:var(--soft)}
+.dlg .warn{color:var(--bad);font-weight:700}
+.dlg .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.dlg .btn.ghost{color:var(--ink)}
+.exam-done .actions{display:none}
+.tabs-wrap{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);margin:0 0 12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--black);border-radius:12px;padding:6px;box-shadow:0 10px 24px -14px rgba(0,0,0,.6)}
+.tab{font:inherit;border:0;background:transparent;color:#A8A8AC;border-radius:8px;padding:10px 6px;cursor:pointer;text-align:center;line-height:1.25;min-width:0}
+.tab b{display:block;font-size:clamp(14px,3.6vw,17px);font-weight:800}
+.tab span{display:block;font-size:clamp(11px,2.8vw,13px);color:#77777C;font-weight:600;font-variant-numeric:tabular-nums}
+.tab:hover{background:rgba(255,255,255,.06)}
+.tab[aria-selected=true]{background:var(--yellow);color:#141416}
+.tab[aria-selected=true] span{color:#5B4A00}
+.tab:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.panel[hidden]{display:none}
+
+/*v2*/
+.hint{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;font-weight:600;color:#0B6B63;background:#E1F2F0;border-radius:6px;padding:1px 8px;margin:0 2px 0 6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hint{color:#7DE0D4;background:#16322F}}
+:root[data-theme="dark"] .hint{color:#7DE0D4;background:#16322F}
+.line.ctx{font-style:italic}
+input.blank{background:var(--field);border:0;border-bottom:2px solid var(--fieldline);border-radius:6px 6px 0 0;text-align:center;padding:5px 10px}
+input.blank.wide{text-align:left}
+input.blank::placeholder{color:var(--soft);opacity:.8;letter-spacing:.2em}
+input.blank:focus{border-bottom-color:var(--ink)}
+.gap-unit{display:inline;white-space:nowrap}
+.gap-unit .blank{margin:2px 4px}
+.gap-unit .fb{display:none;margin:0 0 0 4px;font-size:13px}
+.gap-unit.is-wrong .fb,.gap-unit.is-right .fb{display:inline}
+
+/*enhance*/
+.chip{font:inherit;color:inherit}
+.chip.pick{cursor:pointer;transition:border-color .15s,opacity .15s}
+.chip.pick:hover{border-color:var(--ink)}
+.chip.pick.used{opacity:.45;text-decoration:line-through}
+.exam-done .chip.pick{cursor:default;pointer-events:none}
+.pickhint{margin:-6px 0 10px;font-size:14px;color:var(--soft)}
+.hl-bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px clamp(18px,4vw,36px);background:var(--panel);border-bottom:1px solid var(--rule)}
+.hl-bar .lbl{font-weight:700;font-size:14px;margin-right:2px}
+.hl-btn{font:inherit;font-size:14px;font-weight:700;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:8px;padding:4px 12px;cursor:pointer;user-select:none;-webkit-user-select:none}
+
+.hl-btn:hover{filter:brightness(.95)}
+.hl-note{flex:1 1 220px;margin:0;font-size:13px;color:var(--soft)}
+mark.hl{background:#FFE066;color:#141416;border-radius:3px;padding:0 1px;cursor:pointer}
+mark.hl:hover{background:#FFC700}
+
+/*enhance2*/
+.hl-tip{margin:0;padding:12px clamp(18px,5vw,44px) 0;font-size:14px;color:var(--soft)}
+.gbar .hl-btn{color:#fff;border-color:rgba(255,255,255,.55);padding:4px 10px;font-size:13px;white-space:nowrap}
+.gbar .hl-btn[hidden]{display:none}
+@media (max-width:520px){.gbar{flex-wrap:wrap}.gbar .track{order:5;flex-basis:100%}}
+
+/*timer*/
+body.pre-start .wrap{visibility:hidden}
+.startscreen{position:fixed;inset:0;z-index:200;background:var(--paper);overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + clamp(16px,6vw,56px)) clamp(12px,4vw,24px) calc(env(safe-area-inset-bottom,0px) + 24px)}
+.startscreen[hidden]{display:none}
+.startcard{width:100%;max-width:640px;background:var(--panel);border-radius:12px;overflow:hidden;box-shadow:0 24px 48px -32px rgba(0,0,0,.45)}
+.startcard .top{background:var(--black);color:#fff;padding:clamp(22px,5vw,36px);position:relative}
+.startcard .top .kicker{margin:0 0 10px;color:var(--yellow);font-weight:600;font-size:14px}
+.startcard h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,7vw,42px);line-height:1.05;margin:0;letter-spacing:-.015em}
+.startcard .body{padding:clamp(20px,5vw,32px)}
+.facts{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:10px}
+.facts li{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:baseline}
+.facts b{font-variant-numeric:tabular-nums}
+@media (max-width:480px){.facts li{grid-template-columns:1fr;gap:2px}}
+.startcard .fields{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:0 0 22px}
+.startcard label{display:block;font-size:13px;color:var(--soft);font-weight:600;margin-bottom:4px}
+.startcard input{width:100%;font:inherit;padding:9px 10px;border:1px solid var(--fieldline);background:var(--field);color:var(--ink);border-radius:6px}
+.startcard .btn{font-size:18px;padding:12px 26px}
+.startcard .fine{margin:14px 0 0;font-size:14px;color:var(--soft)}
+.clock{display:inline-flex;align-items:baseline;gap:8px;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums}
+.clock-l{font-size:12px;font-weight:600;opacity:.85}
+.clock b{font-size:20px;font-weight:800;letter-spacing:.02em}
+.clock.warn{background:#FFD530;color:#141416}
+.clock.danger{background:#C8352C;color:#fff}
+.clock.done{background:rgba(255,255,255,.14);opacity:.8}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 130px);z-index:90;background:#141416;color:#fff;border:2px solid #FFD530;border-radius:10px;padding:10px 18px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.4);max-width:92vw;text-align:center}
+.toast[hidden]{display:none}
+.toast.danger{border-color:#C8352C}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.res-time{margin:-14px 0 18px;color:var(--yellow);font-weight:700}
+.startcard .fine.need{color:var(--bad);font-weight:600}
+.startcard .fine.need[hidden]{display:none}
+@media (max-width:520px){.gbar .clock{order:-1}.clock b{font-size:18px}}
+@media print{.startscreen,.toast{display:none}}
+
+/*guard*/
+.leave-badge{background:#C8352C;color:#fff;font-weight:800;font-size:12px;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.leave-badge[hidden]{display:none}
+.dlg.away{border-top-color:#C8352C}
+.dlg.away h3{color:var(--bad)}
+.res-guard{margin:-8px 0 18px;font-weight:700;color:#8EE0A9}
+.res-guard.bad{color:#FF9C92}
+
+/*results*/
+.res-send{margin:-6px 0 18px;font-weight:700;color:#8EE0A9}
+.res-send.pending{color:var(--yellow)}
+.res-send.bad{color:#FF9C92}
+.res-send button{font:inherit;font-weight:800;margin-left:8px;border:2px solid currentColor;background:transparent;color:inherit;border-radius:8px;padding:2px 12px;cursor:pointer}
+.startcard .fine.send-note{color:var(--ink);font-weight:600}
+.startcard .btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/*dialogue tiles*/
+.dialogue{background:var(--field);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.dialogue h3{font-family:'Fraunces',Georgia,serif;margin:0 0 12px;font-size:19px}
+.dl-line{margin:0 0 10px;line-height:1.65}
+.dl-spk{font-weight:800}
+.tiles-unit{margin:0 0 14px}
+.tile-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.tile-label{display:inline-flex;align-items:center;gap:4px;font-weight:800}
+.tile-area{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-width:150px;min-height:42px;padding:5px 8px;border:2px dashed var(--fieldline);border-radius:10px;background:var(--panel)}
+.tile-area:empty::before{content:'tap the words in order…';color:var(--soft);opacity:.75;font-size:13px;font-style:italic}
+.tile-end{font-weight:800}
+.tile-bank{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tile{font:inherit;font-size:14px;font-weight:700;padding:5px 13px;border-radius:999px;border:1px solid var(--fieldline);background:var(--panel);color:var(--ink);cursor:pointer}
+.tile:hover{border-color:var(--ink)}
+.tile.used{opacity:.3;text-decoration:line-through;cursor:default}
+.tile.placed{background:var(--black);color:var(--yellow);border-color:var(--black)}
+.exam-done .tile{pointer-events:none}
+.unit.is-wrong .tile-area{outline:2px solid var(--bad);outline-offset:1px}
+.unit.is-right .tile-area{outline:2px solid var(--good);outline-offset:1px}
+.tiles-unit .fb{margin-top:8px}
+</style>
+</head>
+<body data-tab="grammar" class="pre-start"><div class="startscreen" id="start" role="dialog" aria-modal="true" aria-labelledby="start-h">
+  <div class="startcard">
+    <div class="top"><p class="kicker">Upper-Intermediate · Grammar · Vocabulary · Reading</p><h1 id="start-h">Mock Exam 1</h1></div>
+    <div class="body">
+      <ul class="facts">
+        <li><b>50 minutes</b><span>The timer starts when you press Start. It cannot be paused.</span></li>
+        <li><b>96 questions</b><span>Grammar 50 · Vocabulary 36 · Reading 10. You can move between the three sections at any time.</span></li>
+        <li><b>Submit once</b><span>One button submits all three sections together. You cannot change answers afterwards.</span></li>
+        <li><b>Time is up?</b><span>Your answers are submitted automatically and the results appear.</span></li>
+        <li><b>Pass mark</b><span>45 out of 50 marks</span></li>
+      </ul>
+      <div class="fields"><div><label for="st-nm">Full name</label><input id="st-nm" data-f="nm" type="text" autocomplete="off" placeholder="e.g. Aziza Karimova" required></div><div><label for="st-gr">Group number</label><input id="st-gr" data-f="gr" type="text" autocomplete="off" placeholder="e.g. 12" required></div></div>
+      <button class="btn" id="start-btn" type="button" disabled>Start exam (50:00)</button>
+      <p class="fine need" id="start-need">Type your full name and your group number to start.</p>
+      <p class="fine">The clock stays visible at the top of every section.</p>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section class="results" id="results" tabindex="-1" aria-live="polite" hidden>
+    <div class="res-top"><div><p class="who" id="who"></p><h2>Your results</h2></div><div class="verdict" id="verdict"></div></div>
+    <p class="res-total"><span id="tot-score">0.0</span><small id="tot-max"></small></p>
+    <p class="res-sub" id="res-sub"></p>
+    <div id="res-rows"></div>
+    <p class="res-note">Your answers are now locked. Open the tabs below to see the correct answers.</p>
+  </section>
+  <div class="tabs-wrap">
+    <nav class="tabs" role="tablist" aria-label="Exam sections"><button class="tab" role="tab" id="tab-grammar" data-target="grammar" aria-controls="grammar" aria-selected="false"><b>Grammar</b><span>Part 1 · 50 items</span></button><button class="tab" role="tab" id="tab-vocab" data-target="vocab" aria-controls="vocab" aria-selected="false"><b>Vocabulary</b><span>Part 2 · 36 items</span></button><button class="tab" role="tab" id="tab-reading" data-target="reading" aria-controls="reading" aria-selected="false"><b>Reading</b><span>Part 3 · 10 items</span></button></nav>
+    <div class="bar gbar"><span class="clock" id="clock" role="timer" aria-label="Time remaining"><span class="clock-l">Time left</span><b id="clock-t">50:00</b></span><span class="leave-badge" id="leave-badge" hidden></span><span class="count" id="count">Answered 0 / 96</span><div class="track"><div class="fill" id="fill"></div></div><button type="button" class="hl-btn" id="hl-clear" hidden>Clear highlights</button><button class="btn" id="submit" type="button">Submit exam</button></div>
+  </div>
+  <section class="panel" id="grammar" role="tabpanel" aria-label="Grammar" data-nq="50">
+<div class="sheet">
+  <header class="masthead">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="kicker">Upper-Intermediate · Mock exam 1 · Part 1 of 3</p>
+    <h1>Grammar</h1>
+    <p>Answer all 50 questions. Each correct answer earns 0.5 marks. Spelling counts.</p>
+    <span class="weight">25% of the exam</span>
+  </header>
+  <div class="candidate">
+    <div><label>Full name</label><input data-f="nm" type="text" autocomplete="off"></div>
+    <div><label>Group number</label><input data-f="gr" type="text" autocomplete="off"></div>
+    <div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div>
+  </div>
+  <section class="exercise" id="ex1"><div class="ex-head"><h2>1. Used to / would / be used to / get used to</h2><span class="meta">Questions 1–8 · 4.0 marks</span></div><p class="instr">Choose the correct option to complete each sentence.</p><ol><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="2"><span class="qn">1</span><div class="line stem">When I was a child, my family ______ visit my grandparents every Sunday afternoon.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-1" value="0"><span class="letter">a</span><span>was used to</span></label><label class="opt"><input type="radio" name="qex1-1" value="1"><span class="letter">b</span><span>is used to</span></label><label class="opt"><input type="radio" name="qex1-1" value="2"><span class="letter">c</span><span>would</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="0"><span class="qn">2</span><div class="line stem">My parents ______ any pets when I was little, but now they have three cats.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-2" value="0"><span class="letter">a</span><span>didn&#x27;t use to have</span></label><label class="opt"><input type="radio" name="qex1-2" value="1"><span class="letter">b</span><span>weren&#x27;t used to have</span></label><label class="opt"><input type="radio" name="qex1-2" value="2"><span class="letter">c</span><span>aren&#x27;t used to having</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="1"><span class="qn">3</span><div class="line stem">Having a baby in the house is new for us, but we ______ the lack of sleep.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-3" value="0"><span class="letter">a</span><span>used to</span></label><label class="opt"><input type="radio" name="qex1-3" value="1"><span class="letter">b</span><span>are getting used to</span></label><label class="opt"><input type="radio" name="qex1-3" value="2"><span class="letter">c</span><span>would</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="2"><span class="qn">4</span><div class="line stem">My grandmother ______ her own bread every week, but now she buys it from the bakery.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-4" value="0"><span class="letter">a</span><span>uses to bake</span></label><label class="opt"><input type="radio" name="qex1-4" value="1"><span class="letter">b</span><span>is used to bake</span></label><label class="opt"><input type="radio" name="qex1-4" value="2"><span class="letter">c</span><span>used to bake</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="0"><span class="qn">5</span><div class="line stem">My first boss was very demanding. He ______ call us at weekends to check on our progress.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-5" value="0"><span class="letter">a</span><span>would</span></label><label class="opt"><input type="radio" name="qex1-5" value="1"><span class="letter">b</span><span>was used to</span></label><label class="opt"><input type="radio" name="qex1-5" value="2"><span class="letter">c</span><span>is used to</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="1"><span class="qn">6</span><div class="line stem">I ______ such a heavy workload, so I feel exhausted by Friday.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-6" value="0"><span class="letter">a</span><span>didn&#x27;t use to</span></label><label class="opt"><input type="radio" name="qex1-6" value="1"><span class="letter">b</span><span>am not used to</span></label><label class="opt"><input type="radio" name="qex1-6" value="2"><span class="letter">c</span><span>wouldn&#x27;t</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="2"><span class="qn">7</span><div class="line stem">She has taught for twenty years, so she ______ standing in front of a class.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-7" value="0"><span class="letter">a</span><span>gets used to</span></label><label class="opt"><input type="radio" name="qex1-7" value="1"><span class="letter">b</span><span>used to</span></label><label class="opt"><input type="radio" name="qex1-7" value="2"><span class="letter">c</span><span>is used to</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex1" data-marks="5" data-ans="1"><span class="qn">8</span><div class="line stem">It took her a few weeks to ______ the new software, but now she uses it easily.</div><div class="opts"><label class="opt"><input type="radio" name="qex1-8" value="0"><span class="letter">a</span><span>used to</span></label><label class="opt"><input type="radio" name="qex1-8" value="1"><span class="letter">b</span><span>get used to</span></label><label class="opt"><input type="radio" name="qex1-8" value="2"><span class="letter">c</span><span>use to</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex2"><div class="ex-head"><h2>2. Modals of deduction: present</h2><span class="meta">Questions 9–12 · 2.0 marks</span></div><p class="instr">Choose the correct modal verb to complete each sentence.</p><ol><li class="q unit" data-kind="mc" data-ex="ex2" data-marks="5" data-ans="1"><span class="qn">9</span><div class="line stem">Look at those dark clouds — it ___ rain soon.</div><div class="opts"><label class="opt"><input type="radio" name="qex2-9" value="0"><span class="letter">a</span><span>can&#x27;t</span></label><label class="opt"><input type="radio" name="qex2-9" value="1"><span class="letter">b</span><span>might</span></label><label class="opt"><input type="radio" name="qex2-9" value="2"><span class="letter">c</span><span>should</span></label><label class="opt"><input type="radio" name="qex2-9" value="3"><span class="letter">d</span><span>must</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex2" data-marks="5" data-ans="3"><span class="qn">10</span><div class="line stem">He&#x27;s been studying medicine for six years — he ___ know a lot about anatomy.</div><div class="opts"><label class="opt"><input type="radio" name="qex2-10" value="0"><span class="letter">a</span><span>should</span></label><label class="opt"><input type="radio" name="qex2-10" value="1"><span class="letter">b</span><span>can&#x27;t</span></label><label class="opt"><input type="radio" name="qex2-10" value="2"><span class="letter">c</span><span>might</span></label><label class="opt"><input type="radio" name="qex2-10" value="3"><span class="letter">d</span><span>must</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex2" data-marks="5" data-ans="3"><span class="qn">11</span><div class="line stem">She said she was in Paris yesterday, so she ___ be here now.</div><div class="opts"><label class="opt"><input type="radio" name="qex2-11" value="0"><span class="letter">a</span><span>must</span></label><label class="opt"><input type="radio" name="qex2-11" value="1"><span class="letter">b</span><span>should</span></label><label class="opt"><input type="radio" name="qex2-11" value="2"><span class="letter">c</span><span>might</span></label><label class="opt"><input type="radio" name="qex2-11" value="3"><span class="letter">d</span><span>can&#x27;t</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex2" data-marks="5" data-ans="2"><span class="qn">12</span><div class="line stem">I&#x27;m not sure where Tom is — he ___ be in the library.</div><div class="opts"><label class="opt"><input type="radio" name="qex2-12" value="0"><span class="letter">a</span><span>can&#x27;t</span></label><label class="opt"><input type="radio" name="qex2-12" value="1"><span class="letter">b</span><span>should</span></label><label class="opt"><input type="radio" name="qex2-12" value="2"><span class="letter">c</span><span>may</span></label><label class="opt"><input type="radio" name="qex2-12" value="3"><span class="letter">d</span><span>must</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex3"><div class="ex-head"><h2>3. Modals of deduction: past</h2><span class="meta">Questions 13–20 · 4.0 marks</span></div><p class="instr">Choose the correct option to complete each sentence.</p><ol><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="0"><span class="qn">13</span><div class="line stem">I&#x27;m not sure why he didn&#x27;t reply — he ________ been busy at work.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-13" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-13" value="1"><span class="letter">b</span><span>must have</span></label><label class="opt"><input type="radio" name="qex3-13" value="2"><span class="letter">c</span><span>can&#x27;t have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="2"><span class="qn">14</span><div class="line stem">He said he never left his house that day, so he ________ seen the accident.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-14" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-14" value="1"><span class="letter">b</span><span>must have</span></label><label class="opt"><input type="radio" name="qex3-14" value="2"><span class="letter">c</span><span>can&#x27;t have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="1"><span class="qn">15</span><div class="line stem">He was on a plane at the time, so he ________ called you at noon.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-15" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-15" value="1"><span class="letter">b</span><span>can&#x27;t have</span></label><label class="opt"><input type="radio" name="qex3-15" value="2"><span class="letter">c</span><span>must have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="1"><span class="qn">16</span><div class="line stem">Judging by the mess in the kitchen, somebody ________ been cooking all afternoon.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-16" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-16" value="1"><span class="letter">b</span><span>must have</span></label><label class="opt"><input type="radio" name="qex3-16" value="2"><span class="letter">c</span><span>can&#x27;t have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="2"><span class="qn">17</span><div class="line stem">The streets are completely flooded — it ________ rained heavily all night.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-17" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-17" value="1"><span class="letter">b</span><span>needn&#x27;t have</span></label><label class="opt"><input type="radio" name="qex3-17" value="2"><span class="letter">c</span><span>must have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="0"><span class="qn">18</span><div class="line stem">I&#x27;m honestly not sure, but she ________ changed her mind at the last minute.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-18" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-18" value="1"><span class="letter">b</span><span>must have</span></label><label class="opt"><input type="radio" name="qex3-18" value="2"><span class="letter">c</span><span>needn&#x27;t have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="2"><span class="qn">19</span><div class="line stem">The flight was delayed by three hours, so we ________ rushed to the airport.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-19" value="0"><span class="letter">a</span><span>might have</span></label><label class="opt"><input type="radio" name="qex3-19" value="1"><span class="letter">b</span><span>must have</span></label><label class="opt"><input type="radio" name="qex3-19" value="2"><span class="letter">c</span><span>needn&#x27;t have</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex3" data-marks="5" data-ans="2"><span class="qn">20</span><div class="line stem">He ________ simply forgotten to lock the door; it happens sometimes.</div><div class="opts"><label class="opt"><input type="radio" name="qex3-20" value="0"><span class="letter">a</span><span>needn&#x27;t have</span></label><label class="opt"><input type="radio" name="qex3-20" value="1"><span class="letter">b</span><span>must have</span></label><label class="opt"><input type="radio" name="qex3-20" value="2"><span class="letter">c</span><span>might have</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex4"><div class="ex-head"><h2>4. Third conditional</h2><span class="meta">Questions 21–28 · 4.0 marks</span></div><p class="instr">Complete sentence B with the third conditional so that it means the same as sentence A. Both gaps in a sentence must be correct to earn the mark.</p><ol><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">21</span><div class="line ctx">A: Tim didn&#x27;t answer the phone because he was in the shower.</div><div class="line stem">B: If Tim <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;hadn&#x27;t been&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> in the shower, he <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would have answered&quot;, &quot;could have answered&quot;, &quot;might have answered&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> the phone.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">22</span><div class="line ctx">A: Ben broke his leg because he fell off his bike.</div><div class="line stem">B: If Ben <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;hadn&#x27;t fallen&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> off his bike, he <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;wouldn&#x27;t have broken&quot;, &quot;would not have broken&quot;, &quot;might not have broken&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> his leg.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">23</span><div class="line ctx">A: Hannah didn&#x27;t call the plumber, so the leak got worse.</div><div class="line stem">B: If Hannah <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had called&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> the plumber, the leak <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;wouldn&#x27;t have got&quot;, &quot;would not have got&quot;, &quot;might not have got&quot;, &quot;wouldn&#x27;t have gotten&quot;, &quot;would not have gotten&quot;, &quot;might not have gotten&quot;, &quot;wouldn&#x27;t have become&quot;, &quot;would not have become&quot;, &quot;might not have become&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> worse.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">24</span><div class="line ctx">A: We took a taxi, so we arrived on time.</div><div class="line stem">B: If we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;hadn&#x27;t taken&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> a taxi, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;wouldn&#x27;t have arrived&quot;, &quot;would not have arrived&quot;, &quot;might not have arrived&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> on time.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">25</span><div class="line ctx">A: Tom didn&#x27;t attend the meeting because nobody told him about it.</div><div class="line stem">B: If somebody <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had told&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> Tom about the meeting, he <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would have attended&quot;, &quot;could have attended&quot;, &quot;might have attended&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> it.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">26</span><div class="line ctx">A: We couldn&#x27;t enter the building because we left our ID cards at home.</div><div class="line stem">B: If we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;hadn&#x27;t left&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> our ID cards at home, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;could have entered&quot;, &quot;would have entered&quot;, &quot;might have entered&quot;, &quot;would have been able to enter&quot;]" style="width:33ch" placeholder="···" aria-label="answer"> the building.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">27</span><div class="line ctx">A: I didn&#x27;t buy the jacket because I didn&#x27;t have enough money.</div><div class="line stem">B: If I <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had had&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> enough money, I <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;would have bought&quot;, &quot;could have bought&quot;, &quot;might have bought&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> the jacket.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex4" data-marks="5"><span class="qn">28</span><div class="line ctx">A: Mark didn&#x27;t get the job because he didn&#x27;t prepare for the interview.</div><div class="line stem">B: If Mark <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had prepared&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> for the interview, he <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;might have got&quot;, &quot;would have got&quot;, &quot;could have got&quot;, &quot;might have gotten&quot;, &quot;would have gotten&quot;, &quot;could have gotten&quot;]" style="width:26ch" placeholder="···" aria-label="answer"> the job.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex5"><div class="ex-head"><h2>5. Wish / if only</h2><span class="meta">Questions 29–37 · 4.5 marks</span></div><p class="instr">Only one sentence in each set is grammatically correct. Choose it.</p><ol><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="0"><span class="qn">29</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-29" value="0"><span class="letter">a</span><span>I wish my neighbours would stop playing loud music every night.</span></label><label class="opt"><input type="radio" name="qex5-29" value="1"><span class="letter">b</span><span>I wish my neighbours had stopped playing loud music every night.</span></label><label class="opt"><input type="radio" name="qex5-29" value="2"><span class="letter">c</span><span>I wish my neighbours stop playing loud music every night.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="1"><span class="qn">30</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-30" value="0"><span class="letter">a</span><span>I wish I didn&#x27;t forget to bring my passport yesterday.</span></label><label class="opt"><input type="radio" name="qex5-30" value="1"><span class="letter">b</span><span>I wish I hadn&#x27;t forgotten to bring my passport yesterday.</span></label><label class="opt"><input type="radio" name="qex5-30" value="2"><span class="letter">c</span><span>I wish I wouldn&#x27;t forget to bring my passport yesterday.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="2"><span class="qn">31</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-31" value="0"><span class="letter">a</span><span>Sarah wishes she would have more free time to spend with her family.</span></label><label class="opt"><input type="radio" name="qex5-31" value="1"><span class="letter">b</span><span>Sarah wishes she had had more free time to spend with her family now.</span></label><label class="opt"><input type="radio" name="qex5-31" value="2"><span class="letter">c</span><span>Sarah wishes she had more free time to spend with her family.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="0"><span class="qn">32</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-32" value="0"><span class="letter">a</span><span>If only we had booked the hotel earlier, we could have got a better room.</span></label><label class="opt"><input type="radio" name="qex5-32" value="1"><span class="letter">b</span><span>If only we booked the hotel earlier, we could have got a better room.</span></label><label class="opt"><input type="radio" name="qex5-32" value="2"><span class="letter">c</span><span>If only we would book the hotel earlier, we could have got a better room.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="0"><span class="qn">33</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-33" value="0"><span class="letter">a</span><span>I wish you wouldn&#x27;t leave your clothes all over the floor.</span></label><label class="opt"><input type="radio" name="qex5-33" value="1"><span class="letter">b</span><span>I wish you didn&#x27;t leave your clothes all over the floor yesterday.</span></label><label class="opt"><input type="radio" name="qex5-33" value="2"><span class="letter">c</span><span>I wish you hadn&#x27;t left your clothes all over the floor these days.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="1"><span class="qn">34</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-34" value="0"><span class="letter">a</span><span>If only I would have more experience, I would apply for the position.</span></label><label class="opt"><input type="radio" name="qex5-34" value="1"><span class="letter">b</span><span>If only I had more experience, I would apply for the position.</span></label><label class="opt"><input type="radio" name="qex5-34" value="2"><span class="letter">c</span><span>If only I had had more experience, I would apply for the position now.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="2"><span class="qn">35</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-35" value="0"><span class="letter">a</span><span>I wish I didn&#x27;t spend all my savings on that car last year.</span></label><label class="opt"><input type="radio" name="qex5-35" value="1"><span class="letter">b</span><span>I wish I wouldn&#x27;t spend all my savings on that car last year.</span></label><label class="opt"><input type="radio" name="qex5-35" value="2"><span class="letter">c</span><span>I wish I hadn&#x27;t spent all my savings on that car.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="1"><span class="qn">36</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-36" value="0"><span class="letter">a</span><span>He wishes he would be more patient with his younger brother.</span></label><label class="opt"><input type="radio" name="qex5-36" value="1"><span class="letter">b</span><span>He wishes he were more patient with his younger brother.</span></label><label class="opt"><input type="radio" name="qex5-36" value="2"><span class="letter">c</span><span>He wishes he had been more patient with his younger brother now.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="ex5" data-marks="5" data-ans="1"><span class="qn">37</span><div class="line stem">Choose the correct sentence.</div><div class="opts"><label class="opt"><input type="radio" name="qex5-37" value="0"><span class="letter">a</span><span>She wishes she can speak French fluently.</span></label><label class="opt"><input type="radio" name="qex5-37" value="1"><span class="letter">b</span><span>She wishes she could speak French fluently.</span></label><label class="opt"><input type="radio" name="qex5-37" value="2"><span class="letter">c</span><span>She wishes she would speak French fluently.</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="ex6"><div class="ex-head"><h2>6. Causative have / get (A): services</h2><span class="meta">Questions 38–41 · 2.0 marks</span></div><p class="instr"><b>Services:</b> complete each sentence with the correct form of <b>have</b> OR <b>get</b> and the bracketed verb. Both patterns are possible. Both gaps must be correct to earn the mark. <br>Example: Last week, I <u>had</u> my bike <u>repaired</u>. (repair) – or <u>got</u> … <u>repaired</u>.</p><ol><li class="q unit" data-kind="fill" data-pairs="[[&quot;had&quot;, &quot;renovated&quot;], [&quot;got&quot;, &quot;renovated&quot;]]" data-model="had / got … renovated" data-ex="ex6" data-marks="5"><span class="qn">38</span><div class="line stem">Last month, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had&quot;, &quot;got&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> our kitchen <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;renovated&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(renovate)</span> at a very low price.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-pairs="[[&quot;have&quot;, &quot;serviced&quot;], [&quot;get&quot;, &quot;serviced&quot;]]" data-model="have / get … serviced" data-ex="ex6" data-marks="5"><span class="qn">39</span><div class="line stem">My parents <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;have&quot;, &quot;get&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> the heating system <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;serviced&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(service)</span> <span class="hint">Use the present simple.</span> every autumn.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-pairs="[[&quot;had&quot;, &quot;decorated&quot;], [&quot;got&quot;, &quot;decorated&quot;]]" data-model="had / got … decorated" data-ex="ex6" data-marks="5"><span class="qn">40</span><div class="line stem">Last weekend, she <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had&quot;, &quot;got&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> her wedding cake <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;decorated&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(decorate)</span> with fresh flowers.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-pairs="[[&quot;had&quot;, &quot;fitted&quot;], [&quot;got&quot;, &quot;fitted&quot;]]" data-model="had / got … fitted" data-ex="ex6" data-marks="5"><span class="qn">41</span><div class="line stem">Last year, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had&quot;, &quot;got&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> solar panels <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;fitted&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(fit)</span> on our roof.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex7"><div class="ex-head"><h2>7. Causative have / get (B): people</h2><span class="meta">Questions 42–45 · 2.0 marks</span></div><p class="instr"><b>People:</b> complete each sentence with <b>have</b> OR <b>get</b> and the correct verb form. With <i>get</i>, include <b>to</b> in the second gap. Both gaps must be correct to earn the mark. <br>Example: Last week, I <u>had</u> a mechanic <u>repair</u> my bike. (repair) – or <u>got</u> … <u>to repair</u>.</p><ol><li class="q unit" data-kind="fill" data-pairs="[[&quot;have&quot;, &quot;show&quot;], [&quot;get&quot;, &quot;to show&quot;]]" data-model="have … show   or   get … to show" data-ex="ex7" data-marks="5"><span class="qn">42</span><div class="line stem">We are going to <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;have&quot;, &quot;get&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> a guide <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;show&quot;, &quot;to show&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(show)</span> us around the old city.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-pairs="[[&quot;had&quot;, &quot;repair&quot;], [&quot;got&quot;, &quot;to repair&quot;]]" data-model="had … repair   or   got … to repair" data-ex="ex7" data-marks="5"><span class="qn">43</span><div class="line stem">Last month, the council <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had&quot;, &quot;got&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> workers <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;repair&quot;, &quot;to repair&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(repair)</span> the road.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-pairs="[[&quot;had&quot;, &quot;cover&quot;], [&quot;got&quot;, &quot;to cover&quot;]]" data-model="had … cover   or   got … to cover" data-ex="ex7" data-marks="5"><span class="qn">44</span><div class="line stem">I <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;had&quot;, &quot;got&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> a colleague <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;cover&quot;, &quot;to cover&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(cover)</span> my shift last Sunday.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-pairs="[[&quot;have&quot;, &quot;write&quot;], [&quot;get&quot;, &quot;to write&quot;]]" data-model="have … write   or   get … to write" data-ex="ex7" data-marks="5"><span class="qn">45</span><div class="line stem">I need to <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;have&quot;, &quot;get&quot;]" style="width:14ch" placeholder="···" aria-label="gap 1"> my lawyer <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;write&quot;, &quot;to write&quot;]" style="width:18ch" placeholder="···" aria-label="gap 2"> <span class="hint">(write)</span> a letter to the bank.</div><div class="fb"></div></li></ol></section><section class="exercise" id="ex8"><div class="ex-head"><h2>8. Paraphrasing the sentence</h2><span class="meta">Questions 46–50 · 2.5 marks</span></div><p class="instr">Complete sentence B so that it means the same as sentence A. Use the word in capitals in brackets as a guide. Write the missing words only.</p><ol><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">46</span><div class="line ctx">A: If you don’t finish the project today, you’ll regret it tomorrow.</div><div class="line stem">B: You’ll regret it tomorrow <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;unless you finish&quot;]" style="width:28ch" placeholder="···" aria-label="answer"> <span class="hint">(UNLESS)</span> the project today.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">47</span><div class="line ctx">A: The neighbours didn’t say they were against building the new playground.</div><div class="line stem">B: The neighbours didn’t <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;have any objection to&quot;, &quot;have any objections to&quot;, &quot;have an objection to&quot;, &quot;have an objections to&quot;, &quot;raise any objection to&quot;, &quot;raise any objections to&quot;, &quot;raise an objection to&quot;, &quot;raise an objections to&quot;, &quot;make any objection to&quot;, &quot;make any objections to&quot;, &quot;make an objection to&quot;, &quot;make an objections to&quot;, &quot;voice any objection to&quot;, &quot;voice any objections to&quot;, &quot;voice an objection to&quot;, &quot;voice an objections to&quot;, &quot;put forward any objection to&quot;, &quot;put forward any objections to&quot;, &quot;put forward an objection to&quot;, &quot;put forward an objections to&quot;]" style="width:28ch" placeholder="···" aria-label="answer"> <span class="hint">(OBJECTION)</span> building the new playground.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">48</span><div class="line ctx">A: Despite being exhausted, he insisted on completing the marathon to prove his determination.</div><div class="line stem">B: Despite being exhausted, he <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;demanded to complete&quot;, &quot;demanded to finish&quot;, &quot;demanded to be allowed to complete&quot;, &quot;demanded to be allowed to finish&quot;, &quot;demanded that he complete&quot;, &quot;demanded that he finish&quot;, &quot;demanded that he be allowed to complete&quot;, &quot;demanded that he should complete&quot;, &quot;demanded that he should finish&quot;]" style="width:28ch" placeholder="···" aria-label="answer"> <span class="hint">(DEMAND)</span> the marathon to prove his determination.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">49</span><div class="line ctx">A: I’ll bring my laptop because we might need it for the presentation.</div><div class="line stem">B: I’ll bring my laptop <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;in case we need&quot;, &quot;in case we might need&quot;, &quot;in case we should need&quot;, &quot;just in case we need&quot;, &quot;just in case we might need&quot;, &quot;just in case we should need&quot;]" style="width:28ch" placeholder="···" aria-label="answer"> <span class="hint">(IN CASE)</span> it for the presentation.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="ex8" data-marks="5"><span class="qn">50</span><div class="line ctx">A: I’m sure he has already booked the tickets; there’s a confirmation email in his inbox.</div><div class="line stem">B: He <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;must have booked&quot;, &quot;must have already booked&quot;, &quot;must already have booked&quot;]" style="width:28ch" placeholder="···" aria-label="answer"> <span class="hint">(MUST)</span> the tickets; there’s a confirmation email in his inbox.</div><div class="fb"></div></li></ol></section><div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section>
+<section class="panel" id="vocab" role="tabpanel" aria-label="Vocabulary" data-nq="36">
+<div class="sheet">
+  <header class="masthead">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="kicker">Upper-Intermediate · Mock exam 1 · Part 2 of 3</p>
+    <h1>Vocabulary</h1>
+    <p>Answer all 36 questions: 0.2 marks per answer in exercise 1, 0.5 marks in exercises 2–4. Spelling counts.</p>
+    <span class="weight">15% of the exam</span>
+  </header>
+  <div class="candidate">
+    <div><label>Full name</label><input data-f="nm" type="text" autocomplete="off"></div>
+    <div><label>Group number</label><input data-f="gr" type="text" autocomplete="off"></div>
+    <div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div>
+  </div>
+  <section class="exercise" id="v1"><div class="ex-head"><h2>1. Prepositions</h2><span class="meta">Questions 1–10 · 2.0 marks</span></div><p class="instr">Complete each sentence with an appropriate preposition.</p><ol><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">1</span><div class="line">Being responsible <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;for&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> feeding the office dog every day was harder than I thought.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">2</span><div class="line">The chef was enthusiastic <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;about&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> experimenting with new flavors for the restaurant menu.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">3</span><div class="line">Tourists are often aware <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;of&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> local customs before visiting a new country.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">4</span><div class="line">Some students are dependent <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;on&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> online resources for completing their assignments.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">5</span><div class="line">The teacher was suspicious <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;of&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> the sudden improvement in his homework.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">6</span><div class="line">Walking along the riverside is preferable <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;to&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> taking a crowded bus.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">7</span><div class="line">She is known <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;for&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> organizing some of the city’s most popular cultural events.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">8</span><div class="line">Samira is very good at making a type of bread which is known locally <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;as&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> the best one.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">9</span><div class="line">They weren’t aware <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;of&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> the dangers, otherwise they would never have entered the cave.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v1" data-marks="2"><span class="qn">10</span><div class="line">One of the red flags my grandmother has is that she hates being dependent <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;on&quot;]" style="width:9ch" placeholder="···" aria-label="answer"> others. That makes her hide it if she has any issues.</div><div class="fb"></div></li></ol></section><section class="exercise" id="v2"><div class="ex-head"><h2>2. Media and advertising</h2><span class="meta">Questions 11–15 · 2.5 marks</span></div><p class="instr">Complete the text with the words from the box. Use each word once.</p><p class="pickhint">Click a word to place it in a gap. Each word is used once.</p><div class="wordbox"><button type="button" class="chip pick" data-word="commercial breaks">commercial breaks</button><button type="button" class="chip pick" data-word="campaign">campaign</button><button type="button" class="chip pick" data-word="unacceptable">unacceptable</button><button type="button" class="chip pick" data-word="denying">denying</button><button type="button" class="chip pick" data-word="survey">survey</button></div><p class="passage">Many people complain about the frequency of advertisements on TV. According to a recent <span class="unit gap-unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="cn">11</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;survey&quot;]" style="width:20ch" placeholder="···" aria-label="Blank 11"><span class="fb"></span></span>, the majority of viewers believe that the number of <span class="unit gap-unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="cn">12</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;commercial breaks&quot;]" style="width:20ch" placeholder="···" aria-label="Blank 12"><span class="fb"></span></span> during prime-time shows is too high. In response, a consumer rights group has launched a <span class="unit gap-unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="cn">13</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;campaign&quot;]" style="width:20ch" placeholder="···" aria-label="Blank 13"><span class="fb"></span></span> to reduce the length and frequency of TV ads. They argue that it is <span class="unit gap-unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="cn">14</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;unacceptable&quot;]" style="width:20ch" placeholder="···" aria-label="Blank 14"><span class="fb"></span></span> for broadcasters to interrupt programs so often, while TV networks are <span class="unit gap-unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="cn">15</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;denying&quot;]" style="width:20ch" placeholder="···" aria-label="Blank 15"><span class="fb"></span></span> that ad time has increased significantly in recent years.</p></section><section class="exercise" id="v3"><div class="ex-head"><h2>3. Word formation</h2><span class="meta">Questions 16–26 · 5.5 marks</span></div><p class="instr">Complete the sentences with the correct form of the word in brackets.</p><ol><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">16</span><div class="line">Everyone was more than <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;happy&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(happiness)</span> to help with the clearing up after the party. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">17</span><div class="line">I have to be <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;honest&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(honesty)</span> with you: I have read your emails without your permission. Sorry! </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">18</span><div class="line">This smells like a <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;freshly&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(fresh)</span> painted room; don’t you agree? </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">19</span><div class="line">I advise you to be very <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;careful&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(care)</span> what you say to her. She’s not to be trusted! </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">20</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;interestingly&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(interesting)</span>, the urbanization is taking a dynamic pace as more people are moving to big cities. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">21</span><div class="line">He completed the report with the <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;assistance&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(assist)</span> of his personal secretary. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">22</span><div class="line">Please write all the relevant information into this <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;application&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(apply)</span> form. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">23</span><div class="line">My first attempt to ride a motorcycle ended in <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;failure&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(fail)</span>. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">24</span><div class="line">After retiring I decided to take up <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;photography&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(photograph)</span> as a new hobby. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">25</span><div class="line">Some young people today don’t really care about their <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;appearance&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(appear)</span>. </div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v3" data-marks="5"><span class="qn">26</span><div class="line">Children’s books contain very beautiful <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;illustrations&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(illustrate)</span>. </div><div class="fb"></div></li></ol></section><section class="exercise" id="v4"><div class="ex-head"><h2>4. Complete the dialogue</h2><span class="meta">Questions 27–36 · 5.0 marks</span></div><p class="instr">Complete the dialogues with polite expressions for interrupting. Tap the words in the right order. Tap a word in the answer box to remove it.</p><div class="dialogue"><h3>Dialogue A: planning a charity event</h3><div class="dl-line"><span class="dl-spk">Sardor:</span> We’re planning the charity event on Saturday from 10 a.m. to 5 p.m.</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;I’d like to say something if I may&quot;, &quot;If I may I’d like to say something&quot;]" data-end="."><div class="tile-line"><span class="tile-label"><span class="cn">27</span>Malika:</span><div class="tile-area"></div><span class="tile-end">.</span><span class="tile-trail">I think we should confirm the volunteers first.</span></div><div class="tile-bank"><button type="button" class="tile">if</button><button type="button" class="tile">to</button><button type="button" class="tile">may</button><button type="button" class="tile">I</button><button type="button" class="tile">I’d</button><button type="button" class="tile">say</button><button type="button" class="tile">like</button><button type="button" class="tile">something</button></div><div class="fb"></div></div><div class="dl-line"><span class="dl-spk">Sardor:</span> Yes, please share your thoughts.</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;May I just interrupt for a second&quot;, &quot;May I interrupt for just a second&quot;, &quot;May I interrupt just for a second&quot;]" data-end="?"><div class="tile-line"><span class="tile-label"><span class="cn">28</span>Diyor:</span><div class="tile-area"></div><span class="tile-end">?</span><span class="tile-trail">Will there be separate activities for children?</span></div><div class="tile-bank"><button type="button" class="tile">interrupt</button><button type="button" class="tile">I</button><button type="button" class="tile">a</button><button type="button" class="tile">just</button><button type="button" class="tile">for</button><button type="button" class="tile">second</button><button type="button" class="tile">may</button></div><div class="fb"></div></div><div class="dl-line"><span class="dl-spk">Sardor:</span> Absolutely! We’ve scheduled games and workshops for them in the afternoon.</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;I’d like to comment on something actually&quot;, &quot;Actually I’d like to comment on something&quot;]" data-end="."><div class="tile-line"><span class="tile-label"><span class="cn">29</span>Malika:</span><div class="tile-area"></div><span class="tile-end">.</span><span class="tile-trail">Perhaps we should arrange extra parking spaces for guests.</span></div><div class="tile-bank"><button type="button" class="tile">like</button><button type="button" class="tile">on</button><button type="button" class="tile">comment</button><button type="button" class="tile">actually</button><button type="button" class="tile">I’d</button><button type="button" class="tile">to</button><button type="button" class="tile">something</button></div><div class="fb"></div></div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;Excuse me for interrupting&quot;]" data-end=","><div class="tile-line"><span class="tile-label"><span class="cn">30</span>Diyor:</span><div class="tile-area"></div><span class="tile-end">,</span><span class="tile-trail">but won’t that need approval from the venue management?</span></div><div class="tile-bank"><button type="button" class="tile">me</button><button type="button" class="tile">interrupting</button><button type="button" class="tile">excuse</button><button type="button" class="tile">for</button></div><div class="fb"></div></div><div class="dl-line"><span class="dl-spk">Malika:</span> Oh yes, good point. We’ll need to contact them before finalizing.</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;Can I say something here&quot;]" data-end="?"><div class="tile-line"><span class="tile-label"><span class="cn">31</span>Sardor:</span><div class="tile-area"></div><span class="tile-end">?</span><span class="tile-trail">We could also hire a photographer to cover the event.</span></div><div class="tile-bank"><button type="button" class="tile">here</button><button type="button" class="tile">I</button><button type="button" class="tile">say</button><button type="button" class="tile">something</button><button type="button" class="tile">can</button></div><div class="fb"></div></div></div><div class="dialogue"><h3>Dialogue B: preparing for a meeting</h3><div class="dl-line"><span class="dl-spk">Kostas:</span> So, Mr Yakamoto will be with us at around 11 o’clock. He’s coming straight from the airport.</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;like to say something if I may&quot;]" data-end="."><div class="tile-line"><span class="tile-label"><span class="cn">32</span>Irina:</span><span class="tile-lead">That’s the plan, but I’d</span><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile">I</button><button type="button" class="tile">say</button><button type="button" class="tile">may</button><button type="button" class="tile">something</button><button type="button" class="tile">to</button><button type="button" class="tile">if</button><button type="button" class="tile">like</button></div><div class="fb"></div></div><div class="dl-line"><span class="dl-spk">Kostas:</span> Sure, go ahead.</div><div class="dl-line"><span class="dl-spk">Irina:</span> He’s bound to be tired after such a long flight so I think he’d appreciate it if he could go to his hotel for a rest first.</div><div class="dl-line"><span class="dl-spk">Kostas:</span> Good point. Yes, let’s make the meeting a little later. How about half past two? And that …</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;just interrupt for a second&quot;, &quot;interrupt for just a second&quot;, &quot;interrupt just for a second&quot;]" data-end="."><div class="tile-line"><span class="tile-label"><span class="cn">33</span>Irina:</span><span class="tile-lead">If I could</span><div class="tile-area"></div><span class="tile-end">.</span><span class="tile-trail">Don’t forget that we have another meeting at 4. And it’s an important one too.</span></div><div class="tile-bank"><button type="button" class="tile">just</button><button type="button" class="tile">a</button><button type="button" class="tile">second</button><button type="button" class="tile">for</button><button type="button" class="tile">interrupt</button></div><div class="fb"></div></div><div class="dl-line"><span class="dl-spk">Kostas:</span> Well, I don’t think the meeting with Mr Yakamoto is likely to go past our scheduled finish time. I’m sure he’s got a lot to do. Anyway, I’ve drawn up an agenda for our meeting. Have you had a look at it?</div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;like to comment on that actually&quot;]" data-end="."><div class="tile-line"><span class="tile-label"><span class="cn">34</span>Irina:</span><span class="tile-lead">I’d</span><div class="tile-area"></div><span class="tile-end">.</span><span class="tile-trail">There’s something I’d like to add to it. I think we should spend some time discussing plans for increased trade with Japan. It would certainly …</span></div><div class="tile-bank"><button type="button" class="tile">comment</button><button type="button" class="tile">actually</button><button type="button" class="tile">that</button><button type="button" class="tile">on</button><button type="button" class="tile">to</button><button type="button" class="tile">like</button></div><div class="fb"></div></div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;Excuse me for interrupting&quot;]" data-end=","><div class="tile-line"><span class="tile-label"><span class="cn">35</span>Kostas:</span><div class="tile-area"></div><span class="tile-end">,</span><span class="tile-trail">but that’s already there under the second item on the agenda – business relations.</span></div><div class="tile-bank"><button type="button" class="tile">interrupting</button><button type="button" class="tile">for</button><button type="button" class="tile">excuse</button><button type="button" class="tile">me</button></div><div class="fb"></div></div><div class="unit tiles-unit" data-kind="tiles" data-ex="v4" data-marks="5" data-acc="[&quot;can I say something here&quot;]" data-end="?"><div class="tile-line"><span class="tile-label"><span class="cn">36</span>Irina:</span><span class="tile-lead">Oh, yes. Apologies, I missed that completely. But</span><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile">say</button><button type="button" class="tile">something</button><button type="button" class="tile">I</button><button type="button" class="tile">here</button><button type="button" class="tile">can</button></div><div class="fb"></div></div><div class="dl-line"><span class="dl-spk">Kostas:</span> Yes, of course …</div></div></section><div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section>
+<section class="panel" id="reading" role="tabpanel" aria-label="Reading" data-nq="10">
+<div class="sheet">
+  <header class="masthead">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="kicker">Upper-Intermediate · Mock exam 1 · Part 3 of 3</p>
+    <h1>Reading</h1>
+    <p>Read the text, then answer all 10 questions. Each correct answer earns 1 mark. Spelling counts in Task 3.</p>
+    <span class="weight">10% of the exam</span>
+  </header>
+  <div class="candidate">
+    <div><label>Full name</label><input data-f="nm" type="text" autocomplete="off"></div>
+    <div><label>Group number</label><input data-f="gr" type="text" autocomplete="off"></div>
+    <div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div>
+  </div>
+  <div class="layout"><div class="left"><div class="hl-bar" role="toolbar" aria-label="Highlighter"><span class="lbl">Highlighter</span><p class="hl-note">Select text to highlight it – in the passage or the questions. Click a highlight to remove it.</p></div><div class="textbox" style="margin:0;border:0;border-radius:0;background:transparent;padding:24px clamp(18px,4vw,36px)"><h3 style="font-size:24px">Bees in the city</h3><p><strong>A</strong> Beekeeping is no longer a hobby reserved for the countryside. In recent years, thousands of hives have appeared on the roofs of offices, hotels and apartment buildings in cities such as London, Paris and New York. The trend began as a way of helping bees, whose numbers have fallen in many regions because of disease, pesticides and the loss of wild flowers.</p><p><strong>B</strong> Surprisingly, cities can be a good home for bees. Farmland often contains vast fields of a single crop, which offers food for only a few weeks, whereas parks, gardens and balconies provide a mixture of flowers that bloom at different times of the year. Urban areas also tend to use fewer pesticides than intensive agriculture, and temperatures are slightly higher, which allows bees to start foraging earlier in spring.</p><p><strong>C</strong> The idea is not entirely new. Keeping bees in towns was common in earlier centuries, when many households relied on honey as their main sweetener and on wax for candles. The practice declined as sugar became cheap and cities grew more crowded, but the recent revival has been helped by training courses, online communities and clubs where beginners can learn from experienced keepers. Many newcomers say that the hobby has taught them patience as well as biology.</p><p><strong>D</strong> Urban honey has become popular as well. Because the bees collect nectar from many different trees and plants, each hive produces a flavour that reflects its neighbourhood, and some restaurants now serve honey from their own roofs. Beekeepers say that this connects city residents with the natural world, and many companies use hives as part of their environmental programmes.</p><p><strong>E</strong> Not everyone is convinced, however. Some ecologists warn that there may now be too many honeybees in certain cities, and that they compete for flowers with wild species such as bumblebees, many of which are more at risk. In their view, planting more flowers and protecting natural habitats would help pollinators more than adding hives.</p><p><strong>F</strong> Another difficulty is public attitude. Some residents worry about stings, and landlords occasionally refuse permission for hives on their buildings. Experienced keepers answer that honeybees are rarely aggressive away from the hive, and that a well-managed colony poses little danger to neighbours. They add that education matters, because people who understand how bees behave tend to feel less anxious about them.</p><p><strong>G</strong> The debate has encouraged a new approach. Instead of simply keeping more bees, some cities are creating pollinator corridors, which are connected strips of flowers that allow all kinds of insects to travel safely across the urban landscape.</p></div></div><div class="right"><section class="exercise" id="r1"><div class="ex-head"><h2>Task 1</h2><span class="meta">Questions 1–3 · 3.0 marks</span></div><p class="instr">Choose the correct answer.</p><ol><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="1"><span class="qn">1</span><div class="line stem">Why did urban beekeeping begin?</div><div class="opts"><label class="opt"><input type="radio" name="qr1-1" value="0"><span class="letter">a</span><span>To produce cheaper honey.</span></label><label class="opt"><input type="radio" name="qr1-1" value="1"><span class="letter">b</span><span>To help bees, whose numbers had fallen.</span></label><label class="opt"><input type="radio" name="qr1-1" value="2"><span class="letter">c</span><span>To decorate tall buildings.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="0"><span class="qn">2</span><div class="line stem">Cities can be a good home for bees because…</div><div class="opts"><label class="opt"><input type="radio" name="qr1-2" value="0"><span class="letter">a</span><span>they contain flowers that bloom at different times.</span></label><label class="opt"><input type="radio" name="qr1-2" value="1"><span class="letter">b</span><span>there is less rain than in the countryside.</span></label><label class="opt"><input type="radio" name="qr1-2" value="2"><span class="letter">c</span><span>buildings provide food for them.</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="2"><span class="qn">3</span><div class="line stem">Some ecologists are concerned that…</div><div class="opts"><label class="opt"><input type="radio" name="qr1-3" value="0"><span class="letter">a</span><span>honey from cities is unsafe to eat.</span></label><label class="opt"><input type="radio" name="qr1-3" value="1"><span class="letter">b</span><span>beekeepers are not properly trained.</span></label><label class="opt"><input type="radio" name="qr1-3" value="2"><span class="letter">c</span><span>honeybees may compete with wild species.</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="r2"><div class="ex-head"><h2>Task 2</h2><span class="meta">Questions 4–7 · 4.0 marks</span></div><p class="instr">Do the statements agree with the information in the text? Choose TRUE, FALSE or NOT GIVEN.</p><ol><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="0"><span class="qn">4</span><div class="line stem">Farmland sometimes offers food for only a few weeks.</div><div class="opts"><label class="opt"><input type="radio" name="qr2-4" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr2-4" value="1"><span class="letter">b</span><span>False</span></label><label class="opt"><input type="radio" name="qr2-4" value="2"><span class="letter">c</span><span>Not Given</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="1"><span class="qn">5</span><div class="line stem">Temperatures in cities are slightly lower than in the countryside.</div><div class="opts"><label class="opt"><input type="radio" name="qr2-5" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr2-5" value="1"><span class="letter">b</span><span>False</span></label><label class="opt"><input type="radio" name="qr2-5" value="2"><span class="letter">c</span><span>Not Given</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="2"><span class="qn">6</span><div class="line stem">Urban honey is more expensive than honey from the countryside.</div><div class="opts"><label class="opt"><input type="radio" name="qr2-6" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr2-6" value="1"><span class="letter">b</span><span>False</span></label><label class="opt"><input type="radio" name="qr2-6" value="2"><span class="letter">c</span><span>Not Given</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="0"><span class="qn">7</span><div class="line stem">Ecologists think some wild species are more at risk than honeybees.</div><div class="opts"><label class="opt"><input type="radio" name="qr2-7" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr2-7" value="1"><span class="letter">b</span><span>False</span></label><label class="opt"><input type="radio" name="qr2-7" value="2"><span class="letter">c</span><span>Not Given</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="r3"><div class="ex-head"><h2>Task 3</h2><span class="meta">Questions 8–10 · 3.0 marks</span></div><p class="instr">Complete the sentences. Use NO MORE THAN TWO WORDS from the text for each answer.</p><ol><li class="q unit" data-kind="fill" data-ex="r3" data-marks="10"><span class="qn">8</span><div class="line">Bee numbers have fallen because of disease, pesticides and the loss of wild <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;flowers&quot;]" style="width:22ch" placeholder="···" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="r3" data-marks="10"><span class="qn">9</span><div class="line">Each hive produces a flavour that reflects its <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;neighbourhood&quot;, &quot;neighborhood&quot;]" style="width:22ch" placeholder="···" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="r3" data-marks="10"><span class="qn">10</span><div class="line">Urban areas tend to use fewer <input class="blank" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-acc="[&quot;pesticides&quot;]" style="width:22ch" placeholder="···" aria-label="answer"> than intensive agriculture.</div><div class="fb"></div></li></ol></section></div></div><div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section>
+
+</div>
+<div class="modal" id="confirm" hidden role="dialog" aria-modal="true" aria-labelledby="dlg-h">
+  <div class="dlg">
+    <h3 id="dlg-h">Submit the whole exam?</h3>
+    <p>Grammar, Vocabulary and Reading will all be submitted together.</p>
+    <p class="warn">You cannot change any answer after submitting.</p>
+    <p id="unans-msg"></p>
+    <div class="row"><button class="btn ghost" id="cancel" type="button">Go back</button><button class="btn" id="confirm-yes" type="button">Submit now</button></div>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS_MARKS=45;   // pass mark: marks needed out of 50 (change here if needed)
+  function norm(s){
+    s=String(s).toLowerCase().replace(/[\u2018\u2019`]/g,"'");
+    s=s.replace(/\bcan't\b/g,'can not').replace(/\bcannot\b/g,'can not').replace(/\bwon't\b/g,'will not').replace(/\bshan't\b/g,'shall not');
+    s=s.replace(/n't\b/g,' not').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will');
+    s=s.replace(/[-\u2013\u2014]/g,' ').replace(/[^a-z0-9\s']/g,'').replace(/'/g,'');
+    return s.replace(/\s+/g,'');
+  }
+    /* answer matching: contractions ('d / 's), time-expression synonyms, optional "that" in reported speech, this/that here/there */
+  function forms(s,loose){
+    s=String(s).toLowerCase().replace(/[\u2018\u2019`]/g,"'");
+    s=s.replace(/\bthe previous (day|week|month|year|night)\b/g,'the $1 before').replace(/\bthe following (day|week|month|year|night|morning)\b/g,'the next $1').replace(/\bthe (day|week|month|year) after\b/g,'the next $1');
+    if(loose){ s=s.replace(/\bthis\b/g,'that').replace(/\bthese\b/g,'those').replace(/\bhere\b/g,'there'); }
+    var v=[s];
+    [["'d",[' had',' would']],["'s",[' is',' has']]].forEach(function(p){
+      var n=[]; v.forEach(function(x){ if(x.indexOf(p[0])>-1){ p[1].forEach(function(r){n.push(x.split(p[0]).join(r));}); } n.push(x); }); v=n;
+    });
+    return v.map(norm);
+  }
+  function matchAns(i){
+    var loose=false, A=[];
+    JSON.parse(i.dataset.acc).forEach(function(a){A=A.concat(forms(a,loose));});
+    function hit(vs){return vs.some(function(v){return A.indexOf(v)>-1;});}
+    var V=forms(i.value,loose);
+    if(hit(V)) return true;
+    if(false){   /* reported speech: "He said (that) he ..." */
+      var st=V.filter(function(v){return v.indexOf('that')===0;}).map(function(v){return v.slice(4);});
+      if(st.length&&hit(st)) return true;
+    }
+    return false;
+  }
+  function fmt(t){return (t/10).toFixed(1)}
+  function pctStr(num,den){var p=Math.floor(num*1000/den)/10; return (p%1===0?p.toFixed(0):p.toFixed(1))+'%';}
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var panels=$$('.panel'), units=$$('.unit'), submitted=false;
+  /* ---------- word-order tiles (dialogues) ---------- */
+  $$('.unit[data-kind=tiles]').forEach(function(u){
+    var area=$('.tile-area',u), btns=$$('.tile-bank .tile',u);
+    u._btns=btns; u._placed=[];
+    u._render=function(){
+      area.innerHTML='';
+      u._placed.forEach(function(i){var c=document.createElement('button'); c.type='button'; c.className='tile placed'; c.textContent=btns[i].textContent; c.dataset.i=i; area.appendChild(c);});
+      btns.forEach(function(b,i){b.classList.toggle('used',u._placed.indexOf(i)>-1);});
+      u.dispatchEvent(new Event('change',{bubbles:true}));
+    };
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.tile'); if(!b||document.body.classList.contains('exam-done')) return;
+    var u=b.closest('.unit[data-kind=tiles]'); if(!u) return;
+    if(b.parentNode.classList.contains('tile-bank')){ if(b.classList.contains('used')) return; u._placed.push(u._btns.indexOf(b)); }
+    else { var p=u._placed.indexOf(+b.dataset.i); if(p>-1) u._placed.splice(p,1); }
+    u._render();
+  });
+  window.__tilesSet=function(u,arr){ if(!u._placed) return; u._placed.length=0; arr.forEach(function(i){ if(u._btns[i]&&u._placed.indexOf(i)<0) u._placed.push(i); }); u._render(); };
+  var PNAME={grammar:'Grammar',vocab:'Vocabulary',reading:'Reading'};
+
+  function isAnswered(u){
+    var k=u.dataset.kind;
+    if(k==='fill') return $$('input.blank',u).every(function(i){return i.value.trim()!==''});
+    if(k==='mc') return !!$('input[type=radio]:checked',u);
+    if(k==='sel') return $('select',u).value!=='';
+    if(k==='tiles') return !!u._placed && u._placed.length===u._btns.length;
+    return false;
+  }
+  function update(){
+    var n=units.filter(isAnswered).length;
+    $('#count').textContent='Answered '+n+' / '+units.length;
+    $('#fill').style.width=(100*n/units.length)+'%';
+  }
+  function evaluate(u){
+    var k=u.dataset.kind, ok=false, shown='';
+    if(k==='fill'){
+      var ins=$$('input.blank',u);
+      if(u.dataset.pairs){ var PP=JSON.parse(u.dataset.pairs); ok=PP.some(function(p){return ins.every(function(i,q){var AA=forms(p[q],false); return forms(i.value,false).some(function(v){return AA.indexOf(v)>-1;});});}); shown=u.dataset.model; }
+      else{ ok=ins.every(matchAns);
+      shown=ins.map(function(i){return JSON.parse(i.dataset.acc)[0]}).join('  /  '); }
+    }else if(k==='tiles'){
+      var str=u._placed.map(function(i){return u._btns[i].textContent;}).join(' '), AA=[];
+      JSON.parse(u.dataset.acc).forEach(function(a){AA=AA.concat(forms(a,false));});
+      ok=u._placed.length>0 && forms(str,false).some(function(v){return AA.indexOf(v)>-1;});
+      shown=JSON.parse(u.dataset.acc)[0]+(u.dataset.end||'');
+    }else if(k==='mc'){
+      var c=$('input[type=radio]:checked',u);
+      ok=!!c && c.value===u.dataset.ans;
+      shown=$('input[value="'+u.dataset.ans+'"]',u).closest('.opt').textContent.trim();
+    }else{
+      var s=$('select',u); ok=s.value===u.dataset.ans; shown=u.dataset.ans;
+    }
+    return {ok:ok,shown:shown};
+  }
+
+  /* ---------- confirm dialog ---------- */
+  var modal=$('#confirm'), lastFocus=null;
+  function openConfirm(){
+    if(submitted) return;
+    lastFocus=document.activeElement;
+    var parts=panels.map(function(p){var un=$$('.unit',p).filter(function(u){return !isAnswered(u)}).length; return un?(PNAME[p.id]+': '+un):null}).filter(Boolean);
+    $('#unans-msg').textContent=parts.length?('Unanswered \u2013 '+parts.join(', ')+'. These will count as incorrect.'):'All questions are answered.';
+    modal.hidden=false; $('#cancel').focus();
+  }
+  function closeConfirm(){modal.hidden=true; if(lastFocus) lastFocus.focus();}
+  modal.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeConfirm();
+    if(e.key==='Tab'){var f=$$('button',modal), a=f[0], z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}
+  });
+  $('#cancel').addEventListener('click',closeConfirm);
+  $('#confirm-yes').addEventListener('click',function(){closeConfirm();submit();});
+  $$('.submit-all').concat([$('#submit')]).forEach(function(b){b.addEventListener('click',openConfirm)});
+
+  /* ---------- submit (final) ---------- */
+  function submit(){
+    if(submitted) return; submitted=true;
+    var total=0, max=0, rows=[];
+    panels.forEach(function(p){
+      var sc=0, mx=0;
+      $$('.unit',p).forEach(function(u){
+        var r=evaluate(u), m=+u.dataset.marks; mx+=m;
+        u.classList.remove('is-right','is-wrong');
+        var fb=$('.fb',u);
+        if(r.ok){u.classList.add('is-right');sc+=m;fb.textContent=u.dataset.kind==='sel'?'\u2713':'\u2713 Correct';}
+        else{u.classList.add('is-wrong');fb.textContent=(u.dataset.kind==='sel'?'\u2192 ':'Correct answer: ')+r.shown;}
+      });
+      total+=sc; max+=mx; rows.push({id:p.id,sc:sc,mx:mx});
+    });
+    // lock everything permanently
+    $$('input,select,button.submit-all').forEach(function(e){ if(!e.closest('.candidate')) e.disabled=true; });
+    document.body.classList.add('exam-done');
+    var sb=$('#submit'); sb.disabled=true; sb.textContent='Submitted';
+    // results
+    var pass=total>=PASS_MARKS*10;
+    var v=$('#verdict'); v.textContent=pass?'PASSED':'FAILED'; v.className='verdict '+(pass?'pass':'fail');
+    $('#tot-score').textContent=fmt(total); $('#tot-max').textContent='/ '+fmt(max)+' marks';
+    $('#res-sub').textContent='Pass mark: '+PASS_MARKS+' out of '+Math.round(max/10)+' marks  \u00b7  Overall correct: '+pctStr(total,max);
+    var nm=$('input[data-f=nm]').value.trim(); $('#who').textContent=nm?nm:'Mock exam';
+    $('#res-rows').innerHTML='';
+    rows.forEach(function(r){
+      var d=document.createElement('div'); d.className='res-row';
+      d.innerHTML='<b>'+PNAME[r.id]+'</b><div class="meter"><i></i></div><span class="val">'+fmt(r.sc)+' / '+fmt(r.mx)+' \u00b7 '+pctStr(r.sc,r.mx)+'</span>';
+      $('#res-rows').appendChild(d);
+      $('i',d).style.width=(100*r.sc/r.mx)+'%';
+    });
+    var res=$('#results'); res.hidden=false; setH();
+    // announce + move to top
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'}); res.focus({preventScroll:true});
+  }
+
+  document.addEventListener('input',function(e){
+    var t=e.target;
+    if(t&&t.dataset&&t.dataset.f){ $$('input[data-f="'+t.dataset.f+'"]').forEach(function(o){if(o!==t)o.value=t.value}); }
+    update();
+  });
+  document.addEventListener('change',update);
+
+  /* ---------- tabs ---------- */
+  var tabs=$$('.tab'), wrap=$('.tabs-wrap');
+  function setH(){ document.documentElement.style.setProperty('--tabh',wrap.offsetHeight+'px'); }
+  function show(id,focus){
+    tabs.forEach(function(t){var on=t.dataset.target===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1; if(on&&focus)t.focus();});
+    panels.forEach(function(p){p.hidden=(p.id!==id)});
+    document.body.dataset.tab=id;
+    try{ if(history.replaceState) history.replaceState(null,'','#'+id); }catch(e){}
+    window.scrollTo({top:0}); setH();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t.dataset.target)});
+    t.addEventListener('keydown',function(e){
+      var k=e.key, j=-1;
+      if(k==='ArrowRight') j=(i+1)%tabs.length; else if(k==='ArrowLeft') j=(i+tabs.length-1)%tabs.length;
+      else if(k==='Home') j=0; else if(k==='End') j=tabs.length-1;
+      if(j>-1){e.preventDefault();show(tabs[j].dataset.target,true);}
+    });
+  });
+  var start=(location.hash||'').slice(1);
+  show(panels.some(function(p){return p.id===start})?start:'grammar');
+  update();
+  window.addEventListener('resize',setH);
+})();
+</script>
+<script>
+(function(){
+  /* ---- pick words from the box ---- */
+  var last={};
+  function nz(s){return String(s).toLowerCase().replace(/[^a-z]/g,'')}
+  function refresh(ex){
+    var vals=[].map.call(ex.querySelectorAll('input.blank'),function(i){return nz(i.value)});
+    [].forEach.call(ex.querySelectorAll('.chip.pick'),function(c){var w=nz(c.dataset.word);c.classList.toggle('used',vals.some(function(v){return v.indexOf(w)>-1}));});
+  }
+  document.addEventListener('focusin',function(e){var t=e.target; if(t&&t.classList&&t.classList.contains('blank')){var ex=t.closest('.exercise'); if(ex) last[ex.id]=t;}});
+  document.addEventListener('click',function(e){
+    var c=e.target.closest&&e.target.closest('.chip.pick'); if(!c||document.body.classList.contains('exam-done')) return;
+    var ex=c.closest('.exercise'), ins=[].slice.call(ex.querySelectorAll('input.blank')), t=last[ex.id];
+    if(!(t&&!t.value.trim())) t=ins.filter(function(i){return !i.value.trim()})[0]||t||ins[0];
+    t.value=c.dataset.word; t.dispatchEvent(new Event('input',{bubbles:true})); t.focus();
+    try{t.setSelectionRange(t.value.length,t.value.length)}catch(_){}
+    refresh(ex);
+  });
+  document.addEventListener('input',function(e){var ex=e.target.closest&&e.target.closest('.exercise'); if(ex&&ex.querySelector('.chip.pick')) refresh(ex);});
+
+  /* ---- highlighter (auto, everywhere) ---- */
+  var SKIP='input,select,option,button,textarea,.qn,.cn,.fb,.candidate,.masthead,.tabs-wrap,.modal,.hl-bar';
+  function elOf(n){return n.nodeType===1?n:n.parentElement;}
+  function okNode(n){var el=elOf(n); return !!(el&&el.closest('#reading .exercise, #reading .textbox, #ex7 .textbox')&&!el.closest(SKIP));}
+  function live(){
+    var s=window.getSelection(); if(!s||!s.rangeCount||s.isCollapsed) return null;
+    var r=s.getRangeAt(0), el=elOf(r.commonAncestorContainer), panel=el&&el.closest('.panel');
+    if(!panel||panel.hidden) return null;
+    if(!okNode(r.startContainer)&&!okNode(r.endContainer)) return null;
+    return r;
+  }
+  function textNodes(r){
+    var root=elOf(r.commonAncestorContainer), out=[], w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    while(w.nextNode()){var n=w.currentNode; if(r.intersectsNode(n)&&n.nodeValue.trim()!==''&&okNode(n)) out.push(n);}
+    return out;
+  }
+  var clearBtn=document.getElementById('hl-clear');
+  function sync(){ if(clearBtn) clearBtn.hidden=!document.querySelector('.panel:not([hidden]) mark.hl'); }
+  function unwrap(m){var p=m.parentNode; while(m.firstChild) p.insertBefore(m.firstChild,m); p.removeChild(m); p.normalize(); sync();}
+  function mark(r){
+    textNodes(r).forEach(function(n){
+      if(n.parentNode.classList&&n.parentNode.classList.contains('hl')) return;
+      var s=(n===r.startContainer)?r.startOffset:0, e=(n===r.endContainer)?r.endOffset:n.nodeValue.length;
+      if(e<=s) return;
+      var mid=n.splitText(s); mid.splitText(e-s);
+      var m=document.createElement('mark'); m.className='hl'; m.title='Click to remove';
+      mid.parentNode.insertBefore(m,mid); m.appendChild(mid);
+    });
+    window.getSelection().removeAllRanges(); sync();
+  }
+  var justSelected=false, lastType='mouse', timer=null;
+  function auto(){var r=live(); if(r){justSelected=true; mark(r); setTimeout(function(){justSelected=false},120);}}
+  document.addEventListener('pointerdown',function(e){lastType=e.pointerType||'mouse'; justSelected=false;});
+  document.addEventListener('pointerup',function(e){
+    if(e.pointerType==='touch') return;
+    if(live()){justSelected=true; setTimeout(auto,0);}
+  });
+  document.addEventListener('selectionchange',function(){
+    if(lastType!=='touch') return;
+    clearTimeout(timer); if(live()) timer=setTimeout(auto,800);
+  });
+  /* capture: a drag-select inside an answer option must not tick the radio; a click on a highlight removes it */
+  document.addEventListener('click',function(e){
+    var t=e.target; if(!t||!t.closest) return;
+    var m=t.closest('mark.hl');
+    if(justSelected){ if(t.closest('.opt')){e.preventDefault(); e.stopPropagation();} return; }
+    if(m){
+      var s=window.getSelection(); if(s&&!s.isCollapsed) return;
+      e.preventDefault(); e.stopPropagation(); unwrap(m);
+    }
+  },true);
+  if(clearBtn) clearBtn.addEventListener('click',function(){[].slice.call(document.querySelectorAll('mark.hl')).forEach(unwrap); sync();});
+  sync(); new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['data-tab']});
+})();
+</script>
+<div class="toast" id="toast" hidden></div><div class="sr-only" id="clock-live" aria-live="polite"></div>
+<script>
+(function(){
+  var MIN=50, TOTAL=MIN*60*1000, deadline=null, tick=null, finished=false, autoSub=false, warned={};
+  var wrap=document.querySelector('.wrap'), start=document.getElementById('start'), clock=document.getElementById('clock');
+  var ct=document.getElementById('clock-t'), clockL=document.querySelector('.clock-l'), live=document.getElementById('clock-live'), toast=document.getElementById('toast');
+  wrap.inert=true;
+  /* the exam cannot start until the student has typed a full name and a group number */
+  var stNm=document.getElementById('st-nm'), stGr=document.getElementById('st-gr'), stBtn=document.getElementById('start-btn'), stNeed=document.getElementById('start-need');
+  function chkStart(){ var ok=stNm.value.trim().length>=2&&stGr.value.trim().length>=1; stBtn.disabled=!ok; if(stNeed) stNeed.hidden=ok; }
+  stNm.addEventListener('input',chkStart); stGr.addEventListener('input',chkStart); chkStart();
+  function fmt(ms){var s=Math.max(0,Math.ceil(ms/1000)),m=Math.floor(s/60);s=s%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+  var tt=null;
+  function say(msg,danger){live.textContent=msg; toast.textContent=msg; toast.className='toast'+(danger?' danger':''); toast.hidden=false; clearTimeout(tt); tt=setTimeout(function(){toast.hidden=true},7000);}
+  function update(){
+    if(finished||deadline===null) return;
+    var left=deadline-Date.now();
+    ct.textContent=fmt(left);
+    clock.classList.toggle('warn',left<=10*60000&&left>5*60000);
+    clock.classList.toggle('danger',left<=5*60000);
+    [[10,'10 minutes left.',false],[5,'5 minutes left.',true],[1,'1 minute left!',true]].forEach(function(w){
+      if(left<=w[0]*60000&&left>0&&!warned[w[0]]){warned[w[0]]=1; say(w[1],w[2]);}
+    });
+    if(left<=0) timeUp();
+  }
+  function timeUp(){
+    if(finished) return;
+    ct.textContent='00:00';
+    if(!document.body.classList.contains('exam-done')){
+      autoSub=true; say('Time is up \u2013 your exam has been submitted.',true);
+      document.getElementById('confirm-yes').click();   /* same final submit as the button */
+    }
+  }
+  /* when the exam is submitted (by the student or by the timer) stop the clock and add the time used */
+  new MutationObserver(function(){
+    if(!document.body.classList.contains('exam-done')||finished) return;
+    finished=true; clearInterval(tick);
+    var end=(window.__mockTimer&&window.__mockTimer.finishTs)||Date.now(); var used=deadline===null?0:Math.min(TOTAL,Math.max(0,TOTAL-(deadline-end)));
+    clock.classList.remove('warn','danger'); clock.classList.add('done'); clockL.textContent='Finished';
+    var sub=document.getElementById('res-sub');
+    if(sub){var p=document.createElement('p'); p.className='res-time';
+      p.textContent='Time used: '+fmt(used)+' of '+MIN+':00'+(autoSub?' \u2013 time ran out, so the exam was submitted automatically.':'.');
+      sub.parentNode.insertBefore(p,sub.nextSibling);}
+  }).observe(document.body,{attributes:true,attributeFilter:['class']});
+
+  var hook={total:TOTAL,finishTs:null,
+    begin:function(dl,silent,skipUpdate){
+      start.hidden=true; wrap.inert=false; document.body.classList.remove('pre-start');
+      deadline=dl; if(!skipUpdate){ update(); if(!finished) tick=setInterval(update,250); }
+      if(!silent){
+        live.textContent='The exam has started. You have '+MIN+' minutes.';
+        var t=document.getElementById('tab-grammar'); if(t) t.focus({preventScroll:true});
+        window.scrollTo(0,0);
+      }
+    },
+    deadline:function(){return deadline;}, finished:function(){return finished;}, auto:function(){return autoSub;}, setAuto:function(){autoSub=true;}, say:say
+  };
+  window.__mockTimer=hook;
+  document.getElementById('start-btn').addEventListener('click',function(){ hook.begin(Date.now()+TOTAL,false); document.dispatchEvent(new Event('mock:started')); });
+  document.addEventListener('visibilitychange',update);
+  window.addEventListener('focus',update);
+  document.getElementById('start-btn').focus();
+})();
+</script>
+<script>/*persist*/
+(function(){
+  var T=window.__mockTimer; if(!T) return;
+  var m=document.title.match(/Mock Exam (\d+)/), KEY='mockexam:upper:set'+(m?m[1]:'x')+':v1';
+  var store=null;
+  try{ store=window.localStorage; store.setItem('__t','1'); store.removeItem('__t'); }catch(e){ store=null; }
+  var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+
+  /* teacher reset: open the link with #reset at the end */
+  if(store && (window.__initHash||location.hash)==='#reset'){
+    try{ store.removeItem(KEY); store.removeItem(KEY+':guard'); store.removeItem(KEY+':attempt'); }catch(e){}
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+  }
+
+  /* adding #reset to the address of an already-open page also restarts it (a hash change does not reload by itself) */
+  window.addEventListener('hashchange',function(){
+    if(location.hash!=='#reset') return;
+    running=false; lock=true; window.__mockResetting=true;
+    try{ if(store){ store.removeItem(KEY); store.removeItem(KEY+':guard'); store.removeItem(KEY+':attempt'); } }catch(e){}
+    location.replace(location.pathname+location.search);
+  });
+
+  /* ---------- collect / apply ---------- */
+  function zones(){return $$('#reading .left .textbox, #reading .exercise, #ex7 .textbox');}
+  function hlOf(z){
+    var out=[], pos=0, w=document.createTreeWalker(z,NodeFilter.SHOW_TEXT);
+    while(w.nextNode()){var n=w.currentNode, len=n.nodeValue.length; var p=n.parentNode;
+      if(p&&p.classList&&p.classList.contains('hl')) out.push([pos,pos+len]); pos+=len;}
+    return out;
+  }
+  function applyHl(z,ranges){
+    ranges.forEach(function(r){
+      var list=[], pos=0, w=document.createTreeWalker(z,NodeFilter.SHOW_TEXT);
+      while(w.nextNode()){var n=w.currentNode, len=n.nodeValue.length, s=Math.max(r[0],pos)-pos, e=Math.min(r[1],pos+len)-pos;
+        if(s<e&&!(n.parentNode.classList&&n.parentNode.classList.contains('hl'))) list.push([n,s,e]); pos+=len;}
+      list.forEach(function(x){var mid=x[0].splitText(x[1]); mid.splitText(x[2]-x[1]);
+        var mk=document.createElement('mark'); mk.className='hl'; mk.title='Click to remove'; mid.parentNode.insertBefore(mk,mid); mk.appendChild(mid);});
+    });
+  }
+  function collect(){
+    var vals=$$('.unit').map(function(u){
+      var k=u.dataset.kind;
+      if(k==='fill') return $$('input.blank',u).map(function(i){return i.value;});
+      if(k==='tiles') return (u._placed||[]).slice();
+      if(k==='mc'){var r=$$('input[type=radio]',u), idx=-1; r.forEach(function(x,i){if(x.checked) idx=i;}); return idx;}
+      return u.querySelector('select').value;
+    });
+    var cand={}; ['nm','gr','dt'].forEach(function(f){var i=document.querySelector('input[data-f="'+f+'"]'); cand[f]=i?i.value:'';});
+    return {v:1,started:true,deadline:T.deadline(),finished:T.finished(),auto:T.auto(),finishTs:T.finishTs,
+      tab:document.body.dataset.tab||'grammar',scrollY:Math.round(window.scrollY),vals:vals,cand:cand,hl:zones().map(hlOf),saved:Date.now()};
+  }
+  var lock=false, running=false;
+  function save(){
+    if(!store||!running||lock) return;
+    try{ store.setItem(KEY,JSON.stringify(collect())); }catch(e){}
+  }
+  var tm=null; function soon(){ clearTimeout(tm); tm=setTimeout(save,250); }
+
+  function fire(el,type){el.dispatchEvent(new Event(type,{bubbles:true}));}
+  function apply(s){
+    var units=$$('.unit');
+    (s.vals||[]).forEach(function(v,idx){
+      var u=units[idx]; if(!u) return; var k=u.dataset.kind;
+      if(k==='fill'){ $$('input.blank',u).forEach(function(i,j){ if(v[j]!==undefined&&v[j]!==''){ i.value=v[j]; fire(i,'input'); } }); }
+      else if(k==='tiles'){ if(window.__tilesSet&&Array.isArray(v)) window.__tilesSet(u,v); }
+      else if(k==='mc'){ if(v>=0){ var r=$$('input[type=radio]',u)[v]; if(r){ r.checked=true; fire(r,'change'); } } }
+      else if(v){ var sel=u.querySelector('select'); sel.value=v; fire(sel,'change'); }
+    });
+    var c=s.cand||{}; ['nm','gr','dt'].forEach(function(f){ if(c[f]){var i=document.querySelector('input[data-f="'+f+'"]'); if(i){i.value=c[f]; fire(i,'input');}} });
+    var zs=zones(); (s.hl||[]).forEach(function(rs,i){ if(zs[i]&&rs&&rs.length) applyHl(zs[i],rs); });
+  }
+
+  /* ---------- keep students on the page ---------- */
+  var trapOn=false;
+  function trap(){
+    if(trapOn) return; trapOn=true;
+    try{ history.pushState({mock:1},'',location.href); }catch(e){}
+    window.addEventListener('popstate',function(){
+      if(T.finished()) return;
+      try{ history.pushState({mock:1},'',location.href); }catch(e){}
+      T.say('Swipe-back is switched off during the exam. Your answers are saved.',false);
+    });
+    window.addEventListener('beforeunload',function(e){ if(running&&!T.finished()){ e.preventDefault(); e.returnValue=''; } });
+  }
+
+  function arm(){
+    running=true; trap();
+    ['input','change','click','pointerup','keyup'].forEach(function(ev){document.addEventListener(ev,soon,true);});
+    setInterval(save,3000);
+    document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') save(); });
+    window.addEventListener('pagehide',save);
+    new MutationObserver(function(){
+      if(document.body.classList.contains('exam-done')){ T.finishTs=T.finishTs||(T.auto()?T.deadline():Date.now()); save(); }
+    }).observe(document.body,{attributes:true,attributeFilter:['class']});
+    new MutationObserver(soon).observe(document.body,{attributes:true,attributeFilter:['data-tab']});
+  }
+
+  /* a fresh start: begin saving once the student presses Start */
+  document.addEventListener('mock:started',function(){ arm(); save(); });
+
+  /* returning student: restore everything */
+  var saved=null;
+  if(store){ try{ saved=JSON.parse(store.getItem(KEY)||'null'); }catch(e){ saved=null; } }
+  if(saved && saved.v===1 && saved.started && saved.deadline){
+    lock=true;
+    apply(saved);
+    if(saved.finished){ T.finishTs=saved.finishTs||saved.deadline; if(saved.auto) T.setAuto(); }
+    T.begin(saved.deadline,true,!!saved.finished);
+    var tab=document.getElementById('tab-'+(saved.tab||'grammar')); if(tab) tab.click();
+    lock=false; arm();
+    if(saved.finished || Date.now()>=saved.deadline){
+      /* already submitted before (or time ran out while away): show the locked result */
+      if(!saved.finished){ /* timer will auto-submit on its first tick */ }
+      else { var y=document.getElementById('confirm-yes'); if(y) y.click(); }
+    } else {
+      T.say('Welcome back \u2013 your answers and the clock were restored.',false);
+    }
+    setTimeout(function(){ if(!saved.finished) window.scrollTo(0,saved.scrollY||0); },150);
+  }
+})();
+</script>
+<div class="modal" id="away" hidden role="alertdialog" aria-modal="true" aria-labelledby="away-h"><div class="dlg away"><h3 id="away-h">You left the exam page</h3><p id="away-msg"></p><p class="warn">This has been recorded and will appear on your result.</p><div class="row"><button class="btn" id="away-ok" type="button">Back to the exam</button></div></div></div>
+<audio id="alarm" preload="auto" src="data:audio/wav;base64,UklGRmScAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YUCcAAD6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG"></audio>
+<script>/*guard*/
+(function(){
+  var T=window.__mockTimer; if(!T) return;
+  /* ---- settings (can be changed) ---- */
+  var CFG={alarmOnLeave:true, alarmSeconds:5, maxLeaves:0, minAwayMs:1500};   /* maxLeaves: 0 = never auto-submit; e.g. 3 = submit on the 3rd time they leave */
+  if(window.__guardCfg){ for(var k in window.__guardCfg) CFG[k]=window.__guardCfg[k]; }
+  var m=document.title.match(/Mock Exam (\d+)/), KEY='mockexam:upper:set'+(m?m[1]:'x')+':v1:guard';
+  var store=null; try{ store=window.localStorage; store.setItem('__g','1'); store.removeItem('__g'); }catch(e){ store=null; }
+  var st={count:0,away:0,seen:0};
+  if(store){ try{ var s0=JSON.parse(store.getItem(KEY)||'null'); if(s0&&typeof s0.count==='number') st=s0; }catch(e){} }
+  function save(){ if(window.__mockResetting||!store) return; try{ store.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var $=function(id){return document.getElementById(id);};
+  var alarm=$('alarm'), away=$('away'), awayMsg=$('away-msg'), awayOk=$('away-ok'), badge=$('leave-badge');
+  function mmss(ms){var s=Math.max(0,Math.round(ms/1000)),mm=Math.floor(s/60);s=s%60;return mm+':'+(s<10?'0':'')+s;}
+  function active(){ return T.deadline()!==null && !T.finished() && !document.body.classList.contains('pre-start'); }
+  function updateBadge(){ if(!badge) return; if(st.count>0){ badge.hidden=false; badge.textContent='Left page: '+st.count+'\u00d7'; } else badge.hidden=true; }
+
+  /* ---- audio must be unlocked by a tap, once ---- */
+  var unlocked=false;
+  function unlock(){
+    if(unlocked||!alarm) return; unlocked=true;
+    try{ alarm.muted=true; var p=alarm.play(); if(p&&p.then) p.then(function(){ alarm.pause(); alarm.currentTime=0; alarm.muted=false; }).catch(function(){ alarm.muted=false; unlocked=false; }); else { alarm.pause(); alarm.muted=false; } }catch(e){ unlocked=false; }
+  }
+  ['click','touchend'].forEach(function(ev){document.addEventListener(ev,unlock,true);});
+  function startAlarm(){ if(!CFG.alarmOnLeave||!alarm) return; try{ alarm.muted=false; alarm.currentTime=0; var p=alarm.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} }
+  function stopAlarm(){ if(!alarm) return; try{ alarm.pause(); alarm.currentTime=0; }catch(e){} }
+
+  /* ---- leaving / returning ---- */
+  var leftAt=null, unloading=false;
+  window.addEventListener('beforeunload',function(){ unloading=true; setTimeout(function(){unloading=false;},3000); });
+  function onHide(){
+    if(window.__mockResetting||unloading||!active()||leftAt!==null) return;
+    leftAt=Date.now(); st.seen=leftAt; save(); startAlarm();      /* the alarm starts the moment they leave */
+  }
+  function warn(ms){
+    if(!away) return;
+    awayMsg.textContent='Times left: '+st.count+'. Time away this time: '+mmss(ms)+'. Total time away: '+mmss(st.away)+'.';
+    away.hidden=false; try{ if(navigator.vibrate) navigator.vibrate([300,150,300]); }catch(e){}
+    if(awayOk) awayOk.focus();
+  }
+  function onShow(){
+    if(leftAt===null) return;
+    var d=Date.now()-leftAt; leftAt=null; st.seen=Date.now(); stopAlarm();
+    if(!active()||d<CFG.minAwayMs){ save(); return; }       /* ignore flickers (notification shade, etc.) */
+    st.count++; st.away+=d; save(); updateBadge();
+    warn(d);
+    if(CFG.maxLeaves>0 && st.count>=CFG.maxLeaves){
+      if(away) away.hidden=true;
+      T.say('You left the exam page '+st.count+' times \u2013 the exam is being submitted.',true);
+      var y=$('confirm-yes'); if(y) y.click();
+    }
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') onHide(); else onShow(); });
+  if(awayOk) awayOk.addEventListener('click',function(){ away.hidden=true; stopAlarm(); });
+
+  /* ---- heartbeat: also catches the page being closed/killed while the student was elsewhere ---- */
+  setInterval(function(){ if(active()&&document.visibilityState==='visible'){ st.seen=Date.now(); save(); } },2000);
+  if(active() && st.seen){
+    var gap=Date.now()-st.seen;
+    if(gap>5000){ st.count++; st.away+=gap; st.seen=Date.now(); save(); updateBadge(); warn(gap); }
+  }
+  updateBadge();
+
+  /* ---- show it on the result ---- */
+  function addResultLine(){
+    if(document.querySelector('.res-guard')) return;
+    var anchor=document.querySelector('.res-time')||document.getElementById('res-sub'); if(!anchor) return;
+    var p=document.createElement('p'); p.className='res-guard'+(st.count?' bad':'');
+    p.textContent=st.count?('Left the exam page '+st.count+' time'+(st.count>1?'s':'')+' \u2013 '+mmss(st.away)+' away in total.'):'Stayed on the exam page the whole time.';
+    anchor.parentNode.insertBefore(p,anchor.nextSibling);
+  }
+  new MutationObserver(function(){ if(document.body.classList.contains('exam-done')){ leftAt=null; stopAlarm(); if(away) away.hidden=true; setTimeout(addResultLine,120); } }).observe(document.body,{attributes:true,attributeFilter:['class']});
+  if(document.body.classList.contains('exam-done')) setTimeout(addResultLine,200);
+})();
+</script>
+<script>/*results*/
+(function(){
+  var C=window.MOCK_CONFIG||{}; if(!C.endpoint) return;           /* not configured: the mocks behave exactly as before */
+  var T=window.__mockTimer; if(!T) return;
+  var m=document.title.match(/Mock Exam (\d+)/), N=m?+m[1]:0, BASE='mockexam:upper:set'+N+':v1';
+  var store=null; try{ store=window.localStorage; store.setItem('__r','1'); store.removeItem('__r'); }catch(e){ store=null; }
+  function rd(k,d){ if(!store) return d; try{ var v=JSON.parse(store.getItem(k)); return v===null?d:v; }catch(e){ return d; } }
+  function wr(k,v){ if(store){ try{ store.setItem(k,JSON.stringify(v)); }catch(e){} } }
+  var $=function(s,r){return (r||document).querySelector(s);}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+
+  /* ---- start screen: the name is required, and students are told where the result goes ---- */
+  var nm=$('#st-nm'), sb=$('#start-btn');
+  if(nm&&sb){
+    var note=document.createElement('p'); note.className='fine send-note';
+    note.textContent='Your name, group number and result will be posted in the class Telegram group when you finish. Write your real name and the same group number every time.';
+    sb.parentNode.insertBefore(note,sb.nextSibling);
+
+  }
+
+  /* ---- one attempt = one id (it survives a refresh, a new attempt needs #reset) ---- */
+  function attemptId(){
+    var id=rd(BASE+':attempt',null);
+    if(!id){ id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():('a'+Date.now().toString(36)+Math.random().toString(36).slice(2,10)); wr(BASE+':attempt',id); }
+    return id;
+  }
+  document.addEventListener('mock:started',function(){ attemptId(); });
+
+  /* ---- build the message ---- */
+  function build(){
+    var units=$$('.unit'), per={grammar:{sc:0,max:0},vocab:{sc:0,max:0},reading:{sc:0,max:0}}, total=0;
+    var answers=units.map(function(u){
+      var panel=u.closest('.panel'), id=panel?panel.id:'', mk=+u.dataset.marks, ok=u.classList.contains('is-right');
+      if(per[id]){ per[id].max+=mk; if(ok) per[id].sc+=mk; } if(ok) total+=mk;
+      var k=u.dataset.kind, v='';
+      if(k==='fill') v=$$('input.blank',u).map(function(i){return i.value;}).join(' / ');
+      else if(k==='mc'){ var r=$$('input[type=radio]',u), i=-1; r.forEach(function(x,j){if(x.checked) i=j;}); v=i<0?'':('abcd'[i]+') '+(r[i].closest('.opt').textContent.trim().replace(/^[a-d]\s*/,'')).slice(0,40)); }
+      else if(k==='tiles'){ v=(u._placed||[]).map(function(i){return u._btns[i].textContent;}).join(' '); }
+      else { var s=$('select',u); v=s?s.value:''; }
+      return {v:v,ok:ok?1:0};
+    });
+    Object.keys(per).forEach(function(k){ per[k].sc=per[k].sc/10; per[k].max=per[k].max/10; });
+    var rt=($('.res-time')||{}).textContent||'', tm=rt.match(/(\d+:\d\d)/);
+    var g=rd(BASE+':guard',{count:0,away:0});
+    return { secret:C.secret||'', id:attemptId(), mock:N,
+      name:(($('input[data-f=nm]')||{}).value||'').trim(), group:(($('input[data-f=gr]')||{}).value||'').trim(),
+      score:total/10, sections:per, timeUsed:tm?tm[1]:'', auto:/ran out/.test(rt),
+      leaves:{count:g.count||0,away:Math.round((g.away||0)/1000)}, answers:answers, sent:Date.now() };
+  }
+
+  /* ---- sending (the server ignores an attempt it has already received) ---- */
+  function post(p){
+    var ctl=('AbortController' in window)?new AbortController():null, to=setTimeout(function(){ if(ctl) ctl.abort(); },20000);
+    function opts(extra){ var o={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)}; for(var k in extra) o[k]=extra[k]; return o; }
+    return fetch(C.endpoint,opts({redirect:'follow',signal:ctl?ctl.signal:undefined}))
+      .then(function(r){ clearTimeout(to); return r.json(); })
+      .catch(function(){ clearTimeout(to);
+        /* the answer could not be read (browser CORS rules) although the data may have arrived: send once more without reading the answer */
+        return fetch(C.endpoint,opts({mode:'no-cors'})).then(function(){ return {ok:true,unconfirmed:true}; }); });
+  }
+  var line=null;
+  function show(cls,text,retry){
+    if(!line){ var a=$('.res-guard')||$('.res-time')||$('#res-sub'); if(!a) return;
+      line=document.createElement('p'); line.id='res-send'; a.parentNode.insertBefore(line,a.nextSibling); }
+    line.className='res-send '+cls; line.textContent=text;
+    if(retry){ var b=document.createElement('button'); b.type='button'; b.textContent='Send again'; b.addEventListener('click',function(){ deliver(true); }); line.appendChild(b); }
+  }
+  var busy=false;
+  function deliver(manual){
+    if(busy) return; var id=attemptId(), sent=rd('mockexam:sentids',[]);
+    if(sent.indexOf(id)>-1){ show('','\u2713 Your result is in the class group.'); return; }
+    var p=(manual?null:rd('mockexam:outbox:'+id,null))||build();
+    if(!p.name||!p.group){ show('bad','Your name or group number is empty, so the result could not be posted. Tell your teacher.'); return; }
+    wr('mockexam:outbox:'+id,p); busy=true; show('pending','Sending your result to the class group\u2026');
+    post(p).then(function(r){
+      busy=false;
+      if(r&&r.ok){
+        sent.push(id); wr('mockexam:sentids',sent); if(store){ try{ store.removeItem('mockexam:outbox:'+id); }catch(e){} }
+        var extra=(r.attempt&&r.students)?(' Attempt #'+r.attempt+' \u00b7 your best '+(Math.round(r.best*10)/10).toFixed(1)+' \u00b7 place '+r.rank+' of '+r.students+'.'):'';
+        show('','\u2713 Your result was posted to the class group.'+extra);
+      } else show('bad','Could not post the result ('+((r&&r.error)||'server error')+').',true);
+    }).catch(function(){ busy=false; show('bad','No internet \u2013 the result is saved on this phone and will be sent when you are online.',true); });
+  }
+  window.addEventListener('online',function(){ if(document.body.classList.contains('exam-done')) deliver(false); });
+
+  function onDone(){ setTimeout(function(){ deliver(false); },900); }                 /* after the guard/time lines exist */
+  new MutationObserver(function(){ if(document.body.classList.contains('exam-done')) onDone(); }).observe(document.body,{attributes:true,attributeFilter:['class']});
+  if(document.body.classList.contains('exam-done')) onDone();
+})();
+</script>
+</body>
+</html>
