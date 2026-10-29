@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Second Conditional — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; margin:4px 0 10px 0; }
+  .rule-box .form-line{ font-weight:700; margin:6px 0 14px; }
+  .rule-box .note-line{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .g-item{ padding:12px 0; border-bottom:1px dashed var(--rule); font-size:15.5px; line-height:2; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13px; margin:0 2px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:7px 9px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:160px; width:140px; display:inline-block; margin:0 3px; text-align:center; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+
+  .g-item .q{ display:block; }
+  .gap{ display:inline-block; min-width:70px; padding:0 6px; margin:0 3px; text-align:center; border-bottom:2px solid var(--ink); font-weight:700; line-height:1.4; }
+  .gap.filled{ background:rgba(255,213,48,.35); border-radius:3px 3px 0 0; }
+  .gap.correct{ border-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .gap.incorrect{ border-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .opts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  button.opt{ background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:5px; padding:8px 14px; font-size:14.5px; font-weight:600; min-height:44px; line-height:1.2; }
+  button.opt:hover{ border-color:var(--ink-soft); }
+  button.opt.selected{ background:var(--yellow); border-color:var(--black); color:var(--black); }
+  button.opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
+  button.opt.incorrect{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+  @media (max-width:620px){ .opts button.opt{ flex:1 1 auto; } }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  /* ===== Explanation section ===== */
+  :root{
+    --will:#1E8F52; --will-bg:#E6F5EB;
+    --wont:#D1382F; --wont-bg:#FBEAE8;
+    --might:#1D6FD1; --might-bg:#E5F0FC;
+    --mnot:#8A3FC4; --mnot-bg:#F1E8FA;
+  }
+  .explain{ padding: clamp(20px,4vw,30px) clamp(18px,5vw,44px) 6px; border-bottom:1px solid var(--rule); }
+  .explain h3{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,20px); margin:30px 0 12px; position:relative; padding-bottom:8px; }
+  .explain h3::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .explain h3:first-of-type{ margin-top:0; }
+  .explain p{ margin:0 0 10px; font-size:15px; }
+  .explain .lead{ font-size:15.5px; }
+
+  mark{ background:none; padding:1px 7px; border-radius:4px; font-weight:700; white-space:nowrap; }
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.might{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.mnot{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.verb{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.subj{ background:#EDEDE8; color:var(--ink); box-shadow:inset 0 -2px 0 #B9B8AE; }
+  mark.clue{ background:rgba(255,213,48,.55); color:var(--ink); font-weight:600; padding:0 4px; box-shadow:none; }
+
+  /* certainty scale */
+  .scale{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin:6px 0 0; }
+  .scale .cell{ color:#fff; padding:12px 8px 11px; text-align:center; }
+  .scale .cell:first-child{ border-radius:8px 0 0 8px; }
+  .scale .cell:nth-child(4){ border-radius:0 8px 8px 0; }
+  .scale .cell b{ display:block; font-size:clamp(15px,3.6vw,19px); font-family:'Fraunces',serif; font-weight:600; }
+  .scale .cell span{ display:block; font-size:12px; opacity:.92; margin-top:2px; }
+  .scale .c1{ background:var(--wont); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--might); } .scale .c4{ background:var(--will); }
+  .scale-cap{ display:grid; grid-template-columns:1fr 2fr 1fr; gap:4px; margin-top:6px; font-size:12.5px; font-weight:600; text-align:center; color:var(--ink-soft); }
+  .scale-cap div{ border-top:3px solid var(--rule); padding-top:5px; }
+  .scale-cap .mid{ border-top-color:var(--yellow-deep); color:var(--ink); }
+
+  /* formula */
+  .formula{ display:flex; flex-wrap:wrap; align-items:stretch; gap:6px; margin:6px 0 14px; }
+  .formula .chip{ flex:1 1 120px; border-radius:6px; padding:9px 10px; text-align:center; font-size:14px; line-height:1.3; }
+  .formula .chip small{ display:block; font-size:11.5px; font-weight:500; opacity:.75; margin-top:2px; }
+  .formula .plus{ align-self:center; font-weight:800; color:var(--ink-soft); }
+  .chip.s{ background:#EDEDE8; font-weight:700; }
+  .chip.m{ background:var(--black); color:#fff; font-weight:700; }
+  .chip.m em{ font-style:normal; color:var(--yellow); }
+  .chip.v{ background:rgba(255,213,48,.45); font-weight:700; }
+  .chip.r{ background:var(--paper); border:1.5px solid var(--rule); font-weight:600; }
+
+  .tbl-wrap{ overflow-x:auto; margin:0 0 12px; }
+  table.forms{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:460px; }
+  table.forms th{ text-align:left; background:var(--black); color:#fff; font-weight:600; padding:8px 10px; font-size:13px; }
+  table.forms td{ padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.forms td:first-child{ font-weight:700; white-space:nowrap; }
+
+  .callout{ border-radius:0 6px 6px 0; padding:12px 16px; font-size:14.5px; margin:12px 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); }
+  .callout b.t{ display:block; margin-bottom:3px; }
+  .callout.bad{ border-left-color:var(--bad); }
+  .callout.bad .no{ color:var(--bad); font-weight:700; }
+  .callout .yes{ color:var(--good); font-weight:700; }
+  .callout ul{ margin:4px 0 0; padding-left:18px; }
+
+  /* meaning cards + keyword cards */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .kcard{ border-radius:8px; border:1.5px solid var(--rule); border-top-width:5px; padding:14px 15px 14px; background:#fff; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.wont{ border-top-color:var(--wont); }
+  .kcard.might{ border-top-color:var(--might); } .kcard.mnot{ border-top-color:var(--mnot); }
+  .kcard h4{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .kcard.will h4{ color:var(--will); } .kcard.wont h4{ color:var(--wont); }
+  .kcard.might h4{ color:var(--might); } .kcard.mnot h4{ color:var(--mnot); }
+  .kcard .mean{ font-size:13.5px; font-weight:600; color:var(--ink-soft); margin-bottom:9px; }
+  .kcard .lbl{ font-size:12px; font-weight:700; color:var(--ink-soft); margin:8px 0 5px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:5px; }
+  .chips span{ font-size:13px; padding:3px 9px; border-radius:99px; font-weight:600; }
+  .kcard.will .chips span{ background:var(--will-bg); color:#146A3B; }
+  .kcard.wont .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.might .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.mnot .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard .eg{ font-size:13.5px; font-style:italic; margin-top:10px; padding-top:9px; border-top:1px dashed var(--rule); line-height:1.7; }
+  .kcard .eg mark{ font-style:normal; }
+
+  /* decision steps */
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:s; }
+  .steps li{ counter-increment:s; position:relative; padding:10px 12px 10px 48px; margin-bottom:8px; background:var(--paper); border-radius:6px; font-size:14.5px; }
+  .steps li::before{ content:counter(s); position:absolute; left:12px; top:9px; width:26px; height:26px; border-radius:50%; background:var(--yellow); font-family:'Fraunces',serif; font-weight:700; text-align:center; line-height:26px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pair > div{ background:#fff; border-radius:8px; border:1.5px solid var(--rule); padding:11px 13px; font-size:14px; }
+  .pair b{ display:block; margin-bottom:3px; }
+  .explain-end{ height:22px; }
+
+  @media (max-width:620px){
+    .grid2, .pair{ grid-template-columns:1fr; }
+    .scale .cell span{ font-size:11px; }
+    .formula .plus{ display:none; }
+  }
+
+  /* ===== Past tenses additions ===== */
+  :root{ --ps:#1D6FD1; --ps-bg:#E5F0FC; --pc:#8A3FC4; --pc-bg:#F1E8FA; }
+  mark.ps{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  mark.pc{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  .kcard.ps{ border-top-color:var(--ps); } .kcard.pc{ border-top-color:var(--pc); }
+  .kcard.ps h4{ color:var(--ps); } .kcard.pc h4{ color:var(--pc); }
+  .kcard.ps .chips span{ background:var(--ps-bg); color:#134E96; }
+  .kcard.pc .chips span{ background:var(--pc-bg); color:#6A2D98; }
+  .kcard .think{ font-size:13px; font-weight:700; margin-top:8px; }
+  .kcard.ps .think{ color:var(--ps); } .kcard.pc .think{ color:var(--pc); }
+  .kcard ul{ margin:6px 0 0; padding-left:18px; font-size:14px; }
+  .kcard li{ margin-bottom:4px; }
+  table.forms td:first-child{ white-space:normal; min-width:84px; }
+  table.forms th.ps{ background:var(--ps); } table.forms th.pc{ background:var(--pc); } table.forms th.blank{ background:var(--black); }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; }
+  table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+
+  /* timeline */
+  .timeline{ margin:8px 0 14px; }
+  .tl-track{ position:relative; height:46px; background:var(--pc-bg); border:2px solid var(--pc); border-radius:8px; display:flex; align-items:center; padding:0 14px; color:var(--pc); font-weight:700; font-size:14px; }
+  .tl-track .arrow{ position:absolute; right:-2px; top:50%; width:0; height:0; border-left:12px solid var(--pc); border-top:8px solid transparent; border-bottom:8px solid transparent; transform:translateY(-50%) translateX(100%); }
+  .tl-event{ position:absolute; left:62%; top:-14px; bottom:-14px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .tl-event i{ display:block; width:4px; height:100%; background:var(--ps); border-radius:2px; }
+  .tl-note{ display:flex; justify-content:space-between; font-size:13px; margin-top:20px; font-weight:600; }
+  .tl-note span:first-child{ color:var(--pc); } .tl-note span:last-child{ color:var(--ps); width:38%; text-align:center; }
+  .tl-flag{ position:absolute; left:62%; transform:translateX(-50%); top:-34px; background:var(--ps); color:#fff; font-size:12.5px; font-weight:700; padding:3px 9px; border-radius:99px; white-space:nowrap; }
+
+  /* inline answer fields */
+  .answer-input{ width:132px; max-width:150px; }
+  .g-item .q{ line-height:2.3; }
+  .g-feedback{ margin-top:2px; }
+  .ex-hint{ font-size:14px; color:var(--ink-soft); margin:0 0 10px; }
+  @media (max-width:620px){
+    .answer-input{ width:118px; }
+    .tl-note span:last-child{ width:45%; }
+  }
+
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --wont:#D1382F; --wont-bg:#FBEAE8; --might:#1D6FD1; --mnot:#8A3FC4; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  table.forms th.will{ background:var(--will); }
+  .scale .cell{ color:#fff; }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE · IF + PAST SIMPLE + WOULD</div>
+    <h1>Second Conditional</h1>
+    <p class="sub">Read the guide, then type the correct form of the verbs in brackets. Use <b>if + past simple</b> and <b>would / wouldn’t</b> (or <b>could / might</b>). Check your answers exercise by exercise. Your progress is saved on this device.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <div class="explain">
+
+    <h3>1. The main idea</h3>
+    <p class="lead">We use the <b>second conditional</b> for <b>unlikely or imaginary</b> situations and their <b>results</b>.</p>
+    <div class="formula">
+      <div class="chip" style="background:var(--ps-bg);color:var(--ps);font-weight:700"><b>If</b> + past simple<small>the imaginary condition</small></div><span class="plus">,</span>
+      <div class="chip" style="background:var(--pc-bg);color:var(--pc);font-weight:700">would / wouldn’t + verb<small>the result (no <b>to</b>)</small></div>
+    </div>
+    <div class="callout" style="border-left-color:var(--pc)">
+      <mark class="ps">If we found a cure for malaria</mark>, millions of lives <mark class="pc">would be</mark> saved.<br>
+      <span style="color:var(--ink-soft);font-size:13.5px">We don’t have a cure now. We imagine it.</span>
+    </div>
+
+    <h3>2. Real or imaginary?</h3>
+    <div class="grid2">
+      <div class="kcard will">
+        <h4>First conditional</h4><div class="mean">Real, possible</div>
+        <div class="eg" style="border:none;padding:0;margin:0">If it <mark class="ps">rains</mark>, we <mark class="will">will stay</mark> at home.</div>
+        <div class="think" style="color:var(--will)">If + present → will</div>
+      </div>
+      <div class="kcard pc">
+        <h4>Second conditional</h4><div class="mean">Unlikely, imaginary</div>
+        <div class="eg" style="border:none;padding:0;margin:0">If I <mark class="ps">won</mark> the lottery, I <mark class="pc">would buy</mark> a house.</div>
+        <div class="think">If + past → would</div>
+      </div>
+    </div>
+
+    <h3>3. Form</h3>
+    <div class="tbl-wrap">
+    <table class="forms">
+      <tr><th class="blank"></th><th class="ps">If + past simple</th><th class="pc">would / wouldn’t + verb</th></tr>
+      <tr><td>+ Positive</td><td><span class="eg">If we <mark class="ps">used</mark> solar power,</span></td><td><span class="eg">we <mark class="pc">would save</mark> money.</span></td></tr>
+      <tr><td>– Negative</td><td><span class="eg">If people <mark class="ps">didn’t drive</mark>,</span></td><td><span class="eg">the air <mark class="pc">would be</mark> cleaner.<br>If my country <mark class="ps">was</mark> richer, I <mark class="wont">wouldn’t want</mark> to live abroad.</span></td></tr>
+      <tr><td>? Question</td><td><span class="eg">If we <mark class="ps">used</mark> solar power,</span></td><td><span class="eg"><mark class="pc">would</mark> we <mark class="pc">save</mark> money?<br>What <mark class="pc">would</mark> you <mark class="pc">do</mark> if you <mark class="ps">won</mark> a prize?</span></td></tr>
+    </table>
+    </div>
+    <div class="callout bad">
+      <b class="t">Remember</b>
+      <ul>
+        <li><b>would / wouldn’t</b> is the same for all subjects: <i>I would, he would, they would</i>. Short form: <i>I’d, we’d</i>.</li>
+        <li>After <b>if</b> use the <b>past simple</b>, not <i>would</i>: <span class="yes">If I had money, …</span> &nbsp;<span class="no">If I would have money, …</span></li>
+        <li>The past tense here is <b>not</b> about the past. It shows the situation is <b>imaginary</b>.</li>
+        <li>After <i>would</i> use the <b>base verb</b>: <span class="yes">I would go</span> &nbsp;<span class="no">I would to go</span></li>
+      </ul>
+    </div>
+
+    <h3>4. would, could or might?</h3>
+    <div class="grid2">
+      <div class="kcard pc"><h4>would</h4><div class="mean">The usual result</div>
+        <div class="eg" style="border:none;padding:0;margin:0">If I won, I <mark class="pc">would buy</mark> a house.</div></div>
+      <div class="kcard ps"><h4>could / might</h4><div class="mean">could = able, possible &nbsp;|&nbsp; might = maybe</div>
+        <div class="eg" style="border:none;padding:0;margin:0">If I had a car, I <mark class="ps">could drive</mark> to work.<br>If I won, I <mark class="ps">might buy</mark> an island.</div></div>
+    </div>
+    <p style="margin-top:8px;color:var(--ink-soft);font-size:14px">In the exercises, <b>would, could or might</b> (and their negatives) are all accepted.</p>
+
+    <h3>5. The verb <i>be</i>: was or were?</h3>
+    <div class="pair">
+      <div><b>I / he / she / it</b>
+        <mark class="ps">was</mark> or <mark class="ps">were</mark> are both correct:<br>
+        <i>If he <mark class="ps">was / were</mark> taller, he <mark class="pc">would play</mark> football.</i></div>
+      <div><b>If I were you, …</b>
+        For advice we use <mark class="ps">were</mark>:<br>
+        <i>If I <mark class="ps">were</mark> you, I <mark class="pc">would accept</mark> the offer.</i></div>
+    </div>
+    <p style="margin-top:8px;color:var(--ink-soft);font-size:14px">You / we / they → always <b>were</b>: <i>If we weren’t so busy, …</i></p>
+
+    <h3>6. Which clause comes first?</h3>
+    <div class="pair">
+      <div><b>If clause first → comma ( , )</b>
+        <mark class="ps">If she created more jobs</mark><b>,</b> <mark class="pc">she would be</mark> popular.</div>
+      <div><b>If clause second → no comma</b>
+        <mark class="pc">She would be</mark> popular <mark class="ps">if she created more jobs</mark>.</div>
+    </div>
+
+    <h3>7. When do we use it?</h3>
+    <div class="grid2">
+      <div class="kcard ps">
+        <h4>Imaginary now</h4><div class="mean">A situation that isn’t true</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>famous</span><span>a pet lion</span><span>win the lottery</span><span>wings</span><span>mayor</span></div>
+        <div class="eg">If I <mark class="ps">were</mark> famous, I <mark class="pc">would travel</mark> everywhere.</div>
+      </div>
+      <div class="kcard pc">
+        <h4>Advice / unlikely</h4><div class="mean">What I would do</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>If I were you</span><span>What would you do …?</span><span>Would you …?</span></div>
+        <div class="eg">What <mark class="pc">would you do</mark> if you <mark class="ps">saw</mark> a ghost?</div>
+      </div>
+    </div>
+
+    <h3>8. Quick check</h3>
+    <ol class="steps">
+      <li>Is the situation <b>imaginary or unlikely</b>? → second conditional.</li>
+      <li><b>If</b> clause: <mark class="ps">past simple</mark> (for <i>be</i>: <i>were / was</i>; negative: <i>didn’t</i>).</li>
+      <li>Result: <mark class="pc">would</mark> / <mark class="wont">wouldn’t</mark> (or <i>could, might</i>) + base verb. Question: <i>Would you …?</i></li>
+    </ol>
+    <div class="explain-end"></div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% correct</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Restart</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Second Conditional — for individual practice. Your answers are saved on this device until you press Restart.<br><span id="saveNote" style="opacity:.8;">If the buttons don’t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Exercise 1", "items": [{"q": "If I _______________ (be) famous, I _______________ (travel) to every country.", "a": [["were", "was"], ["would travel"]], "mod": [0, 1]}, {"q": "She _______________ (buy) a new phone if she _______________ (have) enough money.", "a": [["would buy"], ["had"]], "mod": [1, 0]}, {"q": "If we _______________ (know) the truth, we _______________ (tell) you.", "a": [["knew"], ["would tell"]], "mod": [0, 1]}, {"q": "He _______________ (play) football if he _______________ (be) taller.", "a": [["would play"], ["were", "was"]], "mod": [1, 0]}, {"q": "If they _______________ (live) near the sea, they _______________ (go) swimming every day.", "a": [["lived"], ["would go"]], "mod": [0, 1]}, {"q": "I _______________ (help) you if I _______________ (have) more free time.", "a": [["would help"], ["had"]], "mod": [1, 0]}, {"q": "If you _______________ (study) more, you _______________ (get) better grades.", "a": [["studied"], ["would get"]], "mod": [0, 1]}, {"q": "She _______________ (visit) us if she _______________ (be) free this weekend.", "a": [["would visit"], ["were", "was"]], "mod": [1, 0]}, {"q": "If I _______________ (have) a pet lion, I _______________ (take) it for a walk.", "a": [["had"], ["would take"]], "mod": [0, 1]}, {"q": "We _______________ (buy) a new car if we _______________ (win) the lottery.", "a": [["would buy"], ["won"]], "mod": [1, 0]}]}, {"title": "Exercise 2", "items": [{"q": "If she _______________ (be) alive, she _______________ (give) me some good advice.", "a": [["were", "was"], ["would give"]], "mod": [0, 1]}, {"q": "If we _______________ (own) a car, we _______________ (drive) to the countryside.", "a": [["owned"], ["would drive"]], "mod": [0, 1]}, {"q": "If he _______________ (lose) his keys, he _______________ (call) a locksmith.", "a": [["lost"], ["would call"]], "mod": [0, 1]}, {"q": "If they _______________ (follow) the instructions, they _______________ (complete) the project on time.", "a": [["followed"], ["would complete"]], "mod": [0, 1]}, {"q": "If I _______________ (have) a bicycle, I _______________ (ride) to work.", "a": [["had"], ["would ride"]], "mod": [0, 1]}, {"q": "If you _______________ (leave) earlier, you _______________ (catch) the bus.", "a": [["left"], ["would catch"]], "mod": [0, 1]}, {"q": "If she _______________ (pass) the exam, she _______________ (feel) very proud.", "a": [["passed"], ["would feel"]], "mod": [0, 1]}, {"q": "If we _______________ (live) in a bigger house, we _______________ (invite) more friends.", "a": [["lived"], ["would invite"]], "mod": [0, 1]}, {"q": "If he _______________ (get) a new job, he _______________ (move) to a different city.", "a": [["got"], ["would move"]], "mod": [0, 1]}, {"q": "If I _______________ (be) you, I _______________ (accept) the offer.", "a": [["were"], ["would accept"]], "mod": [0, 1]}]}, {"title": "Exercise 3", "items": [{"q": "If I _______________ (know) English well, I _______________ (not work) for such a low salary.", "a": [["knew"], ["wouldn’t work"]], "mod": [0, 1]}, {"q": "Sanjar _______________ (not have to run) after the bus if he _______________ (get up) a little earlier.", "a": [["wouldn’t have to run"], ["got up"]], "mod": [1, 0]}, {"q": "If he _______________ (be) confident enough, Ali _______________ (not stop) trying to become a lawyer.", "a": [["were", "was"], ["wouldn’t stop"]], "mod": [0, 1]}, {"q": "If the teacher _______________ (explain) the lesson clearly, the students _______________ (not struggle) during the exam.", "a": [["explained"], ["wouldn’t struggle"]], "mod": [0, 1]}, {"q": "Mike _______________ (be) less stressed if he _______________ (do) more exercise regularly.", "a": [["would be"], ["did"]], "mod": [1, 0]}, {"q": "If the driver _______________ (drive) faster, we _______________ (not miss) the train.", "a": [["drove"], ["wouldn’t miss"]], "mod": [0, 1]}, {"q": "If Laura _______________ (read) the questions carefully, she _______________ (not make) mistakes in the test.", "a": [["read"], ["wouldn’t make"]], "mod": [0, 1]}, {"q": "Olivia _______________ (deliver) her presentation confidently if she _______________ (have) more time to prepare.", "a": [["would deliver"], ["had"]], "mod": [1, 0]}, {"q": "If we _______________ (have) enough savings, we _______________ (not need) to borrow money for a holiday.", "a": [["had"], ["wouldn’t need"]], "mod": [0, 1]}, {"q": "Bekzod _______________ (hurt) his leg badly if the coach _______________ (not arrive) on time to stop the game.", "a": [["would hurt"], ["didn’t arrive"]], "mod": [1, 0]}]}, {"title": "Exercise 4", "items": [{"q": "If I _______________ (speak) Italian, I _______________ (visit) Italy more often.", "a": [["spoke"], ["would visit"]], "mod": [0, 1]}, {"q": "She _______________ (quit) her job if she _______________ (receive) a better offer.", "a": [["would quit"], ["received"]], "mod": [1, 0]}, {"q": "If they _______________ (not live) so far away, we _______________ (see) each other more frequently.", "a": [["didn’t live"], ["would see"]], "mod": [0, 1]}, {"q": "He _______________ (feel) healthier if he _______________ (eat) more vegetables.", "a": [["would feel"], ["ate"]], "mod": [1, 0]}, {"q": "If you _______________ (ask) her politely, she _______________ (help) you with your homework.", "a": [["asked"], ["would help"]], "mod": [0, 1]}, {"q": "They _______________ (not argue) so much if they _______________ (understand) each other better.", "a": [["wouldn’t argue"], ["understood"]], "mod": [1, 0]}, {"q": "If we _______________ (have) a bigger garden, we _______________ (grow) our own vegetables.", "a": [["had"], ["would grow"]], "mod": [0, 1]}, {"q": "If I _______________ (work) from home, I _______________ (save) a lot of time.", "a": [["worked"], ["would save"]], "mod": [0, 1]}, {"q": "If it _______________ (not rain) so often, we _______________ (go) hiking more frequently.", "a": [["didn’t rain"], ["would go"]], "mod": [0, 1]}, {"q": "She _______________ (take) the job if the company _______________ (offer) her a higher salary.", "a": [["would take"], ["offered"]], "mod": [1, 0]}]}, {"title": "Exercise 5", "items": [{"q": "If he _______________ (come) to the meeting today, he _______________ (know) the topic of discussion.", "a": [["came"], ["would know"]], "mod": [0, 1]}, {"q": "_______________ (you / buy) a sports car if you _______________ (have) money now?", "a": [["Would you buy"], ["had"]], "mod": [1, 0]}, {"q": "If I _______________ (be) you, I _______________ (listen) to my father’s advice.", "a": [["were"], ["would listen"]], "mod": [0, 1]}, {"q": "If he _______________ (be) free, he _______________ (start) the work at once.", "a": [["were", "was"], ["would start"]], "mod": [0, 1]}, {"q": "If you _______________ (move) to another country, _______________ (you / miss) your family?", "a": [["moved"], ["would you miss"]], "mod": [0, 1]}, {"q": "If he _______________ (know) how to swim, he _______________ (go) to the beach more often.", "a": [["knew"], ["would go"]], "mod": [0, 1]}, {"q": "They _______________ (open) a café if they _______________ (inherit) some money.", "a": [["would open"], ["inherited"]], "mod": [1, 0]}, {"q": "If we _______________ (not be) so busy, we _______________ (spend) more time together.", "a": [["weren’t"], ["would spend"]], "mod": [0, 1]}, {"q": "She _______________ (become) more confident if she _______________ (practise) public speaking regularly.", "a": [["would become"], ["practised"]], "mod": [1, 0]}, {"q": "If I _______________ (find) a wallet on the street, I _______________ (take) it to the police.", "a": [["found"], ["would take"]], "mod": [0, 1]}]}, {"title": "Exercise 6", "items": [{"q": "He _______________ (not get) lost if he _______________ (use) a map.", "a": [["wouldn’t get"], ["used"]], "mod": [1, 0]}, {"q": "If we _______________ (live) closer to the mountains, we _______________ (ski) every winter.", "a": [["lived"], ["would ski"]], "mod": [0, 1]}, {"q": "You _______________ (enjoy) your work more if you _______________ (choose) a job you love.", "a": [["would enjoy"], ["chose"]], "mod": [1, 0]}, {"q": "If they _______________ (have) the right qualifications, they _______________ (apply) for the international job.", "a": [["had"], ["would apply"]], "mod": [0, 1]}, {"q": "If the lift _______________ (work), we _______________ (not use) the stairs.", "a": [["worked"], ["wouldn’t use"]], "mod": [0, 1]}, {"q": "If I _______________ (not have) so much homework, I _______________ (learn) to cook.", "a": [["didn’t have"], ["would learn"]], "mod": [0, 1]}, {"q": "She _______________ (sound) more confident if she _______________ (prepare) better for the presentation.", "a": [["would sound"], ["prepared"]], "mod": [1, 0]}, {"q": "If they _______________ (hear) about the sale, they _______________ (spend) more money.", "a": [["heard"], ["would spend"]], "mod": [0, 1]}, {"q": "He _______________ (take) more trips if he _______________ (not be) afraid of flying.", "a": [["would take"], ["weren’t", "wasn’t"]], "mod": [1, 0]}, {"q": "If we _______________ (have) a boat, we _______________ (sail) every weekend.", "a": [["had"], ["would sail"]], "mod": [0, 1]}]}, {"title": "Exercise 7", "items": [{"q": "If I _______________ (earn) more money, I _______________ (rent) a bigger flat.", "a": [["earned"], ["would rent"]], "mod": [0, 1]}, {"q": "If our boss _______________ (give) us more holidays, we _______________ (be) more relaxed.", "a": [["gave"], ["would be"]], "mod": [0, 1]}, {"q": "If we _______________ (have) a cat, we _______________ (not have) mice in the house.", "a": [["had"], ["wouldn’t have"]], "mod": [0, 1]}, {"q": "If I _______________ (be) the mayor, I _______________ (build) more parks.", "a": [["were"], ["would build"]], "mod": [0, 1]}, {"q": "If it _______________ (be) warmer today, we _______________ (have) lunch outside.", "a": [["were", "was"], ["would have"]], "mod": [0, 1]}, {"q": "If my phone _______________ (work) properly, I _______________ (send) you the photos.", "a": [["worked"], ["would send"]], "mod": [0, 1]}, {"q": "If the film _______________ (be) shorter, I _______________ (not fall) asleep.", "a": [["were", "was"], ["wouldn’t fall"]], "mod": [0, 1]}, {"q": "If Peter _______________ (train) every day, he _______________ (run) faster.", "a": [["trained"], ["would run"]], "mod": [0, 1]}, {"q": "If the shop _______________ (sell) fresh bread, I _______________ (shop) there every morning.", "a": [["sold"], ["would shop"]], "mod": [0, 1]}, {"q": "What _______________ (you / do) if you _______________ (see) a ghost?", "a": [["would you do"], ["saw"]], "mod": [1, 0]}]}, {"title": "Exercise 8", "items": [{"q": "_______________ (you / live) in the countryside if you _______________ (have) the choice?", "a": [["Would you live"], ["had"]], "mod": [1, 0]}, {"q": "If you _______________ (meet) a famous singer, what _______________ (you / say)?", "a": [["met"], ["would you say"]], "mod": [0, 1]}, {"q": "Where _______________ (she / go) if she _______________ (have) a month off?", "a": [["would she go"], ["had"]], "mod": [1, 0]}, {"q": "If your friends _______________ (forget) your birthday, _______________ (you / be) upset?", "a": [["forgot"], ["would you be"]], "mod": [0, 1]}, {"q": "If the hotel _______________ (be) more expensive, _______________ (they / stay) there?", "a": [["were", "was"], ["would they stay"]], "mod": [0, 1]}, {"q": "What _______________ (you / buy) if someone _______________ (give) you £100?", "a": [["would you buy"], ["gave"]], "mod": [1, 0]}, {"q": "How _______________ (he / get) to work if his car _______________ (break down)?", "a": [["would he get"], ["broke down"]], "mod": [1, 0]}, {"q": "_______________ (your parents / be) angry if you _______________ (stay out) all night?", "a": [["Would your parents be"], ["stayed out"]], "mod": [1, 0]}, {"q": "If you _______________ (live) on a desert island, what _______________ (you / eat)?", "a": [["lived"], ["would you eat"]], "mod": [0, 1]}, {"q": "If you _______________ (be) a teacher, which subject _______________ (you / teach)?", "a": [["were"], ["would you teach"]], "mod": [0, 1]}]}, {"title": "Exercise 9", "items": [{"q": "If I _______________ (not be) so tired, I _______________ (join) you for the walk.", "a": [["weren’t"], ["would join"]], "mod": [0, 1]}, {"q": "If he _______________ (not snore), I _______________ (sleep) better.", "a": [["didn’t snore"], ["would sleep"]], "mod": [0, 1]}, {"q": "They _______________ (not be) late for school if they _______________ (take) an earlier bus.", "a": [["wouldn’t be"], ["took"]], "mod": [1, 0]}, {"q": "If you _______________ (not use) your phone so much, you _______________ (have) more free time.", "a": [["didn’t use"], ["would have"]], "mod": [0, 1]}, {"q": "The streets _______________ (be) cleaner if people _______________ (not drop) litter.", "a": [["would be"], ["didn’t drop"]], "mod": [1, 0]}, {"q": "If the city _______________ (plant) more trees, the summers _______________ (feel) cooler.", "a": [["planted"], ["would feel"]], "mod": [0, 1]}, {"q": "If I _______________ (not love) my job, I _______________ (look for) another one.", "a": [["didn’t love"], ["would look for"]], "mod": [0, 1]}, {"q": "If you _______________ (tell) Anna a secret, she _______________ (not repeat) it.", "a": [["told"], ["wouldn’t repeat"]], "mod": [0, 1]}, {"q": "If there _______________ (be) no internet, people _______________ (send) more letters.", "a": [["were", "was"], ["would send"]], "mod": [0, 1]}, {"q": "If the bus _______________ (run) every ten minutes, nobody _______________ (complain).", "a": [["ran"], ["would complain"]], "mod": [0, 1]}]}, {"title": "Exercise 10", "items": [{"q": "If we _______________ (not have) school tomorrow, we _______________ (stay) up late.", "a": [["didn’t have"], ["would stay"]], "mod": [0, 1]}, {"q": "If my sister _______________ (be) here, she _______________ (cook) us a delicious dinner.", "a": [["were", "was"], ["would cook"]], "mod": [0, 1]}, {"q": "If the weather _______________ (be) better, the festival _______________ (attract) more visitors.", "a": [["were", "was"], ["would attract"]], "mod": [0, 1]}, {"q": "If you _______________ (lend) me your umbrella, I _______________ (not get) wet.", "a": [["lent"], ["wouldn’t get"]], "mod": [0, 1]}, {"q": "If I _______________ (have) wings, I _______________ (fly) to school.", "a": [["had"], ["would fly"]], "mod": [0, 1]}, {"q": "If the kids _______________ (brush) their teeth after meals, they _______________ (not get) cavities.", "a": [["brushed"], ["wouldn’t get"]], "mod": [0, 1]}, {"q": "If I _______________ (be) a bird, I _______________ (sing) all day.", "a": [["were", "was"], ["would sing"]], "mod": [0, 1]}, {"q": "If we _______________ (save) water, we _______________ (pay) smaller bills.", "a": [["saved"], ["would pay"]], "mod": [0, 1]}, {"q": "If they _______________ (clean) the beach, more tourists _______________ (come).", "a": [["cleaned"], ["would come"]], "mod": [0, 1]}, {"q": "If I _______________ (sit) next to a famous actor on a plane, I _______________ (ask) for an autograph.", "a": [["sat"], ["would ask"]], "mod": [0, 1]}]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+  var KEY = 'second-conditional-progress-v1';
+
+  var state = { a: {}, c: {} };   // a: answers {"t-i-g": text}, c: checked items {"t-i": 1}
+  var storageOK = true;
+  function load(){
+    try { var raw = window.localStorage.getItem(KEY); if (raw) { var s = JSON.parse(raw); if (s && s.a && s.c) state = s; } }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){ state = { a: {}, c: {} }; try { window.localStorage.removeItem(KEY); } catch (e) {} }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress (private mode?). Your answers will be lost if you close or reload the page.';
+  }
+
+  function norm(s){
+    s = (s || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim();
+    s = s.replace(/\bwill not\b/g, "won't").replace(/\bwould not\b/g, "wouldn't").replace(/\bdo not\b/g, "don't")
+         .replace(/\bdoes not\b/g, "doesn't").replace(/\bdid not\b/g, "didn't").replace(/\bwere not\b/g, "weren't")
+         .replace(/\bwas not\b/g, "wasn't").replace(/\bcould not\b/g, "couldn't").replace(/\bshould not\b/g, "shouldn't").replace(/\bmust not\b/g, "mustn't")
+         .replace(/\bcan not\b/g, "can't").replace(/\bcannot\b/g, "can't").replace(/\bmightn't\b/g, "might not");
+    s = s.replace(/'ll\b/g, " will").replace(/'d\b/g, " would").replace(/\s+/g, ' ').trim();
+    return s;
+  }
+  var MODALS = {pos:['would','could','might'],neg:["wouldn't","couldn't",'might not',"mightn't"]};
+  function gapOK(t, i, g){
+    var v = norm(state.a[t + '-' + i + '-' + g]);
+    if (!v) return false;
+    var it = TASKS[t].items[i];
+    if (it.mod && it.mod[g]) {
+      var base = norm(it.a[g][0]);
+      var m = base.match(/^(will|won't|would|wouldn't|might not|might)\s+(.*)$/);
+      if (m) {
+        var neg = /^(won't|wouldn't|might not)$/.test(m[1]);
+        var set = neg ? MODALS.neg : MODALS.pos;
+        for (var k = 0; k < set.length; k++) { if (v === set[k] + ' ' + m[2]) return true; }
+        return false;
+      }
+    }
+    return it.a[g].some(function(x){ return norm(x) === v; });
+  }
+  function displayAns(it){
+    var anyMod = false;
+    var s = it.a.map(function(alts, g){ if (it.mod && it.mod[g]) anyMod = true; return alts.join(' / '); }).join(' … ');
+    return anyMod ? s + '</strong> (other modals are possible too)<strong>' : s;
+  }
+
+  /* ---------- build ---------- */
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    var count = task.items.length;
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>' + task.title + '</h2><span class="block-count">' + count + ' questions</span>';
+    section.appendChild(head);
+    var hint = document.createElement('p');
+    hint.className = 'ex-hint';
+    hint.innerHTML = 'Complete the sentences. Use <b>if + past simple</b>, then <b>would / wouldn’t</b> (or <b>could / might</b>) + verb. Any logical modal is accepted.';
+    section.appendChild(hint);
+
+    task.items.forEach(function(it, iIdx){
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+      wrap.id = 'item-' + tIdx + '-' + iIdx;
+      var q = document.createElement('span');
+      q.className = 'q';
+      var num = document.createElement('span');
+      num.className = 'g-num'; num.textContent = (iIdx + 1);
+      q.appendChild(num);
+      var parts = it.q.split(/_{3,}/);
+      parts.forEach(function(part, pIdx){
+        // split off a following "(verb)" hint so it can be styled
+        var m = (pIdx > 0) ? part.match(/^(\s*)(\([^)]*\))(.*)$/s) : null;
+        if (m) {
+          var h = document.createElement('span'); h.className = 'g-hint'; h.textContent = m[2]; q.appendChild(h);
+          q.appendChild(document.createTextNode(m[3]));
+        } else {
+          q.appendChild(document.createTextNode(part));
+        }
+        if (pIdx < parts.length - 1) {
+          var inp = document.createElement('input');
+          inp.type = 'text'; inp.className = 'answer-input';
+          inp.setAttribute('data-t', tIdx); inp.setAttribute('data-i', iIdx); inp.setAttribute('data-g', pIdx);
+          inp.setAttribute('autocomplete', 'off'); inp.setAttribute('autocapitalize', 'none');
+          inp.setAttribute('autocorrect', 'off'); inp.setAttribute('spellcheck', 'false');
+          inp.setAttribute('aria-label', 'Answer ' + (iIdx + 1) + (parts.length > 2 ? ', gap ' + (pIdx + 1) : ''));
+          q.appendChild(inp);
+        }
+      });
+      wrap.appendChild(q);
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback'; fb.id = 'fb-' + tIdx + '-' + iIdx;
+      wrap.appendChild(fb);
+      section.appendChild(wrap);
+    });
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check ' + task.title + '</button>' +
+                         '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+    container.appendChild(section);
+  });
+
+  /* ---------- helpers ---------- */
+  function inputs(t, i){ return document.querySelectorAll('#item-' + t + '-' + i + ' .answer-input'); }
+
+  function paintInputs(t, i){
+    inputs(t, i).forEach(function(inp){
+      var g = inp.getAttribute('data-g');
+      var v = state.a[t + '-' + i + '-' + g];
+      if (v !== undefined && inp.value !== v) inp.value = v;
+      if (v === undefined) inp.value = '';
+    });
+  }
+  function clearMarks(t, i){
+    inputs(t, i).forEach(function(inp){ inp.classList.remove('correct', 'incorrect'); });
+    var fb = document.getElementById('fb-' + t + '-' + i);
+    fb.textContent = ''; fb.className = 'g-feedback';
+  }
+  function markItem(t, i){
+    var it = TASKS[t].items[i];
+    clearMarks(t, i);
+    var any = false, allOK = true;
+    inputs(t, i).forEach(function(inp){
+      var g = parseInt(inp.getAttribute('data-g'), 10);
+      var v = state.a[t + '-' + i + '-' + g];
+      if (v && v.trim()) any = true;
+      var ok = gapOK(t, i, g);
+      if (!ok) allOK = false;
+      inp.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    var fb = document.getElementById('fb-' + t + '-' + i);
+    if (allOK) { fb.textContent = 'Correct.'; fb.className = 'g-feedback correct'; }
+    else { fb.innerHTML = 'Not quite — correct answer: <strong>' + displayAns(it) + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    return true;
+  }
+  function checkTask(t){
+    TASKS[t].items.forEach(function(it, i){
+      var anyText = false;
+      it.a.forEach(function(_, g){ if ((state.a[t + '-' + i + '-' + g] || '').trim()) anyText = true; });
+      if (anyText) { markItem(t, i); state.c[t + '-' + i] = 1; }
+    });
+    save();
+  }
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(task, t){ task.items.forEach(function(it, i){ var ok = true; it.a.forEach(function(_, g){ if (!gapOK(t, i, g)) ok = false; }); if (ok) total++; }); });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% correct';
+  }
+  function repaintAll(){
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(_, i){
+        paintInputs(t, i);
+        if (state.c[t + '-' + i]) markItem(t, i); else clearMarks(t, i);
+      });
+    });
+    updateScore();
+  }
+
+  /* ---------- events ---------- */
+  container.addEventListener('input', function(e){
+    var inp = e.target.closest('.answer-input');
+    if (!inp) return;
+    var t = parseInt(inp.getAttribute('data-t'), 10), i = parseInt(inp.getAttribute('data-i'), 10), g = parseInt(inp.getAttribute('data-g'), 10);
+    state.a[t + '-' + i + '-' + g] = inp.value;
+    delete state.c[t + '-' + i];
+    clearMarks(t, i);
+    save();
+    updateScore();
+  });
+  container.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' || !e.target.classList.contains('answer-input')) return;
+    e.preventDefault();
+    var all = Array.prototype.slice.call(container.querySelectorAll('.answer-input'));
+    var n = all[all.indexOf(e.target) + 1];
+    if (n) n.focus(); else e.target.blur();
+  });
+  container.addEventListener('click', function(e){
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) { checkTask(parseInt(checkBtn.getAttribute('data-check'), 10)); updateScore(); return; }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var t = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      TASKS[t].items.forEach(function(it, i){
+        it.a.forEach(function(_, g){ delete state.a[t + '-' + i + '-' + g]; });
+        delete state.c[t + '-' + i];
+        paintInputs(t, i); clearMarks(t, i);
+      });
+      save(); updateScore();
+    }
+  });
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, t){ checkTask(t); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  var restartBtn = document.getElementById('resetAllBtn'), restartTimer = null;
+  restartBtn.addEventListener('click', function(){
+    if (!restartBtn.getAttribute('data-armed')) {
+      restartBtn.setAttribute('data-armed', '1');
+      restartBtn.textContent = 'Tap again to erase everything';
+      restartTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm(); wipe(); repaintAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  function disarm(){ clearTimeout(restartTimer); restartBtn.removeAttribute('data-armed'); restartBtn.textContent = 'Restart'; }
+
+  load();
+  if (!storageOK) showStorageNote();
+  repaintAll();
+})();
+
+</script>
+
+</body>
+</html>
