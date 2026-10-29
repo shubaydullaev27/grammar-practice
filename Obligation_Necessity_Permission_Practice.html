@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Obligation, Necessity &amp; Permission — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; margin:4px 0 10px 0; }
+  .rule-box .form-line{ font-weight:700; margin:6px 0 14px; }
+  .rule-box .note-line{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .g-item{ padding:12px 0; border-bottom:1px dashed var(--rule); font-size:15.5px; line-height:2; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13px; margin:0 2px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:7px 9px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:160px; width:140px; display:inline-block; margin:0 3px; text-align:center; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+
+  .g-item .q{ display:block; }
+  .gap{ display:inline-block; min-width:70px; padding:0 6px; margin:0 3px; text-align:center; border-bottom:2px solid var(--ink); font-weight:700; line-height:1.4; }
+  .gap.filled{ background:rgba(255,213,48,.35); border-radius:3px 3px 0 0; }
+  .gap.correct{ border-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .gap.incorrect{ border-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .opts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  button.opt{ background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:5px; padding:8px 14px; font-size:14.5px; font-weight:600; min-height:44px; line-height:1.2; }
+  button.opt:hover{ border-color:var(--ink-soft); }
+  button.opt.selected{ background:var(--yellow); border-color:var(--black); color:var(--black); }
+  button.opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
+  button.opt.incorrect{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+  @media (max-width:620px){ .opts button.opt{ flex:1 1 auto; } }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  /* ===== Explanation section ===== */
+  :root{
+    --will:#1E8F52; --will-bg:#E6F5EB;
+    --wont:#D1382F; --wont-bg:#FBEAE8;
+    --might:#1D6FD1; --might-bg:#E5F0FC;
+    --mnot:#8A3FC4; --mnot-bg:#F1E8FA;
+  }
+  .explain{ padding: clamp(20px,4vw,30px) clamp(18px,5vw,44px) 6px; border-bottom:1px solid var(--rule); }
+  .explain h3{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,20px); margin:30px 0 12px; position:relative; padding-bottom:8px; }
+  .explain h3::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .explain h3:first-of-type{ margin-top:0; }
+  .explain p{ margin:0 0 10px; font-size:15px; }
+  .explain .lead{ font-size:15.5px; }
+
+  mark{ background:none; padding:1px 7px; border-radius:4px; font-weight:700; white-space:nowrap; }
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.might{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.mnot{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.verb{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.subj{ background:#EDEDE8; color:var(--ink); box-shadow:inset 0 -2px 0 #B9B8AE; }
+  mark.clue{ background:rgba(255,213,48,.55); color:var(--ink); font-weight:600; padding:0 4px; box-shadow:none; }
+
+  /* certainty scale */
+  .scale{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin:6px 0 0; }
+  .scale .cell{ color:#fff; padding:12px 8px 11px; text-align:center; }
+  .scale .cell:first-child{ border-radius:8px 0 0 8px; }
+  .scale .cell:nth-child(4){ border-radius:0 8px 8px 0; }
+  .scale .cell b{ display:block; font-size:clamp(15px,3.6vw,19px); font-family:'Fraunces',serif; font-weight:600; }
+  .scale .cell span{ display:block; font-size:12px; opacity:.92; margin-top:2px; }
+  .scale .c1{ background:var(--wont); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--might); } .scale .c4{ background:var(--will); }
+  .scale-cap{ display:grid; grid-template-columns:1fr 2fr 1fr; gap:4px; margin-top:6px; font-size:12.5px; font-weight:600; text-align:center; color:var(--ink-soft); }
+  .scale-cap div{ border-top:3px solid var(--rule); padding-top:5px; }
+  .scale-cap .mid{ border-top-color:var(--yellow-deep); color:var(--ink); }
+
+  /* formula */
+  .formula{ display:flex; flex-wrap:wrap; align-items:stretch; gap:6px; margin:6px 0 14px; }
+  .formula .chip{ flex:1 1 120px; border-radius:6px; padding:9px 10px; text-align:center; font-size:14px; line-height:1.3; }
+  .formula .chip small{ display:block; font-size:11.5px; font-weight:500; opacity:.75; margin-top:2px; }
+  .formula .plus{ align-self:center; font-weight:800; color:var(--ink-soft); }
+  .chip.s{ background:#EDEDE8; font-weight:700; }
+  .chip.m{ background:var(--black); color:#fff; font-weight:700; }
+  .chip.m em{ font-style:normal; color:var(--yellow); }
+  .chip.v{ background:rgba(255,213,48,.45); font-weight:700; }
+  .chip.r{ background:var(--paper); border:1.5px solid var(--rule); font-weight:600; }
+
+  .tbl-wrap{ overflow-x:auto; margin:0 0 12px; }
+  table.forms{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:460px; }
+  table.forms th{ text-align:left; background:var(--black); color:#fff; font-weight:600; padding:8px 10px; font-size:13px; }
+  table.forms td{ padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.forms td:first-child{ font-weight:700; white-space:nowrap; }
+
+  .callout{ border-radius:0 6px 6px 0; padding:12px 16px; font-size:14.5px; margin:12px 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); }
+  .callout b.t{ display:block; margin-bottom:3px; }
+  .callout.bad{ border-left-color:var(--bad); }
+  .callout.bad .no{ color:var(--bad); font-weight:700; }
+  .callout .yes{ color:var(--good); font-weight:700; }
+  .callout ul{ margin:4px 0 0; padding-left:18px; }
+
+  /* meaning cards + keyword cards */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .kcard{ border-radius:8px; border:1.5px solid var(--rule); border-top-width:5px; padding:14px 15px 14px; background:#fff; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.wont{ border-top-color:var(--wont); }
+  .kcard.might{ border-top-color:var(--might); } .kcard.mnot{ border-top-color:var(--mnot); }
+  .kcard h4{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .kcard.will h4{ color:var(--will); } .kcard.wont h4{ color:var(--wont); }
+  .kcard.might h4{ color:var(--might); } .kcard.mnot h4{ color:var(--mnot); }
+  .kcard .mean{ font-size:13.5px; font-weight:600; color:var(--ink-soft); margin-bottom:9px; }
+  .kcard .lbl{ font-size:12px; font-weight:700; color:var(--ink-soft); margin:8px 0 5px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:5px; }
+  .chips span{ font-size:13px; padding:3px 9px; border-radius:99px; font-weight:600; }
+  .kcard.will .chips span{ background:var(--will-bg); color:#146A3B; }
+  .kcard.wont .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.might .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.mnot .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard .eg{ font-size:13.5px; font-style:italic; margin-top:10px; padding-top:9px; border-top:1px dashed var(--rule); line-height:1.7; }
+  .kcard .eg mark{ font-style:normal; }
+
+  /* decision steps */
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:s; }
+  .steps li{ counter-increment:s; position:relative; padding:10px 12px 10px 48px; margin-bottom:8px; background:var(--paper); border-radius:6px; font-size:14.5px; }
+  .steps li::before{ content:counter(s); position:absolute; left:12px; top:9px; width:26px; height:26px; border-radius:50%; background:var(--yellow); font-family:'Fraunces',serif; font-weight:700; text-align:center; line-height:26px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pair > div{ background:#fff; border-radius:8px; border:1.5px solid var(--rule); padding:11px 13px; font-size:14px; }
+  .pair b{ display:block; margin-bottom:3px; }
+  .explain-end{ height:22px; }
+
+  @media (max-width:620px){
+    .grid2, .pair{ grid-template-columns:1fr; }
+    .scale .cell span{ font-size:11px; }
+    .formula .plus{ display:none; }
+  }
+
+  /* ===== Obligation / necessity / permission colours ===== */
+  mark.must{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.dont{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.forb{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.can{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  .kcard.must{ border-top-color:var(--might); } .kcard.must h4{ color:var(--might); } .kcard.must .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.dont{ border-top-color:var(--mnot); } .kcard.dont h4{ color:var(--mnot); } .kcard.dont .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard.forb{ border-top-color:var(--wont); } .kcard.forb h4{ color:var(--wont); } .kcard.forb .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.can{ border-top-color:var(--will); } .kcard.can h4{ color:var(--will); } .kcard.can .chips span{ background:var(--will-bg); color:#146A3B; }
+  .scale .c1{ background:var(--might); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--wont); } .scale .c4{ background:var(--will); }
+  table.forms th.must{ background:var(--might); } table.forms th.dont{ background:var(--mnot); }
+  table.forms th.forb{ background:var(--wont); } table.forms th.can{ background:var(--will); } table.forms th.blank{ background:var(--black); }
+  table.forms td:first-child{ white-space:normal; min-width:70px; }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; }
+  table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+  .kcard ul{ margin:6px 0 0; padding-left:18px; font-size:14px; }
+  .kcard li{ margin-bottom:5px; }
+  .versus{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .versus > div{ border-radius:8px; padding:14px 15px; border:2px solid; }
+  .versus .a{ border-color:var(--wont); background:var(--wont-bg); }
+  .versus .b{ border-color:var(--mnot); background:var(--mnot-bg); }
+  .versus h4{ margin:0 0 4px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .versus .a h4{ color:var(--wont); } .versus .b h4{ color:var(--mnot); }
+  .versus .big{ font-weight:700; font-size:14px; margin-bottom:6px; }
+  .versus .eg{ font-style:italic; font-size:14.5px; }
+  .versus .arrow{ font-size:13.5px; margin-top:6px; }
+  @media (max-width:620px){ .versus{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE</div>
+    <h1>Obligation, Necessity &amp; Permission</h1>
+    <p class="sub">Choose the correct option — <b>must</b>, <b>mustn’t</b>, <b>have to</b>, <b>don’t have to</b>, <b>can</b> or <b>can’t</b> — then check your answers exercise by exercise. Your progress is saved on this device.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <div class="explain">
+
+    <h3>1. What do the words mean?</h3>
+    <p class="lead">These words tell us what is <b>necessary</b>, <b>not necessary</b>, <b>forbidden</b> or <b>OK</b>.</p>
+    <div class="scale">
+      <div class="cell c1"><b>must / have to</b><span>you need to</span></div>
+      <div class="cell c2"><b>don’t have to</b><span>not necessary</span></div>
+      <div class="cell c3"><b>mustn’t / can’t</b><span>forbidden</span></div>
+      <div class="cell c4"><b>can</b><span>it is OK</span></div>
+    </div>
+
+    <h3>2. Meaning and key words</h3>
+    <p>Look for <mark class="clue">clue words</mark> in the sentence. They show the meaning.</p>
+    <div class="grid2">
+      <div class="kcard must">
+        <h4>must / have to</h4><div class="mean">Obligation: you need to do it</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>required by law</span><span>rule / contract</span><span>important</span><span>because (a reason)</span><span>I promised</span><span>doctor says</span><span>Remember!</span></div>
+        <div class="eg">Students <mark class="must">must</mark> arrive before 9 a.m.</div>
+      </div>
+      <div class="kcard dont">
+        <h4>don’t / doesn’t have to</h4><div class="mean">Not necessary: it is your choice</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>it’s free</span><span>plenty of …</span><span>provided / paying for you</span><span>if you don’t want to</span><span>I know the way</span><span>no need</span><span>public holiday / Sunday</span></div>
+        <div class="eg">You <mark class="dont">don’t have to</mark> pay. It’s free.</div>
+      </div>
+      <div class="kcard forb">
+        <h4>mustn’t / can’t</h4><div class="mean">Forbidden: do not do it</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>dangerous</span><span>prohibited</span><span>not allowed</span><span>against the rules</span><span>secret</span><span>staff only / private</span><span>Be careful!</span><span>wet floor</span></div>
+        <div class="eg">You <mark class="forb">mustn’t</mark> touch that wire! It’s dangerous.</div>
+      </div>
+      <div class="kcard can">
+        <h4>can</h4><div class="mean">Permission: it is OK</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>if you like</span><span>no restrictions</span><span>it’s OK</span><span>Can I … , please?</span><span>you may</span></div>
+        <div class="eg">You <mark class="can">can</mark> leave your books here, if you like.</div>
+      </div>
+    </div>
+
+    <h3>3. Form</h3>
+    <div class="tbl-wrap">
+    <table class="forms">
+      <tr><th class="blank"></th><th class="blank">+ Positive</th><th class="blank">– Negative</th><th class="blank">? Question</th></tr>
+      <tr><td><mark class="must">must</mark></td>
+        <td><span class="pat">I / you / he / we / they + <mark class="aux">must</mark> + verb</span><span class="eg">He must be qualified.</span></td>
+        <td><span class="pat"><mark class="aux">mustn’t</mark> + verb</span><span class="eg">He mustn’t be late.</span></td>
+        <td><span class="eg">We use <b>have to</b> in questions →</span></td></tr>
+      <tr><td><mark class="must">have to</mark></td>
+        <td><span class="pat">I / you / we / they + <mark class="aux">have to</mark><br>he / she / it + <mark class="aux">has to</mark></span><span class="eg">I have to study tonight.</span></td>
+        <td><span class="pat"><mark class="aux">don’t / doesn’t</mark> + have to</span><span class="eg">He doesn’t have to fill in a form.</span></td>
+        <td><span class="pat"><mark class="aux">Do / Does</mark> + subject + have to + verb?</span><span class="eg">Do you have to get up early?<br>Yes, I do. / No, I don’t.</span></td></tr>
+      <tr><td><mark class="can">can</mark></td>
+        <td><span class="pat">I / you / he / we / they + <mark class="aux">can</mark> + verb</span><span class="eg">They can wear their own clothes.</span></td>
+        <td><span class="pat"><mark class="aux">can’t</mark> + verb</span><span class="eg">You can’t enter this room.</span></td>
+        <td><span class="pat"><mark class="aux">Can</mark> + subject + verb?</span><span class="eg">Can they wear their own clothes?<br>Yes, they can. / No, they can’t.</span></td></tr>
+    </table>
+    </div>
+    <div class="callout bad">
+      <b class="t">Remember</b>
+      <ul>
+        <li><i>must</i> and <i>can</i> never change: <span class="yes">he must, she can</span> (no <i>-s</i>).</li>
+        <li>After <i>must / can / have to</i> use the <b>base verb</b>: <span class="yes">She can go.</span> &nbsp;<span class="no">She can goes.</span></li>
+        <li>In questions we say <span class="yes">Do you have to…?</span> &nbsp;(not <span class="no">Must you…?</span>)</li>
+      </ul>
+    </div>
+
+    <h3>4. Careful! mustn’t ≠ don’t have to</h3>
+    <div class="versus">
+      <div class="a"><h4>mustn’t</h4><div class="big">= forbidden</div>
+        <div class="eg">You <mark class="forb">mustn’t</mark> park here.</div>
+        <div class="arrow">→ Don’t do it. It is not allowed.</div></div>
+      <div class="b"><h4>don’t have to</h4><div class="big">= not necessary</div>
+        <div class="eg">You <mark class="dont">don’t have to</mark> pay.</div>
+        <div class="arrow">→ It is free. You can pay, but you don’t need to.</div></div>
+    </div>
+
+    <h3>5. Must or have to?</h3>
+    <div class="grid2">
+      <div class="kcard must">
+        <h4>MUST</h4><div class="mean">My own feeling</div>
+        <ul>
+          <li><b>What I think or want:</b><br><i>I <mark class="must">must</mark> thank the teacher.</i> (I really want to.)<br><i>He <mark class="must">must</mark> take a holiday.</i> (I think he needs it.)</li>
+          <li><b>Instructions and notices, especially in writing:</b><br><i>Students <mark class="must">must</mark> arrive before 9 a.m.</i></li>
+        </ul>
+      </div>
+      <div class="kcard must">
+        <h4>HAVE TO</h4><div class="mean">A rule from other people</div>
+        <ul>
+          <li><b>A rule or an order:</b><br><i>We <mark class="must">have to</mark> do homework every night.</i> (The teachers give us homework.)<br><i>They <mark class="must">have to</mark> play sport.</i> (It’s the rule at their school.)</li>
+          <li><b>Questions:</b><br><i><mark class="must">Do</mark> you <mark class="must">have to</mark> leave?</i></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>6. Can and can’t</h3>
+    <div class="callout">
+      <ul>
+        <li><mark class="can">can</mark> = it is OK, it is allowed. &nbsp;<mark class="forb">can’t</mark> (or <mark class="forb">mustn’t</mark>) = it is not allowed.</li>
+        <li><b>Asking:</b> <i>Can we work outside today?</i> &nbsp;<b>Answering:</b> <i>Yes, you can. / No, you can’t.</i></li>
+        <li><b>Rules:</b> <i>They <mark class="can">can</mark> wear their own clothes after school. &nbsp;We <mark class="forb">can’t</mark> take more than an hour for lunch.</i></li>
+        <li><b>Warning:</b> <i>You <mark class="forb">mustn’t</mark> forget to write your essay.</i> (= Don’t forget!)</li>
+      </ul>
+    </div>
+
+    <h3>7. Question words: Do / Does / Can</h3>
+    <p>When the gap is at the start of a question, look at the words after it.</p>
+    <div class="pair">
+      <div><b>… you <mark class="clue">have to</mark> …?</b>
+        Use <mark class="must">Do</mark> / <mark class="must">Does</mark>:<br>
+        I / you / we / they → <b>Do</b><br>
+        he / she / my sister → <b>Does</b><br>
+        <i>Does he have to wear a tie?</i></div>
+      <div><b>… we sit here, please?</b>
+        No <i>have to</i>: permission → <mark class="can">Can</mark><br>
+        <i>Can I use your phone, please?</i><br>
+        <span style="color:var(--ink-soft)">Short answers: Yes, you <b>can</b>. / No, you <b>can’t</b>. &nbsp;Yes, you <b>do</b>. / No, you <b>don’t</b>.</span></div>
+    </div>
+
+    <h3>8. Quick check</h3>
+    <ol class="steps">
+      <li>Is it <b>necessary</b>? → <mark class="must">must</mark> / <mark class="must">have to</mark></li>
+      <li>Is it <b>not necessary</b>? → <mark class="dont">don’t have to</mark></li>
+      <li>Is it <b>forbidden</b>? → <mark class="forb">mustn’t</mark> / <mark class="forb">can’t</mark></li>
+      <li>Is it <b>OK</b>? → <mark class="can">can</mark></li>
+    </ol>
+    <div class="explain-end"></div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Restart</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Obligation, Necessity &amp; Permission — for individual practice. Your answers are saved on this device until you press Restart.<br><span id="saveNote" style="opacity:.8;">If the buttons don’t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Exercise 1", "items": [{"q": "You ______ wear a seatbelt while driving. It is required by law.", "opts": ["can", "have to", "don’t have to"], "ans": 1}, {"q": "You ______ pay to enter the park. It’s free.", "opts": ["don’t have to", "mustn’t", "have to"], "ans": 0}, {"q": "Students ______ raise their hands before speaking in this classroom. It’s a school rule.", "opts": ["have to", "can", "don’t have to"], "ans": 0}, {"q": "Visitors ______ feed the animals at the zoo. It’s dangerous.", "opts": ["don’t have to", "can", "mustn’t"], "ans": 2}, {"q": "My brother ______ get up at 5 a.m. every day because he works at a bakery.", "opts": ["has to", "doesn’t have to", "mustn’t"], "ans": 0}, {"q": "We ______ go shopping today because there is plenty of food at home.", "opts": ["must", "have to", "don’t have to"], "ans": 2}, {"q": "______ you have to work on Saturdays?", "opts": ["Do", "Are", "Does"], "ans": 0}, {"q": "We ______ be late for the interview tomorrow!", "opts": ["can", "mustn’t", "don’t have to"], "ans": 1}, {"q": "Employees ______ wear a helmet on the building site. It is the company rule.", "opts": ["can", "have to", "don’t have to"], "ans": 1}, {"q": "My dad ______ cook dinner tonight. Mum is making her special pasta.", "opts": ["doesn’t have to", "has to", "mustn’t"], "ans": 0}]}, {"title": "Exercise 2", "items": [{"q": "She ______ wear glasses to read because she can’t see small letters.", "opts": ["can", "mustn’t", "has to"], "ans": 2}, {"q": "All passengers ______ show their passports before boarding an international flight.", "opts": ["can", "must", "don’t have to"], "ans": 1}, {"q": "You ______ touch that wire! It’s very dangerous.", "opts": ["mustn’t", "can", "don’t have to"], "ans": 0}, {"q": "Students ______ buy textbooks for this course because the school provides them free of charge.", "opts": ["must", "don’t have to", "mustn’t"], "ans": 1}, {"q": "______ we sit here, please?", "opts": ["Can", "Are", "Does"], "ans": 0}, {"q": "My sister ______ do the washing-up tonight. It’s my turn.", "opts": ["mustn’t", "has to", "doesn’t have to"], "ans": 2}, {"q": "Visitors ______ take photographs in this museum, but they must turn off their flash.", "opts": ["can", "mustn’t", "have to"], "ans": 0}, {"q": "Children under 12 ______ come in without an adult.", "opts": ["don’t have to", "can’t", "must"], "ans": 1}, {"q": "You ______ use your phone in the cinema. It disturbs other people.", "opts": ["can", "have to", "mustn’t"], "ans": 2}, {"q": "______ your sister have to wear glasses?", "opts": ["Do", "Does", "Can"], "ans": 1}]}, {"title": "Exercise 3", "items": [{"q": "You ______ see this film! It’s fantastic.", "opts": ["don’t have to", "must", "mustn’t"], "ans": 1}, {"q": "You ______ park here; this area is reserved for emergency vehicles.", "opts": ["mustn’t", "can", "don’t have to"], "ans": 0}, {"q": "The landlord says we ______ keep pets in the flat. It’s against the rules.", "opts": ["have to", "can’t", "don’t have to"], "ans": 1}, {"q": "She ______ finish her assignment before going out with her friends. Her teacher won’t accept late work.", "opts": ["can", "has to", "doesn’t have to"], "ans": 1}, {"q": "It’s Sunday, so Dad ______ go to work.", "opts": ["mustn’t", "must", "doesn’t have to"], "ans": 2}, {"q": "______ he have to wear a tie at his school?", "opts": ["Is", "Do", "Does"], "ans": 2}, {"q": "You ______ cross the road when the light is red.", "opts": ["mustn’t", "don’t have to", "can"], "ans": 0}, {"q": "Jack’s flight is at 6 a.m., so he ______ be at the airport by 4 a.m.", "opts": ["doesn’t have to", "can’t", "has to"], "ans": 2}, {"q": "Ben’s train leaves in ten minutes, so he ______ run to the station.", "opts": ["doesn’t have to", "can’t", "has to"], "ans": 2}, {"q": "______ you have to wear a uniform at your school?", "opts": ["Can", "Do", "Are"], "ans": 1}]}, {"title": "Exercise 4", "items": [{"q": "______ I use your phone, please?", "opts": ["Does", "Can", "Are"], "ans": 1}, {"q": "You ______ touch the paintings in the art gallery. It’s strictly prohibited.", "opts": ["don’t have to", "mustn’t", "can"], "ans": 1}, {"q": "You ______ tell anyone about this. It’s a secret.", "opts": ["don’t have to", "can", "mustn’t"], "ans": 2}, {"q": "We ______ wear school uniform on Fridays. We can wear our own clothes.", "opts": ["have to", "don’t have to", "mustn’t"], "ans": 1}, {"q": "I ______ wake up early tomorrow because it’s a public holiday and I don’t have any plans.", "opts": ["must", "have to", "don’t have to"], "ans": 2}, {"q": "Pilots ______ pass a medical test every year.", "opts": ["can", "have to", "don’t have to"], "ans": 1}, {"q": "Ali ______ stay at home today because he is ill.", "opts": ["can", "doesn’t have to", "has to"], "ans": 2}, {"q": "______ your parents have to work at weekends?", "opts": ["Is", "Do", "Does"], "ans": 1}, {"q": "You ______ speak loudly in the hospital. Patients are sleeping.", "opts": ["mustn’t", "don’t have to", "can"], "ans": 0}, {"q": "You ______ do the homework today. It’s due next week.", "opts": ["must", "mustn’t", "don’t have to"], "ans": 2}]}, {"title": "Exercise 5", "items": [{"q": "Passengers ______ use the lift when there is a fire.", "opts": ["mustn’t", "can", "don’t have to"], "ans": 0}, {"q": "You ______ use your mobile phone during the exam. It is against the examination rules.", "opts": ["can", "can’t", "don’t have to"], "ans": 1}, {"q": "You ______ come with me if you don’t want to.", "opts": ["must", "mustn’t", "don’t have to"], "ans": 2}, {"q": "You ______ ask the teacher for help if you don’t understand the instructions.", "opts": ["mustn’t", "can", "can’t"], "ans": 1}, {"q": "I ______ finish this report today. The boss wants it tomorrow morning.", "opts": ["have to", "can’t", "don’t have to"], "ans": 0}, {"q": "______ we take photos in the museum?", "opts": ["Does", "Can", "Are"], "ans": 1}, {"q": "Teachers ______ be friendly with their students. It’s important.", "opts": ["can’t", "don’t have to", "must"], "ans": 2}, {"q": "You ______ wait for me. I know the way.", "opts": ["don’t have to", "have to", "mustn’t"], "ans": 0}, {"q": "Students ______ copy answers from their friends. That is cheating.", "opts": ["don’t have to", "have to", "mustn’t"], "ans": 2}, {"q": "The museum is free on Sundays, so visitors ______ buy a ticket.", "opts": ["mustn’t", "don’t have to", "have to"], "ans": 1}]}, {"title": "Exercise 6", "items": [{"q": "You ______ run near the pool. The floor is wet.", "opts": ["don’t have to", "can", "mustn’t"], "ans": 2}, {"q": "All employees ______ arrive at the office before 9 a.m. according to their work contracts.", "opts": ["can", "have to", "don’t have to"], "ans": 1}, {"q": "My grandmother ______ take her pills three times a day.", "opts": ["has to", "can", "doesn’t have to"], "ans": 0}, {"q": "You ______ leave your books here, if you like.", "opts": ["mustn’t", "have to", "can"], "ans": 2}, {"q": "We ______ clean the classroom today because the cleaners will do it tomorrow.", "opts": ["mustn’t", "don’t have to", "have to"], "ans": 1}, {"q": "This door is for staff only. You ______ go through.", "opts": ["don’t have to", "can", "can’t"], "ans": 2}, {"q": "You ______ hurry. The train leaves in an hour.", "opts": ["mustn’t", "can’t", "don’t have to"], "ans": 2}, {"q": "My neighbour ______ park his car in the street because he has no garage.", "opts": ["has to", "can’t", "doesn’t have to"], "ans": 0}, {"q": "______ she have to get up early on Sundays?", "opts": ["Is", "Can", "Does"], "ans": 2}, {"q": "You ______ eat or drink in the laboratory. It’s a safety rule.", "opts": ["can", "don’t have to", "can’t"], "ans": 2}]}, {"title": "Exercise 7", "items": [{"q": "I think you ______ stop eating so much sugar. It isn’t good for you.", "opts": ["mustn’t", "must", "can’t"], "ans": 1}, {"q": "You ______ follow the instructions carefully to complete the task correctly.", "opts": ["must", "can’t", "don’t have to"], "ans": 0}, {"q": "We ______ talk in the library. People are studying.", "opts": ["have to", "mustn’t", "can"], "ans": 1}, {"q": "You ______ bring a pen to the exam, but you can use mine.", "opts": ["mustn’t", "must", "don’t have to"], "ans": 2}, {"q": "You ______ walk on the grass in this park. There are no restrictions against it.", "opts": ["mustn’t", "can", "have to"], "ans": 1}, {"q": "He ______ pay for the tickets. His company is paying.", "opts": ["mustn’t", "has to", "doesn’t have to"], "ans": 2}, {"q": "In the UK, drivers ______ drive on the left.", "opts": ["have to", "can’t", "don’t have to"], "ans": 0}, {"q": "Be careful! You ______ drop that glass.", "opts": ["mustn’t", "don’t have to", "can"], "ans": 0}, {"q": "Cars ______ stop at a red light. It’s the law.", "opts": ["have to", "can", "don’t have to"], "ans": 0}, {"q": "My little brother is only six. Children under seven travel free, so he ______ pay for the bus.", "opts": ["has to", "mustn’t", "doesn’t have to"], "ans": 2}]}, {"title": "Exercise 8", "items": [{"q": "You ______ take your shoes off in my house. I just cleaned the floor.", "opts": ["don’t have to", "can", "have to"], "ans": 2}, {"q": "We ______ forget to buy a present for Mum’s birthday. It’s tomorrow!", "opts": ["mustn’t", "don’t have to", "can’t"], "ans": 0}, {"q": "______ I open the window? It’s hot.", "opts": ["Are", "Does", "Can"], "ans": 2}, {"q": "Tomorrow is Saturday, so the children ______ go to school.", "opts": ["have to", "don’t have to", "must"], "ans": 1}, {"q": "They ______ wear uniforms at work because it’s part of the company’s dress code.", "opts": ["don’t have to", "can", "have to"], "ans": 2}, {"q": "Passengers ______ turn off their phones during take-off.", "opts": ["don’t have to", "have to", "can"], "ans": 1}, {"q": "A: Do we have to bring ID to the club?  B: Yes, you ______ .", "opts": ["do", "have", "must"], "ans": 0}, {"q": "A: Can they wear their own clothes at school?  B: No, they ______ .", "opts": ["mustn’t", "can’t", "don’t"], "ans": 1}, {"q": "Don’t be late! You ______ be at the meeting at nine o’clock sharp.", "opts": ["can", "don’t have to", "must"], "ans": 2}, {"q": "We ______ take our own food to the picnic. There will be lots of food there.", "opts": ["don’t have to", "have to", "mustn’t"], "ans": 0}]}, {"title": "Exercise 9", "items": [{"q": "Jack ______ drive because the police have taken away his driving licence.", "opts": ["doesn’t have to", "can’t", "has to"], "ans": 1}, {"q": "Sam ______ wear a suit to work. He wears jeans.", "opts": ["doesn’t have to", "must", "mustn’t"], "ans": 0}, {"q": "You ______ go into the kitchen with dirty shoes.", "opts": ["must", "mustn’t", "don’t have to"], "ans": 1}, {"q": "You ______ bring any food to the party. The hosts will provide everything.", "opts": ["must", "mustn’t", "don’t have to"], "ans": 2}, {"q": "______ we have to bring our passports?", "opts": ["Can", "Does", "Do"], "ans": 2}, {"q": "I ______ visit my grandma tonight. I promised her.", "opts": ["have to", "don’t have to", "can’t"], "ans": 0}, {"q": "You ______ borrow my bike. I don’t need it today.", "opts": ["mustn’t", "can", "have to"], "ans": 1}, {"q": "Children ______ stay up after 10 p.m. on school nights. It’s their parents’ rule.", "opts": ["can’t", "can", "don’t have to"], "ans": 0}, {"q": "You ______ speak English in this class. The teacher wants us to practise.", "opts": ["can’t", "don’t have to", "have to"], "ans": 2}, {"q": "______ Tom have to work on Sundays?", "opts": ["Do", "Can", "Does"], "ans": 2}]}, {"title": "Exercise 10", "items": [{"q": "He ______ lift heavy weights at the gym because his doctor has forbidden him to do so.", "opts": ["can", "must", "can’t"], "ans": 2}, {"q": "I’m sorry, you ______ park here. It’s a private car park.", "opts": ["can", "can’t", "have to"], "ans": 1}, {"q": "You ______ buy a ticket before you get on the train.", "opts": ["can’t", "have to", "don’t have to"], "ans": 1}, {"q": "You ______ take a taxi. The hotel is only five minutes from here.", "opts": ["don’t have to", "mustn’t", "have to"], "ans": 0}, {"q": "Remember! You ______ take your passport to the airport.", "opts": ["don’t have to", "must", "mustn’t"], "ans": 1}, {"q": "Tom ______ go out tonight. His parents said no.", "opts": ["can’t", "doesn’t have to", "has to"], "ans": 0}, {"q": "______ they use their mobile phones at school?", "opts": ["Does", "Are", "Can"], "ans": 2}, {"q": "You ______ ask me before you use my laptop.", "opts": ["can’t", "don’t have to", "must"], "ans": 2}, {"q": "My grandfather is retired, so he ______ get up early any more.", "opts": ["has to", "mustn’t", "doesn’t have to"], "ans": 2}, {"q": "You ______ use this computer. It’s broken.", "opts": ["can", "can’t", "have to"], "ans": 1}]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+  var LETTERS = ['a', 'b', 'c'];
+  var KEY = 'obligation-necessity-permission-progress-v1';
+
+  /* ---------- saved progress (this device only) ---------- */
+  var state = { a: {}, c: {} };   // a: answers {"t-i": optionIndex}, c: items already checked {"t-i": 1}
+  var storageOK = true;
+  function load(){
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (raw) { var s = JSON.parse(raw); if (s && s.a && s.c) state = s; }
+    } catch (e) { storageOK = false; }
+  }
+  function save(){
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){
+    state = { a: {}, c: {} };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+  }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress (private mode?). Your answers will be lost if you close or reload the page.';
+  }
+
+  /* ---------- build the exercises ---------- */
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    section.id = 'task' + tIdx + 'Section';
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>' + task.title + '</h2><span class="block-count">' + task.items.length + ' items</span>';
+    section.appendChild(head);
+
+    var list = document.createElement('div');
+    list.id = 'task' + tIdx + 'List';
+    task.items.forEach(function(it, iIdx){
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+      wrap.id = 'item-' + tIdx + '-' + iIdx;
+      var q = document.createElement('span');
+      q.className = 'q';
+      var num = document.createElement('span');
+      num.className = 'g-num';
+      num.textContent = (iIdx + 1);
+      q.appendChild(num);
+      var parts = it.q.split(/_{3,}/);
+      q.appendChild(document.createTextNode(parts[0]));
+      var gap = document.createElement('span');
+      gap.className = 'gap';
+      gap.id = 'gap-' + tIdx + '-' + iIdx;
+      gap.innerHTML = '&nbsp;';
+      q.appendChild(gap);
+      q.appendChild(document.createTextNode(parts.slice(1).join('______')));
+      wrap.appendChild(q);
+
+      var opts = document.createElement('div');
+      opts.className = 'opts';
+      it.opts.forEach(function(o, oIdx){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'opt';
+        b.setAttribute('data-t', tIdx);
+        b.setAttribute('data-i', iIdx);
+        b.setAttribute('data-o', oIdx);
+        b.textContent = LETTERS[oIdx] + ') ' + o;
+        opts.appendChild(b);
+      });
+      wrap.appendChild(opts);
+
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback';
+      fb.id = 'task' + tIdx + '-fb-' + iIdx;
+      wrap.appendChild(fb);
+      list.appendChild(wrap);
+    });
+    section.appendChild(list);
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check ' + task.title + '</button>' +
+                         '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+    container.appendChild(section);
+  });
+
+  /* ---------- helpers ---------- */
+  function k(t, i){ return t + '-' + i; }
+  function optButtons(t, i){ return document.querySelectorAll('#item-' + t + '-' + i + ' .opt'); }
+
+  function paintSelection(t, i){
+    var sel = state.a[k(t, i)];
+    var gap = document.getElementById('gap-' + t + '-' + i);
+    optButtons(t, i).forEach(function(b){
+      b.classList.toggle('selected', sel !== undefined && parseInt(b.getAttribute('data-o'), 10) === sel);
+    });
+    if (sel === undefined) { gap.innerHTML = '&nbsp;'; gap.classList.remove('filled'); }
+    else { gap.textContent = TASKS[t].items[i].opts[sel]; gap.classList.add('filled'); }
+  }
+
+  function clearMarks(t, i){
+    var gap = document.getElementById('gap-' + t + '-' + i);
+    gap.classList.remove('correct', 'incorrect');
+    optButtons(t, i).forEach(function(b){ b.classList.remove('correct', 'incorrect'); });
+    var fb = document.getElementById('task' + t + '-fb-' + i);
+    if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+  }
+
+  function markItem(t, i){
+    var sel = state.a[k(t, i)];
+    clearMarks(t, i);
+    if (sel === undefined) return false;
+    var it = TASKS[t].items[i];
+    var gap = document.getElementById('gap-' + t + '-' + i);
+    var fb = document.getElementById('task' + t + '-fb-' + i);
+    var ok = (sel === it.ans);
+    optButtons(t, i).forEach(function(b){
+      if (parseInt(b.getAttribute('data-o'), 10) === sel) b.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    gap.classList.add(ok ? 'correct' : 'incorrect');
+    if (ok) { fb.innerHTML = ' Correct.'; fb.className = 'g-feedback correct'; }
+    else { fb.innerHTML = ' Not quite — correct answer: <strong>' + LETTERS[it.ans] + ') ' + it.opts[it.ans] + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    return true;
+  }
+
+  function checkTask(t){
+    TASKS[t].items.forEach(function(_, i){
+      if (markItem(t, i)) state.c[k(t, i)] = 1;
+    });
+    save();
+  }
+
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(it, i){ if (state.a[k(t, i)] === it.ans) total++; });
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% complete';
+  }
+
+  function repaintAll(){
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(_, i){
+        paintSelection(t, i);
+        if (state.c[k(t, i)]) markItem(t, i); else clearMarks(t, i);
+      });
+    });
+    updateScore();
+  }
+
+  /* ---------- events ---------- */
+  container.addEventListener('click', function(e){
+    var opt = e.target.closest('.opt');
+    if (opt) {
+      var t = parseInt(opt.getAttribute('data-t'), 10), i = parseInt(opt.getAttribute('data-i'), 10), o = parseInt(opt.getAttribute('data-o'), 10);
+      state.a[k(t, i)] = o;
+      delete state.c[k(t, i)];      // changed answer: needs checking again
+      clearMarks(t, i);
+      paintSelection(t, i);
+      save();
+      updateScore();
+      return;
+    }
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) { checkTask(parseInt(checkBtn.getAttribute('data-check'), 10)); updateScore(); return; }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var tIdx = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      TASKS[tIdx].items.forEach(function(_, i){
+        delete state.a[k(tIdx, i)];
+        delete state.c[k(tIdx, i)];
+        paintSelection(tIdx, i);
+        clearMarks(tIdx, i);
+      });
+      save();
+      updateScore();
+    }
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, t){ checkTask(t); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* Restart: the only thing that erases saved progress. Tap twice to confirm. */
+  var restartBtn = document.getElementById('resetAllBtn'), restartTimer = null;
+  restartBtn.addEventListener('click', function(){
+    if (!restartBtn.getAttribute('data-armed')) {
+      restartBtn.setAttribute('data-armed', '1');
+      restartBtn.textContent = 'Tap again to erase everything';
+      restartTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm();
+    wipe();
+    repaintAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  function disarm(){
+    clearTimeout(restartTimer);
+    restartBtn.removeAttribute('data-armed');
+    restartBtn.textContent = 'Restart';
+  }
+
+
+  load();
+  if (!storageOK) showStorageNote();
+  repaintAll();
+})();
+</script>
+
+</body>
+</html>
