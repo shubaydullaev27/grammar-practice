@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Future Time Clauses — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; margin:4px 0 10px 0; }
+  .rule-box .form-line{ font-weight:700; margin:6px 0 14px; }
+  .rule-box .note-line{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .g-item{ padding:12px 0; border-bottom:1px dashed var(--rule); font-size:15.5px; line-height:2; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13px; margin:0 2px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:7px 9px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:160px; width:140px; display:inline-block; margin:0 3px; text-align:center; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+
+  .g-item .q{ display:block; }
+  .gap{ display:inline-block; min-width:70px; padding:0 6px; margin:0 3px; text-align:center; border-bottom:2px solid var(--ink); font-weight:700; line-height:1.4; }
+  .gap.filled{ background:rgba(255,213,48,.35); border-radius:3px 3px 0 0; }
+  .gap.correct{ border-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .gap.incorrect{ border-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .opts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  button.opt{ background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:5px; padding:8px 14px; font-size:14.5px; font-weight:600; min-height:44px; line-height:1.2; }
+  button.opt:hover{ border-color:var(--ink-soft); }
+  button.opt.selected{ background:var(--yellow); border-color:var(--black); color:var(--black); }
+  button.opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
+  button.opt.incorrect{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+  @media (max-width:620px){ .opts button.opt{ flex:1 1 auto; } }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  /* ===== Explanation section ===== */
+  :root{
+    --will:#1E8F52; --will-bg:#E6F5EB;
+    --wont:#D1382F; --wont-bg:#FBEAE8;
+    --might:#1D6FD1; --might-bg:#E5F0FC;
+    --mnot:#8A3FC4; --mnot-bg:#F1E8FA;
+  }
+  .explain{ padding: clamp(20px,4vw,30px) clamp(18px,5vw,44px) 6px; border-bottom:1px solid var(--rule); }
+  .explain h3{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,20px); margin:30px 0 12px; position:relative; padding-bottom:8px; }
+  .explain h3::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .explain h3:first-of-type{ margin-top:0; }
+  .explain p{ margin:0 0 10px; font-size:15px; }
+  .explain .lead{ font-size:15.5px; }
+
+  mark{ background:none; padding:1px 7px; border-radius:4px; font-weight:700; white-space:nowrap; }
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.might{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.mnot{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.verb{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.subj{ background:#EDEDE8; color:var(--ink); box-shadow:inset 0 -2px 0 #B9B8AE; }
+  mark.clue{ background:rgba(255,213,48,.55); color:var(--ink); font-weight:600; padding:0 4px; box-shadow:none; }
+
+  /* certainty scale */
+  .scale{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin:6px 0 0; }
+  .scale .cell{ color:#fff; padding:12px 8px 11px; text-align:center; }
+  .scale .cell:first-child{ border-radius:8px 0 0 8px; }
+  .scale .cell:nth-child(4){ border-radius:0 8px 8px 0; }
+  .scale .cell b{ display:block; font-size:clamp(15px,3.6vw,19px); font-family:'Fraunces',serif; font-weight:600; }
+  .scale .cell span{ display:block; font-size:12px; opacity:.92; margin-top:2px; }
+  .scale .c1{ background:var(--wont); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--might); } .scale .c4{ background:var(--will); }
+  .scale-cap{ display:grid; grid-template-columns:1fr 2fr 1fr; gap:4px; margin-top:6px; font-size:12.5px; font-weight:600; text-align:center; color:var(--ink-soft); }
+  .scale-cap div{ border-top:3px solid var(--rule); padding-top:5px; }
+  .scale-cap .mid{ border-top-color:var(--yellow-deep); color:var(--ink); }
+
+  /* formula */
+  .formula{ display:flex; flex-wrap:wrap; align-items:stretch; gap:6px; margin:6px 0 14px; }
+  .formula .chip{ flex:1 1 120px; border-radius:6px; padding:9px 10px; text-align:center; font-size:14px; line-height:1.3; }
+  .formula .chip small{ display:block; font-size:11.5px; font-weight:500; opacity:.75; margin-top:2px; }
+  .formula .plus{ align-self:center; font-weight:800; color:var(--ink-soft); }
+  .chip.s{ background:#EDEDE8; font-weight:700; }
+  .chip.m{ background:var(--black); color:#fff; font-weight:700; }
+  .chip.m em{ font-style:normal; color:var(--yellow); }
+  .chip.v{ background:rgba(255,213,48,.45); font-weight:700; }
+  .chip.r{ background:var(--paper); border:1.5px solid var(--rule); font-weight:600; }
+
+  .tbl-wrap{ overflow-x:auto; margin:0 0 12px; }
+  table.forms{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:460px; }
+  table.forms th{ text-align:left; background:var(--black); color:#fff; font-weight:600; padding:8px 10px; font-size:13px; }
+  table.forms td{ padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.forms td:first-child{ font-weight:700; white-space:nowrap; }
+
+  .callout{ border-radius:0 6px 6px 0; padding:12px 16px; font-size:14.5px; margin:12px 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); }
+  .callout b.t{ display:block; margin-bottom:3px; }
+  .callout.bad{ border-left-color:var(--bad); }
+  .callout.bad .no{ color:var(--bad); font-weight:700; }
+  .callout .yes{ color:var(--good); font-weight:700; }
+  .callout ul{ margin:4px 0 0; padding-left:18px; }
+
+  /* meaning cards + keyword cards */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .kcard{ border-radius:8px; border:1.5px solid var(--rule); border-top-width:5px; padding:14px 15px 14px; background:#fff; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.wont{ border-top-color:var(--wont); }
+  .kcard.might{ border-top-color:var(--might); } .kcard.mnot{ border-top-color:var(--mnot); }
+  .kcard h4{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .kcard.will h4{ color:var(--will); } .kcard.wont h4{ color:var(--wont); }
+  .kcard.might h4{ color:var(--might); } .kcard.mnot h4{ color:var(--mnot); }
+  .kcard .mean{ font-size:13.5px; font-weight:600; color:var(--ink-soft); margin-bottom:9px; }
+  .kcard .lbl{ font-size:12px; font-weight:700; color:var(--ink-soft); margin:8px 0 5px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:5px; }
+  .chips span{ font-size:13px; padding:3px 9px; border-radius:99px; font-weight:600; }
+  .kcard.will .chips span{ background:var(--will-bg); color:#146A3B; }
+  .kcard.wont .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.might .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.mnot .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard .eg{ font-size:13.5px; font-style:italic; margin-top:10px; padding-top:9px; border-top:1px dashed var(--rule); line-height:1.7; }
+  .kcard .eg mark{ font-style:normal; }
+
+  /* decision steps */
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:s; }
+  .steps li{ counter-increment:s; position:relative; padding:10px 12px 10px 48px; margin-bottom:8px; background:var(--paper); border-radius:6px; font-size:14.5px; }
+  .steps li::before{ content:counter(s); position:absolute; left:12px; top:9px; width:26px; height:26px; border-radius:50%; background:var(--yellow); font-family:'Fraunces',serif; font-weight:700; text-align:center; line-height:26px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pair > div{ background:#fff; border-radius:8px; border:1.5px solid var(--rule); padding:11px 13px; font-size:14px; }
+  .pair b{ display:block; margin-bottom:3px; }
+  .explain-end{ height:22px; }
+
+  @media (max-width:620px){
+    .grid2, .pair{ grid-template-columns:1fr; }
+    .scale .cell span{ font-size:11px; }
+    .formula .plus{ display:none; }
+  }
+
+  /* ===== Obligation / necessity / permission colours ===== */
+  mark.must{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.dont{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.forb{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.can{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  .kcard.must{ border-top-color:var(--might); } .kcard.must h4{ color:var(--might); } .kcard.must .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.dont{ border-top-color:var(--mnot); } .kcard.dont h4{ color:var(--mnot); } .kcard.dont .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard.forb{ border-top-color:var(--wont); } .kcard.forb h4{ color:var(--wont); } .kcard.forb .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.can{ border-top-color:var(--will); } .kcard.can h4{ color:var(--will); } .kcard.can .chips span{ background:var(--will-bg); color:#146A3B; }
+  .scale .c1{ background:var(--might); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--wont); } .scale .c4{ background:var(--will); }
+  table.forms th.must{ background:var(--might); } table.forms th.dont{ background:var(--mnot); }
+  table.forms th.forb{ background:var(--wont); } table.forms th.can{ background:var(--will); } table.forms th.blank{ background:var(--black); }
+  table.forms td:first-child{ white-space:normal; min-width:70px; }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; }
+  table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+  .kcard ul{ margin:6px 0 0; padding-left:18px; font-size:14px; }
+  .kcard li{ margin-bottom:5px; }
+  .versus{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .versus > div{ border-radius:8px; padding:14px 15px; border:2px solid; }
+  .versus .a{ border-color:var(--wont); background:var(--wont-bg); }
+  .versus .b{ border-color:var(--mnot); background:var(--mnot-bg); }
+  .versus h4{ margin:0 0 4px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .versus .a h4{ color:var(--wont); } .versus .b h4{ color:var(--mnot); }
+  .versus .big{ font-weight:700; font-size:14px; margin-bottom:6px; }
+  .versus .eg{ font-style:italic; font-size:14.5px; }
+  .versus .arrow{ font-size:13.5px; margin-top:6px; }
+  @media (max-width:620px){ .versus{ grid-template-columns:1fr; } }
+
+  :root{ --tw-if:#8A3FC4; --tw-if-bg:#F1E8FA; --tw-when:#1D6FD1; --tw-bg-when:#E5F0FC; --tw-asap:#1E8F52; --tw-asap-bg:#E6F5EB; --tw-until:#D1382F; --tw-until-bg:#FBEAE8; --tw-before:#B26A00; --tw-before-bg:#FFEFD0; --tw-after:#0E7C86; --tw-after-bg:#DDF2F4; }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.tw{ font-weight:700; } 
+  mark.tw.if{ background:var(--tw-if-bg); color:var(--tw-if); box-shadow:inset 0 -2px 0 var(--tw-if); }
+  mark.tw.when{ background:var(--tw-bg-when); color:var(--tw-when); box-shadow:inset 0 -2px 0 var(--tw-when); }
+  mark.tw.asap{ background:var(--tw-asap-bg); color:var(--tw-asap); box-shadow:inset 0 -2px 0 var(--tw-asap); }
+  mark.tw.until{ background:var(--tw-until-bg); color:var(--tw-until); box-shadow:inset 0 -2px 0 var(--tw-until); }
+  mark.tw.before{ background:var(--tw-before-bg); color:var(--tw-before); box-shadow:inset 0 -2px 0 var(--tw-before); }
+  mark.tw.after{ background:var(--tw-after-bg); color:var(--tw-after); box-shadow:inset 0 -2px 0 var(--tw-after); }
+  .kcard.tif{ border-top-color:var(--tw-if); } .kcard.tif h4{ color:var(--tw-if); } .kcard.tif .chips span{ background:var(--tw-if-bg); color:#6A2D98; }
+  .kcard.twhen{ border-top-color:var(--tw-when); } .kcard.twhen h4{ color:var(--tw-when); } .kcard.twhen .chips span{ background:var(--tw-bg-when); color:#134E96; }
+  .kcard.tasap{ border-top-color:var(--tw-asap); } .kcard.tasap h4{ color:var(--tw-asap); } .kcard.tasap .chips span{ background:var(--tw-asap-bg); color:#146A3B; }
+  .kcard.tuntil{ border-top-color:var(--tw-until); } .kcard.tuntil h4{ color:var(--tw-until); } .kcard.tuntil .chips span{ background:var(--tw-until-bg); color:#A22820; }
+  .explain .no{ color:var(--bad); font-weight:700; }
+  .explain .yes{ color:var(--good); font-weight:700; }
+  .explain u{ text-decoration-thickness:2px; text-underline-offset:2px; }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE · WHEN / IF / AS SOON AS / BEFORE / AFTER / UNTIL</div>
+    <h1>Future Time Clauses</h1>
+    <p class="sub">Read the guide, then choose the correct time word (A, B or C) to complete each sentence. Check your answers exercise by exercise. Your progress is saved on this device.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <div class="explain">
+
+    <h3>1. The main rule</h3>
+    <p class="lead">After a time word (<b>when, if, as soon as, before, after, until</b>) we talk about the future with the <b>present simple</b>, not with <i>will</i>.</p>
+    <div class="formula">
+      <div class="chip" style="background:var(--tw-bg-when);color:var(--tw-when);font-weight:700">time word + present simple<small>the time clause</small></div><span class="plus">,</span>
+      <div class="chip" style="background:var(--will-bg);color:var(--will);font-weight:700">will + base verb<small>the main clause</small></div>
+    </div>
+    <div class="callout" style="border-left-color:var(--tw-when)">
+      <mark class="tw when">As soon as</mark> the sun <mark class="aux">comes</mark> up, we <mark class="will">’ll start</mark> our walk.<br>
+      <span class="yes">✔ When I arrive, I’ll call you.</span> &nbsp;<span class="no">✘ When I will arrive, I’ll call you.</span>
+    </div>
+
+    <h3>2. Word order and comma</h3>
+    <div class="pair">
+      <div><b>Main clause first → no comma</b>
+        <mark class="will">I’ll look</mark> at the map <mark class="tw before">before</mark> we <mark class="aux">go</mark>.</div>
+      <div><b>Time clause first → comma ( , )</b>
+        <mark class="tw before">Before</mark> we <mark class="aux">go</mark><b>,</b> <mark class="will">I’ll look</mark> at the map.</div>
+    </div>
+    <div class="callout bad" style="margin-top:12px">
+      <span class="no">✘ I will take the photo. After I put it on the internet.</span><br>
+      <span class="yes">✔ After I take the photo, I’ll put it on the internet.</span><br>
+      <span style="color:var(--ink-soft);font-size:13.5px">Never separate the two clauses with a full stop.</span>
+    </div>
+
+    <h3>3. Which time word? Key words</h3>
+    <div class="grid2">
+      <div class="kcard tif">
+        <h4>if</h4><div class="mean">Not sure it will happen</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>might</span><span>maybe</span><span>may</span><span>I’m not sure</span><span>I don’t know if</span><span>only if</span></div>
+        <div class="eg"><mark class="tw if">If</mark> the weather <mark class="aux">is</mark> nice, we’ll eat outside.</div>
+      </div>
+      <div class="kcard twhen">
+        <h4>when</h4><div class="mean">Sure it will happen</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>definitely</span><span>certain</span><span>I’m sure</span><span>every day / always</span><span>on Friday</span><span>next month</span></div>
+        <div class="eg"><mark class="tw when">When</mark> we <mark class="aux">get</mark> to the forest, we’ll eat our picnic.</div>
+      </div>
+      <div class="kcard tasap">
+        <h4>as soon as</h4><div class="mean">Immediately after</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>at once</span><span>immediately</span><span>right away</span><span>that very minute</span><span>that second</span><span>the second he comes</span></div>
+        <div class="eg"><mark class="tw asap">As soon as</mark> I <mark class="aux">arrive</mark>, I’ll call you.</div>
+      </div>
+      <div class="kcard tuntil">
+        <h4>until</h4><div class="mean">Up to that moment (not earlier)</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>wait</span><span>stay</span><span>keep (working)</span><span>won’t / can’t … until</span><span>before that</span></div>
+        <div class="eg">We won’t leave <mark class="tw until">until</mark> everyone <mark class="aux">is</mark> ready.</div>
+      </div>
+    </div>
+
+    <h3>4. Before or after?</h3>
+    <div class="pair">
+      <div><b><mark class="tw after">After</mark> + the action that happens <u>first</u></b>
+        <mark class="tw after">After</mark> I <mark class="aux">take</mark> the photo, I’ll put it online.
+        <div style="margin-top:6px;font-size:13.5px;color:var(--ink-soft)">1st: take the photo → 2nd: put it online</div></div>
+      <div><b><mark class="tw before">Before</mark> + the action that happens <u>second</u></b>
+        I’ll put it online <mark class="tw before">before</mark> I <mark class="aux">go</mark> to bed.
+        <div style="margin-top:6px;font-size:13.5px;color:var(--ink-soft)">1st: put it online → 2nd: go to bed</div></div>
+    </div>
+    <p style="margin-top:8px;font-size:14px;color:var(--ink-soft)">Clue words: <mark class="clue">comes first</mark>, <mark class="clue">first … then</mark>, <mark class="clue">do it first</mark>.</p>
+
+    <h3>5. Quick check</h3>
+    <ol class="steps">
+      <li>Is it <b>sure</b>? → <mark class="tw when">when</mark>. &nbsp;<b>Not sure</b>? → <mark class="tw if">if</mark>.</li>
+      <li>Does it happen <b>immediately</b>? → <mark class="tw asap">as soon as</mark>. &nbsp;<b>Up to a moment</b> (waiting)? → <mark class="tw until">until</mark>.</li>
+      <li><b>Order of events:</b> which action is first? → <mark class="tw after">after</mark> + first action, <mark class="tw before">before</mark> + second action.</li>
+      <li>Then always: <b>present simple</b> after the time word, <mark class="will">will + base verb</mark> in the other clause.</li>
+    </ol>
+    <div class="explain-end"></div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% complete</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Restart</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Future Time Clauses — for individual practice. Your answers are saved on this device until you press Restart.<br><span id="saveNote" style="opacity:.8;">If the buttons don’t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Exercise 1", "items": [{"q": "I’ll water the plants _______ I go on holiday. I’ll do it first.", "opts": ["after", "until", "before"], "ans": 2}, {"q": "We’ll start the meeting _______ the manager arrives. She comes first.", "opts": ["until", "after", "before"], "ans": 1}, {"q": "I’ll phone the doctor _______ I feel worse. I won’t wait.", "opts": ["until", "before", "as soon as"], "ans": 2}, {"q": "You can watch TV _______ you tidy your room. Tidy first.", "opts": ["after", "until", "before"], "ans": 0}, {"q": "We’ll buy the tickets _______ we go into the cinema. We need them first.", "opts": ["before", "if", "after"], "ans": 0}, {"q": "I’ll see you tomorrow _______ we meet at the coffee shop. That’s where our meeting is planned.", "opts": ["before", "if", "when"], "ans": 2}, {"q": "My exam is on Friday. _______ it’s over, I’ll feel so happy.", "opts": ["if", "when", "until"], "ans": 1}, {"q": "We aren’t sure the team will win. _______ they win, we’ll celebrate.", "opts": ["before", "if", "when"], "ans": 1}, {"q": "She’ll send us a message _______ she lands. She wants us to know she’s safe at once.", "opts": ["before", "until", "as soon as"], "ans": 2}, {"q": "Read the instructions _______ you use the machine. Read them first.", "opts": ["after", "before", "until"], "ans": 1}]}, {"title": "Exercise 2", "items": [{"q": "Dad will cook dinner _______ we get home. It will be ready when we arrive.", "opts": ["before", "after", "if"], "ans": 0}, {"q": "Check the tyres _______ you start the long drive.", "opts": ["after", "before", "until"], "ans": 1}, {"q": "I’ll tell you the news _______ I hear it. I won’t keep it secret.", "opts": ["before", "as soon as", "until"], "ans": 1}, {"q": "You can’t play games _______ you finish your project. You must finish it first.", "opts": ["until", "after", "before"], "ans": 0}, {"q": "Our new teacher starts on Monday. _______ she comes, we’ll all say hello.", "opts": ["until", "when", "if"], "ans": 1}, {"q": "She’ll buy the dress _______ it’s cheap enough.", "opts": ["before", "if", "until"], "ans": 1}, {"q": "The shop opens at 9 a.m. _______ it opens, I’ll go in and buy bread. I’m sure it opens at 9.", "opts": ["when", "until", "if"], "ans": 0}, {"q": "She’ll feel better _______ she has a good sleep. Sleep comes first.", "opts": ["after", "until", "before"], "ans": 0}, {"q": "Put your name on the paper _______ you hand it in.", "opts": ["after", "until", "before"], "ans": 2}, {"q": "Stay here _______ the bus comes. You can leave when it arrives.", "opts": ["until", "before", "after"], "ans": 0}]}, {"title": "Exercise 3", "items": [{"q": "The ice will melt _______ the sun comes out. It happens quickly.", "opts": ["until", "as soon as", "before"], "ans": 1}, {"q": "Don’t cross the road _______ the light turns green.", "opts": ["if", "as soon as", "until"], "ans": 2}, {"q": "_______ Jack finishes university, he’ll look for a job. University comes first.", "opts": ["After", "Before", "Until"], "ans": 0}, {"q": "I’ll pack my suitcase _______ we leave for the airport.", "opts": ["after", "before", "until"], "ans": 1}, {"q": "_______ the bell rings, the students will go to lunch. The bell comes first.", "opts": ["After", "Before", "Until"], "ans": 0}, {"q": "The bus comes at 7 every morning. I’ll get on _______ it comes.", "opts": ["if", "when", "until"], "ans": 1}, {"q": "We won’t eat _______ Dad comes home. We’ll wait for him.", "opts": ["until", "after", "as soon as"], "ans": 0}, {"q": "We’ll order food _______ everyone arrives. We’ll wait for them first.", "opts": ["before", "if", "after"], "ans": 2}, {"q": "She’ll feel better _______ she takes some medicine. It may help, but we aren’t sure.", "opts": ["if", "before", "until"], "ans": 0}, {"q": "Please lock the door _______ you leave the house. Lock it first, then go out.", "opts": ["as soon as", "before", "until"], "ans": 1}]}, {"title": "Exercise 4", "items": [{"q": "She’ll hug her son _______ he gets off the plane. She’ll run to him immediately.", "opts": ["before", "until", "as soon as"], "ans": 2}, {"q": "Turn off the oven _______ you leave the kitchen. Do it first.", "opts": ["until", "before", "after"], "ans": 1}, {"q": "We’ll say goodbye _______ the train leaves. After that, he’ll be gone.", "opts": ["if", "after", "before"], "ans": 2}, {"q": "You’ll feel sick _______ you eat too much chocolate.", "opts": ["until", "if", "before"], "ans": 1}, {"q": "The film is on at 9 p.m. tonight. I’ll watch it _______ it starts.", "opts": ["when", "if", "until"], "ans": 0}, {"q": "I’ll lend you my umbrella _______ it rains. It might rain, it might not.", "opts": ["if", "until", "before"], "ans": 0}, {"q": "The teacher will give you the test _______ she arrives. She’ll hand it out immediately.", "opts": ["as soon as", "until", "before"], "ans": 0}, {"q": "I’ll call the hotel _______ I get the flight tickets. The tickets come first.", "opts": ["after", "before", "until"], "ans": 0}, {"q": "We’ll miss the train _______ we don’t hurry up.", "opts": ["after", "if", "until"], "ans": 1}, {"q": "_______ you finish your exam, you can check your phone.", "opts": ["Before", "After", "If"], "ans": 1}]}, {"title": "Exercise 5", "items": [{"q": "She’ll take a shower _______ she comes back from the gym. The gym comes first.", "opts": ["before", "after", "until"], "ans": 1}, {"q": "I’ll send the invitations _______ I choose a date. Choosing the date comes first.", "opts": ["until", "after", "before"], "ans": 1}, {"q": "We’ll go swimming _______ the sea is warm enough. We aren’t sure it will be.", "opts": ["until", "before", "if"], "ans": 2}, {"q": "The plane can’t take off _______ the fog clears.", "opts": ["as soon as", "until", "after"], "ans": 1}, {"q": "_______ it rains tomorrow, we’ll have to cancel the outdoor event.", "opts": ["If", "After", "Before"], "ans": 0}, {"q": "Anna will be sad _______ she hears the news. We’re sure she’ll hear it today.", "opts": ["when", "if", "until"], "ans": 0}, {"q": "I will start dinner _______ you get back. I don’t want to begin before you’re home.", "opts": ["after", "until", "before"], "ans": 0}, {"q": "He’ll buy a car only _______ he saves enough money.", "opts": ["before", "if", "until"], "ans": 1}, {"q": "_______ Christmas Day comes, we’ll visit my aunt. Christmas is always on 25 December.", "opts": ["If", "When", "Until"], "ans": 1}, {"q": "She won’t go to bed _______ she finishes her book. She’ll keep reading.", "opts": ["until", "as soon as", "after"], "ans": 0}]}, {"title": "Exercise 6", "items": [{"q": "We’ll start the game _______ the referee blows the whistle. We’ll start at that second.", "opts": ["until", "as soon as", "before"], "ans": 1}, {"q": "Tomorrow is my birthday. _______ I wake up, I’ll open my presents.", "opts": ["if", "when", "until"], "ans": 1}, {"q": "I’ll wait for you _______ you finish your phone call.", "opts": ["before", "until", "if"], "ans": 1}, {"q": "The fireworks will start _______ it gets dark. They’ll begin that very minute.", "opts": ["as soon as", "before", "until"], "ans": 0}, {"q": "_______ we have lunch, we’ll visit the museum. Lunch comes first.", "opts": ["Before", "Until", "After"], "ans": 2}, {"q": "We’ll stay in the café _______ the storm is over.", "opts": ["until", "as soon as", "before"], "ans": 0}, {"q": "I’ll wash my hands _______ I eat lunch. First I wash them, then I eat.", "opts": ["before", "until", "after"], "ans": 0}, {"q": "I’m not sure Tom will come. _______ he comes, I’ll be surprised.", "opts": ["if", "until", "when"], "ans": 0}, {"q": "Stay on the line _______ the doctor is free. Don’t hang up.", "opts": ["before", "as soon as", "until"], "ans": 2}, {"q": "I’ll visit my grandmother _______ I’m in London next month. I’m definitely going there.", "opts": ["until", "when", "if"], "ans": 1}]}, {"title": "Exercise 7", "items": [{"q": "You’ll win a prize _______ you finish first. Only the winner gets one.", "opts": ["until", "if", "before"], "ans": 1}, {"q": "We’ll keep working _______ it gets dark. Then we’ll go home.", "opts": ["until", "before", "if"], "ans": 0}, {"q": "Brush your teeth _______ you go to bed.", "opts": ["if", "until", "before"], "ans": 2}, {"q": "I won’t send the message _______ I check it twice.", "opts": ["after", "until", "as soon as"], "ans": 1}, {"q": "I’ll message you _______ the lesson ends. I’ll send it at that moment.", "opts": ["when", "until", "before"], "ans": 0}, {"q": "_______ I take the photo, I’ll check the light. First I check, then I take it.", "opts": ["Before", "Until", "After"], "ans": 0}, {"q": "_______ you work hard, you’ll pass the exam.", "opts": ["After", "If", "Before"], "ans": 1}, {"q": "The baby will cry _______ she sees a stranger. She starts crying at once.", "opts": ["before", "as soon as", "until"], "ans": 1}, {"q": "We’ll set the table _______ the guests arrive. We want everything ready for them.", "opts": ["after", "until", "before"], "ans": 2}, {"q": "We’ll have dessert _______ we finish the main course.", "opts": ["after", "before", "until"], "ans": 0}]}, {"title": "Exercise 8", "items": [{"q": "My parents are definitely coming to the party. _______ they arrive, I’ll introduce them to my friends.", "opts": ["until", "when", "if"], "ans": 1}, {"q": "The door will open _______ you press the button. It happens at once.", "opts": ["until", "before", "as soon as"], "ans": 2}, {"q": "Winter is certain to come. _______ winter arrives, the lake will freeze.", "opts": ["if", "when", "until"], "ans": 1}, {"q": "Please switch off your phone _______ the exam starts. Do it first.", "opts": ["after", "if", "before"], "ans": 2}, {"q": "_______ the movie ends, we’ll go straight to the restaurant.", "opts": ["If", "After", "Before"], "ans": 1}, {"q": "We won’t go for a walk _______ the rain stops. We must wait until then.", "opts": ["if", "until", "before"], "ans": 1}, {"q": "She’ll stay in bed _______ her fever goes down. She can’t get up before that.", "opts": ["until", "if", "after"], "ans": 0}, {"q": "Tell me _______ you finish the book. I need it immediately.", "opts": ["as soon as", "until", "before"], "ans": 0}, {"q": "I’ll book a hotel _______ I travel to Rome. I want a room ready for my arrival.", "opts": ["before", "until", "after"], "ans": 0}, {"q": "My brother is arriving on Friday. _______ he arrives, we’ll go out for dinner.", "opts": ["until", "if", "when"], "ans": 2}]}, {"title": "Exercise 9", "items": [{"q": "_______ it’s sunny on Saturday, we’ll have a barbecue. We aren’t sure about the weather.", "opts": ["If", "When", "Until"], "ans": 0}, {"q": "I’ll text you _______ I arrive home. I’ll send the message immediately.", "opts": ["before", "as soon as", "if"], "ans": 1}, {"q": "They’ll cut the cake _______ the guests sing. The singing comes first.", "opts": ["until", "before", "after"], "ans": 2}, {"q": "The shop may be closed. We’ll go to another one _______ it’s closed.", "opts": ["until", "when", "if"], "ans": 2}, {"q": "I’ll call you _______ I know the answer. I’m not sure I’ll find out.", "opts": ["if", "as soon as", "until"], "ans": 0}, {"q": "The sun rises at 6 a.m. every day. _______ it rises, the birds will start singing.", "opts": ["until", "if", "when"], "ans": 2}, {"q": "He won’t pay _______ he sees the goods.", "opts": ["as soon as", "until", "after"], "ans": 1}, {"q": "We’ll start the barbecue _______ the fire is hot. We won’t wait any longer.", "opts": ["before", "until", "as soon as"], "ans": 2}, {"q": "We can go outside _______ the rain stops. We’ll go immediately.", "opts": ["as soon as", "before", "until"], "ans": 0}, {"q": "Summer is coming soon. _______ summer comes, we’ll go to the beach every weekend.", "opts": ["if", "until", "when"], "ans": 2}]}, {"title": "Exercise 10", "items": [{"q": "We’ll eat _______ the food is ready. We’re very hungry.", "opts": ["before", "until", "as soon as"], "ans": 2}, {"q": "We’re definitely moving house in May. _______ we move, I’ll change schools.", "opts": ["if", "until", "when"], "ans": 2}, {"q": "We’ll go home _______ it gets dark. We don’t want to be outside at night.", "opts": ["until", "after", "before"], "ans": 2}, {"q": "I’ll tidy my room _______ I come back from school. School comes first.", "opts": ["after", "if", "before"], "ans": 0}, {"q": "The pasta won’t be ready _______ the water boils.", "opts": ["as soon as", "if", "until"], "ans": 2}, {"q": "She’ll move to Spain _______ she finishes university in June. She’s sure she’ll finish.", "opts": ["if", "until", "when"], "ans": 2}, {"q": "We will go outside _______ the sun comes out. If it doesn’t, we’ll stay at home.", "opts": ["if", "until", "before"], "ans": 0}, {"q": "She’ll answer her emails _______ the meeting ends. The meeting ends first.", "opts": ["after", "before", "if"], "ans": 0}, {"q": "The doors won’t open _______ the train stops.", "opts": ["after", "until", "as soon as"], "ans": 1}, {"q": "I’ll finish my homework _______ my friends arrive at six. I want to be ready.", "opts": ["until", "before", "if"], "ans": 1}]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+  var LETTERS = ['a', 'b', 'c'];
+  var KEY = 'future-time-clauses-progress-v1';
+
+  /* ---------- saved progress (this device only) ---------- */
+  var state = { a: {}, c: {} };   // a: answers {"t-i": optionIndex}, c: items already checked {"t-i": 1}
+  var storageOK = true;
+  function load(){
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (raw) { var s = JSON.parse(raw); if (s && s.a && s.c) state = s; }
+    } catch (e) { storageOK = false; }
+  }
+  function save(){
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){
+    state = { a: {}, c: {} };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+  }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress (private mode?). Your answers will be lost if you close or reload the page.';
+  }
+
+  /* ---------- build the exercises ---------- */
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    section.id = 'task' + tIdx + 'Section';
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>' + task.title + '</h2><span class="block-count">' + task.items.length + ' items</span>';
+    section.appendChild(head);
+
+    var list = document.createElement('div');
+    list.id = 'task' + tIdx + 'List';
+    task.items.forEach(function(it, iIdx){
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+      wrap.id = 'item-' + tIdx + '-' + iIdx;
+      var q = document.createElement('span');
+      q.className = 'q';
+      var num = document.createElement('span');
+      num.className = 'g-num';
+      num.textContent = (iIdx + 1);
+      q.appendChild(num);
+      var parts = it.q.split(/_{3,}/);
+      q.appendChild(document.createTextNode(parts[0]));
+      var gap = document.createElement('span');
+      gap.className = 'gap';
+      gap.id = 'gap-' + tIdx + '-' + iIdx;
+      gap.innerHTML = '&nbsp;';
+      q.appendChild(gap);
+      q.appendChild(document.createTextNode(parts.slice(1).join('______')));
+      wrap.appendChild(q);
+
+      var opts = document.createElement('div');
+      opts.className = 'opts';
+      it.opts.forEach(function(o, oIdx){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'opt';
+        b.setAttribute('data-t', tIdx);
+        b.setAttribute('data-i', iIdx);
+        b.setAttribute('data-o', oIdx);
+        b.textContent = LETTERS[oIdx] + ') ' + o;
+        opts.appendChild(b);
+      });
+      wrap.appendChild(opts);
+
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback';
+      fb.id = 'task' + tIdx + '-fb-' + iIdx;
+      wrap.appendChild(fb);
+      list.appendChild(wrap);
+    });
+    section.appendChild(list);
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check ' + task.title + '</button>' +
+                         '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+    container.appendChild(section);
+  });
+
+  /* ---------- helpers ---------- */
+  function k(t, i){ return t + '-' + i; }
+  function optButtons(t, i){ return document.querySelectorAll('#item-' + t + '-' + i + ' .opt'); }
+
+  function paintSelection(t, i){
+    var sel = state.a[k(t, i)];
+    var gap = document.getElementById('gap-' + t + '-' + i);
+    optButtons(t, i).forEach(function(b){
+      b.classList.toggle('selected', sel !== undefined && parseInt(b.getAttribute('data-o'), 10) === sel);
+    });
+    if (sel === undefined) { gap.innerHTML = '&nbsp;'; gap.classList.remove('filled'); }
+    else { gap.textContent = TASKS[t].items[i].opts[sel]; gap.classList.add('filled'); }
+  }
+
+  function clearMarks(t, i){
+    var gap = document.getElementById('gap-' + t + '-' + i);
+    gap.classList.remove('correct', 'incorrect');
+    optButtons(t, i).forEach(function(b){ b.classList.remove('correct', 'incorrect'); });
+    var fb = document.getElementById('task' + t + '-fb-' + i);
+    if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+  }
+
+  function markItem(t, i){
+    var sel = state.a[k(t, i)];
+    clearMarks(t, i);
+    if (sel === undefined) return false;
+    var it = TASKS[t].items[i];
+    var gap = document.getElementById('gap-' + t + '-' + i);
+    var fb = document.getElementById('task' + t + '-fb-' + i);
+    var ok = (sel === it.ans);
+    optButtons(t, i).forEach(function(b){
+      if (parseInt(b.getAttribute('data-o'), 10) === sel) b.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    gap.classList.add(ok ? 'correct' : 'incorrect');
+    if (ok) { fb.innerHTML = ' Correct.'; fb.className = 'g-feedback correct'; }
+    else { fb.innerHTML = ' Not quite — correct answer: <strong>' + LETTERS[it.ans] + ') ' + it.opts[it.ans] + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    return true;
+  }
+
+  function checkTask(t){
+    TASKS[t].items.forEach(function(_, i){
+      if (markItem(t, i)) state.c[k(t, i)] = 1;
+    });
+    save();
+  }
+
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(it, i){ if (state.a[k(t, i)] === it.ans) total++; });
+    });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% complete';
+  }
+
+  function repaintAll(){
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(_, i){
+        paintSelection(t, i);
+        if (state.c[k(t, i)]) markItem(t, i); else clearMarks(t, i);
+      });
+    });
+    updateScore();
+  }
+
+  /* ---------- events ---------- */
+  container.addEventListener('click', function(e){
+    var opt = e.target.closest('.opt');
+    if (opt) {
+      var t = parseInt(opt.getAttribute('data-t'), 10), i = parseInt(opt.getAttribute('data-i'), 10), o = parseInt(opt.getAttribute('data-o'), 10);
+      state.a[k(t, i)] = o;
+      delete state.c[k(t, i)];      // changed answer: needs checking again
+      clearMarks(t, i);
+      paintSelection(t, i);
+      save();
+      updateScore();
+      return;
+    }
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) { checkTask(parseInt(checkBtn.getAttribute('data-check'), 10)); updateScore(); return; }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var tIdx = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      TASKS[tIdx].items.forEach(function(_, i){
+        delete state.a[k(tIdx, i)];
+        delete state.c[k(tIdx, i)];
+        paintSelection(tIdx, i);
+        clearMarks(tIdx, i);
+      });
+      save();
+      updateScore();
+    }
+  });
+
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, t){ checkTask(t); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* Restart: the only thing that erases saved progress. Tap twice to confirm. */
+  var restartBtn = document.getElementById('resetAllBtn'), restartTimer = null;
+  restartBtn.addEventListener('click', function(){
+    if (!restartBtn.getAttribute('data-armed')) {
+      restartBtn.setAttribute('data-armed', '1');
+      restartBtn.textContent = 'Tap again to erase everything';
+      restartTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm();
+    wipe();
+    repaintAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  function disarm(){
+    clearTimeout(restartTimer);
+    restartBtn.removeAttribute('data-armed');
+    restartBtn.textContent = 'Restart';
+  }
+
+
+  /* ---- robust saving v2: localStorage + sessionStorage + window.name, saved on every change and when leaving ---- */
+  var NAME_PREFIX = 'ipp:' + KEY + ':';
+  function readLS(){ try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
+  function readSS(){ try { return window.sessionStorage.getItem(KEY); } catch (e) { return null; } }
+  function readWN(){ try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) return n.slice(NAME_PREFIX.length); } catch (e) {} return null; }
+  function parseState(raw){ try { var s = JSON.parse(raw); if (s && s.a && s.c) return s; } catch (e) {} return null; }
+  function load(){
+    var best = null;
+    [readLS(), readSS(), readWN()].forEach(function(raw){
+      var s = raw ? parseState(raw) : null;
+      if (s && (!best || (s.t || 0) > (best.t || 0))) best = s;
+    });
+    if (best) state = best;
+    try { window.localStorage.setItem('__ipp_test', '1'); window.localStorage.removeItem('__ipp_test'); storageOK = true; }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    state.t = Date.now();
+    var raw = JSON.stringify(state), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch (e) {}
+    try { window.sessionStorage.setItem(KEY, raw); } catch (e) {}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NAME_PREFIX) === 0) window.name = NAME_PREFIX + raw; } catch (e) {}
+    if (!ok) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){
+    state = { a: {}, c: {} };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+    try { window.sessionStorage.removeItem(KEY); } catch (e) {}
+    try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) window.name = ''; } catch (e) {}
+  }
+  function encodeState(){ return btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }
+  function decodeState(code){ return parseState(decodeURIComponent(escape(atob((code || '').replace(/\s+/g, ''))))); }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress automatically.';
+    if (document.getElementById('saveBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'saveBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;font-family:inherit;color:#1A1A1A;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="codeCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-weight:700;cursor:pointer">Get my code</button>' +
+      '<button type="button" id="codeRestore" style="padding:7px 12px;border:1.5px solid #1A1A1A;border-radius:6px;background:#fff;color:#1A1A1A;font-weight:700;cursor:pointer">Restore from code</button>' +
+      '<span id="codeMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="codeBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    sheet.insertBefore(b, sheet.children[1] || null);
+    document.getElementById('codeCopy').addEventListener('click', function(){
+      var box = document.getElementById('codeBox'), msg = document.getElementById('codeMsg');
+      box.value = encodeState(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch (e) {}
+      msg.textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('codeRestore').addEventListener('click', function(){
+      var msg = document.getElementById('codeMsg'), s = null;
+      try { s = decodeState(document.getElementById('codeBox').value); } catch (e) {}
+      if (!s) { msg.textContent = 'That code is not valid.'; return; }
+      state = s; repaintAll(); save(); msg.textContent = 'Progress restored.';
+    });
+  }
+  window.addEventListener('pagehide', function(){ save(); });
+  window.addEventListener('beforeunload', function(){ save(); });
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') save(); });
+
+  load();
+  if (!storageOK) showStorageNote();
+  repaintAll();
+})();
+</script>
+
+</body>
+</html>

@@ -611,6 +611,70 @@ var TASKS = [{"title": "Exercise 1", "items": [{"q": "If I _______________ (be) 
   });
   function disarm(){ clearTimeout(restartTimer); restartBtn.removeAttribute('data-armed'); restartBtn.textContent = 'Restart'; }
 
+  /* ---- robust saving v2: localStorage + sessionStorage + window.name, saved on every change and when leaving ---- */
+  var NAME_PREFIX = 'ipp:' + KEY + ':';
+  function readLS(){ try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
+  function readSS(){ try { return window.sessionStorage.getItem(KEY); } catch (e) { return null; } }
+  function readWN(){ try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) return n.slice(NAME_PREFIX.length); } catch (e) {} return null; }
+  function parseState(raw){ try { var s = JSON.parse(raw); if (s && s.a && s.c) return s; } catch (e) {} return null; }
+  function load(){
+    var best = null;
+    [readLS(), readSS(), readWN()].forEach(function(raw){
+      var s = raw ? parseState(raw) : null;
+      if (s && (!best || (s.t || 0) > (best.t || 0))) best = s;
+    });
+    if (best) state = best;
+    try { window.localStorage.setItem('__ipp_test', '1'); window.localStorage.removeItem('__ipp_test'); storageOK = true; }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    state.t = Date.now();
+    var raw = JSON.stringify(state), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch (e) {}
+    try { window.sessionStorage.setItem(KEY, raw); } catch (e) {}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NAME_PREFIX) === 0) window.name = NAME_PREFIX + raw; } catch (e) {}
+    if (!ok) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){
+    state = { a: {}, c: {} };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+    try { window.sessionStorage.removeItem(KEY); } catch (e) {}
+    try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) window.name = ''; } catch (e) {}
+  }
+  function encodeState(){ return btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }
+  function decodeState(code){ return parseState(decodeURIComponent(escape(atob((code || '').replace(/\s+/g, ''))))); }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress automatically.';
+    if (document.getElementById('saveBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'saveBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;font-family:inherit;color:#1A1A1A;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="codeCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-weight:700;cursor:pointer">Get my code</button>' +
+      '<button type="button" id="codeRestore" style="padding:7px 12px;border:1.5px solid #1A1A1A;border-radius:6px;background:#fff;color:#1A1A1A;font-weight:700;cursor:pointer">Restore from code</button>' +
+      '<span id="codeMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="codeBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    sheet.insertBefore(b, sheet.children[1] || null);
+    document.getElementById('codeCopy').addEventListener('click', function(){
+      var box = document.getElementById('codeBox'), msg = document.getElementById('codeMsg');
+      box.value = encodeState(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch (e) {}
+      msg.textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('codeRestore').addEventListener('click', function(){
+      var msg = document.getElementById('codeMsg'), s = null;
+      try { s = decodeState(document.getElementById('codeBox').value); } catch (e) {}
+      if (!s) { msg.textContent = 'That code is not valid.'; return; }
+      state = s; repaintAll(); save(); msg.textContent = 'Progress restored.';
+    });
+  }
+  window.addEventListener('pagehide', function(){ save(); });
+  window.addEventListener('beforeunload', function(){ save(); });
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') save(); });
+
   load();
   if (!storageOK) showStorageNote();
   repaintAll();
