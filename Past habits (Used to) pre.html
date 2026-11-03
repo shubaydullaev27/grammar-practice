@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Used to — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; margin:4px 0 10px 0; }
+  .rule-box .form-line{ font-weight:700; margin:6px 0 14px; }
+  .rule-box .note-line{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .g-item{ padding:12px 0; border-bottom:1px dashed var(--rule); font-size:15.5px; line-height:2; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13px; margin:0 2px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:7px 9px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:160px; width:140px; display:inline-block; margin:0 3px; text-align:center; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+
+  .g-item .q{ display:block; }
+  .gap{ display:inline-block; min-width:70px; padding:0 6px; margin:0 3px; text-align:center; border-bottom:2px solid var(--ink); font-weight:700; line-height:1.4; }
+  .gap.filled{ background:rgba(255,213,48,.35); border-radius:3px 3px 0 0; }
+  .gap.correct{ border-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .gap.incorrect{ border-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .opts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  button.opt{ background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:5px; padding:8px 14px; font-size:14.5px; font-weight:600; min-height:44px; line-height:1.2; }
+  button.opt:hover{ border-color:var(--ink-soft); }
+  button.opt.selected{ background:var(--yellow); border-color:var(--black); color:var(--black); }
+  button.opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
+  button.opt.incorrect{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+  @media (max-width:620px){ .opts button.opt{ flex:1 1 auto; } }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  /* ===== Explanation section ===== */
+  :root{
+    --will:#1E8F52; --will-bg:#E6F5EB;
+    --wont:#D1382F; --wont-bg:#FBEAE8;
+    --might:#1D6FD1; --might-bg:#E5F0FC;
+    --mnot:#8A3FC4; --mnot-bg:#F1E8FA;
+  }
+  .explain{ padding: clamp(20px,4vw,30px) clamp(18px,5vw,44px) 6px; border-bottom:1px solid var(--rule); }
+  .explain h3{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,20px); margin:30px 0 12px; position:relative; padding-bottom:8px; }
+  .explain h3::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .explain h3:first-of-type{ margin-top:0; }
+  .explain p{ margin:0 0 10px; font-size:15px; }
+  .explain .lead{ font-size:15.5px; }
+
+  mark{ background:none; padding:1px 7px; border-radius:4px; font-weight:700; white-space:nowrap; }
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.might{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.mnot{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.verb{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.subj{ background:#EDEDE8; color:var(--ink); box-shadow:inset 0 -2px 0 #B9B8AE; }
+  mark.clue{ background:rgba(255,213,48,.55); color:var(--ink); font-weight:600; padding:0 4px; box-shadow:none; }
+
+  /* certainty scale */
+  .scale{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin:6px 0 0; }
+  .scale .cell{ color:#fff; padding:12px 8px 11px; text-align:center; }
+  .scale .cell:first-child{ border-radius:8px 0 0 8px; }
+  .scale .cell:nth-child(4){ border-radius:0 8px 8px 0; }
+  .scale .cell b{ display:block; font-size:clamp(15px,3.6vw,19px); font-family:'Fraunces',serif; font-weight:600; }
+  .scale .cell span{ display:block; font-size:12px; opacity:.92; margin-top:2px; }
+  .scale .c1{ background:var(--wont); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--might); } .scale .c4{ background:var(--will); }
+  .scale-cap{ display:grid; grid-template-columns:1fr 2fr 1fr; gap:4px; margin-top:6px; font-size:12.5px; font-weight:600; text-align:center; color:var(--ink-soft); }
+  .scale-cap div{ border-top:3px solid var(--rule); padding-top:5px; }
+  .scale-cap .mid{ border-top-color:var(--yellow-deep); color:var(--ink); }
+
+  /* formula */
+  .formula{ display:flex; flex-wrap:wrap; align-items:stretch; gap:6px; margin:6px 0 14px; }
+  .formula .chip{ flex:1 1 120px; border-radius:6px; padding:9px 10px; text-align:center; font-size:14px; line-height:1.3; }
+  .formula .chip small{ display:block; font-size:11.5px; font-weight:500; opacity:.75; margin-top:2px; }
+  .formula .plus{ align-self:center; font-weight:800; color:var(--ink-soft); }
+  .chip.s{ background:#EDEDE8; font-weight:700; }
+  .chip.m{ background:var(--black); color:#fff; font-weight:700; }
+  .chip.m em{ font-style:normal; color:var(--yellow); }
+  .chip.v{ background:rgba(255,213,48,.45); font-weight:700; }
+  .chip.r{ background:var(--paper); border:1.5px solid var(--rule); font-weight:600; }
+
+  .tbl-wrap{ overflow-x:auto; margin:0 0 12px; }
+  table.forms{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:460px; }
+  table.forms th{ text-align:left; background:var(--black); color:#fff; font-weight:600; padding:8px 10px; font-size:13px; }
+  table.forms td{ padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.forms td:first-child{ font-weight:700; white-space:nowrap; }
+
+  .callout{ border-radius:0 6px 6px 0; padding:12px 16px; font-size:14.5px; margin:12px 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); }
+  .callout b.t{ display:block; margin-bottom:3px; }
+  .callout.bad{ border-left-color:var(--bad); }
+  .callout.bad .no{ color:var(--bad); font-weight:700; }
+  .callout .yes{ color:var(--good); font-weight:700; }
+  .callout ul{ margin:4px 0 0; padding-left:18px; }
+
+  /* meaning cards + keyword cards */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .kcard{ border-radius:8px; border:1.5px solid var(--rule); border-top-width:5px; padding:14px 15px 14px; background:#fff; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.wont{ border-top-color:var(--wont); }
+  .kcard.might{ border-top-color:var(--might); } .kcard.mnot{ border-top-color:var(--mnot); }
+  .kcard h4{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .kcard.will h4{ color:var(--will); } .kcard.wont h4{ color:var(--wont); }
+  .kcard.might h4{ color:var(--might); } .kcard.mnot h4{ color:var(--mnot); }
+  .kcard .mean{ font-size:13.5px; font-weight:600; color:var(--ink-soft); margin-bottom:9px; }
+  .kcard .lbl{ font-size:12px; font-weight:700; color:var(--ink-soft); margin:8px 0 5px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:5px; }
+  .chips span{ font-size:13px; padding:3px 9px; border-radius:99px; font-weight:600; }
+  .kcard.will .chips span{ background:var(--will-bg); color:#146A3B; }
+  .kcard.wont .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.might .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.mnot .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard .eg{ font-size:13.5px; font-style:italic; margin-top:10px; padding-top:9px; border-top:1px dashed var(--rule); line-height:1.7; }
+  .kcard .eg mark{ font-style:normal; }
+
+  /* decision steps */
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:s; }
+  .steps li{ counter-increment:s; position:relative; padding:10px 12px 10px 48px; margin-bottom:8px; background:var(--paper); border-radius:6px; font-size:14.5px; }
+  .steps li::before{ content:counter(s); position:absolute; left:12px; top:9px; width:26px; height:26px; border-radius:50%; background:var(--yellow); font-family:'Fraunces',serif; font-weight:700; text-align:center; line-height:26px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pair > div{ background:#fff; border-radius:8px; border:1.5px solid var(--rule); padding:11px 13px; font-size:14px; }
+  .pair b{ display:block; margin-bottom:3px; }
+  .explain-end{ height:22px; }
+
+  @media (max-width:620px){
+    .grid2, .pair{ grid-template-columns:1fr; }
+    .scale .cell span{ font-size:11px; }
+    .formula .plus{ display:none; }
+  }
+
+  /* ===== Past tenses additions ===== */
+  :root{ --ps:#1D6FD1; --ps-bg:#E5F0FC; --pc:#8A3FC4; --pc-bg:#F1E8FA; }
+  mark.ps{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  mark.pc{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  .kcard.ps{ border-top-color:var(--ps); } .kcard.pc{ border-top-color:var(--pc); }
+  .kcard.ps h4{ color:var(--ps); } .kcard.pc h4{ color:var(--pc); }
+  .kcard.ps .chips span{ background:var(--ps-bg); color:#134E96; }
+  .kcard.pc .chips span{ background:var(--pc-bg); color:#6A2D98; }
+  .kcard .think{ font-size:13px; font-weight:700; margin-top:8px; }
+  .kcard.ps .think{ color:var(--ps); } .kcard.pc .think{ color:var(--pc); }
+  .kcard ul{ margin:6px 0 0; padding-left:18px; font-size:14px; }
+  .kcard li{ margin-bottom:4px; }
+  table.forms td:first-child{ white-space:normal; min-width:84px; }
+  table.forms th.ps{ background:var(--ps); } table.forms th.pc{ background:var(--pc); } table.forms th.blank{ background:var(--black); }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; }
+  table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+
+  /* timeline */
+  .timeline{ margin:8px 0 14px; }
+  .tl-track{ position:relative; height:46px; background:var(--pc-bg); border:2px solid var(--pc); border-radius:8px; display:flex; align-items:center; padding:0 14px; color:var(--pc); font-weight:700; font-size:14px; }
+  .tl-track .arrow{ position:absolute; right:-2px; top:50%; width:0; height:0; border-left:12px solid var(--pc); border-top:8px solid transparent; border-bottom:8px solid transparent; transform:translateY(-50%) translateX(100%); }
+  .tl-event{ position:absolute; left:62%; top:-14px; bottom:-14px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .tl-event i{ display:block; width:4px; height:100%; background:var(--ps); border-radius:2px; }
+  .tl-note{ display:flex; justify-content:space-between; font-size:13px; margin-top:20px; font-weight:600; }
+  .tl-note span:first-child{ color:var(--pc); } .tl-note span:last-child{ color:var(--ps); width:38%; text-align:center; }
+  .tl-flag{ position:absolute; left:62%; transform:translateX(-50%); top:-34px; background:var(--ps); color:#fff; font-size:12.5px; font-weight:700; padding:3px 9px; border-radius:99px; white-space:nowrap; }
+
+  /* inline answer fields */
+  .answer-input{ width:132px; max-width:150px; }
+  .g-item .q{ line-height:2.3; }
+  .g-feedback{ margin-top:2px; }
+  .ex-hint{ font-size:14px; color:var(--ink-soft); margin:0 0 10px; }
+  @media (max-width:620px){
+    .answer-input{ width:118px; }
+    .tl-note span:last-child{ width:45%; }
+  }
+
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --wont:#D1382F; --wont-bg:#FBEAE8; --might:#1D6FD1; --mnot:#8A3FC4; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  table.forms th.will{ background:var(--will); }
+  .scale .cell{ color:#fff; }
+
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --ps:#1D6FD1; --ps-bg:#E5F0FC; --pc:#8A3FC4; --pc-bg:#F1E8FA; }
+  mark.pres{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.past{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  mark.pcc{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.ps{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  table.forms th.will{ background:var(--will); } table.forms th.ps{ background:var(--ps); }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  .explain .no{ color:var(--bad); font-weight:700; } .explain .yes{ color:var(--good); font-weight:700; }
+
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --pc:#8A3FC4; --pc-bg:#F1E8FA; --might:#1D6FD1; --wont:#D1382F; --wont-bg:#FBEAE8; }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.pfor{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.psince{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.ppart{ background:#E5F0FC; color:#1D6FD1; box-shadow:inset 0 -2px 0 #1D6FD1; }
+  mark.uu{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.neg{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.q{ background:#E5F0FC; color:#1D6FD1; box-shadow:inset 0 -2px 0 #1D6FD1; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  .kcard.pcc{ border-top-color:var(--pc); } .kcard.pcc h4{ color:var(--pc); } .kcard.pcc .chips span{ background:var(--pc-bg); color:#6A2D98; }
+  .kcard.forb{ border-top-color:var(--wont); } .kcard.forb h4{ color:var(--wont); } .kcard.forb .chips span{ background:var(--wont-bg); color:#A22820; }
+  .explain .no{ color:var(--bad); font-weight:700; } .explain .yes{ color:var(--good); font-weight:700; }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; } table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+  table.forms td:first-child{ white-space:normal; min-width:84px; }
+  .tl2{ display:flex; align-items:stretch; margin:8px 0 14px; font-weight:700; font-size:14px; text-align:center; }
+  .tl2 small{ display:block; font-weight:500; font-size:11.5px; opacity:.8; margin-top:2px; }
+  .tl2-start{ background:var(--pc-bg); color:var(--pc); padding:10px 14px; border-radius:8px 0 0 8px; }
+  .tl2-bar{ flex:1; background:var(--will-bg); border-top:2px solid var(--will); border-bottom:2px solid var(--will); color:var(--will); padding:10px 8px; }
+  .tl2-now{ background:var(--black); color:#fff; padding:10px 14px; border-radius:0 8px 8px 0; display:flex; align-items:center; }
+  .g-item .answer-input.wide{ display:block; width:100%; max-width:560px; margin-top:6px; }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE · PAST HABITS</div>
+    <h1>Used to</h1>
+    <p class="sub">Read the guide, then complete each sentence with the correct form of the verb in brackets. Use <b>used to</b>, <b>didn’t use to</b>, or <b>Did … use to?</b> Short forms (didn’t) and full forms (did not) are both accepted. Check your answers exercise by exercise. Your progress is saved on this device.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <div class="explain">
+
+    <h3>1. The main idea</h3>
+    <p class="lead">We use <b>used to</b> for regular actions and situations that were <b>true in the past</b> but are <b>not true now</b>.</p>
+    <div class="tl2" style="--bar:#8A3FC4">
+      <div class="tl2-start" style="background:#F1E8FA;color:#8A3FC4">in the past<small>true then ✔</small></div>
+      <div class="tl2-bar" style="background:#F1E8FA;border-color:#8A3FC4;color:#8A3FC4">used to send telegrams<small>regular action</small></div>
+      <div class="tl2-now">NOW ✘</div>
+    </div>
+    <div class="callout" style="border-left-color:var(--pc)">
+      People <mark class="uu">used to send</mark> telegrams. <span style="color:var(--ink-soft)">(They don’t send them now.)</span><br>
+      I <mark class="uu">used to be</mark> very shy, but now I’m more confident.
+    </div>
+
+    <h3>2. Form</h3>
+    <div class="tbl-wrap">
+    <table class="forms">
+      <tr><th class="blank"></th><th class="blank">Form</th><th class="blank">Example</th></tr>
+      <tr><td>+ Positive</td><td><span class="pat">subject + <mark class="uu">used to</mark> + base verb</span></td><td><span class="eg">We <mark class="uu">used to swim</mark> in the sea.</span></td></tr>
+      <tr><td>– Negative</td><td><span class="pat">subject + <mark class="neg">didn’t use to</mark> + base verb</span></td><td><span class="eg">We <mark class="neg">didn’t use to have</mark> a TV.</span></td></tr>
+      <tr><td>? Question</td><td><span class="pat"><mark class="q">Did</mark> + subject + <mark class="q">use to</mark> + base verb?</span></td><td><span class="eg"><mark class="q">Did</mark> you <mark class="q">use to watch</mark> videos at school?</span></td></tr>
+    </table>
+    </div>
+    <div class="callout bad">
+      <b class="t">Remember</b>
+      <ul>
+        <li><b>used to</b> is the same for all subjects (<i>I, he, they used to</i>).</li>
+        <li>After <b>did / didn’t</b> we write <b>use to</b> (no <i>-d</i>): <span class="yes">I didn’t use to like it.</span> &nbsp;<span class="no">I didn’t used to like it.</span></li>
+        <li>After <i>used to</i> use the <b>base verb</b>: <span class="yes">used to play</span> &nbsp;<span class="no">used to playing</span></li>
+        <li>Short and full forms are both correct: <i>didn’t</i> = <i>did not</i>.</li>
+      </ul>
+    </div>
+
+    <h3>3. Positive, negative or question? Key words</h3>
+    <div class="grid2">
+      <div class="kcard pcc">
+        <h4>used to</h4><div class="mean">Positive: a past habit or state</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>when I was a child</span><span>years ago</span><span>every summer</span><span>before we had a TV</span><span>but now …</span></div>
+        <div class="eg">My brother <mark class="uu">used to play</mark> football every weekend, but now he doesn’t have time.</div>
+      </div>
+      <div class="kcard forb">
+        <h4>didn’t use to</h4><div class="mean">Negative: it wasn’t true then</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>(not …) in brackets</span><span>but now she loves it</span><span>but now he likes it</span></div>
+        <div class="eg">She <mark class="neg">didn’t use to enjoy</mark> reading, but now she loves books.</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:12px;border-left-color:var(--might)">
+      <b class="t">Questions</b>
+      Two gaps: write <mark class="q">Did</mark> in the first gap and <mark class="q">use to</mark> + verb in the second gap.<br>
+      <i><mark class="q">Did</mark> your family <mark class="q">use to travel</mark> a lot when you were a child?</i>
+    </div>
+
+    <h3>4. When we DON’T use used to</h3>
+    <div class="pair">
+      <div><b>An action that happened once</b>
+        <span class="yes">✔ I wrote a news article once.</span><br><span class="no">✘ I used to write a news article once.</span></div>
+      <div><b>A number of times or a period of time</b>
+        <span class="yes">✔ I was on TV five times.</span><br><span class="no">✘ I used to be on TV five times.</span></div>
+    </div>
+    <div class="callout bad" style="margin-top:12px">
+      <b class="t">Not for the present</b>
+      <span class="yes">✔ I usually get my news online these days.</span><br>
+      <span class="no">✘ I used to get my news online these days.</span>
+    </div>
+
+    <h3>5. Comparing past and present</h3>
+    <div class="callout">
+      News programmes <mark class="uu">used to be</mark> more boring than they are now.<br>
+      We use <b>used to</b> with <b>states</b> (<i>be, have, like, live</i>) and <b>habits</b> (<i>play, go, eat, watch</i>).
+    </div>
+
+    <h3>6. Quick check</h3>
+    <ol class="steps">
+      <li>Was it <b>true in the past</b> but not now? → use <mark class="uu">used to</mark>.</li>
+      <li>See <b>(not …)</b>? → <mark class="neg">didn’t use to</mark> + verb.</li>
+      <li>Is it a <b>question</b>? → <mark class="q">Did</mark> + subject + <mark class="q">use to</mark> + verb?</li>
+    </ol>
+    <div class="explain-end"></div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% correct</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Restart</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Used to — for individual practice. Your answers are saved on this device until you press Restart.<br><span id="saveNote" style="opacity:.8;">If the buttons don’t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Exercise 1", "items": [{"q": "When we lived near the beach, we _______________ (swim) in the sea every summer.", "a": [["used to swim"]]}, {"q": "I _______________ (be) very shy in school, but now I’m more confident.", "a": [["used to be"]]}, {"q": "_______________ your family _______________ (travel) a lot when you were a child?", "a": [["Did"], ["use to travel"]]}, {"q": "She _______________ (not like) vegetables, but now she eats them every day.", "a": [["didn’t use to like"]]}, {"q": "We _______________ (have) a big garden, but we moved to an apartment.", "a": [["used to have"]]}, {"q": "_______________ he _______________ (play) with toy cars when he was younger?", "a": [["Did"], ["use to play"]]}, {"q": "My parents _______________ (listen) to the radio every morning before we had a TV.", "a": [["used to listen"]]}, {"q": "He _______________ (not enjoy) reading, but now he loves books.", "a": [["didn’t use to enjoy"]]}, {"q": "They _______________ (walk) to school together when they were ten.", "a": [["used to walk"]]}, {"q": "_______________ you _______________ (collect) stickers when you were little?", "a": [["Did"], ["use to collect"]]}]}, {"title": "Exercise 2", "items": [{"q": "My brother _______________ (play) football every weekend, but now he doesn’t have time.", "a": [["used to play"]]}, {"q": "We _______________ (eat) a lot of fast food, but now we cook at home.", "a": [["used to eat"]]}, {"q": "_______________ you _______________ (have) long hair when you were a child?", "a": [["Did"], ["use to have"]]}, {"q": "She _______________ (not enjoy) reading books, but now she loves them.", "a": [["didn’t use to enjoy"]]}, {"q": "My grandparents _______________ (live) in the countryside before moving to the city.", "a": [["used to live"]]}, {"q": "Our teacher _______________ (wear) a hat to every lesson.", "a": [["used to wear"]]}, {"q": "I _______________ (not like) coffee, but now I drink it every morning.", "a": [["didn’t use to like"]]}, {"q": "_______________ your grandfather _______________ (work) on a farm?", "a": [["Did"], ["use to work"]]}, {"q": "Tom and Ben _______________ (share) a bedroom when they were kids.", "a": [["used to share"]]}, {"q": "My dad _______________ (cycle) to work, but now he drives.", "a": [["used to cycle"]]}]}, {"title": "Exercise 3", "items": [{"q": "When I was a child, I _______________ (ride) my bike every afternoon.", "a": [["used to ride"]]}, {"q": "My brother _______________ (not like) chocolate, but now he loves it.", "a": [["didn’t use to like"]]}, {"q": "_______________ your parents _______________ (go) to the beach when they were young?", "a": [["Did"], ["use to go"]]}, {"q": "We _______________ (play) in the park after school.", "a": [["used to play"]]}, {"q": "She _______________ (watch) cartoons every Saturday morning when she was little.", "a": [["used to watch"]]}, {"q": "My friends _______________ (have) lunch at the same café as me before it closed.", "a": [["used to have"]]}, {"q": "_______________ your cousin _______________ (wear) glasses when she was little?", "a": [["Did"], ["use to wear"]]}, {"q": "I _______________ (read) comics, but now I prefer books.", "a": [["used to read"]]}, {"q": "I _______________ (have) a dog when I was little, but now I have a cat.", "a": [["used to have"]]}, {"q": "_______________ your family _______________ (eat out) often when you were a child?", "a": [["Did"], ["use to eat out"]]}]}, {"title": "Exercise 4", "items": [{"q": "I _______________ (eat) a lot of chocolate when I was younger, but now I prefer fruit.", "a": [["used to eat"]]}, {"q": "_______________ you _______________ (play) video games every day when you were a kid?", "a": [["Did"], ["use to play"]]}, {"q": "They _______________ (visit) their grandparents every summer, but now they go to the beach instead.", "a": [["used to visit"]]}, {"q": "My brother _______________ (hate) swimming, but now he loves it.", "a": [["used to hate"]]}, {"q": "We _______________ (grow) vegetables when we lived in the countryside, but we don’t now.", "a": [["used to grow"]]}, {"q": "I _______________ (use) a cassette player, but now I listen to music on my phone.", "a": [["used to use"]]}, {"q": "_______________ you _______________ (drink) milk every morning when you were a child?", "a": [["Did"], ["use to drink"]]}, {"q": "We _______________ (go) to the beach every summer, but now we prefer the mountains.", "a": [["used to go"]]}, {"q": "She _______________ (listen) to classical music, but now she enjoys pop songs more.", "a": [["used to listen"]]}, {"q": "_______________ they _______________ (stay up) all night during the holidays?", "a": [["Did"], ["use to stay up"]]}]}, {"title": "Exercise 5", "items": [{"q": "People _______________ (send) telegrams, but now they send messages.", "a": [["used to send"]]}, {"q": "We _______________ (not have) a TV, so we listened to the radio.", "a": [["didn’t use to have"]]}, {"q": "_______________ your dad _______________ (read) a newspaper at breakfast?", "a": [["Did"], ["use to read"]]}, {"q": "My grandmother _______________ (write) letters to her friends every week.", "a": [["used to write"]]}, {"q": "Students _______________ (not use) computers in class twenty years ago.", "a": [["didn’t use to use"]]}, {"q": "News programmes _______________ (be) more boring than they are now.", "a": [["used to be"]]}, {"q": "_______________ you _______________ (watch) the news with your parents?", "a": [["Did"], ["use to watch"]]}, {"q": "I _______________ (take) photos with a film camera.", "a": [["used to take"]]}, {"q": "Our family _______________ (share) one phone, but now everyone has their own.", "a": [["used to share"]]}, {"q": "Cinemas _______________ (show) only one film at a time.", "a": [["used to show"]]}]}, {"title": "Exercise 6", "items": [{"q": "Our teacher _______________ (give) us a lot of homework on Fridays.", "a": [["used to give"]]}, {"q": "We _______________ (not wear) a uniform at my first school.", "a": [["didn’t use to wear"]]}, {"q": "_______________ you _______________ (bring) your own lunch to school?", "a": [["Did"], ["use to bring"]]}, {"q": "My best friend _______________ (sit) next to me in class.", "a": [["used to sit"]]}, {"q": "I _______________ (find) maths difficult, but now it’s my favourite subject.", "a": [["used to find"]]}, {"q": "The students _______________ (stand) up when the teacher came in.", "a": [["used to stand"]]}, {"q": "_______________ your school _______________ (hold) a sports day every year?", "a": [["Did"], ["use to hold"]]}, {"q": "She _______________ (not speak) English, but now she speaks it fluently.", "a": [["didn’t use to speak"]]}, {"q": "We _______________ (draw) on the board during break.", "a": [["used to draw"]]}, {"q": "He _______________ (be) the best player in the school team.", "a": [["used to be"]]}]}, {"title": "Exercise 7", "items": [{"q": "I _______________ (drink) a lot of cola, but now I only drink water.", "a": [["used to drink"]]}, {"q": "My mum _______________ (not cook) much, but now she loves it.", "a": [["didn’t use to cook"]]}, {"q": "_______________ your family _______________ (live) in a flat?", "a": [["Did"], ["use to live"]]}, {"q": "We _______________ (make) pancakes every Sunday.", "a": [["used to make"]]}, {"q": "My uncle _______________ (own) a bakery in our village.", "a": [["used to own"]]}, {"q": "The streets _______________ (be) much quieter than they are today.", "a": [["used to be"]]}, {"q": "_______________ your grandma _______________ (bake) bread every week?", "a": [["Did"], ["use to bake"]]}, {"q": "I _______________ (not eat) fish, but now I love sushi.", "a": [["didn’t use to eat"]]}, {"q": "There _______________ (be) a cinema near my house, but it closed.", "a": [["used to be"]]}, {"q": "My sister and I _______________ (argue) about everything.", "a": [["used to argue"]]}]}, {"title": "Exercise 8", "items": [{"q": "Dan _______________ (play) the drums in a band, but he stopped last year.", "a": [["used to play"]]}, {"q": "I _______________ (not be) interested in sport, but now I run every day.", "a": [["didn’t use to be"]]}, {"q": "_______________ you _______________ (skate) in the park when you were young?", "a": [["Did"], ["use to skate"]]}, {"q": "We _______________ (jump) on the trampoline every weekend.", "a": [["used to jump"]]}, {"q": "My children _______________ (love) cartoons about dinosaurs.", "a": [["used to love"]]}, {"q": "Kate _______________ (attend) dance classes on Thursdays.", "a": [["used to attend"]]}, {"q": "_______________ your brother _______________ (build) models when he was a boy?", "a": [["Did"], ["use to build"]]}, {"q": "They _______________ (not play) tennis, but now they play every week.", "a": [["didn’t use to play"]]}, {"q": "He _______________ (climb) trees in the garden when he was small.", "a": [["used to climb"]]}, {"q": "I _______________ (fly) a kite on the beach every summer.", "a": [["used to fly"]]}]}, {"title": "Exercise 9", "items": [{"q": "My father _______________ (work) in a factory before he became a driver.", "a": [["used to work"]]}, {"q": "There _______________ (not be) many cars on this road.", "a": [["didn’t use to be"]]}, {"q": "_______________ people _______________ (travel) by horse a hundred years ago?", "a": [["Did"], ["use to travel"]]}, {"q": "She _______________ (teach) at a primary school before she moved here.", "a": [["used to teach"]]}, {"q": "Our town _______________ (have) a market every Saturday.", "a": [["used to have"]]}, {"q": "I _______________ (not wake up) early, but now I get up at six.", "a": [["didn’t use to wake up"]]}, {"q": "_______________ you _______________ (drive) to work?", "a": [["Did"], ["use to drive"]]}, {"q": "Doctors _______________ (visit) patients at home.", "a": [["used to visit"]]}, {"q": "My neighbours _______________ (be) very noisy, but they are quiet now.", "a": [["used to be"]]}, {"q": "We _______________ (meet) every Friday at the old café.", "a": [["used to meet"]]}]}, {"title": "Exercise 10", "items": [{"q": "When I was five, I _______________ (be) afraid of the dark.", "a": [["used to be"]]}, {"q": "He _______________ (not need) glasses before he was ten.", "a": [["didn’t use to need"]]}, {"q": "_______________ you _______________ (sing) in a choir at school?", "a": [["Did"], ["use to sing"]]}, {"q": "My grandfather _______________ (tell) us stories every night.", "a": [["used to tell"]]}, {"q": "We _______________ (spend) our holidays at my aunt’s house.", "a": [["used to spend"]]}, {"q": "She _______________ (cry) every time she watched a sad film.", "a": [["used to cry"]]}, {"q": "_______________ Anna _______________ (paint) pictures when she was a teenager?", "a": [["Did"], ["use to paint"]]}, {"q": "I _______________ (not understand) English films, but now I can.", "a": [["didn’t use to understand"]]}, {"q": "They _______________ (sleep) until noon at weekends.", "a": [["used to sleep"]]}, {"q": "My old phone _______________ (break) every month.", "a": [["used to break"]]}]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+  var KEY = 'used-to-progress-v1';
+
+  var state = { a: {}, c: {} };   // a: answers {"t-i-g": text}, c: checked items {"t-i": 1}
+  var storageOK = true;
+  function load(){
+    try { var raw = window.localStorage.getItem(KEY); if (raw) { var s = JSON.parse(raw); if (s && s.a && s.c) state = s; } }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){ state = { a: {}, c: {} }; try { window.localStorage.removeItem(KEY); } catch (e) {} }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress (private mode?). Your answers will be lost if you close or reload the page.';
+  }
+
+  function norm(s){
+    s = (s || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim();
+    s = s.replace(/\bwill not\b/g, "won't").replace(/\bwould not\b/g, "wouldn't").replace(/\bdo not\b/g, "don't")
+         .replace(/\bdoes not\b/g, "doesn't").replace(/\bdid not\b/g, "didn't").replace(/\bwere not\b/g, "weren't")
+         .replace(/\bwas not\b/g, "wasn't").replace(/\bis not\b/g, "isn't").replace(/\bare not\b/g, "aren't").replace(/\bcould not\b/g, "couldn't").replace(/\bshould not\b/g, "shouldn't").replace(/\bmust not\b/g, "mustn't")
+         .replace(/\bcan not\b/g, "can't").replace(/\bcannot\b/g, "can't").replace(/\bmightn't\b/g, "might not");
+    s = s.replace(/'ll\b/g, " will").replace(/'d\b/g, " would").replace(/\s+/g, ' ').trim();
+    return s;
+  }
+  var MODALS = {pos:['will','can','may','might','could','should','must'],neg:["won't","can't",'may not','might not',"couldn't","shouldn't","mustn't","mightn't"]};
+  function gapOK(t, i, g){
+    var v = norm(state.a[t + '-' + i + '-' + g]);
+    if (!v) return false;
+    var it = TASKS[t].items[i];
+    if (it.mod && it.mod[g]) {
+      var base = norm(it.a[g][0]);
+      var m = base.match(/^(will|won't|would|wouldn't|might not|might)\s+(.*)$/);
+      if (m) {
+        var neg = /^(won't|wouldn't|might not)$/.test(m[1]);
+        var set = neg ? MODALS.neg : MODALS.pos;
+        for (var k = 0; k < set.length; k++) { if (v === set[k] + ' ' + m[2]) return true; }
+        return false;
+      }
+    }
+    return it.a[g].some(function(x){ return norm(x) === v; });
+  }
+  function displayAns(it){
+    var anyMod = false;
+    var s = it.a.map(function(alts, g){ if (it.mod && it.mod[g]) anyMod = true; return alts.join(' / '); }).join(' … ');
+    return anyMod ? s + '</strong> (other modals are possible too)<strong>' : s;
+  }
+
+  /* ---------- build ---------- */
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    var count = task.items.length;
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>' + task.title + '</h2><span class="block-count">' + count + ' questions</span>';
+    section.appendChild(head);
+    var hint = document.createElement('p');
+    hint.className = 'ex-hint';
+    hint.innerHTML = 'Complete the sentences. Use <b>used to</b>, <b>didn’t use to</b>, or <b>Did … use to?</b>';
+    section.appendChild(hint);
+
+    task.items.forEach(function(it, iIdx){
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+      wrap.id = 'item-' + tIdx + '-' + iIdx;
+      var q = document.createElement('span');
+      q.className = 'q';
+      var num = document.createElement('span');
+      num.className = 'g-num'; num.textContent = (iIdx + 1);
+      q.appendChild(num);
+      var parts = it.q.split(/_{3,}/);
+      parts.forEach(function(part, pIdx){
+        // split off a following "(verb)" hint so it can be styled
+        var m = (pIdx > 0) ? part.match(/^(\s*)(\([^)]*\))(.*)$/s) : null;
+        if (m) {
+          var h = document.createElement('span'); h.className = 'g-hint'; h.textContent = m[2]; q.appendChild(h);
+          q.appendChild(document.createTextNode(m[3]));
+        } else {
+          q.appendChild(document.createTextNode(part));
+        }
+        if (pIdx < parts.length - 1) {
+          var inp = document.createElement('input');
+          inp.type = 'text'; inp.className = 'answer-input';
+          inp.setAttribute('data-t', tIdx); inp.setAttribute('data-i', iIdx); inp.setAttribute('data-g', pIdx);
+          inp.setAttribute('autocomplete', 'off'); inp.setAttribute('autocapitalize', 'none');
+          inp.setAttribute('autocorrect', 'off'); inp.setAttribute('spellcheck', 'false');
+          inp.setAttribute('aria-label', 'Answer ' + (iIdx + 1) + (parts.length > 2 ? ', gap ' + (pIdx + 1) : ''));
+          q.appendChild(inp);
+        }
+      });
+      wrap.appendChild(q);
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback'; fb.id = 'fb-' + tIdx + '-' + iIdx;
+      wrap.appendChild(fb);
+      section.appendChild(wrap);
+    });
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check ' + task.title + '</button>' +
+                         '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+    container.appendChild(section);
+  });
+
+  /* ---------- helpers ---------- */
+  function inputs(t, i){ return document.querySelectorAll('#item-' + t + '-' + i + ' .answer-input'); }
+
+  function paintInputs(t, i){
+    inputs(t, i).forEach(function(inp){
+      var g = inp.getAttribute('data-g');
+      var v = state.a[t + '-' + i + '-' + g];
+      if (v !== undefined && inp.value !== v) inp.value = v;
+      if (v === undefined) inp.value = '';
+    });
+  }
+  function clearMarks(t, i){
+    inputs(t, i).forEach(function(inp){ inp.classList.remove('correct', 'incorrect'); });
+    var fb = document.getElementById('fb-' + t + '-' + i);
+    fb.textContent = ''; fb.className = 'g-feedback';
+  }
+  function markItem(t, i){
+    var it = TASKS[t].items[i];
+    clearMarks(t, i);
+    var any = false, allOK = true;
+    inputs(t, i).forEach(function(inp){
+      var g = parseInt(inp.getAttribute('data-g'), 10);
+      var v = state.a[t + '-' + i + '-' + g];
+      if (v && v.trim()) any = true;
+      var ok = gapOK(t, i, g);
+      if (!ok) allOK = false;
+      inp.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    var fb = document.getElementById('fb-' + t + '-' + i);
+    if (allOK) { fb.textContent = 'Correct.'; fb.className = 'g-feedback correct'; }
+    else { fb.innerHTML = 'Not quite — correct answer: <strong>' + displayAns(it) + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    return true;
+  }
+  function checkTask(t){
+    TASKS[t].items.forEach(function(it, i){
+      var anyText = false;
+      it.a.forEach(function(_, g){ if ((state.a[t + '-' + i + '-' + g] || '').trim()) anyText = true; });
+      if (anyText) { markItem(t, i); state.c[t + '-' + i] = 1; }
+    });
+    save();
+  }
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(task, t){ task.items.forEach(function(it, i){ var ok = true; it.a.forEach(function(_, g){ if (!gapOK(t, i, g)) ok = false; }); if (ok) total++; }); });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% correct';
+  }
+  function repaintAll(){
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(_, i){
+        paintInputs(t, i);
+        if (state.c[t + '-' + i]) markItem(t, i); else clearMarks(t, i);
+      });
+    });
+    updateScore();
+  }
+
+  /* ---------- events ---------- */
+  container.addEventListener('input', function(e){
+    var inp = e.target.closest('.answer-input');
+    if (!inp) return;
+    var t = parseInt(inp.getAttribute('data-t'), 10), i = parseInt(inp.getAttribute('data-i'), 10), g = parseInt(inp.getAttribute('data-g'), 10);
+    state.a[t + '-' + i + '-' + g] = inp.value;
+    delete state.c[t + '-' + i];
+    clearMarks(t, i);
+    save();
+    updateScore();
+  });
+  container.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' || !e.target.classList.contains('answer-input')) return;
+    e.preventDefault();
+    var all = Array.prototype.slice.call(container.querySelectorAll('.answer-input'));
+    var n = all[all.indexOf(e.target) + 1];
+    if (n) n.focus(); else e.target.blur();
+  });
+  container.addEventListener('click', function(e){
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) { checkTask(parseInt(checkBtn.getAttribute('data-check'), 10)); updateScore(); return; }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var t = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      TASKS[t].items.forEach(function(it, i){
+        it.a.forEach(function(_, g){ delete state.a[t + '-' + i + '-' + g]; });
+        delete state.c[t + '-' + i];
+        paintInputs(t, i); clearMarks(t, i);
+      });
+      save(); updateScore();
+    }
+  });
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, t){ checkTask(t); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  var restartBtn = document.getElementById('resetAllBtn'), restartTimer = null;
+  restartBtn.addEventListener('click', function(){
+    if (!restartBtn.getAttribute('data-armed')) {
+      restartBtn.setAttribute('data-armed', '1');
+      restartBtn.textContent = 'Tap again to erase everything';
+      restartTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm(); wipe(); repaintAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  function disarm(){ clearTimeout(restartTimer); restartBtn.removeAttribute('data-armed'); restartBtn.textContent = 'Restart'; }
+
+  /* ---- robust saving v2: localStorage + sessionStorage + window.name, saved on every change and when leaving ---- */
+  var NAME_PREFIX = 'ipp:' + KEY + ':';
+  function readLS(){ try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
+  function readSS(){ try { return window.sessionStorage.getItem(KEY); } catch (e) { return null; } }
+  function readWN(){ try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) return n.slice(NAME_PREFIX.length); } catch (e) {} return null; }
+  function parseState(raw){ try { var s = JSON.parse(raw); if (s && s.a && s.c) return s; } catch (e) {} return null; }
+  function load(){
+    var best = null;
+    [readLS(), readSS(), readWN()].forEach(function(raw){
+      var s = raw ? parseState(raw) : null;
+      if (s && (!best || (s.t || 0) > (best.t || 0))) best = s;
+    });
+    if (best) state = best;
+    try { window.localStorage.setItem('__ipp_test', '1'); window.localStorage.removeItem('__ipp_test'); storageOK = true; }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    state.t = Date.now();
+    var raw = JSON.stringify(state), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch (e) {}
+    try { window.sessionStorage.setItem(KEY, raw); } catch (e) {}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NAME_PREFIX) === 0) window.name = NAME_PREFIX + raw; } catch (e) {}
+    if (!ok) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){
+    state = { a: {}, c: {} };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+    try { window.sessionStorage.removeItem(KEY); } catch (e) {}
+    try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) window.name = ''; } catch (e) {}
+  }
+  function encodeState(){ return btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }
+  function decodeState(code){ return parseState(decodeURIComponent(escape(atob((code || '').replace(/\s+/g, ''))))); }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress automatically.';
+    if (document.getElementById('saveBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'saveBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;font-family:inherit;color:#1A1A1A;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="codeCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-weight:700;cursor:pointer">Get my code</button>' +
+      '<button type="button" id="codeRestore" style="padding:7px 12px;border:1.5px solid #1A1A1A;border-radius:6px;background:#fff;color:#1A1A1A;font-weight:700;cursor:pointer">Restore from code</button>' +
+      '<span id="codeMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="codeBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    sheet.insertBefore(b, sheet.children[1] || null);
+    document.getElementById('codeCopy').addEventListener('click', function(){
+      var box = document.getElementById('codeBox'), msg = document.getElementById('codeMsg');
+      box.value = encodeState(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch (e) {}
+      msg.textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('codeRestore').addEventListener('click', function(){
+      var msg = document.getElementById('codeMsg'), s = null;
+      try { s = decodeState(document.getElementById('codeBox').value); } catch (e) {}
+      if (!s) { msg.textContent = 'That code is not valid.'; return; }
+      state = s; repaintAll(); save(); msg.textContent = 'Progress restored.';
+    });
+  }
+  window.addEventListener('pagehide', function(){ save(); });
+  window.addEventListener('beforeunload', function(){ save(); });
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') save(); });
+
+  load();
+  if (!storageOK) showStorageNote();
+  repaintAll();
+})();
+
+</script>
+
+</body>
+</html>

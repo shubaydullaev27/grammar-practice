@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Present Perfect with for and since — Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  .unit-label{ display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--black); background:var(--yellow); padding:5px 11px; border-radius:3px; margin-bottom:14px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,6vw,36px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:56ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .rule-box{ margin: clamp(18px,4vw,28px) clamp(18px,5vw,44px) 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); border-radius:0 6px 6px 0; padding: 18px 20px; font-size:14.5px; }
+  .rule-box h3{ font-family:'Fraunces',serif; font-size:17px; margin:0 0 10px; }
+  .rule-box .ex{ color:var(--ink-soft); font-style:italic; margin:4px 0 10px 0; }
+  .rule-box .form-line{ font-weight:700; margin:6px 0 14px; }
+  .rule-box .note-line{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ padding: clamp(20px,5vw,30px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:14px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,21px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .g-item{ padding:12px 0; border-bottom:1px dashed var(--rule); font-size:15.5px; line-height:2; }
+  .g-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; }
+  .g-hint{ color:var(--ink-soft); font-style:italic; font-size:13px; margin:0 2px; }
+  .answer-input{ border:1.5px solid var(--rule); background:var(--white); border-radius:5px; padding:7px 9px; font-family:inherit; font-size:15px; color:var(--ink); transition:border-color .15s, background .15s, box-shadow .15s; max-width:160px; width:140px; display:inline-block; margin:0 3px; text-align:center; }
+  .answer-input:focus{ outline:none; border-color:var(--black); box-shadow:0 0 0 3px rgba(255,213,48,.45); }
+  .answer-input.correct{ border-color:var(--good); background:var(--good-bg); }
+  .answer-input.incorrect{ border-color:var(--bad); background:var(--bad-bg); }
+  .g-feedback{ display:block; font-size:12.5px; margin-top:4px; color:var(--ink-soft); }
+  .g-feedback.correct{ color:var(--good); }
+  .g-feedback.incorrect{ color:var(--bad); }
+  .g-feedback strong{ color:var(--ink); font-weight:600; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+
+  .g-item .q{ display:block; }
+  .gap{ display:inline-block; min-width:70px; padding:0 6px; margin:0 3px; text-align:center; border-bottom:2px solid var(--ink); font-weight:700; line-height:1.4; }
+  .gap.filled{ background:rgba(255,213,48,.35); border-radius:3px 3px 0 0; }
+  .gap.correct{ border-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .gap.incorrect{ border-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .opts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  button.opt{ background:var(--white); color:var(--ink); border:1.5px solid var(--rule); border-radius:5px; padding:8px 14px; font-size:14.5px; font-weight:600; min-height:44px; line-height:1.2; }
+  button.opt:hover{ border-color:var(--ink-soft); }
+  button.opt.selected{ background:var(--yellow); border-color:var(--black); color:var(--black); }
+  button.opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
+  button.opt.incorrect{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+  @media (max-width:620px){ .opts button.opt{ flex:1 1 auto; } }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .answer-input{ width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  /* ===== Explanation section ===== */
+  :root{
+    --will:#1E8F52; --will-bg:#E6F5EB;
+    --wont:#D1382F; --wont-bg:#FBEAE8;
+    --might:#1D6FD1; --might-bg:#E5F0FC;
+    --mnot:#8A3FC4; --mnot-bg:#F1E8FA;
+  }
+  .explain{ padding: clamp(20px,4vw,30px) clamp(18px,5vw,44px) 6px; border-bottom:1px solid var(--rule); }
+  .explain h3{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(18px,4vw,20px); margin:30px 0 12px; position:relative; padding-bottom:8px; }
+  .explain h3::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .explain h3:first-of-type{ margin-top:0; }
+  .explain p{ margin:0 0 10px; font-size:15px; }
+  .explain .lead{ font-size:15.5px; }
+
+  mark{ background:none; padding:1px 7px; border-radius:4px; font-weight:700; white-space:nowrap; }
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.might{ background:var(--might-bg); color:var(--might); box-shadow:inset 0 -2px 0 var(--might); }
+  mark.mnot{ background:var(--mnot-bg); color:var(--mnot); box-shadow:inset 0 -2px 0 var(--mnot); }
+  mark.verb{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.subj{ background:#EDEDE8; color:var(--ink); box-shadow:inset 0 -2px 0 #B9B8AE; }
+  mark.clue{ background:rgba(255,213,48,.55); color:var(--ink); font-weight:600; padding:0 4px; box-shadow:none; }
+
+  /* certainty scale */
+  .scale{ display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin:6px 0 0; }
+  .scale .cell{ color:#fff; padding:12px 8px 11px; text-align:center; }
+  .scale .cell:first-child{ border-radius:8px 0 0 8px; }
+  .scale .cell:nth-child(4){ border-radius:0 8px 8px 0; }
+  .scale .cell b{ display:block; font-size:clamp(15px,3.6vw,19px); font-family:'Fraunces',serif; font-weight:600; }
+  .scale .cell span{ display:block; font-size:12px; opacity:.92; margin-top:2px; }
+  .scale .c1{ background:var(--wont); } .scale .c2{ background:var(--mnot); }
+  .scale .c3{ background:var(--might); } .scale .c4{ background:var(--will); }
+  .scale-cap{ display:grid; grid-template-columns:1fr 2fr 1fr; gap:4px; margin-top:6px; font-size:12.5px; font-weight:600; text-align:center; color:var(--ink-soft); }
+  .scale-cap div{ border-top:3px solid var(--rule); padding-top:5px; }
+  .scale-cap .mid{ border-top-color:var(--yellow-deep); color:var(--ink); }
+
+  /* formula */
+  .formula{ display:flex; flex-wrap:wrap; align-items:stretch; gap:6px; margin:6px 0 14px; }
+  .formula .chip{ flex:1 1 120px; border-radius:6px; padding:9px 10px; text-align:center; font-size:14px; line-height:1.3; }
+  .formula .chip small{ display:block; font-size:11.5px; font-weight:500; opacity:.75; margin-top:2px; }
+  .formula .plus{ align-self:center; font-weight:800; color:var(--ink-soft); }
+  .chip.s{ background:#EDEDE8; font-weight:700; }
+  .chip.m{ background:var(--black); color:#fff; font-weight:700; }
+  .chip.m em{ font-style:normal; color:var(--yellow); }
+  .chip.v{ background:rgba(255,213,48,.45); font-weight:700; }
+  .chip.r{ background:var(--paper); border:1.5px solid var(--rule); font-weight:600; }
+
+  .tbl-wrap{ overflow-x:auto; margin:0 0 12px; }
+  table.forms{ width:100%; border-collapse:collapse; font-size:14.5px; min-width:460px; }
+  table.forms th{ text-align:left; background:var(--black); color:#fff; font-weight:600; padding:8px 10px; font-size:13px; }
+  table.forms td{ padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.forms td:first-child{ font-weight:700; white-space:nowrap; }
+
+  .callout{ border-radius:0 6px 6px 0; padding:12px 16px; font-size:14.5px; margin:12px 0; background:var(--paper); border:1.5px solid var(--rule); border-left:4px solid var(--yellow); }
+  .callout b.t{ display:block; margin-bottom:3px; }
+  .callout.bad{ border-left-color:var(--bad); }
+  .callout.bad .no{ color:var(--bad); font-weight:700; }
+  .callout .yes{ color:var(--good); font-weight:700; }
+  .callout ul{ margin:4px 0 0; padding-left:18px; }
+
+  /* meaning cards + keyword cards */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .kcard{ border-radius:8px; border:1.5px solid var(--rule); border-top-width:5px; padding:14px 15px 14px; background:#fff; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.wont{ border-top-color:var(--wont); }
+  .kcard.might{ border-top-color:var(--might); } .kcard.mnot{ border-top-color:var(--mnot); }
+  .kcard h4{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .kcard.will h4{ color:var(--will); } .kcard.wont h4{ color:var(--wont); }
+  .kcard.might h4{ color:var(--might); } .kcard.mnot h4{ color:var(--mnot); }
+  .kcard .mean{ font-size:13.5px; font-weight:600; color:var(--ink-soft); margin-bottom:9px; }
+  .kcard .lbl{ font-size:12px; font-weight:700; color:var(--ink-soft); margin:8px 0 5px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:5px; }
+  .chips span{ font-size:13px; padding:3px 9px; border-radius:99px; font-weight:600; }
+  .kcard.will .chips span{ background:var(--will-bg); color:#146A3B; }
+  .kcard.wont .chips span{ background:var(--wont-bg); color:#A22820; }
+  .kcard.might .chips span{ background:var(--might-bg); color:#134E96; }
+  .kcard.mnot .chips span{ background:var(--mnot-bg); color:#6A2D98; }
+  .kcard .eg{ font-size:13.5px; font-style:italic; margin-top:10px; padding-top:9px; border-top:1px dashed var(--rule); line-height:1.7; }
+  .kcard .eg mark{ font-style:normal; }
+
+  /* decision steps */
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:s; }
+  .steps li{ counter-increment:s; position:relative; padding:10px 12px 10px 48px; margin-bottom:8px; background:var(--paper); border-radius:6px; font-size:14.5px; }
+  .steps li::before{ content:counter(s); position:absolute; left:12px; top:9px; width:26px; height:26px; border-radius:50%; background:var(--yellow); font-family:'Fraunces',serif; font-weight:700; text-align:center; line-height:26px; }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pair > div{ background:#fff; border-radius:8px; border:1.5px solid var(--rule); padding:11px 13px; font-size:14px; }
+  .pair b{ display:block; margin-bottom:3px; }
+  .explain-end{ height:22px; }
+
+  @media (max-width:620px){
+    .grid2, .pair{ grid-template-columns:1fr; }
+    .scale .cell span{ font-size:11px; }
+    .formula .plus{ display:none; }
+  }
+
+  /* ===== Past tenses additions ===== */
+  :root{ --ps:#1D6FD1; --ps-bg:#E5F0FC; --pc:#8A3FC4; --pc-bg:#F1E8FA; }
+  mark.ps{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  mark.pc{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  .kcard.ps{ border-top-color:var(--ps); } .kcard.pc{ border-top-color:var(--pc); }
+  .kcard.ps h4{ color:var(--ps); } .kcard.pc h4{ color:var(--pc); }
+  .kcard.ps .chips span{ background:var(--ps-bg); color:#134E96; }
+  .kcard.pc .chips span{ background:var(--pc-bg); color:#6A2D98; }
+  .kcard .think{ font-size:13px; font-weight:700; margin-top:8px; }
+  .kcard.ps .think{ color:var(--ps); } .kcard.pc .think{ color:var(--pc); }
+  .kcard ul{ margin:6px 0 0; padding-left:18px; font-size:14px; }
+  .kcard li{ margin-bottom:4px; }
+  table.forms td:first-child{ white-space:normal; min-width:84px; }
+  table.forms th.ps{ background:var(--ps); } table.forms th.pc{ background:var(--pc); } table.forms th.blank{ background:var(--black); }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; }
+  table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+
+  /* timeline */
+  .timeline{ margin:8px 0 14px; }
+  .tl-track{ position:relative; height:46px; background:var(--pc-bg); border:2px solid var(--pc); border-radius:8px; display:flex; align-items:center; padding:0 14px; color:var(--pc); font-weight:700; font-size:14px; }
+  .tl-track .arrow{ position:absolute; right:-2px; top:50%; width:0; height:0; border-left:12px solid var(--pc); border-top:8px solid transparent; border-bottom:8px solid transparent; transform:translateY(-50%) translateX(100%); }
+  .tl-event{ position:absolute; left:62%; top:-14px; bottom:-14px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .tl-event i{ display:block; width:4px; height:100%; background:var(--ps); border-radius:2px; }
+  .tl-note{ display:flex; justify-content:space-between; font-size:13px; margin-top:20px; font-weight:600; }
+  .tl-note span:first-child{ color:var(--pc); } .tl-note span:last-child{ color:var(--ps); width:38%; text-align:center; }
+  .tl-flag{ position:absolute; left:62%; transform:translateX(-50%); top:-34px; background:var(--ps); color:#fff; font-size:12.5px; font-weight:700; padding:3px 9px; border-radius:99px; white-space:nowrap; }
+
+  /* inline answer fields */
+  .answer-input{ width:132px; max-width:150px; }
+  .g-item .q{ line-height:2.3; }
+  .g-feedback{ margin-top:2px; }
+  .ex-hint{ font-size:14px; color:var(--ink-soft); margin:0 0 10px; }
+  @media (max-width:620px){
+    .answer-input{ width:118px; }
+    .tl-note span:last-child{ width:45%; }
+  }
+
+  mark.will{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.wont{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --wont:#D1382F; --wont-bg:#FBEAE8; --might:#1D6FD1; --mnot:#8A3FC4; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  table.forms th.will{ background:var(--will); }
+  .scale .cell{ color:#fff; }
+
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --ps:#1D6FD1; --ps-bg:#E5F0FC; --pc:#8A3FC4; --pc-bg:#F1E8FA; }
+  mark.pres{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.past{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  mark.pcc{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.ps{ background:var(--ps-bg); color:var(--ps); box-shadow:inset 0 -2px 0 var(--ps); }
+  table.forms th.will{ background:var(--will); } table.forms th.ps{ background:var(--ps); }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  .explain .no{ color:var(--bad); font-weight:700; } .explain .yes{ color:var(--good); font-weight:700; }
+
+  :root{ --will:#1E8F52; --will-bg:#E6F5EB; --pc:#8A3FC4; --pc-bg:#F1E8FA; --might:#1D6FD1; --wont:#D1382F; --wont-bg:#FBEAE8; }
+  mark.aux{ background:rgba(255,213,48,.4); color:var(--ink); box-shadow:inset 0 -2px 0 var(--yellow-deep); }
+  mark.pfor{ background:var(--will-bg); color:var(--will); box-shadow:inset 0 -2px 0 var(--will); }
+  mark.psince{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.ppart{ background:#E5F0FC; color:#1D6FD1; box-shadow:inset 0 -2px 0 #1D6FD1; }
+  mark.uu{ background:var(--pc-bg); color:var(--pc); box-shadow:inset 0 -2px 0 var(--pc); }
+  mark.neg{ background:var(--wont-bg); color:var(--wont); box-shadow:inset 0 -2px 0 var(--wont); }
+  mark.q{ background:#E5F0FC; color:#1D6FD1; box-shadow:inset 0 -2px 0 #1D6FD1; }
+  .kcard.will{ border-top-color:var(--will); } .kcard.will h4{ color:var(--will); }
+  .kcard.pcc{ border-top-color:var(--pc); } .kcard.pcc h4{ color:var(--pc); } .kcard.pcc .chips span{ background:var(--pc-bg); color:#6A2D98; }
+  .kcard.forb{ border-top-color:var(--wont); } .kcard.forb h4{ color:var(--wont); } .kcard.forb .chips span{ background:var(--wont-bg); color:#A22820; }
+  .explain .no{ color:var(--bad); font-weight:700; } .explain .yes{ color:var(--good); font-weight:700; }
+  table.forms .pat{ display:block; font-weight:700; margin-bottom:3px; } table.forms .eg{ display:block; color:var(--ink-soft); font-style:italic; font-size:14px; }
+  table.forms td:first-child{ white-space:normal; min-width:84px; }
+  .tl2{ display:flex; align-items:stretch; margin:8px 0 14px; font-weight:700; font-size:14px; text-align:center; }
+  .tl2 small{ display:block; font-weight:500; font-size:11.5px; opacity:.8; margin-top:2px; }
+  .tl2-start{ background:var(--pc-bg); color:var(--pc); padding:10px 14px; border-radius:8px 0 0 8px; }
+  .tl2-bar{ flex:1; background:var(--will-bg); border-top:2px solid var(--will); border-bottom:2px solid var(--will); color:var(--will); padding:10px 8px; }
+  .tl2-now{ background:var(--black); color:#fff; padding:10px 14px; border-radius:0 8px 8px 0; display:flex; align-items:center; }
+  .g-item .answer-input.wide{ display:block; width:100%; max-width:560px; margin-top:6px; }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check or clear your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="eyebrow-row">
+      <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
+    </div>
+    <div class="unit-label">GRAMMAR PRACTICE · HAVE / HAS + PAST PARTICIPLE</div>
+    <h1>Present Perfect with for and since</h1>
+    <p class="sub">Read the guide, then use the words to write a full sentence in the <b>present perfect</b> with <b>for</b> or <b>since</b>. Short forms (I’ve, she’s, hasn’t) and full forms (I have, she has, has not) are both accepted. Check your answers exercise by exercise. Your progress is saved on this device.</p>
+  </div>
+
+  <div class="progress-bar">
+    <span>Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="score-tally" id="scoreTally">0 / 100</span>
+  </div>
+
+  <div class="explain">
+
+    <h3>1. The main idea</h3>
+    <p class="lead">We use the <b>present perfect</b> for a situation that <b>started in the past</b> and <b>continues now</b>.</p>
+    <div class="tl2">
+      <div class="tl2-start">since 2015<small>the starting point</small></div>
+      <div class="tl2-bar">for 11 years<small>the length of time</small></div>
+      <div class="tl2-now">NOW</div>
+    </div>
+    <div class="callout" style="border-left-color:var(--pc)">
+      Sarah <mark class="aux">has</mark> <mark class="ppart">lived</mark> in London <mark class="psince">since 2015</mark>.<br>
+      Sarah <mark class="aux">has</mark> <mark class="ppart">lived</mark> in London <mark class="pfor">for 11 years</mark>.
+      <div style="color:var(--ink-soft);font-size:13.5px;margin-top:4px">She lived there in 2015, and she still lives there now.</div>
+    </div>
+
+    <h3>2. Form</h3>
+    <div class="formula">
+      <div class="chip s">Subject</div><span class="plus">+</span>
+      <div class="chip" style="background:rgba(255,213,48,.45);font-weight:700">have / has<small>haven’t / hasn’t</small></div><span class="plus">+</span>
+      <div class="chip" style="background:var(--pc-bg);color:var(--pc);font-weight:700">past participle<small>lived, been, known…</small></div><span class="plus">+</span>
+      <div class="chip r"><mark class="pfor">for</mark> / <mark class="psince">since</mark> …</div>
+    </div>
+    <div class="tbl-wrap">
+    <table class="forms">
+      <tr><th class="blank"></th><th class="blank">Example</th></tr>
+      <tr><td>+ Positive</td><td><span class="eg">Ford <mark class="aux">has</mark> <mark class="ppart">made</mark> cars <mark class="pfor">for 110 years</mark>.<br>I <mark class="aux">have</mark> <mark class="ppart">been</mark> here <mark class="psince">since 8 a.m.</mark></span></td></tr>
+      <tr><td>– Negative</td><td><span class="eg">I <mark class="aux">haven’t</mark> <mark class="ppart">worked</mark> <mark class="psince">since my accident</mark>.<br>She <mark class="aux">hasn’t</mark> <mark class="ppart">called</mark> me <mark class="pfor">for a week</mark>.</span></td></tr>
+      <tr><td>? Question</td><td><span class="eg"><b>How long</b> <mark class="aux">has</mark> Gill <mark class="ppart">been</mark> your manager?</span></td></tr>
+      <tr><td>Short forms</td><td><span class="eg">I<b>’ve</b>, we<b>’ve</b>, they<b>’ve</b> &nbsp;|&nbsp; he<b>’s</b>, she<b>’s</b>, it<b>’s</b> &nbsp;|&nbsp; ha<b>ven’t</b>, ha<b>sn’t</b></span></td></tr>
+    </table>
+    </div>
+    <div class="callout bad">
+      <b class="t">Remember</b>
+      <ul>
+        <li><b>I / you / we / they</b> → <i>have</i>. &nbsp;<b>He / she / it / one person or thing</b> → <i>has</i>.</li>
+        <li>Short forms and full forms are both correct: <i>She’s lived here</i> = <i>She has lived here</i>. <i>He hasn’t called</i> = <i>He has not called</i>.</li>
+      </ul>
+    </div>
+
+    <h3>3. for or since?</h3>
+    <div class="grid2">
+      <div class="kcard will">
+        <h4>for</h4><div class="mean">How long? The length of time</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>five years</span><span>six months</span><span>two weeks</span><span>three days</span><span>an hour</span><span>a long time</span><span>ages</span><span>many years</span></div>
+        <div class="eg">My parents have had this car <mark class="pfor">for 10 years</mark>.</div>
+      </div>
+      <div class="kcard pcc">
+        <h4>since</h4><div class="mean">When did it start? The starting point</div>
+        <div class="lbl">Clue words</div>
+        <div class="chips"><span>2015</span><span>Monday</span><span>January</span><span>8 a.m.</span><span>yesterday</span><span>last week</span><span>last summer</span><span>this morning</span><span>breakfast</span></div>
+        <div class="eg">We have studied French <mark class="psince">since last summer</mark>.</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:12px">
+      <b class="t">since + a whole sentence</b>
+      After <b>since</b> we often use the <b>past simple</b>, to name an event: <i>I’ve known John <mark class="psince">since we started</mark> university.</i> &nbsp;<i>We’ve been friends <mark class="psince">since we were</mark> kids.</i>
+    </div>
+
+    <h3>4. Past participles</h3>
+    <div class="tbl-wrap">
+    <table class="forms">
+      <tr><th class="blank">Regular: + -ed</th><th class="blank">Irregular (learn them!)</th></tr>
+      <tr><td style="white-space:normal">live → lived<br>work → worked<br>play → played<br>study → studied<br>talk → talked<br>wait → waited</td>
+          <td style="white-space:normal">be → <b>been</b> &nbsp; have → <b>had</b> &nbsp; know → <b>known</b><br>see → <b>seen</b> &nbsp; go → <b>gone</b> &nbsp; eat → <b>eaten</b><br>drink → <b>drunk</b> &nbsp; write → <b>written</b> &nbsp; speak → <b>spoken</b><br>take → <b>taken</b> &nbsp; teach → <b>taught</b> &nbsp; drive → <b>driven</b><br>fly → <b>flown</b> &nbsp; grow → <b>grown</b> &nbsp; hear → <b>heard</b><br>meet → <b>met</b> &nbsp; keep → <b>kept</b> &nbsp; pay → <b>paid</b> &nbsp; win → <b>won</b><br>come → <b>come</b> &nbsp; run → <b>run</b> &nbsp; read → <b>read</b></td></tr>
+    </table>
+    </div>
+
+    <h3>5. Common mistakes</h3>
+    <div class="callout bad">
+      <ul>
+        <li><span class="no">✘ I live here since 2015.</span> &nbsp;<span class="yes">✔ I have lived here since 2015.</span></li>
+        <li><span class="no">✘ for 2015</span> / <span class="no">since five years</span> &nbsp;→ &nbsp;<span class="yes">✔ since 2015</span> / <span class="yes">for five years</span></li>
+        <li><span class="no">✘ since two years ago</span> &nbsp;→ &nbsp;<span class="yes">✔ for two years</span></li>
+      </ul>
+    </div>
+
+    <h3>6. How to write the sentences</h3>
+    <p>Example: <i>Mary / be a teacher / 2004</i> → <b>Mary has been a teacher since 2004.</b></p>
+    <ol class="steps">
+      <li>Start with the <b>subject</b>. Add <mark class="aux">has / have</mark> (negative → <mark class="aux">hasn’t / haven’t</mark>).</li>
+      <li>Change the verb into the <mark class="ppart">past participle</mark>.</li>
+      <li>Add the rest, then <mark class="pfor">for</mark> (length of time) or <mark class="psince">since</mark> (starting point).</li>
+    </ol>
+    <div class="explain-end"></div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+  <div class="summary">
+    <div class="summary-label">Total score</div>
+    <div class="summary-score" id="totalScore">0 / 100</div>
+    <div class="summary-label" id="totalPercent">0% correct</div>
+    <div class="controls">
+      <button class="btn-check" id="checkAllBtn">Check everything</button>
+      <button class="btn-ghost" id="resetAllBtn">Restart</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="note">Present Perfect with for and since — for individual practice. Your answers are saved on this device until you press Restart.<br><span id="saveNote" style="opacity:.8;">If the buttons don’t respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+
+<script>
+var TASKS = [{"title": "Exercise 1", "items": [{"q": "Sarah / live in London / 2015  ____________________", "a": [["Sarah has lived in London since 2015", "Sarah's lived in London since 2015"]]}, {"q": "We / study French / last summer  ____________________", "a": [["We have studied French since last summer", "We've studied French since last summer"]]}, {"q": "She / work as a nurse / 2012  ____________________", "a": [["She has worked as a nurse since 2012", "She's worked as a nurse since 2012"]]}, {"q": "The children / be at school / 8 a.m.  ____________________", "a": [["The children have been at school since 8 a.m."]]}, {"q": "Tom / have his motorbike / January  ____________________", "a": [["Tom has had his motorbike since January", "Tom's had his motorbike since January"]]}, {"q": "I / know my best friend / 2010  ____________________", "a": [["I have known my best friend since 2010", "I've known my best friend since 2010"]]}, {"q": "My uncle / own a café / last year  ____________________", "a": [["My uncle has owned a café since last year", "My uncle's owned a café since last year"]]}, {"q": "The teacher / teach English / September  ____________________", "a": [["The teacher has taught English since September", "The teacher's taught English since September"]]}, {"q": "They / live in this apartment / April  ____________________", "a": [["They have lived in this apartment since April", "They've lived in this apartment since April"]]}, {"q": "Paul / be a doctor / 2018  ____________________", "a": [["Paul has been a doctor since 2018", "Paul's been a doctor since 2018"]]}]}, {"title": "Exercise 2", "items": [{"q": "I / work at this company / 5 years  ____________________", "a": [["I have worked at this company for 5 years", "I have worked at this company for five years", "I've worked at this company for 5 years", "I've worked at this company for five years"]]}, {"q": "My parents / have this car / 10 years  ____________________", "a": [["My parents have had this car for 10 years", "My parents have had this car for ten years"]]}, {"q": "They / live in this house / six months  ____________________", "a": [["They have lived in this house for 6 months", "They have lived in this house for six months", "They've lived in this house for 6 months", "They've lived in this house for six months"]]}, {"q": "James / play the guitar / 5 years  ____________________", "a": [["James has played the guitar for 5 years", "James has played the guitar for five years", "James's played the guitar for 5 years", "James's played the guitar for five years"]]}, {"q": "My parents / be married / 30 years  ____________________", "a": [["My parents have been married for 30 years", "My parents have been married for thirty years"]]}, {"q": "I / have this phone / two years  ____________________", "a": [["I have had this phone for 2 years", "I have had this phone for two years", "I've had this phone for 2 years", "I've had this phone for two years"]]}, {"q": "We / wait for the bus / twenty minutes  ____________________", "a": [["We have waited for the bus for 20 minutes", "We have waited for the bus for twenty minutes", "We've waited for the bus for 20 minutes", "We've waited for the bus for twenty minutes"]]}, {"q": "My grandparents / live in the countryside / 40 years  ____________________", "a": [["My grandparents have lived in the countryside for 40 years", "My grandparents have lived in the countryside for forty years"]]}, {"q": "Mia / be ill / three days  ____________________", "a": [["Mia has been ill for 3 days", "Mia has been ill for three days", "Mia's been ill for 3 days", "Mia's been ill for three days"]]}, {"q": "The shop / be closed / a week  ____________________", "a": [["The shop has been closed for a week", "The shop's been closed for a week"]]}]}, {"title": "Exercise 3", "items": [{"q": "He / not call me / last week  ____________________", "a": [["He has not called me since last week", "He hasn't called me since last week"]]}, {"q": "He / not eat chocolate / last Christmas  ____________________", "a": [["He has not eaten chocolate since last Christmas", "He hasn't eaten chocolate since last Christmas"]]}, {"q": "She / not see her best friend / last winter  ____________________", "a": [["She has not seen her best friend since last winter", "She hasn't seen her best friend since last winter"]]}, {"q": "We / not go on holiday / last summer  ____________________", "a": [["We have not gone on holiday since last summer", "We haven't gone on holiday since last summer"]]}, {"q": "I / not play tennis / last month  ____________________", "a": [["I have not played tennis since last month", "I haven't played tennis since last month"]]}, {"q": "She / not drink coffee / breakfast  ____________________", "a": [["She has not drunk coffee since breakfast", "She hasn't drunk coffee since breakfast"]]}, {"q": "They / not speak to each other / the argument  ____________________", "a": [["They have not spoken to each other since the argument", "They haven't spoken to each other since the argument"]]}, {"q": "Liam / not fly abroad / 2019  ____________________", "a": [["Liam has not flown abroad since 2019", "Liam hasn't flown abroad since 2019"]]}, {"q": "Sam / not write to me / June  ____________________", "a": [["Sam has not written to me since June", "Sam hasn't written to me since June"]]}, {"q": "The kids / not eat anything / lunch  ____________________", "a": [["The kids have not eaten anything since lunch", "The kids haven't eaten anything since lunch"]]}]}, {"title": "Exercise 4", "items": [{"q": "They / not talk to each other / months  ____________________", "a": [["They have not talked to each other for months", "They haven't talked to each other for months"]]}, {"q": "She / not leave the country / a long time  ____________________", "a": [["She has not left the country for a long time", "She hasn't left the country for a long time"]]}, {"q": "Paul / not go on holiday / two years  ____________________", "a": [["Paul has not gone on holiday for 2 years", "Paul has not gone on holiday for two years", "Paul hasn't gone on holiday for 2 years", "Paul hasn't gone on holiday for two years"]]}, {"q": "I / not see my grandparents / a long time  ____________________", "a": [["I have not seen my grandparents for a long time", "I haven't seen my grandparents for a long time"]]}, {"q": "My sister / not eat meat / 2 years  ____________________", "a": [["My sister has not eaten meat for 2 years", "My sister has not eaten meat for two years", "My sister hasn't eaten meat for 2 years", "My sister hasn't eaten meat for two years"]]}, {"q": "It / not rain here / three weeks  ____________________", "a": [["It has not rained here for 3 weeks", "It has not rained here for three weeks", "It hasn't rained here for 3 weeks", "It hasn't rained here for three weeks"]]}, {"q": "We / not have a day off / a month  ____________________", "a": [["We have not had a day off for a month", "We haven't had a day off for a month"]]}, {"q": "Ben / not sleep well / a few days  ____________________", "a": [["Ben has not slept well for a few days", "Ben hasn't slept well for a few days"]]}, {"q": "The kids / not watch TV / a week  ____________________", "a": [["The kids have not watched TV for a week", "The kids haven't watched TV for a week"]]}, {"q": "I / not speak to Maria / six days  ____________________", "a": [["I have not spoken to Maria for 6 days", "I have not spoken to Maria for six days", "I haven't spoken to Maria for 6 days", "I haven't spoken to Maria for six days"]]}]}, {"title": "Exercise 5", "items": [{"q": "We / be friends / we were kids  ____________________", "a": [["We have been friends since we were kids", "We've been friends since we were kids"]]}, {"q": "I / know John / we started university  ____________________", "a": [["I have known John since we started university", "I've known John since we started university"]]}, {"q": "She / play tennis / she was a teenager  ____________________", "a": [["She has played tennis since she was a teenager", "She's played tennis since she was a teenager"]]}, {"q": "They / have their cat / it was a kitten  ____________________", "a": [["They have had their cat since it was a kitten", "They've had their cat since it was a kitten"]]}, {"q": "James / play football / he was 10 years old  ____________________", "a": [["James has played football since he was 10 years old", "James has played football since he was ten years old", "James's played football since he was 10 years old", "James's played football since he was ten years old"]]}, {"q": "He / drive that car / he bought it  ____________________", "a": [["He has driven that car since he bought it", "He's driven that car since he bought it"]]}, {"q": "We / study French / we started school  ____________________", "a": [["We have studied French since we started school", "We've studied French since we started school"]]}, {"q": "My brother / live alone / he left home  ____________________", "a": [["My brother has lived alone since he left home", "My brother's lived alone since he left home"]]}, {"q": "Emma / work here / she finished university  ____________________", "a": [["Emma has worked here since she finished university", "Emma's worked here since she finished university"]]}, {"q": "I / love jazz / I heard that song  ____________________", "a": [["I have loved jazz since I heard that song", "I've loved jazz since I heard that song"]]}]}, {"title": "Exercise 6", "items": [{"q": "Ford / make cars / 110 years  ____________________", "a": [["Ford has made cars for 110 years", "Ford's made cars for 110 years"]]}, {"q": "These offices / be here / many years  ____________________", "a": [["These offices have been here for many years"]]}, {"q": "I / be here / 8 a.m.  ____________________", "a": [["I have been here since 8 a.m.", "I've been here since 8 a.m."]]}, {"q": "Gill / be our manager / 2020  ____________________", "a": [["Gill has been our manager since 2020", "Gill's been our manager since 2020"]]}, {"q": "Our team / win every match / August  ____________________", "a": [["Our team has won every match since August", "Our team's won every match since August"]]}, {"q": "My cousin / live in Canada / four years  ____________________", "a": [["My cousin has lived in Canada for 4 years", "My cousin has lived in Canada for four years", "My cousin's lived in Canada for 4 years", "My cousin's lived in Canada for four years"]]}, {"q": "The museum / be open / 1998  ____________________", "a": [["The museum has been open since 1998", "The museum's been open since 1998"]]}, {"q": "Lucy / have a headache / this morning  ____________________", "a": [["Lucy has had a headache since this morning", "Lucy's had a headache since this morning"]]}, {"q": "We / wait for the doctor / an hour  ____________________", "a": [["We have waited for the doctor for an hour", "We've waited for the doctor for an hour"]]}, {"q": "Mr Brown / teach history / twenty years  ____________________", "a": [["Mr Brown has taught history for 20 years", "Mr Brown has taught history for twenty years", "Mr Brown's taught history for 20 years", "Mr Brown's taught history for twenty years"]]}]}, {"title": "Exercise 7", "items": [{"q": "I / not meet my cousin / 2019  ____________________", "a": [["I have not met my cousin since 2019", "I haven't met my cousin since 2019"]]}, {"q": "Tom / not answer my messages / Sunday  ____________________", "a": [["Tom has not answered my messages since Sunday", "Tom hasn't answered my messages since Sunday"]]}, {"q": "We / not visit our aunt / a year  ____________________", "a": [["We have not visited our aunt for a year", "We haven't visited our aunt for a year"]]}, {"q": "Jack / not play football / his accident  ____________________", "a": [["Jack has not played football since his accident", "Jack hasn't played football since his accident"]]}, {"q": "The bus / not come / twenty minutes  ____________________", "a": [["The bus has not come for 20 minutes", "The bus has not come for twenty minutes", "The bus hasn't come for 20 minutes", "The bus hasn't come for twenty minutes"]]}, {"q": "She / not wear that dress / the wedding  ____________________", "a": [["She has not worn that dress since the wedding", "She hasn't worn that dress since the wedding"]]}, {"q": "My dad / not smoke / five years  ____________________", "a": [["My dad has not smoked for 5 years", "My dad has not smoked for five years", "My dad hasn't smoked for 5 years", "My dad hasn't smoked for five years"]]}, {"q": "I / not read a book / the holidays  ____________________", "a": [["I have not read a book since the holidays", "I haven't read a book since the holidays"]]}, {"q": "They / not clean their room / two weeks  ____________________", "a": [["They have not cleaned their room for 2 weeks", "They have not cleaned their room for two weeks", "They haven't cleaned their room for 2 weeks", "They haven't cleaned their room for two weeks"]]}, {"q": "Nina / not speak English / she left school  ____________________", "a": [["Nina has not spoken English since she left school", "Nina hasn't spoken English since she left school"]]}]}, {"title": "Exercise 8", "items": [{"q": "Hana / be a student here / 2022  ____________________", "a": [["Hana has been a student here since 2022", "Hana's been a student here since 2022"]]}, {"q": "The twins / be best friends / years  ____________________", "a": [["The twins have been best friends for years"]]}, {"q": "I / have a cold / Tuesday  ____________________", "a": [["I have had a cold since Tuesday", "I've had a cold since Tuesday"]]}, {"q": "He / work night shifts / six months  ____________________", "a": [["He has worked night shifts for 6 months", "He has worked night shifts for six months", "He's worked night shifts for 6 months", "He's worked night shifts for six months"]]}, {"q": "Our neighbours / own that house / 1995  ____________________", "a": [["Our neighbours have owned that house since 1995"]]}, {"q": "We / live near the park / three years  ____________________", "a": [["We have lived near the park for 3 years", "We have lived near the park for three years", "We've lived near the park for 3 years", "We've lived near the park for three years"]]}, {"q": "She / write a blog / she was fifteen  ____________________", "a": [["She has written a blog since she was 15", "She has written a blog since she was fifteen", "She's written a blog since she was 15", "She's written a blog since she was fifteen"]]}, {"q": "My phone / be broken / a week  ____________________", "a": [["My phone has been broken for a week", "My phone's been broken for a week"]]}, {"q": "Karim / run every morning / last spring  ____________________", "a": [["Karim has run every morning since last spring", "Karim's run every morning since last spring"]]}, {"q": "They / be in Spain / ten days  ____________________", "a": [["They have been in Spain for 10 days", "They have been in Spain for ten days", "They've been in Spain for 10 days", "They've been in Spain for ten days"]]}]}, {"title": "Exercise 9", "items": [{"q": "I / not have a holiday / three years  ____________________", "a": [["I have not had a holiday for 3 years", "I have not had a holiday for three years", "I haven't had a holiday for 3 years", "I haven't had a holiday for three years"]]}, {"q": "Ali / not come to class / Wednesday  ____________________", "a": [["Ali has not come to class since Wednesday", "Ali hasn't come to class since Wednesday"]]}, {"q": "She / take violin lessons / two years  ____________________", "a": [["She has taken violin lessons for 2 years", "She has taken violin lessons for two years", "She's taken violin lessons for 2 years", "She's taken violin lessons for two years"]]}, {"q": "The weather / be cold / Saturday  ____________________", "a": [["The weather has been cold since Saturday", "The weather's been cold since Saturday"]]}, {"q": "We / not hear from Jim / a month  ____________________", "a": [["We have not heard from Jim for a month", "We haven't heard from Jim for a month"]]}, {"q": "The baby / be asleep / 7 p.m.  ____________________", "a": [["The baby has been asleep since 7 p.m.", "The baby's been asleep since 7 p.m."]]}, {"q": "My brother / study law / 2021  ____________________", "a": [["My brother has studied law since 2021", "My brother's studied law since 2021"]]}, {"q": "They / not pay the rent / March  ____________________", "a": [["They have not paid the rent since March", "They haven't paid the rent since March"]]}, {"q": "Zoe / collect stamps / she was eight  ____________________", "a": [["Zoe has collected stamps since she was 8", "Zoe has collected stamps since she was eight", "Zoe's collected stamps since she was 8", "Zoe's collected stamps since she was eight"]]}, {"q": "He / be on the phone / half an hour  ____________________", "a": [["He has been on the phone for half an hour", "He's been on the phone for half an hour"]]}]}, {"title": "Exercise 10", "items": [{"q": "My grandfather / grow vegetables / 50 years  ____________________", "a": [["My grandfather has grown vegetables for 50 years", "My grandfather has grown vegetables for fifty years", "My grandfather's grown vegetables for 50 years", "My grandfather's grown vegetables for fifty years"]]}, {"q": "We / not see a film / January  ____________________", "a": [["We have not seen a film since January", "We haven't seen a film since January"]]}, {"q": "Olga / teach dance / 2014  ____________________", "a": [["Olga has taught dance since 2014", "Olga's taught dance since 2014"]]}, {"q": "I / feel tired / the exam  ____________________", "a": [["I have felt tired since the exam", "I've felt tired since the exam"]]}, {"q": "The company / use this software / ten years  ____________________", "a": [["The company has used this software for 10 years", "The company has used this software for ten years", "The company's used this software for 10 years", "The company's used this software for ten years"]]}, {"q": "Max / not drive a car / two years  ____________________", "a": [["Max has not driven a car for 2 years", "Max has not driven a car for two years", "Max hasn't driven a car for 2 years", "Max hasn't driven a car for two years"]]}, {"q": "The Smiths / keep bees / 2017  ____________________", "a": [["The Smiths have kept bees since 2017"]]}, {"q": "Tina / work from home / March  ____________________", "a": [["Tina has worked from home since March", "Tina's worked from home since March"]]}, {"q": "We / not eat out / last Friday  ____________________", "a": [["We have not eaten out since last Friday", "We haven't eaten out since last Friday"]]}, {"q": "He / know the answer / yesterday  ____________________", "a": [["He has known the answer since yesterday", "He's known the answer since yesterday"]]}]}];
+
+(function(){
+  var container = document.getElementById('tasksContainer');
+  var TOTAL = 0;
+  TASKS.forEach(function(t){ TOTAL += t.items.length; });
+  var KEY = 'present-perfect-for-since-progress-v1';
+
+  var state = { a: {}, c: {} };   // a: answers {"t-i-g": text}, c: checked items {"t-i": 1}
+  var storageOK = true;
+  function load(){
+    try { var raw = window.localStorage.getItem(KEY); if (raw) { var s = JSON.parse(raw); if (s && s.a && s.c) state = s; } }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){ state = { a: {}, c: {} }; try { window.localStorage.removeItem(KEY); } catch (e) {} }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress (private mode?). Your answers will be lost if you close or reload the page.';
+  }
+
+  function norm(s){
+    s = (s || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim();
+    s = s.replace(/[.!?]+$/, '').replace(/\ba\.m\.?/g, 'am').replace(/\bp\.m\.?/g, 'pm').replace(/(\d)\s+(am|pm)\b/g, '$1$2');
+    s = s.replace(/\bhas not\b/g, "hasn't").replace(/\bhave not\b/g, "haven't").replace(/\s+/g, ' ').trim();
+    return s;
+  }
+  var MODALS = {pos:['will','can','may','might','could','should','must'],neg:["won't","can't",'may not','might not',"couldn't","shouldn't","mustn't","mightn't"]};
+  function gapOK(t, i, g){
+    var v = norm(state.a[t + '-' + i + '-' + g]);
+    if (!v) return false;
+    var it = TASKS[t].items[i];
+    if (it.mod && it.mod[g]) {
+      var base = norm(it.a[g][0]);
+      var m = base.match(/^(will|won't|would|wouldn't|might not|might)\s+(.*)$/);
+      if (m) {
+        var neg = /^(won't|wouldn't|might not)$/.test(m[1]);
+        var set = neg ? MODALS.neg : MODALS.pos;
+        for (var k = 0; k < set.length; k++) { if (v === set[k] + ' ' + m[2]) return true; }
+        return false;
+      }
+    }
+    return it.a[g].some(function(x){ return norm(x) === v; });
+  }
+  function displayAns(it){
+    var anyMod = false;
+    var s = it.a.map(function(alts, g){ if (it.mod && it.mod[g]) anyMod = true; return alts.join(' / '); }).join(' … ');
+    return anyMod ? s + '</strong> (other modals are possible too)<strong>' : s;
+  }
+
+  /* ---------- build ---------- */
+  TASKS.forEach(function(task, tIdx){
+    var section = document.createElement('section');
+    section.className = 'block';
+    var count = task.items.length;
+    var head = document.createElement('div');
+    head.className = 'block-head';
+    head.innerHTML = '<h2>' + task.title + '</h2><span class="block-count">' + count + ' questions</span>';
+    section.appendChild(head);
+    var hint = document.createElement('p');
+    hint.className = 'ex-hint';
+    hint.innerHTML = 'Use the words to write a sentence in the <b>present perfect</b> with <b>for</b> or <b>since</b>. Example: Mary / be a teacher / 2004 → Mary has been a teacher since 2004.';
+    section.appendChild(hint);
+
+    task.items.forEach(function(it, iIdx){
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item';
+      wrap.id = 'item-' + tIdx + '-' + iIdx;
+      var q = document.createElement('span');
+      q.className = 'q';
+      var num = document.createElement('span');
+      num.className = 'g-num'; num.textContent = (iIdx + 1);
+      q.appendChild(num);
+      var parts = it.q.split(/_{3,}/);
+      parts.forEach(function(part, pIdx){
+        // split off a following "(verb)" hint so it can be styled
+        var m = (pIdx > 0) ? part.match(/^(\s*)(\([^)]*\))(.*)$/s) : null;
+        if (m) {
+          var h = document.createElement('span'); h.className = 'g-hint'; h.textContent = m[2]; q.appendChild(h);
+          q.appendChild(document.createTextNode(m[3]));
+        } else {
+          q.appendChild(document.createTextNode(part));
+        }
+        if (pIdx < parts.length - 1) {
+          var inp = document.createElement('input');
+          inp.type = 'text'; inp.className = 'answer-input wide'; inp.placeholder = 'Write the full sentence';
+          inp.setAttribute('data-t', tIdx); inp.setAttribute('data-i', iIdx); inp.setAttribute('data-g', pIdx);
+          inp.setAttribute('autocomplete', 'off'); inp.setAttribute('autocapitalize', 'none');
+          inp.setAttribute('autocorrect', 'off'); inp.setAttribute('spellcheck', 'false');
+          inp.setAttribute('aria-label', 'Answer ' + (iIdx + 1) + (parts.length > 2 ? ', gap ' + (pIdx + 1) : ''));
+          q.appendChild(inp);
+        }
+      });
+      wrap.appendChild(q);
+      var fb = document.createElement('span');
+      fb.className = 'g-feedback'; fb.id = 'fb-' + tIdx + '-' + iIdx;
+      wrap.appendChild(fb);
+      section.appendChild(wrap);
+    });
+
+    var controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = '<button class="btn-check" data-check="' + tIdx + '">Check ' + task.title + '</button>' +
+                         '<button class="btn-ghost" data-reset="' + tIdx + '">Clear section</button>';
+    section.appendChild(controls);
+    container.appendChild(section);
+  });
+
+  /* ---------- helpers ---------- */
+  function inputs(t, i){ return document.querySelectorAll('#item-' + t + '-' + i + ' .answer-input'); }
+
+  function paintInputs(t, i){
+    inputs(t, i).forEach(function(inp){
+      var g = inp.getAttribute('data-g');
+      var v = state.a[t + '-' + i + '-' + g];
+      if (v !== undefined && inp.value !== v) inp.value = v;
+      if (v === undefined) inp.value = '';
+    });
+  }
+  function clearMarks(t, i){
+    inputs(t, i).forEach(function(inp){ inp.classList.remove('correct', 'incorrect'); });
+    var fb = document.getElementById('fb-' + t + '-' + i);
+    fb.textContent = ''; fb.className = 'g-feedback';
+  }
+  function markItem(t, i){
+    var it = TASKS[t].items[i];
+    clearMarks(t, i);
+    var any = false, allOK = true;
+    inputs(t, i).forEach(function(inp){
+      var g = parseInt(inp.getAttribute('data-g'), 10);
+      var v = state.a[t + '-' + i + '-' + g];
+      if (v && v.trim()) any = true;
+      var ok = gapOK(t, i, g);
+      if (!ok) allOK = false;
+      inp.classList.add(ok ? 'correct' : 'incorrect');
+    });
+    var fb = document.getElementById('fb-' + t + '-' + i);
+    if (allOK) { fb.textContent = 'Correct.'; fb.className = 'g-feedback correct'; }
+    else { fb.innerHTML = 'Not quite — correct answer: <strong>' + displayAns(it) + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    return true;
+  }
+  function checkTask(t){
+    TASKS[t].items.forEach(function(it, i){
+      var anyText = false;
+      it.a.forEach(function(_, g){ if ((state.a[t + '-' + i + '-' + g] || '').trim()) anyText = true; });
+      if (anyText) { markItem(t, i); state.c[t + '-' + i] = 1; }
+    });
+    save();
+  }
+  function updateScore(){
+    var total = 0;
+    TASKS.forEach(function(task, t){ task.items.forEach(function(it, i){ var ok = true; it.a.forEach(function(_, g){ if (!gapOK(t, i, g)) ok = false; }); if (ok) total++; }); });
+    document.getElementById('scoreTally').textContent = total + ' / ' + TOTAL;
+    document.getElementById('totalScore').textContent = total + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = (total / TOTAL * 100) + '%';
+    document.getElementById('totalPercent').textContent = Math.round(total / TOTAL * 100) + '% correct';
+  }
+  function repaintAll(){
+    TASKS.forEach(function(task, t){
+      task.items.forEach(function(_, i){
+        paintInputs(t, i);
+        if (state.c[t + '-' + i]) markItem(t, i); else clearMarks(t, i);
+      });
+    });
+    updateScore();
+  }
+
+  /* ---------- events ---------- */
+  container.addEventListener('input', function(e){
+    var inp = e.target.closest('.answer-input');
+    if (!inp) return;
+    var t = parseInt(inp.getAttribute('data-t'), 10), i = parseInt(inp.getAttribute('data-i'), 10), g = parseInt(inp.getAttribute('data-g'), 10);
+    state.a[t + '-' + i + '-' + g] = inp.value;
+    delete state.c[t + '-' + i];
+    clearMarks(t, i);
+    save();
+    updateScore();
+  });
+  container.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' || !e.target.classList.contains('answer-input')) return;
+    e.preventDefault();
+    var all = Array.prototype.slice.call(container.querySelectorAll('.answer-input'));
+    var n = all[all.indexOf(e.target) + 1];
+    if (n) n.focus(); else e.target.blur();
+  });
+  container.addEventListener('click', function(e){
+    var checkBtn = e.target.closest('[data-check]');
+    if (checkBtn) { checkTask(parseInt(checkBtn.getAttribute('data-check'), 10)); updateScore(); return; }
+    var resetBtn = e.target.closest('[data-reset]');
+    if (resetBtn) {
+      var t = parseInt(resetBtn.getAttribute('data-reset'), 10);
+      TASKS[t].items.forEach(function(it, i){
+        it.a.forEach(function(_, g){ delete state.a[t + '-' + i + '-' + g]; });
+        delete state.c[t + '-' + i];
+        paintInputs(t, i); clearMarks(t, i);
+      });
+      save(); updateScore();
+    }
+  });
+  document.getElementById('checkAllBtn').addEventListener('click', function(){
+    TASKS.forEach(function(_, t){ checkTask(t); });
+    updateScore();
+    document.getElementById('tasksContainer').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  var restartBtn = document.getElementById('resetAllBtn'), restartTimer = null;
+  restartBtn.addEventListener('click', function(){
+    if (!restartBtn.getAttribute('data-armed')) {
+      restartBtn.setAttribute('data-armed', '1');
+      restartBtn.textContent = 'Tap again to erase everything';
+      restartTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm(); wipe(); repaintAll();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  function disarm(){ clearTimeout(restartTimer); restartBtn.removeAttribute('data-armed'); restartBtn.textContent = 'Restart'; }
+
+  /* ---- robust saving v2: localStorage + sessionStorage + window.name, saved on every change and when leaving ---- */
+  var NAME_PREFIX = 'ipp:' + KEY + ':';
+  function readLS(){ try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
+  function readSS(){ try { return window.sessionStorage.getItem(KEY); } catch (e) { return null; } }
+  function readWN(){ try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) return n.slice(NAME_PREFIX.length); } catch (e) {} return null; }
+  function parseState(raw){ try { var s = JSON.parse(raw); if (s && s.a && s.c) return s; } catch (e) {} return null; }
+  function load(){
+    var best = null;
+    [readLS(), readSS(), readWN()].forEach(function(raw){
+      var s = raw ? parseState(raw) : null;
+      if (s && (!best || (s.t || 0) > (best.t || 0))) best = s;
+    });
+    if (best) state = best;
+    try { window.localStorage.setItem('__ipp_test', '1'); window.localStorage.removeItem('__ipp_test'); storageOK = true; }
+    catch (e) { storageOK = false; }
+  }
+  function save(){
+    state.t = Date.now();
+    var raw = JSON.stringify(state), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch (e) {}
+    try { window.sessionStorage.setItem(KEY, raw); } catch (e) {}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NAME_PREFIX) === 0) window.name = NAME_PREFIX + raw; } catch (e) {}
+    if (!ok) { storageOK = false; showStorageNote(); }
+  }
+  function wipe(){
+    state = { a: {}, c: {} };
+    try { window.localStorage.removeItem(KEY); } catch (e) {}
+    try { window.sessionStorage.removeItem(KEY); } catch (e) {}
+    try { var n = window.name || ''; if (n.indexOf(NAME_PREFIX) === 0) window.name = ''; } catch (e) {}
+  }
+  function encodeState(){ return btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }
+  function decodeState(code){ return parseState(decodeURIComponent(escape(atob((code || '').replace(/\s+/g, ''))))); }
+  function showStorageNote(){
+    var n = document.getElementById('saveNote');
+    if (n) n.innerHTML = '⚠ This browser is not letting the page save your progress automatically.';
+    if (document.getElementById('saveBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'saveBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;font-family:inherit;color:#1A1A1A;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="codeCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-weight:700;cursor:pointer">Get my code</button>' +
+      '<button type="button" id="codeRestore" style="padding:7px 12px;border:1.5px solid #1A1A1A;border-radius:6px;background:#fff;color:#1A1A1A;font-weight:700;cursor:pointer">Restore from code</button>' +
+      '<span id="codeMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="codeBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    sheet.insertBefore(b, sheet.children[1] || null);
+    document.getElementById('codeCopy').addEventListener('click', function(){
+      var box = document.getElementById('codeBox'), msg = document.getElementById('codeMsg');
+      box.value = encodeState(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch (e) {}
+      msg.textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('codeRestore').addEventListener('click', function(){
+      var msg = document.getElementById('codeMsg'), s = null;
+      try { s = decodeState(document.getElementById('codeBox').value); } catch (e) {}
+      if (!s) { msg.textContent = 'That code is not valid.'; return; }
+      state = s; repaintAll(); save(); msg.textContent = 'Progress restored.';
+    });
+  }
+  window.addEventListener('pagehide', function(){ save(); });
+  window.addEventListener('beforeunload', function(){ save(); });
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') save(); });
+
+  load();
+  if (!storageOK) showStorageNote();
+  repaintAll();
+})();
+
+</script>
+
+</body>
+</html>
