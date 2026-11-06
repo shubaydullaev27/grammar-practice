@@ -38,6 +38,9 @@
   h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
   .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
 
+  .save-status{ margin:14px 0 0; font-size:12.5px; font-weight:600; color:rgba(255,255,255,.62); max-width:58ch; }
+  .save-status.ok{ color:var(--yellow); }
+  .save-status.warn{ color:#FF9C94; }
   .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
   .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
   .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
@@ -117,6 +120,7 @@
   .q-item-mcq .g-sentence{ margin-bottom:2px; }
   .q-item-mcq .q-context{ margin-bottom:10px; }
   .gap{ display:inline-block; min-width:56px; text-align:center; color:var(--ink-soft); letter-spacing:1px; }
+  .q-prompt.num-only{ margin-bottom:8px; }
   .q-prompt{ font-size:13.5px; color:var(--ink-soft); font-weight:600; margin-bottom:10px; }
 
   .sentence-options{ display:flex; flex-direction:column; gap:8px; }
@@ -205,7 +209,8 @@
       <span><span class="brand">Inter Nation</span> · English Practice Sheet</span>
     </div>
     <h1>Grammar Practice — Direct &amp; Indirect Questions</h1>
-    <p class="sub">Complete the questions and choose the correct indirect forms, then check your answers exercise by exercise.</p>
+    <p class="sub">Choose the correct question for each item, then check your answers exercise by exercise.</p>
+    <p class="save-status" id="saveStatus" role="status" aria-live="polite">Your progress is saved automatically on this device.</p>
   </div>
 
   <div class="progress-bar">
@@ -271,8 +276,8 @@
     <a href="#section-a1">Ex 1</a>
     <a href="#section-a2">Ex 2</a>
     <a href="#section-a3">Ex 3</a>
-    <a href="#section-a4">Ex 4</a>
-    <a href="#section-a5">Ex 5</a>
+    <a href="#section-b4">Ex 4</a>
+    <a href="#section-b5">Ex 5</a>
     <a href="#section-b6">Ex 6</a>
     <a href="#section-b7">Ex 7</a>
     <a href="#section-b8">Ex 8</a>
@@ -282,105 +287,105 @@
 
   <section class="block" id="section-a1">
     <div class="block-head"><h2>Exercise 1</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the option that correctly completes the question so that it fits the answer given below it.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-a1">
-      <div class="q-item-mcq" id="item-a1-0" data-answer="b">
+      <div class="q-item-mcq" id="item-a1-0" data-answer="d">
         <div class="g-sentence"><span class="g-num">1</span>When <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I first visited London when I was eighteen.</div>
         <div class="sentence-options" id="opts-a1-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">do you first visit London</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you first visit London</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you did first visit London</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you did first visit London</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you first visited London</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did you first visited London</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">did you first visit London</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-1" data-answer="b">
+      <div class="q-item-mcq" id="item-a1-1" data-answer="c">
         <div class="g-sentence"><span class="g-num">2</span>Could you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ My favourite subject at school was History.</div>
         <div class="sentence-options" id="opts-a1-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">what did your favourite subject at school was</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">what your favourite subject at school was</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">what was your favourite subject at school</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">what was your favourite subject at school</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">what your favourite subject at school were</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">what your favourite subject at school was</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">what did your favourite subject at school was</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-1"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-2" data-answer="c">
+      <div class="q-item-mcq" id="item-a1-2" data-answer="d">
         <div class="g-sentence"><span class="g-num">3</span>Would you mind telling me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I really enjoy working with children.</div>
         <div class="sentence-options" id="opts-a1-2">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if do you really enjoy working with children</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">do you really enjoy working with children</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if you really enjoy working with children</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if you really enjoys working with children</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">do you really enjoy working with children</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">if you really enjoy working with children</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-2"></div>
       </div>
       <div class="q-item-mcq" id="item-a1-3" data-answer="b">
         <div class="g-sentence"><span class="g-num">4</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ No, I haven&#x27;t finished the report yet.</div>
         <div class="sentence-options" id="opts-a1-3">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">have you finished the report yet</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if you have finished the report yet</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if have you finished the report yet</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if you finished have the report yet</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">if have you finished the report yet</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-4" data-answer="b">
+      <div class="q-item-mcq" id="item-a1-4" data-answer="c">
         <div class="g-sentence"><span class="g-num">5</span>Could you <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I don&#x27;t know where he lives.</div>
         <div class="sentence-options" id="opts-a1-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">tell me where does he live</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me where he lives</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">tell me where lives he</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">tell me where lives he</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me where does he live</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">tell me where he lives</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">tell me where he live</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-5" data-answer="c">
+      <div class="q-item-mcq" id="item-a1-5" data-answer="a">
         <div class="g-sentence"><span class="g-num">6</span>How often <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I go to the gym three times a week.</div>
         <div class="sentence-options" id="opts-a1-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you go to the gym</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">do you go to the gym</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">are you go to the gym</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">do you go to the gym</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">does you go to the gym</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you go to the gym</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-6" data-answer="a">
+      <div class="q-item-mcq" id="item-a1-6" data-answer="d">
         <div class="g-sentence"><span class="g-num">7</span>Can you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The meeting starts at 9:30 tomorrow morning.</div>
         <div class="sentence-options" id="opts-a1-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">when the meeting starts</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">when the meeting start</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">when starts the meeting</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">when does the meeting start</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">when the meeting starts</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-7" data-answer="c">
+      <div class="q-item-mcq" id="item-a1-7" data-answer="b">
         <div class="g-sentence"><span class="g-num">8</span>Where <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I bought this laptop in Dubai.</div>
         <div class="sentence-options" id="opts-a1-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you bought this laptop</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you bought this laptop</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did you buy this laptop</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">do you bought this laptop</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you buy this laptop</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you bought this laptop</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">did you bought this laptop</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-7"></div>
       </div>
       <div class="q-item-mcq" id="item-a1-8" data-answer="c">
         <div class="g-sentence"><span class="g-num">9</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ Yes, she can speak three foreign languages.</div>
         <div class="sentence-options" id="opts-a1-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">can she speak three foreign languages</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if she can to speak three foreign languages</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if can she speak three foreign languages</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if she can speak three foreign languages</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">can she speak three foreign languages</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-a1-9" data-answer="c">
+      <div class="q-item-mcq" id="item-a1-9" data-answer="a">
         <div class="g-sentence"><span class="g-num">10</span>Could you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I usually spend about two hours studying every evening.</div>
         <div class="sentence-options" id="opts-a1-9">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">how much do you usually spend studying every evening</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">how much usually you spend studying every evening</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">how much you usually spend studying every evening</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">how much time you usually spend studying every evening</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">how much time you usually spends studying every evening</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">how much time usually you spend studying every evening</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">how much time do you usually spend studying every evening</span></button>
         </div>
         <div class="g-feedback" id="fb-a1-9"></div>
       </div>
@@ -393,105 +398,105 @@
 
   <section class="block" id="section-a2">
     <div class="block-head"><h2>Exercise 2</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the option that correctly completes the question so that it fits the answer given below it.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-a2">
-      <div class="q-item-mcq" id="item-a2-0" data-answer="c">
-        <div class="g-sentence"><span class="g-num">1</span>What <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I usually have breakfast at seven o&#x27;clock.</div>
+      <div class="q-item-mcq" id="item-a2-0" data-answer="b">
+        <div class="g-sentence"><span class="g-num">1</span>What time <span class="gap">______</span> ?</div>
         <div class="sentence-options" id="opts-a2-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you usually have for breakfast</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you do usually have for breakfast</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">do you usually have for breakfast</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">does you usually have breakfast</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">do you usually have breakfast</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">are you usually have breakfast</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you usually have breakfast</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-0"></div>
       </div>
       <div class="q-item-mcq" id="item-a2-1" data-answer="a">
         <div class="g-sentence"><span class="g-num">2</span>Could you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The nearest pharmacy is next to the supermarket.</div>
         <div class="sentence-options" id="opts-a2-1">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">where the nearest pharmacy is</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">where is the nearest pharmacy</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">where does the nearest pharmacy is</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">where the nearest is pharmacy</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">where is the nearest pharmacy</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">where does the nearest pharmacy is</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-1"></div>
       </div>
       <div class="q-item-mcq" id="item-a2-2" data-answer="c">
         <div class="g-sentence"><span class="g-num">3</span>Did <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I watched the football match last night.</div>
         <div class="sentence-options" id="opts-a2-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you watched the football match last night</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you did watch the football match last night</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you watching the football match last night</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you watched the football match last night</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you watch the football match last night</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you did watch the football match last night</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-a2-3" data-answer="c">
+      <div class="q-item-mcq" id="item-a2-3" data-answer="b">
         <div class="g-sentence"><span class="g-num">4</span>Would you mind telling me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I chose this university because it has a good reputation.</div>
         <div class="sentence-options" id="opts-a2-3">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">why did you choose this university</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">why you did choose this university</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">why you chose this university</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">why you chose this university</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">why you choosed this university</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">why you did chose this university</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-3"></div>
       </div>
       <div class="q-item-mcq" id="item-a2-4" data-answer="a">
         <div class="g-sentence"><span class="g-num">5</span>Can you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I don&#x27;t have any brothers or sisters.</div>
         <div class="sentence-options" id="opts-a2-4">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if you have any brothers or sisters</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">do you have any brothers or sisters</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if do you have any brothers or sisters</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if you has any brothers or sisters</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">if do you have any brothers or sisters</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-a2-5" data-answer="c">
+      <div class="q-item-mcq" id="item-a2-5" data-answer="d">
         <div class="g-sentence"><span class="g-num">6</span>How long <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I&#x27;ve lived here for almost five years.</div>
         <div class="sentence-options" id="opts-a2-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you have lived here</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you lived here</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">have you lived here</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">did you lived here</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you have lived here</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">has you lived here</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">have you lived here</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-a2-6" data-answer="a">
+      <div class="q-item-mcq" id="item-a2-6" data-answer="b">
         <div class="g-sentence"><span class="g-num">7</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ Yes, I have already booked the tickets.</div>
         <div class="sentence-options" id="opts-a2-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if you have already booked the tickets</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if have you already booked the tickets</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if have you already booked the tickets</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if you have already booked the tickets</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">have you already booked the tickets</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">if you have already book the tickets</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-a2-7" data-answer="b">
+      <div class="q-item-mcq" id="item-a2-7" data-answer="a">
         <div class="g-sentence"><span class="g-num">8</span>Where <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ My parents met at university.</div>
         <div class="sentence-options" id="opts-a2-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">your parents met</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did your parents meet</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did your parents met</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">did your parents meet</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did your parents met</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">your parents met</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">do your parents met</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-7"></div>
       </div>
       <div class="q-item-mcq" id="item-a2-8" data-answer="c">
         <div class="g-sentence"><span class="g-num">9</span>Could you <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I need to borrow your dictionary.</div>
         <div class="sentence-options" id="opts-a2-8">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">tell me what do you need to borrow</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me what need you to borrow</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me what you needs to borrow</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">tell me what you need to borrow</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">tell me what need you to borrow</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-a2-9" data-answer="b">
+      <div class="q-item-mcq" id="item-a2-9" data-answer="d">
         <div class="g-sentence"><span class="g-num">10</span>Do <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I usually study English before going to work.</div>
         <div class="sentence-options" id="opts-a2-9">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you are usually study English before going to work</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you usually study English before going to work</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you usually studies English before going to work</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you usually studies English before going to work</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you usually studying English before going to work</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you usually study English before going to work</span></button>
         </div>
         <div class="g-feedback" id="fb-a2-9"></div>
       </div>
@@ -504,105 +509,105 @@
 
   <section class="block" id="section-a3">
     <div class="block-head"><h2>Exercise 3</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the option that correctly completes the question so that it fits the answer given below it.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-a3">
-      <div class="q-item-mcq" id="item-a3-0" data-answer="b">
+      <div class="q-item-mcq" id="item-a3-0" data-answer="c">
         <div class="g-sentence"><span class="g-num">1</span>Why <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I decided to learn English because I wanted to study abroad.</div>
         <div class="sentence-options" id="opts-a3-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you decided to learn English</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you decide to learn English</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you did decide to learn English</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you did decide to learn English</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">do you decided to learn English</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did you decide to learn English</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you decided to learn English</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-1" data-answer="b">
+      <div class="q-item-mcq" id="item-a3-1" data-answer="d">
         <div class="g-sentence"><span class="g-num">2</span>Could you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The train leaves at 6:45.</div>
         <div class="sentence-options" id="opts-a3-1">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">when does the train leave</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">when the train leaves</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">when the train leave</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">when leaves the train</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">when the train leaves</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-1"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-2" data-answer="b">
+      <div class="q-item-mcq" id="item-a3-2" data-answer="c">
         <div class="g-sentence"><span class="g-num">3</span>Have <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I&#x27;ve been to Turkey twice.</div>
         <div class="sentence-options" id="opts-a3-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you ever be to Turkey</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you ever been to Turkey</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you been ever to Turkey</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you been ever to Turkey</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you ever be to Turkey</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you ever been to Turkey</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you ever went to Turkey</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-3" data-answer="a">
+      <div class="q-item-mcq" id="item-a3-3" data-answer="b">
         <div class="g-sentence"><span class="g-num">4</span>Would you mind telling me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ My manager&#x27;s office is on the third floor.</div>
         <div class="sentence-options" id="opts-a3-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">where your manager&#x27;s office is</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">where does your manager&#x27;s office is</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">where your manager&#x27;s office are</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">where your manager&#x27;s office is</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">where is your manager&#x27;s office</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">where does your manager&#x27;s office is</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-4" data-answer="a">
+      <div class="q-item-mcq" id="item-a3-4" data-answer="d">
         <div class="g-sentence"><span class="g-num">5</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ No, we don&#x27;t have to wear a uniform at work.</div>
         <div class="sentence-options" id="opts-a3-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if you have to wear a uniform at work</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">do you have to wear a uniform at work</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">do you have to wear a uniform at work</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if you has to wear a uniform at work</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if do you have to wear a uniform at work</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">if you have to wear a uniform at work</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-4"></div>
       </div>
       <div class="q-item-mcq" id="item-a3-5" data-answer="a">
         <div class="g-sentence"><span class="g-num">6</span>How much <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ This phone cost me about $500.</div>
         <div class="sentence-options" id="opts-a3-5">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">did this phone cost you</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">this phone cost you</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did this phone costs you</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did this phone to cost you</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">did this phone costs you</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-6" data-answer="a">
+      <div class="q-item-mcq" id="item-a3-6" data-answer="c">
         <div class="g-sentence"><span class="g-num">7</span>Can you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I met Sarah at an international conference.</div>
         <div class="sentence-options" id="opts-a3-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">where you met Sarah</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">where you did meet Sarah</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">where did you meet Sarah</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">where did you meet Sarah</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">where you did met Sarah</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">where you met Sarah</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">where you meeted Sarah</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-7" data-answer="c">
+      <div class="q-item-mcq" id="item-a3-7" data-answer="d">
         <div class="g-sentence"><span class="g-num">8</span>When <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I started learning English when I was ten.</div>
         <div class="sentence-options" id="opts-a3-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you started learning English</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you started learning English</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did you start learning English</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">did you started learning English</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">do you started learning English</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you started learning English</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">did you start learning English</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-8" data-answer="b">
+      <div class="q-item-mcq" id="item-a3-8" data-answer="a">
         <div class="g-sentence"><span class="g-num">9</span>Could you <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I can help you with your homework this evening.</div>
         <div class="sentence-options" id="opts-a3-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">tell me can you help me with my homework this evening</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me if you can help me with my homework this evening</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">tell me if can you help me with my homework this evening</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">tell me if you can help me with my homework this evening</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me if can you help me with my homework this evening</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">tell me if you can helping me with my homework this evening</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">tell me can you help me with my homework this evening</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-a3-9" data-answer="c">
+      <div class="q-item-mcq" id="item-a3-9" data-answer="b">
         <div class="g-sentence"><span class="g-num">10</span>Do <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I don&#x27;t usually watch television during the week.</div>
         <div class="sentence-options" id="opts-a3-9">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you are usually watch television during the week</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you usually watches television during the week</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you usually watch television during the week</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you usually watch television during the week</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you usually watching television during the week</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">you usually watches television during the week</span></button>
         </div>
         <div class="g-feedback" id="fb-a3-9"></div>
       </div>
@@ -613,329 +618,329 @@
     </div>
   </section>
 
-  <section class="block" id="section-a4">
+  <section class="block" id="section-b4">
     <div class="block-head"><h2>Exercise 4</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the option that correctly completes the question so that it fits the answer given below it.</p>
-    <div id="list-a4">
-      <div class="q-item-mcq" id="item-a4-0" data-answer="a">
-        <div class="g-sentence"><span class="g-num">1</span>Where <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I usually go running in the park near my house.</div>
-        <div class="sentence-options" id="opts-a4-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">do you usually go running</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you usually go running</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">are you usually go running</span></button>
+    <p class="instructions">Which question is correct?</p>
+    <div id="list-b4">
+      <div class="q-item-mcq" id="item-b4-0" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
+        <div class="sentence-options" id="opts-b4-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Where are you usually go running?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Where does you usually go running?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Where you usually go running?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Where do you usually go running?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-0"></div>
+        <div class="g-feedback" id="fb-b4-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-1" data-answer="a">
-        <div class="g-sentence"><span class="g-num">2</span>Can you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The restaurant closes at 11 p.m.</div>
-        <div class="sentence-options" id="opts-a4-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">when the restaurant closes</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">when closes the restaurant</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">when does the restaurant close</span></button>
+      <div class="q-item-mcq" id="item-b4-1" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
+        <div class="sentence-options" id="opts-b4-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when the restaurant closes?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me when closes the restaurant?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me when the restaurant close?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when does the restaurant close?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-1"></div>
+        <div class="g-feedback" id="fb-b4-1"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-2" data-answer="b">
-        <div class="g-sentence"><span class="g-num">3</span>Did <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I didn&#x27;t understand the teacher&#x27;s explanation.</div>
-        <div class="sentence-options" id="opts-a4-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you did understood the teacher&#x27;s explanation</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you understand the teacher&#x27;s explanation</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you understood the teacher&#x27;s explanation</span></button>
+      <div class="q-item-mcq" id="item-b4-2" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
+        <div class="sentence-options" id="opts-b4-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Did you did understood the teacher&#x27;s explanation?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Did you understanding the teacher&#x27;s explanation?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Did you understood the teacher&#x27;s explanation?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Did you understand the teacher&#x27;s explanation?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-2"></div>
+        <div class="g-feedback" id="fb-b4-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-3" data-answer="c">
-        <div class="g-sentence"><span class="g-num">4</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ Yes, my sister is studying medicine at university.</div>
-        <div class="sentence-options" id="opts-a4-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">is your sister studying medicine at university</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if is your sister studying medicine at university</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if your sister is studying medicine at university</span></button>
+      <div class="q-item-mcq" id="item-b4-3" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
+        <div class="sentence-options" id="opts-b4-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if your sister are studying medicine at university.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know if your sister is studying medicine at university.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if is your sister studying medicine at university.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know is your sister studying medicine at university.</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-3"></div>
+        <div class="g-feedback" id="fb-b4-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-4" data-answer="c">
-        <div class="g-sentence"><span class="g-num">5</span>Would you mind telling me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I travelled to Spain by plane.</div>
-        <div class="sentence-options" id="opts-a4-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">how you did travel to Spain</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">how did you travel to Spain</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">how you travelled to Spain</span></button>
+      <div class="q-item-mcq" id="item-b4-4" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
+        <div class="sentence-options" id="opts-b4-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Would you mind telling me how you travelled to Spain?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Would you mind telling me how did you travel to Spain?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Would you mind telling me how you travelling to Spain?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Would you mind telling me how you did travelled to Spain?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-4"></div>
+        <div class="g-feedback" id="fb-b4-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-5" data-answer="c">
-        <div class="g-sentence"><span class="g-num">6</span>How many <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ There are about 30 students in my class.</div>
-        <div class="sentence-options" id="opts-a4-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">there are students in your class</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">are there students in your class</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">students are there in your class</span></button>
+      <div class="q-item-mcq" id="item-b4-5" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
+        <div class="sentence-options" id="opts-b4-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">How many there are students in your class?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">How many students are there in your class?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">How many are there students in your class?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">How many students is there in your class?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-5"></div>
+        <div class="g-feedback" id="fb-b4-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-6" data-answer="b">
-        <div class="g-sentence"><span class="g-num">7</span>Could you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I haven&#x27;t seen your keys anywhere.</div>
-        <div class="sentence-options" id="opts-a4-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">have you seen my keys anywhere</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if you have seen my keys anywhere</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if have you seen my keys anywhere</span></button>
+      <div class="q-item-mcq" id="item-b4-6" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
+        <div class="sentence-options" id="opts-b4-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me if you has seen my keys anywhere?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me have you seen my keys anywhere?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me if you have seen my keys anywhere?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me if have you seen my keys anywhere?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-6"></div>
+        <div class="g-feedback" id="fb-b4-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-7" data-answer="b">
-        <div class="g-sentence"><span class="g-num">8</span>What <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I ordered a chicken sandwich and a glass of water.</div>
-        <div class="sentence-options" id="opts-a4-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you ordered</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did you order</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you did order</span></button>
+      <div class="q-item-mcq" id="item-b4-7" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
+        <div class="sentence-options" id="opts-b4-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">What did you ordered?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">What did you order?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">What do you ordered?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">What you ordered?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-7"></div>
+        <div class="g-feedback" id="fb-b4-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-8" data-answer="a">
-        <div class="g-sentence"><span class="g-num">9</span>Do <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I know how to use this computer programme.</div>
-        <div class="sentence-options" id="opts-a4-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you know how to use this computer programme</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you know how use this computer programme</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you knows how to use this computer programme</span></button>
+      <div class="q-item-mcq" id="item-b4-8" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
+        <div class="sentence-options" id="opts-b4-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you knows how to use this computer programme?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you knowing how to use this computer programme?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how to use this computer programme?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how use this computer programme?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-8"></div>
+        <div class="g-feedback" id="fb-b4-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-a4-9" data-answer="a">
-        <div class="g-sentence"><span class="g-num">10</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ The lesson will finish at 4:30.</div>
-        <div class="sentence-options" id="opts-a4-9">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">when the lesson will finish</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">when the lesson finish will</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">when will the lesson finish</span></button>
+      <div class="q-item-mcq" id="item-b4-9" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
+        <div class="sentence-options" id="opts-b4-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know when the lesson will finish.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know when the lesson will to finish.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know when will the lesson finish.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know when the lesson finish will.</span></button>
         </div>
-        <div class="g-feedback" id="fb-a4-9"></div>
+        <div class="g-feedback" id="fb-b4-9"></div>
       </div>
     </div>
     <div class="controls">
-      <button class="btn-check" data-check-mcq="a4">Check Exercise 4</button>
-      <button class="btn-ghost" data-reset-mcq="a4">Clear section</button>
+      <button class="btn-check" data-check-mcq="b4">Check Exercise 4</button>
+      <button class="btn-ghost" data-reset-mcq="b4">Clear section</button>
     </div>
   </section>
 
-  <section class="block" id="section-a5">
+  <section class="block" id="section-b5">
     <div class="block-head"><h2>Exercise 5</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the option that correctly completes the question so that it fits the answer given below it.</p>
-    <div id="list-a5">
-      <div class="q-item-mcq" id="item-a5-0" data-answer="a">
-        <div class="g-sentence"><span class="g-num">1</span>Who <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ My older brother taught me how to drive.</div>
-        <div class="sentence-options" id="opts-a5-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">taught you how to drive</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">did teach you how to drive</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">did you taught how to drive</span></button>
+    <p class="instructions">Which question is correct?</p>
+    <div id="list-b5">
+      <div class="q-item-mcq" id="item-b5-0" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
+        <div class="sentence-options" id="opts-b5-0">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Who have taught you how to drive?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Who did you taught how to drive?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Who taught you how to drive?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Who teach you how to drive?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-0"></div>
+        <div class="g-feedback" id="fb-b5-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-1" data-answer="a">
-        <div class="g-sentence"><span class="g-num">2</span>Could you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The hotel is about ten minutes from the airport.</div>
-        <div class="sentence-options" id="opts-a5-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">how far the hotel is from the airport</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">how far is the hotel from the airport</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">how far does the hotel is from the airport</span></button>
+      <div class="q-item-mcq" id="item-b5-1" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
+        <div class="sentence-options" id="opts-b5-1">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me how far is the hotel from the airport?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me how far the hotel is from the airport?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me how far the hotel are from the airport?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me how far does the hotel is from the airport?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-1"></div>
+        <div class="g-feedback" id="fb-b5-1"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-2" data-answer="c">
-        <div class="g-sentence"><span class="g-num">3</span>Have <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I&#x27;ve never tried Japanese food.</div>
-        <div class="sentence-options" id="opts-a5-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you ever try Japanese food</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you tried ever Japanese food</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you ever tried Japanese food</span></button>
+      <div class="q-item-mcq" id="item-b5-2" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
+        <div class="sentence-options" id="opts-b5-2">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Have you ever tried Japanese food?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Have you ever trying Japanese food?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Have you tried ever Japanese food?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Have you ever try Japanese food?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-2"></div>
+        <div class="g-feedback" id="fb-b5-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-3" data-answer="a">
-        <div class="g-sentence"><span class="g-num">4</span>I&#x27;d like to know <span class="gap">______</span> .</div>
-        <div class="q-context">↳ Yes, I am interested in applying for the position.</div>
-        <div class="sentence-options" id="opts-a5-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if you are interested in applying for the position</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">are you interested in applying for the position</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">if are you interested in applying for the position</span></button>
+      <div class="q-item-mcq" id="item-b5-3" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
+        <div class="sentence-options" id="opts-b5-3">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if you interested in applying for the position.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know if are you interested in applying for the position.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know are you interested in applying for the position.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if you are interested in applying for the position.</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-3"></div>
+        <div class="g-feedback" id="fb-b5-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-4" data-answer="b">
-        <div class="g-sentence"><span class="g-num">5</span>What time <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The shop opens at 8 a.m.</div>
-        <div class="sentence-options" id="opts-a5-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">the shop opens</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">does the shop open</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">the shop does open</span></button>
+      <div class="q-item-mcq" id="item-b5-4" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
+        <div class="sentence-options" id="opts-b5-4">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">What time opens the shop?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">What time does the shop open?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">What time does the shop opens?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">What time do the shop open?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-4"></div>
+        <div class="g-feedback" id="fb-b5-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-5" data-answer="c">
-        <div class="g-sentence"><span class="g-num">6</span>Would you mind telling me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ I chose this course because I want to improve my communication skills.</div>
-        <div class="sentence-options" id="opts-a5-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">why you did choose this course</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">why did you choose this course</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">why you chose this course</span></button>
+      <div class="q-item-mcq" id="item-b5-5" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
+        <div class="sentence-options" id="opts-b5-5">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Would you mind telling me why you choosed this course?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Would you mind telling me why you did chose this course?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Would you mind telling me why did you choose this course?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Would you mind telling me why you chose this course?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-5"></div>
+        <div class="g-feedback" id="fb-b5-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-6" data-answer="a">
-        <div class="g-sentence"><span class="g-num">7</span>Can you tell me <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, they are planning to move to another city.</div>
-        <div class="sentence-options" id="opts-a5-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">if they are planning to move to another city</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">if are they planning to move to another city</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">are they planning to move to another city</span></button>
+      <div class="q-item-mcq" id="item-b5-6" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
+        <div class="sentence-options" id="opts-b5-6">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me are they planning to move to another city?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me if they planning to move to another city?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me if they are planning to move to another city?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me if are they planning to move to another city?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-6"></div>
+        <div class="g-feedback" id="fb-b5-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-7" data-answer="a">
-        <div class="g-sentence"><span class="g-num">8</span>How long <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ The journey takes approximately three hours.</div>
-        <div class="sentence-options" id="opts-a5-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">does the journey take</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">does the journey takes</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">the journey takes</span></button>
+      <div class="q-item-mcq" id="item-b5-7" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
+        <div class="sentence-options" id="opts-b5-7">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">How long does the journey takes?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">How long do the journey take?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">How long the journey takes?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">How long does the journey take?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-7"></div>
+        <div class="g-feedback" id="fb-b5-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-8" data-answer="a">
-        <div class="g-sentence"><span class="g-num">9</span>Did <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ Yes, I called him yesterday afternoon.</div>
-        <div class="sentence-options" id="opts-a5-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">you call him yesterday afternoon</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">you called him yesterday afternoon</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">you did call him yesterday afternoon</span></button>
+      <div class="q-item-mcq" id="item-b5-8" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
+        <div class="sentence-options" id="opts-b5-8">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Did you did call him yesterday afternoon?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Did you called him yesterday afternoon?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Did you call him yesterday afternoon?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Did you calling him yesterday afternoon?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-8"></div>
+        <div class="g-feedback" id="fb-b5-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-a5-9" data-answer="c">
-        <div class="g-sentence"><span class="g-num">10</span>Could you <span class="gap">______</span> ?</div>
-        <div class="q-context">↳ No, I don&#x27;t remember her name.</div>
-        <div class="sentence-options" id="opts-a5-9">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">tell me if do you remember her name</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">tell me do you remember her name</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">tell me if you remember her name</span></button>
+      <div class="q-item-mcq" id="item-b5-9" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
+        <div class="sentence-options" id="opts-b5-9">
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me if you remember her name?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me if do you remember her name?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me if you remembers her name?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me do you remember her name?</span></button>
         </div>
-        <div class="g-feedback" id="fb-a5-9"></div>
+        <div class="g-feedback" id="fb-b5-9"></div>
       </div>
     </div>
     <div class="controls">
-      <button class="btn-check" data-check-mcq="a5">Check Exercise 5</button>
-      <button class="btn-ghost" data-reset-mcq="a5">Clear section</button>
+      <button class="btn-check" data-check-mcq="b5">Check Exercise 5</button>
+      <button class="btn-ghost" data-reset-mcq="b5">Clear section</button>
     </div>
   </section>
 
   <section class="block" id="section-b6">
     <div class="block-head"><h2>Exercise 6</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the correct option.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-b6">
       <div class="q-item-mcq" id="item-b6-0" data-answer="c">
-        <div class="q-prompt"><span class="g-num">1</span>You want to know where your friend lives. Which question is correct?</div>
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
         <div class="sentence-options" id="opts-b6-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where do you live?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me where you do live?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where you lives?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me where do you live?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me where you live?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where are you live?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-1" data-answer="a">
-        <div class="q-prompt"><span class="g-num">2</span>You want to know when the lesson starts.</div>
+      <div class="q-item-mcq" id="item-b6-1" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
         <div class="sentence-options" id="opts-b6-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know when the lesson starts?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know when starts the lesson?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know when does the lesson start?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know when the lesson does start?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know when the lesson start?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know when the lesson starts?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know when starts the lesson?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know when does the lesson start?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-1"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-2" data-answer="c">
-        <div class="q-prompt"><span class="g-num">3</span>You want to ask whether your friend has finished the work.</div>
+      <div class="q-item-mcq" id="item-b6-2" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
         <div class="sentence-options" id="opts-b6-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know have you finished the work.</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know whether have you finished the work.</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if you have finished the work.</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if have you finished the work.</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know whether have you finished the work.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know if have you finished the work.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know have you finished the work.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if you have finished the work.</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-3" data-answer="c">
-        <div class="q-prompt"><span class="g-num">4</span>You want to know why Anna is late.</div>
+      <div class="q-item-mcq" id="item-b6-3" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
         <div class="sentence-options" id="opts-b6-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why is Anna late?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know why does Anna late?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why Anna is late?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why Anna she is late?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why Anna is late?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know why Anna she is late?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why does Anna late?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why is Anna late?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-3"></div>
       </div>
       <div class="q-item-mcq" id="item-b6-4" data-answer="d">
-        <div class="q-prompt"><span class="g-num">5</span>You want to ask about the price of the tickets.</div>
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
         <div class="sentence-options" id="opts-b6-4">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me how much cost the tickets?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me how much do the tickets cost?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me how much the tickets do cost?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me how much the tickets are cost?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me how much the tickets cost?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-4"></div>
       </div>
       <div class="q-item-mcq" id="item-b6-5" data-answer="b">
-        <div class="q-prompt"><span class="g-num">6</span>You want to know if Tom can drive.</div>
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
         <div class="sentence-options" id="opts-b6-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know can Tom drive?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if does Tom can drive?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if Tom can drive?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know if can Tom drive?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if does Tom can drive?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know whether can Tom drive?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-6" data-answer="d">
-        <div class="q-prompt"><span class="g-num">7</span>You want to know where the meeting will take place.</div>
+      <div class="q-item-mcq" id="item-b6-6" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
         <div class="sentence-options" id="opts-b6-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where will the meeting take place?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where the meeting will take place?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me where does the meeting take place?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me where the meeting will takes place?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where the meeting will take place?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me where will the meeting take place?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where the meeting will takes place?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-7" data-answer="a">
-        <div class="q-prompt"><span class="g-num">8</span>You want to know how long the journey takes.</div>
+      <div class="q-item-mcq" id="item-b6-7" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
         <div class="sentence-options" id="opts-b6-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how long the journey takes?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how long takes the journey?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how long does the journey take?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how long is the journey takes?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how long does the journey take?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how long the journey takes?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how long is the journey takes?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how long takes the journey?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-8" data-answer="c">
-        <div class="q-prompt"><span class="g-num">9</span>You want to know whether Sarah has been to Italy.</div>
+      <div class="q-item-mcq" id="item-b6-8" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
         <div class="sentence-options" id="opts-b6-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if Sarah been to Italy?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if has Sarah been to Italy?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know if Sarah has been to Italy?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know has Sarah been to Italy?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if Sarah has been to Italy?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if Sarah been to Italy?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know has Sarah been to Italy?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if has Sarah been to Italy?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-b6-9" data-answer="d">
-        <div class="q-prompt"><span class="g-num">10</span>You want to know what time the shop closes.</div>
+      <div class="q-item-mcq" id="item-b6-9" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
         <div class="sentence-options" id="opts-b6-9">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me what time the shop does close?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me what time does the shop close?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what time closes the shop?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what time does the shop close?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what time the shop closes?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what time the shop closes?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what time the shop close?</span></button>
         </div>
         <div class="g-feedback" id="fb-b6-9"></div>
       </div>
@@ -948,104 +953,104 @@
 
   <section class="block" id="section-b7">
     <div class="block-head"><h2>Exercise 7</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the correct option.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-b7">
-      <div class="q-item-mcq" id="item-b7-0" data-answer="d">
-        <div class="q-prompt"><span class="g-num">1</span>You want to know where your teacher bought the book.</div>
+      <div class="q-item-mcq" id="item-b7-0" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
         <div class="sentence-options" id="opts-b7-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know where bought your teacher the book?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know where your teacher did buy the book?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know where did your teacher buy the book?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know where your teacher bought the book?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know where did your teacher buy the book?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know where bought your teacher the book?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know where your teacher bought the book?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know where your teacher buy the book?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-b7-1" data-answer="a">
-        <div class="q-prompt"><span class="g-num">2</span>You want to know if the hotel has a swimming pool.</div>
+      <div class="q-item-mcq" id="item-b7-1" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
         <div class="sentence-options" id="opts-b7-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me if the hotel has a swimming pool?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me if the hotel have a swimming pool?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me if does the hotel have a swimming pool?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me if the hotel does have a swimming pool?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me does the hotel have a swimming pool?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me does the hotel have a swimming pool?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me if the hotel has a swimming pool?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-1"></div>
       </div>
       <div class="q-item-mcq" id="item-b7-2" data-answer="b">
-        <div class="q-prompt"><span class="g-num">3</span>You want to know why he left early.</div>
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
         <div class="sentence-options" id="opts-b7-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why left he early?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why did he leave early?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know why he left early?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why he did leave early?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why did he leave early?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why he leave early?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why left he early?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-b7-3" data-answer="d">
-        <div class="q-prompt"><span class="g-num">4</span>You want to know when they are arriving.</div>
+      <div class="q-item-mcq" id="item-b7-3" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
         <div class="sentence-options" id="opts-b7-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when are they arriving?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when they are arriving?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me when they arriving?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me when arriving they are?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when they are arriving?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when are they arriving?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-b7-4" data-answer="b">
-        <div class="q-prompt"><span class="g-num">5</span>You want to know how much the computer costs.</div>
+      <div class="q-item-mcq" id="item-b7-4" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
         <div class="sentence-options" id="opts-b7-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how much the computer does cost?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how much the computer costs?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how much costs the computer?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how much does the computer cost?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how much costs the computer?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how much does the computer cost?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how much the computer costs?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how much the computer is cost?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-4"></div>
       </div>
       <div class="q-item-mcq" id="item-b7-5" data-answer="b">
-        <div class="q-prompt"><span class="g-num">6</span>You want to know whether James is coming.</div>
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
         <div class="sentence-options" id="opts-b7-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know is James coming.</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if James coming is.</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know if James is coming.</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if is James coming.</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if James coming is.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know is James coming.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if is James coming.</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-b7-6" data-answer="c">
-        <div class="q-prompt"><span class="g-num">7</span>You want to know what she wants.</div>
+      <div class="q-item-mcq" id="item-b7-6" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
         <div class="sentence-options" id="opts-b7-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me what does she want?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me what wants she?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me what she wants?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me what she does want?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me what she wants?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me what she want?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me what does she want?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me what wants she?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-6"></div>
       </div>
       <div class="q-item-mcq" id="item-b7-7" data-answer="d">
-        <div class="q-prompt"><span class="g-num">8</span>You want to know how often he goes to the gym.</div>
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
         <div class="sentence-options" id="opts-b7-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how often he does go to the gym?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how often goes he to the gym?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how often goes he to the gym?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how often he go to the gym?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how often does he go to the gym?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how often he goes to the gym?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-b7-8" data-answer="d">
-        <div class="q-prompt"><span class="g-num">9</span>You want to know if they have received your email.</div>
+      <div class="q-item-mcq" id="item-b7-8" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
         <div class="sentence-options" id="opts-b7-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know have they received my email?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if have they received my email?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know if they received have my email?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if they have received my email?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if they received have my email?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know have they received my email?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know if they have received my email?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if have they received my email?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-8"></div>
       </div>
       <div class="q-item-mcq" id="item-b7-9" data-answer="d">
-        <div class="q-prompt"><span class="g-num">10</span>You want to know where the nearest bank is.</div>
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
         <div class="sentence-options" id="opts-b7-9">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me where does the nearest bank is?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me where is the nearest bank?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me where the nearest bank it is?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me where is the nearest bank?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me where the nearest bank it is?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me where does the nearest bank is?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me where the nearest bank is?</span></button>
         </div>
         <div class="g-feedback" id="fb-b7-9"></div>
@@ -1059,105 +1064,105 @@
 
   <section class="block" id="section-b8">
     <div class="block-head"><h2>Exercise 8</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the correct option.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-b8">
-      <div class="q-item-mcq" id="item-b8-0" data-answer="d">
-        <div class="q-prompt"><span class="g-num">1</span>You want to ask a stranger where the bus station is.</div>
+      <div class="q-item-mcq" id="item-b8-0" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
         <div class="sentence-options" id="opts-b8-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me where does the bus station is?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me where the bus station it is?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me where is the bus station?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me where the bus station is?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me where is the bus station?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me where the bus station is?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me where the bus station it is?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me where does the bus station is?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-1" data-answer="a">
-        <div class="q-prompt"><span class="g-num">2</span>You want to know if your colleague has finished the report.</div>
+      <div class="q-item-mcq" id="item-b8-1" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
         <div class="sentence-options" id="opts-b8-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if she has finished the report?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if she finished has the report?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if has she finished the report?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know if she finished has the report?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know has she finished the report?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know has she finished the report?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if she has finished the report?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-1"></div>
       </div>
       <div class="q-item-mcq" id="item-b8-2" data-answer="c">
-        <div class="q-prompt"><span class="g-num">3</span>You want to know what time the film starts.</div>
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
         <div class="sentence-options" id="opts-b8-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know what time starts the film?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know what time the film does start?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know what time does the film start?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know what time starts the film?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know what time the film starts?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know what time does the film start?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know what time the film start?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-3" data-answer="d">
-        <div class="q-prompt"><span class="g-num">4</span>You want to know where David works.</div>
+      <div class="q-item-mcq" id="item-b8-3" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
         <div class="sentence-options" id="opts-b8-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where works David?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where David works?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me where does David work?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me where David is work?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where David works?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where works David?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-4" data-answer="d">
-        <div class="q-prompt"><span class="g-num">5</span>You want to know why the flight was cancelled.</div>
+      <div class="q-item-mcq" id="item-b8-4" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
         <div class="sentence-options" id="opts-b8-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why was the flight cancelled?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know why the flight did get cancelled?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why did the flight cancel?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why the flight was cancelled?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why did the flight cancel?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know why was the flight cancelled?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why the flight was cancelled?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why the flight was cancel?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-5" data-answer="a">
-        <div class="q-prompt"><span class="g-num">6</span>You want to know whether your friend likes the new restaurant.</div>
+      <div class="q-item-mcq" id="item-b8-5" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
         <div class="sentence-options" id="opts-b8-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if you like the new restaurant.</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know do you like the new restaurant.</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if you do like the new restaurant.</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if do you like the new restaurant.</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if you likes the new restaurant.</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know if you like the new restaurant.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if do you like the new restaurant.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know do you like the new restaurant.</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-6" data-answer="c">
-        <div class="q-prompt"><span class="g-num">7</span>You want to know how many people are coming.</div>
+      <div class="q-item-mcq" id="item-b8-6" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
         <div class="sentence-options" id="opts-b8-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how many people are they coming?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how many people coming are?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how many people are coming?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how many people they are coming?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how many people are coming?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how many people they are coming?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how many people are they coming?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how many people coming are?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-7" data-answer="c">
-        <div class="q-prompt"><span class="g-num">8</span>You want to know when the next train leaves.</div>
+      <div class="q-item-mcq" id="item-b8-7" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
         <div class="sentence-options" id="opts-b8-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when does the next train leave?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me when leaves the next train?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me when the next train leaves?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when the next train does leave?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when the next train leave?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me when the next train leaves?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me when leaves the next train?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when does the next train leave?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-b8-8" data-answer="b">
-        <div class="q-prompt"><span class="g-num">9</span>You want to know if Mark has called.</div>
+      <div class="q-item-mcq" id="item-b8-8" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
         <div class="sentence-options" id="opts-b8-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if has Mark called?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if Mark has called?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if Mark has he called?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if has Mark called?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know has Mark called?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if Mark has he called?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if Mark has called?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-8"></div>
       </div>
       <div class="q-item-mcq" id="item-b8-9" data-answer="a">
-        <div class="q-prompt"><span class="g-num">10</span>You want to know what she is doing.</div>
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
         <div class="sentence-options" id="opts-b8-9">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me what she is doing?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what does she doing?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what is she doing?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what she doing is?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what she doing is?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what does she doing?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what is she doing?</span></button>
         </div>
         <div class="g-feedback" id="fb-b8-9"></div>
       </div>
@@ -1170,104 +1175,104 @@
 
   <section class="block" id="section-b9">
     <div class="block-head"><h2>Exercise 9</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the correct option.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-b9">
-      <div class="q-item-mcq" id="item-b9-0" data-answer="c">
-        <div class="q-prompt"><span class="g-num">1</span>Which is the correct indirect question?</div>
+      <div class="q-item-mcq" id="item-b9-0" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
         <div class="sentence-options" id="opts-b9-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know where I can to buy a ticket?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know where can I buy a ticket?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know where I can buy a ticket?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know where can buy I a ticket?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know where can buy I a ticket?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know where I can buy a ticket?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know where I can to buy a ticket?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know where can I buy a ticket?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-0"></div>
       </div>
       <div class="q-item-mcq" id="item-b9-1" data-answer="d">
-        <div class="q-prompt"><span class="g-num">2</span>Which is the correct indirect question?</div>
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
         <div class="sentence-options" id="opts-b9-1">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me how long lasts the course?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me how long does the course last?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me how long the course does last?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me how long the course last?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me how long the course lasts?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-1"></div>
       </div>
       <div class="q-item-mcq" id="item-b9-2" data-answer="c">
-        <div class="q-prompt"><span class="g-num">3</span>Which is the correct indirect question?</div>
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
         <div class="sentence-options" id="opts-b9-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if he married is.</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know does he married.</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know if is he married.</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if he is married.</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know does he married.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if he married is.</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-b9-3" data-answer="b">
-        <div class="q-prompt"><span class="g-num">4</span>Which is the correct direct question?</div>
+      <div class="q-item-mcq" id="item-b9-3" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
         <div class="sentence-options" id="opts-b9-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Where your brother works?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Where does your brother work?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Where is your brother work?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Where does work your brother?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Where is your brother work?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Where does work your brother?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Where does your brother works?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Where does your brother work?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-3"></div>
       </div>
       <div class="q-item-mcq" id="item-b9-4" data-answer="a">
-        <div class="q-prompt"><span class="g-num">5</span>Which is the correct direct question?</div>
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
         <div class="sentence-options" id="opts-b9-4">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">What time does the train leave?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">What time the train leaves?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">What time is the train leave?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">What time leaves the train?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">What time is the train leave?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">What time leaves the train?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">What time does the train leaves?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-b9-5" data-answer="d">
-        <div class="q-prompt"><span class="g-num">6</span>Which is the correct indirect question?</div>
+      <div class="q-item-mcq" id="item-b9-5" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
         <div class="sentence-options" id="opts-b9-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know what said she?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know what did she say?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know what she did say?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know what she said?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know what she say?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know what she said?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know what did she say?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know what said she?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-b9-6" data-answer="b">
-        <div class="q-prompt"><span class="g-num">7</span>Which is the correct indirect question?</div>
+      <div class="q-item-mcq" id="item-b9-6" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
         <div class="sentence-options" id="opts-b9-6">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me whether are they ready?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me whether they are ready?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me whether they be ready?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me whether they be ready?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me whether they are ready?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me whether they ready are?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-6"></div>
       </div>
       <div class="q-item-mcq" id="item-b9-7" data-answer="d">
-        <div class="q-prompt"><span class="g-num">8</span>Which is the correct direct question?</div>
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
         <div class="sentence-options" id="opts-b9-7">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Why didn&#x27;t come you yesterday?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Why you not came yesterday?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Why you didn&#x27;t come yesterday?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Why didn&#x27;t you came yesterday?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Why didn&#x27;t you come yesterday?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-b9-8" data-answer="d">
-        <div class="q-prompt"><span class="g-num">9</span>Which is the correct indirect question?</div>
+      <div class="q-item-mcq" id="item-b9-8" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
         <div class="sentence-options" id="opts-b9-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know when will arrive he?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know when he will to arrive?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know when will he arrive?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know when he will arrive?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know when he will arrive?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know when will he arrive?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know when he will to arrive?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know when will arrive he?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-8"></div>
       </div>
-      <div class="q-item-mcq" id="item-b9-9" data-answer="b">
-        <div class="q-prompt"><span class="g-num">10</span>Which is the correct indirect question?</div>
+      <div class="q-item-mcq" id="item-b9-9" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
         <div class="sentence-options" id="opts-b9-9">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me who did she invite?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me who she invited?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me who she did invite?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me who she invite?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me who she invited?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me who invited she?</span></button>
         </div>
         <div class="g-feedback" id="fb-b9-9"></div>
@@ -1281,104 +1286,104 @@
 
   <section class="block" id="section-b10">
     <div class="block-head"><h2>Exercise 10</h2><span class="block-count">10 items</span></div>
-    <p class="instructions">Choose the correct option.</p>
+    <p class="instructions">Which question is correct?</p>
     <div id="list-b10">
-      <div class="q-item-mcq" id="item-b10-0" data-answer="d">
-        <div class="q-prompt"><span class="g-num">1</span>You want to know if the museum is open today.</div>
+      <div class="q-item-mcq" id="item-b10-0" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">1</span></div>
         <div class="sentence-options" id="opts-b10-0">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know if the museum does open today?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if is the museum open today?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know is the museum open today?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if the museum is open today?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know is the museum open today?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know if the museum is open today?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know if the museum open today?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know if is the museum open today?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-0"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-1" data-answer="b">
-        <div class="q-prompt"><span class="g-num">2</span>You want to know where your parents are staying.</div>
+      <div class="q-item-mcq" id="item-b10-1" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">2</span></div>
         <div class="sentence-options" id="opts-b10-1">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where your parents they are staying?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me where your parents are staying?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me where are your parents staying?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where staying are your parents?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me where your parents are staying?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me where staying are your parents?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me where your parents they are staying?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me where are your parents staying?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-1"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-2" data-answer="a">
-        <div class="q-prompt"><span class="g-num">3</span>You want to know what time the restaurant opens.</div>
+      <div class="q-item-mcq" id="item-b10-2" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">3</span></div>
         <div class="sentence-options" id="opts-b10-2">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me what time the restaurant opens?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what time does the restaurant open?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what time opens the restaurant?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what time the restaurant does open?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me what time opens the restaurant?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what time the restaurant opens?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what time does the restaurant open?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what time the restaurant open?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-2"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-3" data-answer="a">
-        <div class="q-prompt"><span class="g-num">4</span>You want to know why she didn&#x27;t attend the meeting.</div>
+      <div class="q-item-mcq" id="item-b10-3" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">4</span></div>
         <div class="sentence-options" id="opts-b10-3">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why she didn&#x27;t attend the meeting?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know why didn&#x27;t attend she the meeting?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know why she did not attended the meeting?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know why didn&#x27;t she attend the meeting?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why didn&#x27;t attend she the meeting?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know why she didn&#x27;t attend the meeting?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-3"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-4" data-answer="d">
-        <div class="q-prompt"><span class="g-num">5</span>You want to know if they will come tomorrow.</div>
+      <div class="q-item-mcq" id="item-b10-4" data-answer="a">
+        <div class="q-prompt num-only"><span class="g-num">5</span></div>
         <div class="sentence-options" id="opts-b10-4">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if will they come tomorrow.</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">I&#x27;d like to know if they will come tomorrow.</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">I&#x27;d like to know will they come tomorrow.</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if they come will tomorrow.</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if they will come tomorrow.</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">I&#x27;d like to know if will they come tomorrow.</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">I&#x27;d like to know if they come will tomorrow.</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-4"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-5" data-answer="a">
-        <div class="q-prompt"><span class="g-num">6</span>You want to know how much the course costs.</div>
+      <div class="q-item-mcq" id="item-b10-5" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">6</span></div>
         <div class="sentence-options" id="opts-b10-5">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how much the course costs?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how much does the course cost?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how much the course does cost?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how much costs the course?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know how much does the course cost?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know how much costs the course?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know how much the course costs?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know how much the course is cost?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-5"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-6" data-answer="a">
-        <div class="q-prompt"><span class="g-num">7</span>You want to know when Anna started working there.</div>
+      <div class="q-item-mcq" id="item-b10-6" data-answer="b">
+        <div class="q-prompt num-only"><span class="g-num">7</span></div>
         <div class="sentence-options" id="opts-b10-6">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when Anna started working there?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me when did Anna start working there?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Can you tell me when did Anna start working there?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Can you tell me when Anna started working there?</span></button>
           <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Can you tell me when started Anna working there?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when Anna did start working there?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Can you tell me when Anna start working there?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-6"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-7" data-answer="a">
-        <div class="q-prompt"><span class="g-num">8</span>You want to know whether the students have completed the task.</div>
+      <div class="q-item-mcq" id="item-b10-7" data-answer="c">
+        <div class="q-prompt num-only"><span class="g-num">8</span></div>
         <div class="sentence-options" id="opts-b10-7">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know whether the students have completed the task?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know whether have the students completed the task?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know whether the students completed have the task?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know whether the students did complete the task?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know whether have the students completed the task?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know whether the students has completed the task?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know whether the students have completed the task?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know whether the students completed have the task?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-7"></div>
       </div>
-      <div class="q-item-mcq" id="item-b10-8" data-answer="a">
-        <div class="q-prompt"><span class="g-num">9</span>You want to know who called you.</div>
+      <div class="q-item-mcq" id="item-b10-8" data-answer="d">
+        <div class="q-prompt num-only"><span class="g-num">9</span></div>
         <div class="sentence-options" id="opts-b10-8">
-          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know who called me?</span></button>
+          <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Do you know who did called me?</span></button>
           <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Do you know who called did me?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know who did called me?</span></button>
-          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know who did call me?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Do you know who call me?</span></button>
+          <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Do you know who called me?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-8"></div>
       </div>
       <div class="q-item-mcq" id="item-b10-9" data-answer="a">
-        <div class="q-prompt"><span class="g-num">10</span>You want to know what he is talking about.</div>
+        <div class="q-prompt num-only"><span class="g-num">10</span></div>
         <div class="sentence-options" id="opts-b10-9">
           <button type="button" class="sent-btn" data-value="a"><span class="opt-letter">a</span><span class="opt-text">Could you tell me what he is talking about?</span></button>
-          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what is he talking about?</span></button>
-          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what talking he is about?</span></button>
+          <button type="button" class="sent-btn" data-value="b"><span class="opt-letter">b</span><span class="opt-text">Could you tell me what talking he is about?</span></button>
+          <button type="button" class="sent-btn" data-value="c"><span class="opt-letter">c</span><span class="opt-text">Could you tell me what is he talking about?</span></button>
           <button type="button" class="sent-btn" data-value="d"><span class="opt-letter">d</span><span class="opt-text">Could you tell me what he does talking about?</span></button>
         </div>
         <div class="g-feedback" id="fb-b10-9"></div>
@@ -1388,7 +1393,9 @@
       <button class="btn-check" data-check-mcq="b10">Check Exercise 10</button>
       <button class="btn-ghost" data-reset-mcq="b10">Clear section</button>
     </div>
-  </section>  <div class="summary">
+  </section>
+
+  <div class="summary">
     <div class="summary-label">Total score</div>
     <div class="summary-score" id="totalScore">0 / 100</div>
     <div class="summary-label" id="totalPercent">0% complete</div>
@@ -1405,7 +1412,7 @@
 <script>
 (function(){
   var FILL_GROUPS = [];
-  var MCQ_GROUPS = ["a1","a2","a3","a4","a5","b6","b7","b8","b9","b10"];
+  var MCQ_GROUPS = ["a1","a2","a3","b4","b5","b6","b7","b8","b9","b10"];
   var TOTAL = 100;
 
   function normalize(s){
@@ -1453,45 +1460,146 @@
     });
   }
 
-  /* ================= MCQ sentence-choice sections (Exercises 6-10) ================= */
-  document.querySelectorAll('.q-item-mcq').forEach(function(item){
+  /* ================= Device storage (progress saved on this device) ================= */
+  var KEY = 'directind-save-v3:' + (location.pathname.split('/').pop() || 'page') + ':' + document.title;
+  var NP = 'directind:' + KEY + ':';
+  var restoring = false;
+  var statusEl = document.getElementById('saveStatus');
+  var DEFAULT_MSG = 'Your progress is saved automatically on this device.';
+  function setStatus(kind, text){
+    if (!statusEl) return;
+    statusEl.textContent = text;
+    statusEl.className = 'save-status' + (kind ? ' ' + kind : '');
+  }
+  function collectState(){
+    var sel = {}, chk = {}, count = 0;
+    document.querySelectorAll('.q-item-mcq').forEach(function(item){
+      var qid = item.id.replace('item-','');
+      if (item.dataset.selected) {
+        sel[qid] = item.dataset.selected; count++;
+        if (item.classList.contains('correct') || item.classList.contains('incorrect')) chk[qid] = 1;
+      }
+    });
+    return { t: Date.now(), count: count, sel: sel, chk: chk };
+  }
+  function parse(raw){
+    try { var s = JSON.parse(raw); if (s && s.sel && typeof s.sel === 'object') return s; } catch(e){}
+    return null;
+  }
+  /* Looks in localStorage, sessionStorage and window.name; the newest copy wins. */
+  function readAll(){
+    var out = [];
+    try { out.push(window.localStorage.getItem(KEY)); } catch(e){}
+    try { out.push(window.sessionStorage.getItem(KEY)); } catch(e){}
+    try { var n = window.name || ''; if (n.indexOf(NP) === 0) out.push(n.slice(NP.length)); } catch(e){}
+    var best = null;
+    out.forEach(function(raw){ var s = raw ? parse(raw) : null; if (s && (!best || s.t > best.t)) best = s; });
+    return best;
+  }
+  function write(s){
+    var raw = JSON.stringify(s), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch(e){}
+    try { window.sessionStorage.setItem(KEY, raw); } catch(e){}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NP) === 0) window.name = NP + raw; } catch(e){}
+    return ok;
+  }
+  function applyState(data){
+    if (!data || !data.sel) return 0;
+    var n = 0;
+    restoring = true;
+    Object.keys(data.sel).forEach(function(qid){
+      var val = String(data.sel[qid]);
+      if (!/^[a-z]$/.test(val)) return;
+      var item = document.getElementById('item-' + qid);
+      if (!item || !item.classList.contains('q-item-mcq')) return;
+      var btn = item.querySelector('.sent-btn[data-value="' + val + '"]');
+      if (!btn) return;
+      selectOption(item, btn);
+      n++;
+      if (data.chk && data.chk[qid]) checkItem(item);
+    });
+    restoring = false;
+    return n;
+  }
+  function persist(){
+    if (restoring) return;
+    var s = collectState();
+    if (write(s)) setStatus('ok', s.count ? 'Progress saved on this device \u2713' : DEFAULT_MSG);
+    else { setStatus('warn', 'Progress is not being saved automatically in this browser.'); banner(); }
+  }
+
+  /* Fallback when the browser blocks storage (some preview screens, private tabs): a progress code */
+  function enc(){ return btoa(unescape(encodeURIComponent(JSON.stringify(collectState())))); }
+  function dec(c){ return parse(decodeURIComponent(escape(atob((c || '').replace(/\s+/g, ''))))); }
+  function banner(){
+    if (document.getElementById('saveBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'saveBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;color:#1B1B1D;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="saveCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#141416;color:#fff;font-weight:700;cursor:pointer;min-height:0">Get my code</button>' +
+      '<button type="button" id="saveRestore" style="padding:7px 12px;border:1.5px solid #141416;border-radius:6px;background:#fff;color:#141416;font-weight:700;cursor:pointer;min-height:0">Restore from code</button>' +
+      '<span id="saveMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="saveBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    if (sheet) sheet.insertBefore(b, sheet.firstChild); else document.body.insertBefore(b, document.body.firstChild);
+    document.getElementById('saveCopy').addEventListener('click', function(){
+      var box = document.getElementById('saveBox'); box.value = enc(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch(e){}
+      document.getElementById('saveMsg').textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('saveRestore').addEventListener('click', function(){
+      var s = null; try { s = dec(document.getElementById('saveBox').value); } catch(e){}
+      var n = s ? applyState(s) : 0;
+      if (s) { updateScore(); }
+      document.getElementById('saveMsg').textContent = s ? 'Progress restored.' : 'That code is not valid.';
+    });
+  }
+
+  /* ================= MCQ sentence-choice sections ================= */
+  function selectOption(item, btn){
     var qid = item.id.replace('item-','');
+    item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('selected','correct-reveal'); });
+    btn.classList.add('selected');
+    item.dataset.selected = btn.getAttribute('data-value');
+    item.classList.remove('correct','incorrect');
+    var fb = document.getElementById('fb-' + qid);
+    if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+  }
+  document.querySelectorAll('.q-item-mcq').forEach(function(item){
     item.querySelectorAll('.sent-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('selected'); });
-        btn.classList.add('selected');
-        item.dataset.selected = btn.getAttribute('data-value');
-        item.classList.remove('correct','incorrect');
-        item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
-        var fb = document.getElementById('fb-' + qid);
-        if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+        selectOption(item, btn);
         updateScore();
+        persist();
       });
     });
   });
 
+  function checkItem(item){
+    var qid = item.id.replace('item-','');
+    var answer = item.getAttribute('data-answer') || '';
+    var selected = item.dataset.selected;
+    var fb = document.getElementById('fb-' + qid);
+    item.classList.remove('correct','incorrect');
+    item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
+    if (!selected) { if (fb) { fb.textContent=''; fb.className='g-feedback'; } return; }
+    if (selected === answer) {
+      item.classList.add('correct');
+      if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+    } else {
+      item.classList.add('incorrect');
+      item.querySelectorAll('.sent-btn').forEach(function(b){
+        if (b.getAttribute('data-value') === answer) b.classList.add('correct-reveal');
+      });
+      var correctText = item.querySelector('.sent-btn[data-value="' + answer + '"] .opt-text');
+      var correctLabel = correctText ? correctText.textContent : answer;
+      if (fb) { fb.innerHTML = 'Not quite \u2014 correct answer: <strong>' + correctLabel + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    }
+  }
   function checkMcqGroup(gid){
-    document.querySelectorAll('#list-' + gid + ' .q-item-mcq').forEach(function(item){
-      var qid = item.id.replace('item-','');
-      var answer = item.getAttribute('data-answer') || '';
-      var selected = item.dataset.selected;
-      var fb = document.getElementById('fb-' + qid);
-      item.classList.remove('correct','incorrect');
-      item.querySelectorAll('.sent-btn').forEach(function(b){ b.classList.remove('correct-reveal'); });
-      if (!selected) { if (fb) { fb.textContent=''; fb.className='g-feedback'; } return; }
-      if (selected === answer) {
-        item.classList.add('correct');
-        if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
-      } else {
-        item.classList.add('incorrect');
-        item.querySelectorAll('.sent-btn').forEach(function(b){
-          if (b.getAttribute('data-value') === answer) b.classList.add('correct-reveal');
-        });
-        var correctText = item.querySelector('.sent-btn[data-value="' + answer + '"] .opt-text');
-        var correctLabel = correctText ? correctText.textContent : answer;
-        if (fb) { fb.innerHTML = 'Not quite — correct answer: <strong>' + correctLabel + '</strong>'; fb.className = 'g-feedback incorrect'; }
-      }
-    });
+    document.querySelectorAll('#list-' + gid + ' .q-item-mcq').forEach(checkItem);
   }
   function resetMcqGroup(gid){
     document.querySelectorAll('#list-' + gid + ' .q-item-mcq').forEach(function(item){
@@ -1512,10 +1620,10 @@
     btn.addEventListener('click', function(){ resetFillGroup(btn.getAttribute('data-reset')); updateScore(); });
   });
   document.querySelectorAll('[data-check-mcq]').forEach(function(btn){
-    btn.addEventListener('click', function(){ checkMcqGroup(btn.getAttribute('data-check-mcq')); updateScore(); });
+    btn.addEventListener('click', function(){ checkMcqGroup(btn.getAttribute('data-check-mcq')); updateScore(); persist(); });
   });
   document.querySelectorAll('[data-reset-mcq]').forEach(function(btn){
-    btn.addEventListener('click', function(){ resetMcqGroup(btn.getAttribute('data-reset-mcq')); updateScore(); });
+    btn.addEventListener('click', function(){ resetMcqGroup(btn.getAttribute('data-reset-mcq')); updateScore(); persist(); });
   });
 
   /* ================= Global score ================= */
@@ -1546,16 +1654,29 @@
     FILL_GROUPS.forEach(checkFillGroup);
     MCQ_GROUPS.forEach(checkMcqGroup);
     updateScore();
+    persist();
     document.getElementById('section-a1').scrollIntoView({ behavior: 'smooth' });
   });
 
   document.getElementById('resetAllBtn').addEventListener('click', function(){
+    var hasWork = collectState().count > 0;
+    if (hasWork && !window.confirm('Start over? All your answers and saved progress on this device will be deleted.')) return;
     FILL_GROUPS.forEach(resetFillGroup);
     MCQ_GROUPS.forEach(resetMcqGroup);
     updateScore();
+    persist();
   });
 
+  /* Save once more whenever the student leaves or switches away from the page */
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') persist(); });
+  window.addEventListener('pagehide', persist);
+
+  /* Load saved progress, then draw the score */
+  var saved = readAll();
+  var restoredCount = saved ? applyState(saved) : 0;
   updateScore();
+  if (restoredCount > 0) setStatus('ok', 'Welcome back \u2014 your progress was restored (' + restoredCount + ' answer' + (restoredCount === 1 ? '' : 's') + ').');
+  try { window.localStorage.setItem('__directind_t', '1'); window.localStorage.removeItem('__directind_t'); } catch(e){ setStatus('warn', 'Progress is not being saved automatically in this browser.'); banner(); }
 })();
 </script>
 
