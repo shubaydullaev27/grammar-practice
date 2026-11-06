@@ -874,16 +874,29 @@
   var TOTAL = 0;
   Object.keys(GROUP_COUNTS).forEach(function(k){ TOTAL += GROUP_COUNTS[k]; });
 
+    /* Contractions: short forms (couldn't, he'll, I've …) and full forms (could not, he will, I have …) are treated as the same answer. */
+  function ippExpand(s){
+    s = String(s).toLowerCase().replace(/[’‘`´]/g, "'");
+    s = s.replace(/\bcannot\b/g, "can not").replace(/\blet's\b/g, "let us");
+    s = s.replace(/\bwon't\b/g, "will not").replace(/\bcan't\b/g, "can not").replace(/\bshan't\b/g, "shall not").replace(/\bain't\b/g, "is not");
+    s = s.replace(/n't\b/g, " not");
+    s = s.replace(/'ll\b/g, " will").replace(/'ve\b/g, " have").replace(/'re\b/g, " are").replace(/'m\b/g, " am");
+    var PP = "(?:better|been|known|gone|seen|done|left|taken|eaten|written|made|bought|brought|had|lost|found|said|told|met|given|got|gotten|forgotten|heard|kept|paid|sold|spoken|thought|understood|worn|won|(?!need\\b|feed\\b|speed\\b|bleed\\b|breed\\b|seed\\b|weed\\b|bed\\b)[a-z]+ed)";
+    s = s.replace(new RegExp("'d\\s+(?=" + PP + "\\b)", "g"), " had ").replace(/'d\b/g, " would");
+    s = s.replace(new RegExp("\\b(it|he|she|that|there|here|what|who|where|how)'s\\s+(?=" + PP + "\\b)", "g"), "$1 has ").replace(/\b(it|he|she|that|there|here|what|who|where|how)'s\b/g, "$1 is");
+    return s.replace(/\s+/g, " ").trim();
+  }
   function normalize(s){
+    s = ippExpand(s);
     s = s.toLowerCase().replace(/['’‘]/g, "'");
-    s = s.replace(/won't/g, "will not");
-    s = s.replace(/can't/g, "can not");
-    s = s.replace(/shan't/g, "shall not");
-    s = s.replace(/n't/g, " not");
-    s = s.replace(/'ll/g, " will");
-    s = s.replace(/'ve/g, " have");
-    s = s.replace(/'re/g, " are");
-    s = s.replace(/'m/g, " am");
+    s = s.replace(/\bwon't\b/g, "will not");
+    s = s.replace(/\bcan't\b/g, "can not");
+    s = s.replace(/\bshan't\b/g, "shall not");
+    s = s.replace(/n't\b/g, " not");
+    s = s.replace(/'ll\b/g, " will");
+    s = s.replace(/'ve\b/g, " have");
+    s = s.replace(/'re\b/g, " are");
+    s = s.replace(/'m\b/g, " am");
     return s
       .replace(/[^\w\s]/g, "")
       .replace(/\s+/g, " ")
@@ -990,6 +1003,116 @@
   });
 
   updateScore();
+})();
+</script>
+
+<script>
+/* Progress saving: remembers answers on this device and restores them when the page is opened again. */
+(function(){
+  var KEY = 'ipp-save-v1:' + (location.pathname.split('/').pop() || 'page') + ':' + document.title;
+  var NP = 'ipp:' + KEY + ':';
+  var restoring = false, dirty = false, timer = null;
+  function qa(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+  var TEXT = 'input:not([type=radio]):not([type=checkbox]):not([type=button]):not([type=submit]):not([type=hidden]), textarea';
+  function texts(){ return qa(TEXT).filter(function(e){ return !e.closest('#ippBanner'); }); }
+  function radios(){ return qa('input[type=radio]'); }
+  function clozes(){ return qa('.cloze-opt'); }
+  function checks(){ return qa('[data-check],[data-check-mc]'); }
+  function tabs(){ return qa('.page-tab'); }
+  function passages(){ return qa('.passage'); }
+  function sig(){ return texts().length + '/' + radios().length + '/' + clozes().length + '/' + qa('.fill-blank').length + '/' + checks().length; }
+
+  function snapshot(){
+    var s = { t: Date.now(), g: sig(), v: {}, r: [], k: [], f: [], c: [], p: {}, tab: -1 };
+    texts().forEach(function(e, i){ if (e.value) s.v[i] = e.value; });
+    radios().forEach(function(e, i){ if (e.checked) s.r.push(i); });
+    clozes().forEach(function(e, i){ if (e.classList.contains('selected')) s.k.push(i); });
+    qa('.fill-blank.filled').forEach(function(b){ var id = b.getAttribute('data-bank-id'); if (id) s.f.push([b.id, id]); });
+    checks().forEach(function(b, i){ var sc = b.closest('section'); if (sc && sc.querySelector('.correct, .incorrect, .wrong')) s.c.push(i); });
+    passages().forEach(function(e, i){ if (e.querySelector('mark.user-highlight')) s.p[i] = e.innerHTML; });
+    tabs().forEach(function(t, i){ if (t.classList.contains('active')) s.tab = i; });
+    return s;
+  }
+
+  function restore(s){
+    if (!s || s.g !== sig()) return false;
+    restoring = true;
+    try {
+      if (s.tab >= 0) { var t = tabs()[s.tab]; if (t && !t.classList.contains('active')) t.click(); }
+      var T = texts();
+      Object.keys(s.v).forEach(function(i){ var e = T[i]; if (e) { e.value = s.v[i]; e.dispatchEvent(new Event('input', { bubbles: true })); } });
+      var R = radios(); s.r.forEach(function(i){ if (R[i]) R[i].click(); });
+      var C = clozes(); s.k.forEach(function(i){ if (C[i]) C[i].click(); });
+      s.f.forEach(function(p){
+        var b = document.getElementById(p[0]), w = document.getElementById(p[1]);
+        if (b && w && !b.classList.contains('filled')) { b.click(); w.click(); }
+      });
+      var P = passages(); Object.keys(s.p).forEach(function(i){ if (P[i]) P[i].innerHTML = s.p[i]; });
+      var K = checks(); s.c.forEach(function(i){ if (K[i]) K[i].click(); });
+    } catch (e) {}
+    restoring = false;
+    return true;
+  }
+
+  function parse(raw){ try { var s = JSON.parse(raw); if (s && s.g && s.v) return s; } catch (e) {} return null; }
+  function readAll(){
+    var out = [];
+    try { out.push(window.localStorage.getItem(KEY)); } catch (e) {}
+    try { out.push(window.sessionStorage.getItem(KEY)); } catch (e) {}
+    try { var n = window.name || ''; if (n.indexOf(NP) === 0) out.push(n.slice(NP.length)); } catch (e) {}
+    var best = null;
+    out.forEach(function(raw){ var s = raw ? parse(raw) : null; if (s && (!best || s.t > best.t)) best = s; });
+    return best;
+  }
+  function write(s){
+    var raw = JSON.stringify(s), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch (e) {}
+    try { window.sessionStorage.setItem(KEY, raw); } catch (e) {}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NP) === 0) window.name = NP + raw; } catch (e) {}
+    if (!ok) banner();
+  }
+
+  function enc(){ return btoa(unescape(encodeURIComponent(JSON.stringify(snapshot())))); }
+  function dec(c){ return parse(decodeURIComponent(escape(atob((c || '').replace(/\s+/g, ''))))); }
+  function banner(){
+    if (document.getElementById('ippBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'ippBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;font-family:inherit;color:#1A1A1A;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="ippCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-weight:700;cursor:pointer;min-height:0">Get my code</button>' +
+      '<button type="button" id="ippRestore" style="padding:7px 12px;border:1.5px solid #1A1A1A;border-radius:6px;background:#fff;color:#1A1A1A;font-weight:700;cursor:pointer;min-height:0">Restore from code</button>' +
+      '<span id="ippMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="ippBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    if (sheet) sheet.insertBefore(b, sheet.firstChild); else document.body.insertBefore(b, document.body.firstChild);
+    document.getElementById('ippCopy').addEventListener('click', function(){
+      var box = document.getElementById('ippBox'); box.value = enc(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch (e) {}
+      document.getElementById('ippMsg').textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('ippRestore').addEventListener('click', function(){
+      var s = null; try { s = dec(document.getElementById('ippBox').value); } catch (e) {}
+      document.getElementById('ippMsg').textContent = (s && restore(s)) ? 'Progress restored.' : 'That code is not valid.';
+    });
+  }
+
+  function later(){
+    if (restoring) return;
+    dirty = true;
+    clearTimeout(timer);
+    timer = setTimeout(function(){ write(snapshot()); }, 80);
+  }
+  function flush(){ if (!restoring && dirty) write(snapshot()); }
+  ['input', 'change', 'click', 'keyup', 'mouseup', 'touchend'].forEach(function(ev){ document.addEventListener(ev, later, true); });
+  window.addEventListener('pagehide', flush);
+  window.addEventListener('beforeunload', flush);
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') flush(); });
+
+  var saved = readAll();
+  if (saved) restore(saved);
+  try { window.localStorage.setItem('__ipp_t', '1'); window.localStorage.removeItem('__ipp_t'); } catch (e) { banner(); }
 })();
 </script>
 
