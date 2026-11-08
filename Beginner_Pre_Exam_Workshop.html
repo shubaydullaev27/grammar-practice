@@ -826,17 +826,17 @@
             <span class="w-what">My hobby is reading books. I love reading stories, especially adventure books.</span>
             <span class="w-often">I read every evening before bed. Sometimes, I read in the park when the weather is nice.</span>
             <span class="w-why">I like reading because it helps me relax and learn new things. Reading is fun and interesting.</span>
-            <span class="model-count">50 words &middot; yellow = what you do &middot; green = how often &middot; red = why you enjoy it</span>
+            <span class="model-count">46 words &middot; yellow = what you do &middot; green = how often &middot; red = why you enjoy it</span>
           </div>
         </details>
-        <div class="sub-instr">How the model answer is marked (14 of 15)</div>
+        <div class="sub-instr">How the model answer is marked (15 of 15)</div>
         <div class="rubric">
           <div class="rubric-row"><span>Task Achievement</span><b>3</b></div>
-          <div class="rubric-row"><span>Grammar</span><b>2</b></div>
+          <div class="rubric-row"><span>Grammar</span><b>3</b></div>
           <div class="rubric-row"><span>Vocabulary</span><b>3</b></div>
           <div class="rubric-row"><span>Organization</span><b>3</b></div>
           <div class="rubric-row"><span>Word Count</span><b>3</b></div>
-          <div class="rubric-row rubric-total"><span>Total</span><b>14 of 15</b></div>
+          <div class="rubric-row rubric-total"><span>Total</span><b>15 of 15</b></div>
         </div>
       </section>
 
@@ -1214,6 +1214,79 @@
     clearFb(u); updateScores();
   });
 
+
+  /* ---------- autosave on this device ---------- */
+  var KEY = 'iwk:' + document.title, store = null;
+  try { store = window.localStorage; store.setItem('iwk:test','1'); store.removeItem('iwk:test'); } catch(e){ store = null; }
+  function allUnits(){ return Array.prototype.slice.call(document.querySelectorAll('.unit')); }
+  function snap(u){
+    var t = u.getAttribute('data-type'), s = { m: (u.classList.contains('correct') || u.classList.contains('incorrect')) ? 1 : 0 };
+    if (t === 'choice') { var o = u.querySelector('.opt.sel'); s.v = o ? o.getAttribute('data-value') : null; }
+    else if (t === 'input') s.v = u.value;
+    else if (t === 'tiles') s.v = Array.prototype.map.call(H.tiles.placed(u), function(b){ return b.getAttribute('data-i'); });
+    else if (t === 'fix') { s.v = u.getAttribute('data-sel'); s.t = u.querySelector('.fix-input').value; }
+    else if (t === 'mc') { var c = u.querySelector('input[type="radio"]:checked'); s.v = c ? c.value : null; }
+    else if (t === 'bank') { s.v = u.getAttribute('data-word'); s.b = u.getAttribute('data-bank-id'); }
+    return s;
+  }
+  function save(){
+    if (!store) return;
+    try {
+      var tab = document.querySelector('.page-tab.active');
+      store.setItem(KEY, JSON.stringify({ u: allUnits().map(snap), tab: tab ? tab.getAttribute('data-target') : null }));
+    } catch(e){}
+  }
+  function restore(){
+    if (!store) return;
+    var d; try { d = JSON.parse(store.getItem(KEY) || 'null'); } catch(e){ d = null; }
+    if (!d || !d.u) return;
+    allUnits().forEach(function(u, i){
+      var s = d.u[i]; if (!s) return;
+      var t = u.getAttribute('data-type');
+      if (t === 'choice' && s.v !== null) {
+        u.querySelectorAll('.opt').forEach(function(o){ if (o.getAttribute('data-value') === s.v) o.classList.add('sel'); });
+      } else if (t === 'input') { u.value = s.v || ''; }
+      else if (t === 'tiles' && s.v && s.v.length) {
+        s.v.forEach(function(idx){
+          var b = u.querySelector('.tile-bank .tile[data-i="' + idx + '"]'); if (!b) return;
+          var p = document.createElement('button'); p.type = 'button'; p.className = 'tile placed';
+          p.textContent = b.textContent; p.setAttribute('data-i', idx);
+          u.querySelector('.tile-area').appendChild(p);
+          b.classList.add('used'); b.disabled = true;
+        });
+      } else if (t === 'fix' && s.v !== null && s.v !== undefined) {
+        u.setAttribute('data-sel', s.v);
+        u.querySelectorAll('.tok').forEach(function(k){ if (k.getAttribute('data-i') === String(s.v)) k.classList.add('sel'); });
+        u.querySelector('.fix-row').hidden = false;
+        u.querySelector('.fix-input').value = s.t || '';
+      } else if (t === 'mc' && s.v !== null) {
+        var r = u.querySelector('input[type="radio"][value="' + s.v + '"]');
+        if (r) { r.checked = true; r.closest('.mc-option').classList.add('picked'); }
+      } else if (t === 'bank' && s.v) {
+        u.classList.add('filled'); u.textContent = s.v;
+        u.setAttribute('data-word', s.v);
+        if (s.b) { u.setAttribute('data-bank-id', s.b); var bb = document.getElementById(s.b); if (bb) bb.disabled = true; }
+      }
+    });
+    allUnits().forEach(function(u, i){
+      var s = d.u[i], h = H_of(u);
+      if (s && s.m && h.answered(u)) h.mark(u, h.ok(u));
+    });
+    if (d.tab) {
+      var tb = document.querySelector('.page-tab[data-target="' + d.tab + '"]');
+      if (tb) {
+        document.querySelectorAll('.page-tab').forEach(function(x){ x.classList.remove('active'); });
+        document.querySelectorAll('.page').forEach(function(x){ x.classList.remove('active'); });
+        tb.classList.add('active'); document.getElementById(d.tab).classList.add('active');
+      }
+    }
+  }
+  var saveT = null;
+  function later(){ clearTimeout(saveT); saveT = setTimeout(save, 60); }
+  ['click','input','change'].forEach(function(ev){ document.addEventListener(ev, later); });
+  window.addEventListener('pagehide', save);
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') save(); });
+  restore();
   updateScores();
 })();
 
@@ -1249,6 +1322,15 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(free.value).then(function(){ done(true); }, function(){ done(false); });
     else { free.select(); try { done(document.execCommand('copy')); } catch(e){ done(false); } }
   });
+  /* autosave writing */
+  var WK = 'iwk:writing:' + document.title, ws = null;
+  try { ws = window.localStorage; } catch(e){ ws = null; }
+  function wsave(){ if (!ws) return; try { ws.setItem(WK, JSON.stringify({ t: Array.prototype.map.call(tpls, function(i){ return i.value; }), f: free.value })); } catch(e){} }
+  try { var wd = ws && JSON.parse(ws.getItem(WK) || 'null'); if (wd) { tpls.forEach(function(i, k){ i.value = (wd.t && wd.t[k]) || ''; }); free.value = wd.f || ''; } } catch(e){}
+  tpls.forEach(function(i){ i.addEventListener('input', wsave); });
+  free.addEventListener('input', wsave);
+  ['tpl-use','tpl-clear','free-clear'].forEach(function(id){ document.getElementById(id).addEventListener('click', function(){ setTimeout(wsave, 0); }); });
+  window.addEventListener('pagehide', wsave);
   buildTpl(); upd();
 })();
 </script>
