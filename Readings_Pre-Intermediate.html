@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pre-Intermediate Reading Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>try{var __t=JSON.parse(localStorage.getItem('preinter-readings-v1')||'{}').theme;if(__t)document.documentElement.setAttribute('data-theme',__t)}catch(e){}</script>
+<style>
+:root{
+  --bg:#10121A; --surface:#1A1D29; --surface2:#252939; --text:#F2F3F8; --muted:#A0A5BA; --line:#2F3347;
+  --yellow:#FFC933; --on-yellow:#16161A; --sel:rgba(255,201,51,.15);
+  --good:#3FD488; --good-bg:rgba(63,212,136,.14); --bad:#FF7777; --bad-bg:rgba(255,119,119,.14);
+  --serif:'Fraunces',Georgia,serif; --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --rfs:17px;
+}
+:root[data-theme="light"]{
+  --bg:#F3F3EF; --surface:#FFFFFF; --surface2:#F0EFE9; --text:#1B1B1D; --muted:#5E6066; --line:#DEDDD5;
+  --yellow:#FFD020; --on-yellow:#16161A; --sel:rgba(255,208,32,.22);
+  --good:#17804A; --good-bg:#E3F4EA; --bad:#C8342B; --bad-bg:#FBE9E7;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;overflow:hidden;overscroll-behavior:none;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+#app{position:fixed;left:0;right:0;top:0;height:100dvh;height:100%}
+.screen{position:absolute;inset:0;display:none;flex-direction:column}
+.screen.on{display:flex}
+.scroller{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 clamp(14px,4vw,28px) calc(40px + env(safe-area-inset-bottom))}
+.wrap{width:100%;max-width:920px;margin:0 auto}
+
+/* shared controls */
+.ibtn{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;padding:0;transition:border-color .15s,background .15s}
+.ibtn:hover{border-color:var(--muted)}
+.ibtn:disabled{opacity:.35;cursor:default}
+.ibtn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.go{height:44px;min-width:110px;padding:0 24px;border-radius:12px;border:0;background:var(--yellow);color:var(--on-yellow);font-weight:700;font-size:16px;cursor:pointer}
+.go:hover{filter:brightness(.95)}
+.ghost{height:44px;padding:0 20px;border-radius:12px;border:1.5px solid var(--line);background:transparent;font-weight:600;font-size:15px;cursor:pointer}
+.ghost:hover{border-color:var(--muted)}
+
+/* home */
+.hhead{display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top)) 0 4px}
+.brand{font-weight:700;font-size:14px;color:var(--yellow)}
+.brand span{color:var(--muted);font-weight:500;margin-left:6px}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,7vw,44px);line-height:1.1;margin:18px 0 10px;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 22px;max-width:60ch;font-size:15.5px}
+.overall{display:flex;align-items:center;gap:12px;margin-bottom:18px;font-size:14px;color:var(--muted)}
+.obar{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.obar i{display:block;height:100%;background:var(--yellow);border-radius:4px}
+.note{background:var(--bad-bg);color:var(--bad);border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:16px}
+.list{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:720px){.list{grid-template-columns:1fr 1fr}}
+.row{display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;cursor:pointer;text-align:left;font-size:16px;transition:border-color .15s}
+.row:hover{border-color:var(--yellow)}
+.ring{--p:0;--c:var(--yellow);flex:0 0 54px;height:54px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p) * 1%),var(--line) 0);display:grid;place-items:center;position:relative}
+.ring::before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--surface)}
+.ring b{position:relative;font-family:var(--serif);font-size:20px;font-weight:700}
+.rt{flex:1;min-width:0}
+.rt strong{display:block;font-weight:600;line-height:1.3}
+.rt small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.rt small.ok{color:var(--good);font-weight:600}
+.row>svg{flex:0 0 18px;width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.foot{margin-top:28px;text-align:center}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:13.5px;cursor:pointer;padding:10px}
+
+/* reader */
+.col{width:100%;max-width:900px;height:100%;margin:0 auto;display:flex;flex-direction:column;padding:0 clamp(10px,3vw,24px)}
+.topbar{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top)) 0 8px}
+.pill{background:var(--yellow);color:var(--on-yellow);font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;margin:0 auto}
+.topbar .count{font-size:13px;color:var(--muted);min-width:44px;text-align:right}
+.segs{flex:0 0 auto;display:flex;gap:4px;padding:0 0 10px}
+.segs button{flex:1;height:22px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.segs button::after{content:"";position:absolute;left:0;right:0;top:9px;height:5px;border-radius:3px;background:var(--line);transition:background .15s}
+.segs button.a::after{background:var(--yellow);opacity:.55}
+.segs button.c::after{background:var(--yellow);opacity:1;top:7px;height:9px}
+.segs button.gap{margin-left:8px}
+.box{flex:1 1 0;min-height:110px;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.tools{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tools .grow{flex:1}
+.tlabel{font-size:13px;color:var(--muted);margin:0 4px 0 6px}
+@media(max-width:480px){.tlabel{display:none}}
+.sw{width:28px;height:28px;border-radius:50%;border:2px solid transparent;padding:0;cursor:pointer;display:grid;place-items:center;font-size:14px;font-weight:700;line-height:1}
+.sw.y{background:#FFE66D}.sw.g{background:#A8EDB4}.sw.p{background:#FFB8D4}
+.sw.off{background:var(--surface2);color:var(--muted)}
+.sw.on{border-color:var(--text);box-shadow:0 0 0 2px var(--surface)}
+.tbtn{height:32px;min-width:32px;padding:0 8px;border-radius:8px;border:1.5px solid var(--line);background:transparent;font-size:13px;font-weight:700;cursor:pointer}
+.tbtn:hover{border-color:var(--muted)}
+.tbtn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block;margin:auto}
+.scrollwrap{flex:1;min-height:0;position:relative}
+.box-scroll{height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:16px clamp(14px,3vw,26px) 28px;scrollbar-width:thin;scrollbar-color:var(--muted) transparent}
+.box-scroll::-webkit-scrollbar{width:8px}
+.box-scroll::-webkit-scrollbar-thumb{background:var(--muted);border-radius:4px;border:2px solid var(--surface)}
+.fade{position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(transparent,var(--surface));pointer-events:none;opacity:0;transition:opacity .2s}
+.fade.on{opacity:1}
+.text{max-width:68ch;margin:0 auto;font-size:var(--rfs);line-height:1.72;user-select:text;-webkit-user-select:text}
+.text h3{font-family:var(--serif);font-size:1.3em;line-height:1.2;margin:0 0 .6em}
+.text p{margin:0 0 1em}
+.text p:last-child{margin-bottom:0}
+mark.hl{color:#141416;border-radius:3px;padding:0 1px}
+mark.hl.y{background:#FFE66D}mark.hl.g{background:#A8EDB4}mark.hl.p{background:#FFB8D4}
+.panel{flex:0 0 auto;max-height:54%;overflow-y:auto;margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px 14px}
+#reader.expanded .panel{display:none}
+.pmeta{display:flex;align-items:baseline;gap:10px;font-size:13px;color:var(--muted);margin-bottom:4px}
+.pmeta b{color:var(--yellow);font-size:14px}
+.instr{margin:0 0 10px;font-size:14px;color:var(--muted)}
+.instr strong{color:var(--text)}
+.qtext{margin:0 0 12px;font-size:17px;font-weight:600;line-height:1.5}
+.qtext.gap{line-height:2.2}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--surface2);border:1.5px solid transparent;padding:10px 14px;border-radius:12px;font-size:15.5px;line-height:1.4;cursor:pointer;user-select:none;-webkit-user-select:none}
+.opt:hover{border-color:var(--line)}
+.opt .l{flex:0 0 24px;height:24px;border-radius:50%;border:1.5px solid var(--muted);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted);margin-top:-1px}
+.opt[aria-checked="true"]{border-color:var(--yellow);background:var(--sel)}
+.opt[aria-checked="true"] .l{background:var(--yellow);border-color:var(--yellow);color:var(--on-yellow)}
+.ans{display:inline-block;vertical-align:middle;width:clamp(130px,42vw,230px);height:42px;margin:0 4px;padding:0 12px;font:inherit;font-size:16px;font-weight:600;color:var(--text);background:var(--surface2);border:1.5px solid var(--line);border-radius:10px}
+.ans:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 3px var(--sel)}
+.nav{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:10px 0 calc(12px + env(safe-area-inset-bottom))}
+.nav .ncount{font-size:14px;color:var(--muted);flex:1}
+@media(max-height:700px){.opt{padding:8px 12px}.qtext{font-size:16px;margin-bottom:8px}.opts{gap:6px}.instr{margin-bottom:6px}}
+
+/* results */
+.rtop{display:flex;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top)) 0 0}
+.rtop .ghost{border:0;padding:0 10px 0 4px;display:flex;align-items:center;gap:6px}
+.rtop svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.score{text-align:center;padding:18px 0 8px}
+.score .big{font-family:var(--serif);font-size:clamp(56px,16vw,88px);font-weight:700;color:var(--yellow);line-height:1}
+.score .big small{font-size:.45em;color:var(--muted)}
+.score p{margin:8px 0 0;color:var(--muted)}
+.score .msg{color:var(--text);font-weight:600;font-size:18px;margin-top:12px}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
+details.rd{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:18px}
+details.rd summary{padding:14px 16px;font-weight:600;cursor:pointer}
+details.rd .text{padding:0 16px 18px;font-size:16px}
+.rv-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rv{display:flex;gap:12px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--bad);border-radius:14px;padding:12px 14px}
+.rv.good{border-left-color:var(--good)}
+.rv .mk{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:var(--bad-bg);color:var(--bad)}
+.rv.good .mk{background:var(--good-bg);color:var(--good)}
+.rv p{margin:0}
+.rv .q{font-weight:600;margin-bottom:6px}
+.rv u{text-decoration:none;font-weight:700;padding:1px 8px;border-radius:6px;background:var(--bad-bg);color:var(--bad)}
+.rv.good u{background:var(--good-bg);color:var(--good)}
+.rv .your{font-size:14.5px;color:var(--muted)}
+.rv .your b{color:var(--bad)}
+.rv.good .your b{color:var(--good)}
+.rv .key{font-size:14.5px;color:var(--good);font-weight:600;margin-top:2px}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:20px}
+#modal.on{display:flex}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;max-width:380px;width:100%}
+.sheet p{margin:0 0 18px;font-size:16.5px;font-weight:600}
+.sheet .acts{margin:0;justify-content:flex-end}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <main id="home" class="screen"><div class="scroller" id="homeScroll"><div class="wrap" id="homeWrap"></div></div></main>
+
+  <main id="reader" class="screen">
+    <div class="col">
+      <div class="topbar">
+        <button class="ibtn" id="rdBack" aria-label="Back to all readings"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <div class="pill" id="rdPill">Reading 1 of 15</div>
+        <div class="count" id="rdCount">0/10</div>
+      </div>
+      <div class="segs" id="segs" role="group" aria-label="Questions"></div>
+      <section class="box" aria-label="Reading text">
+        <div class="tools">
+          <span class="tlabel">Highlighter</span>
+          <button class="sw y on" data-c="y" aria-label="Yellow highlighter"></button>
+          <button class="sw g" data-c="g" aria-label="Green highlighter"></button>
+          <button class="sw p" data-c="p" aria-label="Pink highlighter"></button>
+          <button class="sw off" data-c="off" aria-label="Highlighter off">×</button>
+          <button class="tbtn" id="hlClear">Clear</button>
+          <span class="grow"></span>
+          <button class="tbtn" id="fsDown" aria-label="Smaller text">A−</button>
+          <button class="tbtn" id="fsUp" aria-label="Larger text">A+</button>
+          <button class="tbtn" id="expand" aria-label="Enlarge reading box" title="Enlarge reading"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        </div>
+        <div class="scrollwrap"><div class="box-scroll" id="boxScroll" tabindex="0"><div class="text" id="text"></div></div><div class="fade" id="fade"></div></div>
+      </section>
+      <section class="panel" id="panel" aria-live="polite">
+        <div class="pmeta"><b id="pTask">Task 1</b><span id="pQ">Question 1 of 5</span></div>
+        <p class="instr" id="instr"></p>
+        <div id="qbody"></div>
+      </section>
+      <div class="nav">
+        <button class="ibtn" id="prev" aria-label="Previous question"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="ncount" id="ncount">1 of 10</span>
+        <button class="go" id="next">Next</button>
+      </div>
+    </div>
+  </main>
+
+  <main id="results" class="screen"><div class="scroller" id="resScroll"><div class="wrap" id="resWrap"></div></div></main>
+</div>
+<div id="modal" role="dialog" aria-modal="true"><div class="sheet"><p id="mMsg"></p><div class="acts"><button class="ghost" id="mNo"></button><button class="go" id="mYes"></button></div></div></div>
+
+<script>
+(function(){
+'use strict';
+var READINGS=[{"n": 1, "title": "The best methods of learning English", "paras": ["Today, millions of people want to learn or improve their English but it is difficult to find the best method. Is it better to study in Britain or America or to study in your own country?", "The advantages of going to Britain seem obvious. Firstly, you will be able to listen to the language all the time if you are in the native speaking country. You will be surrounded by the language wherever you go. Another advantage is that you have to speak the language if you are with other people. In Italy, it is always possible, in the class, to speak Italian if you want to and the learning is slower.", "On the other hand, there are also advantages to staying at home to study. You don’t have to make big changes to your life. As well as this, it is also a lot cheaper than going to Britain but it is never possible to achieve the results of living in the UK. If you have a good teacher in Italy, you can learn in a more concentrated way than being in Britain without going to a school.", "So, in conclusion, it is suggested that if you have enough time and enough money, the best choice is to spend some time in the UK. This is simply not possible for most people, so being here in Italy is the only practical option. The most important thing to do in this situation is to maximise your opportunities: to speak only English in class and to try to use English whenever possible outside the class."], "instr2": "2. Read the sentences and decide if they are TRUE or FALSE.", "qs": [{"t": "mc", "q": "1. What is the article about?", "opts": ["How many people learn English.", "The best way to learn English.", "English schools in England and America."], "a": 1}, {"t": "mc", "q": "2. What is one of the advantages of going to the UK to learn English?", "opts": ["There are no Italians in Britain.", "You will have to speak English and not your language.", "The language schools are better."], "a": 1}, {"t": "mc", "q": "3. What is one of the advantages of staying in your country to learn English?", "opts": ["The teachers aren’t very good in Britain.", "You have to work too hard in Britain.", "Your life can continue more or less, as it was before."], "a": 2}, {"t": "mc", "q": "4. People who don’t have a lot of time and money should…", "opts": ["try and speak English in class more often", "learn English in Britain.", "go to Italy to learn English."], "a": 0}, {"t": "mc", "q": "5. If you have a good teacher in your home country, you can…", "opts": ["relax and study as you want", "concentrate and study hard", "save money to travel to the UK"], "a": 1}, {"t": "mc", "tf": true, "q": "6. The only way to learn English is to study in English speaking countries.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "7. You should have a good teacher only in Italy to learn English better.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "8. The best choice is to spend some time in the UK if you have enough time and money.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "9. The usage of your language may slow down a learning process.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "10. Wherever you may be, you should create English speaking and using opportunities to achieve good results.", "opts": ["TRUE", "FALSE"], "a": 0}]}, {"n": 2, "title": "City life or country life?", "instr2": "2. Read the sentences and decide if they are TRUE or FALSE.", "paras": ["Many people ask the same question: is it better to live in a big city or in the countryside? Both have good and bad points, and the best choice depends on what you want from life.", "Cities offer many things. There are more jobs, and the salaries are usually higher. You can find good schools, hospitals, shops and cinemas close to your home. Public transport is also better, so you do not always need a car. However, life in a city can be expensive. Flats cost a lot of money, and the streets are often noisy and crowded. The air is also dirtier because of the traffic.", "Life in the countryside is quieter and more relaxed. The air is fresh, and people can enjoy nature every day. Houses are cheaper and bigger, and many families have a garden. People in small villages also know their neighbours well, so they often help each other. On the other hand, there are fewer jobs, and young people often leave to study or work in the city. In some villages, the nearest hospital is far away, and buses come only a few times a day.", "In my opinion, young people who want to start their careers should live in a city. Later, when they have children, they may prefer a quiet place with more space. The most important thing is to choose a place where you feel happy."], "qs": [{"t": "mc", "q": "1. What is the text mainly about?", "opts": ["The history of big cities.", "The good and bad points of city life and country life.", "How to find a job in a village."], "a": 1}, {"t": "mc", "q": "2. What is one advantage of city life?", "opts": ["Flats are cheap.", "The air is very clean.", "Public transport is better."], "a": 2}, {"t": "mc", "q": "3. What is one problem of living in a city?", "opts": ["The streets are often noisy and crowded.", "There are no good schools.", "People never help each other."], "a": 0}, {"t": "mc", "q": "4. What do many families in the countryside have?", "opts": ["Two cars.", "A garden.", "A flat in the centre."], "a": 1}, {"t": "mc", "q": "5. Why do young people often leave small villages?", "opts": ["The air is dirty.", "The houses are too big.", "There are fewer jobs."], "a": 2}, {"t": "mc", "tf": true, "q": "6. Salaries in cities are usually higher than in villages.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "7. You always need a car to live in a big city.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "8. People in small villages usually know their neighbours well.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "9. Buses in some villages come very often.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "10. The writer thinks families with children may prefer a quiet place.", "opts": ["TRUE", "FALSE"], "a": 0}]}, {"n": 3, "title": "Why sleep matters", "instr2": "2. Read the sentences and decide if they are TRUE or FALSE.", "paras": ["Many people do not get enough sleep. Students stay up late to study or to use their phones, and workers often sleep only five or six hours a night. Doctors say that most adults need seven to nine hours of sleep, and teenagers need even more.", "Sleep is very important for our body. While we sleep, our body rests and repairs itself. People who sleep well get ill less often, because sleep helps the body fight germs. Sleep is also good for the heart and helps us keep a healthy weight.", "Sleep is important for our brain, too. When we are tired, it is difficult to concentrate, and we forget things easily. Students who sleep well usually get better marks, because the brain stores new information during the night. Tired people can also be in a bad mood and get angry quickly.", "There are some simple ways to sleep better. First, go to bed and get up at the same time every day. Second, do not drink coffee or tea in the evening, because they keep you awake. Finally, turn off your phone an hour before bed. The light from the screen makes it harder to fall asleep."], "qs": [{"t": "mc", "q": "1. What is the text about?", "opts": ["How to study for exams.", "Why sleep is important and how to sleep better.", "Why doctors work at night."], "a": 1}, {"t": "mc", "q": "2. How many hours of sleep do most adults need?", "opts": ["Ten to twelve hours.", "Five to six hours.", "Seven to nine hours."], "a": 2}, {"t": "mc", "q": "3. Why do people who sleep well get ill less often?", "opts": ["They eat less food.", "Sleep helps the body fight germs.", "They visit the doctor more often."], "a": 1}, {"t": "mc", "q": "4. What does the brain do at night?", "opts": ["It stores new information.", "It stops working.", "It forgets everything."], "a": 0}, {"t": "mc", "q": "5. What should you do before bed?", "opts": ["Drink a cup of coffee.", "Use your phone for an hour.", "Turn off your phone."], "a": 2}, {"t": "mc", "tf": true, "q": "6. Teenagers need less sleep than adults.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "7. Sleep is good for the heart.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "8. Tired people find it easy to concentrate.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "9. Coffee or tea in the evening can keep you awake.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "10. The writer says you should go to bed at different times every day.", "opts": ["TRUE", "FALSE"], "a": 1}]}, {"n": 4, "title": "Tea around the world", "instr2": "2. Read the sentences and decide if they are TRUE or FALSE.", "paras": ["After water, tea is the most popular drink in the world. People drink it in almost every country, but each country has its own way of making and enjoying it.", "Tea comes from China, where people have drunk it for thousands of years. A famous story says that a Chinese emperor discovered tea by accident when some leaves fell into his hot water. Later, traders took tea to other countries, and in the 17th century it arrived in Britain.", "In Britain, many people drink black tea with milk, and some add sugar. In Uzbekistan, people usually drink green or black tea without milk, and they often serve it in small bowls with sweets or dried fruit. In Japan, tea is part of an old ceremony, and it can take more than an hour to prepare and drink. In India, people like masala tea, which is made with milk, sugar and spices.", "Tea is also good for our health. Many doctors say that green tea may help the heart, and a cup of warm tea can help you relax after a busy day. For this reason, millions of people begin or end their day with a cup of tea."], "qs": [{"t": "mc", "q": "1. What is the text mainly about?", "opts": ["How to grow tea.", "The history of Britain.", "Tea and the different ways people drink it."], "a": 2}, {"t": "mc", "q": "2. Where does tea come from?", "opts": ["China.", "Japan.", "India."], "a": 0}, {"t": "mc", "q": "3. When did tea arrive in Britain?", "opts": ["In the 15th century.", "In the 17th century.", "Last century."], "a": 1}, {"t": "mc", "q": "4. How do many people in Britain drink tea?", "opts": ["Green tea with spices.", "Cold tea with lemon.", "Black tea with milk."], "a": 2}, {"t": "mc", "q": "5. What is masala tea made with?", "opts": ["Milk, sugar and spices.", "Water and lemon.", "Green leaves and honey."], "a": 0}, {"t": "mc", "tf": true, "q": "6. Tea is the most popular drink in the world.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "7. A story says that a Chinese emperor discovered tea by accident.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "8. In Uzbekistan, people usually drink tea with milk.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "9. The Japanese tea ceremony can take more than an hour.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "10. A cup of warm tea can help people relax.", "opts": ["TRUE", "FALSE"], "a": 0}]}, {"n": 5, "title": "Shopping online", "instr2": "2. Read the sentences and decide if they are TRUE or FALSE.", "paras": ["Online shopping is becoming more and more popular. Today, you can buy almost everything on the internet, such as clothes, books, food and even furniture, and you can do it from your sofa in a few minutes.", "There are many advantages of shopping online. First, it saves time because you do not have to travel to the shops or wait in a queue. Second, online shops are open 24 hours a day, so you can buy something at midnight if you want. Also, it is easy to compare prices, and you can often find cheaper things than in a normal shop. Finally, the goods arrive at your door.", "However, online shopping has some disadvantages. You cannot touch or try on things before you buy them, so clothes may be the wrong size or colour. Sometimes you must wait several days for your order to arrive. There is also a risk that someone can steal your money or personal details if the website is not safe. Moreover, shopping from home means you meet fewer people, and some customers miss walking around the shops with their friends.", "To shop safely online, use well-known websites, read the reviews of other customers, and never give your password to anyone. If you are careful, online shopping can be easy, cheap and fun."], "qs": [{"t": "mc", "q": "1. What is the text about?", "opts": ["The advantages and disadvantages of online shopping.", "How to open a new shop.", "The most famous websites in the world."], "a": 0}, {"t": "mc", "q": "2. What is one advantage of online shopping?", "opts": ["You can try on clothes before you buy them.", "Online shops are open 24 hours a day.", "The goods arrive in one minute."], "a": 1}, {"t": "mc", "q": "3. What is a problem with buying clothes online?", "opts": ["They are always very expensive.", "Shops do not sell them.", "They may be the wrong size or colour."], "a": 2}, {"t": "mc", "q": "4. Why do some customers miss normal shops?", "opts": ["They enjoy walking around the shops with friends.", "The queues are always short.", "The prices are higher."], "a": 0}, {"t": "mc", "q": "5. How can you shop safely online?", "opts": ["Give your password to the shop.", "Read the reviews of other customers.", "Use only unknown websites."], "a": 1}, {"t": "mc", "tf": true, "q": "6. When you shop online, you do not have to wait in a queue.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "7. Goods bought online always arrive on the same day.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "8. It is difficult to compare prices online.", "opts": ["TRUE", "FALSE"], "a": 1}, {"t": "mc", "tf": true, "q": "9. Some websites are not safe.", "opts": ["TRUE", "FALSE"], "a": 0}, {"t": "mc", "tf": true, "q": "10. The writer says you can give your password to close friends.", "opts": ["TRUE", "FALSE"], "a": 1}]}];
+var KEY='preinter-readings-v1', TOTAL=10, FS=[15,16,17,19,21];
+var store={theme:null,fs:2,readings:{}}, canSave=true;
+try{
+  var raw=localStorage.getItem(KEY);
+  if(raw){var p=JSON.parse(raw);if(p&&typeof p==='object'){store.theme=p.theme||null;if(typeof p.fs==='number')store.fs=p.fs;store.readings=p.readings||{};}}
+  localStorage.setItem('preinter-readings-test','1');localStorage.removeItem('preinter-readings-test');
+}catch(e){canSave=false;}
+function save(){if(!canSave)return;try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){canSave=false;}}
+
+function $(s){return document.querySelector(s);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function norm(s){return String(s).toLowerCase().replace(/[\u2010-\u2015-]/g,' ').replace(/[^\p{L}\p{N}\s]/gu,'').replace(/\s+/g,' ').trim();}
+function peek(n){return store.readings[n]||null;}
+function fresh(best){return {a:new Array(TOTAL).fill(null),i:0,best:best==null?null:best,score:null,done:false,hl:null};}
+function rec(n){return store.readings[n]||(store.readings[n]=fresh());}
+function filled(v){return v!==null&&v!==undefined&&v!=='';}
+function answeredCount(r){var c=0;r.a.forEach(function(v){if(filled(v))c++;});return c;}
+function isRight(q,v){if(!filled(v))return false;if(q.t==='mc')return v===q.a;var nv=norm(v);return q.a.some(function(x){return norm(x)===nv;});}
+function scoreOf(R,r){var s1=0,s2=0;R.qs.forEach(function(q,i){if(isRight(q,r.a[i])){if(i<5)s1++;else s2++;}});return [s1,s2];}
+function baseHTML(R){return '<h3>'+esc(R.title)+'</h3>'+R.paras.map(function(p){return '<p>'+p+'</p>';}).join('');}
+function instr2(s){return esc(s.replace(/^\d+\.\s*/,'')).replace(/(ONE WORD|NO MORE THAN TWO WORDS|TRUE|FALSE)/,'<strong>$1</strong>');}
+
+var ICON={
+  theme:'<svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+  chev:'<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>',
+  back:'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>'
+};
+
+/* ---------- screens & routing ---------- */
+var screens={home:$('#home'),reader:$('#reader'),results:$('#results')}, cur='';
+var homeTop=0;
+function show(name){
+  if(cur==='home')homeTop=$('#homeScroll').scrollTop;
+  cur=name;
+  Object.keys(screens).forEach(function(k){screens[k].classList.toggle('on',k===name);});
+}
+function route(){
+  var m=/^#r(\d{1,2})(-results)?$/.exec(location.hash||'');
+  var n=m?+m[1]:0;
+  if(!m||n<1||n>READINGS.length){showHome();return;}
+  var pk=peek(n);
+  if(pk&&pk.done){if(!m[2])setHash('#r'+n+'-results',true);showResults(n);}
+  else{if(m[2])setHash('#r'+n,true);showReader(n);}
+}
+function setHash(h,replace){
+  try{if(replace){history.replaceState(null,'',h);return;}}catch(e){}
+  try{location.hash=h;}catch(e){}
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- modal ---------- */
+function ask(msg,yes,no){
+  return new Promise(function(res){
+    var md=$('#modal');$('#mMsg').textContent=msg;$('#mYes').textContent=yes;$('#mNo').textContent=no;md.classList.add('on');$('#mYes').focus();
+    function done(v){md.classList.remove('on');$('#mYes').onclick=$('#mNo').onclick=null;document.removeEventListener('keydown',kd,true);res(v);}
+    function kd(e){if(e.key==='Escape'){e.preventDefault();done(false);}}
+    document.addEventListener('keydown',kd,true);
+    $('#mYes').onclick=function(){done(true);};$('#mNo').onclick=function(){done(false);};
+  });
+}
+
+/* ---------- home ---------- */
+function showHome(){
+  show('home');renderHome();$('#homeScroll').scrollTop=homeTop;
+}
+function renderHome(){
+  var done=0;
+  READINGS.forEach(function(R){var r=peek(R.n);if(r&&r.best!=null)done++;});
+  var h='<header class="hhead"><div class="brand">Inter Nation<span>English Practice</span></div><button class="ibtn" id="themeBtn" aria-label="Switch light or dark theme">'+ICON.theme+'</button></header>';
+  h+='<h1>Reading Practice<br><span style="font-size:.5em;color:var(--muted);font-weight:600">Pre-Intermediate</span></h1><p class="lead">Choose a reading. Each one has 10 questions: 5 multiple choice and 5 true/false. Your answers and scores are saved on this device.</p>';
+  h+='<div class="overall"><div class="obar"><i style="width:'+(done/READINGS.length*100)+'%"></i></div><span>'+done+' of '+READINGS.length+' completed</span></div>';
+  if(!canSave)h+='<div class="note">Progress cannot be saved in this browser (private mode may be on). Your answers will be lost when you close the page.</div>';
+  h+='<div class="list">';
+  READINGS.forEach(function(R){
+    var r=peek(R.n),a=r?answeredCount(r):0,p=0,st='Not started',cls='',c='';
+    if(r&&r.done){p=100;c='--c:var(--good);';st='Completed, score '+r.best+'/'+TOTAL;cls='ok';}
+    else if(r&&r.best!=null){p=a*10;c='--c:var(--good);';st='Best score '+r.best+'/'+TOTAL+(a?', retaking: '+a+' of '+TOTAL+' answered':'');cls='ok';}
+    else if(a){p=a*10;st='In progress, '+a+' of '+TOTAL+' answered';}
+    h+='<button class="row" data-n="'+R.n+'"><span class="ring" style="'+c+'--p:'+p+'"><b>'+R.n+'</b></span><span class="rt"><strong>'+esc(R.title)+'</strong><small class="'+cls+'">'+st+'</small></span>'+ICON.chev+'</button>';
+  });
+  h+='</div><div class="foot"><button class="link" id="resetAll">Reset all progress</button></div>';
+  $('#homeWrap').innerHTML=h;
+}
+$('#homeWrap').addEventListener('click',function(e){
+  var row=e.target.closest('.row');
+  if(row){var n=+row.dataset.n,pk=peek(n);setHash((pk&&pk.done)?'#r'+n+'-results':'#r'+n);if(pk&&pk.done)showResults(n);else showReader(n);return;}
+  if(e.target.closest('#themeBtn')){
+    var t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+    document.documentElement.setAttribute('data-theme',t);store.theme=t;save();return;
+  }
+  if(e.target.closest('#resetAll')){
+    ask('Delete all answers and scores for all '+READINGS.length+' readings?','Delete all','Cancel').then(function(ok){if(ok){store.readings={};save();renderHome();}});
+  }
+});
+
+/* ---------- reader ---------- */
+var R=null,r=null,N=0,hlColor='y',hlOn=true;
+var textEl=$('#text'),boxScroll=$('#boxScroll');
+
+function showReader(n){
+  N=n;R=READINGS[n-1];r=rec(n);
+  show('reader');
+  $('#reader').classList.remove('expanded');
+  $('#rdPill').textContent='Reading '+n+' of '+READINGS.length;
+  textEl.innerHTML=r.hl||baseHTML(R);
+  boxScroll.scrollTop=0;
+  applyFs();renderQ();
+  setTimeout(updFade,50);
+}
+function applyFs(){document.documentElement.style.setProperty('--rfs',FS[store.fs]+'px');$('#fsDown').disabled=store.fs<=0;$('#fsUp').disabled=store.fs>=FS.length-1;updFade();}
+$('#fsDown').onclick=function(){if(store.fs>0){store.fs--;save();applyFs();}};
+$('#fsUp').onclick=function(){if(store.fs<FS.length-1){store.fs++;save();applyFs();}};
+$('#expand').onclick=function(){$('#reader').classList.toggle('expanded');setTimeout(updFade,30);};
+$('#rdBack').onclick=function(){setHash('#');showHome();};
+
+function updFade(){var s=boxScroll;$('#fade').classList.toggle('on',s.scrollTop+s.clientHeight<s.scrollHeight-6);}
+boxScroll.addEventListener('scroll',updFade,{passive:true});
+if(window.ResizeObserver)new ResizeObserver(updFade).observe(boxScroll);
+
+function renderSegs(){
+  var h='';
+  for(var i=0;i<TOTAL;i++){
+    var c=(i===r.i?'c ':'')+(filled(r.a[i])?'a ':'')+(i===5?'gap':'');
+    h+='<button class="'+c+'" data-i="'+i+'" aria-label="Question '+(i+1)+(filled(r.a[i])?', answered':', not answered')+'"'+(i===r.i?' aria-current="true"':'')+'></button>';
+  }
+  $('#segs').innerHTML=h;
+}
+$('#segs').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(+b.dataset.i);});
+function updCount(){$('#rdCount').textContent=answeredCount(r)+'/'+TOTAL;renderSegs();}
+
+function renderQ(){
+  var k=r.i,q=R.qs[k],task=k<5?1:2;
+  $('#pTask').textContent='Task '+task;
+  $('#pQ').textContent='Question '+(k%5+1)+' of 5';
+  $('#instr').innerHTML=task===1?'Read the text and choose the correct option.':instr2(R.instr2);
+  var b=$('#qbody');b.innerHTML='';
+  var p=document.createElement('p');
+  if(q.t==='mc'){
+    p.className='qtext';p.textContent=q.q;b.appendChild(p);
+    var g=document.createElement('div');g.className='opts';g.setAttribute('role','radiogroup');g.setAttribute('aria-label','Answer options');
+    q.opts.forEach(function(t,i){
+      var o=document.createElement('button');o.type='button';o.className='opt';o.setAttribute('role','radio');
+      o.setAttribute('aria-checked',r.a[k]===i?'true':'false');
+      o.innerHTML='<span class="l">'+(q.tf?(i?'F':'T'):'abcd'.charAt(i))+'</span><span class="ot"></span>';
+      o.lastChild.textContent=t;
+      o.onclick=function(){choose(i);};
+      g.appendChild(o);
+    });
+    b.appendChild(g);
+  }else{
+    p.className='qtext gap';
+    p.appendChild(document.createTextNode(q.pre));
+    var inp=document.createElement('input');
+    inp.type='text';inp.className='ans';inp.value=filled(r.a[k])?r.a[k]:'';
+    inp.setAttribute('autocomplete','off');inp.setAttribute('autocapitalize','none');inp.setAttribute('autocorrect','off');inp.setAttribute('spellcheck','false');inp.setAttribute('enterkeyhint',k<TOTAL-1?'next':'done');
+    inp.setAttribute('aria-label','Your answer for question '+(k+1));
+    inp.oninput=function(){r.a[k]=inp.value.trim()===''?null:inp.value;save();updCount();};
+    inp.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();inp.blur();next();}};
+    p.appendChild(inp);p.appendChild(document.createTextNode(q.post));
+    b.appendChild(p);
+    if(window.matchMedia&&matchMedia('(pointer:fine)').matches)setTimeout(function(){inp.focus();},0);
+  }
+  $('#ncount').textContent=(k+1)+' of '+TOTAL;
+  $('#prev').disabled=k===0;
+  $('#next').textContent=k<TOTAL-1?'Next':'Finish';
+  $('#panel').scrollTop=0;
+  updCount();
+}
+function choose(i){
+  r.a[r.i]=i;save();
+  var os=$('#qbody').querySelectorAll('.opt');
+  for(var j=0;j<os.length;j++)os[j].setAttribute('aria-checked',j===i?'true':'false');
+  updCount();
+}
+function go(i){
+  if(i<0||i>=TOTAL)return;
+  r.i=i;save();
+  $('#reader').classList.remove('expanded');
+  renderQ();setTimeout(updFade,30);
+}
+function next(){if(r.i<TOTAL-1)go(r.i+1);else finish();}
+$('#next').onclick=next;
+$('#prev').onclick=function(){go(r.i-1);};
+
+document.addEventListener('keydown',function(e){
+  if(cur!=='reader'||$('#modal').classList.contains('on')||e.ctrlKey||e.metaKey||e.altKey)return;
+  var t=e.target;if(t&&t.tagName==='INPUT')return;
+  if(e.key==='ArrowRight'){go(r.i+1);}
+  else if(e.key==='ArrowLeft'){go(r.i-1);}
+  else{
+    var q=R.qs[r.i];if(q.t!=='mc')return;
+    var kk=e.key.toLowerCase();if(q.tf&&(kk==='t'||kk==='f')){choose(kk==='t'?0:1);return;}var idx='abcd1234'.indexOf(kk);
+    if(idx>-1&&(idx%4)<q.opts.length){choose(idx%4);}
+  }
+});
+
+async function finish(){
+  var un=TOTAL-answeredCount(r);
+  if(un>0){
+    var ok=await ask(un+(un>1?' questions are':' question is')+' still unanswered. Finish anyway?','Finish','Keep working');
+    if(!ok)return;
+  }
+  var s=scoreOf(R,r),sc=s[0]+s[1];
+  r.done=true;r.score=sc;r.best=r.best==null?sc:Math.max(r.best,sc);
+  save();
+  setHash('#r'+N+'-results',true);
+  showResults(N);
+}
+
+/* ---------- highlighter ---------- */
+function unwrap(m){var p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);p.normalize();}
+function saveHl(){var h=textEl.innerHTML;r.hl=(h===baseHTML(R))?null:h;save();}
+function applySel(){
+  if(!hlOn||cur!=='reader')return;
+  var sel=window.getSelection();if(!sel||!sel.rangeCount||sel.isCollapsed)return;
+  var rg=sel.getRangeAt(0);if(!textEl.contains(rg.commonAncestorContainer))return;
+  var sc=rg.startContainer,so=rg.startOffset,ec=rg.endContainer,eo=rg.endOffset;
+  var w=document.createTreeWalker(textEl,NodeFilter.SHOW_TEXT),nodes=[],n;
+  while((n=w.nextNode())){if(rg.intersectsNode(n))nodes.push(n);}
+  nodes.forEach(function(t){
+    var s=t===sc?so:0,e=t===ec?eo:t.length;
+    if(e<=s||!t.data.slice(s,e).trim())return;
+    var mid=t;if(s>0)mid=t.splitText(s);
+    if(e-s<mid.length)mid.splitText(e-s);
+    var m=document.createElement('mark');m.className='hl '+hlColor;
+    mid.parentNode.insertBefore(m,mid);m.appendChild(mid);
+  });
+  sel.removeAllRanges();saveHl();
+}
+var touch=false,tmr;
+document.addEventListener('touchstart',function(){touch=true;},{passive:true});
+document.addEventListener('mousedown',function(){touch=false;});
+document.addEventListener('mouseup',function(){if(hlOn&&!touch)setTimeout(applySel,0);});
+document.addEventListener('selectionchange',function(){if(!hlOn||!touch)return;clearTimeout(tmr);tmr=setTimeout(applySel,900);});
+textEl.addEventListener('click',function(e){
+  var m=e.target.closest&&e.target.closest('mark.hl');
+  if(m&&hlOn&&window.getSelection().isCollapsed){unwrap(m);saveHl();}
+});
+document.querySelectorAll('.sw').forEach(function(b){
+  b.addEventListener('mousedown',function(e){e.preventDefault();});
+  b.onclick=function(){
+    var c=b.dataset.c;
+    if(c==='off'){hlOn=false;}else{hlOn=true;hlColor=c;}
+    document.querySelectorAll('.sw').forEach(function(x){x.classList.toggle('on',hlOn?x.dataset.c===hlColor:x.dataset.c==='off');});
+    var sl=window.getSelection();if(hlOn&&sl&&!sl.isCollapsed)applySel();
+  };
+});
+$('#hlClear').onclick=function(){textEl.querySelectorAll('mark.hl').forEach(unwrap);saveHl();};
+
+/* ---------- results ---------- */
+function showResults(n){
+  N=n;R=READINGS[n-1];r=peek(n);show('results');
+  var s=scoreOf(R,r),sc=s[0]+s[1];
+  var msg=sc>=9?'Excellent work.':sc>=7?'Good job.':sc>=5?'Not bad. Check the mistakes below.':'Keep practising. Read the text again and try once more.';
+  var h='<div class="rtop"><button class="ghost" id="resBack">'+ICON.back+'All readings</button></div>';
+  h+='<div class="score"><p>Reading '+n+': '+esc(R.title)+'</p><div class="big">'+sc+'<small>/'+TOTAL+'</small></div>';
+  h+='<p>Task 1: '+s[0]+' of 5. Task 2: '+s[1]+' of 5.'+(r.best>sc?' Best score: '+r.best+'/'+TOTAL+'.':'')+'</p><p class="msg">'+msg+'</p></div>';
+  h+='<div class="acts"><button class="ghost" id="retry">Try again</button><button class="go" id="resHome">Back to readings</button></div>';
+  h+='<details class="rd"><summary>Read the text again</summary><div class="text">'+(r.hl||baseHTML(R))+'</div></details>';
+  h+='<ol class="rv-list">';
+  R.qs.forEach(function(q,i){
+    var v=r.a[i],ok=isRight(q,v),yours;
+    h+='<li class="rv '+(ok?'good':'')+'"><span class="mk" aria-label="'+(ok?'Correct':'Incorrect')+'">'+(ok?'✓':'✗')+'</span><div>';
+    if(q.t==='mc'){
+      h+='<p class="q">'+esc(q.q)+'</p>';
+      yours=filled(v)?'<b>'+(q.tf?'':'abcd'.charAt(v)+'. ')+esc(q.opts[v])+'</b>':'<b>no answer</b>';
+      h+='<p class="your">Your answer: '+yours+'</p>';
+      if(!ok)h+='<p class="key">Correct answer: '+(q.tf?'':'abcd'.charAt(q.a)+'. ')+esc(q.opts[q.a])+'</p>';
+    }else{
+      h+='<p class="q">'+esc(q.pre)+'<u>'+(filled(v)?esc(v):'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')+'</u>'+esc(q.post)+'</p>';
+      if(!ok)h+='<p class="key">Correct answer: '+esc(q.a[0])+'</p>';
+    }
+    h+='</div></li>';
+  });
+  h+='</ol>';
+  $('#resWrap').innerHTML=h;
+  $('#resScroll').scrollTop=0;
+}
+$('#resWrap').addEventListener('click',function(e){
+  if(e.target.closest('#resBack')||e.target.closest('#resHome')){setHash('#');showHome();return;}
+  if(e.target.closest('#retry')){
+    ask('Start this reading again? Your best score is kept.','Start again','Cancel').then(function(ok){
+      if(!ok)return;
+      store.readings[N]=fresh(peek(N).best);save();setHash('#r'+N);showReader(N);
+    });
+  }
+});
+
+/* ---------- viewport (keeps answers visible when the phone keyboard opens) ---------- */
+function fit(){
+  var vv=window.visualViewport,app=$('#app');
+  if(!vv){app.style.height=window.innerHeight+'px';return;}
+  app.style.height=vv.height+'px';app.style.transform='translateY('+vv.offsetTop+'px)';
+  updFade();
+}
+if(window.visualViewport){visualViewport.addEventListener('resize',fit);visualViewport.addEventListener('scroll',fit);}
+window.addEventListener('resize',fit);
+fit();
+route();
+})();
+</script>
+</body>
+</html>
