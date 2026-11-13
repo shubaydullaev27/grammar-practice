@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><script src="mock-config.js" onerror="void 0"></script><script>window.__initHash=location.hash;</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beginner Mock Exam 1 – Grammar, Vocabulary, Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#141416; --yellow:#FFD530; --yellow-deep:#E7BC12;
+  --paper:#F3F3EF; --panel:#FFFFFF; --ink:#18181B; --soft:#5E5F64; --rule:#E2E1D9; --field:#F7F7F3; --fieldline:#C9C8BE;
+  --good:#1E8F52; --goodbg:#E6F5EB; --bad:#C8352C; --badbg:#FBEAE8; --focus:#2F62C9;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --black:#0B0B0C; --paper:#101012; --panel:#1A1A1D; --ink:#EEEEEA; --soft:#A5A6A1; --rule:#2F2F33; --field:#232327; --fieldline:#45454B;
+    --good:#58C98A; --goodbg:#16301F; --bad:#F0736A; --badbg:#3A1D1B; --focus:#7BA5FF;
+  }
+}
+:root[data-theme="dark"]{
+  --black:#0B0B0C; --paper:#101012; --panel:#1A1A1D; --ink:#EEEEEA; --soft:#A5A6A1; --rule:#2F2F33; --field:#232327; --fieldline:#45454B;
+  --good:#58C98A; --goodbg:#16301F; --bad:#F0736A; --badbg:#3A1D1B; --focus:#7BA5FF;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px); height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;scroll-padding-top:130px;min-height:100%;background:var(--paper);color:var(--ink);font-family:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;padding:clamp(12px,3vw,40px) clamp(10px,3vw,20px) 80px}
+.wrap{max-width:860px;margin:0 auto}body[data-tab=reading] .wrap{max-width:1120px}
+.sheet{margin:0 auto;background:var(--panel);border-radius:8px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 24px 48px -32px rgba(0,0,0,.4)}
+
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.masthead{position:relative;background:var(--black);color:#fff;padding:clamp(24px,5vw,40px) clamp(18px,5vw,44px) clamp(20px,4vw,28px);border-radius:8px 8px 0 0}
+.dots{position:absolute;top:22px;right:26px;display:grid;grid-template-columns:repeat(3,8px);gap:6px}.dots span{width:8px;height:8px;border-radius:50%;background:var(--yellow)}.dots span:nth-child(5){background:#fff}
+.masthead .kicker{margin:0 0 12px;font-size:13.5px;color:var(--yellow);font-weight:600}
+.masthead h1{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:clamp(28px,6.5vw,44px);line-height:1.05;margin:0 0 12px;letter-spacing:-.015em}
+.masthead p{margin:0;max-width:60ch;color:rgba(255,255,255,.76);font-size:15px}
+.weight{display:inline-block;margin-top:18px;background:var(--yellow);color:#141416;font-weight:800;font-size:15px;padding:6px 14px;border-radius:999px}
+.candidate{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;padding:18px clamp(18px,5vw,44px);border-bottom:1px solid var(--rule)}
+.candidate label{display:block;font-size:13px;color:var(--soft);font-weight:600;margin-bottom:4px}
+.candidate input{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--fieldline);background:var(--field);color:var(--ink);border-radius:6px}
+@media (max-width:560px){.candidate{grid-template-columns:1fr 1fr}.candidate div:first-child{grid-column:1/-1}}
+.plan{padding:24px clamp(18px,5vw,44px) 8px}
+.plan h2{font-family:'Fraunces',Georgia,serif;font-size:21px;margin:0 0 4px}
+.plan .note{margin:0 0 14px;color:var(--soft);font-size:14px}
+.tablewrap{overflow-x:auto;max-width:100%;border:1px solid var(--rule);border-radius:8px}
+table.plan-table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.plan-table th,.plan-table td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+.plan-table th{font-size:13px;color:var(--soft);font-weight:700;background:var(--field)}
+.plan-table td.num,.plan-table th.num{text-align:right;white-space:nowrap}
+.plan-table td:first-child{white-space:nowrap}
+.plan-table tr.total td{font-weight:800;border-bottom:0;background:var(--field)}
+.plan-table td.yours{color:var(--good);font-weight:800}
+.plan-table .yourscol{display:none}
+
+.bar{display:flex;align-items:center;gap:14px;padding:10px clamp(14px,4vw,44px);background:var(--black);color:#fff;border-bottom:3px solid var(--yellow);font-size:14px}
+.bar .count{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.track{flex:1;height:6px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--yellow);transition:width .25s}
+.btn{font:inherit;font-weight:800;border:0;border-radius:8px;padding:9px 18px;cursor:pointer;background:var(--yellow);color:#141416}
+.btn:hover{background:var(--yellow-deep)}
+.btn.ghost{background:transparent;color:inherit;border:2px solid currentColor}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.exercise{padding:30px clamp(18px,5vw,44px) 10px;border-top:1px solid var(--rule)}
+.exercise:first-of-type{border-top:0}
+.ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:3px solid var(--yellow);padding-bottom:8px;margin-bottom:10px;width:100%}
+.ex-head h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,4.5vw,26px);margin:0;line-height:1.15}
+.ex-head .meta{font-size:13.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.instr{margin:0 0 18px;color:var(--soft);font-style:italic}
+.q{list-style:none;position:relative;margin:0 0 20px;padding-left:40px}
+.exercise ol{margin:0;padding:0}
+.qn{position:absolute;left:0;top:1px;min-width:28px;height:28px;padding:0 6px;border-radius:14px;background:var(--yellow);color:#141416;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center}
+.line{margin:0 0 6px}
+.line.ctx{color:var(--soft)}
+.line.stem{font-weight:500}
+.blank{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--fieldline);border-radius:6px;padding:4px 10px;margin:2px 4px;min-width:5ch;max-width:100%}
+.blank.wide{display:block;width:100%;margin:6px 0 0;padding:8px 12px}
+.hint{font-size:14px;color:var(--soft);margin-right:2px;font-weight:600}
+.opts{display:grid;gap:8px;margin-top:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:1px solid var(--rule);border-radius:8px;background:var(--field);cursor:pointer}
+.opt:hover{border-color:var(--fieldline)}
+.opt input{margin:5px 0 0;accent-color:#141416}
+.opt .letter{min-width:22px;height:22px;border-radius:50%;background:var(--panel);border:1px solid var(--rule);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.opt:has(input:checked){border-color:var(--ink);background:var(--panel);box-shadow:inset 0 0 0 1px var(--ink)}
+.fb{display:none;margin-top:6px;font-size:14px;font-weight:600}
+.unit.is-wrong .fb{display:block;color:var(--bad)}
+.unit.is-right .fb{display:block;color:var(--good)}
+.unit.is-wrong .blank,.unit.is-wrong .opts,.unit.is-wrong select{outline:2px solid var(--bad);outline-offset:1px}
+.unit.is-right .blank,.unit.is-right select{outline:2px solid var(--good);outline-offset:1px}
+.unit.is-wrong .opt:has(input:checked){background:var(--badbg)}
+.unit.is-right .opt:has(input:checked){background:var(--goodbg)}
+.wordbox{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:14px;border:2px dashed var(--fieldline);border-radius:10px}
+.chip{background:var(--field);border:1px solid var(--rule);border-radius:999px;padding:3px 14px;font-weight:700}
+.passage{white-space:pre-line;line-height:2.1;margin:0 0 20px}
+.sel-unit{display:inline}
+.cn{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:11px;background:var(--yellow);color:#141416;font-size:12px;font-weight:800;margin:0 4px 0 2px;vertical-align:middle;padding:0 5px}
+select.cloze{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--fieldline);border-radius:6px;padding:3px 6px;vertical-align:middle}
+.sel-unit .fb{display:none;margin:0 0 0 4px}
+.sel-unit.is-wrong .fb,.sel-unit.is-right .fb{display:inline}
+.textbox{background:var(--field);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;margin:0 0 22px}
+.textbox h3{font-family:'Fraunces',Georgia,serif;margin:0 0 8px;font-size:19px}
+.textbox p{margin:0 0 10px;line-height:1.7}
+.textbox p:last-child{margin:0}
+.result{margin:24px clamp(18px,5vw,44px);padding:24px;border-radius:10px;background:var(--black);color:#fff;display:none}
+.panel.submitted .result{display:block}
+.result .big{font-family:'Fraunces',Georgia,serif;font-size:clamp(40px,10vw,64px);font-weight:700;line-height:1;margin:0 0 6px}
+.result .big small{font-size:.4em;color:var(--yellow);font-weight:600;margin-left:8px}
+.result p{margin:0;color:rgba(255,255,255,.78)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;padding:8px clamp(18px,5vw,44px) 36px}
+.actions .btn.ghost{color:var(--ink)}
+.layout{display:block}
+@media (min-width:980px){
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+  .layout .left{position:sticky;top:calc(var(--tabh,72px) + 56px);align-self:start;max-height:calc(100vh - var(--tabh,72px) - 76px);overflow:auto;border-right:1px solid var(--rule)}
+}
+@media print{.bar,.actions,.tabs{display:none}.panel[hidden]{display:none}body{background:#fff;padding:0}.sheet{box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+.gbar{margin-top:6px;border-radius:12px;border-bottom:3px solid var(--yellow);box-shadow:0 10px 24px -14px rgba(0,0,0,.6);padding:8px 8px 8px 16px}
+.gbar .btn{padding:8px 16px}
+.results{background:var(--black);color:#fff;border-radius:12px;padding:clamp(20px,5vw,36px);margin:0 0 12px}
+.results[hidden]{display:none}
+.res-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.results h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(26px,6vw,38px);margin:0;line-height:1.1}
+.results .who{margin:0 0 6px;color:var(--yellow);font-weight:700;font-size:14px}
+.verdict{font-weight:800;font-size:clamp(22px,6vw,34px);letter-spacing:.04em;padding:10px 26px;border-radius:12px;color:#fff;border:3px solid #fff}
+.verdict.pass{background:#1E8F52}
+.verdict.fail{background:#C8352C}
+.res-total{margin:22px 0 4px;font-family:'Fraunces',Georgia,serif;font-size:clamp(40px,10vw,64px);font-weight:700;line-height:1}
+.res-total small{font-size:.38em;color:var(--yellow);font-weight:600;margin-left:8px}
+.res-sub{margin:0 0 22px;color:rgba(255,255,255,.75)}
+.res-row{display:grid;grid-template-columns:minmax(90px,1fr) 2fr auto;gap:6px 14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.18)}
+.res-row b{font-size:16px}
+.res-row .meter{height:8px;border-radius:4px;background:rgba(255,255,255,.2);overflow:hidden}
+.res-row .meter i{display:block;height:100%;background:var(--yellow);width:0}
+.res-row .val{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.res-note{margin:16px 0 0;font-size:14px;color:rgba(255,255,255,.7)}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal[hidden]{display:none}
+.dlg{background:var(--panel);color:var(--ink);border-radius:12px;max-width:440px;width:100%;padding:24px;border-top:6px solid var(--yellow)}
+.dlg h3{font-family:'Fraunces',Georgia,serif;font-size:24px;margin:0 0 8px}
+.dlg p{margin:0 0 8px;color:var(--soft)}
+.dlg .warn{color:var(--bad);font-weight:700}
+.dlg .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.dlg .btn.ghost{color:var(--ink)}
+.exam-done .actions{display:none}
+.tabs-wrap{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);margin:0 0 12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--black);border-radius:12px;padding:6px;box-shadow:0 10px 24px -14px rgba(0,0,0,.6)}
+.tab{font:inherit;border:0;background:transparent;color:#A8A8AC;border-radius:8px;padding:10px 6px;cursor:pointer;text-align:center;line-height:1.25;min-width:0}
+.tab b{display:block;font-size:clamp(14px,3.6vw,17px);font-weight:800}
+.tab span{display:block;font-size:clamp(11px,2.8vw,13px);color:#77777C;font-weight:600;font-variant-numeric:tabular-nums}
+.tab:hover{background:rgba(255,255,255,.06)}
+.tab[aria-selected=true]{background:var(--yellow);color:#141416}
+.tab[aria-selected=true] span{color:#5B4A00}
+.tab:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.panel[hidden]{display:none}
+
+/*v2*/
+.hint{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;font-weight:600;color:#0B6B63;background:#E1F2F0;border-radius:6px;padding:1px 8px;margin:0 2px 0 6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hint{color:#7DE0D4;background:#16322F}}
+:root[data-theme="dark"] .hint{color:#7DE0D4;background:#16322F}
+.line.ctx{font-style:italic}
+input.blank{background:var(--field);border:0;border-bottom:2px solid var(--fieldline);border-radius:6px 6px 0 0;text-align:center;padding:5px 10px}
+input.blank.wide{text-align:left}
+input.blank::placeholder{color:var(--soft);opacity:.8;letter-spacing:.2em}
+input.blank:focus{border-bottom-color:var(--ink)}
+.gap-unit{display:inline;white-space:nowrap}
+.gap-unit .blank{margin:2px 4px}
+.gap-unit .fb{display:none;margin:0 0 0 4px;font-size:13px}
+.gap-unit.is-wrong .fb,.gap-unit.is-right .fb{display:inline}
+
+/*enhance*/
+.chip{font:inherit;color:inherit}
+.chip.pick{cursor:pointer;transition:border-color .15s,opacity .15s}
+.chip.pick:hover{border-color:var(--ink)}
+.chip.pick.used{opacity:.45;text-decoration:line-through}
+.exam-done .chip.pick{cursor:default;pointer-events:none}
+.pickhint{margin:-6px 0 10px;font-size:14px;color:var(--soft)}
+.hl-bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px clamp(18px,4vw,36px);background:var(--panel);border-bottom:1px solid var(--rule)}
+.hl-bar .lbl{font-weight:700;font-size:14px;margin-right:2px}
+.hl-btn{font:inherit;font-size:14px;font-weight:700;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:8px;padding:4px 12px;cursor:pointer;user-select:none;-webkit-user-select:none}
+
+.hl-btn:hover{filter:brightness(.95)}
+.hl-note{flex:1 1 220px;margin:0;font-size:13px;color:var(--soft)}
+mark.hl{background:#FFE066;color:#141416;border-radius:3px;padding:0 1px;cursor:pointer}
+mark.hl:hover{background:#FFC700}
+
+/*enhance2*/
+.hl-tip{margin:0;padding:12px clamp(18px,5vw,44px) 0;font-size:14px;color:var(--soft)}
+.gbar .hl-btn{color:#fff;border-color:rgba(255,255,255,.55);padding:4px 10px;font-size:13px;white-space:nowrap}
+.gbar .hl-btn[hidden]{display:none}
+@media (max-width:520px){.gbar{flex-wrap:wrap}.gbar .track{order:5;flex-basis:100%}}
+
+/*timer*/
+body.pre-start .wrap{visibility:hidden}
+.startscreen{position:fixed;inset:0;z-index:200;background:var(--paper);overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + clamp(16px,6vw,56px)) clamp(12px,4vw,24px) calc(env(safe-area-inset-bottom,0px) + 24px)}
+.startscreen[hidden]{display:none}
+.startcard{width:100%;max-width:640px;background:var(--panel);border-radius:12px;overflow:hidden;box-shadow:0 24px 48px -32px rgba(0,0,0,.45)}
+.startcard .top{background:var(--black);color:#fff;padding:clamp(22px,5vw,36px);position:relative}
+.startcard .top .kicker{margin:0 0 10px;color:var(--yellow);font-weight:600;font-size:14px}
+.startcard h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,7vw,42px);line-height:1.05;margin:0;letter-spacing:-.015em}
+.startcard .body{padding:clamp(20px,5vw,32px)}
+.facts{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:10px}
+.facts li{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:baseline}
+.facts b{font-variant-numeric:tabular-nums}
+@media (max-width:480px){.facts li{grid-template-columns:1fr;gap:2px}}
+.startcard .fields{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:0 0 22px}
+.startcard label{display:block;font-size:13px;color:var(--soft);font-weight:600;margin-bottom:4px}
+.startcard input{width:100%;font:inherit;padding:9px 10px;border:1px solid var(--fieldline);background:var(--field);color:var(--ink);border-radius:6px}
+.startcard .btn{font-size:18px;padding:12px 26px}
+.startcard .fine{margin:14px 0 0;font-size:14px;color:var(--soft)}
+.clock{display:inline-flex;align-items:baseline;gap:8px;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;white-space:nowrap;font-variant-numeric:tabular-nums}
+.clock-l{font-size:12px;font-weight:600;opacity:.85}
+.clock b{font-size:20px;font-weight:800;letter-spacing:.02em}
+.clock.warn{background:#FFD530;color:#141416}
+.clock.danger{background:#C8352C;color:#fff}
+.clock.done{background:rgba(255,255,255,.14);opacity:.8}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 130px);z-index:90;background:#141416;color:#fff;border:2px solid #FFD530;border-radius:10px;padding:10px 18px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.4);max-width:92vw;text-align:center}
+.toast[hidden]{display:none}
+.toast.danger{border-color:#C8352C}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.res-time{margin:-14px 0 18px;color:var(--yellow);font-weight:700}
+.startcard .fine.need{color:var(--bad);font-weight:600}
+.startcard .fine.need[hidden]{display:none}
+@media (max-width:520px){.gbar .clock{order:-1}.clock b{font-size:18px}}
+@media print{.startscreen,.toast{display:none}}
+
+/*guard*/
+.leave-badge{background:#C8352C;color:#fff;font-weight:800;font-size:12px;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.leave-badge[hidden]{display:none}
+.dlg.away{border-top-color:#C8352C}
+.dlg.away h3{color:var(--bad)}
+.res-guard{margin:-8px 0 18px;font-weight:700;color:#8EE0A9}
+.res-guard.bad{color:#FF9C92}
+
+/*results*/
+.res-send{margin:-6px 0 18px;font-weight:700;color:#8EE0A9}
+.res-send.pending{color:var(--yellow)}
+.res-send.bad{color:#FF9C92}
+.res-send button{font:inherit;font-weight:800;margin-left:8px;border:2px solid currentColor;background:transparent;color:inherit;border-radius:8px;padding:2px 12px;cursor:pointer}
+.startcard .fine.send-note{color:var(--ink);font-weight:600}
+.startcard .btn[disabled]{opacity:.45;cursor:not-allowed}
+
+.instr b.pfx{color:var(--bad);font-weight:800}
+
+/*tiles*/
+.tile-line{display:flex;align-items:center;gap:8px;margin:6px 0}
+.tile-area{flex:0 1 auto;min-width:160px;min-height:44px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 10px;border:2px dashed var(--fieldline);border-radius:10px;background:var(--field)}
+.tile-area:empty::before{content:'tap the words in order…';color:var(--soft);font-style:italic;font-size:14px}
+.tile-end{font-weight:800;font-size:18px}
+.tile-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+button.tile{font:inherit;font-size:15px;font-weight:600;color:var(--ink);background:var(--panel);border:1.5px solid var(--fieldline);border-radius:999px;padding:6px 14px;cursor:pointer;min-height:36px}
+button.tile:hover:not(:disabled){border-color:var(--ink)}
+button.tile.used{opacity:.3;text-decoration:line-through}
+button.tile.placed{background:var(--black);color:var(--yellow);border-color:var(--black)}
+button.tile:disabled{cursor:default}
+button.tile.placed:disabled{opacity:1}
+.unit.is-right .tile-area{border-style:solid;border-color:var(--good);background:var(--goodbg)}
+.unit.is-wrong .tile-area{border-style:solid;border-color:var(--bad);background:var(--badbg)}
+
+/*mobile + split reading*/
+html{-webkit-text-size-adjust:100%}
+button,.opt,.chip,select,.tab{touch-action:manipulation}
+.gap-unit .fb{white-space:normal}
+body[data-tab=reading] .wrap{max-width:900px}
+body[data-tab=reading]{padding-bottom:12px}
+#reading .masthead,#reading .candidate,#reading .actions{display:none}
+#reading .sheet{background:transparent;box-shadow:none;border-radius:0}
+#reading .layout{display:flex;flex-direction:column;overflow:hidden;min-height:380px;
+  height:calc(100vh - var(--tabh,150px) - clamp(12px,3vw,40px) - 24px);
+  height:calc(100dvh - var(--tabh,150px) - clamp(12px,3vw,40px) - 24px)}
+#reading .rsegs{flex:0 0 auto;display:flex;gap:4px;padding:0 0 8px}
+#reading .rsegs button{flex:1;height:24px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+#reading .rsegs button::after{content:"";position:absolute;left:0;right:0;top:9px;height:6px;border-radius:3px;background:var(--rule)}
+#reading .rsegs button.a::after{background:var(--yellow-deep)}
+#reading .rsegs button.c::after{top:7px;height:10px;background:var(--yellow)}
+#reading .rsegs button.ok::after{background:var(--good)}
+#reading .rsegs button.no::after{background:var(--bad)}
+#reading .rsegs button.gap{margin-left:8px}
+#reading .left{position:relative;display:flex;flex-direction:column;flex:1 1 0;min-height:110px;max-height:none;overflow:hidden;
+  background:var(--panel);border:1px solid var(--rule);border-radius:12px;top:auto;align-self:auto}
+#reading .hl-bar{position:static;flex:0 0 auto;flex-wrap:nowrap;gap:6px;padding:6px 8px}
+#reading .hl-bar .lbl{white-space:nowrap}
+#reading .hl-note{flex:1 1 0;min-width:0;font-size:12.5px;line-height:1.3}
+#reading .hl-btn{min-width:40px;min-height:38px;padding:2px 10px;font-size:15px}
+#reading .left .textbox{flex:1 1 0;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  margin:0;border:0;border-radius:0;background:transparent;padding:14px clamp(12px,3vw,24px) 28px;font-size:var(--rfs,16px);line-height:1.7}
+#reading .textbox h3{font-size:1.3em;line-height:1.2}
+#reading .textbox p{line-height:1.7}
+.fade{position:absolute;left:0;right:0;bottom:0;height:30px;background:linear-gradient(transparent,var(--panel));pointer-events:none;opacity:0;transition:opacity .2s}
+.fade.on{opacity:1}
+#reading .right{flex:0 0 auto;max-height:56%;overflow-y:auto;-webkit-overflow-scrolling:touch;margin-top:8px;
+  background:var(--panel);border:1px solid var(--rule);border-radius:12px}
+#reading .layout.expanded .right{display:none}
+#reading .exercise{padding:10px 14px 2px;border-top:0}
+#reading .exercise:not(.has-cur){display:none}
+#reading .ex-head{margin-bottom:6px;padding-bottom:6px}
+#reading .ex-head h2{font-size:18px}
+#reading .ex-head .meta{display:none}
+#reading .instr{margin:0 0 10px;font-size:14px}
+#reading li.q{display:none;margin:0 0 8px}
+#reading li.q.cur{display:block}
+#reading .opts{gap:8px}
+#reading .opt{padding:11px 12px;min-height:46px;align-items:center}
+#reading .rnav{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding-top:8px}
+#reading .rbtn{flex:0 0 auto;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--rule);background:var(--panel);color:var(--ink);font-size:24px;line-height:1;cursor:pointer;padding:0}
+#reading .rbtn:disabled{opacity:.35;cursor:default}
+#reading .rcount{flex:1;color:var(--soft);font-size:14px;font-variant-numeric:tabular-nums}
+#reading .rnav .btn{min-width:112px;min-height:48px;font-size:16px}
+@media (max-width:560px){
+  body{padding-left:8px;padding-right:8px}
+  .tabs{padding:4px;gap:4px}.tab{padding:7px 2px}.tab b{font-size:14px}.tab span{font-size:11px}
+  .gbar{flex-wrap:nowrap;gap:8px;padding:6px 8px 6px 10px}
+  .gbar .track{display:none}
+  .gbar .count{flex:1;font-size:13px}
+  .gbar .btn{padding:8px 12px;font-size:14px}
+  .clock-l{display:none}.clock{padding:2px 10px}
+  .exercise{padding-left:14px;padding-right:14px}
+  #reading .exercise{padding-left:12px;padding-right:12px}
+  #reading .hl-note{display:none}#reading .hl-bar .lbl{flex:1}
+  .blank{min-height:40px}select.cloze{min-height:38px}
+  .chip{padding:8px 14px}button.tile{min-height:42px}
+  .opt{padding:12px}
+  .candidate{padding:12px 14px}
+  .masthead{padding-bottom:18px}
+}
+@media (max-width:560px){.leave-badge{display:none}}
+
+/*phone compaction*/
+@media (max-width:560px){
+  table.plan-table{min-width:0;font-size:13px}
+  .plan-table th,.plan-table td{padding:7px 8px}
+  .plan-table td:first-child{white-space:normal}
+  .candidate{display:none}
+  .masthead{padding:18px 16px 16px}
+  .masthead h1{font-size:30px;margin-bottom:8px}
+  .masthead p{font-size:14px}
+  .masthead .dots{display:none}
+  .weight{margin-top:12px;font-size:14px}
+}
+@media (max-height:760px){
+  .tab span{display:none}
+  .tab{padding:8px 2px}
+  #reading .rsegs{padding-bottom:4px}
+  #reading .rsegs button{height:18px}
+  #reading .rsegs button::after{top:6px}
+  #reading .rsegs button.c::after{top:4px}
+  #reading .hl-btn{min-height:34px}
+  #reading .right{max-height:50%;margin-top:6px}
+  #reading .exercise{padding-top:6px}
+  #reading .ex-head{margin-bottom:4px;padding-bottom:4px;border-bottom-width:2px}
+  #reading .ex-head h2{font-size:15px}
+  #reading .instr{margin-bottom:6px;font-size:13.5px}
+  #reading .opt{padding:8px 12px;min-height:42px}
+  #reading .opts{gap:6px}
+  #reading li.q{margin-bottom:4px}
+  #reading .rnav{padding-top:6px}
+  #reading .rbtn,#reading .rnav .btn{min-height:44px;height:44px}
+  #reading .rbtn{width:44px}
+}
+</style>
+</head>
+<body data-tab="grammar" class="pre-start"><div class="startscreen" id="start" role="dialog" aria-modal="true" aria-labelledby="start-h">
+  <div class="startcard">
+    <div class="top"><p class="kicker">Grammar · Vocabulary · Reading</p><h1 id="start-h">Beginner Mock Exam 1</h1></div>
+    <div class="body">
+      <ul class="facts">
+        <li><b>50 minutes</b><span>The timer starts when you press Start. It cannot be paused.</span></li>
+        <li><b>90 questions</b><span>Grammar 50 · Vocabulary 30 · Reading 10. You can move between the three sections at any time.</span></li>
+        <li><b>Submit once</b><span>One button submits all three sections together. You cannot change answers afterwards.</span></li>
+        <li><b>Time is up?</b><span>Your answers are submitted automatically and the results appear.</span></li>
+        <li><b>Pass mark</b><span>45 out of 50 marks</span></li>
+      </ul>
+      <div class="fields"><div><label for="st-nm">Full name</label><input id="st-nm" data-f="nm" type="text" autocomplete="off" placeholder="e.g. Aziza Karimova" required></div><div><label for="st-gr">Group number</label><input id="st-gr" data-f="gr" type="text" autocomplete="off" placeholder="e.g. 12" required></div></div>
+      <button class="btn" id="start-btn" type="button" disabled>Start exam (50:00)</button>
+      <p class="fine need" id="start-need">Type your full name and your group number to start.</p>
+      <p class="fine">The clock stays visible at the top of every section.</p>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section class="results" id="results" tabindex="-1" aria-live="polite" hidden>
+    <div class="res-top"><div><p class="who" id="who"></p><h2>Your results</h2></div><div class="verdict" id="verdict"></div></div>
+    <p class="res-total"><span id="tot-score">0.0</span><small id="tot-max"></small></p>
+    <p class="res-sub" id="res-sub"></p>
+    <div id="res-rows"></div>
+    <p class="res-note">Your answers are now locked. Open the tabs below to see the correct answers.</p>
+  </section>
+  <div class="tabs-wrap">
+    <nav class="tabs" role="tablist" aria-label="Exam sections"><button class="tab" role="tab" id="tab-grammar" data-target="grammar" aria-controls="grammar" aria-selected="false"><b>Grammar</b><span>Part 1 · 50 items</span></button><button class="tab" role="tab" id="tab-vocab" data-target="vocab" aria-controls="vocab" aria-selected="false"><b>Vocabulary</b><span>Part 2 · 30 items</span></button><button class="tab" role="tab" id="tab-reading" data-target="reading" aria-controls="reading" aria-selected="false"><b>Reading</b><span>Part 3 · 10 items</span></button></nav>
+    <div class="bar gbar"><span class="clock" id="clock" role="timer" aria-label="Time remaining"><span class="clock-l">Time left</span><b id="clock-t">50:00</b></span><span class="leave-badge" id="leave-badge" hidden></span><span class="count" id="count">Answered 0 / 90</span><div class="track"><div class="fill" id="fill"></div></div><button type="button" class="hl-btn" id="hl-clear" hidden>Clear highlights</button><button class="btn" id="submit" type="button">Submit exam</button></div>
+  </div>
+  <section class="panel" id="grammar" role="tabpanel" aria-label="Grammar" data-nq="50">
+<div class="sheet">
+  <header class="masthead"><div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="kicker">Beginner mock exam 1 · Part 1 of 3</p><h1>Grammar</h1><p>Answer all 50 questions. Each correct answer earns 0.5 marks. Spelling counts.</p><span class="weight">25% of the exam</span></header>
+  <div class="candidate"><div><label>Full name</label><input data-f="nm" type="text" autocomplete="off"></div><div><label>Group number</label><input data-f="gr" type="text" autocomplete="off"></div><div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div></div>
+  <section class="exercise" id="g1"><div class="ex-head"><h2>1. There is / there are</h2><span class="meta">Questions 1–8 · 4.0 marks</span></div><p class="instr">Choose the correct option from the list.</p><p class="passage">Mia: Hi! I’m looking for a bakery. <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="Is there"><span class="cn">1</span><select class="cloze" aria-label="Blank 1"><option value="">…</option><option value="Is there">Is there</option><option value="Are there">Are there</option></select><span class="fb"></span></span> a bakery nearby?
+Leo: Yes, <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="there is"><span class="cn">2</span><select class="cloze" aria-label="Blank 2"><option value="">…</option><option value="there is">there is</option><option value="there are">there are</option></select><span class="fb"></span></span> a bakery two blocks from here.
+Mia: Great! <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="Are there"><span class="cn">3</span><select class="cloze" aria-label="Blank 3"><option value="">…</option><option value="Is there">Is there</option><option value="Are there">Are there</option></select><span class="fb"></span></span> any restaurants close to the bakery?
+Leo: Yes, <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="there are"><span class="cn">4</span><select class="cloze" aria-label="Blank 4"><option value="">…</option><option value="there is">there is</option><option value="there are">there are</option></select><span class="fb"></span></span> two restaurants next to it.
+Mia: Nice! <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="Is there"><span class="cn">5</span><select class="cloze" aria-label="Blank 5"><option value="">…</option><option value="Is there">Is there</option><option value="Are there">Are there</option></select><span class="fb"></span></span> a post office around here?
+Leo: No, <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="there isn’t"><span class="cn">6</span><select class="cloze" aria-label="Blank 6"><option value="">…</option><option value="there isn’t">there isn’t</option><option value="there aren’t">there aren’t</option></select><span class="fb"></span></span> a post office on this street.
+Mia: OK. <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="Are there"><span class="cn">7</span><select class="cloze" aria-label="Blank 7"><option value="">…</option><option value="Is there">Is there</option><option value="Are there">Are there</option></select><span class="fb"></span></span> any banks nearby?
+Leo: No, <span class="sel-unit unit" data-kind="sel" data-ex="g1" data-marks="5" data-ans="there aren’t"><span class="cn">8</span><select class="cloze" aria-label="Blank 8"><option value="">…</option><option value="there isn’t">there isn’t</option><option value="there aren’t">there aren’t</option></select><span class="fb"></span></span> any banks on this street.</p></section><section class="exercise" id="g2"><div class="ex-head"><h2>2. Can / can’t</h2><span class="meta">Questions 9–15 · 3.5 marks</span></div><p class="instr">Complete the sentences with <b>can</b> or <b>can’t</b>.</p><ol><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">9</span><div class="line">My dog is small. It <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;can&#x27;t&quot;, &quot;cannot&quot;, &quot;can not&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> jump high.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">10</span><div class="line">Birds <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;can&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> fly.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">11</span><div class="line">My little sister is four. She <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;can&#x27;t&quot;, &quot;cannot&quot;, &quot;can not&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> read.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">12</span><div class="line">It is very dark. I <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;can&#x27;t&quot;, &quot;cannot&quot;, &quot;can not&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> see the street.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">13</span><div class="line">My dad works in a restaurant. He <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;can&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> cook very well.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">14</span><div class="line">Fish <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;can&#x27;t&quot;, &quot;cannot&quot;, &quot;can not&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> live on land.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g2" data-marks="5"><span class="qn">15</span><div class="line">This exercise is very hard. <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Can&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> you help me?</div><div class="fb"></div></li></ol></section><section class="exercise" id="g3"><div class="ex-head"><h2>3. Like / hate + -ing</h2><span class="meta">Questions 16–20 · 2.5 marks</span></div><p class="instr">Put the words in order. Tap the words to build the sentence. Tap a word in your sentence to take it back.</p><ol><li class="q unit" data-kind="tiles" data-ex="g3" data-marks="5" data-acc="[&quot;I like playing football with my friends&quot;]" data-end="."><span class="qn">16</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">playing</button><button type="button" class="tile" data-i="1">I</button><button type="button" class="tile" data-i="2">football</button><button type="button" class="tile" data-i="3">like</button><button type="button" class="tile" data-i="4">my friends</button><button type="button" class="tile" data-i="5">with</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g3" data-marks="5" data-acc="[&quot;I hate eating vegetables&quot;]" data-end="."><span class="qn">17</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">eating</button><button type="button" class="tile" data-i="1">I</button><button type="button" class="tile" data-i="2">hate</button><button type="button" class="tile" data-i="3">vegetables</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g3" data-marks="5" data-acc="[&quot;She hates reading old books&quot;]" data-end="."><span class="qn">18</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">reading</button><button type="button" class="tile" data-i="1">she</button><button type="button" class="tile" data-i="2">hates</button><button type="button" class="tile" data-i="3">books</button><button type="button" class="tile" data-i="4">old</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g3" data-marks="5" data-acc="[&quot;We like swimming in the pool in summer&quot;, &quot;We like swimming in summer in the pool&quot;]" data-end="."><span class="qn">19</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">swimming</button><button type="button" class="tile" data-i="1">we</button><button type="button" class="tile" data-i="2">like</button><button type="button" class="tile" data-i="3">in the pool</button><button type="button" class="tile" data-i="4">in</button><button type="button" class="tile" data-i="5">summer</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g3" data-marks="5" data-acc="[&quot;She likes listening to classical music&quot;]" data-end="."><span class="qn">20</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">music</button><button type="button" class="tile" data-i="1">listening to</button><button type="button" class="tile" data-i="2">She</button><button type="button" class="tile" data-i="3">likes</button><button type="button" class="tile" data-i="4">classical</button></div><div class="fb"></div></li></ol></section><section class="exercise" id="g4"><div class="ex-head"><h2>4. Past simple – complete</h2><span class="meta">Questions 21–28 · 4.0 marks</span></div><p class="instr">Complete the sentences with the <b>past simple</b> form of the verbs in brackets.</p><ol><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">21</span><div class="line">Last weekend we <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;visited&quot;]" style="width:16ch" placeholder="···" aria-label="answer"><span class="hint">(visit)</span> the city park.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">22</span><div class="line">I <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;didn&#x27;t play&quot;, &quot;did not play&quot;]" style="width:20ch" placeholder="···" aria-label="answer"><span class="hint">(not play)</span> football yesterday.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">23</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Did she call&quot;]" style="width:20ch" placeholder="···" aria-label="answer"><span class="hint">(she/call)</span> you last night?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">24</span><div class="line">My brother <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;helped&quot;]" style="width:16ch" placeholder="···" aria-label="answer"><span class="hint">(help)</span> me with my homework.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">25</span><div class="line">They <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;were&quot;]" style="width:16ch" placeholder="···" aria-label="answer"><span class="hint">(be)</span> very happy at the park yesterday.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">26</span><div class="line">They <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;didn&#x27;t eat&quot;, &quot;did not eat&quot;]" style="width:20ch" placeholder="···" aria-label="answer"><span class="hint">(not eat)</span> breakfast this morning.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">27</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Did you go&quot;]" style="width:20ch" placeholder="···" aria-label="answer"><span class="hint">(you/go)</span> to school on Saturday?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g4" data-marks="5"><span class="qn">28</span><div class="line">He <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;took&quot;]" style="width:16ch" placeholder="···" aria-label="answer"><span class="hint">(take)</span> his umbrella because it was raining.</div><div class="fb"></div></li></ol></section><section class="exercise" id="g5"><div class="ex-head"><h2>5. Past simple – rewrite</h2><span class="meta">Questions 29–33 · 2.5 marks</span></div><p class="instr">Rewrite the sentences in the <b>past simple</b>. Example: She eats breakfast at 8 o’clock. → She ate breakfast at 8 o’clock.</p><ol><li class="q unit" data-kind="fill" data-ex="g5" data-marks="5"><span class="qn">29</span><div class="line ctx">He reads a book in the evening.</div><div class="line stem"><input class="blank wide" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;He read a book in the evening.&quot;]" placeholder="···" aria-label="answer"></div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g5" data-marks="5"><span class="qn">30</span><div class="line ctx">We watch TV after dinner.</div><div class="line stem"><input class="blank wide" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;We watched TV after dinner.&quot;]" placeholder="···" aria-label="answer"></div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g5" data-marks="5"><span class="qn">31</span><div class="line ctx">Do you help your parents at home?</div><div class="line stem"><input class="blank wide" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Did you help your parents at home?&quot;]" placeholder="···" aria-label="answer"></div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g5" data-marks="5"><span class="qn">32</span><div class="line ctx">She doesn’t play computer games on weekdays.</div><div class="line stem"><input class="blank wide" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;She didn&#x27;t play computer games on weekdays.&quot;, &quot;She did not play computer games on weekdays.&quot;]" placeholder="···" aria-label="answer"></div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g5" data-marks="5"><span class="qn">33</span><div class="line ctx">My dad drives a car to work.</div><div class="line stem"><input class="blank wide" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;My dad drove a car to work.&quot;]" placeholder="···" aria-label="answer"></div><div class="fb"></div></li></ol></section><section class="exercise" id="g6"><div class="ex-head"><h2>6. Question words</h2><span class="meta">Questions 34–38 · 2.5 marks</span></div><p class="instr">Fill in the gaps with the correct question word. Use each word once.</p><div class="wordbox"><button type="button" class="chip pick" data-word="where">where</button><button type="button" class="chip pick" data-word="who">who</button><button type="button" class="chip pick" data-word="how">how</button><button type="button" class="chip pick" data-word="what">what</button><button type="button" class="chip pick" data-word="when">when</button></div><p class="pickhint">Click a word to copy it into a gap.</p><ol><li class="q unit" data-kind="fill" data-ex="g6" data-marks="5"><span class="qn">34</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;When&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> is your birthday?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g6" data-marks="5"><span class="qn">35</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;How&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> do you spell your name?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g6" data-marks="5"><span class="qn">36</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;What&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> is your favourite subject at school?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g6" data-marks="5"><span class="qn">37</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Who&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> is that girl near the door?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g6" data-marks="5"><span class="qn">38</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Where&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> do you live? – In Tashkent.</div><div class="fb"></div></li></ol></section><section class="exercise" id="g7"><div class="ex-head"><h2>7. Would like</h2><span class="meta">Questions 39–42 · 2.0 marks</span></div><p class="instr">Put the words in order. Tap the words to build the sentence. Tap a word in your sentence to take it back.</p><ol><li class="q unit" data-kind="tiles" data-ex="g7" data-marks="5" data-acc="[&quot;I would like a tea&quot;]" data-end="."><span class="qn">39</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">tea</button><button type="button" class="tile" data-i="1">I</button><button type="button" class="tile" data-i="2">a</button><button type="button" class="tile" data-i="3">would</button><button type="button" class="tile" data-i="4">like</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g7" data-marks="5" data-acc="[&quot;We would not like to go to the cinema&quot;]" data-end="."><span class="qn">40</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">go</button><button type="button" class="tile" data-i="1">not</button><button type="button" class="tile" data-i="2">to</button><button type="button" class="tile" data-i="3">to the cinema</button><button type="button" class="tile" data-i="4">we</button><button type="button" class="tile" data-i="5">would</button><button type="button" class="tile" data-i="6">like</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g7" data-marks="5" data-acc="[&quot;Would you like to play football&quot;]" data-end="?"><span class="qn">41</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">?</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">play</button><button type="button" class="tile" data-i="1">football</button><button type="button" class="tile" data-i="2">would</button><button type="button" class="tile" data-i="3">you</button><button type="button" class="tile" data-i="4">like</button><button type="button" class="tile" data-i="5">to</button></div><div class="fb"></div></li><li class="q unit" data-kind="tiles" data-ex="g7" data-marks="5" data-acc="[&quot;She would like a sandwich, please&quot;, &quot;Please, she would like a sandwich&quot;]" data-end="."><span class="qn">42</span><div class="tile-line"><div class="tile-area"></div><span class="tile-end">.</span></div><div class="tile-bank"><button type="button" class="tile" data-i="0">sandwich</button><button type="button" class="tile" data-i="1">a</button><button type="button" class="tile" data-i="2">she</button><button type="button" class="tile" data-i="3">would</button><button type="button" class="tile" data-i="4">like</button><button type="button" class="tile" data-i="5">please</button></div><div class="fb"></div></li></ol></section><section class="exercise" id="g8"><div class="ex-head"><h2>8. Like or would like?</h2><span class="meta">Questions 43–46 · 2.0 marks</span></div><p class="instr">Choose the correct answer.</p><ol><li class="q unit" data-kind="mc" data-ex="g8" data-marks="5" data-ans="0"><span class="qn">43</span><div class="line stem">I ___ reading books every day.</div><div class="opts"><label class="opt"><input type="radio" name="qg8-43" value="0"><span class="letter">a</span><span>like</span></label><label class="opt"><input type="radio" name="qg8-43" value="1"><span class="letter">b</span><span>would like</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="g8" data-marks="5" data-ans="1"><span class="qn">44</span><div class="line stem">She ___ to eat an apple now.</div><div class="opts"><label class="opt"><input type="radio" name="qg8-44" value="0"><span class="letter">a</span><span>like</span></label><label class="opt"><input type="radio" name="qg8-44" value="1"><span class="letter">b</span><span>would like</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="g8" data-marks="5" data-ans="1"><span class="qn">45</span><div class="line stem">“___ you like some water?” – “Yes, please.”</div><div class="opts"><label class="opt"><input type="radio" name="qg8-45" value="0"><span class="letter">a</span><span>Do</span></label><label class="opt"><input type="radio" name="qg8-45" value="1"><span class="letter">b</span><span>Would</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="g8" data-marks="5" data-ans="0"><span class="qn">46</span><div class="line stem">He ___ football, but he ___ to play basketball today.</div><div class="opts"><label class="opt"><input type="radio" name="qg8-46" value="0"><span class="letter">a</span><span>likes / would like</span></label><label class="opt"><input type="radio" name="qg8-46" value="1"><span class="letter">b</span><span>would like / likes</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="g9"><div class="ex-head"><h2>9. Be going to</h2><span class="meta">Questions 47–50 · 2.0 marks</span></div><p class="instr">Complete the sentences with the correct form of <b>to be going to</b>. Example: She <b>is going to study</b> (study) English in the evening.</p><ol><li class="q unit" data-kind="fill" data-ex="g9" data-marks="5"><span class="qn">47</span><div class="line">We <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;are going to have&quot;, &quot;&#x27;re going to have&quot;]" style="width:24ch" placeholder="···" aria-label="answer"><span class="hint">(have)</span> a picnic next Saturday.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g9" data-marks="5"><span class="qn">48</span><div class="line"><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;Are&quot;]" style="width:8ch" placeholder="···" aria-label="answer"><span class="hint">(Are)</span> they <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;going to play&quot;]" style="width:18ch" placeholder="···" aria-label="answer"><span class="hint">(play)</span> football this afternoon?</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g9" data-marks="5"><span class="qn">49</span><div class="line">He <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;is not going to travel&quot;, &quot;isn&#x27;t going to travel&quot;, &quot;&#x27;s not going to travel&quot;]" style="width:24ch" placeholder="···" aria-label="answer"><span class="hint">(not travel)</span> to Spain next year.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="g9" data-marks="5"><span class="qn">50</span><div class="line">I <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;am going to cook&quot;, &quot;&#x27;m going to cook&quot;]" style="width:24ch" placeholder="···" aria-label="answer"><span class="hint">(cook)</span> dinner for my family tonight.</div><div class="fb"></div></li></ol></section>
+  <div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section><section class="panel" id="vocab" role="tabpanel" aria-label="Vocabulary" data-nq="30">
+<div class="sheet">
+  <header class="masthead"><div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="kicker">Beginner mock exam 1 · Part 2 of 3</p><h1>Vocabulary</h1><p>Answer all 30 questions. Each correct answer earns 0.5 marks. Spelling counts.</p><span class="weight">15% of the exam</span></header>
+  <div class="candidate"><div><label>Full name</label><input data-f="nm" type="text" autocomplete="off"></div><div><label>Group number</label><input data-f="gr" type="text" autocomplete="off"></div><div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div></div>
+  <section class="exercise" id="v1"><div class="ex-head"><h2>1. At the hotel</h2><span class="meta">Questions 1–8 · 4.0 marks</span></div><p class="instr">Complete the text with the words from the box. Use each word once.</p><div class="wordbox"><button type="button" class="chip pick" data-word="lift">lift</button><button type="button" class="chip pick" data-word="Wi-fi">Wi-fi</button><button type="button" class="chip pick" data-word="safe">safe</button><button type="button" class="chip pick" data-word="towels">towels</button><button type="button" class="chip pick" data-word="air conditioning">air conditioning</button><button type="button" class="chip pick" data-word="bath">bath</button><button type="button" class="chip pick" data-word="restaurant">restaurant</button><button type="button" class="chip pick" data-word="gym">gym</button></div><p class="pickhint">Click a word to copy it into a gap.</p><p class="passage">Last weekend, my family stayed at a nice hotel. The receptionist showed us where the <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">1</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;lift&quot;]" aria-label="Blank 1" style="width:17ch"><span class="fb"></span></span> was, so we could go to the second floor.
+In our room, there was a big <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">2</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;bath&quot;]" aria-label="Blank 2" style="width:17ch"><span class="fb"></span></span> and clean <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">3</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;towels&quot;]" aria-label="Blank 3" style="width:17ch"><span class="fb"></span></span> on the bed. The room had <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">4</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;air conditioning&quot;]" aria-label="Blank 4" style="width:19ch"><span class="fb"></span></span>, so it was cool although it was very hot outside. We could use the hotel <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">5</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;Wi-fi&quot;, &quot;wifi&quot;, &quot;Wi fi&quot;]" aria-label="Blank 5" style="width:17ch"><span class="fb"></span></span> to check our emails and there was a <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">6</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;safe&quot;]" aria-label="Blank 6" style="width:17ch"><span class="fb"></span></span> to keep our money.
+In the evening we went to the <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">7</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;restaurant&quot;]" aria-label="Blank 7" style="width:17ch"><span class="fb"></span></span> for dinner. The hotel also had a small <span class="unit gap-unit" data-kind="fill" data-ex="v1" data-marks="5"><span class="cn">8</span><input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="···" data-acc="[&quot;gym&quot;]" aria-label="Blank 8" style="width:17ch"><span class="fb"></span></span>, so we could exercise if we wanted.</p></section><section class="exercise" id="v2"><div class="ex-head"><h2>2. Everyday verbs</h2><span class="meta">Questions 9–14 · 3.0 marks</span></div><p class="instr">Fill in the gaps with the correct verb from the box. Change the verb form if you need to.</p><div class="wordbox"><button type="button" class="chip pick" data-word="cook">cook</button><button type="button" class="chip pick" data-word="listen">listen</button><button type="button" class="chip pick" data-word="play">play</button><button type="button" class="chip pick" data-word="buy">buy</button><button type="button" class="chip pick" data-word="take">take</button><button type="button" class="chip pick" data-word="watch">watch</button></div><p class="pickhint">Click a word to copy it into a gap, then change the ending if needed.</p><ol><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">9</span><div class="line">Last weekend, my dad <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;cooked&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> a big dinner for the family.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">10</span><div class="line">We often <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;listen&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> to pop music when cleaning our room.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">11</span><div class="line">The kids <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;played&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> football in the park yesterday.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">12</span><div class="line">He <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;bought&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> a new jacket at the shopping mall last week.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">13</span><div class="line">I always <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;take&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> photos when I visit new places.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v2" data-marks="5"><span class="qn">14</span><div class="line">Yesterday evening, we <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;watched&quot;]" style="width:16ch" placeholder="···" aria-label="answer"> a fun cartoon on TV.</div><div class="fb"></div></li></ol></section><section class="exercise" id="v3"><div class="ex-head"><h2>3. Choose the correct word</h2><span class="meta">Questions 15–20 · 3.0 marks</span></div><p class="instr">Choose the correct word from the list.</p><p class="passage">Tom is on holiday and he loves it. He is very <span class="sel-unit unit" data-kind="sel" data-ex="v3" data-marks="5" data-ans="happy"><span class="cn">15</span><select class="cloze" aria-label="Blank 15"><option value="">…</option><option value="happy">happy</option><option value="tired">tired</option></select><span class="fb"></span></span>.
+It is a <span class="sel-unit unit" data-kind="sel" data-ex="v3" data-marks="5" data-ans="sunny"><span class="cn">16</span><select class="cloze" aria-label="Blank 16"><option value="">…</option><option value="sunny">sunny</option><option value="rainy">rainy</option></select><span class="fb"></span></span> day, so he is wearing sunglasses.
+In spring the sun is <span class="sel-unit unit" data-kind="sel" data-ex="v3" data-marks="5" data-ans="warm"><span class="cn">17</span><select class="cloze" aria-label="Blank 17"><option value="">…</option><option value="warm">warm</option><option value="angry">angry</option></select><span class="fb"></span></span>.
+The lemonade is <span class="sel-unit unit" data-kind="sel" data-ex="v3" data-marks="5" data-ans="cold"><span class="cn">18</span><select class="cloze" aria-label="Blank 18"><option value="">…</option><option value="cold">cold</option><option value="hot">hot</option></select><span class="fb"></span></span> because it comes from the fridge.
+The children are shouting and laughing. They are very <span class="sel-unit unit" data-kind="sel" data-ex="v3" data-marks="5" data-ans="noisy"><span class="cn">19</span><select class="cloze" aria-label="Blank 19"><option value="">…</option><option value="noisy">noisy</option><option value="quiet">quiet</option></select><span class="fb"></span></span>.
+Everyone is having a <span class="sel-unit unit" data-kind="sel" data-ex="v3" data-marks="5" data-ans="good"><span class="cn">20</span><select class="cloze" aria-label="Blank 20"><option value="">…</option><option value="good">good</option><option value="short">short</option></select><span class="fb"></span></span> time at the park.</p></section><section class="exercise" id="v4"><div class="ex-head"><h2>4. Born and died</h2><span class="meta">Questions 21–25 · 2.5 marks</span></div><p class="instr">Read the information. Then complete the sentences with <b>was born</b> or <b>died</b>.</p><div class="tablewrap" style="margin:0 0 18px"><table class="plan-table"><thead><tr><th>Name</th><th>Job</th><th>Born</th><th>Died</th></tr></thead><tbody><tr><td>Anna Smith</td><td>writer</td><td>20th March 1960</td><td>10th July 2010</td></tr><tr><td>Peter Johnson</td><td>painter</td><td>15th May 1988</td><td>present</td></tr><tr><td>David Wilson</td><td>musician</td><td>2nd November 1975</td><td>25th February 2015</td></tr><tr><td>Sarah Brown</td><td>scientist</td><td>8th June 1968</td><td>12th December 2018</td></tr><tr><td>Emma Clark</td><td>actor</td><td>1st September 1995</td><td>present</td></tr></tbody></table></div><ol><li class="q unit" data-kind="fill" data-ex="v4" data-marks="5"><span class="qn">21</span><div class="line">Anna Smith <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;died&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> in 2010.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v4" data-marks="5"><span class="qn">22</span><div class="line">Peter Johnson <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;was born&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> in 1988.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v4" data-marks="5"><span class="qn">23</span><div class="line">David Wilson <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;was born&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> in 1975.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v4" data-marks="5"><span class="qn">24</span><div class="line">Sarah Brown <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;died&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> in 2018.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v4" data-marks="5"><span class="qn">25</span><div class="line">Emma Clark <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;was born&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> on 1st September 1995.</div><div class="fb"></div></li></ol></section><section class="exercise" id="v5"><div class="ex-head"><h2>5. Adverbs</h2><span class="meta">Questions 26–30 · 2.5 marks</span></div><p class="instr">Complete the sentences with the correct words from the box.</p><div class="wordbox"><button type="button" class="chip pick" data-word="a little">a little</button><button type="button" class="chip pick" data-word="fast">fast</button><button type="button" class="chip pick" data-word="fluently">fluently</button><button type="button" class="chip pick" data-word="well">well</button><button type="button" class="chip pick" data-word="good">good</button></div><p class="pickhint">Click a word to copy it into a gap.</p><ol><li class="q unit" data-kind="fill" data-ex="v5" data-marks="5"><span class="qn">26</span><div class="line">I speak English <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;a little&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> because I have just started learning it.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v5" data-marks="5"><span class="qn">27</span><div class="line">He can play the piano <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;well&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> because he practises every day.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v5" data-marks="5"><span class="qn">28</span><div class="line">The car moves very <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;fast&quot;]" style="width:14ch" placeholder="···" aria-label="answer"> on the road.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v5" data-marks="5"><span class="qn">29</span><div class="line">She was born in France so she can speak French <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;fluently&quot;]" style="width:14ch" placeholder="···" aria-label="answer">.</div><div class="fb"></div></li><li class="q unit" data-kind="fill" data-ex="v5" data-marks="5"><span class="qn">30</span><div class="line">That cake tastes really <input class="blank" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-acc="[&quot;good&quot;]" style="width:14ch" placeholder="···" aria-label="answer">; everyone loved it.</div><div class="fb"></div></li></ol></section>
+  <div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section><section class="panel" id="reading" role="tabpanel" aria-label="Reading" data-nq="10">
+<div class="sheet">
+  <header class="masthead"><div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="kicker">Beginner mock exam 1 · Part 3 of 3</p><h1>Reading</h1><p>Read the text, then answer all 10 questions. Each correct answer earns 1 mark.</p><span class="weight">10% of the exam</span></header>
+  <div class="candidate"><div><label>Full name</label><input data-f="nm" type="text" autocomplete="off"></div><div><label>Group number</label><input data-f="gr" type="text" autocomplete="off"></div><div><label>Date</label><input data-f="dt" type="text" autocomplete="off"></div></div>
+  <div class="layout"><div class="rsegs" id="rd-segs" role="group" aria-label="Questions"></div><div class="left"><div class="hl-bar" role="toolbar" aria-label="Reading tools"><span class="lbl">Highlighter</span><p class="hl-note">Select text to highlight it. Tap a highlight to remove it.</p><button type="button" class="hl-btn" id="rd-clear">Clear</button><button type="button" class="hl-btn" id="rd-smaller" aria-label="Smaller text">A−</button><button type="button" class="hl-btn" id="rd-larger" aria-label="Larger text">A+</button><button type="button" class="hl-btn" id="rd-expand" aria-label="Enlarge the text">⤢</button></div><div class="textbox" tabindex="0"><h3>My best friend Selena</h3><p>Hi, my name is Tina. I am thirteen years old and today I want to talk about my best friend Selena. She is my classmate and she is thirteen years old too. We go to a very big school in Scotland. Our favourite lessons are Arts and Physical Education. I am very good at tennis and she is very good at volleyball. She plays volleyball at our school team. We both have a busy life.</p><p>We always get up at six thirty and at seven o’clock, her father takes us to school by car. They live next door to us, so after school, we always do our homework, walk our dogs and play together. Our classes start at seven thirty and finish at 4 p.m.</p><p>Selena’s mother is a nurse. My mother is a nurse too and they work at the same hospital. Our fathers are both engineers but they work at different companies. On Mondays, Selena has a violin class and I have a piano class. On Tuesdays and Thursdays, she practises volleyball at the school’s gym and I play tennis in our school court. Friday is my favourite day because Selena stays overnight with us. At the weekends, we usually go to the movie theatre or have a picnic if the weather is good.</p><p>Last summer, we went to the beach on holiday because the weather was very hot in the mountains. The travel agent said that travelling by bus was the cheapest way, but we went by plane because it was faster. We wanted to have more time to spend on the beach. The weather was beautiful and we had a great time.</p></div><div class="fade" id="rd-fade"></div></div><div class="right"><section class="exercise" id="r1"><div class="ex-head"><h2>Task 1</h2><span class="meta">Questions 1–5 · 5.0 marks</span></div><p class="instr">Read the text. Are the sentences <b>True</b> or <b>False</b>?</p><ol><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="1"><span class="qn">1</span><div class="line stem">Tina and Selena are fourteen years old.</div><div class="opts"><label class="opt"><input type="radio" name="qr1-1" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr1-1" value="1"><span class="letter">b</span><span>False</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="0"><span class="qn">2</span><div class="line stem">Selena’s father takes the girls to school by car.</div><div class="opts"><label class="opt"><input type="radio" name="qr1-2" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr1-2" value="1"><span class="letter">b</span><span>False</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="1"><span class="qn">3</span><div class="line stem">Their mothers work at different hospitals.</div><div class="opts"><label class="opt"><input type="radio" name="qr1-3" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr1-3" value="1"><span class="letter">b</span><span>False</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="0"><span class="qn">4</span><div class="line stem">On Mondays, Tina has a piano class.</div><div class="opts"><label class="opt"><input type="radio" name="qr1-4" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr1-4" value="1"><span class="letter">b</span><span>False</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r1" data-marks="10" data-ans="0"><span class="qn">5</span><div class="line stem">The travel agent said that the bus was the cheapest way to travel.</div><div class="opts"><label class="opt"><input type="radio" name="qr1-5" value="0"><span class="letter">a</span><span>True</span></label><label class="opt"><input type="radio" name="qr1-5" value="1"><span class="letter">b</span><span>False</span></label></div><div class="fb"></div></li></ol></section><section class="exercise" id="r2"><div class="ex-head"><h2>Task 2</h2><span class="meta">Questions 6–10 · 5.0 marks</span></div><p class="instr">Choose the correct answer.</p><ol><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="1"><span class="qn">6</span><div class="line stem">Which lessons do the girls like most?</div><div class="opts"><label class="opt"><input type="radio" name="qr2-6" value="0"><span class="letter">a</span><span>Maths and Science</span></label><label class="opt"><input type="radio" name="qr2-6" value="1"><span class="letter">b</span><span>Arts and Physical Education</span></label><label class="opt"><input type="radio" name="qr2-6" value="2"><span class="letter">c</span><span>English and History</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="1"><span class="qn">7</span><div class="line stem">What time do the girls get up?</div><div class="opts"><label class="opt"><input type="radio" name="qr2-7" value="0"><span class="letter">a</span><span>At six o’clock</span></label><label class="opt"><input type="radio" name="qr2-7" value="1"><span class="letter">b</span><span>At six thirty</span></label><label class="opt"><input type="radio" name="qr2-7" value="2"><span class="letter">c</span><span>At seven o’clock</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="0"><span class="qn">8</span><div class="line stem">What does Selena do on Tuesdays and Thursdays?</div><div class="opts"><label class="opt"><input type="radio" name="qr2-8" value="0"><span class="letter">a</span><span>She practises volleyball</span></label><label class="opt"><input type="radio" name="qr2-8" value="1"><span class="letter">b</span><span>She plays tennis</span></label><label class="opt"><input type="radio" name="qr2-8" value="2"><span class="letter">c</span><span>She has a violin class</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="1"><span class="qn">9</span><div class="line stem">Why is Friday Tina’s favourite day?</div><div class="opts"><label class="opt"><input type="radio" name="qr2-9" value="0"><span class="letter">a</span><span>There are no classes</span></label><label class="opt"><input type="radio" name="qr2-9" value="1"><span class="letter">b</span><span>Selena stays overnight with her</span></label><label class="opt"><input type="radio" name="qr2-9" value="2"><span class="letter">c</span><span>They go to the movie theatre</span></label></div><div class="fb"></div></li><li class="q unit" data-kind="mc" data-ex="r2" data-marks="10" data-ans="1"><span class="qn">10</span><div class="line stem">Why did they go to the beach by plane?</div><div class="opts"><label class="opt"><input type="radio" name="qr2-10" value="0"><span class="letter">a</span><span>It was the cheapest way</span></label><label class="opt"><input type="radio" name="qr2-10" value="1"><span class="letter">b</span><span>It was faster</span></label><label class="opt"><input type="radio" name="qr2-10" value="2"><span class="letter">c</span><span>The weather was bad</span></label></div><div class="fb"></div></li></ol></section></div><div class="rnav"><button type="button" class="rbtn" id="rd-prev" aria-label="Previous question">‹</button><span class="rcount" id="rd-count">1 of 10</span><button type="button" class="btn" id="rd-next">Next</button></div></div>
+  <div class="actions"><button class="btn submit-all" type="button">Submit exam (all 3 sections)</button></div>
+</div>
+</section>
+</div>
+<div class="modal" id="confirm" hidden role="dialog" aria-modal="true" aria-labelledby="dlg-h">
+  <div class="dlg">
+    <h3 id="dlg-h">Submit the whole exam?</h3>
+    <p>Grammar, Vocabulary and Reading will all be submitted together.</p>
+    <p class="warn">You cannot change any answer after submitting.</p>
+    <p id="unans-msg"></p>
+    <div class="row"><button class="btn ghost" id="cancel" type="button">Go back</button><button class="btn" id="confirm-yes" type="button">Submit now</button></div>
+  </div>
+</div>
+<script>/*tiles*/
+(function(){
+  function area(u){return u.querySelector('.tile-area');}
+  var T=window.__tiles={
+    placed:function(u){return [].slice.call(u.querySelectorAll('.tile-area .tile'));},
+    all:function(u){return u.querySelectorAll('.tile-bank .tile');},
+    text:function(u){return T.placed(u).map(function(b){return b.textContent;}).join(' ');},
+    full:function(u){return T.placed(u).length===T.all(u).length;},
+    indices:function(u){return T.placed(u).map(function(b){return b.getAttribute('data-i');});},
+    place:function(u,i){
+      var b=u.querySelector('.tile-bank .tile[data-i="'+i+'"]'); if(!b||b.disabled) return;
+      var p=document.createElement('button'); p.type='button'; p.className='tile placed'; p.textContent=b.textContent; p.setAttribute('data-i',i);
+      area(u).appendChild(p); b.classList.add('used'); b.disabled=true;
+    }
+  };
+  document.addEventListener('click',function(e){
+    if(document.body.classList.contains('exam-done')) return;
+    var t=e.target.closest&&e.target.closest('button.tile'); if(!t||t.disabled&&!t.classList.contains('placed')) return;
+    var u=t.closest('.unit'); if(!u) return;
+    if(t.closest('.tile-bank')){ T.place(u,t.getAttribute('data-i')); }
+    else if(t.closest('.tile-area')){
+      var b=u.querySelector('.tile-bank .tile[data-i="'+t.getAttribute('data-i')+'"]');
+      if(b){ b.classList.remove('used'); b.disabled=false; }
+      t.parentNode.removeChild(t);
+    }
+    u.dispatchEvent(new Event('change',{bubbles:true}));
+  });
+})();
+</script>
+<script>
+(function(){
+  var PASS_MARKS=45;   // pass mark: marks needed out of 50 (change here if needed)
+  function norm(s){
+    s=String(s).toLowerCase().replace(/[\u2018\u2019`]/g,"'");
+    s=s.replace(/\bcan't\b/g,'can not').replace(/\bcannot\b/g,'can not').replace(/\bwon't\b/g,'will not').replace(/\bshan't\b/g,'shall not');
+    s=s.replace(/n't\b/g,' not').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will').replace(/'re\b/g,' are').replace(/'m\b/g,' am');
+    s=s.replace(/[-\u2013\u2014]/g,' ').replace(/[^a-z0-9\s']/g,'').replace(/'/g,'');
+    return s.replace(/\s+/g,'');
+  }
+    /* answer matching: contractions ('d / 's), time-expression synonyms, optional "that" in reported speech, this/that here/there */
+  function forms(s,loose,cond,deg){
+    s=String(s).toLowerCase().replace(/[\u2018\u2019`]/g,"'");
+    s=s.replace(/\bthe previous (day|week|month|year|night)\b/g,'the $1 before').replace(/\bthe following (day|week|month|year|night|morning)\b/g,'the next $1').replace(/\bthe (day|week|month|year) after\b/g,'the next $1');
+    if(loose){ s=s.replace(/\bthis\b/g,'that').replace(/\bthese\b/g,'those').replace(/\bhere\b/g,'there'); }
+    /* second conditional: "was" and "were" are both accepted for I / he / she / it */
+    if(cond){ s=s.replace(/\bweren't\b/g,"wasn't").replace(/\bwere\b/g,'was'); }
+    /* comparatives: degree words of the same strength are interchangeable (much = far = a lot; slightly = a little = a bit) */
+    if(deg){ s=s.replace(/\ba lot\b/g,'much').replace(/\bfar\b/g,'much').replace(/\ba bit\b/g,'slightly').replace(/\ba little\b/g,'slightly'); }
+    var v=[s];
+    [["'d",[' had',' would']],["'s",[' is',' has']]].forEach(function(p){
+      var n=[]; v.forEach(function(x){ if(x.indexOf(p[0])>-1){ p[1].forEach(function(r){n.push(x.split(p[0]).join(r));}); } n.push(x); }); v=n;
+    });
+    return v.map(norm);
+  }
+  function matchAns(i){
+    var loose=!!i.closest('#ex8,#ex9'), cond=!!i.closest('#ex3'), deg=!!i.closest('#ex10'), A=[];
+    JSON.parse(i.dataset.acc).forEach(function(a){A=A.concat(forms(a,loose,cond,deg));});
+    function hit(vs){return vs.some(function(v){return A.indexOf(v)>-1;});}
+    var V=forms(i.value,loose,cond,deg);
+    if(hit(V)) return true;
+    if(i.closest('#ex8')){   /* reported speech: "He said (that) he ..." - "that" is optional */
+      var dethat=function(vs){return vs.map(function(v){return v.indexOf('that')===0?v.slice(4):v;});};
+      var A2=dethat(A);
+      return dethat(V).some(function(v){return A2.indexOf(v)>-1;});
+    }
+    return false;
+  }
+  function fmt(t){return (t/10).toFixed(1)}
+  function pctStr(num,den){var p=Math.floor(num*1000/den)/10; return (p%1===0?p.toFixed(0):p.toFixed(1))+'%';}
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var panels=$$('.panel'), units=$$('.unit'), submitted=false;
+  var PNAME={grammar:'Grammar',vocab:'Vocabulary',reading:'Reading'};
+
+  function isAnswered(u){
+    var k=u.dataset.kind;
+    if(k==='tiles') return window.__tiles.full(u);
+    if(k==='fill') return $$('input.blank',u).every(function(i){return i.value.trim()!==''});
+    if(k==='mc') return !!$('input[type=radio]:checked',u);
+    if(k==='sel') return $('select',u).value!=='';
+    return false;
+  }
+  function update(){
+    var n=units.filter(isAnswered).length;
+    $('#count').textContent='Answered '+n+' / '+units.length;
+    $('#fill').style.width=(100*n/units.length)+'%';
+  }
+  function evaluate(u){
+    var k=u.dataset.kind, ok=false, shown='';
+    if(k==='fill'){
+      var ins=$$('input.blank',u);
+      ok=ins.every(matchAns);
+      shown=ins.map(function(i){return JSON.parse(i.dataset.acc)[0]}).join('  /  ');
+    }else if(k==='tiles'){
+      var tx=window.__tiles.text(u), ta=JSON.parse(u.dataset.acc);
+      ok=window.__tiles.full(u) && ta.some(function(x){return norm(x)===norm(tx);});
+      shown=ta[0]+(u.dataset.end||'');
+    }else if(k==='mc'){
+      var c=$('input[type=radio]:checked',u);
+      ok=!!c && c.value===u.dataset.ans;
+      shown=$('input[value="'+u.dataset.ans+'"]',u).closest('.opt').textContent.trim();
+    }else{
+      var s=$('select',u); ok=s.value===u.dataset.ans; shown=u.dataset.ans;
+    }
+    return {ok:ok,shown:shown};
+  }
+
+  /* ---------- confirm dialog ---------- */
+  var modal=$('#confirm'), lastFocus=null;
+  function openConfirm(){
+    if(submitted) return;
+    lastFocus=document.activeElement;
+    var parts=panels.map(function(p){var un=$$('.unit',p).filter(function(u){return !isAnswered(u)}).length; return un?(PNAME[p.id]+': '+un):null}).filter(Boolean);
+    $('#unans-msg').textContent=parts.length?('Unanswered \u2013 '+parts.join(', ')+'. These will count as incorrect.'):'All questions are answered.';
+    modal.hidden=false; $('#cancel').focus();
+  }
+  function closeConfirm(){modal.hidden=true; if(lastFocus) lastFocus.focus();}
+  modal.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeConfirm();
+    if(e.key==='Tab'){var f=$$('button',modal), a=f[0], z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}
+  });
+  $('#cancel').addEventListener('click',closeConfirm);
+  $('#confirm-yes').addEventListener('click',function(){closeConfirm();submit();});
+  $$('.submit-all').concat([$('#submit')]).forEach(function(b){b.addEventListener('click',openConfirm)});
+
+  /* ---------- submit (final) ---------- */
+  function submit(){
+    if(submitted) return; submitted=true;
+    var total=0, max=0, rows=[];
+    panels.forEach(function(p){
+      var sc=0, mx=0;
+      $$('.unit',p).forEach(function(u){
+        var r=evaluate(u), m=+u.dataset.marks; mx+=m;
+        u.classList.remove('is-right','is-wrong');
+        var fb=$('.fb',u);
+        if(r.ok){u.classList.add('is-right');sc+=m;fb.textContent=u.dataset.kind==='sel'?'\u2713':'\u2713 Correct';}
+        else{u.classList.add('is-wrong');fb.textContent=(u.dataset.kind==='sel'?'\u2192 ':'Correct answer: ')+r.shown;}
+      });
+      total+=sc; max+=mx; rows.push({id:p.id,sc:sc,mx:mx});
+    });
+    // lock everything permanently
+    $$('input,select,button.submit-all,button.tile').forEach(function(e){ if(!e.closest('.candidate')) e.disabled=true; });
+    document.body.classList.add('exam-done');
+    var sb=$('#submit'); sb.disabled=true; sb.textContent='Submitted';
+    // results
+    var pass=total>=PASS_MARKS*10;
+    var v=$('#verdict'); v.textContent=pass?'PASSED':'FAILED'; v.className='verdict '+(pass?'pass':'fail');
+    $('#tot-score').textContent=fmt(total); $('#tot-max').textContent='/ '+fmt(max)+' marks';
+    $('#res-sub').textContent='Pass mark: '+PASS_MARKS+' out of '+Math.round(max/10)+' marks  \u00b7  Overall correct: '+pctStr(total,max);
+    var nm=$('input[data-f=nm]').value.trim(); $('#who').textContent=nm?nm:'Mock exam';
+    $('#res-rows').innerHTML='';
+    rows.forEach(function(r){
+      var d=document.createElement('div'); d.className='res-row';
+      d.innerHTML='<b>'+PNAME[r.id]+'</b><div class="meter"><i></i></div><span class="val">'+fmt(r.sc)+' / '+fmt(r.mx)+' \u00b7 '+pctStr(r.sc,r.mx)+'</span>';
+      $('#res-rows').appendChild(d);
+      $('i',d).style.width=(100*r.sc/r.mx)+'%';
+    });
+    var res=$('#results'); res.hidden=false; setH();
+    // announce + move to top
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'}); res.focus({preventScroll:true});
+  }
+
+  document.addEventListener('input',function(e){
+    var t=e.target;
+    if(t&&t.dataset&&t.dataset.f){ $$('input[data-f="'+t.dataset.f+'"]').forEach(function(o){if(o!==t)o.value=t.value}); }
+    update();
+  });
+  document.addEventListener('change',update);
+
+  /* ---------- tabs ---------- */
+  var tabs=$$('.tab'), wrap=$('.tabs-wrap');
+  function setH(){ document.documentElement.style.setProperty('--tabh',wrap.offsetHeight+'px'); }
+  function show(id,focus){
+    tabs.forEach(function(t){var on=t.dataset.target===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1; if(on&&focus)t.focus();});
+    panels.forEach(function(p){p.hidden=(p.id!==id)});
+    document.body.dataset.tab=id;
+    try{ if(history.replaceState) history.replaceState(null,'','#'+id); }catch(e){}
+    window.scrollTo({top:0}); setH();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t.dataset.target)});
+    t.addEventListener('keydown',function(e){
+      var k=e.key, j=-1;
+      if(k==='ArrowRight') j=(i+1)%tabs.length; else if(k==='ArrowLeft') j=(i+tabs.length-1)%tabs.length;
+      else if(k==='Home') j=0; else if(k==='End') j=tabs.length-1;
+      if(j>-1){e.preventDefault();show(tabs[j].dataset.target,true);}
+    });
+  });
+  var start=(location.hash||'').slice(1);
+  show(panels.some(function(p){return p.id===start})?start:'grammar');
+  update();
+  window.addEventListener('resize',setH);
+})();
+</script>
+<script>
+(function(){
+  /* ---- pick words from the box ---- */
+  var last={};
+  function nz(s){return String(s).toLowerCase().replace(/[^a-z]/g,'')}
+  function refresh(ex){
+    var vals=[].map.call(ex.querySelectorAll('input.blank'),function(i){return nz(i.value)});
+    [].forEach.call(ex.querySelectorAll('.chip.pick'),function(c){var w=nz(c.dataset.word);c.classList.toggle('used',vals.some(function(v){return v.indexOf(w)>-1}));});
+  }
+  document.addEventListener('focusin',function(e){var t=e.target; if(t&&t.classList&&t.classList.contains('blank')){var ex=t.closest('.exercise'); if(ex) last[ex.id]=t;}});
+  document.addEventListener('click',function(e){
+    var c=e.target.closest&&e.target.closest('.chip.pick'); if(!c||document.body.classList.contains('exam-done')) return;
+    var ex=c.closest('.exercise'), ins=[].slice.call(ex.querySelectorAll('input.blank')), t=last[ex.id];
+    if(!(t&&!t.value.trim())) t=ins.filter(function(i){return !i.value.trim()})[0]||t||ins[0];
+    t.value=c.dataset.word; t.dispatchEvent(new Event('input',{bubbles:true})); t.focus();
+    try{t.setSelectionRange(t.value.length,t.value.length)}catch(_){}
+    refresh(ex);
+  });
+  document.addEventListener('input',function(e){var ex=e.target.closest&&e.target.closest('.exercise'); if(ex&&ex.querySelector('.chip.pick')) refresh(ex);});
+
+  /* ---- highlighter (auto, everywhere) ---- */
+  var SKIP='input,select,option,button,textarea,.qn,.cn,.fb,.candidate,.masthead,.tabs-wrap,.modal,.hl-bar';
+  function elOf(n){return n.nodeType===1?n:n.parentElement;}
+  function okNode(n){var el=elOf(n); return !!(el&&el.closest('#reading .exercise, #reading .textbox, #ex7 .textbox')&&!el.closest(SKIP));}
+  function live(){
+    var s=window.getSelection(); if(!s||!s.rangeCount||s.isCollapsed) return null;
+    var r=s.getRangeAt(0), el=elOf(r.commonAncestorContainer), panel=el&&el.closest('.panel');
+    if(!panel||panel.hidden) return null;
+    if(!okNode(r.startContainer)&&!okNode(r.endContainer)) return null;
+    return r;
+  }
+  function textNodes(r){
+    var root=elOf(r.commonAncestorContainer), out=[], w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    while(w.nextNode()){var n=w.currentNode; if(r.intersectsNode(n)&&n.nodeValue.trim()!==''&&okNode(n)) out.push(n);}
+    return out;
+  }
+  var clearBtn=document.getElementById('hl-clear');
+  function sync(){ if(clearBtn) clearBtn.hidden=!document.querySelector('.panel:not([hidden]) mark.hl'); }
+  function unwrap(m){var p=m.parentNode; while(m.firstChild) p.insertBefore(m.firstChild,m); p.removeChild(m); p.normalize(); sync();}
+  function mark(r){
+    textNodes(r).forEach(function(n){
+      if(n.parentNode.classList&&n.parentNode.classList.contains('hl')) return;
+      var s=(n===r.startContainer)?r.startOffset:0, e=(n===r.endContainer)?r.endOffset:n.nodeValue.length;
+      if(e<=s) return;
+      var mid=n.splitText(s); mid.splitText(e-s);
+      var m=document.createElement('mark'); m.className='hl'; m.title='Click to remove';
+      mid.parentNode.insertBefore(m,mid); m.appendChild(mid);
+    });
+    window.getSelection().removeAllRanges(); sync();
+  }
+  var justSelected=false, lastType='mouse', timer=null;
+  function auto(){var r=live(); if(r){justSelected=true; mark(r); setTimeout(function(){justSelected=false},120);}}
+  document.addEventListener('pointerdown',function(e){lastType=e.pointerType||'mouse'; justSelected=false;});
+  document.addEventListener('pointerup',function(e){
+    if(e.pointerType==='touch') return;
+    if(live()){justSelected=true; setTimeout(auto,0);}
+  });
+  document.addEventListener('selectionchange',function(){
+    if(lastType!=='touch') return;
+    clearTimeout(timer); if(live()) timer=setTimeout(auto,800);
+  });
+  /* capture: a drag-select inside an answer option must not tick the radio; a click on a highlight removes it */
+  document.addEventListener('click',function(e){
+    var t=e.target; if(!t||!t.closest) return;
+    var m=t.closest('mark.hl');
+    if(justSelected){ if(t.closest('.opt')){e.preventDefault(); e.stopPropagation();} return; }
+    if(m){
+      var s=window.getSelection(); if(s&&!s.isCollapsed) return;
+      e.preventDefault(); e.stopPropagation(); unwrap(m);
+    }
+  },true);
+  if(clearBtn) clearBtn.addEventListener('click',function(){[].slice.call(document.querySelectorAll('mark.hl')).forEach(unwrap); sync();});
+  sync(); new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['data-tab']});
+})();
+</script>
+<div class="toast" id="toast" hidden></div><div class="sr-only" id="clock-live" aria-live="polite"></div>
+<script>
+(function(){
+  var MIN=50, TOTAL=MIN*60*1000, deadline=null, tick=null, finished=false, autoSub=false, warned={};
+  var wrap=document.querySelector('.wrap'), start=document.getElementById('start'), clock=document.getElementById('clock');
+  var ct=document.getElementById('clock-t'), clockL=document.querySelector('.clock-l'), live=document.getElementById('clock-live'), toast=document.getElementById('toast');
+  wrap.inert=true;
+  /* the exam cannot start until the student has typed a full name and a group number */
+  var stNm=document.getElementById('st-nm'), stGr=document.getElementById('st-gr'), stBtn=document.getElementById('start-btn'), stNeed=document.getElementById('start-need');
+  function chkStart(){ var ok=stNm.value.trim().length>=2&&stGr.value.trim().length>=1; stBtn.disabled=!ok; if(stNeed) stNeed.hidden=ok; }
+  stNm.addEventListener('input',chkStart); stGr.addEventListener('input',chkStart); chkStart();
+  function fmt(ms){var s=Math.max(0,Math.ceil(ms/1000)),m=Math.floor(s/60);s=s%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+  var tt=null;
+  function say(msg,danger){live.textContent=msg; toast.textContent=msg; toast.className='toast'+(danger?' danger':''); toast.hidden=false; clearTimeout(tt); tt=setTimeout(function(){toast.hidden=true},7000);}
+  function update(){
+    if(finished||deadline===null) return;
+    var left=deadline-Date.now();
+    ct.textContent=fmt(left);
+    clock.classList.toggle('warn',left<=10*60000&&left>5*60000);
+    clock.classList.toggle('danger',left<=5*60000);
+    [[10,'10 minutes left.',false],[5,'5 minutes left.',true],[1,'1 minute left!',true]].forEach(function(w){
+      if(left<=w[0]*60000&&left>0&&!warned[w[0]]){warned[w[0]]=1; say(w[1],w[2]);}
+    });
+    if(left<=0) timeUp();
+  }
+  function timeUp(){
+    if(finished) return;
+    ct.textContent='00:00';
+    if(!document.body.classList.contains('exam-done')){
+      autoSub=true; say('Time is up \u2013 your exam has been submitted.',true);
+      document.getElementById('confirm-yes').click();   /* same final submit as the button */
+    }
+  }
+  /* when the exam is submitted (by the student or by the timer) stop the clock and add the time used */
+  new MutationObserver(function(){
+    if(!document.body.classList.contains('exam-done')||finished) return;
+    finished=true; clearInterval(tick);
+    var end=(window.__mockTimer&&window.__mockTimer.finishTs)||Date.now(); var used=deadline===null?0:Math.min(TOTAL,Math.max(0,TOTAL-(deadline-end)));
+    clock.classList.remove('warn','danger'); clock.classList.add('done'); clockL.textContent='Finished';
+    var sub=document.getElementById('res-sub');
+    if(sub){var p=document.createElement('p'); p.className='res-time';
+      p.textContent='Time used: '+fmt(used)+' of '+MIN+':00'+(autoSub?' \u2013 time ran out, so the exam was submitted automatically.':'.');
+      sub.parentNode.insertBefore(p,sub.nextSibling);}
+  }).observe(document.body,{attributes:true,attributeFilter:['class']});
+
+  var hook={total:TOTAL,finishTs:null,
+    begin:function(dl,silent,skipUpdate){
+      start.hidden=true; wrap.inert=false; document.body.classList.remove('pre-start');
+      deadline=dl; if(!skipUpdate){ update(); if(!finished) tick=setInterval(update,250); }
+      if(!silent){
+        live.textContent='The exam has started. You have '+MIN+' minutes.';
+        var t=document.getElementById('tab-grammar'); if(t) t.focus({preventScroll:true});
+        window.scrollTo(0,0);
+      }
+    },
+    deadline:function(){return deadline;}, finished:function(){return finished;}, auto:function(){return autoSub;}, setAuto:function(){autoSub=true;}, say:say
+  };
+  window.__mockTimer=hook;
+  document.getElementById('start-btn').addEventListener('click',function(){ hook.begin(Date.now()+TOTAL,false); document.dispatchEvent(new Event('mock:started')); });
+  document.addEventListener('visibilitychange',update);
+  window.addEventListener('focus',update);
+  document.getElementById('start-btn').focus();
+})();
+</script>
+<script>/*persist*/
+(function(){
+  var T=window.__mockTimer; if(!T) return;
+  var m=document.title.match(/Mock Exam (\d+)/), KEY='mockexam:setB'+(m?m[1]:'x')+':v1';
+  var store=null;
+  try{ store=window.localStorage; store.setItem('__t','1'); store.removeItem('__t'); }catch(e){ store=null; }
+  var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+
+  /* teacher reset: open the link with #reset at the end */
+  if(store && (window.__initHash||location.hash)==='#reset'){
+    try{ store.removeItem(KEY); store.removeItem(KEY+':guard'); store.removeItem(KEY+':attempt'); }catch(e){}
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+  }
+
+  /* adding #reset to the address of an already-open page also restarts it (a hash change does not reload by itself) */
+  window.addEventListener('hashchange',function(){
+    if(location.hash!=='#reset') return;
+    running=false; lock=true; window.__mockResetting=true;
+    try{ if(store){ store.removeItem(KEY); store.removeItem(KEY+':guard'); store.removeItem(KEY+':attempt'); } }catch(e){}
+    location.replace(location.pathname+location.search);
+  });
+
+  /* ---------- collect / apply ---------- */
+  function zones(){return $$('#reading .left .textbox, #reading .exercise, #ex7 .textbox');}
+  function hlOf(z){
+    var out=[], pos=0, w=document.createTreeWalker(z,NodeFilter.SHOW_TEXT);
+    while(w.nextNode()){var n=w.currentNode, len=n.nodeValue.length; var p=n.parentNode;
+      if(p&&p.classList&&p.classList.contains('hl')) out.push([pos,pos+len]); pos+=len;}
+    return out;
+  }
+  function applyHl(z,ranges){
+    ranges.forEach(function(r){
+      var list=[], pos=0, w=document.createTreeWalker(z,NodeFilter.SHOW_TEXT);
+      while(w.nextNode()){var n=w.currentNode, len=n.nodeValue.length, s=Math.max(r[0],pos)-pos, e=Math.min(r[1],pos+len)-pos;
+        if(s<e&&!(n.parentNode.classList&&n.parentNode.classList.contains('hl'))) list.push([n,s,e]); pos+=len;}
+      list.forEach(function(x){var mid=x[0].splitText(x[1]); mid.splitText(x[2]-x[1]);
+        var mk=document.createElement('mark'); mk.className='hl'; mk.title='Click to remove'; mid.parentNode.insertBefore(mk,mid); mk.appendChild(mid);});
+    });
+  }
+  function collect(){
+    var vals=$$('.unit').map(function(u){
+      var k=u.dataset.kind;
+      if(k==='fill') return $$('input.blank',u).map(function(i){return i.value;});
+      if(k==='tiles') return window.__tiles.indices(u);
+      if(k==='mc'){var r=$$('input[type=radio]',u), idx=-1; r.forEach(function(x,i){if(x.checked) idx=i;}); return idx;}
+      return u.querySelector('select').value;
+    });
+    var cand={}; ['nm','gr','dt'].forEach(function(f){var i=document.querySelector('input[data-f="'+f+'"]'); cand[f]=i?i.value:'';});
+    return {v:1,started:true,deadline:T.deadline(),finished:T.finished(),auto:T.auto(),finishTs:T.finishTs,
+      tab:document.body.dataset.tab||'grammar',scrollY:Math.round(window.scrollY),vals:vals,cand:cand,hl:zones().map(hlOf),saved:Date.now()};
+  }
+  var lock=false, running=false;
+  function save(){
+    if(!store||!running||lock) return;
+    try{ store.setItem(KEY,JSON.stringify(collect())); }catch(e){}
+  }
+  var tm=null; function soon(){ clearTimeout(tm); tm=setTimeout(save,250); }
+
+  function fire(el,type){el.dispatchEvent(new Event(type,{bubbles:true}));}
+  function apply(s){
+    var units=$$('.unit');
+    (s.vals||[]).forEach(function(v,idx){
+      var u=units[idx]; if(!u) return; var k=u.dataset.kind;
+      if(k==='fill'){ $$('input.blank',u).forEach(function(i,j){ if(v[j]!==undefined&&v[j]!==''){ i.value=v[j]; fire(i,'input'); } }); }
+      else if(k==='mc'){ if(v>=0){ var r=$$('input[type=radio]',u)[v]; if(r){ r.checked=true; fire(r,'change'); } } }
+      else if(k==='tiles'){ (v||[]).forEach(function(ix){ window.__tiles.place(u,ix); }); fire(u,'change'); }
+      else if(v){ var sel=u.querySelector('select'); sel.value=v; fire(sel,'change'); }
+    });
+    var c=s.cand||{}; ['nm','gr','dt'].forEach(function(f){ if(c[f]){var i=document.querySelector('input[data-f="'+f+'"]'); if(i){i.value=c[f]; fire(i,'input');}} });
+    var zs=zones(); (s.hl||[]).forEach(function(rs,i){ if(zs[i]&&rs&&rs.length) applyHl(zs[i],rs); });
+  }
+
+  /* ---------- keep students on the page ---------- */
+  var trapOn=false;
+  function trap(){
+    if(trapOn) return; trapOn=true;
+    try{ history.pushState({mock:1},'',location.href); }catch(e){}
+    window.addEventListener('popstate',function(){
+      if(T.finished()) return;
+      try{ history.pushState({mock:1},'',location.href); }catch(e){}
+      T.say('Swipe-back is switched off during the exam. Your answers are saved.',false);
+    });
+    window.addEventListener('beforeunload',function(e){ if(running&&!T.finished()){ e.preventDefault(); e.returnValue=''; } });
+  }
+
+  function arm(){
+    running=true; trap();
+    ['input','change','click','pointerup','keyup'].forEach(function(ev){document.addEventListener(ev,soon,true);});
+    setInterval(save,3000);
+    document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') save(); });
+    window.addEventListener('pagehide',save);
+    new MutationObserver(function(){
+      if(document.body.classList.contains('exam-done')){ T.finishTs=T.finishTs||(T.auto()?T.deadline():Date.now()); save(); }
+    }).observe(document.body,{attributes:true,attributeFilter:['class']});
+    new MutationObserver(soon).observe(document.body,{attributes:true,attributeFilter:['data-tab']});
+  }
+
+  /* a fresh start: begin saving once the student presses Start */
+  document.addEventListener('mock:started',function(){ arm(); save(); });
+
+  /* returning student: restore everything */
+  var saved=null;
+  if(store){ try{ saved=JSON.parse(store.getItem(KEY)||'null'); }catch(e){ saved=null; } }
+  if(saved && saved.v===1 && saved.started && saved.deadline){
+    lock=true;
+    apply(saved);
+    if(saved.finished){ T.finishTs=saved.finishTs||saved.deadline; if(saved.auto) T.setAuto(); }
+    T.begin(saved.deadline,true,!!saved.finished);
+    var tab=document.getElementById('tab-'+(saved.tab||'grammar')); if(tab) tab.click();
+    lock=false; arm();
+    if(saved.finished || Date.now()>=saved.deadline){
+      /* already submitted before (or time ran out while away): show the locked result */
+      if(!saved.finished){ /* timer will auto-submit on its first tick */ }
+      else { var y=document.getElementById('confirm-yes'); if(y) y.click(); }
+    } else {
+      T.say('Welcome back \u2013 your answers and the clock were restored.',false);
+    }
+    setTimeout(function(){ if(!saved.finished) window.scrollTo(0,saved.scrollY||0); },150);
+  }
+})();
+</script>
+<div class="modal" id="away" hidden role="alertdialog" aria-modal="true" aria-labelledby="away-h"><div class="dlg away"><h3 id="away-h">You left the exam page</h3><p id="away-msg"></p><p class="warn">This has been recorded and will appear on your result.</p><div class="row"><button class="btn" id="away-ok" type="button">Back to the exam</button></div></div></div>
+<audio id="alarm" preload="auto" src="data:audio/wav;base64,UklGRmScAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YUCcAAD6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6BgYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgb6+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+gYGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYG+vr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+voGBgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBvr6+vr6BgYGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6Bgb6+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6BgYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBvr6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+voGBgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG+vr6BgYG+vr6Bgb6+voGBgb6+gYGBvr6+gYG"></audio>
+<script>/*guard*/
+(function(){
+  var T=window.__mockTimer; if(!T) return;
+  /* ---- settings (can be changed) ---- */
+  var CFG={alarmOnLeave:true, alarmSeconds:5, maxLeaves:0, minAwayMs:1500};   /* maxLeaves: 0 = never auto-submit; e.g. 3 = submit on the 3rd time they leave */
+  if(window.__guardCfg){ for(var k in window.__guardCfg) CFG[k]=window.__guardCfg[k]; }
+  var m=document.title.match(/Mock Exam (\d+)/), KEY='mockexam:setB'+(m?m[1]:'x')+':v1:guard';
+  var store=null; try{ store=window.localStorage; store.setItem('__g','1'); store.removeItem('__g'); }catch(e){ store=null; }
+  var st={count:0,away:0,seen:0};
+  if(store){ try{ var s0=JSON.parse(store.getItem(KEY)||'null'); if(s0&&typeof s0.count==='number') st=s0; }catch(e){} }
+  function save(){ if(window.__mockResetting||!store) return; try{ store.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+  var $=function(id){return document.getElementById(id);};
+  var alarm=$('alarm'), away=$('away'), awayMsg=$('away-msg'), awayOk=$('away-ok'), badge=$('leave-badge');
+  function mmss(ms){var s=Math.max(0,Math.round(ms/1000)),mm=Math.floor(s/60);s=s%60;return mm+':'+(s<10?'0':'')+s;}
+  function active(){ return T.deadline()!==null && !T.finished() && !document.body.classList.contains('pre-start'); }
+  function updateBadge(){ if(!badge) return; if(st.count>0){ badge.hidden=false; badge.textContent='Left page: '+st.count+'\u00d7'; } else badge.hidden=true; }
+
+  /* ---- audio must be unlocked by a tap, once ---- */
+  var unlocked=false;
+  function unlock(){
+    if(unlocked||!alarm) return; unlocked=true;
+    try{ alarm.muted=true; var p=alarm.play(); if(p&&p.then) p.then(function(){ alarm.pause(); alarm.currentTime=0; alarm.muted=false; }).catch(function(){ alarm.muted=false; unlocked=false; }); else { alarm.pause(); alarm.muted=false; } }catch(e){ unlocked=false; }
+  }
+  ['click','touchend'].forEach(function(ev){document.addEventListener(ev,unlock,true);});
+  function startAlarm(){ if(!CFG.alarmOnLeave||!alarm) return; try{ alarm.muted=false; alarm.currentTime=0; var p=alarm.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} }
+  function stopAlarm(){ if(!alarm) return; try{ alarm.pause(); alarm.currentTime=0; }catch(e){} }
+
+  /* ---- leaving / returning ---- */
+  var leftAt=null, unloading=false;
+  window.addEventListener('beforeunload',function(){ unloading=true; setTimeout(function(){unloading=false;},3000); });
+  function onHide(){
+    if(window.__mockResetting||unloading||!active()||leftAt!==null) return;
+    leftAt=Date.now(); st.seen=leftAt; save(); startAlarm();      /* the alarm starts the moment they leave */
+  }
+  function warn(ms){
+    if(!away) return;
+    awayMsg.textContent='Times left: '+st.count+'. Time away this time: '+mmss(ms)+'. Total time away: '+mmss(st.away)+'.';
+    away.hidden=false; try{ if(navigator.vibrate) navigator.vibrate([300,150,300]); }catch(e){}
+    if(awayOk) awayOk.focus();
+  }
+  function onShow(){
+    if(leftAt===null) return;
+    var d=Date.now()-leftAt; leftAt=null; st.seen=Date.now(); stopAlarm();
+    if(!active()||d<CFG.minAwayMs){ save(); return; }       /* ignore flickers (notification shade, etc.) */
+    st.count++; st.away+=d; save(); updateBadge();
+    warn(d);
+    if(CFG.maxLeaves>0 && st.count>=CFG.maxLeaves){
+      if(away) away.hidden=true;
+      T.say('You left the exam page '+st.count+' times \u2013 the exam is being submitted.',true);
+      var y=$('confirm-yes'); if(y) y.click();
+    }
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') onHide(); else onShow(); });
+  if(awayOk) awayOk.addEventListener('click',function(){ away.hidden=true; stopAlarm(); });
+
+  /* ---- heartbeat: also catches the page being closed/killed while the student was elsewhere ---- */
+  setInterval(function(){ if(active()&&document.visibilityState==='visible'){ st.seen=Date.now(); save(); } },2000);
+  if(active() && st.seen){
+    var gap=Date.now()-st.seen;
+    if(gap>5000){ st.count++; st.away+=gap; st.seen=Date.now(); save(); updateBadge(); warn(gap); }
+  }
+  updateBadge();
+
+  /* ---- show it on the result ---- */
+  function addResultLine(){
+    if(document.querySelector('.res-guard')) return;
+    var anchor=document.querySelector('.res-time')||document.getElementById('res-sub'); if(!anchor) return;
+    var p=document.createElement('p'); p.className='res-guard'+(st.count?' bad':'');
+    p.textContent=st.count?('Left the exam page '+st.count+' time'+(st.count>1?'s':'')+' \u2013 '+mmss(st.away)+' away in total.'):'Stayed on the exam page the whole time.';
+    anchor.parentNode.insertBefore(p,anchor.nextSibling);
+  }
+  new MutationObserver(function(){ if(document.body.classList.contains('exam-done')){ leftAt=null; stopAlarm(); if(away) away.hidden=true; setTimeout(addResultLine,120); } }).observe(document.body,{attributes:true,attributeFilter:['class']});
+  if(document.body.classList.contains('exam-done')) setTimeout(addResultLine,200);
+})();
+</script>
+<script>/*results*/
+(function(){
+  var C=window.MOCK_CONFIG||{}; if(!C.endpoint) return;           /* not configured: the mocks behave exactly as before */
+  var T=window.__mockTimer; if(!T) return;
+  var m=document.title.match(/Mock Exam (\d+)/), N=m?+m[1]:0, BASE='mockexam:setB'+N+':v1';
+  var store=null; try{ store=window.localStorage; store.setItem('__r','1'); store.removeItem('__r'); }catch(e){ store=null; }
+  function rd(k,d){ if(!store) return d; try{ var v=JSON.parse(store.getItem(k)); return v===null?d:v; }catch(e){ return d; } }
+  function wr(k,v){ if(store){ try{ store.setItem(k,JSON.stringify(v)); }catch(e){} } }
+  var $=function(s,r){return (r||document).querySelector(s);}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
+
+  /* ---- start screen: the name is required, and students are told where the result goes ---- */
+  var nm=$('#st-nm'), sb=$('#start-btn');
+  if(nm&&sb){
+    var note=document.createElement('p'); note.className='fine send-note';
+    note.textContent='Your name, group number and result will be posted in the class Telegram group when you finish. Write your real name and the same group number every time.';
+    sb.parentNode.insertBefore(note,sb.nextSibling);
+
+  }
+
+  /* ---- one attempt = one id (it survives a refresh, a new attempt needs #reset) ---- */
+  function attemptId(){
+    var id=rd(BASE+':attempt',null);
+    if(!id){ id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():('a'+Date.now().toString(36)+Math.random().toString(36).slice(2,10)); wr(BASE+':attempt',id); }
+    return id;
+  }
+  document.addEventListener('mock:started',function(){ attemptId(); });
+
+  /* ---- build the message ---- */
+  function build(){
+    var units=$$('.unit'), per={grammar:{sc:0,max:0},vocab:{sc:0,max:0},reading:{sc:0,max:0}}, total=0;
+    var answers=units.map(function(u){
+      var panel=u.closest('.panel'), id=panel?panel.id:'', mk=+u.dataset.marks, ok=u.classList.contains('is-right');
+      if(per[id]){ per[id].max+=mk; if(ok) per[id].sc+=mk; } if(ok) total+=mk;
+      var k=u.dataset.kind, v='';
+      if(k==='fill') v=$$('input.blank',u).map(function(i){return i.value;}).join(' / ');
+      else if(k==='mc'){ var r=$$('input[type=radio]',u), i=-1; r.forEach(function(x,j){if(x.checked) i=j;}); v=i<0?'':('abcd'[i]+') '+(r[i].closest('.opt').textContent.trim().replace(/^[a-d]\s*/,'')).slice(0,40)); }
+      else if(k==='tiles'){ v=window.__tiles.text(u); }
+      else { var s=$('select',u); v=s?s.value:''; }
+      return {v:v,ok:ok?1:0};
+    });
+    Object.keys(per).forEach(function(k){ per[k].sc=per[k].sc/10; per[k].max=per[k].max/10; });
+    var rt=($('.res-time')||{}).textContent||'', tm=rt.match(/(\d+:\d\d)/);
+    var g=rd(BASE+':guard',{count:0,away:0});
+    return { secret:C.secret||'', id:attemptId(), mock:N, level:'beginner',
+      name:(($('input[data-f=nm]')||{}).value||'').trim(), group:(($('input[data-f=gr]')||{}).value||'').trim(),
+      score:total/10, sections:per, timeUsed:tm?tm[1]:'', auto:/ran out/.test(rt),
+      leaves:{count:g.count||0,away:Math.round((g.away||0)/1000)}, answers:answers, sent:Date.now() };
+  }
+
+  /* ---- sending (the server ignores an attempt it has already received) ---- */
+  function post(p){
+    var ctl=('AbortController' in window)?new AbortController():null, to=setTimeout(function(){ if(ctl) ctl.abort(); },20000);
+    function opts(extra){ var o={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(p)}; for(var k in extra) o[k]=extra[k]; return o; }
+    return fetch(C.endpoint,opts({redirect:'follow',signal:ctl?ctl.signal:undefined}))
+      .then(function(r){ clearTimeout(to); return r.json(); })
+      .catch(function(){ clearTimeout(to);
+        /* the answer could not be read (browser CORS rules) although the data may have arrived: send once more without reading the answer */
+        return fetch(C.endpoint,opts({mode:'no-cors'})).then(function(){ return {ok:true,unconfirmed:true}; }); });
+  }
+  var line=null;
+  function show(cls,text,retry){
+    if(!line){ var a=$('.res-guard')||$('.res-time')||$('#res-sub'); if(!a) return;
+      line=document.createElement('p'); line.id='res-send'; a.parentNode.insertBefore(line,a.nextSibling); }
+    line.className='res-send '+cls; line.textContent=text;
+    if(retry){ var b=document.createElement('button'); b.type='button'; b.textContent='Send again'; b.addEventListener('click',function(){ deliver(true); }); line.appendChild(b); }
+  }
+  var busy=false;
+  function deliver(manual){
+    if(busy) return; var id=attemptId(), sent=rd('mockexam:sentids',[]);
+    if(sent.indexOf(id)>-1){ show('','\u2713 Your result is in the class group.'); return; }
+    var p=(manual?null:rd('mockexam:outbox:'+id,null))||build();
+    if(!p.name||!p.group){ show('bad','Your name or group number is empty, so the result could not be posted. Tell your teacher.'); return; }
+    wr('mockexam:outbox:'+id,p); busy=true; show('pending','Sending your result to the class group\u2026');
+    post(p).then(function(r){
+      busy=false;
+      if(r&&r.ok){
+        sent.push(id); wr('mockexam:sentids',sent); if(store){ try{ store.removeItem('mockexam:outbox:'+id); }catch(e){} }
+        var extra=(r.attempt&&r.students)?(' Attempt #'+r.attempt+' \u00b7 your best '+(Math.round(r.best*10)/10).toFixed(1)+' \u00b7 place '+r.rank+' of '+r.students+'.'):'';
+        show('','\u2713 Your result was posted to the class group.'+extra);
+      } else show('bad','Could not post the result ('+((r&&r.error)||'server error')+').',true);
+    }).catch(function(){ busy=false; show('bad','No internet \u2013 the result is saved on this phone and will be sent when you are online.',true); });
+  }
+  window.addEventListener('online',function(){ if(document.body.classList.contains('exam-done')) deliver(false); });
+
+  function onDone(){ setTimeout(function(){ deliver(false); },900); }                 /* after the guard/time lines exist */
+  new MutationObserver(function(){ if(document.body.classList.contains('exam-done')) onDone(); }).observe(document.body,{attributes:true,attributeFilter:['class']});
+  if(document.body.classList.contains('exam-done')) onDone();
+})();
+</script>
+<script>/*reading pager*/
+(function(){
+  var rd=document.getElementById('reading'); if(!rd) return;
+  var lay=rd.querySelector('.layout'), lis=[].slice.call(rd.querySelectorAll('li.q')), segs=document.getElementById('rd-segs'),
+      cnt=document.getElementById('rd-count'), prev=document.getElementById('rd-prev'), next=document.getElementById('rd-next'),
+      box=rd.querySelector('.left .textbox'), fade=document.getElementById('rd-fade'), right=rd.querySelector('.right'),
+      expand=document.getElementById('rd-expand'), sm=document.getElementById('rd-smaller'), lg=document.getElementById('rd-larger');
+  var cur=0, last=lis.length-1, FS=[14,15,16,18,20], fs=2, done=function(){return document.body.classList.contains('exam-done');};
+  try{ var v=parseInt(localStorage.getItem('mock-rfs'),10); if(v>=0&&v<FS.length) fs=v; }catch(e){}
+  lis.forEach(function(li,i){
+    var b=document.createElement('button'); b.type='button'; b.dataset.i=i; if(i===5) b.className='gap'; segs.appendChild(b);
+  });
+  function answered(li){ return !!li.querySelector('input[type=radio]:checked'); }
+  function render(){
+    lis.forEach(function(li,i){ li.classList.toggle('cur',i===cur); });
+    [].forEach.call(rd.querySelectorAll('.exercise'),function(ex){ ex.classList.toggle('has-cur',!!ex.querySelector('li.q.cur')); });
+    [].forEach.call(segs.children,function(b,i){
+      var li=lis[i], c=[]; if(i===5) c.push('gap'); if(answered(li)) c.push('a'); if(i===cur) c.push('c');
+      if(li.classList.contains('is-right')) c.push('ok'); else if(li.classList.contains('is-wrong')) c.push('no');
+      b.className=c.join(' '); b.setAttribute('aria-label','Question '+(i+1)+(answered(li)?', answered':', not answered'));
+    });
+    var n=lis.filter(answered).length;
+    cnt.textContent=(cur+1)+' of '+lis.length+' · '+n+' answered';
+    prev.disabled=cur===0;
+    next.textContent=cur<last?'Next':(done()?'Done':'Submit');
+    next.disabled=done()&&cur===last;
+  }
+  function go(i){ if(i<0||i>last) return; cur=i; lay.classList.remove('expanded'); expand.textContent='⤢'; render(); right.scrollTop=0; }
+  segs.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) go(+b.dataset.i); });
+  prev.addEventListener('click',function(){ go(cur-1); });
+  next.addEventListener('click',function(){
+    if(cur<last) go(cur+1); else if(!done()){ var s=document.getElementById('submit'); if(s) s.click(); }
+  });
+  document.addEventListener('change',function(e){
+    if(e.target&&e.target.closest&&e.target.closest('#reading li.q')) render();
+  });
+  new MutationObserver(render).observe(document.body,{attributes:true,attributeFilter:['class']});
+
+  function applyFs(){ lay.style.setProperty('--rfs',FS[fs]+'px'); sm.disabled=fs<=0; lg.disabled=fs>=FS.length-1; upd(); }
+  sm.addEventListener('click',function(){ if(fs>0){ fs--; try{localStorage.setItem('mock-rfs',fs);}catch(e){} applyFs(); } });
+  lg.addEventListener('click',function(){ if(fs<FS.length-1){ fs++; try{localStorage.setItem('mock-rfs',fs);}catch(e){} applyFs(); } });
+  expand.addEventListener('click',function(){ var on=lay.classList.toggle('expanded'); expand.textContent=on?'⤡':'⤢'; setTimeout(upd,30); });
+  document.getElementById('rd-clear').addEventListener('click',function(){
+    [].slice.call(rd.querySelectorAll('mark.hl')).forEach(function(m){
+      var p=m.parentNode; while(m.firstChild) p.insertBefore(m.firstChild,m); p.removeChild(m); p.normalize();
+    });
+  });
+  function upd(){ fade.classList.toggle('on',box.scrollTop+box.clientHeight<box.scrollHeight-6); }
+  box.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',function(){ setTimeout(upd,50); });
+  if(window.ResizeObserver) new ResizeObserver(upd).observe(box);
+  document.addEventListener('click',function(e){ if(e.target.closest&&e.target.closest('.tab')) setTimeout(upd,80); });
+
+  /* keep the reading height right when the top bar changes size */
+  var wrap=document.querySelector('.tabs-wrap');
+  function setH(){ document.documentElement.style.setProperty('--tabh',wrap.offsetHeight+'px'); }
+  if(window.ResizeObserver&&wrap) new ResizeObserver(setH).observe(wrap);
+  applyFs(); render(); setH();
+})();
+</script>
+</body>
+</html>
