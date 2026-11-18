@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Linkers of Contrast — Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#0E7C7B; --teal-bg:#E4F3F2;
+    --plum:#8A3FFC; --plum-bg:#F1E9FF;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:22px 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .gx-table-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:8px; box-shadow:0 1px 0 rgba(20,20,22,.03); }
+  .gx-table{ width:100%; border-collapse:collapse; }
+  .gx-table thead th{ background:var(--black); color:var(--yellow); text-align:left; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:11px 14px; border-bottom:2px solid var(--yellow); }
+  .gx-table tbody td{ padding:10px 14px; font-size:13px; color:var(--ink); border-top:1px solid var(--rule); background:var(--panel); vertical-align:top; }
+  .gx-table tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .gx-table .cell-main{ font-weight:700; font-family:'JetBrains Mono',monospace; font-size:12.5px; display:block; }
+  .gx-table .cell-sub{ display:block; font-size:12px; color:var(--ink-soft); margin-top:3px; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:16px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .passage{ font-size:14.5px; line-height:2.6; color:var(--ink); }
+
+  .cloze-blank{ display:inline-flex; vertical-align:middle; margin:0 3px; border-radius:6px; overflow:hidden; border:1.5px solid var(--rule); }
+  .cloze-opt{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; padding:3px 9px; border:none; background:var(--paper); color:var(--ink-soft); cursor:pointer; transition:background .15s, color .15s; }
+  .cloze-opt + .cloze-opt{ border-left:1.5px solid var(--rule); }
+  .cloze-opt:hover{ background:#ECECE7; }
+  .cloze-opt.selected{ background:var(--black); color:var(--yellow); }
+  .cloze-blank.correct .cloze-opt.selected{ background:var(--good); color:#fff; }
+  .cloze-blank.incorrect .cloze-opt.selected{ background:var(--bad); color:#fff; }
+  .cloze-blank.incorrect .cloze-opt.reveal{ background:var(--good-bg); color:var(--good); }
+
+  .task-feedback{ font-size:13px; color:var(--good); font-weight:600; margin-top:16px; min-height:1px; }
+  .task-feedback.incomplete{ color:var(--ink-soft); font-weight:400; font-style:italic; }
+  .task-feedback.has-errors{ color:var(--bad); }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .passage{ line-height:2.9; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+
+  .directions{ font-size:14.5px; margin:0 0 6px; }
+  .prefixes{ font-size:14px; margin:0 0 14px; color:var(--ink-soft); }
+  .prefixes b{ color:var(--bad); }
+  s{ text-decoration-thickness:2px; }
+  .wordbox{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
+  .chip{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; padding:5px 11px; border-radius:20px; background:var(--paper); border:1.5px solid var(--rule); color:var(--ink); }
+  .chip.used{ text-decoration:line-through; color:var(--ink-soft); opacity:.7; }
+  ol.qs{ list-style:none; margin:0; padding:0; counter-reset:q; }
+  ol.qs li{ counter-increment:q; display:flex; gap:10px; padding:9px 0; font-size:15px; line-height:2.1; border-bottom:1px dashed var(--rule); }
+  ol.qs li::before{ content:counter(q) ")"; font-weight:700; color:var(--ink-soft); min-width:26px; }
+  ol.qs li:last-child{ border-bottom:none; }
+  .q-body{ flex:1; }
+  .ex-ans .pre{ color:var(--bad); font-weight:700; border-bottom:2px solid var(--bad); }
+  .ex-ans .stem{ color:#1F3864; font-weight:700; border-bottom:2px solid #1F3864; }
+  .ans{ font-family:'JetBrains Mono',monospace; font-size:13.5px; font-weight:600; width:min(170px,42vw); padding:3px 8px; margin:0 3px; border:1.5px solid var(--rule); border-radius:6px; background:var(--paper); color:var(--ink); vertical-align:middle; }
+  .ans:focus{ outline:none; border-color:var(--black); background:#fff; box-shadow:0 0 0 3px var(--yellow); }
+  .ans.correct{ background:var(--good); color:#fff; border-color:var(--good); }
+  .ans.incorrect{ background:var(--bad-bg); color:var(--bad); border-color:var(--bad); }
+  .key{ display:none; font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:700; color:var(--good); background:var(--good-bg); padding:2px 8px; border-radius:6px; margin-left:4px; }
+  .key.show{ display:inline-block; }
+
+  .r{color:var(--bad);font-weight:800}
+  .ans{width:min(250px,58vw)}
+  .mc{display:inline-flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .mc label{cursor:pointer}
+  .mc input{position:absolute;opacity:0;pointer-events:none}
+  .mc span.opt{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;border:1.5px solid var(--rule);background:var(--paper);color:var(--ink-soft);min-height:34px}
+  .mc label:hover span.opt{background:#ECECE7}
+  .mc input:checked+span.opt{background:var(--black);color:var(--yellow);border-color:var(--black)}
+  .mc input:focus-visible+span.opt{box-shadow:0 0 0 3px var(--yellow)}
+  .mc label.correct span.opt{background:var(--good);color:#fff;border-color:var(--good)}
+  .mc label.incorrect span.opt{background:var(--bad);color:#fff;border-color:var(--bad)}
+  .mc label.reveal span.opt{background:var(--good-bg);color:var(--good);border-color:var(--good)}
+  ol.qs.mcq li{flex-direction:row;line-height:1.7}
+  ol.qs.mcq .q-body{display:flex;flex-direction:column}
+  .tag{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+
+.sheet[data-lang=uz] .t-ru,.sheet[data-lang=ru] .t-uz{display:none}
+.guide{padding:clamp(26px,5.5vw,40px) clamp(16px,5vw,44px) clamp(28px,6vw,44px);background:radial-gradient(circle at 92% 0%,#fbf3d5 0%,var(--paper) 40%);border-bottom:3px solid var(--black)}
+.guide .gs-kicker{margin-bottom:12px}
+.guide h2{font-size:clamp(26px,6vw,34px);margin-bottom:12px}
+.guide h3{font-family:'Fraunces',serif;font-size:19px;margin:28px 0 12px;display:flex;align-items:center;gap:10px}
+.guide h3 .pill{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.pill.do{background:var(--black);color:var(--yellow)} .pill.make{background:var(--teal);color:#fff}
+.g-toggle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 18px;font-size:13px;color:var(--ink-soft);font-weight:600}
+.lang-btn{min-height:36px;padding:6px 14px;font-size:13px;border-radius:20px;background:#fff;color:var(--ink-soft);border:1.5px solid var(--rule)}
+.lang-btn.on{background:var(--black);color:var(--yellow);border-color:var(--black)}
+.g-rules{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rule{border-radius:16px;padding:18px 18px 16px;color:#fff;position:relative;overflow:hidden}
+.rule.do{background:var(--black)} .rule.make{background:var(--teal)}
+.rule .big{font-family:'Fraunces',serif;font-weight:700;font-size:38px;line-height:1;margin-bottom:8px}
+.rule.do .big{color:var(--yellow)} .rule.make .big{color:#FFE9A8}
+.rule p{margin:0 0 7px;font-size:14px;line-height:1.5}
+.rule .t-uz,.rule .t-ru{font-size:13px;opacity:.92}
+.rule .t-uz b,.rule .t-ru b{color:var(--yellow);font-size:11px;letter-spacing:.06em;margin-right:5px}
+.rule .exm{margin-top:10px;background:rgba(255,255,255,.14);border-radius:10px;padding:8px 11px;font-size:13px;font-style:italic}
+.g-forms{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.form-chip{background:#fff;border:1.5px dashed var(--ink-soft);border-radius:12px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
+.form-chip em{font-style:normal;color:var(--bad);font-weight:800;margin-right:6px}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.gcard{background:#fff;border:1.5px solid var(--rule);border-left:6px solid var(--c);border-radius:14px;padding:12px 14px;transition:transform .15s,box-shadow .15s}
+.gcard:hover{transform:translateY(-2px);box-shadow:0 10px 20px -14px rgba(20,20,22,.5)}
+.gcard.do{--c:var(--yellow-deep)} .gcard.make{--c:var(--teal)}
+.gcard .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.gcard .em{font-size:24px;line-height:1}
+.gcard .ph{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13.5px}
+.gcard .ph .v{color:var(--bad)}
+.gcard .tr{font-size:13px;color:var(--ink);line-height:1.4;margin:2px 0}
+.gcard .tr b{font-size:10.5px;letter-spacing:.06em;margin-right:5px}
+.gcard .tr.t-ru b{color:var(--rose)}
+.gcard .exm{margin-top:8px;font-size:12.5px;font-style:italic;background:var(--paper);border-radius:8px;padding:6px 10px;color:var(--ink-soft)}
+.g-tip{margin-top:22px;background:var(--yellow);color:var(--black);border-radius:14px;padding:14px 18px;font-size:14px;font-weight:600;line-height:1.5}
+.g-tip small{display:block;font-weight:500;font-size:13px;margin-top:4px}
+@media (max-width:620px){.g-rules{grid-template-columns:1fr}.lang-btn{width:auto}}
+
+.pickrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:4px 0 22px}
+.pick{border-radius:14px;padding:12px 12px 12px;color:#fff;position:relative}
+.pick small{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin-bottom:4px}
+.pick b{font-family:'JetBrains Mono',monospace;font-size:13px;display:block;line-height:1.35}
+.pick .arr{font-size:18px;line-height:1;margin-bottom:6px}
+.pick.a{background:var(--teal)}.pick.b{background:var(--plum)}.pick.c{background:var(--rose)}
+.pick-title{font-family:'Fraunces',serif;font-weight:600;font-size:16px;margin:0 0 10px}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gcd{--c:var(--teal);--cb:var(--teal-bg);background:#fff;border:1.5px solid var(--rule);border-radius:18px;overflow:hidden;box-shadow:0 10px 24px -20px rgba(20,20,22,.6)}
+.gcd.t1{--c:var(--teal);--cb:var(--teal-bg)}.gcd.t2{--c:var(--plum);--cb:var(--plum-bg)}
+.gcd.t3{--c:#E58A00;--cb:#FFF1DA}.gcd.t4{--c:var(--rose);--cb:var(--rose-bg)}
+.gcd-h{background:var(--c);color:#fff;padding:14px 16px 12px}
+.gcd-h .no{font-size:11px;font-weight:800;letter-spacing:.08em;opacity:.85}
+.gcd-h .nm{font-family:'Fraunces',serif;font-weight:700;font-size:21px;line-height:1.15;margin-top:2px}
+.gcd-b{padding:14px 16px 16px}
+.lbl{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:12px 0 6px}
+.lbl:first-child{margin-top:0}
+.formula{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fp{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:9px;background:var(--cb);color:var(--c);border:1.5px solid var(--c)}
+.fp.key{display:inline-block;background:var(--c);color:#fff;margin:0}
+.fp.pl{border:none;background:none;color:var(--ink-soft);padding:0 2px}
+.exs{background:var(--cb);border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.9}
+.exs + .exs{margin-top:6px}
+.exs .lk{background:var(--c);color:#fff;font-weight:800;border-radius:6px;padding:1px 7px}
+.exs .p1{border-bottom:3px solid var(--c);padding-bottom:1px}
+.exs .p2{border-bottom:3px dotted var(--c);padding-bottom:1px}
+.mist{display:grid;gap:5px;font-size:13.5px}
+.mist div{padding:6px 10px;border-radius:9px}
+.mist .no{background:var(--bad-bg);color:var(--bad)}
+.mist .yes{background:var(--good-bg);color:var(--good)}
+.mist b{margin-right:6px}
+.gcd .tr{font-size:13px;line-height:1.45;margin:3px 0}
+.gcd .tr b{font-size:10.5px;letter-spacing:.06em;margin-right:6px;color:var(--c)}
+.gcd .note{margin-top:10px;font-size:12.5px;font-weight:600;color:var(--c)}
+@media (max-width:700px){.gr{grid-template-columns:1fr}.pickrow{grid-template-columns:1fr}.pick{display:flex;gap:12px;align-items:center}.pick .arr{margin:0}}
+
+.lk-table{width:100%;border-collapse:collapse}
+.lk-table td b{font-family:'JetBrains Mono',monospace;font-size:12.5px}
+.gcard .df{font-size:13px;margin:6px 0 2px;line-height:1.4}
+.gcard .df b{font-size:10.5px;letter-spacing:.06em;margin-right:5px;color:var(--teal)}
+.gcard .pt{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--black);color:var(--yellow);display:inline-block;border-radius:6px;padding:3px 8px;margin:2px 0 6px}
+.gcard.lk{--c:var(--yellow-deep)}
+.gcard.lk:nth-child(3n+2){--c:var(--teal)}.gcard.lk:nth-child(3n){--c:var(--plum)}
+.lang-btn{width:auto}
+ol.qs li.ex{counter-increment:none}
+ol.qs li.ex::before{content:"";min-width:26px}
+</style>
+</head>
+<body>
+<noscript><div style="background:#D1382F;color:#fff;text-align:center;padding:16px 18px;font-size:14px;font-weight:700;">⚠ This page needs JavaScript to check your answers. Open it in Safari or Chrome.</div></noscript>
+<div class="sheet" data-lang="both">
+<div class="masthead"><div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div><h1>Vocabulary: Linkers of Contrast</h1><p class="sub">8 tasks, 84 questions. Type the answer or tap an option, then press Enter or “Check” to see your results.</p></div>
+<section class="guide" id="guide"><span class="gs-kicker">✨ Study guide</span><h2>Linkers for surprising information</h2><p class="gs-intro">Some linkers tell us about things that are not what we expect. Study the meaning, the grammar pattern and the example of each linker, then practise.</p><div class="g-toggle"><span>Translations:</span><button type="button" class="lang-btn on" data-l="both">UZ + RU</button><button type="button" class="lang-btn" data-l="uz">UZ</button><button type="button" class="lang-btn" data-l="ru">RU</button></div><h3><span class="pill do">GRAMMAR</span> How to use them</h3><p class="pick-title">Step 1 · Look at what comes after the linker</p><div class="pickrow"><div class="pick a"><div class="arr">🧩</div><div><small>A full clause</small><b>subject + verb</b>→ although / even though</div></div><div class="pick b"><div class="arr">📦</div><div><small>A noun or -ing</small><b>the rain / being ill</b>→ despite / in spite of</div></div><div class="pick c"><div class="arr">✂️</div><div><small>A new sentence</small><b>. However, …</b>→ however / instead</div></div></div><p class="pick-title">Step 2 · Learn the pattern</p><div class="gr"><div class="gcd t1"><div class="gcd-h"><div class="no">RULE 1</div><div class="nm">Although / Even though</div></div><div class="gcd-b"><div class="lbl">Pattern</div><div class="formula"><span class="fp key">Although</span><span class="fp pl">+</span><span class="fp">subject + verb</span><span class="fp pl">,</span><span class="fp">main clause</span></div><div class="lbl">Example</div><div class="exs"><span class="lk">Although</span> <span class="p1">he was tired</span>, <span class="p2">he worked</span>.</div><div class="lbl">Common mistake</div><div class="mist"><div class="no"><b>✗</b>Although the rain, we played.</div><div class="yes"><b>✓</b>Although it rained, we played.</div></div><div class="lbl">Translation</div><div class="tr t-uz"><b>UZ</b>garchi … boʻlsa-da, …ga qaramay</div><div class="tr t-ru"><b>RU</b>хотя</div><div class="note">💡 Even though is stronger than although. Both need a full clause.</div></div></div><div class="gcd t2"><div class="gcd-h"><div class="no">RULE 2</div><div class="nm">Despite / In spite of</div></div><div class="gcd-b"><div class="lbl">Pattern</div><div class="formula"><span class="fp key">Despite</span><span class="fp pl">+</span><span class="fp">noun / -ing</span><span class="fp pl">,</span><span class="fp">main clause</span></div><div class="lbl">Example</div><div class="exs"><span class="lk">Despite</span> <span class="p1">being tired</span>, <span class="p2">he worked</span>.</div><div class="exs"><span class="lk">In spite of</span> <span class="p1">the rain</span>, <span class="p2">we played</span>.</div><div class="lbl">Common mistake</div><div class="mist"><div class="no"><b>✗</b>Despite of the rain, we played.</div><div class="yes"><b>✓</b>Despite the rain, we played.</div><div class="yes"><b>✓</b>In spite of the rain, we played.</div></div><div class="lbl">Translation</div><div class="tr t-uz"><b>UZ</b>…ga qaramay</div><div class="tr t-ru"><b>RU</b>несмотря на</div><div class="note">💡 Same meaning. Only in spite of has “of”; despite never does.</div></div></div><div class="gcd t3"><div class="gcd-h"><div class="no">RULE 3</div><div class="nm">But</div></div><div class="gcd-b"><div class="lbl">Pattern</div><div class="formula"><span class="fp">clause 1</span><span class="fp pl">,</span><span class="fp key">but</span><span class="fp">clause 2</span></div><div class="lbl">Example</div><div class="exs"><span class="p1">He was tired</span>, <span class="lk">but</span> <span class="p2">he worked</span>.</div><div class="lbl">Common mistake</div><div class="mist"><div class="no"><b>✗</b>He was tired, but although he worked.</div><div class="yes"><b>✓</b>He was tired, but he worked.</div></div><div class="lbl">Translation</div><div class="tr t-uz"><b>UZ</b>lekin, ammo, biroq</div><div class="tr t-ru"><b>RU</b>но, однако</div><div class="note">💡 Use only one linker. But goes in the middle, with a comma before it.</div></div></div><div class="gcd t4"><div class="gcd-h"><div class="no">RULE 4</div><div class="nm">However / Instead</div></div><div class="gcd-b"><div class="lbl">Pattern</div><div class="formula"><span class="fp">sentence 1</span><span class="fp pl">.</span><span class="fp key">However</span><span class="fp pl">,</span><span class="fp">sentence 2</span></div><div class="lbl">Example</div><div class="exs"><span class="p1">He was tired.</span> <span class="lk">However</span>, <span class="p2">he worked.</span></div><div class="exs"><span class="p1">He didn’t rest.</span> <span class="lk">Instead</span>, <span class="p2">he worked.</span></div><div class="lbl">Common mistake</div><div class="mist"><div class="no"><b>✗</b>He was tired, however he worked.</div><div class="yes"><b>✓</b>He was tired. However, he worked.</div></div><div class="lbl">Translation</div><div class="tr t-uz"><b>UZ</b>however: biroq · instead: buning oʻrniga</div><div class="tr t-ru"><b>RU</b>however: однако · instead: вместо этого</div><div class="note">💡 However = surprising contrast. Instead = one thing in place of another.</div></div></div></div><h3><span class="pill make">WORDS</span> Meaning and usage</h3><div class="g-grid"><div class="gcard lk"><div class="top"><span class="em">↔️</span><span class="ph"><span class="v">but</span></span></div><div class="pt">clause 1, but clause 2</div><div class="tr t-uz"><b>UZ</b>lekin, ammo, biroq</div><div class="tr t-ru"><b>RU</b>но, однако</div><div class="df"><b>DEFINITION</b>Joins two ideas in one sentence when the second one is surprising or opposite to the first.</div><div class="exm">The soup looked simple, but it tasted wonderful.</div></div><div class="gcard lk"><div class="top"><span class="em">🌦️</span><span class="ph"><span class="v">although</span></span></div><div class="pt">Although + subject + verb, …</div><div class="tr t-uz"><b>UZ</b>garchi … boʻlsa-da, …ga qaramay</div><div class="tr t-ru"><b>RU</b>хотя</div><div class="df"><b>DEFINITION</b>Introduces a fact that is surprising compared with the main idea. It is followed by a full clause.</div><div class="exm">Although it was cold, we ate outside.</div></div><div class="gcard lk"><div class="top"><span class="em">💪</span><span class="ph"><span class="v">even though</span></span></div><div class="pt">Even though + subject + verb, …</div><div class="tr t-uz"><b>UZ</b>garchi … boʻlsa ham (although’dan kuchliroq)</div><div class="tr t-ru"><b>RU</b>хотя (и), несмотря на то что (сильнее, чем although)</div><div class="df"><b>DEFINITION</b>A stronger form of although. It stresses that the first fact makes the result even more surprising.</div><div class="exm">Even though he is very shy, he loves public speaking.</div></div><div class="gcard lk"><div class="top"><span class="em">🚧</span><span class="ph"><span class="v">despite</span></span></div><div class="pt">Despite + noun / -ing, …</div><div class="tr t-uz"><b>UZ</b>…ga qaramay</div><div class="tr t-ru"><b>RU</b>несмотря на</div><div class="df"><b>DEFINITION</b>Shows contrast. It is followed by a noun or an -ing form, NOT by a full clause. Never say “despite of”.</div><div class="exm">Despite the noise, she fell asleep quickly.</div></div><div class="gcard lk"><div class="top"><span class="em">🛑</span><span class="ph"><span class="v">in spite of</span></span></div><div class="pt">In spite of + noun / -ing, …</div><div class="tr t-uz"><b>UZ</b>…ga qaramay (despite bilan bir xil)</div><div class="tr t-ru"><b>RU</b>несмотря на (то же, что despite)</div><div class="df"><b>DEFINITION</b>Has the same meaning and grammar as despite. It is followed by a noun or an -ing form.</div><div class="exm">We enjoyed the trip in spite of the rain.</div></div><div class="gcard lk"><div class="top"><span class="em">🔄</span><span class="ph"><span class="v">instead</span></span></div><div class="pt">Sentence 1. Instead, sentence 2.</div><div class="tr t-uz"><b>UZ</b>buning oʻrniga</div><div class="tr t-ru"><b>RU</b>вместо этого</div><div class="df"><b>DEFINITION</b>Shows that one thing happened in place of the thing we expected or planned.</div><div class="exm">I didn’t call him. Instead, I sent a message.</div></div><div class="gcard lk"><div class="top"><span class="em">⚡</span><span class="ph"><span class="v">however</span></span></div><div class="pt">Sentence 1. However, sentence 2.</div><div class="tr t-uz"><b>UZ</b>biroq, shunga qaramay</div><div class="tr t-ru"><b>RU</b>однако, тем не менее</div><div class="df"><b>DEFINITION</b>Starts a new sentence and gives surprising or opposite information. Put a comma after it.</div><div class="exm">The bag was heavy. However, she carried it alone.</div></div></div><div class="g-tip">Tip: although / even though + FULL CLAUSE; despite / in spite of + NOUN or -ING; however / instead start a NEW SENTENCE.<small>UZ: although / even though + toʻliq gap; despite / in spite of + ot yoki -ing; however / instead — yangi gapni boshlaydi.<br>RU: although / even though + полное предложение; despite / in spite of + существительное или -ing; however / instead начинают новое предложение.</small></div></section>
+<div class="progress-bar"><span>Progress</span><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="score-tally" id="scoreTally">0 / 84</span></div>
+<div class="jump-nav"><a href="#section-t1">1</a><a href="#section-t2">2</a><a href="#section-t3">3</a><a href="#section-t4">4</a><a href="#section-t5">5</a><a href="#section-t6">6</a><a href="#section-t7">7</a><a href="#section-t8">8</a></div>
+<section class="block" id="section-t1">
+<div class="block-head"><h2>Task 1</h2><span class="block-count">12 questions</span></div>
+<p class="directions"><b>Choose the correct linker.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> The bus was full. <span class="ex-ans"><span class="pre">However</span></span>, we found two seats.</span></span></li>
+<li><span class="q-body"><span>The tickets were expensive. <b>_____</b>, we bought them.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-0" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-1-0" value="1"><span class="opt">b. Although</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> my brother is only ten, he speaks three languages.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-1" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-1-1" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>The hotel was cheap. <b>_____</b>, the rooms were clean and quiet.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-2" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-1-2" value="1"><span class="opt">b. Although</span></label></span></span></li>
+<li><span class="q-body"><span>We reached the station on time <b>_____</b> the train was late.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-3" value="0"><span class="opt">a. although</span></label><label data-v="1"><input type="radio" name="m-1-3" value="1"><span class="opt">b. however</span></label></span></span></li>
+<li><span class="q-body"><span>He is very rich. <b>_____</b>, he never wastes money.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-1-4" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-1-4" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> she has lived here for years, she doesn’t know her neighbours.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-5" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-1-5" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>I called him three times. <b>_____</b>, he didn’t answer.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-6" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-1-6" value="1"><span class="opt">b. Although</span></label></span></span></li>
+<li><span class="q-body"><span>Maria loves spicy food <b>_____</b> she is allergic to chilli.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-7" value="0"><span class="opt">a. although</span></label><label data-v="1"><input type="radio" name="m-1-7" value="1"><span class="opt">b. however</span></label></span></span></li>
+<li><span class="q-body"><span>The exam was difficult. <b>_____</b>, most students passed.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-1-8" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-1-8" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> it was freezing outside, the children played in the garden.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-1-9" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-1-9" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>The shop was closed. <b>_____</b>, the owner opened it for us.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-1-10" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-1-10" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>Our team lost the match <b>_____</b> we played well.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-1-11" value="0"><span class="opt">a. however</span></label><label data-v="1"><input type="radio" name="m-1-11" value="1"><span class="opt">b. although</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t1"></div>
+<div class="controls"><button class="btn-check" data-check="t1">Check Task 1</button><button class="btn-ghost" data-reset="t1">Clear section</button></div>
+</section>
+<section class="block" id="section-t2">
+<div class="block-head"><h2>Task 2</h2><span class="block-count">12 questions</span></div>
+<p class="directions"><b>Choose the correct linker.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> We played outside <span class="ex-ans"><span class="pre">despite</span></span> the cold.</span></span></li>
+<li><span class="q-body"><span><b>_____</b> the heavy traffic, we arrived early.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-0" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-2-0" value="1"><span class="opt">b. Even though</span></label></span></span></li>
+<li><span class="q-body"><span>We arrived early <b>_____</b> there was heavy traffic.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-1" value="0"><span class="opt">a. even though</span></label><label data-v="1"><input type="radio" name="m-2-1" value="1"><span class="opt">b. despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> she was very ill, she went to school.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-2" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-2-2" value="1"><span class="opt">b. Despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> having a headache, Tom finished the report.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-2-3" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-2-3" value="1"><span class="opt">b. Despite</span></label></span></span></li>
+<li><span class="q-body"><span>He bought the car <b>_____</b> it was very expensive.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-2-4" value="0"><span class="opt">a. despite</span></label><label data-v="1"><input type="radio" name="m-2-4" value="1"><span class="opt">b. even though</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> his poor English, he got the job.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-2-5" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-2-5" value="1"><span class="opt">b. Despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> he trains every day, he never wins.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-6" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-2-6" value="1"><span class="opt">b. Despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> studying all night, she failed the test.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-2-7" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-2-7" value="1"><span class="opt">b. Despite</span></label></span></span></li>
+<li><span class="q-body"><span>She ate the soup <b>_____</b> she didn’t like it.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-8" value="0"><span class="opt">a. even though</span></label><label data-v="1"><input type="radio" name="m-2-8" value="1"><span class="opt">b. despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> the high prices, the restaurant is always full.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-9" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-2-9" value="1"><span class="opt">b. Even though</span></label></span></span></li>
+<li><span class="q-body"><span>Anna smiled <b>_____</b> she felt sad.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-2-10" value="0"><span class="opt">a. even though</span></label><label data-v="1"><input type="radio" name="m-2-10" value="1"><span class="opt">b. despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> living near the sea, he can’t swim.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-2-11" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-2-11" value="1"><span class="opt">b. Despite</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t2"></div>
+<div class="controls"><button class="btn-check" data-check="t2">Check Task 2</button><button class="btn-ghost" data-reset="t2">Clear section</button></div>
+</section>
+<section class="block" id="section-t3">
+<div class="block-head"><h2>Task 3</h2><span class="block-count">10 questions</span></div>
+<p class="directions"><b>Choose the correct linker.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> The coat is expensive, <span class="ex-ans"><span class="pre">but</span></span> it is very warm.</span></span></li>
+<li><span class="q-body"><span>The soup smelled good, <b>_____</b> it tasted terrible.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-3-0" value="0"><span class="opt">a. in spite of</span></label><label data-v="1"><input type="radio" name="m-3-0" value="1"><span class="opt">b. but</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> his injury, he ran the whole race.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-3-1" value="0"><span class="opt">a. In spite of</span></label><label data-v="1"><input type="radio" name="m-3-1" value="1"><span class="opt">b. But</span></label></span></span></li>
+<li><span class="q-body"><span>I like cats, <b>_____</b> I’m afraid of big dogs.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-3-2" value="0"><span class="opt">a. but</span></label><label data-v="1"><input type="radio" name="m-3-2" value="1"><span class="opt">b. in spite of</span></label></span></span></li>
+<li><span class="q-body"><span>They kept walking <b>_____</b> the cold wind.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-3-3" value="0"><span class="opt">a. but</span></label><label data-v="1"><input type="radio" name="m-3-3" value="1"><span class="opt">b. in spite of</span></label></span></span></li>
+<li><span class="q-body"><span>The bed was old, <b>_____</b> comfortable.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-3-4" value="0"><span class="opt">a. in spite of</span></label><label data-v="1"><input type="radio" name="m-3-4" value="1"><span class="opt">b. but</span></label></span></span></li>
+<li><span class="q-body"><span>She passed the test <b>_____</b> not studying much.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-3-5" value="0"><span class="opt">a. in spite of</span></label><label data-v="1"><input type="radio" name="m-3-5" value="1"><span class="opt">b. but</span></label></span></span></li>
+<li><span class="q-body"><span>He’s very clever, <b>_____</b> he often forgets his keys.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-3-6" value="0"><span class="opt">a. but</span></label><label data-v="1"><input type="radio" name="m-3-6" value="1"><span class="opt">b. in spite of</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> the language problems, we understood each other.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-3-7" value="0"><span class="opt">a. In spite of</span></label><label data-v="1"><input type="radio" name="m-3-7" value="1"><span class="opt">b. But</span></label></span></span></li>
+<li><span class="q-body"><span>It was a small flat, <b>_____</b> they loved it.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-3-8" value="0"><span class="opt">a. in spite of</span></label><label data-v="1"><input type="radio" name="m-3-8" value="1"><span class="opt">b. but</span></label></span></span></li>
+<li><span class="q-body"><span>The match went on <b>_____</b> the storm.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-3-9" value="0"><span class="opt">a. in spite of</span></label><label data-v="1"><input type="radio" name="m-3-9" value="1"><span class="opt">b. but</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t3"></div>
+<div class="controls"><button class="btn-check" data-check="t3">Check Task 3</button><button class="btn-ghost" data-reset="t3">Clear section</button></div>
+</section>
+<section class="block" id="section-t4">
+<div class="block-head"><h2>Task 4</h2><span class="block-count">10 questions</span></div>
+<p class="directions"><b>Choose the correct linker.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> I didn’t order meat. <span class="ex-ans"><span class="pre">Instead</span></span>, I ordered fish.</span></span></li>
+<li><span class="q-body"><span>I didn’t go to the gym. <b>_____</b>, I stayed home and read.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-4-0" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-4-0" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>He is a talented player. <b>_____</b>, he rarely scores.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-4-1" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-4-1" value="1"><span class="opt">b. Instead</span></label></span></span></li>
+<li><span class="q-body"><span>She didn’t take the bus. <b>_____</b>, she walked to work.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-4-2" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-4-2" value="1"><span class="opt">b. Instead</span></label></span></span></li>
+<li><span class="q-body"><span>The film got great reviews. <b>_____</b>, I found it boring.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-4-3" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-4-3" value="1"><span class="opt">b. Instead</span></label></span></span></li>
+<li><span class="q-body"><span>Don’t buy a new phone. <b>_____</b>, repair the old one.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-4-4" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-4-4" value="1"><span class="opt">b. Instead</span></label></span></span></li>
+<li><span class="q-body"><span>The forecast said it would be sunny. <b>_____</b>, it rained all day.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-4-5" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-4-5" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>We didn’t visit Samarkand last summer. <b>_____</b>, we went to Khiva.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-4-6" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-4-6" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>She promised to call me. <b>_____</b>, she never did.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-4-7" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-4-7" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>Tom doesn’t drink coffee. <b>_____</b>, he has green tea every morning.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-4-8" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-4-8" value="1"><span class="opt">b. However</span></label></span></span></li>
+<li><span class="q-body"><span>The test was easy. <b>_____</b>, a few students failed.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-4-9" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-4-9" value="1"><span class="opt">b. However</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t4"></div>
+<div class="controls"><button class="btn-check" data-check="t4">Check Task 4</button><button class="btn-ghost" data-reset="t4">Clear section</button></div>
+</section>
+<section class="block" id="section-t5">
+<div class="block-head"><h2>Task 5</h2><span class="block-count">12 questions</span></div>
+<p class="directions"><b>Choose the correct linker from three options.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> <span class="ex-ans"><span class="pre">Although</span></span> the road was icy, he drove carefully.</span></span></li>
+<li><span class="q-body"><span><b>_____</b> the noise, the baby slept all night.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-5-0" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-5-0" value="1"><span class="opt">b. However</span></label><label data-v="2"><input type="radio" name="m-5-0" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span>The room was small, <b>_____</b> it was very cosy.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-5-1" value="0"><span class="opt">a. despite</span></label><label data-v="1"><input type="radio" name="m-5-1" value="1"><span class="opt">b. instead</span></label><label data-v="2"><input type="radio" name="m-5-1" value="2"><span class="opt">c. but</span></label></span></span></li>
+<li><span class="q-body"><span>I wanted to watch a film. <b>_____</b>, my sister chose a game.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-5-2" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-5-2" value="1"><span class="opt">b. Although</span></label><label data-v="2"><input type="radio" name="m-5-2" value="2"><span class="opt">c. In spite of</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> she works very hard, she earns little.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-5-3" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-5-3" value="1"><span class="opt">b. In spite of</span></label><label data-v="2"><input type="radio" name="m-5-3" value="2"><span class="opt">c. Even though</span></label></span></span></li>
+<li><span class="q-body"><span>He didn’t apologise. <b>_____</b>, he blamed me.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-5-4" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-5-4" value="1"><span class="opt">b. Instead</span></label><label data-v="2"><input type="radio" name="m-5-4" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span>They went out <b>_____</b> the rain.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-5-5" value="0"><span class="opt">a. although</span></label><label data-v="1"><input type="radio" name="m-5-5" value="1"><span class="opt">b. however</span></label><label data-v="2"><input type="radio" name="m-5-5" value="2"><span class="opt">c. in spite of</span></label></span></span></li>
+<li><span class="q-body"><span>It’s a cheap phone. <b>_____</b>, it works really well.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-5-6" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-5-6" value="1"><span class="opt">b. Although</span></label><label data-v="2"><input type="radio" name="m-5-6" value="2"><span class="opt">c. Despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> he is only sixteen, he drives a motorbike.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-5-7" value="0"><span class="opt">a. But</span></label><label data-v="1"><input type="radio" name="m-5-7" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-5-7" value="2"><span class="opt">c. Even though</span></label></span></span></li>
+<li><span class="q-body"><span>The doctor told him to rest. <b>_____</b>, he went to a party.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-5-8" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-5-8" value="1"><span class="opt">b. Instead</span></label><label data-v="2"><input type="radio" name="m-5-8" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> her fear of deep water, she learned to swim.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-5-9" value="0"><span class="opt">a. But</span></label><label data-v="1"><input type="radio" name="m-5-9" value="1"><span class="opt">b. In spite of</span></label><label data-v="2"><input type="radio" name="m-5-9" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span>We stayed at home <b>_____</b> we had planned a picnic.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-5-10" value="0"><span class="opt">a. however</span></label><label data-v="1"><input type="radio" name="m-5-10" value="1"><span class="opt">b. although</span></label><label data-v="2"><input type="radio" name="m-5-10" value="2"><span class="opt">c. despite</span></label></span></span></li>
+<li><span class="q-body"><span>The book was long. <b>_____</b>, I finished it in two days.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-5-11" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-5-11" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-5-11" value="2"><span class="opt">c. Even though</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t5"></div>
+<div class="controls"><button class="btn-check" data-check="t5">Check Task 5</button><button class="btn-ghost" data-reset="t5">Clear section</button></div>
+</section>
+<section class="block" id="section-t6">
+<div class="block-head"><h2>Task 6</h2><span class="block-count">12 questions</span></div>
+<p class="directions"><b>Choose the correct linker.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> I wanted to sleep. <span class="ex-ans"><span class="pre">However</span></span>, the neighbours were too loud.</span></span></li>
+<li><span class="q-body"><span>She is afraid of heights, <b>_____</b> she loves climbing.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-0" value="0"><span class="opt">a. but</span></label><label data-v="1"><input type="radio" name="m-6-0" value="1"><span class="opt">b. despite</span></label><label data-v="2"><input type="radio" name="m-6-0" value="2"><span class="opt">c. instead</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> the long queue, we waited patiently.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-1" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-6-1" value="1"><span class="opt">b. However</span></label><label data-v="2"><input type="radio" name="m-6-1" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span>He saved money for years. <b>_____</b>, he spent it all in one week.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-2" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-6-2" value="1"><span class="opt">b. Although</span></label><label data-v="2"><input type="radio" name="m-6-2" value="2"><span class="opt">c. Despite</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> she was exhausted, she cooked dinner.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-3" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-6-3" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-6-3" value="2"><span class="opt">c. However</span></label></span></span></li>
+<li><span class="q-body"><span>I didn’t want a big party. <b>_____</b>, I invited just three friends.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-6-4" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-6-4" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-6-4" value="2"><span class="opt">c. Instead</span></label></span></span></li>
+<li><span class="q-body"><span>He still rides a bike <b>_____</b> he is eighty-five.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-5" value="0"><span class="opt">a. even though</span></label><label data-v="1"><input type="radio" name="m-6-5" value="1"><span class="opt">b. instead</span></label><label data-v="2"><input type="radio" name="m-6-5" value="2"><span class="opt">c. despite</span></label></span></span></li>
+<li><span class="q-body"><span>The company lost money. <b>_____</b>, it didn’t fire anyone.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-6-6" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-6-6" value="1"><span class="opt">b. However</span></label><label data-v="2"><input type="radio" name="m-6-6" value="2"><span class="opt">c. Even though</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> her two jobs, she has time for her family.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-6-7" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-6-7" value="1"><span class="opt">b. Although</span></label><label data-v="2"><input type="radio" name="m-6-7" value="2"><span class="opt">c. Despite</span></label></span></span></li>
+<li><span class="q-body"><span>They didn’t take a taxi. <b>_____</b>, they walked home along the river.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-8" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-6-8" value="1"><span class="opt">b. Although</span></label><label data-v="2"><input type="radio" name="m-6-8" value="2"><span class="opt">c. Despite</span></label></span></span></li>
+<li><span class="q-body"><span>The test was difficult, <b>_____</b> I felt confident.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-9" value="0"><span class="opt">a. but</span></label><label data-v="1"><input type="radio" name="m-6-9" value="1"><span class="opt">b. however</span></label><label data-v="2"><input type="radio" name="m-6-9" value="2"><span class="opt">c. despite</span></label></span></span></li>
+<li><span class="q-body"><span>I didn’t enjoy the trip <b>_____</b> the beautiful scenery.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-6-10" value="0"><span class="opt">a. in spite of</span></label><label data-v="1"><input type="radio" name="m-6-10" value="1"><span class="opt">b. although</span></label><label data-v="2"><input type="radio" name="m-6-10" value="2"><span class="opt">c. but</span></label></span></span></li>
+<li><span class="q-body"><span>I looked everywhere for my glasses. <b>_____</b>, I couldn’t find them.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-6-11" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-6-11" value="1"><span class="opt">b. Instead</span></label><label data-v="2"><input type="radio" name="m-6-11" value="2"><span class="opt">c. However</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t6"></div>
+<div class="controls"><button class="btn-check" data-check="t6">Check Task 6</button><button class="btn-ghost" data-reset="t6">Clear section</button></div>
+</section>
+<section class="block" id="section-t7">
+<div class="block-head"><h2>Task 7</h2><span class="block-count">8 questions</span></div>
+<p class="directions"><b>Each sentence has a mistake with the linker (in red). Choose the correct linker to replace it.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> <span class="r"><s>Although</s></span> the cold, we swam in the lake. → <span class="ex-ans"><span class="pre">despite</span></span></span></span></li>
+<li><span class="q-body"><span><span class="r"><s>Despite of</s></span> the cold weather, we swam in the river.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-7-0" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-7-0" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-7-0" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span><span class="r"><s>Although</s></span> the rain, the match was not cancelled.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-7-1" value="0"><span class="opt">a. Even though</span></label><label data-v="1"><input type="radio" name="m-7-1" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-7-1" value="2"><span class="opt">c. But</span></label></span></span></li>
+<li><span class="q-body"><span><span class="r"><s>In spite of</s></span> he was tired, he went jogging.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-7-2" value="0"><span class="opt">a. Instead</span></label><label data-v="1"><input type="radio" name="m-7-2" value="1"><span class="opt">b. Although</span></label><label data-v="2"><input type="radio" name="m-7-2" value="2"><span class="opt">c. Despite</span></label></span></span></li>
+<li><span class="q-body"><span>The film was boring. <span class="r"><s>Although</s></span>, I watched it to the end.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-7-3" value="0"><span class="opt">a. Despite</span></label><label data-v="1"><input type="radio" name="m-7-3" value="1"><span class="opt">b. Even though</span></label><label data-v="2"><input type="radio" name="m-7-3" value="2"><span class="opt">c. However</span></label></span></span></li>
+<li><span class="q-body"><span>I didn’t buy the red shirt. <span class="r"><s>However</s></span>, I bought the blue one.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-7-4" value="0"><span class="opt">a. But</span></label><label data-v="1"><input type="radio" name="m-7-4" value="1"><span class="opt">b. Despite</span></label><label data-v="2"><input type="radio" name="m-7-4" value="2"><span class="opt">c. Instead</span></label></span></span></li>
+<li><span class="q-body"><span><span class="r"><s>Despite</s></span> he was rich, he lived a simple life.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-7-5" value="0"><span class="opt">a. Although</span></label><label data-v="1"><input type="radio" name="m-7-5" value="1"><span class="opt">b. Instead</span></label><label data-v="2"><input type="radio" name="m-7-5" value="2"><span class="opt">c. In spite of</span></label></span></span></li>
+<li><span class="q-body"><span>We wanted to go to the beach. <span class="r"><s>Despite</s></span>, it started to rain.</span><span class="mc" data-c="1"><label data-v="0"><input type="radio" name="m-7-6" value="0"><span class="opt">a. In spite of</span></label><label data-v="1"><input type="radio" name="m-7-6" value="1"><span class="opt">b. However</span></label><label data-v="2"><input type="radio" name="m-7-6" value="2"><span class="opt">c. Although</span></label></span></span></li>
+<li><span class="q-body"><span><span class="r"><s>Even though</s></span> his age, he runs every morning.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-7-7" value="0"><span class="opt">a. However</span></label><label data-v="1"><input type="radio" name="m-7-7" value="1"><span class="opt">b. But</span></label><label data-v="2"><input type="radio" name="m-7-7" value="2"><span class="opt">c. Despite</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t7"></div>
+<div class="controls"><button class="btn-check" data-check="t7">Check Task 7</button><button class="btn-ghost" data-reset="t7">Clear section</button></div>
+</section>
+<section class="block" id="section-t8">
+<div class="block-head"><h2>Task 8</h2><span class="block-count">8 questions</span></div>
+<p class="directions"><b>Choose the correct form.</b></p>
+<ol class="qs mcq">
+<li class="ex"><span class="q-body"><span><span class="tag">Example</span> <span class="ex-ans"><span class="pre">Despite being</span></span> tired, he finished the race.</span></span></li>
+<li><span class="q-body"><span><b>_____</b> a cold, Dilnoza went to the concert.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-8-0" value="0"><span class="opt">a. Despite having</span></label><label data-v="1"><input type="radio" name="m-8-0" value="1"><span class="opt">b. Despite of having</span></label><label data-v="2"><input type="radio" name="m-8-0" value="2"><span class="opt">c. Despite have</span></label></span></span></li>
+<li><span class="q-body"><span>They won the game <b>_____</b> with ten players.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-8-1" value="0"><span class="opt">a. in spite playing</span></label><label data-v="1"><input type="radio" name="m-8-1" value="1"><span class="opt">b. in spite of played</span></label><label data-v="2"><input type="radio" name="m-8-1" value="2"><span class="opt">c. in spite of playing</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> English for years, he still makes simple mistakes.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-8-2" value="0"><span class="opt">a. Despite studying</span></label><label data-v="1"><input type="radio" name="m-8-2" value="1"><span class="opt">b. Despite studied</span></label><label data-v="2"><input type="radio" name="m-8-2" value="2"><span class="opt">c. Despite of studying</span></label></span></span></li>
+<li><span class="q-body"><span>Karim passed the interview <b>_____</b> nervous.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-8-3" value="0"><span class="opt">a. despite being</span></label><label data-v="1"><input type="radio" name="m-8-3" value="1"><span class="opt">b. despite be</span></label><label data-v="2"><input type="radio" name="m-8-3" value="2"><span class="opt">c. despite of being</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> all night, she wasn’t sleepy.</span><span class="mc" data-c="0"><label data-v="0"><input type="radio" name="m-8-4" value="0"><span class="opt">a. In spite of working</span></label><label data-v="1"><input type="radio" name="m-8-4" value="1"><span class="opt">b. In spite working</span></label><label data-v="2"><input type="radio" name="m-8-4" value="2"><span class="opt">c. In spite of worked</span></label></span></span></li>
+<li><span class="q-body"><span>The shop stayed open <b>_____</b> no customers.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-8-5" value="0"><span class="opt">a. despite have</span></label><label data-v="1"><input type="radio" name="m-8-5" value="1"><span class="opt">b. despite of having</span></label><label data-v="2"><input type="radio" name="m-8-5" value="2"><span class="opt">c. despite having</span></label></span></span></li>
+<li><span class="q-body"><span><b>_____</b> the risks, they climbed the mountain.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-8-6" value="0"><span class="opt">a. Despite known</span></label><label data-v="1"><input type="radio" name="m-8-6" value="1"><span class="opt">b. Despite of knowing</span></label><label data-v="2"><input type="radio" name="m-8-6" value="2"><span class="opt">c. Despite knowing</span></label></span></span></li>
+<li><span class="q-body"><span>He didn’t call me <b>_____</b> he would.</span><span class="mc" data-c="2"><label data-v="0"><input type="radio" name="m-8-7" value="0"><span class="opt">a. despite promised</span></label><label data-v="1"><input type="radio" name="m-8-7" value="1"><span class="opt">b. despite of promising</span></label><label data-v="2"><input type="radio" name="m-8-7" value="2"><span class="opt">c. despite promising</span></label></span></span></li>
+</ol>
+<div class="task-feedback" id="fb-t8"></div>
+<div class="controls"><button class="btn-check" data-check="t8">Check Task 8</button><button class="btn-ghost" data-reset="t8">Clear section</button></div>
+</section>
+
+<div class="summary">
+<div class="summary-label" id="totalPercent">0% answered</div>
+<div class="summary-score" id="totalScore">0 / 84</div>
+<div class="summary-label">total score</div>
+<div class="controls"><button class="btn-check" id="checkAllBtn">Check all tasks</button><button class="btn-ghost" id="resetAllBtn">Reset everything</button></div>
+</div>
+</div>
+<footer class="note">Inter Nation · English Practice Sheet</footer>
+<script>
+(function(){var s=document.querySelector('.sheet');document.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.setAttribute('data-lang',b.dataset.l);document.querySelectorAll('.lang-btn').forEach(function(x){x.classList.toggle('on',x===b);});});});})();
+</script>
+<script>
+(function(){
+var N=8,TOTAL=84;
+function norm(v){return (v||'').replace(/[\u2018\u2019]/g,"'").trim().toLowerCase().replace(/\s+/g,' ').replace(/[.!]+$/,'');}
+function sec(g){return document.getElementById('section-'+g);}
+function clearKey(el){var k=el.parentNode.querySelector('.key');if(k){k.classList.remove('show');k.textContent='';}}
+function check(g){
+ var s=sec(g),done=0,ok=0,total=0;
+ s.querySelectorAll('.ans').forEach(function(el){
+  total++;el.classList.remove('correct','incorrect');clearKey(el);
+  var v=norm(el.value);if(!v)return;done++;
+  var A=JSON.parse(el.dataset.answers);
+  if(A.some(function(x){return norm(x)===v;})){el.classList.add('correct');ok++;}
+  else{el.classList.add('incorrect');var k=el.parentNode.querySelector('.key');k.textContent=A[0];k.classList.add('show');}
+ });
+ s.querySelectorAll('.mc').forEach(function(m){
+  total++;var ls=m.querySelectorAll('label');
+  ls.forEach(function(l){l.classList.remove('correct','incorrect','reveal');});
+  var sel=m.querySelector('input:checked');if(!sel)return;done++;
+  var lab=sel.parentNode;
+  if(sel.value===m.dataset.c){lab.classList.add('correct');ok++;}
+  else{lab.classList.add('incorrect');ls[+m.dataset.c].classList.add('reveal');}
+ });
+ var fb=document.getElementById('fb-'+g);
+ if(!done){fb.textContent='';fb.className='task-feedback';}
+ else if(done<total){fb.textContent=(total-done)+' question(s) left to answer.';fb.className='task-feedback incomplete';}
+ else if(ok===total){fb.textContent='All correct \u2014 nice work!';fb.className='task-feedback';}
+ else{fb.textContent=ok+' / '+total+' correct. Wrong answers are marked, with the right one shown.';fb.className='task-feedback has-errors';}
+ update();
+}
+function reset(g){
+ var s=sec(g);
+ s.querySelectorAll('.ans').forEach(function(el){el.value='';el.classList.remove('correct','incorrect');clearKey(el);});
+ s.querySelectorAll('.mc').forEach(function(m){m.querySelectorAll('input').forEach(function(i){i.checked=false;});m.querySelectorAll('label').forEach(function(l){l.classList.remove('correct','incorrect','reveal');});});
+ var fb=document.getElementById('fb-'+g);fb.textContent='';fb.className='task-feedback';update();
+}
+function update(){
+ var sc=0,a=0;
+ document.querySelectorAll('.ans').forEach(function(el){if(norm(el.value))a++;if(el.classList.contains('correct'))sc++;});
+ document.querySelectorAll('.mc').forEach(function(m){if(m.querySelector('input:checked'))a++;if(m.querySelector('label.correct'))sc++;});
+ document.getElementById('scoreTally').textContent=sc+' / '+TOTAL;
+ document.getElementById('totalScore').textContent=sc+' / '+TOTAL;
+ document.getElementById('progressFill').style.width=(a/TOTAL*100)+'%';
+ document.getElementById('totalPercent').textContent=Math.round(a/TOTAL*100)+'% answered';
+}
+document.querySelectorAll('.ans').forEach(function(el){
+ el.addEventListener('input',function(){el.classList.remove('correct','incorrect');clearKey(el);update();});
+ el.addEventListener('keydown',function(e){if(e.key==='Enter')check(el.closest('.block').id.replace('section-',''));});
+});
+document.querySelectorAll('.mc input').forEach(function(i){i.addEventListener('change',function(){i.closest('.mc').querySelectorAll('label').forEach(function(l){l.classList.remove('correct','incorrect','reveal');});update();});});
+document.querySelectorAll('[data-check]').forEach(function(b){b.addEventListener('click',function(){check(b.dataset.check);});});
+document.querySelectorAll('[data-reset]').forEach(function(b){b.addEventListener('click',function(){reset(b.dataset.reset);});});
+document.getElementById('checkAllBtn').addEventListener('click',function(){for(var i=1;i<=N;i++)check('t'+i);document.getElementById('section-t1').scrollIntoView({behavior:'smooth'});});
+document.getElementById('resetAllBtn').addEventListener('click',function(){for(var i=1;i<=N;i++)reset('t'+i);});
+update();
+})();
+</script>
+<script>
+/* Progress saving: remembers answers on this device and restores them when the page is opened again. */
+(function(){
+  var KEY = 'ipp-save-v1:' + (location.pathname.split('/').pop() || 'page') + ':' + document.title;
+  var NP = 'ipp:' + KEY + ':';
+  var restoring = false, dirty = false, timer = null;
+  function qa(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+  var TEXT = 'input:not([type=radio]):not([type=checkbox]):not([type=button]):not([type=submit]):not([type=hidden]), textarea';
+  function texts(){ return qa(TEXT).filter(function(e){ return !e.closest('#ippBanner'); }); }
+  function radios(){ return qa('input[type=radio]'); }
+  function clozes(){ return qa('.cloze-opt'); }
+  function checks(){ return qa('[data-check],[data-check-mc]'); }
+  function tabs(){ return qa('.page-tab'); }
+  function passages(){ return qa('.passage'); }
+  function sig(){ return texts().length + '/' + radios().length + '/' + clozes().length + '/' + qa('.fill-blank').length + '/' + checks().length; }
+
+  function snapshot(){
+    var s = { t: Date.now(), g: sig(), v: {}, r: [], k: [], f: [], c: [], p: {}, tab: -1 };
+    texts().forEach(function(e, i){ if (e.value) s.v[i] = e.value; });
+    radios().forEach(function(e, i){ if (e.checked) s.r.push(i); });
+    clozes().forEach(function(e, i){ if (e.classList.contains('selected')) s.k.push(i); });
+    qa('.fill-blank.filled').forEach(function(b){ var id = b.getAttribute('data-bank-id'); if (id) s.f.push([b.id, id]); });
+    checks().forEach(function(b, i){ var sc = b.closest('section'); if (sc && sc.querySelector('.correct, .incorrect, .wrong')) s.c.push(i); });
+    passages().forEach(function(e, i){ if (e.querySelector('mark.user-highlight')) s.p[i] = e.innerHTML; });
+    tabs().forEach(function(t, i){ if (t.classList.contains('active')) s.tab = i; });
+    return s;
+  }
+
+  function restore(s){
+    if (!s || s.g !== sig()) return false;
+    restoring = true;
+    try {
+      if (s.tab >= 0) { var t = tabs()[s.tab]; if (t && !t.classList.contains('active')) t.click(); }
+      var T = texts();
+      Object.keys(s.v).forEach(function(i){ var e = T[i]; if (e) { e.value = s.v[i]; e.dispatchEvent(new Event('input', { bubbles: true })); } });
+      var R = radios(); s.r.forEach(function(i){ if (R[i]) R[i].click(); });
+      var C = clozes(); s.k.forEach(function(i){ if (C[i]) C[i].click(); });
+      s.f.forEach(function(p){
+        var b = document.getElementById(p[0]), w = document.getElementById(p[1]);
+        if (b && w && !b.classList.contains('filled')) { b.click(); w.click(); }
+      });
+      var P = passages(); Object.keys(s.p).forEach(function(i){ if (P[i]) P[i].innerHTML = s.p[i]; });
+      var K = checks(); s.c.forEach(function(i){ if (K[i]) K[i].click(); });
+    } catch (e) {}
+    restoring = false;
+    return true;
+  }
+
+  function parse(raw){ try { var s = JSON.parse(raw); if (s && s.g && s.v) return s; } catch (e) {} return null; }
+  function readAll(){
+    var out = [];
+    try { out.push(window.localStorage.getItem(KEY)); } catch (e) {}
+    try { out.push(window.sessionStorage.getItem(KEY)); } catch (e) {}
+    try { var n = window.name || ''; if (n.indexOf(NP) === 0) out.push(n.slice(NP.length)); } catch (e) {}
+    var best = null;
+    out.forEach(function(raw){ var s = raw ? parse(raw) : null; if (s && (!best || s.t > best.t)) best = s; });
+    return best;
+  }
+  function write(s){
+    var raw = JSON.stringify(s), ok = false;
+    try { window.localStorage.setItem(KEY, raw); ok = (window.localStorage.getItem(KEY) === raw); } catch (e) {}
+    try { window.sessionStorage.setItem(KEY, raw); } catch (e) {}
+    try { var n = window.name || ''; if (n === '' || n.indexOf(NP) === 0) window.name = NP + raw; } catch (e) {}
+    if (!ok) banner();
+  }
+
+  function enc(){ return btoa(unescape(encodeURIComponent(JSON.stringify(snapshot())))); }
+  function dec(c){ return parse(decodeURIComponent(escape(atob((c || '').replace(/\s+/g, ''))))); }
+  function banner(){
+    if (document.getElementById('ippBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'ippBanner';
+    b.style.cssText = 'background:#FFF1B8;border-bottom:3px solid #FFD530;padding:12px 18px;font-size:14px;line-height:1.5;font-family:inherit;color:#1A1A1A;';
+    b.innerHTML = '<b>Progress is not being saved automatically here.</b> This happens in some preview screens and private tabs. Open this page in Safari or Chrome to save automatically, or use a progress code:' +
+      '<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">' +
+      '<button type="button" id="ippCopy" style="padding:7px 12px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-weight:700;cursor:pointer;min-height:0">Get my code</button>' +
+      '<button type="button" id="ippRestore" style="padding:7px 12px;border:1.5px solid #1A1A1A;border-radius:6px;background:#fff;color:#1A1A1A;font-weight:700;cursor:pointer;min-height:0">Restore from code</button>' +
+      '<span id="ippMsg" style="font-weight:600"></span></div>' +
+      '<textarea id="ippBox" rows="2" placeholder="Your progress code appears here. To continue later, paste it here and press Restore." style="width:100%;margin-top:8px;box-sizing:border-box;font-size:12px;padding:6px;border:1.5px solid #bbb;border-radius:6px"></textarea>';
+    var sheet = document.querySelector('.sheet');
+    if (sheet) sheet.insertBefore(b, sheet.firstChild); else document.body.insertBefore(b, document.body.firstChild);
+    document.getElementById('ippCopy').addEventListener('click', function(){
+      var box = document.getElementById('ippBox'); box.value = enc(); box.focus(); box.select();
+      try { if (navigator.clipboard) navigator.clipboard.writeText(box.value); } catch (e) {}
+      document.getElementById('ippMsg').textContent = 'Copy this code and keep it.';
+    });
+    document.getElementById('ippRestore').addEventListener('click', function(){
+      var s = null; try { s = dec(document.getElementById('ippBox').value); } catch (e) {}
+      document.getElementById('ippMsg').textContent = (s && restore(s)) ? 'Progress restored.' : 'That code is not valid.';
+    });
+  }
+
+  function later(){
+    if (restoring) return;
+    dirty = true;
+    clearTimeout(timer);
+    timer = setTimeout(function(){ write(snapshot()); }, 80);
+  }
+  function flush(){ if (!restoring && dirty) write(snapshot()); }
+  ['input', 'change', 'click', 'keyup', 'mouseup', 'touchend'].forEach(function(ev){ document.addEventListener(ev, later, true); });
+  window.addEventListener('pagehide', flush);
+  window.addEventListener('beforeunload', flush);
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') flush(); });
+
+  var saved = readAll();
+  if (saved) restore(saved);
+  try { window.localStorage.setItem('__ipp_t', '1'); window.localStorage.removeItem('__ipp_t'); } catch (e) { banner(); }
+})();
+</script>
+</body>
+</html>
