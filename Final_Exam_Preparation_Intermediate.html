@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Final Exam preparation - Intermediate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#141416; --black-soft:#232327;
+    --yellow:#FFD530; --yellow-deep:#E7BC12;
+    --white:#FFFFFF; --paper:#F6F6F3; --panel:#FFFFFF;
+    --ink:#1B1B1D; --ink-soft:#5B5C60; --rule:#E4E3DC;
+    --good:#1E8F52; --good-bg:#E6F5EB;
+    --bad:#D1382F; --bad-bg:#FBEAE8;
+    --teal:#E7BC12; --teal-bg:#FBF3D5;
+    --plum:#FFD530; --plum-bg:#FBF3D5;
+    --rose:#D1477A; --rose-bg:#FBE7EF;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Public Sans', sans-serif; line-height:1.55; font-size:16px;
+    padding: clamp(16px,4vw,48px) clamp(12px,3vw,20px) 80px;
+    -webkit-text-size-adjust:100%;
+  }
+  .app{ max-width:820px; margin:0 auto; }
+
+  /* Page switcher */
+  .page-switcher{ display:flex; gap:10px; margin-bottom:16px; background:var(--black); border-radius:8px; padding:6px; }
+  .page-tab{ flex:1; font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; color:rgba(255,255,255,.6); background:transparent; border:none; border-radius:6px; padding:14px 10px; cursor:pointer; transition:background .15s, color .15s; }
+  .page-tab.active{ background:var(--yellow); color:var(--black); }
+  .page-tab:not(.active):hover{ color:var(--white); background:rgba(255,255,255,.08); }
+  .page-tab .tab-sub{ display:block; font-size:11px; font-weight:600; opacity:.75; margin-top:2px; }
+
+  .sheet{ max-width:780px; margin:0 auto; background:var(--panel); border-radius:6px; overflow:hidden; box-shadow: 0 1px 0 rgba(20,20,22,.04), 0 24px 48px -30px rgba(20,20,22,.35); }
+  .page{ display:none; }
+  .page.active{ display:block; }
+
+  .masthead{ background:var(--black); color:var(--white); padding: clamp(24px,5vw,40px) clamp(20px,5vw,44px) clamp(20px,4vw,26px); position:relative; overflow:hidden; }
+  .dot-motif{ position:absolute; top:20px; right:24px; display:grid; grid-template-columns: repeat(3,7px); gap:6px; opacity:.9; }
+  .dot-motif span{ width:7px; height:7px; border-radius:50%; background:var(--yellow); }
+  .dot-motif span:nth-child(5){ background:var(--white); }
+  .eyebrow-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:rgba(255,255,255,.6); margin-bottom:14px; padding-right:50px; }
+  .eyebrow-row .brand{ color:var(--yellow); font-weight:600; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,6vw,38px); line-height:1.1; margin:0 0 8px; letter-spacing:-.01em; color:var(--white); }
+  .sub{ font-size:clamp(13.5px,3vw,15px); color:rgba(255,255,255,.72); margin:0; max-width:58ch; }
+
+  .progress-bar{ position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:14px; padding:12px clamp(16px,5vw,44px); background:var(--black-soft); border-bottom:2px solid var(--yellow); font-size:12.5px; color:rgba(255,255,255,.65); }
+  .progress-track{ flex:1; height:6px; background:rgba(255,255,255,.16); border-radius:3px; overflow:hidden; }
+  .progress-fill{ height:100%; width:0%; background:var(--yellow); transition:width .35s ease; }
+  .score-tally{ font-variant-numeric:tabular-nums; color:var(--white); font-weight:700; white-space:nowrap; font-size:13px; }
+
+  .grammar-summary{ padding: clamp(26px,5.5vw,40px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); background:
+      radial-gradient(circle at 8% 0%, #fbf3d5 0%, var(--paper) 42%);
+    border-bottom:3px solid var(--black); position:relative; }
+  .gs-kicker{ display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--black); background:var(--yellow); padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .gs-title{ font-family:'Fraunces',serif; font-weight:700; font-size:clamp(24px,5.5vw,30px); margin:0 0 10px; letter-spacing:-.01em; }
+  .gs-intro{ font-size:14.5px; color:var(--ink-soft); max-width:62ch; margin:0 0 22px; }
+
+  .formula-card{ background:var(--black); border-radius:10px; padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,28px); margin-bottom:20px; position:relative; overflow:hidden; }
+  .formula-card::before{ content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px; background:var(--yellow); opacity:.14; border-radius:50%; }
+  .formula-label{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:10px; }
+  .formula-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-family:'JetBrains Mono', monospace; font-size:clamp(13px,3.2vw,15.5px); color:var(--white); }
+  .formula-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:6px; padding:6px 11px; white-space:nowrap; }
+  .formula-chip.accent{ background:var(--yellow); color:var(--black); border-color:var(--yellow); font-weight:700; }
+  .formula-arrow{ color:rgba(255,255,255,.4); font-size:15px; }
+  .formula-shorthand{ margin-top:12px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:rgba(255,255,255,.55); }
+  .formula-pattern{ padding:12px 0; border-bottom:1px solid rgba(255,255,255,.1); }
+  .formula-pattern:first-of-type{ padding-top:2px; }
+  .formula-pattern:last-of-type{ border-bottom:none; padding-bottom:2px; }
+  .formula-pattern-label{ font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:9px; }
+
+  .example-strip{ display:grid; gap:8px; margin-bottom:22px; }
+  .example-strip .ex-line{ font-size:13.5px; background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--yellow-deep); border-radius:0 6px 6px 0; padding:9px 14px; color:var(--ink); }
+  .example-strip .ex-line em{ font-style:normal; color:var(--ink-soft); }
+  .example-strip .ex-line.bad{ border-left-color:var(--bad); }
+  .example-strip .ex-line.good{ border-left-color:var(--yellow-deep); }
+
+  .gs-subhead{ font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin:22px 0 14px; display:flex; align-items:center; gap:8px; }
+  .gs-subhead::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--yellow-deep); }
+
+  .modal-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:8px; }
+  .modal-card{ background:var(--panel); border:1px solid var(--rule); border-radius:10px; padding:12px 14px; }
+  .modal-term{ font-family:'JetBrains Mono', monospace; font-weight:700; font-size:12.5px; color:var(--ink); margin-bottom:5px; }
+  .modal-meaning{ font-size:12.5px; color:var(--ink-soft); }
+
+  /* Detailed grammar reference blocks (color-scoped to the platform's own palette: teal for RS, plum for RQ) */
+  .rs-summary{ --gx:var(--teal); --gx-bg:var(--teal-bg); --gx-deep:#8A6710; }
+  .rq-summary{ --gx:var(--plum); --gx-bg:var(--plum-bg); --gx-deep:#8A6710; }
+
+  .gx-table-wrap{ border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:22px; box-shadow:0 1px 0 rgba(20,20,22,.03); }
+  .gx-table{ width:100%; border-collapse:collapse; }
+  .gx-table thead th{ background:var(--black); color:var(--gx); text-align:left; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:11px 14px; border-bottom:2px solid var(--gx); }
+  .gx-table tbody td{ padding:10px 14px; font-size:13px; color:var(--ink); border-top:1px solid var(--rule); background:var(--panel); vertical-align:top; }
+  .gx-table tbody tr:nth-child(even) td{ background:#FAFAF9; }
+  .gx-table .cell-main{ font-weight:600; display:block; }
+  .gx-table .cell-sub{ display:block; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:2px; }
+
+  .gs-subhead.gx-subhead::before{ background:var(--gx); }
+
+  .card-grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:8px; }
+  .card-grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:8px; }
+  @media (max-width:640px){ .card-grid-2, .card-grid-3{ grid-template-columns:1fr; } }
+
+  .ex-card{ background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--gx); border-radius:0 8px 8px 0; padding:13px 14px; }
+  .ex-pill{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:600; color:var(--gx-deep); background:var(--gx-bg); padding:3px 9px; border-radius:5px; margin-bottom:9px; }
+  .ex-direct{ font-size:12.5px; color:var(--ink-soft); margin:0 0 4px; }
+  .ex-reported{ font-size:12.5px; color:var(--ink); margin:0; }
+  .ex-card b{ color:var(--ink); font-weight:700; }
+
+  .rule-card{ background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--gx); border-radius:0 8px 8px 0; padding:15px 16px; margin-bottom:12px; }
+  .rc-formula{ font-family:'JetBrains Mono',monospace; font-size:11.5px; background:#F4F4F1; border-radius:6px; padding:8px 11px; margin:9px 0; color:var(--ink); line-height:1.6; }
+  .rc-line{ font-size:12.5px; margin:5px 0; color:var(--ink); }
+  .rc-line b{ color:var(--gx-deep); }
+  .rc-wrong{ color:var(--bad); font-size:12.5px; margin:5px 0; }
+  .rc-right{ color:#8A6710; font-size:12.5px; margin:5px 0; }
+
+  .jump-nav{ display:flex; gap:8px; overflow-x:auto; padding: 10px clamp(16px,5vw,44px); background:var(--panel); border-bottom:1px solid var(--rule); -webkit-overflow-scrolling:touch; }
+  .jump-nav a{ flex:0 0 auto; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; padding:7px 12px; border-radius:20px; border:1.5px solid var(--rule); white-space:nowrap; }
+  .jump-nav a:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  section.block{ padding: clamp(22px,5vw,34px) clamp(18px,5vw,44px); border-bottom:1px solid var(--rule); }
+  section.block:last-of-type{ border-bottom:none; }
+  .block-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:20px; flex-wrap:wrap; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(20px,4vw,24px); margin:0; position:relative; padding-bottom:8px; }
+  h2::after{ content:""; position:absolute; left:0; bottom:0; width:34px; height:4px; background:var(--yellow); border-radius:2px; }
+  .block-count{ font-size:12.5px; color:var(--ink-soft); white-space:nowrap; padding-bottom:10px; }
+
+  .q-item{ padding:16px 0; border-bottom:1px dashed var(--rule); }
+  .q-item:last-child{ border-bottom:none; }
+  .g-num{ font-family:'Fraunces',serif; color:var(--ink); background:var(--yellow); display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; font-size:13px; font-weight:700; margin-right:8px; vertical-align:middle; flex:0 0 auto; }
+  .q-context{ font-size:13.5px; color:var(--ink-soft); margin-bottom:6px; display:flex; align-items:flex-start; gap:2px; }
+  .ctx-text{ font-style:italic; }
+  .g-sentence{ font-size:14.5px; line-height:2.1; color:var(--ink); padding-left:30px; }
+
+  .blank-input{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:600; color:var(--ink); background:var(--paper); border:none; border-bottom:2px solid var(--rule); border-radius:3px 3px 0 0; padding:4px 8px; min-width:220px; max-width:100%; text-align:center; outline:none; transition:border-color .15s, background .15s; }
+  .blank-input:focus{ border-bottom-color:var(--black); background:var(--white); }
+  .q-item.correct .blank-input{ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+  .q-item.incorrect .blank-input.wrong{ border-bottom-color:var(--bad); background:var(--bad-bg); color:var(--bad); }
+  .q-item.incorrect .blank-input:not(.wrong){ border-bottom-color:var(--good); background:var(--good-bg); color:var(--good); }
+
+  .g-feedback{ font-size:13px; margin-top:10px; color:var(--ink-soft); min-height:1px; padding-left:30px; }
+  .g-feedback.correct{ color:var(--good); font-weight:600; }
+  .g-feedback.incorrect{ color:var(--bad); font-weight:600; }
+  .g-feedback strong{ color:var(--ink); font-weight:700; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  button{ font-family:'Public Sans',sans-serif; font-size:14px; font-weight:700; border-radius:5px; padding:12px 20px; cursor:pointer; border:1.5px solid transparent; transition:transform .08s, opacity .15s, background .15s; min-height:44px; }
+  button:active{ transform:translateY(1px); }
+  .btn-check{ background:var(--yellow); color:var(--black); }
+  .btn-check:hover{ background:var(--yellow-deep); }
+  .btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--rule); }
+  .btn-ghost:hover{ color:var(--ink); border-color:var(--ink-soft); }
+
+  .summary{ padding: clamp(26px,5vw,34px) clamp(18px,5vw,44px) clamp(30px,6vw,44px); text-align:center; background:var(--black); color:var(--white); }
+  .summary-score{ font-family:'Fraunces',serif; font-size:clamp(34px,8vw,46px); font-weight:600; margin:6px 0 4px; color:var(--yellow); }
+  .summary-label{ color:rgba(255,255,255,.6); font-size:13px; margin-bottom:20px; }
+  .summary .controls{ justify-content:center; }
+  .summary .btn-ghost{ color:rgba(255,255,255,.7); border-color:rgba(255,255,255,.28); }
+  .summary .btn-ghost:hover{ color:var(--white); border-color:var(--white); }
+
+  footer.note{ max-width:780px; margin:18px auto 0; font-size:12px; color:var(--ink-soft); text-align:center; padding:0 20px; }
+
+  @media (max-width:620px){
+    .controls{ flex-direction:column; }
+    .controls button{ width:100%; }
+    .blank-input{ min-width:0; width:100%; margin:4px 0; }
+    .g-sentence{ padding-left:0; display:block; }
+    .g-feedback{ padding-left:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+  .block-note{ margin:-6px 0 8px; color:var(--ink-soft); font-size:14px; }
+  .block-note em{ color:var(--ink); }
+  .short-input{ min-width:120px; }
+  @media (max-width:620px){ .page-tab{ font-size:12.5px; padding:10px 4px; } .page-tab .tab-sub{ font-size:10.5px; } }
+
+  .savebox{ max-width:780px; margin:18px auto 0; padding:14px 18px; background:var(--panel); border:1px solid var(--rule); border-radius:8px; font-size:13px; color:var(--ink-soft); }
+  .savebox .save-status{ font-weight:700; margin-bottom:8px; }
+  .savebox .save-status.ok{ color:var(--good); }
+  .savebox .save-status.warn{ color:var(--bad); }
+  .savebox textarea{ width:100%; min-height:64px; margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:11px; border:1.5px solid var(--rule); border-radius:5px; padding:8px; }
+  .savebox .controls{ margin-top:10px; }
+  .savebox summary{ cursor:pointer; font-weight:700; color:var(--ink); }
+</style>
+</head>
+<body>
+<noscript>
+  <div style="background:#D1382F; color:#fff; text-align:center; padding:16px 18px; font-family:'Public Sans', sans-serif; font-size:14px; font-weight:700; line-height:1.5;">
+    ⚠ This page can't check your answers here — it needs to be opened in Safari or Chrome, not a file preview screen.<br>
+    <span style="font-weight:500;">Tap the Share icon and choose "Open in Safari," or ask your teacher for the live link.</span>
+  </div>
+</noscript>
+<div class="app">
+  <div class="page-switcher">
+    <button class="page-tab active" data-target="page-iu">If / Unless<span class="tab-sub">12 items</span></button>
+<button class="page-tab" data-target="page-pv">Passive Voice<span class="tab-sub">12 items</span></button>
+<button class="page-tab" data-target="page-rq">Reported Questions<span class="tab-sub">16 items</span></button>
+<button class="page-tab" data-target="page-cf">Comparative Forms<span class="tab-sub">9 items</span></button>
+  </div>
+  <div class="page active" id="page-iu">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div>
+        <h1>Final Exam preparation – Intermediate</h1>
+        <p class="sub"><b style="color:var(--yellow)">If / Unless.</b> Complete the sentences with <b>if / unless</b> or <b>will / won’t</b>. Check your answers section by section.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-iu"></div></div>
+        <span class="score-tally" id="scoreTally-iu">0 / 12</span>
+      </div>
+      <div class="jump-nav"><a href="#section-iu-e1">Exercise 1</a></div>
+  <section class="block" id="section-iu-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">12 items</span></div>
+    <p class="block-note">Complete the sentences with <b>if / unless</b> or <b>will / won’t</b>.</p>
+    <div id="list-iu-e1">
+      <div class="q-item" id="item-iu-e1-0" data-answer1="won’t">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">1</span>She <input type="text" class="blank-input short-input" id="in1-iu-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> make any progress unless she tries hard.</div>
+        <div class="g-feedback" id="fb-iu-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-1" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">2</span>The problem with the new virus won’t disappear <input type="text" class="blank-input short-input" id="in1-iu-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> doctors find the cure.</div>
+        <div class="g-feedback" id="fb-iu-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-2" data-answer1="if">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">3</span>In Toyota Corporation, you are paid extra money <input type="text" class="blank-input short-input" id="in1-iu-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you work longer hours.</div>
+        <div class="g-feedback" id="fb-iu-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-3" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">4</span>She won’t find a well-paid job <input type="text" class="blank-input short-input" id="in1-iu-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> she improves her English.</div>
+        <div class="g-feedback" id="fb-iu-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-4" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">5</span>We won’t be able to maintain good relationship with them <input type="text" class="blank-input short-input" id="in1-iu-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> we call them and apologize.</div>
+        <div class="g-feedback" id="fb-iu-e1-4"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-5" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">6</span>You won’t become a good specialist <input type="text" class="blank-input short-input" id="in1-iu-e1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> you study very hard.</div>
+        <div class="g-feedback" id="fb-iu-e1-5"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-6" data-answer1="won’t">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">7</span>Unless you learn all these words, you <input type="text" class="blank-input short-input" id="in1-iu-e1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> be allowed to take an exam.</div>
+        <div class="g-feedback" id="fb-iu-e1-6"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-7" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">8</span>This government won’t improve <input type="text" class="blank-input short-input" id="in1-iu-e1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> healthcare is financially supported.</div>
+        <div class="g-feedback" id="fb-iu-e1-7"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-8" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">9</span>Many people visit their families over the New Year’s holiday <input type="text" class="blank-input short-input" id="in1-iu-e1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> they have to work.</div>
+        <div class="g-feedback" id="fb-iu-e1-8"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-9" data-answer1="will">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">10</span>It <input type="text" class="blank-input short-input" id="in1-iu-e1-9" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> cause huge environmental problems in the future if we continue cutting trees.</div>
+        <div class="g-feedback" id="fb-iu-e1-9"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-10" data-answer1="won’t">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">11</span>Unless the government solves the problem of corruption, the quality of education <input type="text" class="blank-input short-input" id="in1-iu-e1-10" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> get better.</div>
+        <div class="g-feedback" id="fb-iu-e1-10"></div>
+      </div>
+      <div class="q-item" id="item-iu-e1-11" data-answer1="unless">
+        <div class="g-sentence" style="padding-left:0;"><span class="g-num">12</span>The problem with local infrastructure will remain the same <input type="text" class="blank-input short-input" id="in1-iu-e1-11" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> huge investments are made.</div>
+        <div class="g-feedback" id="fb-iu-e1-11"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="iu-e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="iu-e1">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-iu">
+        <div class="summary-label">Your score · If / Unless</div>
+        <div class="summary-score" id="totalScore-iu">0 / 12</div>
+        <div class="summary-label" id="totalPercent-iu">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-iu">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-iu">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page" id="page-pv">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div>
+        <h1>Final Exam preparation – Intermediate</h1>
+        <p class="sub"><b style="color:var(--yellow)">Passive Voice.</b> Complete the sentences so that the second sentence has the same meaning as the first. Use the passive form. Check your answers section by section.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-pv"></div></div>
+        <span class="score-tally" id="scoreTally-pv">0 / 12</span>
+      </div>
+      <div class="jump-nav"><a href="#section-pv-e1">Exercise 1</a><a href="#section-pv-e2">Exercise 2</a></div>
+  <section class="block" id="section-pv-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">8 items</span></div>
+    <p class="block-note">Complete the sentences so that the second sentence has the same meaning as the first. Use the <b>passive</b> form.<br><em>e.g. People can use Click to transfer money. → Click can be used to transfer money.</em></p>
+    <div id="list-pv-e1">
+      <div class="q-item" id="item-pv-e1-0" data-answer1="were written">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">J.K. Rowling wrote the books in a café near her apartment.</span></div>
+        <div class="g-sentence">The books <input type="text" class="blank-input" id="in1-pv-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by J.K. Rowling in a café near her apartment.</div>
+        <div class="g-feedback" id="fb-pv-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-1" data-answer1="was created">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">Winklevoss brothers created the idea of Facebook.</span></div>
+        <div class="g-sentence">The idea of Facebook <input type="text" class="blank-input" id="in1-pv-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by Winklevoss brothers.</div>
+        <div class="g-feedback" id="fb-pv-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-2" data-answer1="are created">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Young entrepreneurs create various new types of business year by year.</span></div>
+        <div class="g-sentence">Various new types of business <input type="text" class="blank-input" id="in1-pv-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by young entrepreneurs year by year.</div>
+        <div class="g-feedback" id="fb-pv-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-3" data-answer1="is provided">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">The government provides cheap accommodation to poor families every year.</span></div>
+        <div class="g-sentence">Cheap accommodation <input type="text" class="blank-input" id="in1-pv-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the government to poor families every year.</div>
+        <div class="g-feedback" id="fb-pv-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-4" data-answer1="must be announced">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">The university must announce all the exam results soon.</span></div>
+        <div class="g-sentence">All the exam results <input type="text" class="blank-input" id="in1-pv-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> soon.</div>
+        <div class="g-feedback" id="fb-pv-e1-4"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-5" data-answer1="will be hired">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">In the future, most companies will hire employees based on their creativity rather than knowledge.</span></div>
+        <div class="g-sentence">In the future, employees <input type="text" class="blank-input" id="in1-pv-e1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by most companies based on their creativity rather than knowledge.</div>
+        <div class="g-feedback" id="fb-pv-e1-5"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-6" data-answer1="will be affected">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">It is not certain if this economic collapse will affect any more countries.</span></div>
+        <div class="g-sentence">It is not certain if any more countries <input type="text" class="blank-input" id="in1-pv-e1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by this economic collapse.</div>
+        <div class="g-feedback" id="fb-pv-e1-6"></div>
+      </div>
+      <div class="q-item" id="item-pv-e1-7" data-answer1="are opened">
+        <div class="q-context"><span class="g-num">8</span><span class="ctx-text">People open new cafés all the time.</span></div>
+        <div class="g-sentence">New cafés <input type="text" class="blank-input" id="in1-pv-e1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> all the time.</div>
+        <div class="g-feedback" id="fb-pv-e1-7"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="pv-e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="pv-e1">Clear section</button>
+    </div>
+  </section>
+
+  <section class="block" id="section-pv-e2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">4 items</span></div>
+    <p class="block-note"><b>Extra practice</b> (not from the exam): the passive with different tenses and modals. Use the <b>passive</b> form.</p>
+    <div id="list-pv-e2">
+      <div class="q-item" id="item-pv-e2-0" data-answer1="has been launched">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">The company has launched a new app.</span></div>
+        <div class="g-sentence">A new app <input type="text" class="blank-input" id="in1-pv-e2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> by the company.</div>
+        <div class="g-feedback" id="fb-pv-e2-0"></div>
+      </div>
+      <div class="q-item" id="item-pv-e2-1" data-answer1="is being built">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">They are building a new bridge in the city centre.</span></div>
+        <div class="g-sentence">A new bridge <input type="text" class="blank-input" id="in1-pv-e2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> in the city centre.</div>
+        <div class="g-feedback" id="fb-pv-e2-1"></div>
+      </div>
+      <div class="q-item" id="item-pv-e2-2" data-answer1="was stolen">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Someone stole my wallet yesterday.</span></div>
+        <div class="g-sentence">My wallet <input type="text" class="blank-input" id="in1-pv-e2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> yesterday.</div>
+        <div class="g-feedback" id="fb-pv-e2-2"></div>
+      </div>
+      <div class="q-item" id="item-pv-e2-3" data-answer1="should be sent">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">You should send the documents before Friday.</span></div>
+        <div class="g-sentence">The documents <input type="text" class="blank-input" id="in1-pv-e2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> before Friday.</div>
+        <div class="g-feedback" id="fb-pv-e2-3"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="pv-e2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="pv-e2">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-pv">
+        <div class="summary-label">Your score · Passive Voice</div>
+        <div class="summary-score" id="totalScore-pv">0 / 12</div>
+        <div class="summary-label" id="totalPercent-pv">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-pv">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-pv">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page" id="page-rq">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div>
+        <h1>Final Exam preparation – Intermediate</h1>
+        <p class="sub"><b style="color:var(--yellow)">Reported Questions.</b> Rewrite each direct question as a reported question. Check your answers section by section.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-rq"></div></div>
+        <span class="score-tally" id="scoreTally-rq">0 / 16</span>
+      </div>
+      <div class="jump-nav"><a href="#section-rq-e1">Exercise 1</a><a href="#section-rq-e2">Exercise 2</a></div>
+  <section class="block" id="section-rq-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">9 items</span></div>
+    <p class="block-note">Yes/No questions. Rewrite each question as a <b>reported question</b>.<br><em>e.g. “Where did you put the files?” → She asked him where he had put the files.</em></p>
+    <div id="list-rq-e1">
+      <div class="q-item" id="item-rq-e1-0" data-answer1="if schoolchildren liked reading novels" data-answer2="whether schoolchildren liked reading novels" data-alt="if the schoolchildren liked reading novels|whether the schoolchildren liked reading novels">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“Do schoolchildren like reading novels?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-1" data-answer1="if children enjoyed watching cartoons" data-answer2="whether children enjoyed watching cartoons" data-alt="if the children enjoyed watching cartoons|whether the children enjoyed watching cartoons">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“Do children enjoy watching cartoons?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-2" data-answer1="if sellers had sold all the vegetables" data-answer2="whether sellers had sold all the vegetables" data-alt="if the sellers had sold all the vegetables|whether the sellers had sold all the vegetables">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Have sellers sold all the vegetables?”</span></div>
+        <div class="g-sentence">She asked her <input type="text" class="blank-input" id="in1-rq-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-3" data-answer1="if students had finished the coursework" data-answer2="whether students had finished the coursework" data-alt="if the students had finished the coursework|whether the students had finished the coursework">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“Have students finished the coursework?”</span></div>
+        <div class="g-sentence">She asked the teacher <input type="text" class="blank-input" id="in1-rq-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-4" data-answer1="if the mechanic had finished fixing the car" data-answer2="whether the mechanic had finished fixing the car">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“Has the mechanic finished fixing the car?” – his wife asked.</span></div>
+        <div class="g-sentence">She asked her husband <input type="text" class="blank-input" id="in1-rq-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-5" data-answer1="if Maria had done the washing-up" data-answer2="whether Maria had done the washing-up">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Did Maria do the washing-up?”</span></div>
+        <div class="g-sentence">He asked me <input type="text" class="blank-input" id="in1-rq-e1-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-6" data-answer1="if Jack had seen the news the day before" data-answer2="whether Jack had seen the news the day before" data-alt="if Jack had seen the news the previous day|whether Jack had seen the news the previous day">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Did Jack see the news yesterday?”</span></div>
+        <div class="g-sentence">They asked her <input type="text" class="blank-input" id="in1-rq-e1-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-6"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-7" data-answer1="if they had heard the news about John" data-answer2="whether they had heard the news about John">
+        <div class="q-context"><span class="g-num">8</span><span class="ctx-text">“Did they hear the news about John?”</span></div>
+        <div class="g-sentence">Alex asked us <input type="text" class="blank-input" id="in1-rq-e1-7" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-7"></div>
+      </div>
+      <div class="q-item" id="item-rq-e1-8" data-answer1="if they had taken part in the conference the day before" data-answer2="whether they had taken part in the conference the day before" data-alt="if they had taken part in the conference the previous day|whether they had taken part in the conference the previous day">
+        <div class="q-context"><span class="g-num">9</span><span class="ctx-text">“Did you take part in the conference yesterday?” – the professor asked students.</span></div>
+        <div class="g-sentence">He asked students <input type="text" class="blank-input" id="in1-rq-e1-8" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e1-8"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="rq-e1">Clear section</button>
+    </div>
+  </section>
+  <section class="block" id="section-rq-e2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">7 items</span></div>
+    <p class="block-note">Wh- questions. Rewrite each question as a <b>reported question</b>.</p>
+    <div id="list-rq-e2">
+      <div class="q-item" id="item-rq-e2-0" data-answer1="what critics thought about the documentaries" data-alt="what the critics thought about the documentaries">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">“What do critics think about the documentaries?”</span></div>
+        <div class="g-sentence">He asked us <input type="text" class="blank-input" id="in1-rq-e2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-0"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-1" data-answer1="what graduates wanted to do after university" data-alt="what the graduates wanted to do after university">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">“What do graduates want to do after university?”</span></div>
+        <div class="g-sentence">He asked the professor <input type="text" class="blank-input" id="in1-rq-e2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-1"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-2" data-answer1="where the couple wanted to live after marriage">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">“Where does the couple want to live after marriage?”</span></div>
+        <div class="g-sentence">They asked us <input type="text" class="blank-input" id="in1-rq-e2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-2"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-3" data-answer1="what employees were going to do in their new jobs" data-alt="what the employees were going to do in their new jobs">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">“What are employees going to do in their new jobs?”</span></div>
+        <div class="g-sentence">She asked the HR manager <input type="text" class="blank-input" id="in1-rq-e2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-3"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-4" data-answer1="when Karl was going to call back" data-alt="when Karl would call back">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">“When is Karl going to call back?”</span></div>
+        <div class="g-sentence">She asked him <input type="text" class="blank-input" id="in1-rq-e2-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-4"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-5" data-answer1="where the Smiths were going to fly the following day" data-alt="where the Smiths were going to fly the next day">
+        <div class="q-context"><span class="g-num">6</span><span class="ctx-text">“Where are the Smiths going to fly tomorrow?”</span></div>
+        <div class="g-sentence">She asked them <input type="text" class="blank-input" id="in1-rq-e2-5" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-5"></div>
+      </div>
+      <div class="q-item" id="item-rq-e2-6" data-answer1="which country workers were going to travel the following year" data-alt="which country workers were going to travel the next year|which country the workers were going to travel the following year|which country the workers were going to travel the next year">
+        <div class="q-context"><span class="g-num">7</span><span class="ctx-text">“Which country are workers going to travel next year?” – my friend asked me.</span></div>
+        <div class="g-sentence">My friend asked me <input type="text" class="blank-input" id="in1-rq-e2-6" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> .</div>
+        <div class="g-feedback" id="fb-rq-e2-6"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="rq-e2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="rq-e2">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-rq">
+        <div class="summary-label">Your score · Reported Questions</div>
+        <div class="summary-score" id="totalScore-rq">0 / 16</div>
+        <div class="summary-label" id="totalPercent-rq">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-rq">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-rq">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page" id="page-cf">
+    <div class="sheet">
+      <div class="masthead">
+        <div class="dot-motif"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="eyebrow-row"><span><span class="brand">Inter Nation</span> · English Practice Sheet</span></div>
+        <h1>Final Exam preparation – Intermediate</h1>
+        <p class="sub"><b style="color:var(--yellow)">Comparative Forms.</b> Complete the sentences so that the second sentence has the same meaning as the first. Use the words in brackets. Check your answers section by section.</p>
+      </div>
+      <div class="progress-bar">
+        <span>Progress</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill-cf"></div></div>
+        <span class="score-tally" id="scoreTally-cf">0 / 9</span>
+      </div>
+      <div class="jump-nav"><a href="#section-cf-e1">Exercise 1</a><a href="#section-cf-e2">Exercise 2</a></div>
+  <section class="block" id="section-cf-e1">
+    <div class="block-head"><h2>Exercise 1</h2><span class="block-count">5 items</span></div>
+    <p class="block-note">Complete the sentences so that the second sentence has the same meaning as the first. Use the words in brackets.<br><em>e.g. I am less competent than my classmate. → My classmate is more competent than me. (more)</em></p>
+    <div id="list-cf-e1">
+      <div class="q-item" id="item-cf-e1-0" data-answer1="is smarter than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">Boris isn’t as smart as Kevin.</span></div>
+        <div class="g-sentence">Kevin <input type="text" class="blank-input" id="in1-cf-e1-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Boris. (than)</div>
+        <div class="g-feedback" id="fb-cf-e1-0"></div>
+      </div>
+      <div class="q-item" id="item-cf-e1-1" data-answer1="is less beautiful than">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">I think Los Angeles is more beautiful than New York.</span></div>
+        <div class="g-sentence">I think New York <input type="text" class="blank-input" id="in1-cf-e1-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Los Angeles. (less)</div>
+        <div class="g-feedback" id="fb-cf-e1-1"></div>
+      </div>
+      <div class="q-item" id="item-cf-e1-2" data-answer1="is just as expensive as">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Las Vegas and San Francisco are both very expensive.</span></div>
+        <div class="g-sentence">Las Vegas <input type="text" class="blank-input" id="in1-cf-e1-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> San Francisco. (just)</div>
+        <div class="g-feedback" id="fb-cf-e1-2"></div>
+      </div>
+      <div class="q-item" id="item-cf-e1-3" data-answer1="are not as profitable as">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">European companies are less profitable than Chinese companies.</span></div>
+        <div class="g-sentence">European companies <input type="text" class="blank-input" id="in1-cf-e1-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Chinese companies. (not/as)</div>
+        <div class="g-feedback" id="fb-cf-e1-3"></div>
+      </div>
+      <div class="q-item" id="item-cf-e1-4" data-answer1="is a lot better than">
+        <div class="q-context"><span class="g-num">5</span><span class="ctx-text">My new house is far better than the old one.</span></div>
+        <div class="g-sentence">My new house <input type="text" class="blank-input" id="in1-cf-e1-4" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> the old one. (a lot)</div>
+        <div class="g-feedback" id="fb-cf-e1-4"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="cf-e1">Check Exercise 1</button>
+      <button class="btn-ghost" data-reset="cf-e1">Clear section</button>
+    </div>
+  </section>
+
+        <section class="block" id="section-cf-e2">
+    <div class="block-head"><h2>Exercise 2</h2><span class="block-count">4 items</span></div>
+    <p class="block-note">Complete the sentences so that the second sentence has the same meaning as the first. Use the words in brackets.</p>
+    <div id="list-cf-e2">
+      <div class="q-item" id="item-cf-e2-0" data-answer1="is taller than">
+        <div class="q-context"><span class="g-num">1</span><span class="ctx-text">Michael isn’t as tall as Joe.</span></div>
+        <div class="g-sentence">Joe <input type="text" class="blank-input" id="in1-cf-e2-0" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> Michael. (taller)</div>
+        <div class="g-feedback" id="fb-cf-e2-0"></div>
+      </div>
+      <div class="q-item" id="item-cf-e2-1" data-answer1="are just as important">
+        <div class="q-context"><span class="g-num">2</span><span class="ctx-text">Talents and skills are equally important.</span></div>
+        <div class="g-sentence">Talents <input type="text" class="blank-input" id="in1-cf-e2-1" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> as skills. (just)</div>
+        <div class="g-feedback" id="fb-cf-e2-1"></div>
+      </div>
+      <div class="q-item" id="item-cf-e2-2" data-answer1="are not as dangerous">
+        <div class="q-context"><span class="g-num">3</span><span class="ctx-text">Some animals are less dangerous than others.</span></div>
+        <div class="g-sentence">Some animals <input type="text" class="blank-input" id="in1-cf-e2-2" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> as others. (as)</div>
+        <div class="g-feedback" id="fb-cf-e2-2"></div>
+      </div>
+      <div class="q-item" id="item-cf-e2-3" data-answer1="is a lot better">
+        <div class="q-context"><span class="g-num">4</span><span class="ctx-text">My new laptop is far better than the old one.</span></div>
+        <div class="g-sentence">My new laptop <input type="text" class="blank-input" id="in1-cf-e2-3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="…"> than the old one. (a lot)</div>
+        <div class="g-feedback" id="fb-cf-e2-3"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn-check" data-check="cf-e2">Check Exercise 2</button>
+      <button class="btn-ghost" data-reset="cf-e2">Clear section</button>
+    </div>
+  </section>
+
+      <div class="summary" id="summary-cf">
+        <div class="summary-label">Your score · Comparative Forms</div>
+        <div class="summary-score" id="totalScore-cf">0 / 9</div>
+        <div class="summary-label" id="totalPercent-cf">0% answered</div>
+        <div class="controls">
+          <button class="btn-check" id="checkAllBtn-cf">Check everything</button>
+          <button class="btn-ghost" id="resetAllBtn-cf">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="savebox">
+  <div class="save-status" id="saveStatus">Saving…</div>
+  <details>
+    <summary>Backup / restore progress</summary>
+    <p>Your answers are saved automatically in this browser. If you switch phones or browsers, copy your progress code and paste it there.</p>
+    <div class="controls">
+      <button class="btn-check" id="exportBtn">Copy my progress code</button>
+      <button class="btn-ghost" id="importBtn">Restore from code</button>
+    </div>
+    <textarea id="codeBox" placeholder="Progress code appears here / paste a code to restore"></textarea>
+  </details>
+</div>
+<footer class="note">Final Exam preparation – Intermediate. Answers are checked against one accepted wording (yes/no reported questions accept both <i>if</i> and <i>whether</i>). If you think a different answer should also count, ask your teacher.<br><span style="opacity:.8;">If the fields don't respond, open this page in Safari or Chrome (Share → Open in Browser) rather than a file preview screen.</span></footer>
+<script>
+(function(){
+  var KEY = 'internation_final_exam_intermediate_v1';
+  var storageOK = true;
+  var state = { tab: 'page-iu', a: {} };
+
+  function readStore(){
+    try {
+      var r = localStorage.getItem(KEY);
+      return r ? JSON.parse(r) : null;
+    } catch(e){ storageOK = false; return null; }
+  }
+  function setStatus(){
+    var el = document.getElementById('saveStatus');
+    if (!el) return;
+    if (storageOK) { el.textContent = '✓ Progress is saved automatically on this device'; el.className = 'save-status ok'; }
+    else { el.textContent = '⚠ Auto-save is blocked in this view. Open the file in Safari/Chrome, or use “Copy my progress code” below.'; el.className = 'save-status warn'; }
+  }
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); storageOK = true; }
+    catch(e){ storageOK = false; }
+    setStatus();
+  }
+  var saved = readStore();
+  if (saved && saved.a) state = saved;
+
+  // ---------- answer checking ----------
+  function normalize(s){
+    s = s.toLowerCase().replace(/['’‘`]/g, "'");
+    s = s.replace(/\bwon't\b|\bwont\b/g, "will not");
+    s = s.replace(/\bcan't\b|\bcant\b/g, "can not");
+    s = s.replace(/\bshan't\b/g, "shall not");
+    s = s.replace(/n't\b/g, " not");
+    s = s.replace(/'ll\b/g, " will");
+    s = s.replace(/'ve\b/g, " have");
+    s = s.replace(/'re\b/g, " are");
+    s = s.replace(/'m\b/g, " am");
+    s = s.replace(/'s (been|being)\b/g, function(m, w){ return (w === 'been' ? ' has ' : ' is ') + w; });
+    return s.replace(/[-–—]/g, " ")
+            .replace(/[^\w\s]/g, "")
+            .replace(/\s+/g, " ")
+            .trim();
+  }
+  function isMatch(value, item){
+    var nv = normalize(value);
+    var list = [item.getAttribute('data-answer1') || ''];
+    var a2 = item.getAttribute('data-answer2'); if (a2) list.push(a2);
+    var alt = item.getAttribute('data-alt'); if (alt) list = list.concat(alt.split('|'));
+    for (var i = 0; i < list.length; i++) if (nv === normalize(list[i])) return true;
+    return false;
+  }
+  function modelAnswerText(item){
+    var a1 = item.getAttribute('data-answer1') || '';
+    var a2 = item.getAttribute('data-answer2');
+    return a2 ? (a1 + ' <span style="opacity:.6;">(or ' + a2 + ')</span>') : a1;
+  }
+
+  function qidOf(item){ return item.id.replace('item-',''); }
+  function suffixOf(item){ return item.id.split('-')[1]; }
+
+  function clearItemUI(item){
+    var qid = qidOf(item);
+    item.classList.remove('correct','incorrect');
+    var in1 = document.getElementById('in1-' + qid);
+    if (in1) in1.classList.remove('wrong');
+    var fb = document.getElementById('fb-' + qid);
+    if (fb) { fb.textContent = ''; fb.className = 'g-feedback'; }
+  }
+
+  // Check one item; returns nothing, updates UI + state
+  function checkItem(item){
+    var qid = qidOf(item);
+    var in1 = document.getElementById('in1-' + qid);
+    var fb = document.getElementById('fb-' + qid);
+    clearItemUI(item);
+    var v = in1 ? in1.value.trim() : '';
+    if (!v) { if (state.a[qid]) state.a[qid].c = 0; return; }
+    state.a[qid] = { v: in1.value, c: 1 };
+    if (isMatch(v, item)) {
+      item.classList.add('correct');
+      if (fb) { fb.innerHTML = 'Correct.'; fb.className = 'g-feedback correct'; }
+    } else {
+      item.classList.add('incorrect');
+      in1.classList.add('wrong');
+      if (fb) { fb.innerHTML = 'Model answer: <strong>' + modelAnswerText(item) + '</strong>'; fb.className = 'g-feedback incorrect'; }
+    }
+  }
+
+  function updateScore(suffix){
+    var items = document.querySelectorAll('#page-' + suffix + ' .q-item');
+    var total = items.length, answered = 0, correct = 0;
+    items.forEach(function(item){
+      var in1 = document.getElementById('in1-' + qidOf(item));
+      if (in1 && in1.value.trim()) answered++;
+      if (item.classList.contains('correct')) correct++;   // only counts checked answers
+    });
+    var set = function(id, txt){ var e = document.getElementById(id + '-' + suffix); if (e) e.textContent = txt; };
+    set('scoreTally', correct + ' / ' + total);
+    set('totalScore', correct + ' / ' + total);
+    set('totalPercent', Math.round(answered / total * 100) + '% answered');
+    var pf = document.getElementById('progressFill-' + suffix);
+    if (pf) pf.style.width = (answered / total * 100) + '%';
+  }
+
+  function checkGroup(gid){
+    var suffix = gid.split('-')[0];
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(checkItem);
+    updateScore(suffix); save();
+  }
+  function resetGroup(gid){
+    var suffix = gid.split('-')[0];
+    document.querySelectorAll('#list-' + gid + ' .q-item').forEach(function(item){
+      var in1 = document.getElementById('in1-' + qidOf(item));
+      if (in1) in1.value = '';
+      clearItemUI(item);
+      delete state.a[qidOf(item)];
+    });
+    updateScore(suffix); save();
+  }
+
+  // Apply a state object to the whole page
+  function applyState(){
+    document.querySelectorAll('.q-item').forEach(function(item){
+      var qid = qidOf(item);
+      var in1 = document.getElementById('in1-' + qid);
+      clearItemUI(item);
+      var st = state.a[qid];
+      if (in1) in1.value = st ? st.v : '';
+      if (st && st.c && st.v && st.v.trim()) checkItem(item);
+    });
+    ['iu','pv','rq','cf'].forEach(updateScore);
+    showTab(state.tab || 'page-iu');
+  }
+
+  function showTab(id){
+    if (!document.getElementById(id)) id = 'page-iu';
+    document.querySelectorAll('.page-tab').forEach(function(t){
+      t.classList.toggle('active', t.getAttribute('data-target') === id);
+    });
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.toggle('active', p.id === id); });
+  }
+
+  // ---------- wiring ----------
+  document.querySelectorAll('.q-item').forEach(function(item){
+    var qid = qidOf(item);
+    var in1 = document.getElementById('in1-' + qid);
+    if (!in1) return;
+    in1.addEventListener('input', function(){
+      clearItemUI(item);
+      state.a[qid] = { v: in1.value, c: 0 };
+      if (!in1.value.trim()) delete state.a[qid];
+      updateScore(suffixOf(item)); save();
+    });
+  });
+  document.querySelectorAll('[data-check]').forEach(function(b){
+    b.addEventListener('click', function(){ checkGroup(b.getAttribute('data-check')); });
+  });
+  document.querySelectorAll('[data-reset]').forEach(function(b){
+    b.addEventListener('click', function(){ resetGroup(b.getAttribute('data-reset')); });
+  });
+  ['iu','pv','rq','cf'].forEach(function(suffix){
+    var groups = Array.prototype.map.call(document.querySelectorAll('#page-' + suffix + ' [id^="list-"]'), function(e){ return e.id.replace('list-',''); });
+    var ca = document.getElementById('checkAllBtn-' + suffix);
+    var ra = document.getElementById('resetAllBtn-' + suffix);
+    if (ca) ca.addEventListener('click', function(){
+      groups.forEach(function(g){ document.querySelectorAll('#list-' + g + ' .q-item').forEach(checkItem); });
+      updateScore(suffix); save();
+      var first = document.getElementById('section-' + groups[0]);
+      if (first) first.scrollIntoView({ behavior: 'smooth' });
+    });
+    if (ra) ra.addEventListener('click', function(){
+      if (!confirm('Clear all answers on this page?')) return;
+      groups.forEach(resetGroup);
+    });
+  });
+  document.querySelectorAll('.page-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      state.tab = tab.getAttribute('data-target');
+      showTab(state.tab); save();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // backup / restore
+  var codeBox = document.getElementById('codeBox');
+  function encode(){ return btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }
+  function decode(c){ return JSON.parse(decodeURIComponent(escape(atob(c.trim())))); }
+  document.getElementById('exportBtn').addEventListener('click', function(){
+    var code = encode(); codeBox.value = code;
+    codeBox.select();
+    try { if (navigator.clipboard) navigator.clipboard.writeText(code); } catch(e){}
+  });
+  document.getElementById('importBtn').addEventListener('click', function(){
+    try {
+      var obj = decode(codeBox.value);
+      if (!obj || typeof obj.a !== 'object') throw 0;
+      state = obj; applyState(); save();
+      alert('Progress restored.');
+    } catch(e){ alert('That code is not valid. Please paste the full code.'); }
+  });
+
+  // save when leaving the page
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') save(); });
+  window.addEventListener('pagehide', save);
+
+  applyState();
+  save();
+})();
+</script>
+
+</body>
+</html>
